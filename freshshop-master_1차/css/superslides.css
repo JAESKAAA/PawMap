@@ -20,12 +20,6 @@
 }
 
 .slides-navigation {
-  margin: 0 auto;
-  position: absolute;
-  z-index: 3;
-  top: 46%;
-=======
-.slides-navigation {
   /* 슬라이드 버튼 위치 */
   margin: 0 auto;
   position: absolute;

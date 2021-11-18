@@ -29,17 +29,20 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
 
+    <!-- 결 커스텀 css -->
+    <link rel="stylesheet" href="css/style-gyul.css">
+
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <!-- 결 커스텀 css -->
-    <link rel="stylesheet" href="css/style-gyul.css">
-
 <style>
 
-  
+.board-form{
+    margin-bottom: 20px;
+}
+
 </style>
 
 </head>
@@ -89,228 +92,59 @@
     </header>
     <!-- end Main Top -->
   
-<div class="board-type mt-5">
-    <h1>자유게시판</h1>
-</div>
-<div class="container mt-5" style="width: 70%;">
-    <div class="board-free" >
-        <div id="slides-shop" class="cover-slides">
-            <ul class="slides-container">
-                <li class="text-center">
-                    <img src="images/결_dog_img_001.jpeg" alt="">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h2 class="m-b-20"><strong style="color: aliceblue;">글 제목</strong></h2>
-                                <p><a class="btn hvr-hover" href="#" style="background: none; font-size:15px;">글 보러가기</a></p>
-                            </div>
-                        </div>
+    <!-- 게시판 폼 시작 -->
+    <form class="form-horizontal board-form" role="form" action="" >
+        <div class="container">
+            <div class="card row">
+                <div class="option-select ml-5">
+                    <select class="form-control">
+                        <option value="f">자유게시판</option>
+                        <option value="s">나눔게시판</option>
+                    </select>
+                </div>
+                <div class="form-group ml-5 ">
+                    <label for="name" class="col-sm-2 control-label">닉네임</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control input-nickname" id="user_name" name="user_name" value="" placeholder="로그인한 회원 닉네임(수정불가) " readonly>
                     </div>
-                </li>
-                <li class="text-center">
-                    <img src="images/결_dog_img_002.jpeg" alt="">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h2 class="m-b-20"><strong style="color: aliceblue;">글 제목</strong></h2>
-                                <p><a class="btn hvr-hover" href="#" style="background: none; font-size:15px;">글 보러가기</a></p>
-                            </div>
-                        </div>
+                </div>
+                <div class="form-group ml-5 ">
+                    <label for="title" class="col-sm-2 control-label">제목</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control input-title" id="title" name="title" placeholder="제목" value="">
                     </div>
-                </li>
-                <li class="text-center">
-                    <img src="images/결_dog_img_003.jpeg" alt="">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h2 class="m-b-20"><strong style="color: aliceblue;">글 제목</strong></h2>
-                                <p><a class="btn hvr-hover" href="#" style="background: none; font-size:15px;">글 보러가기</a></p>
-                            </div>
-                        </div>
+                </div>
+                <div class="form-group ml-5">
+                    <label for="content" class="col-sm-2 control-label">내용</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control content" rows="4" name="content"></textarea>
                     </div>
-                </li>
-            </ul>
-            <div class="slides-navigation" >
-                <a href="#" class="next btn-next" style="background: none;">
-                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                </a>
-                <a href="#" class="prev btn-prev" style="background: none;">
-                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                </a>
-            </div>
-        </div>  
-    </div>
-</div>    
-<hr class="line-paint">
-
-
-
-<!-- board list form 시작 -->
-
-<div class="container">
-  <div>
-    <section>
-      <!--for demo wrap-->
+                </div>
+                <div class="r form-group ml-5">
+                    <div class="col-sm-10 col-sm-offset-2">
+                        <div class="row form-group">  
+                            <div class="col-10 col-md-6">  
+                                <div class="control-group" id="fields">  
+                                    <div class="controls">  
+                                        <div class="entry input-group upload-input-group">  
+                                            <input class="form-control btn-file-upload" name="fields[]" type="file">  
+                                        </div>  
+                                    </div>  
+                                </div>  
+                            </div>  
+                        </div>  
+                    </div>
+                </div>
+                <div class="r form-group ml-5">
+                    <div class="col-sm-10 col-sm-offset-2">
+                        <input id="btn-submit" name="btn-submit" type="submit" value="작성완료" class="btn btn-complete">
+                    </div>
+                </div>
+            </div>    
+        </div>    
+    </form>
+    <!-- 게시판 폼 종료 -->
       
-      <div class="tbl-header">
-        <!-- search 버튼 시작 -->
-        <div class="main-search-input-wrap" >
-          <div class="main-search-input fl-wrap" style="margin-top: 30px;">
-            <div class="main-search-input-item"> 
-              <input type="text" value="" placeholder="Search Products..."> 
-            </div> 
-            <button class="main-search-button">Search</button>
-          </div>
-        </div>
-        <!-- search 버튼 종료 -->  
-              <table class="board-table" cellpadding="0" cellspacing="0" >
-                <thead>
-                  <tr>
-                    <th >번호</th>
-                    <th class="title">제목</th>
-                    <th>작성자</th>
-                    <th>등록일</th>
-                  </tr>
-                </thead>
-              </table>
-            </div>
-            <div class="tbl-content">
-              <table class="board-table" cellpadding="0" cellspacing="0">
-                <tbody>
-                  <tr>
-                    <td class="">1</td>
-                    <td class="title"><a href="#" >AUSTRALIAN COMPANYAUSTRALIAN COMPANYAUSTRALIAN COMPANY </a></td>
-                    <td >고결</td>
-                    <td>2021.01.01</td>
-                  </tr>
-                  <tr>
-                    <td class="">1</td>
-                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
-                    <td>고결</td>
-                    <td>2021.01.01</td>
-                  </tr>
-                  <tr>
-                    <td class="">1</td>
-                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
-                    <td>고결</td>
-                    <td>2021.01.01</td>
-                  </tr>
-                  <tr>
-                    <td class="">1</td>
-                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
-                    <td>고결</td>
-                    <td>2021.01.01</td>
-                  </tr>
-                  <tr>
-                    <td class="">1</td>
-                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
-                    <td>고결</td>
-                    <td>2021.01.01</td>
-                  </tr>
-                  <tr>
-                    <td class="">1</td>
-                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
-                    <td>고결</td>
-                    <td>2021.01.01</td>
-                  </tr>
-                  <tr>
-                    <td class="">1</td>
-                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
-                    <td>고결</td>
-                    <td>2021.01.01</td>
-                  </tr>
-                  <tr>
-                    <td class="">1</td>
-                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
-                    <td>고결</td>
-                    <td>2021.01.01</td>
-                  </tr>
-                  <tr>
-                    <td class="">1</td>
-                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
-                    <td>고결</td>
-                    <td>2021.01.01</td>
-                  </tr>
-                  <tr>
-                    <td class="">1</td>
-                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
-                    <td>고결</td>
-                    <td>2021.01.01</td>
-                  </tr>
-                  <tr>
-                    <td class="">1</td>
-                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
-                    <td>고결</td>
-                    <td>2021.01.01</td>
-                  </tr>
-                  <tr>
-                    <td class="">1</td>
-                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
-                    <td>고결</td>
-                    <td>2021.01.01</td>
-                  </tr>
-                  <tr>
-                    <td class="">1</td>
-                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
-                    <td>고결</td>
-                    <td>2021.01.01</td>
-                  </tr>
-                  <tr>
-                    <td class="">1</td>
-                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
-                    <td>고결</td>
-                    <td>2021.01.01</td>
-                  </tr>
-                  <tr>
-                    <td class="">1</td>
-                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
-                    <td>고결</td>
-                    <td>2021.01.01</td>
-                  </tr>
-                  <tr>
-                    <td class="">1</td>
-                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
-                    <td>고결</td>
-                    <td>2021.01.01</td>
-                  </tr>
-                  <tr>
-                    <td class="">1</td>
-                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
-                    <td>고결</td>
-                    <td>2021.01.01</td>
-                  </tr>
-                  <tr>
-                    <td class="">1</td>
-                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
-                    <td>고결</td>
-                    <td>2021.01.01</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-        </section>
-    </div>
-</div>
-
-<!-- 페이지 네이션 시작 -->
-
-<div class="page-div">
-    <ul class="pagination justify-content-center">
-        <li class="page-item">
-            <a class="page-link" href="#" >Prev</a>
-        </li>
-        <li class="page-item"> 
-            <a class="page-link" href="#">1</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-        </li>
-    </ul>
-</div>
-
-<!-- 페이지 네이션 종료 -->
-
-<!-- board list form 종료 -->
       
 
     <!-- Start Footer  -->
