@@ -198,3 +198,33 @@ a:link {
 .instagram-box {
   background: none;
 }
+/* (전역 페이지에 들어가야함) 올라가는 아이콘 */
+#back-to-top {
+  position: fixed;
+  padding-top: 12px;
+  bottom: 150px;
+  right: 36px;
+  z-index: 9999;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  line-height: 5px;
+  background: #e1a963;
+  color: #ffffff;
+  cursor: pointer;
+  border: 0;
+  border-radius: 0px;
+  text-decoration: none;
+  transition: opacity 0.2s ease-out;
+  font-size: 28px;
+}
+
+/* 슬라이드 네비게이션에 배경색 없도록 */
+.slides-navigation a {
+  background: none;
+}
+
+.slides-navigation a:hover {
+  background: none;
+  color: #e1a963;
+}

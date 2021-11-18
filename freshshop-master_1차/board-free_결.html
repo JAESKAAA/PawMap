@@ -33,81 +33,15 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+
+    <!-- 결 커스텀 css -->
+    <link rel="stylesheet" href="css/style-gyul.css">
+
 <style>
-    .form-label{
-        color: brown;
-    }
-    .left-div{
-        background-color:#FFDAB9; 
-        border-radius: 50% 20% / 10% 40%;
-    }
-    .column-div{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 400px;
-        height: 270px;
-        background-color: antiquewhite;
-        border-radius: 100px;
-        margin: auto;
-    }
-    
-    /* =================  일반 회원 가입 태그들 관련 CSS 시작 ================  */
-    .nomal-join{
-        background-image: url(images/결_animals_img-001.jpeg);
-        background-repeat:no-repeat;
-        background-size : 400px 300px;
-        background-position: center;
-    }
-    .nomal-join:hover .btn-join-nomal{
-        display: block;
-    }
-    .nomal-join:hover{
-        opacity:50%;
-        transition: all 0.5s ease-in-out;
-    }
-    .btn-join-nomal{
-        display: none;
-    }
-    /* =================  일반 회원 가입 태그들 관련 CSS 종료 ================  */
-    
 
-    /* =================  병원 회원 가입 태그들 관련 CSS ================  */
-    .hospital-join{
-        background-image: url(images/결_hospital-img-001.jpeg);
-        background-repeat:no-repeat;
-        background-size : 300px 300px;
-        background-position: center;
-    }
-    .hospital-join:hover .btn-join-hospital{
-        display: block;
-    }
-    .hospital-join:hover{
-        opacity:50%;
-        transition: all 0.5s ease-in-out;
-    }
-    .btn-join-hospital{
-        display: none;
-    }
-    /* =================  병원 회원 가입 태그들 관련 CSS 종료 ================  */
-
-    
-    /* ====================== 회원 가입 태그 공통 속성 ===================  */
-    .btn-join-hospital, .btn-join-nomal{
-        font-size: 40px;
-        border: 1px solid black;
-        border-radius: 20%;
-        box-shadow: 5px 5px 5px 5px black;
-    }
-    .btn-join-hospital:hover, .btn-join-nomal:hover{
-        opacity:90%;
-        background-color: gray;
-        color: black;
-    }
-
-
+  
 </style>
+
 </head>
 
 <body>
@@ -153,40 +87,223 @@
             </div>
         </nav>
     </header>
-
-    <!---------------------------------- 회원가입 폼 -------------------------->
-
-    <section class="vh-100" style="background-color: #eee;">
-        <div class="container h-100">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-lg-12 col-xl-11">
-              <div class="card text-black" style="border-radius: 25px;">
-                <div class="card-body p-md-5">
-                  <div class="row justify-content-center" >
-                    <div class="col-md-10 col-lg-6 col-xl-6 order-2 order-lg-1 left-div">
-                      <div class="column-div hospital-join">
-                        <div>
-                            <a class="btn-join-hospital" href="#" >병원회원 가입</a>
-                        </div>          
-                      </div>
+    <!-- end Main Top -->
+  
+<div class="board-type mt-5">
+    <h1>자유게시판</h1>
+</div>
+<div class="container mt-5" style="width: 70%;">
+    <div class="board-free" >
+        <div id="slides-shop" class="cover-slides">
+            <ul class="slides-container">
+                <li class="text-center">
+                    <img src="images/gyul_dog_img_001.jpg" alt="">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 class="m-b-20"><strong style="color: aliceblue;">글 제목</strong></h2>
+                                <p><a class="btn hvr-hover" href="#" style="background: none; font-size:15px;">글 보러가기</a></p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-10 col-lg-6 col-xl-6 order-2 order-lg-1 left-div">
-                      <div class="column-div nomal-join">
-                        <div>
-                          <a  class="btn-join-nomal"href="#" >일반회원 가입</a>
-                        </div>       
-                      </div>    
+                </li>
+                <li class="text-center">
+                    <img src="images/gyul_dog_img_002.jpg" alt="">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 class="m-b-20"><strong style="color: aliceblue;">글 제목</strong></h2>
+                                <p><a class="btn hvr-hover" href="#" style="background: none; font-size:15px;">글 보러가기</a></p>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                </li>
+                <li class="text-center">
+                    <img src="images/gyul_dog_img_003.jpg" alt="">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 class="m-b-20"><strong style="color: aliceblue;">글 제목</strong></h2>
+                                <p><a class="btn hvr-hover" href="#" style="background: none; font-size:15px;">글 보러가기</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>  
+    </div>
+</div>    
+<hr class="line-paint">
+
+
+
+<!-- board list form 시작 -->
+
+<div class="container">
+  <div>
+    <section>
+      <!--for demo wrap-->
+      
+      <div class="tbl-header">
+        <!-- search 버튼 시작 -->
+        <div class="main-search-input-wrap" >
+          <div class="main-search-input fl-wrap" style="margin-top: 30px;">
+            <div class="main-search-input-item"> 
+              <input type="text" value="" placeholder="Search Products..."> 
+            </div> 
+            <button class="main-search-button">Search</button>
           </div>
         </div>
-      </section>
+        <!-- search 버튼 종료 -->  
+              <table class="board-table" cellpadding="0" cellspacing="0" >
+                <thead>
+                  <tr>
+                    <th >번호</th>
+                    <th class="title">제목</th>
+                    <th>작성자</th>
+                    <th>등록일</th>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+            <div class="tbl-content">
+              <table class="board-table" cellpadding="0" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td class="">1</td>
+                    <td class="title"><a href="#" >AUSTRALIAN COMPANYAUSTRALIAN COMPANYAUSTRALIAN COMPANY </a></td>
+                    <td >고결</td>
+                    <td>2021.01.01</td>
+                  </tr>
+                  <tr>
+                    <td class="">1</td>
+                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
+                    <td>고결</td>
+                    <td>2021.01.01</td>
+                  </tr>
+                  <tr>
+                    <td class="">1</td>
+                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
+                    <td>고결</td>
+                    <td>2021.01.01</td>
+                  </tr>
+                  <tr>
+                    <td class="">1</td>
+                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
+                    <td>고결</td>
+                    <td>2021.01.01</td>
+                  </tr>
+                  <tr>
+                    <td class="">1</td>
+                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
+                    <td>고결</td>
+                    <td>2021.01.01</td>
+                  </tr>
+                  <tr>
+                    <td class="">1</td>
+                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
+                    <td>고결</td>
+                    <td>2021.01.01</td>
+                  </tr>
+                  <tr>
+                    <td class="">1</td>
+                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
+                    <td>고결</td>
+                    <td>2021.01.01</td>
+                  </tr>
+                  <tr>
+                    <td class="">1</td>
+                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
+                    <td>고결</td>
+                    <td>2021.01.01</td>
+                  </tr>
+                  <tr>
+                    <td class="">1</td>
+                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
+                    <td>고결</td>
+                    <td>2021.01.01</td>
+                  </tr>
+                  <tr>
+                    <td class="">1</td>
+                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
+                    <td>고결</td>
+                    <td>2021.01.01</td>
+                  </tr>
+                  <tr>
+                    <td class="">1</td>
+                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
+                    <td>고결</td>
+                    <td>2021.01.01</td>
+                  </tr>
+                  <tr>
+                    <td class="">1</td>
+                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
+                    <td>고결</td>
+                    <td>2021.01.01</td>
+                  </tr>
+                  <tr>
+                    <td class="">1</td>
+                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
+                    <td>고결</td>
+                    <td>2021.01.01</td>
+                  </tr>
+                  <tr>
+                    <td class="">1</td>
+                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
+                    <td>고결</td>
+                    <td>2021.01.01</td>
+                  </tr>
+                  <tr>
+                    <td class="">1</td>
+                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
+                    <td>고결</td>
+                    <td>2021.01.01</td>
+                  </tr>
+                  <tr>
+                    <td class="">1</td>
+                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
+                    <td>고결</td>
+                    <td>2021.01.01</td>
+                  </tr>
+                  <tr>
+                    <td class="">1</td>
+                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
+                    <td>고결</td>
+                    <td>2021.01.01</td>
+                  </tr>
+                  <tr>
+                    <td class="">1</td>
+                    <td class="title "><a href="#">AUSTRALIAN COMPANY </a></td>
+                    <td>고결</td>
+                    <td>2021.01.01</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+        </section>
+    </div>
+</div>
 
-    <!---------------------------------- 회원가입 폼 종료 -------------------------->
-    
+<!-- 페이지 네이션 시작 -->
+
+<div class="page-div">
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" href="#" >Prev</a>
+        </li>
+        <li class="page-item"> 
+            <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
+</div>
+
+<!-- 페이지 네이션 종료 -->
+
+<!-- board list form 종료 -->
+      
 
     <!-- Start Footer  -->
     <footer>

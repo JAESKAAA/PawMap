@@ -29,18 +29,85 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
 
-    <!-- 결 커스텀 css -->
-    <link rel="stylesheet" href="css/style-gyul.css">
-
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    
 <style>
+    .form-label{
+        color: brown;
+    }
+    .left-div{
+        background-color:#FFDAB9; 
+        border-radius: 50% 20% / 10% 40%;
+    }
+    .column-div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+        height: 270px;
+        background-color: antiquewhite;
+        border-radius: 100px;
+        margin: auto;
+    }
+    
+    /* =================  일반 회원 가입 태그들 관련 CSS 시작 ================  */
+    .nomal-join{
+        background-image: url(images/gyul_animals_img-001.jpg);
+        background-repeat:no-repeat;
+        background-size : 400px 300px;
+        background-position: center;
+    }
+    .nomal-join:hover .btn-join-nomal{
+        display: block;
+    }
+    .nomal-join:hover{
+        opacity:50%;
+        transition: all 0.5s ease-in-out;
+    }
+    .btn-join-nomal{
+        display: none;
+    }
+    /* =================  일반 회원 가입 태그들 관련 CSS 종료 ================  */
+    
+
+    /* =================  병원 회원 가입 태그들 관련 CSS ================  */
+    .hospital-join{
+        background-image: url(images/gyul_hospital-img-001.jpg);
+        background-repeat:no-repeat;
+        background-size : 300px 300px;
+        background-position: center;
+    }
+    .hospital-join:hover .btn-join-hospital{
+        display: block;
+    }
+    .hospital-join:hover{
+        opacity:50%;
+        transition: all 0.5s ease-in-out;
+    }
+    .btn-join-hospital{
+        display: none;
+    }
+    /* =================  병원 회원 가입 태그들 관련 CSS 종료 ================  */
+
+    
+    /* ====================== 회원 가입 태그 공통 속성 ===================  */
+    .btn-join-hospital, .btn-join-nomal{
+        font-size: 40px;
+        border: 1px solid black;
+        border-radius: 20%;
+        box-shadow: 5px 5px 5px 5px black;
+    }
+    .btn-join-hospital:hover, .btn-join-nomal:hover{
+        opacity:90%;
+        background-color: gray;
+        color: black;
+    }
+
 
 </style>
-
 </head>
 
 <body>
@@ -86,61 +153,40 @@
             </div>
         </nav>
     </header>
-    <!-- end Main Top -->
-  
+
+    <!---------------------------------- 회원가입 폼 -------------------------->
+
+    <section class="vh-100" style="background-color: #eee;">
+        <div class="container h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-12 col-xl-11">
+              <div class="card text-black" style="border-radius: 25px;">
+                <div class="card-body p-md-5">
+                  <div class="row justify-content-center" >
+                    <div class="col-md-10 col-lg-6 col-xl-6 order-2 order-lg-1 left-div">
+                      <div class="column-div hospital-join">
+                        <div>
+                            <a class="btn-join-hospital" href="#" >병원회원 가입</a>
+                        </div>          
+                      </div>
+                    </div>
+                    <div class="col-md-10 col-lg-6 col-xl-6 order-2 order-lg-1 left-div">
+                      <div class="column-div nomal-join">
+                        <div>
+                          <a  class="btn-join-nomal"href="#" >일반회원 가입</a>
+                        </div>       
+                      </div>    
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!---------------------------------- 회원가입 폼 종료 -------------------------->
     
-    <form class="form-horizontal" role="form" action="" >
-        <div class="container">
-            <div class="card row">
-                <div class="option-select ml-5">
-                    <select class="form-control">
-                        <option value="f">자유게시판</option>
-                        <option value="s">나눔게시판</option>
-                    </select>
-                </div>
-                <div class="form-group ml-5 ">
-                    <label for="name" class="col-sm-2 control-label">닉네임</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control input-nickname" id="user_name" name="user_name" value="" placeholder="로그인한 회원 닉네임(수정불가) " readonly>
-                    </div>
-                </div>
-                <div class="form-group ml-5 ">
-                    <label for="title" class="col-sm-2 control-label">제목</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control input-title" id="title" name="title" placeholder="제목" value="">
-                    </div>
-                </div>
-                <div class="form-group ml-5">
-                    <label for="content" class="col-sm-2 control-label">내용</label>
-                    <div class="col-sm-10">
-                        <textarea class="form-control content" rows="4" name="content"></textarea>
-                    </div>
-                </div>
-                <div class="r form-group ml-5">
-                    <div class="col-sm-10 col-sm-offset-2">
-                        <div class="row form-group">  
-                            <div class="col-10 col-md-6">  
-                                <div class="control-group" id="fields">  
-                                    <div class="controls">  
-                                        <div class="entry input-group upload-input-group">  
-                                            <input class="form-control btn-file-upload" name="fields[]" type="file">  
-                                        </div>  
-                                    </div>  
-                                </div>  
-                            </div>  
-                        </div>  
-                    </div>
-                </div>
-                <div class="r form-group ml-5">
-                    <div class="col-sm-10 col-sm-offset-2">
-                        <input id="btn-submit" name="btn-submit" type="submit" value="작성완료" class="btn btn-complete">
-                    </div>
-                </div>
-            </div>    
-        </div>    
-    </form>
-      
-      
 
     <!-- Start Footer  -->
     <footer>
