@@ -1,0 +1,37 @@
+/* <!--캘린더 css--> */
+
+
+    a { color:#000000;text-decoration:none; }
+    .scriptCalendar { text-align:center; }
+    .scriptCalendar > thead > tr > td { width:50px;height:50px; }
+    .scriptCalendar > thead > tr:first-child > td { font-weight:bold; }
+    .scriptCalendar > thead > tr:last-child > td { background-color:#eecd90; }
+    .scriptCalendar > tbody > tr > td { width:50px;height:50px; }
+
+    /* button */
+    .calendar_box {
+        width: 1000px; 
+        height: 500px; 
+        background-color: white;
+        margin-left: 10%;
+        margin-top: 5%;
+    }
+    .calendar-left{
+        margin: 7%;
+        margin-top: 50px;
+        background-color: #eecd90;
+        border-radius: 10%;
+        width: 30%;
+        padding: 20px;
+    }
+    .events-time .calendartime {
+        list-style: none;
+    }
+    .events-time .calendartime li {
+        position: relative;
+        float: left;
+        margin: 3px;
+    }
+
+
+/** ADD YOUR AWESOME CODES HERE **/
