@@ -68,7 +68,7 @@
     max-width: 500px;
     height: 60px;
     border-radius: 120px;
-    margin: 0 auto;
+    margin: 2% auto;
     color: #000000;
   }
   .search-icon, .go-icon {
@@ -190,6 +190,57 @@
 
   /* kakaomap 지도 css */
   #map {
+    display: block;
+    width: 1280px; 
+    height: 500px;
+    margin: auto !important;
+    padding: 5%;
+}
+
+
+
+/* 이미지 애니메이션 효과 */
+
+
+.swing-in-top-fwd {
+	-webkit-animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+	        animation: swing-in-top-fwd 0.5s cubic-bezier(0.175, 0.885, 0.320, 1.275) both;
+}
+
+
+ @-webkit-keyframes swing-in-top-fwd {
+  0% {
+    -webkit-transform: rotateX(-100deg);
+            transform: rotateX(-100deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 1;
+  }
+}
+@keyframes swing-in-top-fwd {
+  0% {
+    -webkit-transform: rotateX(-100deg);
+            transform: rotateX(-100deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotateX(0deg);
+            transform: rotateX(0deg);
+    -webkit-transform-origin: top;
+            transform-origin: top;
+    opacity: 1;
+  }
+}
+=======
     text-align: center;
     width:700px; 
     height:400px;
