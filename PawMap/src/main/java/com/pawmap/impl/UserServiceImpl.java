@@ -32,5 +32,9 @@ public class UserServiceImpl implements UserService{
 	public UserVO findByUsername(String username) {
 		return userMapper.findByUsername(username);
 	}
+	 @Override
+	public void socialJoin(UserVO vo) {
+		userMapper.socialJoin(vo);
+	}
 }
 

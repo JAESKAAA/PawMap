@@ -11,4 +11,7 @@ public interface UserMapper {
 	void insertUser(UserVO vo);
 	
 	 UserVO findByUsername(String username);
+	 
+	void socialJoin(UserVO vo);
+
 }

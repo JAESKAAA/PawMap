@@ -187,6 +187,12 @@ pageEncoding="UTF-8"%>
                   >
                     로그인
                   </button>
+                  <a
+                    href="/pawmap/oauth2/authorization/google"
+                    class="login-btn text-white text-weight-bold"
+                  >
+                    <i class="fab fa-google"></i> 구글 로그인
+                  </a>
                   <div>
                     <a href="#" class="btn-other" id="forgot">
                       비밀번호를 잊어버렸습니까?</a
