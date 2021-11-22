@@ -125,12 +125,12 @@ pageEncoding="UTF-8"%>
                 <a href="#"><i class="fa fa-search"></i></a>
               </li>
               <li class="side-menu">
-                <a href="#">
+                <a href="/pawmap/loginForm">
                   <p>로그인</p>
                 </a>
               </li>
               <li class="side-menu">
-                <a href="#">
+                <a href="/pawmap/joinForm">
                   <p>회원가입</p>
                 </a>
               </li>

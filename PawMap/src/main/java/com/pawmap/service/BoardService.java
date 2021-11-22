@@ -4,5 +4,5 @@ import com.pawmap.VO.UserVO;
 
 public interface BoardService {
 
-	void insertTest(UserVO vo);
+	void insertBoard(UserVO vo);
 }
