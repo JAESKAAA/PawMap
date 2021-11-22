@@ -4,8 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pawmap.VO.UserVO;
-import com.pawmap.mapper.BoardMapper;
+import com.pawmap.mapper.UserMapper;
 import com.pawmap.service.BoardService;
+import com.pawmap.service.UserService;
 
 
 /*
@@ -17,15 +18,19 @@ import com.pawmap.service.BoardService;
  * @Repository : Persistence Layer (DB나 파일과 같은 외부 I/O작업을 처리함)
  * */
 @Service
-public class BoardServiceImpl implements BoardService {
+public class UserServiceImpl implements UserService{
 
-	@Autowired
-	BoardMapper boardMapper;
 	
-
+	 @Autowired 
+	 private UserMapper userMapper;
+	 
 	@Override
-	public void insertBoard(UserVO vo) {
-		boardMapper.insertBoard(vo);
+	public void insertUser(UserVO vo) {
+		userMapper.insertUser(vo);
+}
+	 @Override
+	public UserVO findByUsername(String username) {
+		return userMapper.findByUsername(username);
 	}
 }
 

@@ -6,7 +6,9 @@ import com.pawmap.VO.UserVO;
 
 
 @Mapper
-public interface BoardMapper {
+public interface UserMapper {
 
-	void insertBoard(UserVO vo);
+	void insertUser(UserVO vo);
+	
+	 UserVO findByUsername(String username);
 }
