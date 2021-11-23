@@ -115,4 +115,28 @@ public class UserController {
 		return "forgotPw";
 	}
 
+	
+	// 마이페이지
+	@GetMapping("/mypage") 
+	public String mypage() {
+		return "my-page";
+	}
+	
+	// 회원정보
+	@GetMapping("/infoForm")
+	public String inforForm() {
+		return "user-info-form";
+	}
+	
+	// 회원탈퇴
+	@GetMapping("/userdelete")
+	public String userdeleteview() {
+		return "user-delete";
+	}
+	
+//	@PostMapping("/userdelete")
+//	public String userdelete() {
+//		
+//	}
+
 }

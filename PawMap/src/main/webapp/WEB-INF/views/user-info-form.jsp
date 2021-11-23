@@ -1,0 +1,153 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>PawMap</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Custom_실비아 CSS -->
+    <link rel="stylesheet" href="css/custom-실비아.css">
+
+
+</head>
+<body>
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            <div class="container">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="logo" alt=""></a>
+                </div>
+                <!-- End Header Navigation -->
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+					<ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+						<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+						<li class="dropdown active">
+							<a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
+							<ul class="dropdown-menu">
+								<li><a href="shop.html">Sidebar Shop</a></li>
+								<li><a href="shop-detail.html">Shop Detail</a></li>
+								<li><a href="cart.html">Cart</a></li>
+								<li><a href="checkout.html">Checkout</a></li>
+								<li><a href="my-account.html">My Account</a></li>
+								<li><a href="wishlist.html">Wishlist</a></li>
+							</ul>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+						<li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+        </nav>
+        <!-- End Navigation -->
+
+<style>
+
+</style>
+
+
+
+
+    </header>
+    <!-- End Main Top -->
+
+    <!-- Start 회원정보 타이틀 영역 -->
+    <div class="pet-all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>회원정보</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End 회원정보 타이틀 영역 -->
+
+    <!-- Start 회원정보 영역-->
+    <div class="container" style="margin-top: 5%; width: 50%;">
+        <div class="input-form-backgroud row">
+        <div class="input-form col-md-12 mx-auto">
+            <form class="validation-form" action="/PawMap/infoForm" method="post" id="updateinfo">
+                <div class="mb-3">
+                    <label for="name">이름</label>
+                    <input type="text" class="form-control" id="name" placeholder="이름" value="${UserVO.userName}" readonly/>
+                </div>
+                <div class="mb-3">
+                    <label for="customer-id">아이디</label>
+                    <input type="text" class="form-control" id="customer-id" placeholder="아이디" value="${UserVO.userID}" readonly/>
+                </div>
+            <div class="mb-3">
+                <label for="password">비밀번호</label>
+                <input type="password" class="form-control" id="password" placeholder="비밀번호 입력" maxlength="12" required/>
+                <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
+            </div>
+            <div class="mb-3">
+                <label for="password">비밀번호 확인</label>
+                <input type="password" class="form-control" id="password" placeholder="비밀번호 재입력" maxlength="12" required/>
+                <div class="invalid-feedback">비밀번호를 입력해주세요.</div>
+            </div>
+            <div class="mb-3">
+                <label for="nickname" style="width: 100%;">닉네임</label>
+                <input type="text" style="display: inline-block; width: 70%;" class="form-control" id="nickname" value="${UserVO.userNickname}"/>
+                <a href="#" class="my-btn text-white text-weight-bold">중복확인</a>
+            </div>
+            <div class="mb-3">
+                <label for="phone">연락처</label>
+                <input type="phone" class="form-control" id="phone" placeholder="000-0000-0000" value="${UserVO.userTelNum}"/>
+            </div>
+            <div class="mb-3">
+                <label for="email" style="width: 100%;">이메일</label>
+                <input type="email" style="display: inline-block; width: 70%;" class="form-control" id="email" placeholder="you@example.com" value="${UserVO.userEmail}"/>
+                <a href="#" class="my-btn text-white text-weight-bold">중복확인</a>
+            </div>
+            <div class="mb-3">
+                <label for="address">주소</label>
+                <input type="text" class="form-control" id="address" value="${UserVO.address}"/>
+            </div>
+            <hr class="mb-4" />
+            <div class="mb-4">
+                <a href="#" class="my-btn text-white text-weight-bold">수정</a>
+                <a href="/pawmap/userdelete" class="my-btn text-white text-weight-bold">회원탈퇴</a>
+            </div>
+            </div>
+            </form>
+        </div>
+        </div>
+    </div>
+    <!-- End 회원정보 영역-->
+
+    <!-- Start footer 영역-->
+
+    <!-- End footer 영역-->
+
+</body>
+</html>
