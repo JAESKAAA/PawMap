@@ -21,11 +21,6 @@ public class BoardServiceImpl implements BoardService {
 	BoardMapper boardMapper;
 	
 
-	@Override
-	public void insertTest(UserVO vo) {
-		System.out.println("BoardServiceImpl :insertTest()");
-		boardMapper.insertTest(vo);
-	}
 
 
 	@Override

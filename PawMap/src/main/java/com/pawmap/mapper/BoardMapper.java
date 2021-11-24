@@ -14,7 +14,6 @@ import com.pawmap.VO.UserVO;
 @Mapper
 public interface BoardMapper {
 
-	int insertTest(UserVO vo);
 
 	void insertFreeAndNanumBoard(BoardVO vo);
 
