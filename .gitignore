@@ -1,14 +1,7 @@
-<<<<<<< HEAD
-
 *.properties
-<<<<<<< HEAD
 .metadata
-=======
-.metadata
->>>>>>> refs/remotes/origin/develop
-=======
 /.metadata/
 *.properties
 *.metadata
 *.DS_Store
->>>>>>> 8f6657beaf2b1d5e70dc7e4ee536dc5ccdec9349
+
