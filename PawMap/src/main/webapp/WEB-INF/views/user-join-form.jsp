@@ -56,7 +56,6 @@ pageEncoding="UTF-8"%>
         border-radius: 100px;
         margin: auto;
       }
-
       .user_id_re_1 {
         color: green;
         display: none;
@@ -66,7 +65,6 @@ pageEncoding="UTF-8"%>
         color: red;
         display: none;
       }
-
     </style>
   </head>
 
@@ -196,7 +194,6 @@ pageEncoding="UTF-8"%>
                           <span class="user_id_re_2">아이디가 이미 존재합니다.</span>
                         </div>
                       </div>
-
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                           <div class="column-div">
@@ -216,7 +213,6 @@ pageEncoding="UTF-8"%>
                           />
                         </div>
                       </div>
-
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                           <div class="column-div">
@@ -236,7 +232,6 @@ pageEncoding="UTF-8"%>
                           />
                         </div>
                       </div>
-
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                           <div class="column-div">
@@ -256,7 +251,6 @@ pageEncoding="UTF-8"%>
                           />
                         </div>
                       </div>
-
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                           <div class="column-div">
@@ -276,7 +270,6 @@ pageEncoding="UTF-8"%>
                           />
                         </div>
                       </div>
-
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                           <div class="column-div">
@@ -296,7 +289,6 @@ pageEncoding="UTF-8"%>
                           />
                         </div>
                       </div>
-
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                           <div class="column-div">
@@ -316,7 +308,6 @@ pageEncoding="UTF-8"%>
                           />
                         </div>
                       </div>
-
                       <div
                         class="d-flex justify-content-center mx-4 mb-3 mb-lg-4"
                       >
@@ -884,7 +875,6 @@ pageEncoding="UTF-8"%>
     <script src="js/form-validator.min.js"></script>
     <script src="js/contact-form-script.js"></script>
     <script src="js/custom.js"></script>
-
     <script>
       //아이디 중복검사
       $('.user_id').on("propertychange change keyup paste input", function () {

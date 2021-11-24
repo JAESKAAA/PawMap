@@ -28,6 +28,13 @@
   		)
   	</insert>
   
+  	<!-- 아이디 중복검사 -->
+  	<select id="idCheck" resultType="int">
+  	
+  		select count(*) from book_member where memberId = #{memberId}
+  	
+  	</select>
+  
   	<insert id="socialJoin">
   		INSERT INTO user(user_id, user_password, user_name, user_email, provider, providerId, role) VALUES(
   				#{userId},
@@ -39,13 +46,6 @@
   				#{role}
   		)
   	</insert>
-  	
-  	<!-- 아이디 중복검사 -->
-  	<select id="idCheck" resultType="int">
-  	
-  		select count(*) from book_member where memberId = #{memberId}
-  	
-  	</select>
   	
   	
   </mapper>	

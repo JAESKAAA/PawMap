@@ -9,8 +9,6 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pawmap.VO.UserVO;
@@ -68,8 +66,8 @@ public class UserController {
 	}
 	
 	@GetMapping("/admin")
-	public @ResponseBody String admin() {
-		return "admin";
+	public  String admin() {
+		return "admin_index";
 	}
 	
 	@GetMapping("/manager")
@@ -106,19 +104,19 @@ public class UserController {
 	}
 	
 	// 아이디 중복 검사
-	@RequestMapping(value = "/usetIdChk", method = RequestMethod.POST)
-	@ResponseBody
-	public void memberIdChkPOST(String memberId) throws Exception{
-		logger.info("usetIdChk() 진입");
-		int result = UserService.idCheck(userId);
-		logger.info("결과값 = " + result);
-		if(result != 0) {
-			return "fail";	// 중복 아이디가 존재
-		} else {
-			return "success";	// 중복 아이디 x
-			
-		}
-	} // memberIdChkPOST() 종료
+//	@RequestMapping(value = "/usetIdChk", method = RequestMethod.POST)
+//	@ResponseBody
+//	public void memberIdChkPOST(String memberId) throws Exception{
+//		logger.info("usetIdChk() 진입");
+//		int result = UserService.idCheck(userId);
+//		logger.info("결과값 = " + result);
+//		if(result != 0) {
+//			return "fail";	// 중복 아이디가 존재
+//		} else {
+//			return "success";	// 중복 아이디 x
+//			
+//		}
+//	} // memberIdChkPOST() 종료
 	
 	@PreAuthorize("hasRole('ROLE_ADMIN')") //하기 메서드가 실행하기 직전에 실행됨
 	@GetMapping("/data")

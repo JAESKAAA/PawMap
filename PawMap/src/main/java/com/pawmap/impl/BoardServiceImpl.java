@@ -1,21 +1,18 @@
 package com.pawmap.impl;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pawmap.VO.BoardVO;
+import com.pawmap.VO.Criteria;
 import com.pawmap.VO.UserVO;
 import com.pawmap.mapper.BoardMapper;
 import com.pawmap.service.BoardService;
 
-
-/*
- * @Controller, @Service, @Repository
- * »ó±â ¾î³ëÅ×ÀÌ¼Çµé ¸ğµÎ Bean °´Ã¼ »ı¼ºÀÌ¶ó´Â µ¿ÀÏÇÑ ±â´ÉÀ» ÇÔ
- * ´Ù¸¸, ¸í½ÃÀûÀ¸·Î °¢°¢ÀÇ ±â´ÉÀ» ³ªÅ¸³» ÁÖ±â À§ÇØ ±¸ºĞÇØ¼­ »ç¿ëÇÔ
- * @Controller : Presentation Layer (À¥ ¿äÃ»°ú ÀÀ´äÀ» Ã³¸®ÇÔ)
- * @Service : Service Layer (³»ºÎ¿¡¼­ ÀÚ¹Ù ·ÎÁ÷À» Ã³¸®ÇÔ)
- * @Repository : Persistence Layer (DB³ª ÆÄÀÏ°ú °°Àº ¿ÜºÎ I/OÀÛ¾÷À» Ã³¸®ÇÔ)
- * */
 @Service
 public class BoardServiceImpl implements BoardService {
 
@@ -24,8 +21,59 @@ public class BoardServiceImpl implements BoardService {
 	
 
 	@Override
-	public void insertBoard(UserVO vo) {
-		boardMapper.insertBoard(vo);
+	public void insertTest(UserVO vo) {
+		System.out.println("BoardServiceImpl :insertTest()");
+		boardMapper.insertTest(vo);
+	}
+
+
+	@Override
+	public void insertFreeAndNanumBoard(BoardVO vo) {
+		boardMapper.insertFreeAndNanumBoard(vo);
+		System.out.println("BoardServiceImpl :insertFreeAndNanumBoard()");
+		
+	}
+
+
+	@Override
+	public List<BoardVO> getFreeBoardList(BoardVO vo, Criteria cri) {
+		
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("board", vo);
+		cri.setStartNum((cri.getPageNum() -1 ) * cri.getAmount());
+		paramMap.put("criteria", cri);
+		
+		
+		return boardMapper.getFreeBoardList(paramMap);
+	}
+
+
+	@Override
+	public BoardVO getFreeBoard(int boardSeq) {
+		
+		System.out.println("BoardServiceImpl ì˜ boardSeq ======"+boardSeq);
+		
+		return boardMapper.getFreeBoard(boardSeq);
+	}
+
+
+	@Override
+	public void deleteFreeBoardBySeq(int boardSeq) {
+		boardMapper.deleteFreeBoardBySeq(boardSeq);
+		
+	}
+
+
+	@Override
+	public void updateFreeBoardForm(BoardVO vo) {
+		boardMapper.updateFreeBoardForm(vo);
+	}
+
+
+	@Override
+	public int selectBoardCount(BoardVO vo) {
+		
+		return boardMapper.selectBoardCount(vo);
 	}
 }
 

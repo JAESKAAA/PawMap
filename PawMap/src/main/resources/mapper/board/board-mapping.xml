@@ -15,12 +15,69 @@
   		SELECT * FROM BOARD WHERE id=#{id}
   	</select> -->
   	
-  	<insert id="insertBoard">
-  		INSERT INTO user(user_id, user_password, user_name, type) VALUES(
-  				#{user_id},
-  				#{user_password},
-  				#{user_name},
-  				#{type}
+  	<insert id="insertFreeAndNanumBoard">
+  		INSERT INTO board(board_seq, board_type, user_id, title, content,hospital_seq, regDate) VALUES(
+  				(SELECT IFNULL(MAX(BOARD_SEQ), 0) + 1 FROM BOARD A WHERE BOARD_TYPE = #{boardType}),
+  				#{boardType},
+  				#{userId},
+  				#{title},
+  				#{content},
+  				#{hospitalSeq},
+  				NOW()
   		)
   	</insert>
+  	
+  	<select id="getFreeBoardList" parameterType="HashMap" resultType="com.pawmap.VO.BoardVO">
+  		SELECT * FROM board
+  		WHERE board_type = 'f'
+  		<if test="board.keywordType == 'title'">
+			AND title LIKE CONCAT('%', #{board.keyword}, '%')
+		</if>
+		<if test="board.keywordType == 'content'">
+			AND `content` LIKE CONCAT('%', #{board.keyword}, '%')
+		</if>
+		<if test="board.keywordType == 'titleAndBody'">
+			AND (title LIKE CONCAT('%', #{board.keyword}, '%') OR `content` LIKE CONCAT('%', #{board.keyword}, '%'))
+		</if>
+  		ORDER BY board_seq DESC
+  		LIMIT #{criteria.amount} OFFSET #{criteria.startNum}
+  	</select>
+  	
+  	<select id="getFreeBoard" resultType="com.pawmap.VO.BoardVO">
+  		SELECT * FROM board
+  		WHERE board_seq = #{boardSeq}
+  		AND
+  		board_type = 'f';
+  	</select>
+  	
+  	<delete id="deleteFreeBoardBySeq">
+  		DELETE FROM board
+  		WHERE board_seq = #{boardSeq}
+  		AND
+  		board_type = 'f';
+  	</delete>
+  	
+  	<update id="updateFreeBoardForm">
+  		UPDATE board
+  		SET
+  			title = #{title},
+  			content = #{content}
+  		WHERE board_seq = #{boardSeq}
+  		AND
+  		user_id = #{userId}
+  	</update>
+  	
+  	<select id="selectBoardCount" resultType="int">
+		SELECT COUNT(*) FROM BOARD
+		WHERE board_type = 'f'
+		<if test="keywordType == 'title'">
+			AND title LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="keywordType == 'content'">
+			AND `content` LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="keywordType == 'titleAndBody'">
+			AND (title LIKE CONCAT('%', #{keyword}, '%') OR `content` LIKE CONCAT('%', #{keyword}, '%'))
+		</if>
+	</select>
   </mapper>	

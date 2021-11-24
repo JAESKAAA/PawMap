@@ -1,61 +1,62 @@
 package com.pawmap.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.pawmap.configuration.oauth.PrincipalOauth2UserService;
 
 /*
- * ¼Ò¼È ·Î±×ÀÎ ½Ã ´ë·«ÀûÀÎ ÇÁ·Î¼¼½º
- * 1. ÄÚµå¹Ş±â (ÀÎÁõ) 
- * 2. ¿¢¼¼½º ÅäÅ« È¹µæ (±ÇÇÑ)
- * 3. »ç¿ëÀÚ ÇÁ·ÎÇÊ Á¤º¸ È¹µî
- * 4-1. ÇÁ·ÎÇÊ Á¤º¸¸¦ Åä´ë·Î È¸¿ø°¡ÀÔ ÀÚµ¿ ÁøÇà
- * 4-2. (ÀÌ¸ŞÀÏ,ÀüÈ­¹øÈ£,ÀÌ¸§,¾ÆÀÌµğ) ¼îÇÎ¸ô -> (ÁıÁÖ¼Ò), ¹éÈ­Á¡¸ô -> (vip µî±Ş, ÀÏ¹İµî±Ş) µî ¿ä±¸µÇ´Â Á¤º¸°¡ ¸¹À¸¸é Ãß°¡ Á¤º¸¸¦ formÀ¸·Î ¹Ş¾Æ ¼öµ¿À¸·Î È¸¿ø°¡ÀÔ ½ÃÄÑ¾ßÇÔ
+ * ì†Œì…œ ë¡œê·¸ì¸ ì‹œ ëŒ€ëµì ì¸ í”„ë¡œì„¸ìŠ¤
+ * 1. ì½”ë“œë°›ê¸° (ì¸ì¦) 
+ * 2. ì—‘ì„¸ìŠ¤ í† í° íšë“ (ê¶Œí•œ)
+ * 3. ì‚¬ìš©ì í”„ë¡œí•„ ì •ë³´ íšë“±
+ * 4-1. í”„ë¡œí•„ ì •ë³´ë¥¼ í† ëŒ€ë¡œ íšŒì›ê°€ì… ìë™ ì§„í–‰
+ * 4-2. (ì´ë©”ì¼,ì „í™”ë²ˆí˜¸,ì´ë¦„,ì•„ì´ë””) ì‡¼í•‘ëª° -> (ì§‘ì£¼ì†Œ), ë°±í™”ì ëª° -> (vip ë“±ê¸‰, ì¼ë°˜ë“±ê¸‰) ë“± ìš”êµ¬ë˜ëŠ” ì •ë³´ê°€ ë§ìœ¼ë©´ ì¶”ê°€ ì •ë³´ë¥¼ formìœ¼ë¡œ ë°›ì•„ ìˆ˜ë™ìœ¼ë¡œ íšŒì›ê°€ì… ì‹œì¼œì•¼í•¨
  * 
  */
 
 @Configuration
-@EnableWebSecurity //½ºÇÁ¸µ ½ÃÅ¥¸®Æ¼ ÇÊÅÍ°¡ ½ºÇÁ¸µ ÇÊÅÍ Ã¼ÀÎ¿¡ µî·ÏµÊ (½ÃÅ¥¸®Æ¼ ±â´É È°¼ºÈ­¸¦ À§ÇÑ ¾î³ëÅ×ÀÌ¼Ç)
-@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true) //secured ¾î³ëÅ×ÀÌ¼Ç È°¼ºÈ­ÇÏ´Â ¾î³ëÅ×ÀÌ¼Ç
+@EnableWebSecurity //ìŠ¤í”„ë§ ì‹œíë¦¬í‹° í•„í„°ê°€ ìŠ¤í”„ë§ í•„í„° ì²´ì¸ì— ë“±ë¡ë¨ (ì‹œíë¦¬í‹° ê¸°ëŠ¥ í™œì„±í™”ë¥¼ ìœ„í•œ ì–´ë…¸í…Œì´ì…˜)
+@EnableGlobalMethodSecurity(securedEnabled = true, prePostEnabled = true) //secured ì–´ë…¸í…Œì´ì…˜ í™œì„±í™”í•˜ëŠ” ì–´ë…¸í…Œì´ì…˜
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
-	//oauth2 »ç¿ëÀ» À§ÇÑ ÀÇÁ¸¼º ÁÖÀÔ
+	//oauth2 ì‚¬ìš©ì„ ìœ„í•œ ì˜ì¡´ì„± ì£¼ì…
 	@Autowired
 	private PrincipalOauth2UserService principalOauth2UserService;
 	
-	
+
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 	
+		//.antMatchers("/css/**", "/js/**", "/images/**", "/webfonts/**").permitAll()
+		
 		http.csrf().disable();
-		http.authorizeRequests().antMatchers("/user/**").authenticated()
+		http.authorizeRequests()
+								.antMatchers("/user/**").authenticated()
 								.antMatchers("/manager/**").access("hasRole('ROLE_ADMIN')")
 								.antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-								//»ó±â 3°³ÀÇ ÁÖ¼Ò ¿Ü¿¡´Â ¸ğµç ±ÇÇÑ Çã¿ëÇÏ´Â ÄÚµå
+								//ìƒê¸° 3ê°œì˜ ì£¼ì†Œ ì™¸ì—ëŠ” ëª¨ë“  ê¶Œí•œ í—ˆìš©í•˜ëŠ” ì½”ë“œ
 								.anyRequest().permitAll()
-								//±ÇÇÑ ¾ø´Â »ç¶÷ÀÌ »ó±â ÆäÀÌÁö Á¢¼Ó½Ã "/login" °æ·Î·Î ÀÌµ¿ÇÏµµ·Ï ¼³Á¤
+								//ê¶Œí•œ ì—†ëŠ” ì‚¬ëŒì´ ìƒê¸° í˜ì´ì§€ ì ‘ì†ì‹œ "/login" ê²½ë¡œë¡œ ì´ë™í•˜ë„ë¡ ì„¤ì •
 								.and()
 								.formLogin()
 								.loginPage("/loginForm")
 								.usernameParameter("userId")
-								.passwordParameter("userPassword") //Å×½ºÆ® ÇØº¸±â !! 
-								//"/login" ÁÖ¼Ò°¡ È£ÃâµÇ¸é ½ÃÅ¥¸®Æ¼°¡ ³¬¾ÆÃ¤¼­ ´ë½Å ·Î±×ÀÎÀ» ÁøÇàÇØÁÜ
+								.passwordParameter("userPassword") 
+								//"/login" ì£¼ì†Œê°€ í˜¸ì¶œë˜ë©´ ì‹œíë¦¬í‹°ê°€ ë‚šì•„ì±„ì„œ ëŒ€ì‹  ë¡œê·¸ì¸ì„ ì§„í–‰í•´ì¤Œ
 								.loginProcessingUrl("/login")
 								.defaultSuccessUrl("/")
-								// oauth2 ¶óÀÌºê·¯¸®¸¦ ÅëÇÑ ¼Ò¼È ·Î±×ÀÎÀ» À§ÇÑ ÄÚµå
+								// oauth2 ë¼ì´ë¸ŒëŸ¬ë¦¬ë¥¼ í†µí•œ ì†Œì…œ ë¡œê·¸ì¸ì„ ìœ„í•œ ì½”ë“œ
 								.and()
 								.oauth2Login()
 								.loginPage("/loginForm")
-								// ±¸±Û ·Î±×ÀÎ ¿Ï·áµÈ ÈÄ ÈÄÃ³¸® ÇÊ¿ä. Tip. ±¸±Û·Î±×ÀÎ ¿Ï·á½Ã ÇÏ±âÀÇ Á¤º¸¸¦ ¹ŞÀ½
-								// ¾×¼¼½º ÅäÅ« + »ç¿ëÀÚ ÇÁ·ÎÇÊÁ¤º¸
+								// êµ¬ê¸€ ë¡œê·¸ì¸ ì™„ë£Œëœ í›„ í›„ì²˜ë¦¬ í•„ìš”. Tip. êµ¬ê¸€ë¡œê·¸ì¸ ì™„ë£Œì‹œ í•˜ê¸°ì˜ ì •ë³´ë¥¼ ë°›ìŒ
+								// ì•¡ì„¸ìŠ¤ í† í° + ì‚¬ìš©ì í”„ë¡œí•„ì •ë³´
 								.userInfoEndpoint()
 								.userService(principalOauth2UserService);
 						

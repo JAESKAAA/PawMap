@@ -10,11 +10,11 @@ import com.pawmap.service.UserService;
 
 /*
  * @Controller, @Service, @Repository
- * ��� ������̼ǵ� ��� Bean ��ü �����̶�� ������ ����� ��
- * �ٸ�, ��������� ������ ����� ��Ÿ�� �ֱ� ���� �����ؼ� �����
- * @Controller : Presentation Layer (�� ��û�� ������ ó����)
- * @Service : Service Layer (���ο��� �ڹ� ������ ó����)
- * @Repository : Persistence Layer (DB�� ���ϰ� ���� �ܺ� I/O�۾��� ó����)
+ * 상기 어노테이션들 모두 Bean 객체 생성이라는 동일한 기능을 함
+ * 다만, 명시적으로 각각의 기능을 나타내 주기 위해 구분해서 사용함
+ * @Controller : Presentation Layer (웹 요청과 응답을 처리함)
+ * @Service : Service Layer (내부에서 자바 로직을 처리함)
+ * @Repository : Persistence Layer (DB나 파일과 같은 외부 I/O작업을 처리함)
  * */
 @Service
 public class UserServiceImpl implements UserService{
@@ -43,5 +43,6 @@ public class UserServiceImpl implements UserService{
 		 return userMapper.idCheck(userId);
 	 }
 }
+
 
 

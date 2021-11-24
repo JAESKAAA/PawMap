@@ -12,8 +12,9 @@ public class PawMapApplication {
 		SpringApplication.run(PawMapApplication.class, args);
 	}
 
-	//ÇØ´ç ¸Ş¼­µåÀÇ ¸®ÅÏµÇ´Â ¿ÀºêÁ§Æ®¸¦ IoC·Î µî·ÏÇØÁÜ
-	//¼øÈ¯ ÂüÁ¶ ¿À·ù¶§¹®¿¡ ÀÎÄÚ´õ¸¦ ¹ÛÀ¸·Î »°À½
+	//í•´ë‹¹ ë©”ì„œë“œì˜ ë¦¬í„´ë˜ëŠ” ì˜¤ë¸Œì íŠ¸ë¥¼ IoCë¡œ ë“±ë¡í•´ì¤Œ
+	//ìˆœí™˜ ì°¸ì¡° ì˜¤ë¥˜ë•Œë¬¸ì— ì¸ì½”ë”ë¥¼ ë°–ìœ¼ë¡œ ëºìŒ
+
 		@Bean
 		public BCryptPasswordEncoder encodePwd() {
 			return new BCryptPasswordEncoder();

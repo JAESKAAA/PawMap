@@ -1,12 +1,31 @@
 package com.pawmap.mapper;
 
-import org.apache.ibatis.annotations.Mapper;
+import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import com.pawmap.VO.BoardVO;
 import com.pawmap.VO.UserVO;
 
 
 @Mapper
 public interface BoardMapper {
 
-	void insertBoard(UserVO vo);
+
+	int insertTest(UserVO vo);
+
+	void insertFreeAndNanumBoard(BoardVO vo);
+
+	List<BoardVO> getFreeBoardList(Map<String,Object> map);
+
+	BoardVO getFreeBoard(@Param("boardSeq") int boardSeq);
+
+	void deleteFreeBoardBySeq(@Param("boardSeq") int boardSeq);
+
+	void updateFreeBoardForm(BoardVO vo);
+
+	int selectBoardCount(BoardVO vo);
 }
+
