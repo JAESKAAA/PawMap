@@ -34,7 +34,6 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test:5.5.3'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
-	//스프링 시큐리티 taglib 사용을 위한 의존성 추가
 	implementation 'org.springframework.security:spring-security-taglibs'
 
 }
