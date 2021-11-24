@@ -2,11 +2,15 @@ package com.pawmap.configuration.auth;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.pawmap.VO.UserVO;
+
+import lombok.Data;
 
 /*
  * 시큐리티가 "/login" 요청을 낚아채서 로그인을 진행시킴
@@ -19,13 +23,23 @@ import com.pawmap.VO.UserVO;
  * Security Session => Authentication => UserDetails 타입이어야함
  */
 
-
-public class PrincipalDetails implements UserDetails {
+@Data
+public class PrincipalDetails implements UserDetails, OAuth2User {
 
 	private UserVO user; //컴포지션
 	
+	//소셜로그인 정보를 담기위한 맵
+	private Map<String, Object> attributes;
+	
+	//일반로그인시 사용될 생성자
 	public PrincipalDetails(UserVO user) {
 		this.user = user;
+	}
+
+	//OAuth 로그인시 사용될 생성자
+	public PrincipalDetails(UserVO user, Map<String, Object> attributes) {
+		this.user = user;
+		this.attributes = attributes;
 	}
 	
 	
@@ -82,6 +96,19 @@ public class PrincipalDetails implements UserDetails {
 		//user.getLoginDate(); -> 현재 시간-로그인시간 => 1년 초과시 return false;
 		
 		return true;
+	}
+
+
+	@Override
+	public Map<String, Object> getAttributes() {
+		return attributes;
+	}
+
+
+	@Override
+	public String getName() {
+		System.out.println("principalDetails의 username=="+user.getUserName());
+		return null;
 	}
 
 	

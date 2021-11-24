@@ -27,4 +27,18 @@
   				#{role}
   		)
   	</insert>
+  
+  	<insert id="socialJoin">
+  		INSERT INTO user(user_id, user_password, user_name, user_email, provider, providerId, role) VALUES(
+  				#{userId},
+  				#{userPassword},
+  				#{userName},
+  				#{userEmail},
+  				#{provider},
+  				#{providerId},
+  				#{role}
+  		)
+  	</insert>
+  	
+  	
   </mapper>	
