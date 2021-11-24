@@ -4,11 +4,7 @@ import java.util.Map;
 
 public class FacebookUserInfo implements OAuth2UserInfo {
 
-<<<<<<< HEAD
 	private Map<String, Object> attributes; //getAttributes()ë¥¼ ë°›ìŒ
-=======
-	private Map<String, Object> attributes; //getAttributes()¸¦ ¹ŞÀ½
->>>>>>> refs/remotes/origin/develop
 	
 	public FacebookUserInfo(Map<String, Object> attributes) {
 		this.attributes = attributes;

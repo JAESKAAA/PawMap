@@ -22,7 +22,6 @@ import com.pawmap.service.UserService;
 @Service
 public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 
-<<<<<<< HEAD
 	//ìœ íš¨ì„± ê²€ì‚¬ë¥¼ ìœ„í•œ DI
 	@Autowired
 	private UserService userService;
@@ -98,83 +97,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 			userService.socialJoin(userEntity);
 		}else {
 			System.out.println("ì†Œì…œ ë¡œê·¸ì¸ì„ ì´ë¯¸ ì§„í–‰í•˜ì—¬, ìžë™ íšŒì›ê°€ìž…ì´ ë˜ì–´ ìžˆìŠµë‹ˆë‹¤.");
-=======
-	//À¯È¿¼º °Ë»ç¸¦ À§ÇÑ DI
-	@Autowired
-	private UserService userService;
-	
-	@Autowired
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
-	//±¸±Û·Î ºÎÅÍ ¹ÞÀº userRequest µ¥ÀÌÅÍ¿¡ ´ëÇÑ ÈÄÃ³¸®µÇ´Â ÇÔ¼ö
-	@Override
-	public OAuth2User loadUser(OAuth2UserRequest userRequest) throws OAuth2AuthenticationException {
-		//registrationId¸¦ ÅëÇØ ¾î¶² OAuth·Î ·Î±×ÀÎ Çß´ÂÁö È®ÀÎ °¡´ÉÇÔ.
-		System.out.println("getClientRegistration : " + userRequest.getClientRegistration()); 
-		System.out.println("getAccessToken : " + userRequest.getAccessToken().getTokenValue());
-		
-		OAuth2User oauth2User = super.loadUser(userRequest);
-		//±¸±Û ·Î±×ÀÎ¹öÆ° Å¬¸¯ -> ±¸±Û ·Î±×ÀÎÃ¢ -> ·Î±×ÀÎ ¿Ï·á -> code ¸®ÅÏ(OAuth-Client¶óÀÌºê·¯¸®) -> AccessToken¿äÃ» ÈÄ ÅäÅ« ¼ö·É. ¿©±â±îÁö°¡ userRequest Á¤º¸
-		//userRequestÁ¤º¸¸¦ ÅëÇØ -> loadUserÇÔ¼ö È£Ãâ -> ±¸±Û·ÎºÎÅÍ È¸¿ø ÇÁ·ÎÇÊÀ» ¹Þ¾ÆÁÜ
-		System.out.println("getAttributes : " + oauth2User.getAttributes());
 
-		String userName = "";
-		String providerId = "";
-		//¼Ò¼È ·Î±×ÀÎ Ä«Å×°í¸® °ËÁõ
-		OAuth2UserInfo oAuth2UserInfo = null;
-		if(userRequest.getClientRegistration().getRegistrationId().equals("google")) {
-			System.out.println("±¸±Û ·Î±×ÀÎ ¿äÃ»");
-			oAuth2UserInfo = new GoogleUserInfo(oauth2User.getAttributes());
-			userName = (String)oauth2User.getAttributes().get("name");
-			providerId = oAuth2UserInfo.getProviderId();
-		}else if(userRequest.getClientRegistration().getRegistrationId().equals("facebook")) {
-			System.out.println("ÆäÀÌ½ººÏ ·Î±×ÀÎ ¿äÃ»");
-			oAuth2UserInfo = new FacebookUserInfo(oauth2User.getAttributes());
-			userName = (String)oauth2User.getAttributes().get("name");
-			providerId = oAuth2UserInfo.getProviderId();
-		}else if(userRequest.getClientRegistration().getRegistrationId().equals("naver")) {
-				System.out.println("³×ÀÌ¹ö ·Î±×ÀÎ ¿äÃ»");
-				oAuth2UserInfo = new NaverUserInfo((Map)oauth2User.getAttributes().get("response"));
-				userName = oAuth2UserInfo.getName();
-				providerId = oAuth2UserInfo.getProviderId();
-		}else if(userRequest.getClientRegistration().getRegistrationId().equals("kakao")) {
-			System.out.println("Ä«Ä«¿À ·Î±×ÀÎ ¿äÃ»");
-			oAuth2UserInfo = new KakaoUserInfo(oauth2User.getAttributes());
-			providerId = oAuth2UserInfo.getProviderId();
-			userName = oAuth2UserInfo.getName();
-		
-		}else {
-			System.out.println("¿ì¸®´Â ±¸±Û°ú ÆäÀÌ½ººÏ°ú ³×ÀÌ¹ö¸¸ Áö¿øÇÕ´Ï´Ù !");
-		}
-		
-		String provider = oAuth2UserInfo.getProvider(); //google
-		String userId = provider +"_"+ providerId; //google_115880292448408069417
-		String password = bCryptPasswordEncoder.encode(oAuth2UserInfo.getName());
-		String email = oAuth2UserInfo.getEmail();
-		String role = "ROLE_USER";
-		
-		//À¯Àú°¡ °¡ÀÔµÇ¾îÀÖ´ÂÁö À¯È¿¼º °Ë»ç
-		UserVO userEntity = userService.findByUsername(userId);
-		
-		System.out.println("userName===============" + userName);
-		
-		if(userEntity == null) {
-			System.out.println("¼Ò¼È ·Î±×ÀÎÀÌ ÃÖÃÊÀÔ´Ï´Ù.");
-			userEntity = UserVO.builder()
-					.userId(userId)
-					.userPassword(password)
-					.userName(userName)
-					.userEmail(email)
-					.role(role)
-					.provider(provider)
-					.providerId(providerId)
-					.build();
-					
-			//¿©±â¼­ DB¿¡ ÀúÀåµÊ
-			userService.socialJoin(userEntity);
-		}else {
-			System.out.println("¼Ò¼È ·Î±×ÀÎÀ» ÀÌ¹Ì ÁøÇàÇÏ¿©, ÀÚµ¿ È¸¿ø°¡ÀÔÀÌ µÇ¾î ÀÖ½À´Ï´Ù.");
->>>>>>> refs/remotes/origin/develop
 		}
 			return new PrincipalDetails(userEntity, oauth2User.getAttributes());
 		}

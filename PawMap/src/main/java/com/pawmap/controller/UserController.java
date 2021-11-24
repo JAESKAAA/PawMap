@@ -27,7 +27,6 @@ public class UserController {
 	@GetMapping("/test/login")
 	public @ResponseBody String loginTest(
 			Authentication authentication,
-<<<<<<< HEAD
 			//@AuthenticationPrincipal : 어노테이션을 통해 세션정보에 접근가능
 			//PrincipalDetails는 UserDetails의 구현클래스이므로 해당 클래스로 쓸 수 있음
 			@AuthenticationPrincipal PrincipalDetails userDetails) { //DI(의존성 주입)
