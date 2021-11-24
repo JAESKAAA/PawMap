@@ -5,17 +5,16 @@ import org.springframework.stereotype.Service;
 
 import com.pawmap.VO.UserVO;
 import com.pawmap.mapper.UserMapper;
-import com.pawmap.service.BoardService;
 import com.pawmap.service.UserService;
 
 
 /*
  * @Controller, @Service, @Repository
- * »ó±â ¾î³ëÅ×ÀÌ¼Çµé ¸ğµÎ Bean °´Ã¼ »ı¼ºÀÌ¶ó´Â µ¿ÀÏÇÑ ±â´ÉÀ» ÇÔ
- * ´Ù¸¸, ¸í½ÃÀûÀ¸·Î °¢°¢ÀÇ ±â´ÉÀ» ³ªÅ¸³» ÁÖ±â À§ÇØ ±¸ºĞÇØ¼­ »ç¿ëÇÔ
- * @Controller : Presentation Layer (À¥ ¿äÃ»°ú ÀÀ´äÀ» Ã³¸®ÇÔ)
- * @Service : Service Layer (³»ºÎ¿¡¼­ ÀÚ¹Ù ·ÎÁ÷À» Ã³¸®ÇÔ)
- * @Repository : Persistence Layer (DB³ª ÆÄÀÏ°ú °°Àº ¿ÜºÎ I/OÀÛ¾÷À» Ã³¸®ÇÔ)
+ * ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¼Çµï¿½ ï¿½ï¿½ï¿½ Bean ï¿½ï¿½Ã¼ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+ * ï¿½Ù¸ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @Controller : Presentation Layer (ï¿½ï¿½ ï¿½ï¿½Ã»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½)
+ * @Service : Service Layer (ï¿½ï¿½ï¿½Î¿ï¿½ï¿½ï¿½ ï¿½Ú¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½)
+ * @Repository : Persistence Layer (DBï¿½ï¿½ ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Üºï¿½ I/Oï¿½Û¾ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½)
  * */
 @Service
 public class UserServiceImpl implements UserService{
@@ -36,5 +35,13 @@ public class UserServiceImpl implements UserService{
 	public void socialJoin(UserVO vo) {
 		userMapper.socialJoin(vo);
 	}
+	 
+	 // ì•„ì´ë”” ì¤‘ë³µì²´í¬
+	 @Override
+	 public int idCheck(String userId) throws Exception {
+		 
+		 return userMapper.idCheck(userId);
+	 }
 }
+
 

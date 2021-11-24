@@ -1,6 +1,6 @@
 
 /* 타이틀 박스 글자 */
-.all-title-box h2 {
+.pet-all-title-box h2 {
     font-size: 28px;
     font-weight: 700;
     color: #ffffff;
@@ -9,7 +9,7 @@
 }
 
 /* 마이페이지 배경 수정 */
-.all-title-box {
+.pet-all-title-box {
     background-color: #e1a963;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -24,41 +24,41 @@
 
 
 /* 마이페이지 카드 영역 */
-.account-box {
+.pet-account-box {
     text-align: center;
     background: rgba(225, 169, 99, 0.34);
     padding: 30px;
     border-radius: 40px;
 }
-.bottom-box {
+.pet-bottom-box {
     border-top: 1px solid #eee;
     margin-bottom: 30px;
     margin-top: 30px;
     padding-top: 15px;
 }
-.bottom-box .account-box {
+.pet-bottom-box .account-box {
     min-height: 205px;
 }
 
-.account-box {
+.pet-account-box {
     /* 마이페이지 카드 간격 */
     margin-top: 50px;
 }
 
 /* 마이페이지 카드 아이콘 크기 */
-.service-icon i {
+.pet-service-icon i {
     font-size: 45px;
 }
 
 /* 마이페이지 카드 명칭*/
-.service-desc h4 {
+.pet-service-desc h4 {
     font-size: 18px;
     font-weight: 700;
     color: #e9870f;
 }
 
 /* 마이페이지 카드 아이콘 호버 크기 및 색상 */
-.service-icon a {
+.pet-service-icon a {
     display: inline-block;
     font-size: 0px;
     cursor: pointer;
@@ -74,7 +74,7 @@
 }
 
   /* 마이페이지 카드 아이콘 호버 테두리 효과 */
-.service-icon a::after {
+.pet-service-icon a::after {
     pointer-events: none;
     position: absolute;
     width: 100%;
@@ -98,14 +98,14 @@
 }
 
 /* 마이페이지 카드 아이콘 호버 효과 */
-.service-icon a:hover::after {
+.pet-service-icon a:hover::after {
     -webkit-animation: sonarEffect 1.3s ease-out 75ms;
     -moz-animation: sonarEffect 1.3s ease-out 75ms;
     animation: sonarEffect 1.3s ease-out 75ms;
 }
 
 /* 마이페이지 카드 아이콘 호버 색상 */
-.service-icon a:hover {
+.pet-service-icon a:hover {
     background: rgb(235, 115, 17);
     -webkit-transform: scale(0.93);
     -moz-transform: scale(0.93);
@@ -119,6 +119,31 @@
     outline: 0;
 }
 
+/* 버튼 색상 */
+.my-btn-other {
+    font-weight: bold;
+    color: #e0726c;
+    font-size: 12px
+}
+
+.my-btn {
+    width: 96%;
+    background-color: #e7dfd6;
+    border-radius: 8px;
+    padding: 8px 17px;
+    font-size: 13px;
+    border: 1px solid #f5f0ef;
+    color: black
+}
+.my-btn {
+    background-color: #d38510;
+    border: 1px solid rgb(300, 200, 200)
+}
+.my-btn:hover{
+    cursor: pointer;
+    background-color: #5c3a08;
+    border: 1px solid #5c3a08;
+}
 
 
 
