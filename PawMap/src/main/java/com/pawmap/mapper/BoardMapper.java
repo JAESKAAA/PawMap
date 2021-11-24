@@ -7,13 +7,11 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.pawmap.VO.BoardVO;
-import com.pawmap.VO.Criteria;
 import com.pawmap.VO.UserVO;
 
 
 @Mapper
 public interface BoardMapper {
-
 
 	void insertFreeAndNanumBoard(BoardVO vo);
 

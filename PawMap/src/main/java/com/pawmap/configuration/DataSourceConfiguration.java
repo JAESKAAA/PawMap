@@ -15,17 +15,18 @@ import org.springframework.context.annotation.PropertySource;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-@Configuration 
-@PropertySource("classpath:/application.properties") 
+@Configuration //스프링 컨테이너에 해당 파일은 설정 파일임을 명시해줌
+@PropertySource("classpath:/application.properties") //설정정보의 경로를 지정해줌
 public class DataSourceConfiguration {
 
 	@Autowired
-
+	//스프링 컨터이너 의존성 주입
 	private ApplicationContext applicationContext;
 	
 	@Bean
 	@ConfigurationProperties(prefix="spring.datasource.hikari")
-
+	//application.properties에서 접두사가 "spring.datasource.hikari"로 되어있는 값을
+	//클래스로 가져와서 바인딩 시켜줌 (사용가능하게 해줌)
 	public HikariConfig hikariConfig() {
 		return new HikariConfig();
 	}

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html lang="en">
   <!-- Basic -->
@@ -18,22 +20,22 @@ pageEncoding="UTF-8"%>
     <meta name="author" content="" />
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
     <!-- Fontawesome CSS-->
     <link
       href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
       rel="stylesheet"
     />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
     <!-- Site CSS -->
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="../css/responsive.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/custom.css" />
-    <link rel="stylesheet" href="../css/custom-jaeseok.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+    <link rel="stylesheet" href="css/custom-jaeseok.css" />
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -124,16 +126,37 @@ pageEncoding="UTF-8"%>
               <li class="search" style="display: none">
                 <a href="#"><i class="fa fa-search"></i></a>
               </li>
+             <sec:authorize access="isAnonymous()">
               <li class="side-menu">
-                <a href="#">
+                <a href="/pawmap/loginForm">
                   <p>로그인</p>
                 </a>
               </li>
               <li class="side-menu">
-                <a href="#">
+                <a href="/pawmap/joinForm">
                   <p>회원가입</p>
                 </a>
               </li>
+			 </sec:authorize>
+			<sec:authorize access="isAuthenticated()">
+			 <li class="side-menu">
+                <a href="/pawmap/loginForm">
+                  <p>마이페이지</p>
+                </a>
+              </li>
+			 <li class="side-menu">
+                <a href="/pawmap/logout">
+                  <p>로그아웃</p>
+                </a>
+              </li>
+			</sec:authorize>
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<li class="side-menu">
+	                <a href="/pawmap/admin">
+	                  <p>관리자 페이지</p>
+	                </a>
+	              </li>
+			</sec:authorize>
             </ul>
           </div>
           <!-- End Atribute Navigation -->
@@ -962,27 +985,28 @@ pageEncoding="UTF-8"%>
     >
 
     <!-- ALL JS FILES -->
-    <script src="../js/jquery-3.2.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+<<<<<<< HEAD
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <!-- ALL PLUGINS -->
-    <script src="../js/jquery.superslides.min.js"></script>
-    <script src="../js/bootstrap-select.js"></script>
-    <script src="../js/inewsticker.js"></script>
-    <script src="../js/bootsnav.js."></script>
-    <script src="../js/images-loded.min.js"></script>
-    <script src="../js/isotope.min.js"></script>
-    <script src="../js/owl.carousel.min.js"></script>
-    <script src="../js/baguetteBox.min.js"></script>
-    <script src="../js/form-validator.min.js"></script>
-    <script src="../js/contact-form-script.js"></script>
-    <script src="../js/custom.js"></script>
+    <script src="js/jquery.superslides.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+    <script src="js/inewsticker.js"></script>
+    <script src="js/bootsnav.js."></script>
+    <script src="js/images-loded.min.js"></script>
+    <script src="js/isotope.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/baguetteBox.min.js"></script>
+    <script src="js/form-validator.min.js"></script>
+    <script src="js/contact-form-script.js"></script>
+    <script src="js/custom.js"></script>
     <!-- FontAwesome 용 JS 파일-->
     <script
       src="https://kit.fontawesome.com/f0999a1ca0.js"
       crossorigin="anonymous"
     ></script>
     <!-- 1:1 상담 관련 js 파일-->
-    <script src="../js/custom-jaeseok.js"></script>
+    <script src="js/custom-jaeseok.js"></script>
   </body>
 </html>

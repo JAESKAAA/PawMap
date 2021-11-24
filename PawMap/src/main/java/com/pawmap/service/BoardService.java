@@ -21,7 +21,6 @@ public interface BoardService {
 	void updateFreeBoardForm(BoardVO vo);
 
 	int selectBoardCount(BoardVO vo);
-
 	
 	
 }
