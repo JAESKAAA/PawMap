@@ -14,17 +14,17 @@ public class Test {
 	@Autowired
 	private BoardService boardService;
 	
-//	//È¸¿ø°¡ÀÔ(DB¿¬µ¿) Å×½ºÆ®¿ë
+//	//íšŒì›ê°€ì…(DBì—°ë™) í…ŒìŠ¤íŠ¸ìš©
 //	@PostMapping("/join")
 //	public String join(UserVO vo) {
-//		System.out.println("Test-> Join ¸Ş¼Òµå ½ÇÇà");
+//		System.out.println("Test-> Join ë©”ì†Œë“œ ì‹¤í–‰");
 //		vo.setType("N");
 //		boardService.insertTest(vo);
 //		
 //		return "index";
 //	}
 	
-	//index ÆäÀÌÁö Å×½ºÆ®¿ë
+	//index í˜ì´ì§€ í…ŒìŠ¤íŠ¸ìš©
 	@GetMapping("/welcome")
 	public String index() {
 		return "index2";

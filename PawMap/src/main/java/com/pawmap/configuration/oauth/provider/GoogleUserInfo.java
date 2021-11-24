@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class GoogleUserInfo implements OAuth2UserInfo {
 
-	private Map<String, Object> attributes; //getAttributes()¸¦ ¹ŞÀ½
+	private Map<String, Object> attributes; //getAttributes()ë¥¼ ë°›ìŒ
 	
 	public GoogleUserInfo(Map<String, Object> attributes) {
 		this.attributes = attributes;

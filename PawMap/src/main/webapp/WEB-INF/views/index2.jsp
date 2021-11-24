@@ -126,7 +126,7 @@ pageEncoding="UTF-8"%>
               <li class="search" style="display: none">
                 <a href="#"><i class="fa fa-search"></i></a>
               </li>
-              <sec:authorize access="isAnonymous()">
+             <sec:authorize access="isAnonymous()">
               <li class="side-menu">
                 <a href="/pawmap/loginForm">
                   <p>로그인</p>
@@ -138,7 +138,7 @@ pageEncoding="UTF-8"%>
                 </a>
               </li>
 			 </sec:authorize>
-			 <sec:authorize access="isAuthenticated()">
+			<sec:authorize access="isAuthenticated()">
 			 <li class="side-menu">
                 <a href="/pawmap/loginForm">
                   <p>마이페이지</p>
@@ -149,7 +149,14 @@ pageEncoding="UTF-8"%>
                   <p>로그아웃</p>
                 </a>
               </li>
-			 </sec:authorize>
+			</sec:authorize>
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<li class="side-menu">
+	                <a href="/pawmap/admin">
+	                  <p>관리자 페이지</p>
+	                </a>
+	              </li>
+			</sec:authorize>
             </ul>
           </div>
           <!-- End Atribute Navigation -->

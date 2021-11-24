@@ -10,11 +10,11 @@ import com.pawmap.service.BoardService;
 
 /*
  * @Controller, @Service, @Repository
- * »ó±â ¾î³ëÅ×ÀÌ¼Çµé ¸ğµÎ Bean °´Ã¼ »ı¼ºÀÌ¶ó´Â µ¿ÀÏÇÑ ±â´ÉÀ» ÇÔ
- * ´Ù¸¸, ¸í½ÃÀûÀ¸·Î °¢°¢ÀÇ ±â´ÉÀ» ³ªÅ¸³» ÁÖ±â À§ÇØ ±¸ºĞÇØ¼­ »ç¿ëÇÔ
- * @Controller : Presentation Layer (À¥ ¿äÃ»°ú ÀÀ´äÀ» Ã³¸®ÇÔ)
- * @Service : Service Layer (³»ºÎ¿¡¼­ ÀÚ¹Ù ·ÎÁ÷À» Ã³¸®ÇÔ)
- * @Repository : Persistence Layer (DB³ª ÆÄÀÏ°ú °°Àº ¿ÜºÎ I/OÀÛ¾÷À» Ã³¸®ÇÔ)
+ * ìƒê¸° ì–´ë…¸í…Œì´ì…˜ë“¤ ëª¨ë‘ Bean ê°ì²´ ìƒì„±ì´ë¼ëŠ” ë™ì¼í•œ ê¸°ëŠ¥ì„ í•¨
+ * ë‹¤ë§Œ, ëª…ì‹œì ìœ¼ë¡œ ê°ê°ì˜ ê¸°ëŠ¥ì„ ë‚˜íƒ€ë‚´ ì£¼ê¸° ìœ„í•´ êµ¬ë¶„í•´ì„œ ì‚¬ìš©í•¨
+ * @Controller : Presentation Layer (ì›¹ ìš”ì²­ê³¼ ì‘ë‹µì„ ì²˜ë¦¬í•¨)
+ * @Service : Service Layer (ë‚´ë¶€ì—ì„œ ìë°” ë¡œì§ì„ ì²˜ë¦¬í•¨)
+ * @Repository : Persistence Layer (DBë‚˜ íŒŒì¼ê³¼ ê°™ì€ ì™¸ë¶€ I/Oì‘ì—…ì„ ì²˜ë¦¬í•¨)
  * */
 @Service
 public class BoardServiceImpl implements BoardService {

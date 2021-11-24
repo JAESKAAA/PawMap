@@ -27,15 +27,15 @@ public class UserController {
 	@GetMapping("/test/login")
 	public @ResponseBody String loginTest(
 			Authentication authentication,
-			//@AuthenticationPrincipal : ¾î³ëÅ×ÀÌ¼ÇÀ» ÅëÇØ ¼¼¼ÇÁ¤º¸¿¡ Á¢±Ù°¡´É
-			//PrincipalDetails´Â UserDetailsÀÇ ±¸ÇöÅ¬·¡½ºÀÌ¹Ç·Î ÇØ´ç Å¬·¡½º·Î ¾µ ¼ö ÀÖÀ½
-			@AuthenticationPrincipal PrincipalDetails userDetails) { //DI(ÀÇÁ¸¼º ÁÖÀÔ)
+			//@AuthenticationPrincipal : ì–´ë…¸í…Œì´ì…˜ì„ í†µí•´ ì„¸ì…˜ì •ë³´ì— ì ‘ê·¼ê°€ëŠ¥
+			//PrincipalDetailsëŠ” UserDetailsì˜ êµ¬í˜„í´ë˜ìŠ¤ì´ë¯€ë¡œ í•´ë‹¹ í´ë˜ìŠ¤ë¡œ ì“¸ ìˆ˜ ìˆìŒ
+			@AuthenticationPrincipal PrincipalDetails userDetails) { //DI(ì˜ì¡´ì„± ì£¼ì…)
 		System.out.println("/test/login======================");
 		PrincipalDetails principalDetails = (PrincipalDetails)authentication.getPrincipal();
 		System.out.println("authentication : " + principalDetails.getUser());
 		
 		System.out.println("userDetails : "+userDetails.getUser());
-		return "¼¼¼Ç Á¤º¸ È®ÀÎÇÏ±â";
+		return "ì„¸ì…˜ ì •ë³´ í™•ì¸í•˜ê¸°";
 	}
 	
 	@GetMapping("/test/oauth/login")
@@ -48,7 +48,7 @@ public class UserController {
 		
 		System.out.println("oauth2User : " + oauth.getAttributes());
 		
-		return "OAuth ¼¼¼Ç Á¤º¸ È®ÀÎÇÏ±â";
+		return "OAuth ì„¸ì…˜ ì •ë³´ í™•ì¸í•˜ê¸°";
 	}
 	
 	
@@ -58,7 +58,7 @@ public class UserController {
 	}
 	
 	
-	//OAuth ·Î±×ÀÎÀ»ÇØµµ PrincipalDetails·Î ¹ŞÀ»¼ö ÀÖ°í, userDetails·Î ·Î±×ÀÎÇØµµ PrincipalDetails·Î ¹ŞÀ» ¼ö ÀÖÀ½
+	//OAuth ë¡œê·¸ì¸ì„í•´ë„ PrincipalDetailsë¡œ ë°›ì„ìˆ˜ ìˆê³ , userDetailsë¡œ ë¡œê·¸ì¸í•´ë„ PrincipalDetailsë¡œ ë°›ì„ ìˆ˜ ìˆìŒ
 	@GetMapping("/user")
 	public @ResponseBody String user(@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		System.out.println("principalDetails : "+principalDetails.getUser());
@@ -66,8 +66,8 @@ public class UserController {
 	}
 	
 	@GetMapping("/admin")
-	public @ResponseBody String admin() {
-		return "admin";
+	public  String admin() {
+		return "admin_index";
 	}
 	
 	@GetMapping("/manager")
@@ -75,8 +75,8 @@ public class UserController {
 		return "manager";
 	}
 	
-	//½ºÇÁ¸µ ½ÃÅ¥¸®Æ¼°¡ ÇØ´ç ÁÖ¼Ò¸¦ ³¬¾ÆÃ¤°¨ ÃßÈÄ ¼³Á¤ ÇÊ¿ä
-	//SecurityConfigÆÄÀÏ »ı¼º ÈÄ È°¼ºÈ­¾ÈµÊ (½ºÇÁ¸µ ÇÊÅÍ°¡ °¡·ÎÃ¤±â¶§¹®)
+	//ìŠ¤í”„ë§ ì‹œíë¦¬í‹°ê°€ í•´ë‹¹ ì£¼ì†Œë¥¼ ë‚šì•„ì±„ê° ì¶”í›„ ì„¤ì • í•„ìš”
+	//SecurityConfigíŒŒì¼ ìƒì„± í›„ í™œì„±í™”ì•ˆë¨ (ìŠ¤í”„ë§ í•„í„°ê°€ ê°€ë¡œì±„ê¸°ë•Œë¬¸)
 	@GetMapping("/loginForm")
 	public String loginForm() {
 		return "login-form";
@@ -103,10 +103,10 @@ public class UserController {
 		return "redirect:/loginForm";
 	}
 	
-	@PreAuthorize("hasRole('ROLE_ADMIN')") //ÇÏ±â ¸Ş¼­µå°¡ ½ÇÇàÇÏ±â Á÷Àü¿¡ ½ÇÇàµÊ
+	@PreAuthorize("hasRole('ROLE_ADMIN')") //í•˜ê¸° ë©”ì„œë“œê°€ ì‹¤í–‰í•˜ê¸° ì§ì „ì— ì‹¤í–‰ë¨
 	@GetMapping("/data")
 	public @ResponseBody String data() {
-		return "°³ÀÎÁ¤º¸";
+		return "ê°œì¸ì •ë³´";
 	}
 	
 

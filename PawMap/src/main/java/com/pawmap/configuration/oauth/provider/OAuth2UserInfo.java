@@ -1,6 +1,6 @@
 package com.pawmap.configuration.oauth.provider;
 
-//¿©·¯ ¼Ò¼È·Î±×ÀÎÀ» ´Ù·ç±â À§ÇÑ ÀÎÅÍÆäÀÌ½º
+//ì—¬ëŸ¬ ì†Œì…œë¡œê·¸ì¸ì„ ë‹¤ë£¨ê¸° ìœ„í•œ ì¸í„°í˜ì´ìŠ¤
 public interface OAuth2UserInfo {
 
 	String getProviderId();
