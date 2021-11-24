@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.pawmap.configuration.oauth.PrincipalOauth2UserService;
 
 /*
+<<<<<<< HEAD
  * 소셜 로그인 시 대략적인 프로세스
  * 1. 코드받기 (인증) 
  * 2. 엑세스 토큰 획득 (권한)
@@ -38,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {
 	
 		//.antMatchers("/css/**", "/js/**", "/images/**", "/webfonts/**").permitAll()
+		
 		http.csrf().disable();
 		http.authorizeRequests()
 								.antMatchers("/user/**").authenticated()

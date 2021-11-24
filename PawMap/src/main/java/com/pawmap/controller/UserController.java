@@ -27,6 +27,7 @@ public class UserController {
 	@GetMapping("/test/login")
 	public @ResponseBody String loginTest(
 			Authentication authentication,
+<<<<<<< HEAD
 			//@AuthenticationPrincipal : 어노테이션을 통해 세션정보에 접근가능
 			//PrincipalDetails는 UserDetails의 구현클래스이므로 해당 클래스로 쓸 수 있음
 			@AuthenticationPrincipal PrincipalDetails userDetails) { //DI(의존성 주입)
@@ -49,6 +50,7 @@ public class UserController {
 		System.out.println("oauth2User : " + oauth.getAttributes());
 		
 		return "OAuth 세션 정보 확인하기";
+
 	}
 	
 	
@@ -59,6 +61,7 @@ public class UserController {
 	
 	
 	//OAuth 로그인을해도 PrincipalDetails로 받을수 있고, userDetails로 로그인해도 PrincipalDetails로 받을 수 있음
+
 	@GetMapping("/user")
 	public @ResponseBody String user(@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		System.out.println("principalDetails : "+principalDetails.getUser());

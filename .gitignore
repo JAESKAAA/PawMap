@@ -1,3 +1,7 @@
 
 *.properties
+<<<<<<< HEAD
 .metadata
+=======
+.metadata
+>>>>>>> refs/remotes/origin/develop
