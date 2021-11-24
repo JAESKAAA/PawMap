@@ -187,6 +187,30 @@ pageEncoding="UTF-8"%>
                   >
                     로그인
                   </button>
+                  <a
+                    href="/pawmap/oauth2/authorization/google"
+                    class="login-btn text-white text-weight-bold"
+                  >
+                    <i class="fab fa-google"></i> 구글 로그인
+                  </a>
+                  <a
+                    href="/pawmap/oauth2/authorization/facebook"
+                    class="login-btn text-white text-weight-bold"
+                  >
+                    <i class="fab fa-facebook"></i> 페이스북 로그인</a
+                  >
+                  <a
+                    href="/pawmap/oauth2/authorization/naver"
+                    class="login-btn text-white text-weight-bold"
+                  >
+                    네이버 로그인
+                  </a>
+                  <a
+                    href="/pawmap/oauth2/authorization/kakao"
+                    class="login-btn text-white text-weight-bold"
+                  >
+                    카카오 로그인
+                  </a>
                   <div>
                     <a href="#" class="btn-other" id="forgot">
                       비밀번호를 잊어버렸습니까?</a
