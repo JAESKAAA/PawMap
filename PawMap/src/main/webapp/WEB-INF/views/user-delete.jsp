@@ -29,43 +29,54 @@
   <link rel="stylesheet" href="css/custom-실비아.css">
 </head>
 
-<body>	
-  <!-- Start 회원탈퇴 타이틀 영역 -->
-  <div class="pet-all-title-box">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <h2>회원탈퇴</h2>
+<% String id="" ; id=(String) session.getAttribute("id"); if (id==null || id.equals("")) {
+  response.sendRedirect("LoginForm.jsp"); } else { %>
+  <center>
+
+    <body onload="begin()">
+
+      <!-- Start 회원탈퇴 타이틀 영역 -->
+      <div class="pet-all-title-box">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <h2>회원탈퇴</h2>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <!-- End 회원탈퇴 타이틀 영역 -->
+      <!-- End 회원탈퇴 타이틀 영역 -->
 
-	<form action="/userdelete", method="post">
-		탈퇴를 원하시면 비밀번호를 입력해 주세요:
-    <input type="password" name="pw" /><br />
-    <button type="button" class="my-btn text-white text-weight-bold" id="btnUserdelete">탈퇴</button>
-    <a href="#" class="my-btn text-white text-weight-bold">취소</a>
-	</form>
-
-  <script>
-    $("#btnUserdelete").on("click", function() {
-      $.ajax({
-        async: true,
-        type: 'POST',
-        data: JSON.stringify(param),
-        url: "userdelete",
-        contentType: "application/json; carset=UTF=8",
-        success: function(data) {
-          alert("탈퇴가 처리되었습니다.");
-          location.href = "/index2";
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-          alert("ERROR:" + textStatus + ":" + errorThrown);
+      <hr>
+      <br>
+      <form name="deleteform" action="userdelete" method="post" onSubmit="return checkIt()">
+        <table border="3" bordercolor="skyblue">
+          <tr>
+            <td width="80" align="center">비밀번호</td>
+            <td>
+              <input type="password" name="passwd" style="text-align: right;">
+            </td>
+          </tr>
+        </table>
+        <br>
+        <input type="submit" value="회원탈퇴">
+        <input type="button" value="취소" onclick="javascript:window.location='UserVO'">
+      </form>
+    </body>
+  </center>
+  <% } %>
+    <script language="javascript">
+      function begin() {
+        document.deleteform.password.focus();
+      }
+      function checkIt() {
+        if (!document.deleteform.password.value) {
+          alert("비밀번호를 입력해주세요");
+          document.deleteform.password.focus();
+          return false;
         }
-      })
-    });
-  </script>
-</body>
+      }
+    </script>
+    </body>
 </html>
+
