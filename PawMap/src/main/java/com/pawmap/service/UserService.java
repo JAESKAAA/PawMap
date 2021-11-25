@@ -5,11 +5,12 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
+
 import com.pawmap.VO.UserVO;
 
 @Component
 public interface UserService {
-
+	
 	void insertUser(UserVO vo);
 	
 	UserVO findByUsername(String username);
