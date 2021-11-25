@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.pawmap.mapper.UserMapper">
+<!--   	<resultMap type="com.cos.blog.vo.BoardVO" id="boardResult">
+  		<id property="id" column="id"/>
+  		<result property="title" column="title"/>
+  		<result property="content" column="content"/>
+  		<result property="count" column="count"/>
+  		<result property="userId" column="userId"/>
+  	</resultMap> -->
+  	
+<!--   	<select id="selectTest" resultType="com.cos.blog.vo.BoardVO">
+  		SELECT * FROM BOARD WHERE id=#{id}
+  	</select> -->
+  	
+  	<select id="findByUsername" parameterType="String" resultType="com.pawmap.VO.UserVO">
+  		SELECT * FROM user WHERE user_id = #{username}
+  	</select>
+  	
+  	<insert id="insertUser">
+	INSERT INTO user(user_id, user_password, user_name, user_email, role) VALUES(
+  				#{userId},
+  				#{userPassword},
+  				#{userName},
+  				#{userEmail},
+  				#{role}
+  		)
+  	</insert>
+  
+  	<insert id="socialJoin">
+  		INSERT INTO user(user_id, user_password, user_name, user_email, provider, providerId, role) VALUES(
+  				#{userId},
+  				#{userPassword},
+  				#{userName},
+  				#{userEmail},
+  				#{provider},
+  				#{providerId},
+  				#{role}
+  		)
+  	</insert>
+  	
+  	 <!-- 쿼리통합,,추가  -->
+	<!-- 로그 -->
+	<select id="findByLoginId"
+		resultType="com.pawmap.VO.UserVO">
+		SELECT *
+		FROM USER
+		WHERE USER_ID = #{userId}
+	</select>
+	
+	<!-- findById 아이디 일치 조회  -->
+	<select id="checkDuplicateId"
+		resultType="com.pawmap.VO.UserVO">
+		SELECT COUNT(*)
+		FROM USER
+		WHERE USER_ID = #{userId}
+		<!-- where 컬럼명 = {파라미터이름} -->
+		
+	</select>
+	<!--findByLoginIdAndLoginPasswd: 일치하는 회원정보 조회 -->
+	<select id="checkIdPwd"
+		resultType="com.pawmap.VO.UserVO">
+		SELECT *
+		FROM USER
+		WHERE USER_ID = #{userId}
+		AND
+		USER_PASSWORD = #{userPassword}
+	</select>
+	
+	<!-- findByNameAndEmail 이름과 이메일로 조회 
+		아이디 찾기 -->
+	<select id="searchId"
+		resultType="com.pawmap.VO.UserVO">
+		SELECT *
+		FROM USER
+		WHERE USER_NAME = #{userName}
+		AND
+		USER_EMAIL = #{userEmail}
+	</select>
+	<!-- findByLoginIdAndNameAndEmail 아이디, 이름, 이메일로 조회 
+		비밀번호 찾기-->
+	<select id="searchPwd"
+		resultType="com.pawmap.VO.UserVO">
+		SELECT *
+		FROM USER
+		WHERE 
+		USER_ID = #{userId}
+		AND
+		USER_NAME = #{userName}
+		AND
+		USER_EMAIL = #{userEmail}
+	</select>
+
+	<!--로그인 비밀번호 변경  -->
+	<update id="changePwd">
+		UPDATE 'user'
+		SET USER_PASSWORD = #{userPassword}
+		WHERE USER_ID  = #{userId}
+	</update>
+	
+	<!--로그인 비밀번호 변경 - db 업데이트  -->
+	 <update id="update" parameterType="com.pawmap.VO.UserVO">
+		UPDATE USER
+		SET
+			USER_PASSWORD = #{userPassword}
+		WHERE USER_ID = #{userId}
+	</update> 
+	
+	
+<!-- 	<insert id="add" 
+		useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO `user`
+		SET regDate = #{regDate},
+		USER_ID = #{userId},
+		USER_PASSWORD  = #{userPassword},
+		`USER_NAME` = #{userName},
+		`USER_EMAIL` = #{userEmail},
+		outStatus = #{outStatus}
+	</insert> -->
+  	
+  </mapper>	
