@@ -36,12 +36,11 @@ public class UserServiceImpl implements UserService{
 		userMapper.socialJoin(vo);
 	}
 	 
-	 // 아이디 중복체크
-	 @Override
-	 public int idCheck(String userId) throws Exception {
-		 
-		 return userMapper.idCheck(userId);
-	 }
+	 // 아이디 중복 체크
+	@Override
+	public int idCheck(String userId) throws Exception {
+		return userMapper.idCheck(userId);
+	}
 }
 
 

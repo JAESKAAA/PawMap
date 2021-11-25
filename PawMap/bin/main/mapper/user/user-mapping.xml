@@ -29,10 +29,8 @@
   	</insert>
   
   	<!-- 아이디 중복검사 -->
-  	<select id="idCheck" resultType="int">
-  	
-  		select count(*) from book_member where memberId = #{memberId}
-  	
+  	<select id="idCheck" parameterType="String" resultType="com.pawmap.VO.UserVO">
+  		SELECT * FROM user WHERE user_id = #{userId}
   	</select>
   
   	<insert id="socialJoin">

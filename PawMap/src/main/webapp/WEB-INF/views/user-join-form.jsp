@@ -56,11 +56,14 @@ pageEncoding="UTF-8"%>
         border-radius: 100px;
         margin: auto;
       }
-      .user_id_re_1 {
+
+      /* 중복아이디가 존재 하지 않을 경우 */
+      .user_id_re_1 { 
         color: green;
         display: none;
       }
 
+      /* 중복아이디가 존재 하는 경우 */
       .user_id_re_2 {
         color: red;
         display: none;
@@ -190,7 +193,7 @@ pageEncoding="UTF-8"%>
                             placeholder="아이디"
                             required
                           />
-                          <span class="user_id_re_1">사용 가능한 아이디입니다.</span>
+                          <span class="user_id_re_1">사용 가능한 아이디입니다.</span> 
                           <span class="user_id_re_2">아이디가 이미 존재합니다.</span>
                         </div>
                       </div>
@@ -875,28 +878,31 @@ pageEncoding="UTF-8"%>
     <script src="js/form-validator.min.js"></script>
     <script src="js/contact-form-script.js"></script>
     <script src="js/custom.js"></script>
-    <script>
-      //아이디 중복검사
-      $('.user_id').on("propertychange change keyup paste input", function () {
 
-        var userId = $('.user_id').val();			// .user_id에 입력되는 값
-        var data = { userId: userId }				// '컨트롤에 넘길 데이터 이름' : '데이터(.user_id에 입력되는 값)'
+    
+    <script> 
+  //아이디 중복검사
+  $('.user_id').on("propertychange change keyup paste input", function () {
 
-        $.ajax({
-          type: "post",
-          url: "/member/memberIdChk",
-          data: data,
-          success: function (result) {
-            if (result != 'fail') {
-              $('.user_id_re_1').css("display", "inline-block");
-              $('.user_id_re_2').css("display", "none");
-            } else {
-              $('.user_id_re_1').css("display", "inline-block");
-              $('.user_id_re_2').css("display", "none");
-            }
-          }// success 종료
-        }); // ajax 종료
-      });// function 종료
+    var userId = $('.user_id').val();			// .user_id에 입력되는 값
+    var data = { userId: userId }				// '컨트롤에 넘길 데이터 이름' : '데이터(.user_id에 입력되는 값)'
+
+    $.ajax({
+      type: "post",
+      url: "/userIdChk",
+      data: data,
+      success : function(result) {
+        if(result != 'fail'){
+          $('.user_id_re_1').css("display","inline-block");
+          $('.user_id_re_2').css("display", "none");				
+        } else {
+          $('.user_id_re_2').css("display","inline-block");
+          $('.user_id_re_1').css("display", "none");				
+        }
+      }
+    }); // ajax 종료
+
+  });// function 종료
     </script>
   </body>
 </html>
