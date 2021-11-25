@@ -42,15 +42,6 @@ public class DataSourceConfiguration {
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 		sqlSessionFactoryBean.setDataSource(dataSource);
 		sqlSessionFactoryBean.setConfigLocation(applicationContext.getResource("classpath:mybatis-config.xml"));
-		//classpath란?
-		//Blog_Prac/src/main/java 또는 Blog_Prac/src/main/resources를 의미함
-		//java build path에서 확인 가능
-		// */ **/ 의 차이점
-		// * (한개) 일때는 첫번째 하위 디렉토리에 있는 것만 인식 가능함
-		//(ex. main/resources/config/mybatis-config.xml => 인식가능)
-		//(ex. main/resources/config/config1/mybatis-config.xml => 인식불가능)
-		//** (두개) 일때는, 모든 하위 디렉토리까지 스캔하여 전부 인식 가능함
-		// 상기 예시 두가지 경우 전부 인식 가능함
 		sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:/mapper/**/*-mapping.xml"));
 		return sqlSessionFactoryBean.getObject();
 	}

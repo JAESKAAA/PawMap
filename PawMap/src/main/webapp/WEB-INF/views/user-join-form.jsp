@@ -34,49 +34,38 @@ pageEncoding="UTF-8"%>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
-    <!-- 항목별 공백 확인 alert창 스크립트-->
-    <script>
-      function makeTestData() {
-        var form = document.joinForm;
-        form.userId.value = '1111';
-        form.userPassword.value = '1111';
-        form.userName.value = '홍반장';
-        form.userEmail.value = 'jangka512@gmail.com';
-        form.user_tel_num.value = '010-1234-5678';
-        form.user_nickname.value = '감자'
-      }
-      function submitJoinForm(form) {
-        form.userId.value = form.userId.value.trim();
-        if (form.userId.value.length == 0) {
-          alert('로그인 아이디를 입력해주세요.');
-          form.userId.focus();
-          return false;
-        }
-        form.userPassword.value = form.userPassword.value.trim();
-        if (form.userPassword.value.length == 0) {
-          alert('로그인 비밀번호를 입력해주세요.');
-          form.userPassword.focus();
-          return false;
-        }
-        
-        form.userName.value = form.userName.value.trim();
-        if (form.userName.value.length == 0) {
-          alert('이름을 입력해주세요.');
-          form.userName.focus();
-          return false;
-        }
-        form.userEmail.value = form.userEmail.value.trim();
-        if (form.userEmail.value.length == 0) {
-          alert('이메일을 입력해주세요.');
-          form.email.focus();
-          return false;
-        }
-        form.submit();
-      }
-    </script>
-    
-    
+        <!-- 항목별 공백 확인 alert창 스크립트-->
+        <script>
+
+          function submitJoinForm(form) {
+            form.userId.value = form.userId.value.trim();
+            if (form.userId.value.length == 0) {
+              alert('로그인 아이디를 입력해주세요.');
+              form.userId.focus();
+              return false;
+            }
+            form.userPassword.value = form.userPassword.value.trim();
+            if (form.userPassword.value.length == 0) {
+              alert('로그인 비밀번호를 입력해주세요.');
+              form.userPassword.focus();
+              return false;
+            }
+            
+            form.userName.value = form.userName.value.trim();
+            if (form.userName.value.length == 0) {
+              alert('이름을 입력해주세요.');
+              form.userName.focus();
+              return false;
+            }
+            form.userEmail.value = form.userEmail.value.trim();
+            if (form.userEmail.value.length == 0) {
+              alert('이메일을 입력해주세요.');
+              form.email.focus();
+              return false;
+            }
+            form.submit();
+          }
+        </script>
     <style>
       .form-label {
         color: #e1a963;
@@ -202,19 +191,12 @@ pageEncoding="UTF-8"%>
                       유저 회원가입
                     </p>
 
-                    <!-- (임시)테스트 데이터-->
-                    <div class="con">
-                      <button onclick="makeTestData();">테스트 데이터 채우기</button>
-                    </div>
-                  
-
                     <form
                       class="mx-1 mx-md-4"
                       action="/pawmap/join"
                       method="post"
                       name="joinForm"
-                      onsubmit="submitJoinForm(this); return false;"
-                    >
+                      onsubmit="submitJoinForm(this); return false;"                      >
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                           <div class="column-div">
@@ -225,13 +207,12 @@ pageEncoding="UTF-8"%>
                             </div>
                           </div>
                           <input
-                            autocomplete="off" type="text"
                             type="text"
                             name="userId"
-                            id="user_Id"
+                            id="user_id"
                             class="form-control"
                             placeholder="아이디"
-                            required="required" autofocus="autofocus" maxlength="30"
+                            required
                           />
                         </div>
                       </div>
@@ -246,13 +227,12 @@ pageEncoding="UTF-8"%>
                             </div>
                           </div>
                           <input
-                            autocomplete="off"
                             type="password"
                             name="userPassword"
                             id="userPassword"
                             class="form-control"
                             placeholder="비밀번호"
-                            required="required" maxlength="30"
+                            required
                           />
                         </div>
                       </div>
@@ -269,7 +249,7 @@ pageEncoding="UTF-8"%>
                           <input
                             type="text"
                             name="userName"
-                            id="user_Name"
+                            id="user_name"
                             class="form-control"
                             placeholder="이름"
                             required
@@ -289,7 +269,7 @@ pageEncoding="UTF-8"%>
                           <input
                             type="email"
                             name="userEmail"
-                            id="user_Email"
+                            id="user_email"
                             class="form-control"
                             placeholder="이메일"
                             required
@@ -308,7 +288,7 @@ pageEncoding="UTF-8"%>
                           </div>
                           <input
                             type="tel"
-                            name="user_tel_num"
+                            name="userTelNum"
                             id="user_tel_num"
                             class="form-control"
                             placeholder="'-' 를 빼고 입력해 주세요"
@@ -348,7 +328,7 @@ pageEncoding="UTF-8"%>
                           </div>
                           <input
                             type="tel"
-                            name="user_nickname"
+                            name="userNickname"
                             id="user_nickname"
                             class="form-control"
                             placeholder="닉네임"

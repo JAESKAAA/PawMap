@@ -97,6 +97,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 			userService.socialJoin(userEntity);
 		}else {
 			System.out.println("소셜 로그인을 이미 진행하여, 자동 회원가입이 되어 있습니다.");
+
 		}
 			return new PrincipalDetails(userEntity, oauth2User.getAttributes());
 		}

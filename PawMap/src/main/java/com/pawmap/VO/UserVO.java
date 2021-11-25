@@ -44,8 +44,6 @@ public class UserVO {
 		this.provider = provider;
 		this.providerId = providerId;
 	}
-
-
 	
 	
 	

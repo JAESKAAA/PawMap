@@ -205,7 +205,7 @@ pageEncoding="UTF-8"%>
                 <div>
                 <h1>비밀번호 찾기</h1>
                 <form name="forgotPw" 
-                    action="doForgotPw" method="POST" onsubmit="DoFindLoginPassword__submit(this); return false;">
+                    action="forgotPw" method="POST" onsubmit="DoFindLoginPassword__submit(this); return false;">
                     <input type="hidden" name="loginPwReal"/>
                     <hr />
                     <div>
@@ -237,7 +237,7 @@ pageEncoding="UTF-8"%>
                     <div>
                     
                         <div>
-                            <input  type="submit" value="비밀번호 찾기" />
+                            <input id="send-tempPwd-msg" type="submit" value="비밀번호 찾기" />
                             <button type="button" onclick="history.back();">뒤로가기</button>
                             </div>
                     </div>

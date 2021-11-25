@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.pawmap.configuration.oauth.PrincipalOauth2UserService;
 
 /*
+<<<<<<< HEAD
  * 소셜 로그인 시 대략적인 프로세스
  * 1. 코드받기 (인증) 
  * 2. 엑세스 토큰 획득 (권한)
@@ -32,14 +33,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private PrincipalOauth2UserService principalOauth2UserService;
 	
-//	@Override
-//	public void configure(WebSecurity web) throws Exception {
-//		web.ignoring().antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/img/**", "/icon/**");
-//	}
+
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 	
+		//.antMatchers("/css/**", "/js/**", "/images/**", "/webfonts/**").permitAll()
 		
 		http.csrf().disable();
 		http.authorizeRequests()
@@ -53,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 								.formLogin()
 								.loginPage("/loginForm")
 								.usernameParameter("userId")
-								.passwordParameter("userPassword") //테스트 해보기 !! 
+								.passwordParameter("userPassword") 
 								//"/login" 주소가 호출되면 시큐리티가 낚아채서 대신 로그인을 진행해줌
 								.loginProcessingUrl("/login")
 								.defaultSuccessUrl("/")
@@ -67,4 +66,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 								.userService(principalOauth2UserService);
 						
 	}
+//	
+//	@Override
+//	public void configure(WebSecurity web) throws Exception {
+//		web.ignoring().antMatchers("/css/**", "/js/**", "/images/**", "/webfonts/**");
+//	}
 }

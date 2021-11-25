@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class KakaoUserInfo implements OAuth2UserInfo {
 
-	private Map<String, Object> attributes; //getAttributes()¸¦ ¹ÞÀ½
+	private Map<String, Object> attributes; //getAttributes()를 받음
 	private Map<String, Object> properties;
 	
 	public KakaoUserInfo(Map<String, Object> attributes) {

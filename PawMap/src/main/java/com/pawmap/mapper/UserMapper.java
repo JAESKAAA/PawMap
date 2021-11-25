@@ -11,7 +11,7 @@ public interface UserMapper {
 
 	void insertUser(UserVO vo);
 	
-	UserVO findByUsername(String username);
+	 UserVO findByUsername(String username);
 	 
 	void socialJoin(UserVO vo);
 
@@ -21,7 +21,7 @@ public interface UserMapper {
 	
 	UserVO checkIdPwd(String userId, String userPasswd);
 
-	public UserVO searchPwd(@Param("userId")String userId, @Param("userName")String userName, @Param("userEmail")String userEmail);
+	public UserVO searchPwd(@Param("userId")String userId, @Param("userName")String userName);
 
 	public UserVO searchId(@Param("userName")String userName, @Param("userEmail")String userEmail);
 
@@ -29,6 +29,8 @@ public interface UserMapper {
 	
 	//public void update(UserVO user);
 	public void update(UserVO vo);
+
+//	UserVO searchEmail(String userId, String userName);
 
 
 }

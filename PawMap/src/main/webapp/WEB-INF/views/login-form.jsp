@@ -38,6 +38,7 @@ pageEncoding="UTF-8"%>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
     <!-- 아이디 비밀번호 공백확인 alert창 -->
     <script>
       function makeTestData() {
@@ -62,6 +63,7 @@ pageEncoding="UTF-8"%>
         form.submit();
       }
     </script>
+
     <style></style>
   </head>
 
@@ -178,15 +180,14 @@ pageEncoding="UTF-8"%>
                 </div>
               </div>
               <div class="col-md-7 col-sm-12 col-xs-12 c2 px-5 pt-5">
-               
-               
-               
-                <!-- submitLoginForm : 아이디 공백 확인을 위한 메소드   -->
+                
+                  <!-- submitLoginForm : 아이디 공백 확인을 위한 메소드   -->
                 <form
                   action="/pawmap/login"
                   method="post"
                   class="px-5 pb-5 login-form"
                   onsubmit="submitLoginForm(this);return false;"
+
                 >
                   <div class="d-flex">
                     <img
@@ -199,21 +200,16 @@ pageEncoding="UTF-8"%>
                     />
                     <h3 class="font-weight-bold">Log in</h3>
                   </div>
-
-                  <span>아이디</span>
                   <input
                     class="login-input"
                     type="text"
                     name="userId"
                     placeholder="User"
-                    required="required" autofocus="autofocus" maxlength="30"
                   />
-                  <span> 비밀번호 </span>
                   <input
                     class="login-input"
                     name="userPassword"
                     placeholder="Password"
-                    required="required" maxlength="30"
                   />
                   <button
                     type="submit"
@@ -227,6 +223,24 @@ pageEncoding="UTF-8"%>
                   >
                     <i class="fab fa-google"></i> 구글 로그인
                   </a>
+                  <a
+                    href="/pawmap/oauth2/authorization/facebook"
+                    class="login-btn text-white text-weight-bold"
+                  >
+                    <i class="fab fa-facebook"></i> 페이스북 로그인</a
+                  >
+                  <a
+                    href="/pawmap/oauth2/authorization/naver"
+                    class="login-btn text-white text-weight-bold"
+                  >
+                    네이버 로그인
+                  </a>
+                  <a
+                    href="/pawmap/oauth2/authorization/kakao"
+                    class="login-btn text-white text-weight-bold"
+                  >
+                    카카오 로그인
+                  </a>
                   <div>
                     <a href="/pawmap/forgotPw" class="btn-other" id="forgot">
                       비밀번호를 잊어버렸습니까?</a
@@ -234,7 +248,8 @@ pageEncoding="UTF-8"%>
                   </div>
                   <div>
                     <a href="/pawmap/joinForm" class="btn-other" id="register"
-                      >회원가입</a>
+                      >회원가입</a
+                    >
                   </div>
                 </form>
               </div>
