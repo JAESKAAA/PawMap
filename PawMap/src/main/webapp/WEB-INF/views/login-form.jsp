@@ -38,6 +38,32 @@ pageEncoding="UTF-8"%>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+
+    <!-- 아이디 비밀번호 공백확인 alert창 -->
+    <script>
+      function makeTestData() {
+        var form = document.loginForm;
+        form.userId.value = 'user1';
+        form.loginPasswd.value = 'user1';
+      }
+      function submitLoginForm(form) {
+        form.userId.value = form.userId.value.trim();
+        if (form.userId.value.length == 0) {
+          alert('로그인 아이디를 입력해주세요.');
+          form.userId.focus();
+          return false;
+        }
+        form.loginPasswd.value = form.loginPasswd.value.trim();
+        if (form.loginPasswd.value.length == 0) {
+          alert('로그인 비밀번호를 입력해주세요.');
+          form.loginPasswd.focus();
+          return false;
+        }
+    
+        form.submit();
+      }
+    </script>
+
     <style></style>
   </head>
 
@@ -154,10 +180,14 @@ pageEncoding="UTF-8"%>
                 </div>
               </div>
               <div class="col-md-7 col-sm-12 col-xs-12 c2 px-5 pt-5">
+                
+                  <!-- submitLoginForm : 아이디 공백 확인을 위한 메소드   -->
                 <form
                   action="/pawmap/login"
                   method="post"
                   class="px-5 pb-5 login-form"
+                  onsubmit="submitLoginForm(this);return false;"
+
                 >
                   <div class="d-flex">
                     <img
@@ -187,8 +217,32 @@ pageEncoding="UTF-8"%>
                   >
                     로그인
                   </button>
+                  <a
+                    href="/pawmap/oauth2/authorization/google"
+                    class="login-btn text-white text-weight-bold"
+                  >
+                    <i class="fab fa-google"></i> 구글 로그인
+                  </a>
+                  <a
+                    href="/pawmap/oauth2/authorization/facebook"
+                    class="login-btn text-white text-weight-bold"
+                  >
+                    <i class="fab fa-facebook"></i> 페이스북 로그인</a
+                  >
+                  <a
+                    href="/pawmap/oauth2/authorization/naver"
+                    class="login-btn text-white text-weight-bold"
+                  >
+                    네이버 로그인
+                  </a>
+                  <a
+                    href="/pawmap/oauth2/authorization/kakao"
+                    class="login-btn text-white text-weight-bold"
+                  >
+                    카카오 로그인
+                  </a>
                   <div>
-                    <a href="#" class="btn-other" id="forgot">
+                    <a href="/pawmap/forgotPw" class="btn-other" id="forgot">
                       비밀번호를 잊어버렸습니까?</a
                     >
                   </div>

@@ -15,18 +15,18 @@ import org.springframework.context.annotation.PropertySource;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-@Configuration //½ºÇÁ¸µ ÄÁÅ×ÀÌ³Ê¿¡ ÇØ´ç ÆÄÀÏÀº ¼³Á¤ ÆÄÀÏÀÓÀ» ¸í½ÃÇØÁÜ
-@PropertySource("classpath:/application.properties") //¼³Á¤Á¤º¸ÀÇ °æ·Î¸¦ ÁöÁ¤ÇØÁÜ
+@Configuration //ìŠ¤í”„ë§ ì»¨í…Œì´ë„ˆì— í•´ë‹¹ íŒŒì¼ì€ ì„¤ì • íŒŒì¼ì„ì„ ëª…ì‹œí•´ì¤Œ
+@PropertySource("classpath:/application.properties") //ì„¤ì •ì •ë³´ì˜ ê²½ë¡œë¥¼ ì§€ì •í•´ì¤Œ
 public class DataSourceConfiguration {
 
 	@Autowired
-	//½ºÇÁ¸µ ÄÁÅÍÀÌ³Ê ÀÇÁ¸¼º ÁÖÀÔ
+	//ìŠ¤í”„ë§ ì»¨í„°ì´ë„ˆ ì˜ì¡´ì„± ì£¼ì…
 	private ApplicationContext applicationContext;
 	
 	@Bean
 	@ConfigurationProperties(prefix="spring.datasource.hikari")
-	//application.properties¿¡¼­ Á¢µÎ»ç°¡ "spring.datasource.hikari"·Î µÇ¾îÀÖ´Â °ªÀ»
-	//Å¬·¡½º·Î °¡Á®¿Í¼­ ¹ÙÀÎµù ½ÃÄÑÁÜ (»ç¿ë°¡´ÉÇÏ°Ô ÇØÁÜ)
+	//application.propertiesì—ì„œ ì ‘ë‘ì‚¬ê°€ "spring.datasource.hikari"ë¡œ ë˜ì–´ìˆëŠ” ê°’ì„
+	//í´ë˜ìŠ¤ë¡œ ê°€ì ¸ì™€ì„œ ë°”ì¸ë”© ì‹œì¼œì¤Œ (ì‚¬ìš©ê°€ëŠ¥í•˜ê²Œ í•´ì¤Œ)
 	public HikariConfig hikariConfig() {
 		return new HikariConfig();
 	}
@@ -42,15 +42,6 @@ public class DataSourceConfiguration {
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 		sqlSessionFactoryBean.setDataSource(dataSource);
 		sqlSessionFactoryBean.setConfigLocation(applicationContext.getResource("classpath:mybatis-config.xml"));
-		//classpath¶õ?
-		//Blog_Prac/src/main/java ¶Ç´Â Blog_Prac/src/main/resources¸¦ ÀÇ¹ÌÇÔ
-		//java build path¿¡¼­ È®ÀÎ °¡´É
-		// */ **/ ÀÇ Â÷ÀÌÁ¡
-		// * (ÇÑ°³) ÀÏ¶§´Â Ã¹¹øÂ° ÇÏÀ§ µğ·ºÅä¸®¿¡ ÀÖ´Â °Í¸¸ ÀÎ½Ä °¡´ÉÇÔ
-		//(ex. main/resources/config/mybatis-config.xml => ÀÎ½Ä°¡´É)
-		//(ex. main/resources/config/config1/mybatis-config.xml => ÀÎ½ÄºÒ°¡´É)
-		//** (µÎ°³) ÀÏ¶§´Â, ¸ğµç ÇÏÀ§ µğ·ºÅä¸®±îÁö ½ºÄµÇÏ¿© ÀüºÎ ÀÎ½Ä °¡´ÉÇÔ
-		// »ó±â ¿¹½Ã µÎ°¡Áö °æ¿ì ÀüºÎ ÀÎ½Ä °¡´ÉÇÔ
 		sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath:/mapper/**/*-mapping.xml"));
 		return sqlSessionFactoryBean.getObject();
 	}
