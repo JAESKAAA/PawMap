@@ -61,4 +61,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 								.userService(principalOauth2UserService);
 						
 	}
+//	
+//	@Override
+//	public void configure(WebSecurity web) throws Exception {
+//		web.ignoring().antMatchers("/css/**", "/js/**", "/images/**", "/webfonts/**");
+//	}
 }

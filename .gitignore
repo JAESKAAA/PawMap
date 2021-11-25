@@ -1,4 +1,4 @@
-*.properties
+application.properties
 .metadata
 /.metadata/
 *.properties
