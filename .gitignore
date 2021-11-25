@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+*.properties
+=======
 application.properties
+>>>>>>> 70afd2053d5771710ea74add97dd191f8e793d5f
 .metadata
 /.metadata/
 *.properties

@@ -34,6 +34,7 @@ pageEncoding="UTF-8"%>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
         <!-- 항목별 공백 확인 alert창 스크립트-->
         <script>
 
@@ -66,6 +67,7 @@ pageEncoding="UTF-8"%>
             form.submit();
           }
         </script>
+
     <style>
       .form-label {
         color: #e1a963;
@@ -195,8 +197,10 @@ pageEncoding="UTF-8"%>
                       class="mx-1 mx-md-4"
                       action="/pawmap/join"
                       method="post"
+
                       name="joinForm"
                       onsubmit="submitJoinForm(this); return false;"                      >
+
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                           <div class="column-div">

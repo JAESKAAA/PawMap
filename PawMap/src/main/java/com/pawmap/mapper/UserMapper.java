@@ -1,7 +1,9 @@
 package com.pawmap.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
+
 import org.apache.ibatis.annotations.Param;
+
 
 import com.pawmap.VO.UserVO;
 
@@ -14,6 +16,7 @@ public interface UserMapper {
 	 UserVO findByUsername(String username);
 	 
 	void socialJoin(UserVO vo);
+
 
 	public UserVO findByLoginId(@Param("userId") String userId);
 
@@ -29,6 +32,7 @@ public interface UserMapper {
 	
 	//public void update(UserVO user);
 	public void update(UserVO vo);
+
 
 
 }

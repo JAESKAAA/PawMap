@@ -1,6 +1,7 @@
 package com.pawmap.service;
 
 
+
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Param;
@@ -15,6 +16,7 @@ public interface UserService {
 	UserVO findByUsername(String username);
 
 	void socialJoin(UserVO vo);
+
 
 	
 	public UserVO checkDuplicateId(@Param("userId") int userId);

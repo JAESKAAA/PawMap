@@ -39,6 +39,7 @@ pageEncoding="UTF-8"%>
     <![endif]-->
 
 
+
     <!-- 아이디 비밀번호 공백확인 alert창 -->
     <script>
       function makeTestData() {
@@ -63,6 +64,7 @@ pageEncoding="UTF-8"%>
         form.submit();
       }
     </script>
+
 
     <style></style>
   </head>
@@ -180,13 +182,17 @@ pageEncoding="UTF-8"%>
                 </div>
               </div>
               <div class="col-md-7 col-sm-12 col-xs-12 c2 px-5 pt-5">
+
                 
                   <!-- submitLoginForm : 아이디 공백 확인을 위한 메소드   -->
+
                 <form
                   action="/pawmap/login"
                   method="post"
                   class="px-5 pb-5 login-form"
+
                   onsubmit="submitLoginForm(this);return false;"
+
 
                 >
                   <div class="d-flex">
@@ -242,7 +248,9 @@ pageEncoding="UTF-8"%>
                     카카오 로그인
                   </a>
                   <div>
+
                     <a href="/pawmap/forgotPw" class="btn-other" id="forgot">
+
                       비밀번호를 잊어버렸습니까?</a
                     >
                   </div>

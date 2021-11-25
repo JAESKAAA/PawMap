@@ -20,6 +20,7 @@
   	</select>
   	
   	<insert id="insertUser">
+
   		INSERT INTO user(user_id, user_password, user_name, user_email, role) VALUES(
   				#{userId},
   				#{userPassword},

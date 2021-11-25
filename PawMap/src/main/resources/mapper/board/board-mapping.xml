@@ -11,6 +11,23 @@
   		<result property="userId" column="userId"/>
   	</resultMap> -->
   	
+
+  	<resultMap type="com.pawmap.VO.UserVO" id="userResult">
+  		<result property="userNickname" column="user_nickname"/>
+  	</resultMap>
+  	
+  	<resultMap type="com.pawmap.VO.BoardVO" id="boardResult">
+  		<result property="boardSeq" column="board_seq"/>
+  		<result property="boardType" column="board_type"/>
+  		<result property="userId" column="user_id"/>
+  		<result property="hospitalSeq" column="hospital_seq"/>
+  		<result property="title" column="title"/>
+  		<result property="content" column="content"/>
+  		<result property="regDate" column="regDate"/>
+  		<collection property="userVO" resultMap="userResult"/>
+  	</resultMap>
+  	
+
 <!--   	<select id="selectTest" resultType="com.cos.blog.vo.BoardVO">
   		SELECT * FROM BOARD WHERE id=#{id}
   	</select> -->
@@ -27,8 +44,30 @@
   		)
   	</insert>
   	
-  	<select id="getFreeBoardList" parameterType="HashMap" resultType="com.pawmap.VO.BoardVO">
+
+<!--   	 <select id="getFreeBoardList" parameterType="HashMap" resultType="com.pawmap.VO.BoardVO">
+
   		SELECT * FROM board
+  		WHERE board_type = 'f'
+  		<if test="board.keywordType == 'title'">
+			AND title LIKE CONCAT('%', #{board.keyword}, '%')
+		</if>
+		<if test="board.keywordType == 'content'">
+			AND `content` LIKE CONCAT('%', #{board.keyword}, '%')
+		</if>
+		<if test="board.keywordType == 'titleAndBody'">
+			AND (title LIKE CONCAT('%', #{board.keyword}, '%') OR `content` LIKE CONCAT('%', #{board.keyword}, '%'))
+		</if>
+  		ORDER BY board_seq DESC
+  		LIMIT #{criteria.amount} OFFSET #{criteria.startNum}
+
+  	</select> -->
+  	
+  	<select id="getFreeBoardList" parameterType="HashMap" resultMap="boardResult">
+  		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname
+  		FROM board AS b
+  		INNER JOIN user AS u
+  		ON b.user_id = u.user_id
   		WHERE board_type = 'f'
   		<if test="board.keywordType == 'title'">
 			AND title LIKE CONCAT('%', #{board.keyword}, '%')
@@ -43,11 +82,23 @@
   		LIMIT #{criteria.amount} OFFSET #{criteria.startNum}
   	</select>
   	
-  	<select id="getFreeBoard" resultType="com.pawmap.VO.BoardVO">
+<!--   	<select id="getFreeBoard" resultType="com.pawmap.VO.BoardVO" >
+
   		SELECT * FROM board
   		WHERE board_seq = #{boardSeq}
   		AND
   		board_type = 'f';
+  	</select> -->
+  	
+  	<select id="getFreeBoard" resultType="com.pawmap.VO.BoardVO" resultMap="boardResult">
+  		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname 
+  		FROM board AS b
+  		INNER JOIN user AS u
+  		ON b.user_id = u.user_id
+  		WHERE b.board_seq = #{boardSeq}
+  		AND
+  		b.board_type = 'f';
+
   	</select>
   	
   	<delete id="deleteFreeBoardBySeq">
@@ -80,5 +131,18 @@
 			AND (title LIKE CONCAT('%', #{keyword}, '%') OR `content` LIKE CONCAT('%', #{keyword}, '%'))
 		</if>
 	</select>
+	
+	<insert id="insertReplyForFreeBoard" >
+		INSERT INTO comment(comment_seq,board_type,board_seq, user_id, comment_content,hospital_seq, comment_regDate) VALUES(
+  				(SELECT IFNULL(MAX(comment_seq), 0) + 1 FROM comment A WHERE BOARD_TYPE = #{boardType}),
+  				#{boardType},
+  				#{boardSeq},
+  				#{userId},
+  				#{commentContent},
+  				#{hopitalSeq},
+  				NOW()
+  		)
+	</insert>
+
   	
   </mapper>	
