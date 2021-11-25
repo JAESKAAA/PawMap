@@ -3,7 +3,6 @@ pageEncoding="UTF-8"%>
 
 <%@ include file="layout/header.jsp" %>
 
-
     <div class="board-type mt-5">
       <c:if test="${getFreeBoard.boardType eq 'f'} ">
         <h1>자유게시판</h1>
@@ -22,7 +21,9 @@ pageEncoding="UTF-8"%>
                     <h2 class="noo-sh-title-top mb-5 board_title">제목 : ${getFreeBoard.title}</h2>
                 </div>
                 <div class="col-lg-6" style="overflow:hidden;">
-                    <h5 class="noo-sh-title-top mb-5 board_writer" id="freeBoardWriter" value="${getFreeBoard.userId}">작성자 : ${getFreeBoard.userId}</h5>
+
+                    <h5 class="noo-sh-title-top mb-5 board_writer" id="freeBoardWriter" value="${getFreeBoard.userVO.userNickname }">작성자 : ${getFreeBoard.userVO.userNickname }</h5>
+
                 </div>
                 <div class="col-lg-6">
                     <h5 class=" mb-5 board_regDate">작성일 : <fmt:formatDate value="${getFreeBoard.regDate }" pattern="yyyy-MM-dd"/></h5>
@@ -37,10 +38,15 @@ pageEncoding="UTF-8"%>
                   ${getFreeBoard.content}
                 </p>
               </div>
+              <h1>${getFreeBoard.userId}</h1>
+              <h1>${principal.user.userId}</h1>
               <div class="col-lg-6 mt-5">
                 <button onclick="location.href='/pawmap/board/getFreeBoardList'" type="button" class="btn btn-secondary">목록으로</button>
+              <c:if test="${getFreeBoard.userId == principal.user.userId}">
                 <button onclick="location.href='/pawmap/board/updateFreeAndNanumBoardForm?boardSeq=${getFreeBoard.boardSeq}'" type="button" class="btn btn-primary">수정</button>
                 <button id="delete-free-board" type="button" class="btn btn-secondary">삭제</button>
+              </c:if>  
+
               </div>
         </div>
     </div>
@@ -60,12 +66,22 @@ pageEncoding="UTF-8"%>
                 <div class="card-body" style="padding: 1px;">
                     <div class="d-flex flex-start">
                         <form action="" style="width: 750px;">
-                          <input type="hidden" id="userId" value="${getFreeBoard.userId}">
-                          <input type="hidden" id="freeBoardSeqHidden" value="${getFreeBoard.boardSeq}">
-                          <input type="hidden" id="boardType" value="${getFreeBoard.boardType}">
+                          <input type="hidden" name="userId" id="userId" value="${getFreeBoard.userId}">
+                          <input type="hidden" name="boardSeq" id="freeBoardSeqHidden" value="${getFreeBoard.boardSeq}">
+                          <input type="hidden" name="boardType" id="boardTypeForReply" value="${getFreeBoard.boardType}">
+                          <input type="hidden" name="hospitalSeq" id="hospitalSeqForReply" value="${getFreeBoard.hospitalSeq}">
                             <div class="card-body p-4">
                                 <div class="mb-2">
-                                    <h5 style="color:rgba(204, 156, 22, 0.8) ;">닉네임 : ${getFreeBoard.userId}</h5>
+                                    <h5>닉네임</h5>
+                                    <c:choose>
+                                        <c:when test="${empty principal}">
+                                          <input style="color:rgba(204, 156, 22, 0.8) ;"   placeholder="로그인이 필요합니다."  readonly>
+                                        </c:when>
+                                        <c:otherwise>
+                                          <input style="color:rgba(204, 156, 22, 0.8) ;"  value="${principal.user.userNickname}" placeholder="${principal.user.userNickname}"  readonly> 
+                                        </c:otherwise>
+                                    </c:choose>
+
                                 </div>
                                 <div class="d-flex flex-start w-100">
                                     <img
@@ -77,7 +93,9 @@ pageEncoding="UTF-8"%>
                                     />
                                     <div class="w-100">
                                         <div class="form-outline">
-                                            <textarea class="form-control" id="reply-content" rows="4" cols="10"></textarea>
+
+                                            <textarea name="commentContent" class="form-control" id="reply-content" rows="4" cols="10"></textarea>
+
                                         </div>
                                         <div class="d-flex justify-content-between mt-3">
                                             <button id="btn-reply-save" type="button" class="btn btn-success">등록하기</button>
@@ -185,33 +203,8 @@ pageEncoding="UTF-8"%>
           </div>
         </div>
     </section> 
-
-<!-- 게시판 상세 폼 시작 종료 -->
-
-
-  
-  
-
-<!-- 페이지 네이션 시작 -->
-
-<!-- <div class="page-div">
-    <ul class="pagination justify-content-center">
-        <li class="page-item">
-            <a class="page-link" href="#" >Prev</a>
-        </li>
-        <li class="page-item"> 
-            <a class="page-link" href="#">1</a>
-        </li>
-        <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-        </li>
-    </ul>
-</div> -->
-
-<!-- 페이지 네이션 종료 -->
-
-<!-- board list form 종료 -->
       
 
    <%@ include file="layout/footer.jsp" %>
    
+

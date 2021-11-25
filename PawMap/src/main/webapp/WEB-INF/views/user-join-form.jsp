@@ -51,6 +51,40 @@ pageEncoding="UTF-8"%>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+        <!-- 항목별 공백 확인 alert창 스크립트-->
+        <script>
+
+          function submitJoinForm(form) {
+            form.userId.value = form.userId.value.trim();
+            if (form.userId.value.length == 0) {
+              alert('로그인 아이디를 입력해주세요.');
+              form.userId.focus();
+              return false;
+            }
+            form.userPassword.value = form.userPassword.value.trim();
+            if (form.userPassword.value.length == 0) {
+              alert('로그인 비밀번호를 입력해주세요.');
+              form.userPassword.focus();
+              return false;
+            }
+            
+            form.userName.value = form.userName.value.trim();
+            if (form.userName.value.length == 0) {
+              alert('이름을 입력해주세요.');
+              form.userName.focus();
+              return false;
+            }
+            form.userEmail.value = form.userEmail.value.trim();
+            if (form.userEmail.value.length == 0) {
+              alert('이메일을 입력해주세요.');
+              form.email.focus();
+              return false;
+            }
+            form.submit();
+          }
+        </script>
+
     <style>
       .form-label {
         color: #e1a963;
@@ -252,7 +286,10 @@ pageEncoding="UTF-8"%>
                       class="mx-1 mx-md-4"
                       action="/pawmap/join"
                       method="post"
-                    >
+
+                      name="joinForm"
+                      onsubmit="submitJoinForm(this); return false;"                      >
+
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                           <div class="column-div">

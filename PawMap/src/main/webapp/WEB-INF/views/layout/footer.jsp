@@ -156,5 +156,29 @@
     ></script>
     <!-- 1:1 상담 관련 js 파일-->
     <script src="${pageContext.request.contextPath}/js/custom-jaeseok.js"></script>
+      <!-- 아이디 비밀번호 공백확인 alert창 -->
+    <script>
+      function makeTestData() {
+        var form = document.loginForm;
+        form.userId.value = 'user1';
+        form.loginPasswd.value = 'user1';
+      }
+      function submitLoginForm(form) {
+        form.userId.value = form.userId.value.trim();
+        if (form.userId.value.length == 0) {
+          alert('로그인 아이디를 입력해주세요.');
+          form.userId.focus();
+          return false;
+        }
+        form.loginPasswd.value = form.loginPasswd.value.trim();
+        if (form.loginPasswd.value.length == 0) {
+          alert('로그인 비밀번호를 입력해주세요.');
+          form.loginPasswd.focus();
+          return false;
+        }
+    
+        form.submit();
+      }
+    </script>
   </body>
 </html>
