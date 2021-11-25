@@ -135,9 +135,7 @@ public class UserServiceImpl implements UserService{
 		String userName = (String) param.get("userName");
 		String userEmail = (String) param.get("userEmail");
 
-
 		UserVO user  = userMapper.searchPwd(userId, userName);
-
 
 		if (user == null) {
 			return Maps.of("resultCode", "F-1", "msg", "일치하는 회원이 없습니다.");
@@ -164,6 +162,7 @@ public class UserServiceImpl implements UserService{
 		String tempLoginPasswd = sb.toString();
 				
 		user.setUserPassword(tempLoginPasswd);
+
 		
 		String mailTitle = userName + "님, 당신의 계정(" + userId + ")의 임시 패스워드 입니다.";
 		String mailBody = "임시 패스워드 : " + tempLoginPasswd;
@@ -190,6 +189,7 @@ public class UserServiceImpl implements UserService{
 		return userMapper.checkDuplicateId(userId);
 	}
 }
+
 
 
 
