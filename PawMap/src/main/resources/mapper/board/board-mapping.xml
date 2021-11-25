@@ -45,7 +45,9 @@
   	</insert>
   	
 
+
 <!--   	 <select id="getFreeBoardList" parameterType="HashMap" resultType="com.pawmap.VO.BoardVO">
+
 
   		SELECT * FROM board
   		WHERE board_type = 'f'
@@ -60,6 +62,7 @@
 		</if>
   		ORDER BY board_seq DESC
   		LIMIT #{criteria.amount} OFFSET #{criteria.startNum}
+
 
   	</select> -->
   	
@@ -84,10 +87,12 @@
   	
 <!--   	<select id="getFreeBoard" resultType="com.pawmap.VO.BoardVO" >
 
+
   		SELECT * FROM board
   		WHERE board_seq = #{boardSeq}
   		AND
   		board_type = 'f';
+
   	</select> -->
   	
   	<select id="getFreeBoard" resultType="com.pawmap.VO.BoardVO" resultMap="boardResult">
@@ -98,6 +103,7 @@
   		WHERE b.board_seq = #{boardSeq}
   		AND
   		b.board_type = 'f';
+
 
   	</select>
   	
@@ -131,6 +137,7 @@
 			AND (title LIKE CONCAT('%', #{keyword}, '%') OR `content` LIKE CONCAT('%', #{keyword}, '%'))
 		</if>
 	</select>
+
 	
 	<insert id="insertReplyForFreeBoard" >
 		INSERT INTO comment(comment_seq,board_type,board_seq, user_id, comment_content,hospital_seq, comment_regDate) VALUES(

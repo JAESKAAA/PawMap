@@ -86,6 +86,7 @@ let index = {
 	},
 	
 	replySaveFreeBoard:function(){
+
 		
 		let seq = $("#freeBoardSeqHidden").val();
 		
@@ -118,6 +119,7 @@ let index = {
 				}
 			});
 		}
+
 	},
 	
 	

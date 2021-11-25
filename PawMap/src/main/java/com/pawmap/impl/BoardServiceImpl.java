@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.pawmap.VO.BoardVO;
 
+
 import com.pawmap.VO.CommentVO;
+
 
 import com.pawmap.VO.Criteria;
 import com.pawmap.VO.UserVO;
@@ -23,6 +25,7 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	BoardMapper boardMapper;
 	
+
 
 
 
@@ -76,6 +79,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 
+
 	@Override
 	public void insertReplyForFreeBoard(CommentVO commentVO) {
 		boardMapper.insertReplyForFreeBoard(commentVO);
@@ -83,6 +87,6 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 
-	
+
 }
 

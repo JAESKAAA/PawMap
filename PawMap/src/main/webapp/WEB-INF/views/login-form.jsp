@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 
+
 <%@ include file="layout/header.jsp" %>
 
  
+
     <!---------------------------------- 로그인 폼 시작 -------------------------->
 
     <div class="container-fluid">
@@ -38,6 +40,7 @@ pageEncoding="UTF-8"%>
               </div>
               <div class="col-md-7 col-sm-12 col-xs-12 c2 px-5 pt-5">
 
+
                 
                   <!-- submitLoginForm : 아이디 공백 확인을 위한 메소드   -->
 
@@ -45,6 +48,7 @@ pageEncoding="UTF-8"%>
                   action="/pawmap/login"
                   method="post"
                   class="px-5 pb-5 login-form"
+
 
                   onsubmit="submitLoginForm(this);return false;"
 
@@ -104,6 +108,7 @@ pageEncoding="UTF-8"%>
                   </a>
                   <div>
 
+
                     <a href="/pawmap/forgotPw" class="btn-other" id="forgot">
 
                       비밀번호를 잊어버렸습니까?</a
@@ -123,6 +128,7 @@ pageEncoding="UTF-8"%>
     </div>
 
     <!---------------------------------- 로그인 폼 종료 -------------------------->
+
 
    <%@ include file="layout/footer.jsp" %>
    

@@ -2,10 +2,12 @@
 pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal"/>
 </sec:authorize>
+
 
 
 <!DOCTYPE html>
@@ -66,7 +68,6 @@ pageEncoding="UTF-8"%>
 
     <!-- Start Main Top -->
 
-  
 <div class="board-type mt-5">
     <h1>자유게시판</h1>
 </div>
@@ -168,7 +169,9 @@ pageEncoding="UTF-8"%>
 				        	<td class="title"><a href="getFreeBoard?boardSeq=${freeBoard.boardSeq}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}">${freeBoard.title }</a></td>
                             <!-- <td class="title"><a href="getFreeBoard?boardSeq=${freeBoard.boardSeq}">${freeBoard.title }</a></td> -->
 
+
                             <td>${freeBoard.userVO.userNickname }</td>
+
 
 					        <td><fmt:formatDate value="${freeBoard.regDate }" pattern="yyyy-MM-dd"/></td>
 			          	</tr>
@@ -176,6 +179,7 @@ pageEncoding="UTF-8"%>
                 </tbody>
               </table>
             </div>
+
 
             <!-- <h1>${principal.user.userId}</h1> -->
             <c:choose>
@@ -190,6 +194,7 @@ pageEncoding="UTF-8"%>
                     </div>
                 </c:otherwise>
             </c:choose>
+
 
         </section>
     </div>
@@ -249,12 +254,14 @@ pageEncoding="UTF-8"%>
 
     <script>
 
+
         function noLoginUserCantWrite(){
             alert("로그인이 필요합니다.");
             
         }
 
         $(document).ready(function() {
+
 
 
             //console.log($("#hKeywordType").val());

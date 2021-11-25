@@ -2,6 +2,7 @@ package com.pawmap.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
+
 import org.apache.ibatis.annotations.Param;
 
 
@@ -24,7 +25,9 @@ public interface UserMapper {
 	
 	UserVO checkIdPwd(String userId, String userPasswd);
 
-	public UserVO searchPwd(@Param("userId")String userId, @Param("userName")String userName, @Param("userEmail")String userEmail);
+
+	public UserVO searchPwd(@Param("userId")String userId, @Param("userName")String userName);
+
 
 	public UserVO searchId(@Param("userName")String userName, @Param("userEmail")String userEmail);
 
