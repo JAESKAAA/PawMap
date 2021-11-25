@@ -1,0 +1,230 @@
+.search {
+  margin-bottom: auto;
+  margin-top: auto;
+  height: 70px;
+  background-color: #fff;
+  border-radius: 40px;
+  padding: 10px;
+}
+
+.search_input {
+  color: black;
+  border: 0;
+  outline: 0;
+  background: none;
+  width: 0;
+  margin-top: 5px;
+  caret-color: transparent;
+  line-height: 40px;
+  transition: width 0.4s linear;
+}
+
+.search .search_input {
+  padding: 0 10px;
+  width: 550px;
+  caret-color: red;
+  transition: width 0.4s linear;
+  border-bottom: 1px solid black;
+}
+
+.search:hover > .search_icon {
+  background: red;
+  color: #fff;
+}
+
+.search_icon {
+  height: 50px;
+  width: 50px;
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: white;
+  background-color: black;
+}
+
+a:link {
+  text-decoration: none;
+}
+.custom_margin {
+  margin-top: 7rem;
+  margin-bottom: 7rem;
+}
+.custom_aboutUsBox {
+  width: 70vw;
+  height: 80vh;
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 15rem;
+}
+
+.custom_aboutUs_textBox {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.aboutUs_title {
+  font-size: 4rem;
+}
+.index_video {
+  width: 38%;
+  height: 90vh;
+}
+.custom_aboutUs_img {
+  width: 50%;
+  height: 90vh;
+  background: url(../images/yellowdog.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.custom_btn {
+  width: 7rem;
+}
+.custom_aboutUs_innerTextBox {
+  width: 80%;
+}
+.custom_hr {
+  width: 20%;
+}
+.charity_box {
+  display: flex;
+  width: 100%;
+  border: 1px solid black;
+  box-sizing: border-box;
+  justify-content: space-evenly;
+}
+.charity_box_inner {
+  margin-right: 10px;
+}
+.text_custom {
+  font-size: 50px;
+}
+.inner-box {
+  position: relative;
+}
+.inner-box-icon {
+  position: absolute;
+  right: -7px;
+}
+
+.chat_container {
+  position: relative;
+  z-index: 9999;
+  position: fixed;
+  background-color: white;
+  width: 400px;
+  right: 92px;
+  height: 500px;
+  bottom: 170px;
+  max-width: 100%;
+  max-height: 80%;
+  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.16) !important;
+  overflow: hidden;
+  border-radius: 12px;
+  opacity: 1;
+}
+.chat_close {
+  position: absolute;
+  right: 1px;
+  z-index: 99999;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.main_logo_box {
+  width: 120px;
+  height: 120px;
+  background-image: url(../images/로고최종_수정.png);
+  background-size: cover;
+  background-position: center;
+}
+.main_logo_img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+#chat_icon {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  position: fixed;
+  bottom: 150px;
+  right: 31px;
+  z-index: 9999;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 5px;
+  background: #3851bc;
+  color: #ffffff;
+  cursor: pointer;
+  border: 0;
+  border-radius: 0px;
+  text-decoration: none;
+  transition: opacity 0.2s ease-out;
+  font-size: 28px;
+  border-radius: 50%;
+}
+
+.custom_d_flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.contact-info-left {
+  background: none;
+}
+#abandon_detail_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 15rem;
+}
+.abandon_detail_box_inner_img {
+  width: 60%;
+  margin-right: 8rem;
+}
+.abandon_detail_box_inner {
+  width: 100%;
+}
+.contact_font {
+  font-weight: 900;
+}
+.instagram-box {
+  background: none;
+}
+/* (전역 페이지에 들어가야함) 올라가는 아이콘 */
+#back-to-top {
+  position: fixed;
+  padding-top: 12px;
+  bottom: 150px;
+  right: 36px;
+  z-index: 9999;
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  line-height: 5px;
+  background: #e1a963;
+  color: #ffffff;
+  cursor: pointer;
+  border: 0;
+  border-radius: 0px;
+  text-decoration: none;
+  transition: opacity 0.2s ease-out;
+  font-size: 28px;
+}
+
+/* 슬라이드 네비게이션에 배경색 없도록 */
+.slides-navigation a {
+  background: none;
+}
+
+.slides-navigation a:hover {
+  background: none;
+  color: #e1a963;
+}
