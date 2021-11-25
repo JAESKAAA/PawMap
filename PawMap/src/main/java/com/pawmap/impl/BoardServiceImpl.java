@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pawmap.VO.BoardVO;
+import com.pawmap.VO.CommentVO;
 import com.pawmap.VO.Criteria;
 import com.pawmap.VO.UserVO;
 import com.pawmap.mapper.BoardMapper;
@@ -70,6 +71,12 @@ public class BoardServiceImpl implements BoardService {
 	public int selectBoardCount(BoardVO vo) {
 		
 		return boardMapper.selectBoardCount(vo);
+	}
+
+
+	@Override
+	public void insertReplyForFreeBoard(CommentVO commentVO) {
+		boardMapper.insertReplyForFreeBoard(commentVO);
 	}
 }
 
