@@ -56,6 +56,7 @@ public class UserController {
 	public String index() {
 		return "index2";
 	}
+
 	
 	
 	//OAuth 로그인을해도 PrincipalDetails로 받을수 있고, userDetails로 로그인해도 PrincipalDetails로 받을 수 있음
