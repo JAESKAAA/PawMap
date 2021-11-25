@@ -86,14 +86,40 @@ let index = {
 	},
 	
 	replySaveFreeBoard:function(){
+
+		
+		let seq = $("#freeBoardSeqHidden").val();
+		
 		let data={
-			freeBoardSeq: $("#freeBoardSeqHidden").val(),	
-			boardType: $("#boardType").val(),
+			boardSeq: $("#freeBoardSeqHidden").val(),	
+			boardType: $("#boardTypeForReply").val(),
 			userId: $("#userId").val(),
-			
+			commentContent: $("#reply-content").val(),
+			hospitalSeq : $("#hospitalSeqForReply").val()
 		};
 		
 		console.log(data);
+		
+		if(data.replyContent == ""){
+			alert("내용을 입력해주세요");
+			
+		}else{
+			$.ajax({
+				type : "POST",
+				url: `insertReplyFreeBoard/api/${data.boardSeq}`,
+				data: JSON.stringify(data),
+				contentType : 'application/json; charset=utf-8',
+				dataType : "json",
+				success : function(){
+					alert("댓글댓글 성공");
+					location.href ="getFreeBoard?boardSeq="+seq
+				},
+				error : function(e){
+					console.log(e);
+				}
+			});
+		}
+
 	},
 	
 	

@@ -1,11 +1,13 @@
 package com.pawmap.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.groovy.util.Maps;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -15,15 +17,21 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pawmap.VO.UserVO;
 import com.pawmap.configuration.auth.PrincipalDetails;
+
 import com.pawmap.mapper.UserMapper;
 import com.pawmap.service.UserService;
 import com.pawmap.util.CookieUtil;
+
+
+
 
 
 @Controller
@@ -35,9 +43,10 @@ public class UserController {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
+
 	 @Autowired 
 	 private UserMapper userMapper;
-	
+
 	@GetMapping("/test/login")
 	public @ResponseBody String loginTest(
 			Authentication authentication,
@@ -70,6 +79,7 @@ public class UserController {
 	public String index() {
 		return "index2";
 	}
+
 	
 	
 	//OAuth 로그인을해도 PrincipalDetails로 받을수 있고, userDetails로 로그인해도 PrincipalDetails로 받을 수 있음
@@ -95,6 +105,7 @@ public class UserController {
 	public String loginForm() {
 		return "login-form";
 	}
+
 		
 	//로그인 시 아이디 비밀번호 확인 메소드 
 	 //cookieUtil에 setAttribute
@@ -113,6 +124,7 @@ public class UserController {
 		 return (String) rs.get("msg");
 		 
 	 }
+
 	@GetMapping("/joinForm")
 	public String joinForm() {
 		return "join-form";
@@ -137,6 +149,7 @@ public class UserController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')") //하기 메서드가 실행하기 직전에 실행됨
 	@GetMapping("/data")
 	public @ResponseBody String data() {
+
 		return "login";
 	}
 	
@@ -161,6 +174,7 @@ public class UserController {
 		return "forgotPw";
 	}
 	// 비밀번호 찾기 화면에서 데이터 받기 
+
 	@RequestMapping("/forgotPw")
 	@ResponseBody
 	public String doFindLoginPasswd(@RequestParam Map<String, Object> param , HttpServletResponse response) throws IOException {
@@ -208,6 +222,7 @@ public class UserController {
 		 
 		return "loginForm";
 		
+
 	}
 	
 

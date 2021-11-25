@@ -1,6 +1,10 @@
 package com.pawmap.impl;
 
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+
 import java.security.SecureRandom;
 import java.util.Date;
 import java.util.HashMap;
@@ -9,11 +13,18 @@ import java.util.Map;
 import org.apache.groovy.util.Maps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.stereotype.Service;
 
 import com.pawmap.VO.UserVO;
 import com.pawmap.mapper.UserMapper;
+
+
+import com.pawmap.service.BoardService;
+
 import com.pawmap.service.MailService;
+
+
 import com.pawmap.service.UserService;
 
 
@@ -37,6 +48,7 @@ public class UserServiceImpl implements UserService{
 	 
 	 @Autowired
 	    BCryptPasswordEncoder passwordEncoder;
+
 	 
 	@Override
 	public void insertUser(UserVO vo) {
@@ -50,6 +62,7 @@ public class UserServiceImpl implements UserService{
 	public void socialJoin(UserVO vo) {
 		userMapper.socialJoin(vo);
 	}
+
 	@Override
 	public Map<String, Object> login(Map<String, Object> args) {
 		Map<String, Object> rs = new HashMap<>();
@@ -122,7 +135,9 @@ public class UserServiceImpl implements UserService{
 		String userName = (String) param.get("userName");
 		String userEmail = (String) param.get("userEmail");
 
+
 		UserVO user  = userMapper.searchPwd(userId, userName);
+
 
 		if (user == null) {
 			return Maps.of("resultCode", "F-1", "msg", "일치하는 회원이 없습니다.");
@@ -149,7 +164,6 @@ public class UserServiceImpl implements UserService{
 		String tempLoginPasswd = sb.toString();
 				
 		user.setUserPassword(tempLoginPasswd);
-
 		
 		String mailTitle = userName + "님, 당신의 계정(" + userId + ")의 임시 패스워드 입니다.";
 		String mailBody = "임시 패스워드 : " + tempLoginPasswd;
@@ -176,7 +190,6 @@ public class UserServiceImpl implements UserService{
 		return userMapper.checkDuplicateId(userId);
 	}
 }
-
 
 
 
