@@ -6,6 +6,7 @@ pageEncoding="UTF-8"%>
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal"/>
 </sec:authorize>
+
 <!DOCTYPE html>
 <html lang="en">
     
@@ -61,12 +62,14 @@ pageEncoding="UTF-8"%>
     <!-- End Main Top -->
 
     <!-- Start Main Top -->
-    
+
     <!-- end Main Top -->
   
     <!-- 게시판 폼 시작 -->
     <form class="form-horizontal board-form" method="POST" action="insertFreeAndNanumBoard" >
+
         <h1>유저 아이디 == ${principal.user.userId}</h1>
+
         <div class="container">
             <div class="card row">
                 <div class="option-select ml-5">
@@ -78,8 +81,10 @@ pageEncoding="UTF-8"%>
                 <div class="form-group ml-5 ">
                     <label for="name" class="col-sm-2 control-label">닉네임</label>
                     <div class="col-sm-10">
+
                         <input type="hidden" class="form-control" id="user_id" name="userId" value="${principal.user.userId}" >
                         <input type="text" class="form-control input-nickname" id="user_nickname" name="${principal.user.userNickname}"  placeholder="${principal.user.userNickname}" readonly>
+
                     </div>
                 </div>
                 <div class="form-group ml-5 ">
@@ -122,10 +127,6 @@ pageEncoding="UTF-8"%>
       
 
     <!-- Start Footer  -->
-    
-    <!-- End Footer  -->
-
-    <!-- Start copyright  -->
 
     <!-- End copyright  -->
 

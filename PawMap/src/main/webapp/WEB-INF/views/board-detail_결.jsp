@@ -6,6 +6,7 @@ pageEncoding="UTF-8"%>
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal"/>
 </sec:authorize>
+
 <!DOCTYPE html>
 <html lang="en">
     
@@ -60,7 +61,7 @@ pageEncoding="UTF-8"%>
     <!-- End Main Top -->
 
     <!-- Start Main Top -->
-    
+
 
     <div class="board-type mt-5">
       <c:if test="${getFreeBoard.boardType eq 'f'} ">
@@ -80,7 +81,9 @@ pageEncoding="UTF-8"%>
                     <h2 class="noo-sh-title-top mb-5 board_title">제목 : ${getFreeBoard.title}</h2>
                 </div>
                 <div class="col-lg-6" style="overflow:hidden;">
+
                     <h5 class="noo-sh-title-top mb-5 board_writer" id="freeBoardWriter" value="${getFreeBoard.userVO.userNickname }">작성자 : ${getFreeBoard.userVO.userNickname }</h5>
+
                 </div>
                 <div class="col-lg-6">
                     <h5 class=" mb-5 board_regDate">작성일 : <fmt:formatDate value="${getFreeBoard.regDate }" pattern="yyyy-MM-dd"/></h5>
@@ -103,6 +106,7 @@ pageEncoding="UTF-8"%>
                 <button onclick="location.href='/pawmap/board/updateFreeAndNanumBoardForm?boardSeq=${getFreeBoard.boardSeq}'" type="button" class="btn btn-primary">수정</button>
                 <button id="delete-free-board" type="button" class="btn btn-secondary">삭제</button>
               </c:if>  
+
               </div>
         </div>
     </div>
@@ -137,6 +141,7 @@ pageEncoding="UTF-8"%>
                                           <input style="color:rgba(204, 156, 22, 0.8) ;"  value="${principal.user.userNickname}" placeholder="${principal.user.userNickname}"  readonly> 
                                         </c:otherwise>
                                     </c:choose>
+
                                 </div>
                                 <div class="d-flex flex-start w-100">
                                     <img
@@ -148,7 +153,9 @@ pageEncoding="UTF-8"%>
                                     />
                                     <div class="w-100">
                                         <div class="form-outline">
+
                                             <textarea name="commentContent" class="form-control" id="reply-content" rows="4" cols="10"></textarea>
+
                                         </div>
                                         <div class="d-flex justify-content-between mt-3">
                                             <button id="btn-reply-save" type="button" class="btn btn-success">등록하기</button>

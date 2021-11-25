@@ -58,7 +58,7 @@ pageEncoding="UTF-8"%>
     <!-- End Main Top -->
 
     <!-- Start Main Top -->
-    
+
   
     <!-- 게시판 폼 시작 -->
     <form class="form-horizontal board-form" method="POST" action="insertFreeAndNanumBoard" >
@@ -120,7 +120,6 @@ pageEncoding="UTF-8"%>
     </form>
     <!-- 게시판 폼 종료 -->
       
-    <!-- Start copyright  -->
 
     <!-- End copyright  -->
 

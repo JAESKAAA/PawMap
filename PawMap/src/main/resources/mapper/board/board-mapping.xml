@@ -11,6 +11,7 @@
   		<result property="userId" column="userId"/>
   	</resultMap> -->
   	
+
   	<resultMap type="com.pawmap.VO.UserVO" id="userResult">
   		<result property="userNickname" column="user_nickname"/>
   	</resultMap>
@@ -26,6 +27,7 @@
   		<collection property="userVO" resultMap="userResult"/>
   	</resultMap>
   	
+
 <!--   	<select id="selectTest" resultType="com.cos.blog.vo.BoardVO">
   		SELECT * FROM BOARD WHERE id=#{id}
   	</select> -->
@@ -42,7 +44,9 @@
   		)
   	</insert>
   	
+
 <!--   	 <select id="getFreeBoardList" parameterType="HashMap" resultType="com.pawmap.VO.BoardVO">
+
   		SELECT * FROM board
   		WHERE board_type = 'f'
   		<if test="board.keywordType == 'title'">
@@ -56,6 +60,7 @@
 		</if>
   		ORDER BY board_seq DESC
   		LIMIT #{criteria.amount} OFFSET #{criteria.startNum}
+
   	</select> -->
   	
   	<select id="getFreeBoardList" parameterType="HashMap" resultMap="boardResult">
@@ -78,6 +83,7 @@
   	</select>
   	
 <!--   	<select id="getFreeBoard" resultType="com.pawmap.VO.BoardVO" >
+
   		SELECT * FROM board
   		WHERE board_seq = #{boardSeq}
   		AND
@@ -92,6 +98,7 @@
   		WHERE b.board_seq = #{boardSeq}
   		AND
   		b.board_type = 'f';
+
   	</select>
   	
   	<delete id="deleteFreeBoardBySeq">
@@ -136,5 +143,6 @@
   				NOW()
   		)
 	</insert>
+
   	
   </mapper>	

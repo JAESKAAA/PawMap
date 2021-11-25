@@ -7,6 +7,7 @@ pageEncoding="UTF-8"%>
 	<sec:authentication property="principal" var="principal"/>
 </sec:authorize>
 
+
 <!DOCTYPE html>
 <html lang="en">
     
@@ -64,7 +65,7 @@ pageEncoding="UTF-8"%>
     <!-- End Main Top -->
 
     <!-- Start Main Top -->
-    
+
   
 <div class="board-type mt-5">
     <h1>자유게시판</h1>
@@ -118,7 +119,7 @@ pageEncoding="UTF-8"%>
 
 <div class="container">
   <div>
-      
+
     <section>
       <!--for demo wrap-->
       
@@ -166,13 +167,16 @@ pageEncoding="UTF-8"%>
 				        	<td>${freeBoard.boardSeq }</td>
 				        	<td class="title"><a href="getFreeBoard?boardSeq=${freeBoard.boardSeq}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}">${freeBoard.title }</a></td>
                             <!-- <td class="title"><a href="getFreeBoard?boardSeq=${freeBoard.boardSeq}">${freeBoard.title }</a></td> -->
+
                             <td>${freeBoard.userVO.userNickname }</td>
+
 					        <td><fmt:formatDate value="${freeBoard.regDate }" pattern="yyyy-MM-dd"/></td>
 			          	</tr>
 		          </c:forEach>
                 </tbody>
               </table>
             </div>
+
             <!-- <h1>${principal.user.userId}</h1> -->
             <c:choose>
                 <c:when test="${empty principal}">
@@ -186,6 +190,7 @@ pageEncoding="UTF-8"%>
                     </div>
                 </c:otherwise>
             </c:choose>
+
         </section>
     </div>
 </div>
@@ -220,7 +225,7 @@ pageEncoding="UTF-8"%>
       
 
     <!-- Start Footer  -->
-    
+
 
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
@@ -243,12 +248,14 @@ pageEncoding="UTF-8"%>
     <script src="../js/js-gyul.js"></script>
 
     <script>
+
         function noLoginUserCantWrite(){
             alert("로그인이 필요합니다.");
             
         }
 
         $(document).ready(function() {
+
 
             //console.log($("#hKeywordType").val());
             //console.log($("#hKeyword").val());
@@ -281,9 +288,6 @@ pageEncoding="UTF-8"%>
             }
 
 
-
-            
-
                 $(".page-link").on("click", function(e) {
                 e.preventDefault();
                 
@@ -298,7 +302,7 @@ pageEncoding="UTF-8"%>
             //console.log(optionKeywordTypeTitle);
             //console.log(optionKeywordTypeContent);
             holdKeywordType(keywordType);
-            
+
         });
         
     </script>

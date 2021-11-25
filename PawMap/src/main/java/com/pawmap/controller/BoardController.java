@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pawmap.VO.BoardVO;
+
 import com.pawmap.VO.CommentVO;
+
 import com.pawmap.VO.Criteria;
 import com.pawmap.VO.PageVO;
 import com.pawmap.service.BoardService;
@@ -48,7 +50,9 @@ public class BoardController {
 	@PostMapping("/board/insertFreeAndNanumBoard")
 	public String insertFreeAndNanumBoard(BoardVO vo) {
 		
+
 		System.out.println("insertFreeAndNanumBoard()탐");
+
 		System.out.println("BoardVO ====== "+vo);
 		
 		boardService.insertFreeAndNanumBoard(vo);
@@ -92,8 +96,10 @@ public class BoardController {
 	public String getFreeBoard(@RequestParam int boardSeq, Model model) {
 		System.out.println("boardSeq ====== "+boardSeq);
 		
+
 		System.out.println(boardService.getFreeBoard(boardSeq));
 		
+
 		model.addAttribute("getFreeBoard",boardService.getFreeBoard(boardSeq));
 		
 		BoardVO voTest = boardService.getFreeBoard(boardSeq);
@@ -137,6 +143,7 @@ public class BoardController {
 		}
 	}
 	
+
 	@PostMapping("board/insertReplyFreeBoard/api/{boardSeq}")
 	@ResponseBody
 	public void insertReplyFreeBoard(@PathVariable int boardSeq,
@@ -145,8 +152,6 @@ public class BoardController {
 		System.out.println(commentVO);
 		boardService.insertReplyForFreeBoard(commentVO);
 	}
-	
-	
-	
-	
+
+
 }
