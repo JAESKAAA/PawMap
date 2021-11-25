@@ -1,10 +1,8 @@
-<!-- UTF-8과 jstl 문법을 쓰겠다 하는 선언(태그 라이브러리) -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,11 +40,115 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <!-- 결 커스텀 css -->
-    <link rel="stylesheet" href="../css/style-gyul.css">
-
 <style>
 
+
+.line-paint{
+        border: thin solid rgb(209, 154, 34);
+        margin-top: 50px;
+        margin-bottom: 70px;
+        width: 80%;
+    }
+.board-type{
+        display: inline-block;
+        margin-left: 10%;
+    }
+.board-type > h1 {
+        color: rgb(209, 154, 34);
+        font-size: 40px;
+    }    
+
+/* 페이지 관련 소스 */
+    
+    ::-webkit-scrollbar {
+        width: 6px;
+    } 
+    /* ::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    } 
+    ::-webkit-scrollbar-thumb {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    } */
+    .page-div{
+        margin: 4%;
+    }
+    .page-link{
+      background-color: rgba(204, 156, 22, 0.8);
+      color: white;
+    }
+
+/* 페이지 관련 소스 끝 */
+
+
+
+
+.main-search-input-item input {
+
+    width: 100%;
+    height: 50px;
+    padding-left: 20px
+}
+
+.main-search-button {
+    background: #e0a1187a
+}
+
+.main-search-button {
+    position: absolute;
+    right: 0px;
+    height: 50px;
+    width: 120px;
+    color: rgb(255, 255, 255);
+    top: 0;
+    border: none;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    cursor: pointer
+}
+.main-search-button:hover {
+  background: #665d087a;
+  cursor: pointer;
+}
+.main-search-input-wrap {
+    width: 500px;
+    margin: 20px auto;
+    position: relative
+}
+:focus {
+    outline: 0
+}
+
+@media only screen and (max-width: 768px) {
+    .main-search-input {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 14px 20px 10px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 0px 10px rgba(255, 255, 255, 0.0)
+    }
+
+    .main-search-input-item {
+        width: 100%;
+        border: 1px solid #eee;
+        height: 50px;
+        border: none;
+        margin-bottom: 10px
+    }
+
+    .main-search-input-item input {
+        border-radius: 6px !important;
+        background: #fff
+    }
+
+    .main-search-button {
+        position: relative;
+        float: left;
+        width: 100%;
+        border-radius: 6px
+    }
+
+/* 서치바 관련 스타일 종료 */
+
+}
   
 </style>
 
@@ -96,111 +198,58 @@
         </nav>
     </header>
     <!-- end Main Top -->
-  
-<div class="board-type mt-5">
-    <h1>자유게시판</h1>
-</div>
-<div class="container mt-5" style="width: 70%;">
-    <div class="board-free" >
-        <div id="slides-shop" class="cover-slides">
-            <ul class="slides-container">
-                <li class="text-center">
-                    <img src="images/gyul_dog_img_001.jpg" alt="">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h2 class="m-b-20"><strong style="color: aliceblue;">글 제목</strong></h2>
-                                <p><a class="btn hvr-hover" href="#" style="background: none; font-size:15px;">글 보러가기</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="text-center">
-                    <img src="images/gyul_dog_img_002.jpg" alt="">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h2 class="m-b-20"><strong style="color: aliceblue;">글 제목</strong></h2>
-                                <p><a class="btn hvr-hover" href="#" style="background: none; font-size:15px;">글 보러가기</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="text-center">
-                    <img src="images/gyul_dog_img_003.jpg" alt="">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h2 class="m-b-20"><strong style="color: aliceblue;">글 제목</strong></h2>
-                                <p><a class="btn hvr-hover" href="#" style="background: none; font-size:15px;">글 보러가기</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>  
+
+    <div class="board-type mt-5">
+        <h1>나눔게시판</h1>
     </div>
-</div>    
-<hr class="line-paint">
 
+    <hr class="line-paint">
 
+    <!-- 나눔 게시판 시작 -->
 
-<!-- board list form 시작 -->
-
-<div class="container">
-  <div>
-    <section>
-      <!--for demo wrap-->
-      
-      <div class="tbl-header">
-        <!-- search 버튼 시작 -->
-        <div class="main-search-input-wrap" >
-          <div class="main-search-input fl-wrap" style="margin-top: 30px;">
-            <div class="main-search-input-item"> 
-              <input type="text" value="" placeholder="Search Products..."> 
-            </div> 
-            <button class="main-search-button">Search</button>
-          </div>
+    
+    
+    <div class="latest-blog">
+        <div class="main-search-input-wrap mb-5" >
+            <div class="main-search-input fl-wrap">
+                <div class="main-search-input-item"> 
+                    <input type="text" value="" placeholder="Search Products..."> 
+                </div> 
+                <button class="main-search-button">Search</button>
+            </div>
         </div>
-        <!-- search 버튼 종료 -->  
-              <table class="board-table" cellpadding="0" cellspacing="0" >
-                <thead>
-                  <tr>
-                    <th >번호</th>
-                    <th class="title">제목</th>
-                    <th>작성자</th>
-                    <th>등록일</th>
-                  </tr>
-                </thead>
-              </table>
+        
+
+        
+        
+        <div class="container">
+            <div class="row">
+                <c:forEach var="nanumBoardList" items="${NanumBoardList }">
+                <div class="col-md-6 col-lg-4 col-xl-4">
+                    <div class="blog-box">
+                        <div class="blog-img">
+                            <img class="img-fluid" src="images/gyul_pet_toy_001.jpg" alt="" />
+                        </div>
+                        <div class="blog-content">
+                            <div class="title-blog">
+                                <h3><a href="getBoardDetail?boardSeq=${nanumBoardList.boardSeq }&boardType=${nanumBoardList.boardType }">제목 : ${nanumBoardList.title}</a></h3>
+                                <p>내용 : ${nanumBoardList.content}</p>
+                            </div>
+                        </div>
+                        <div class="blog-content">
+                            <div class="title-blog pt-1">
+                                <h3>닉네임 : ${nanumBoardList.userId} </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+
+            
             </div>
-            <div class="tbl-content">
-              <table class="board-table" cellpadding="0" cellspacing="0">
-                <tbody>
-
-                  <c:forEach var="freeBoard" items="${FreeBoardList }">
-                    <tr>
-                      <td>${freeBoard.boardSeq }</td>
-                      <td class="title"><a href="getBoardDetail?boardSeq=${freeBoard.boardSeq }&boardType=${freeBoard.boardType }">${freeBoard.title }</a></td>
-                      <td><fmt:formatDate value="${freeBoard.regDate }" pattern="yyyy-MM-dd"/></td>
-                      <td>${freeBoard.regDate }</td>
-                    </tr>
-                  </c:forEach>
-
-
-
-                  <!-- <tr>
-                    <td class="">1</td>
-                    <td class="title"><a href="#" >AUSTRALIAN COMPANYAUSTRALIAN COMPANYAUSTRALIAN COMPANY </a></td>
-                    <td >고결</td>
-                    <td>2021.01.01</td>
-                  </tr>
-                </tbody> -->
-              </table>
-            </div>
-        </section>
+        </div>
     </div>
-</div>
+<!-- 나눔 게시판 종료 -->    
 
 <!-- 페이지 네이션 시작 -->
 

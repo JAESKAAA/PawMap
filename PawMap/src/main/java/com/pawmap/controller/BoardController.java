@@ -1,143 +1,127 @@
 package com.pawmap.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
 
-import org.apache.ibatis.annotations.Param;
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.pawmap.VO.BoardVO;
-import com.pawmap.VO.Criteria;
-import com.pawmap.VO.PageVO;
 import com.pawmap.service.BoardService;
 
 @Controller
 public class BoardController {
-	
-	static String keyword = "";
-	
 	@Autowired
-	public BoardService boardService;
-
-//	@ModelAttribute("conditionMap")
-//	public Map<String, String> searchConditionMap() {
-//		Map<String, String> conditionMap = new HashMap<String, String>();
-//		conditionMap.put("ì œëª©", "title");
-//		conditionMap.put("ë‚´ìš©", "content");
-//		
-//		return conditionMap;
-//	}
+	private BoardService boardService;
+	
 	
 	@GetMapping("/board/form")
-	public String getFreeAndNanumBoardForm() {
-		return "board-free-form_ê²°";
+	public String getBoardForm() {		
+		return "board-free-form_°á";
 	}
 	
-	@PostMapping("/board/insertFreeAndNanumBoard")
-	public String insertFreeAndNanumBoard(BoardVO vo) {
-		
-		System.out.println("íƒ");
-		System.out.println("BoardVO ====== "+vo);
-		
-		boardService.insertFreeAndNanumBoard(vo);
-		
-		return "redirect:getFreeBoardList";
-	}
-	
-	@RequestMapping("/board/getFreeBoardList")
-	public String getFreeBoardList(BoardVO vo, Model model,Criteria cri){
-		
-		System.out.println("getFreeBoard() íƒ");
-		
-		if(vo.getKeywordType() == null || vo.getKeywordType().isEmpty()) {
-			vo.setKeywordType("titleAndContent");
-		}
-		if(vo.getKeyword() == null) {
-			vo.setKeyword("");
-		}
-		
-		
-		if(!keyword.equals(vo.getKeyword())) {
-			System.out.println("ë‹¤ë¦…ë‹ˆë‹¤.");
-			cri.setPageNum(1);
-		}
+	@PostMapping("/board/form")
+	public String getBoardFormm(BoardVO vo) {
 
-		keyword = vo.getKeyword();
+
+		System.out.println("boardControllerÅÀÀ½");
+		System.out.println("==================================="+vo.getBoardType());
+		boardService.insertContent(vo);
 		
-		int total = boardService.selectBoardCount(vo);
-		
-		System.out.println("getKeywordType=================="+vo.getKeywordType());
-		model.addAttribute("freeBoardList", boardService.getFreeBoardList(vo,cri));
-		model.addAttribute("pageMaker", new PageVO(cri, total));
-		model.addAttribute("keyword", vo.getKeyword());
-		model.addAttribute("keywordType", vo.getKeywordType());
-		
-		return "board-free_ê²°";
-				
-	}
-	
-	@GetMapping("/board/getFreeBoard")
-	public String getFreeBoard(@RequestParam int boardSeq, Model model) {
-		System.out.println("boardSeq ====== "+boardSeq);
-		
-		model.addAttribute("getFreeBoard",boardService.getFreeBoard(boardSeq));
-		
-		BoardVO voTest = boardService.getFreeBoard(boardSeq);
-		System.out.println("ë³´ë“œíƒ€ì… ========  "+voTest.getBoardType());
-		
-		return "board-detail_ê²°";
-	}
-	
-	@PostMapping("/board/deleteFreeBoard/api/{boardSeq}")
-	@ResponseBody
-	public  void deleteFreeBoardBySeq(@PathVariable int boardSeq ) {
-		
-		System.out.println("deleteFreeBoard ë“¤ì–´ì˜´");
-		System.out.println("deleteFreeBoard ë“¤ì–´ì˜´ boardSeq : "+boardSeq);
-		boardService.deleteFreeBoardBySeq(boardSeq);
-		
-	}
-	
-	@GetMapping("/board/updateFreeAndNanumBoardForm")
-	public String updateFreeBoard(@RequestParam int boardSeq, Model model) {
-		System.out.println("ë“¤ì–´ì˜´");
-		System.out.println(boardSeq);
-		
-		model.addAttribute("getBoard",boardService.getFreeBoard(boardSeq));
-		
-		System.out.println(model);
-		
-		return "board-update-form_ê²°";
-	}
-	
-	@PostMapping("/board/updateFreeAndNanumBoardForm/api/{boardSeq}")
-	@ResponseBody
-	public void updateFreeBoardForm(@PathVariable int boardSeq, 
-									@RequestBody BoardVO vo) {
-		System.out.println("updateFreeAndNanumBoardForm  : " + "ë“¤ì–´ì˜´====");
-		System.out.println("vo ======== "+ vo);
-		
-		if(vo.getBoardSeq() == boardService.getFreeBoard(boardSeq).getBoardSeq()) {
-			System.out.println("ê°™ìŠµë‹ˆë‹¤.");
-			boardService.updateFreeBoardForm(vo);
-		}
-	}
-	
-	@PostMapping("/insertReplyFreeBoard")
-	public void insertReplyFreeBoard() {
-		System.out.println("insertReplyFreeBoard =======  ë“¤ì–´ì˜´");
+		//È­¸é ³×ºñ°ÔÀÌ¼Ç(°Ô½Ã±Û µî·Ï ¿Ï·á ÈÄ °Ô½Ã±Û ¸ñ·ÏÀ¸·Î ÀÌµ¿)
+		return "redirect:getBoardList";
 	}
 	
 	
+	
+//	**** ±Û ¼öÁ¤
+	//ModelAttribute·Î ¼¼¼Ç¿¡ board¶ó´Â ÀÌ¸§À¸·Î ÀúÀåµÈ °´Ã¼°¡ ÀÖ´ÂÁö Ã£¾Æ¼­ Command°´Ã¼¿¡ ´ã¾ÆÁÜ
+	@RequestMapping(value="/updateBoard")
+	public String updateBoard(@ModelAttribute("board") BoardVO vo, HttpServletRequest request
+				) throws IOException {
+//		MultipartHttpServletRequest mhsr <- ÆÄÀÏ¾÷·Îµå°ü·Ã
+		System.out.println("±Û ¼öÁ¤ Ã³¸®");
+		System.out.println("ÀÏ·Ã¹øÈ£ : " + vo.getBoardSeq());
+		System.out.println("Á¦¸ñ : " + vo.getTitle());
+		System.out.println("ÀÛ¼ºÀÚ ÀÌ¸§ : " + vo.getUserId());
+		System.out.println("³»¿ë : " + vo.getContent());
+		System.out.println("µî·ÏÀÏ : " + vo.getRegDate());
+//		System.out.println("Á¶È¸¼ö : " + vo.getCnt()); Á¶È¸¼ö ¾È¾¸
+		
+		
+//		ÆÄÀÏ¾÷·ÎµåºÎºĞ
+//		int seq = vo.getBoardSeq();
+//		
+//		FileUtils fileUtils = new FileUtils();
+//		List<BoardFileVO> fileList = fileUtils.parseFileInfo(seq, request, mhsr);
+//		
+//		if(CollectionUtils.isEmpty(fileList) == false) {
+//			boardService.insertBoardFileList(fileList);
+//		}
+		
+		boardService.updateBoard(vo);
+		return "board-modify-form_°á";
+	}
+	
+	@RequestMapping(value="/deleteBoard")
+	public String deleteBoard(BoardVO vo) {
+		System.out.println("±Û »èÁ¦ Ã³¸®");
+		
+		boardService.deleteBoard(vo);
+//		boardService.deleteFileList(vo.getBoardSeq());
+		return "redirect:getBoardList";
+	}
+	
+
+	
+	
+	
+	
+	
+//	**** ÀÚÀ¯°Ô½ÃÆÇ ÄÁÆ®·Ñ·¯
+	@RequestMapping("/board/getFreeBoardList")
+	public String getFreeBoardList(Model model) {
+		model.addAttribute("FreeBoardList", boardService.getFreeBoardList());
+		System.out.println("=============== ÀÚÀ¯°Ô½ÃÆÇ ÄÁÆ®·Ñ·¯ ÅÀÀ½");
+		System.out.println("model¿¡ ÃÖÁ¾ÀûÀ¸·Î ´ã±ä°ª : " + model);
+		
+		return "board-free_°á";
+		
+	}
+	
+	
+//	**** ³ª´®°Ô½ÃÆÇ ÄÁÆ®·Ñ·¯
+	@RequestMapping("/board/getNanumBoardList")
+	public String getNanumBoardList(Model model) {
+		model.addAttribute("NanumBoardList", boardService.getNanumBoardList());
+		System.out.println("================== ³ª´®°Ô½ÃÆÇ ÄÁÆ®·Ñ·¯ ÅÀÀ½");
+		System.out.println("model¿¡ ÃÖÁ¾ÀûÀ¸·Î ´ã±ä°ª : " + model);
+		
+		return "board-nanum_°á";
+		
+	}
+	
+//	**** °Ô½ÃÆÇ µğÅ×ÀÏ
+	@RequestMapping("/board/getBoardDetail")
+//	¸®Äù½ºÆ®ÆÄ¶÷À¸·Î boardTypeÀ» ÀÚÀ¯°Ô½ÃÆÇÀÎÁö ³ª´®°Ô½ÃÆÇÀÎÁö ¹Ş¾Æ¼­ ÇÊÅÍ¸µÇØÁØ´Ù
+	public String getBoard(@RequestParam int boardSeq, @RequestParam String boardType, Model model) {
+		System.out.println("±Û »ó¼¼ Á¶È¸ Ã³¸®(º¸µå ÄÁÆ®·Ñ·¯ºÎºĞ)");
+		System.out.println("º¸µå½Ã…R½º : " + boardSeq + ", º¸µåÅ¸ÀÔ : " + boardType);
+		model.addAttribute("BoardDetail", boardService.getBoardDetail(boardSeq, boardType));
+		System.out.println("=============°Ô½ÃÆÇ »ó¼¼º¸±â Åë°úÇÑ°ÅÀÓ");
+
+		return "board-detail_°á";
+	}
+	
+
 }
+
+

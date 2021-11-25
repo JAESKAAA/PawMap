@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html lang="en">
   <!-- Basic -->
@@ -126,37 +124,16 @@ pageEncoding="UTF-8"%>
               <li class="search" style="display: none">
                 <a href="#"><i class="fa fa-search"></i></a>
               </li>
-             <sec:authorize access="isAnonymous()">
               <li class="side-menu">
-                <a href="/pawmap/loginForm">
+                <a href="#">
                   <p>로그인</p>
                 </a>
               </li>
               <li class="side-menu">
-                <a href="/pawmap/joinForm">
+                <a href="#">
                   <p>회원가입</p>
                 </a>
               </li>
-			 </sec:authorize>
-			<sec:authorize access="isAuthenticated()">
-			 <li class="side-menu">
-                <a href="/pawmap/loginForm">
-                  <p>마이페이지</p>
-                </a>
-              </li>
-			 <li class="side-menu">
-                <a href="/pawmap/logout">
-                  <p>로그아웃</p>
-                </a>
-              </li>
-			</sec:authorize>
-			<sec:authorize access="hasRole('ROLE_ADMIN')">
-				<li class="side-menu">
-	                <a href="/pawmap/admin">
-	                  <p>관리자 페이지</p>
-	                </a>
-	              </li>
-			</sec:authorize>
             </ul>
           </div>
           <!-- End Atribute Navigation -->
@@ -985,7 +962,6 @@ pageEncoding="UTF-8"%>
     >
 
     <!-- ALL JS FILES -->
-<<<<<<< HEAD
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

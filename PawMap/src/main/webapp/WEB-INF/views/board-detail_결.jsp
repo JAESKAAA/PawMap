@@ -1,7 +1,10 @@
+<!-- UTF-8과 jstl 문법을 쓰겠다 하는 선언(태그 라이브러리) -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html lang="en">
     
@@ -95,47 +98,51 @@ pageEncoding="UTF-8"%>
     </header>
     <!-- end Main Top -->
 
-    <div class="board-type mt-5">
-      <c:if test="${getFreeBoard.boardType eq 'f'} ">
-        <h1>자유게시판</h1>
-      </c:if>
-      <h1>자유게시판</h1>
-    </div>
+
     
+    <div class="board-type mt-5">
+    </div>
+    <h1>${board.board_type}</h1>
+      
     <hr class="line-paint">
 
     <!-- 게시판 상세 폼 시작 -->
 
+    <form action="getBoardDetail" method="POST">
+    
     <div class="about-box-main">
         <div class="container">
             <div class="row board-info">
                 <div class="col-lg-6">
-                    <h2 class="noo-sh-title-top mb-5 board_title">제목 : ${getFreeBoard.title}</h2>
+                    <h2 class="noo-sh-title-top mb-5 board_title">제목 : ${BoardDetail.title}</h2>
+                    <!-- <td align="left"></td><input name="title" type="text" value="${board.title }"></td> -->
                 </div>
                 <div class="col-lg-6" style="overflow:hidden;">
-                    <h5 class="noo-sh-title-top mb-5 board_writer" id="freeBoardWriter" value="${getFreeBoard.userId}">작성자 : ${getFreeBoard.userId}</h5>
+                    <h5 class="noo-sh-title-top mb-5 board_writer">작성자 : ${user.nickname}</h5>
                 </div>
                 <div class="col-lg-6">
-                    <h5 class=" mb-5 board_regDate">작성일 : <fmt:formatDate value="${getFreeBoard.regDate }" pattern="yyyy-MM-dd"/></h5>
+                    <h5 class=" mb-5 board_regDate">작성일 : ${BoardDetail.regDate}</h5>
                 </div>
                 <div class="col-lg-6">
-                    <h5 class=" mb-5 board_seq" id="freeBoardSeq">게시글 번호 : ${getFreeBoard.boardSeq}</h5>
+                    <h5 class=" mb-5 board_seq">게시글 번호 : ${BoardDetail.boardSeq}</h5>
                 </div>
             </div>
-            <img class="img-fluid" src="../images/결_pet_toy_001.jpeg" alt="" />
+            <img class="img-fluid" src="images/결_pet_toy_001.jpeg" alt="" />
             <div class="col-lg-6">
-                <p class="mt-5">
-                  ${getFreeBoard.content}
-                </p>
-              </div>
-              <div class="col-lg-6 mt-5">
-                <button onclick="location.href='/pawmap/board/getFreeBoardList'" type="button" class="btn btn-secondary">목록으로</button>
-                <button onclick="location.href='/pawmap/board/updateFreeAndNanumBoardForm?boardSeq=${getFreeBoard.boardSeq}'" type="button" class="btn btn-primary">수정</button>
-                <button id="delete-free-board" type="button" class="btn btn-secondary">삭제</button>
-              </div>
-        </div>
-    </div>
+                <p class="mt-5"> ${BoardDetail.content}</p>
+              </form>
 
+              <!-- 임시로 넣음 :  글 수정삭제 버튼 -->
+                <p class="small mb-0" style="color: #000000;">
+                  <a href="updateBoard?boardSeq=${BoardDetail.boardSeq }&boardType=${BoardDetail.boardType }">수정하기</a> <- 수정하기
+                  <a href="deleteBoard?boardSeq=${BoardDetail.boardSeq }&boardType=${BoardDetail.boardType }">삭제하기</a> <- 삭제하기
+                </p>
+              <!-- 글 수정삭제 버튼 끝 -->
+
+              </div>
+            </div>
+          </div>
+          
 
     <section style="background-color: #f7f6f6;">
         <div class="container py-5 text-dark">
@@ -145,45 +152,6 @@ pageEncoding="UTF-8"%>
                 <h4 class="text-dark mb-0">코멘트 (3)</h4>
               </div>
       
-              <!-- 댓글 다는곳 시작 -->
-
-              <div class="card mb-3">
-                <div class="card-body" style="padding: 1px;">
-                    <div class="d-flex flex-start">
-                        <form action="" style="width: 750px;">
-                          <input type="hidden" id="userId" value="${getFreeBoard.userId}">
-                          <input type="hidden" id="freeBoardSeqHidden" value="${getFreeBoard.boardSeq}">
-                          <input type="hidden" id="boardType" value="${getFreeBoard.boardType}">
-                            <div class="card-body p-4">
-                                <div class="mb-2">
-                                    <h5 style="color:rgba(204, 156, 22, 0.8) ;">닉네임 : ${getFreeBoard.userId}</h5>
-                                </div>
-                                <div class="d-flex flex-start w-100">
-                                    <img
-                                        class="rounded-circle shadow-1-strong  mr-5"
-                                        src="https://mdbootstrap.com/img/Photos/Avatars/img%20(21).jpg"
-                                        alt="avatar"
-                                        width="65"
-                                        height="65"
-                                    />
-                                    <div class="w-100">
-                                        <div class="form-outline">
-                                            <textarea class="form-control" id="reply-content" rows="4" cols="10"></textarea>
-                                        </div>
-                                        <div class="d-flex justify-content-between mt-3">
-                                            <button id="btn-reply-save" type="button" class="btn btn-success">등록하기</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-              </div>
-
-            <!-- 댓글 다는곳 종료 -->
-
-
               <div class="card mb-3">
                 <div class="card-body">
                   <div class="d-flex flex-start">
@@ -271,6 +239,40 @@ pageEncoding="UTF-8"%>
                 </div>
               </div>
 
+              <!-- 댓글 다는곳 시작 -->
+
+              <div class="card mb-3">
+                <div class="card-body" style="padding: 1px;">
+                    <div class="d-flex flex-start">
+                        <form action="" style="width: 750px;">
+                            <div class="card-body p-4">
+                                <div class="mb-2">
+                                    <h5 style="color:rgba(204, 156, 22, 0.8) ;">닉네임 : 고결</h5>
+                                </div>
+                                <div class="d-flex flex-start w-100">
+                                    <img
+                                        class="rounded-circle shadow-1-strong  mr-5"
+                                        src="https://mdbootstrap.com/img/Photos/Avatars/img%20(21).jpg"
+                                        alt="avatar"
+                                        width="65"
+                                        height="65"
+                                    />
+                                    <div class="w-100">
+                                        <div class="form-outline">
+                                            <textarea class="form-control" id="textAreaExample" rows="4" cols="10"></textarea>
+                                        </div>
+                                        <div class="d-flex justify-content-between mt-3">
+                                            <button type="button" class="btn btn-success">등록하기</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+              </div>
+
+            <!-- 댓글 다는곳 종료 -->
 
             </div>
           </div>
@@ -285,7 +287,7 @@ pageEncoding="UTF-8"%>
 
 <!-- 페이지 네이션 시작 -->
 
-<!-- <div class="page-div">
+<div class="page-div">
     <ul class="pagination justify-content-center">
         <li class="page-item">
             <a class="page-link" href="#" >Prev</a>
@@ -297,7 +299,7 @@ pageEncoding="UTF-8"%>
             <a class="page-link" href="#">Next</a>
         </li>
     </ul>
-</div> -->
+</div>
 
 <!-- 페이지 네이션 종료 -->
 
@@ -414,9 +416,6 @@ pageEncoding="UTF-8"%>
     <script src="../js/form-validator.min.js"></script>
     <script src="../js/contact-form-script.js"></script>
     <script src="../js/custom.js"></script>
-
-    <script src="../js/js-gyul.js"></script>
-    
 </body>
 
 </html>

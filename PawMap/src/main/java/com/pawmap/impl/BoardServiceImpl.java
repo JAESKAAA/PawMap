@@ -1,18 +1,14 @@
 package com.pawmap.impl;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pawmap.VO.BoardVO;
-import com.pawmap.VO.Criteria;
 import com.pawmap.VO.UserVO;
 import com.pawmap.mapper.BoardMapper;
 import com.pawmap.service.BoardService;
-
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -23,58 +19,54 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public void insertTest(UserVO vo) {
-		System.out.println("BoardServiceImpl :insertTest()");
 		boardMapper.insertTest(vo);
 	}
 
-
 	@Override
-	public void insertFreeAndNanumBoard(BoardVO vo) {
-		boardMapper.insertFreeAndNanumBoard(vo);
-		System.out.println("BoardServiceImpl :insertFreeAndNanumBoard()");
-		
+	public void insertContent(BoardVO vo) {
+		boardMapper.insertBoard(vo);
+	}
+
+//	ÀÚÀ¯°Ô½ÃÆÇ ¸®½ºÆ®
+	@Override
+	public List<BoardVO> getFreeBoardList() {
+		System.out.println("================ÀÚÀ¯°Ô½ÃÆÇ ¸®½ºÆ® impl ÅÀÀ½");
+		return boardMapper.getFreeBoardList();
+	}
+
+//	³ª´®°Ô½ÃÆÇ ¸®½ºÆ®
+	@Override
+	public List<BoardVO> getNanumBoardList() {
+		System.out.println("================³ª´®°Ô½ÃÆÇ ¸®½ºÆ® impl ÅÀÀ½");
+		return boardMapper.getNanumBoardList();
+	}
+	
+	
+//	°Ô½ÃÆÇ »ó¼¼Á¶È¸
+	@Override
+	public BoardVO getBoardDetail(int boardSeq, String boardType) {
+		System.out.println("=============º¸µå¼­ºñ½ºÂïÈ÷´ÂÁöÈ®ÀÎ");
+		System.out.println("getBoardDetail - boardSeq = " + boardSeq + " boardType = " + boardType);
+		return boardMapper.getBoardDetail(boardSeq, boardType);
+	}
+
+//	±Û ¼öÁ¤
+	@Override
+	public BoardVO updateBoard(BoardVO vo) {
+		System.out.println("========¼öÁ¤ ¼­ºñ½º Å¸´ÂÁö È®ÀÎ");
+		boardMapper.updateBoard(vo);
+		System.out.println(vo + "========¼öÁ¤ ¼­ºñ½º Å¸±â ¿Ï·á");
+		return vo;
+	}
+
+//	±Û »èÁ¦
+	@Override
+	public void deleteBoard(BoardVO vo) {
+		System.out.println("========»èÁ¦ ¼­ºñ½º Å¸´ÂÁö È®ÀÎ");
+		boardMapper.deleteBoard(vo);
+		System.out.println(vo + "========»èÁ¦ ¼­ºñ½º Å¸±â ¿Ï·á");
 	}
 
 
-	@Override
-	public List<BoardVO> getFreeBoardList(BoardVO vo, Criteria cri) {
-		
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("board", vo);
-		cri.setStartNum((cri.getPageNum() -1 ) * cri.getAmount());
-		paramMap.put("criteria", cri);
-		
-		
-		return boardMapper.getFreeBoardList(paramMap);
-	}
-
-
-	@Override
-	public BoardVO getFreeBoard(int boardSeq) {
-		
-		System.out.println("BoardServiceImpl ì˜ boardSeq ======"+boardSeq);
-		
-		return boardMapper.getFreeBoard(boardSeq);
-	}
-
-
-	@Override
-	public void deleteFreeBoardBySeq(int boardSeq) {
-		boardMapper.deleteFreeBoardBySeq(boardSeq);
-		
-	}
-
-
-	@Override
-	public void updateFreeBoardForm(BoardVO vo) {
-		boardMapper.updateFreeBoardForm(vo);
-	}
-
-
-	@Override
-	public int selectBoardCount(BoardVO vo) {
-		
-		return boardMapper.selectBoardCount(vo);
-	}
 }
 

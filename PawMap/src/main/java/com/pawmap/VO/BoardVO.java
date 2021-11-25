@@ -7,10 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class BoardVO {
-
 	private int boardSeq;
 	private String boardType;
 	private String userId;
@@ -19,7 +18,10 @@ public class BoardVO {
 	private String content;
 	private Date regDate;
 	
-	private String keywordType;
-	private String keyword;
+//	Á¶È¸¼ö
+	public String getCnt() {
+		return null;
+	}
 	
+
 }

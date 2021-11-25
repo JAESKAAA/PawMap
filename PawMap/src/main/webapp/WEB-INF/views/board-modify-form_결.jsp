@@ -1,6 +1,8 @@
+<!-- UTF-8과 jstl 문법을 쓰겠다 하는 선언(태그 라이브러리) -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,17 +27,16 @@ pageEncoding="UTF-8"%>
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
     <!-- Bootstrap CSS -->
-   
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Site CSS -->
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/custom.css">
+    <link rel="stylesheet" href="css/custom.css">
 
     <!-- 결 커스텀 css -->
-    <link rel="stylesheet" href="../css/style-gyul.css">
+    <link rel="stylesheet" href="css/style-gyul.css">
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -98,38 +99,31 @@ pageEncoding="UTF-8"%>
     <!-- end Main Top -->
   
     <!-- 게시판 폼 시작 -->
-    <form class="form-horizontal board-form" method="POST" action="insertFreeAndNanumBoard" >
+    <form class="form-horizontal board-form" role="form" action="form" method="POST">
         <div class="container">
             <div class="card row">
                 <div class="option-select ml-5">
-                    <select class="form-control" name="boardType">
-                <c:choose>
-                    <c:when test="${getBoard.boardType eq 'f'}">
-                        <option id="boardType" value="f">자유게시판</option>
-                    </c:when>
-                    <c:when test="${getBoard.boardType eq 's'}">
-                        <option  value="s">나눔게시판</option>
-                    </c:when>
-                </c:choose>  
+                    <select class="form-control">
+                        <option value="f">자유게시판</option>
+                        <option value="s">나눔게시판</option>
                     </select>
                 </div>
                 <div class="form-group ml-5 ">
                     <label for="name" class="col-sm-2 control-label">닉네임</label>
                     <div class="col-sm-10">
-                        <input type="hidden" id="boardSeq" value="${getBoard.boardSeq }"/>
-                        <input type="text" class="form-control input-nickname" id="user_id" name="userId"  placeholder="${getBoard.userId}" value="${getBoard.userId}" readonly>
+                        <input type="text" class="form-control input-nickname" id="user_name" name="user_name" value="" placeholder="로그인한 회원 닉네임(수정불가) " readonly>
                     </div>
                 </div>
                 <div class="form-group ml-5 ">
                     <label for="title" class="col-sm-2 control-label">제목</label>
                     <div class="col-sm-10">
-                        <input value="${getBoard.title}" type="text" class="form-control input-title" id="title" name="title" placeholder="제목" required>
+                        <input type="text" class="form-control input-title" id="title" name="title" placeholder="제목" value="">${updateBoard.title}
                     </div>
                 </div>
                 <div class="form-group ml-5">
-                    <label for="content" class="col-sm-2 control-label" >내용</label>
+                    <label for="content" class="col-sm-2 control-label">내용</label>
                     <div class="col-sm-10">
-                        <textarea id="content" class="form-control content" rows="4" name="content" required>${getBoard.content}</textarea>
+                        <textarea class="form-control content" rows="4" name="content">${updateBoard.content}</textarea>
                     </div>
                 </div>
                 <div class="r form-group ml-5">
@@ -149,7 +143,7 @@ pageEncoding="UTF-8"%>
                 </div>
                 <div class="r form-group ml-5">
                     <div class="col-sm-10 col-sm-offset-2">
-                        <input id="update-free-board" type="button" name="btn-submit" value="수정완료" class="btn btn-complete">
+                        <input id="btn-submit" name="btn-submit" type="submit" value="수정완료" class="btn btn-complete">
                     </div>
                 </div>
             </div>    
@@ -253,25 +247,22 @@ pageEncoding="UTF-8"%>
 
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
-    <script src="../js/jquery-3.2.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
+    <!-- ALL JS FILES -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <!-- ALL PLUGINS -->
-    <script src="../js/jquery.superslides.min.js"></script>
-    <script src="../js/bootstrap-select.js"></script>
-    <script src="../js/inewsticker.js"></script>
-    <script src="../js/bootsnav.js."></script>
-    <script src="../js/images-loded.min.js"></script>
-    <script src="../js/isotope.min.js"></script>
-    <script src="../js/owl.carousel.min.js"></script>
-    <script src="../js/baguetteBox.min.js"></script>
-    <script src="../js/form-validator.min.js"></script>
-    <script src="../js/contact-form-script.js"></script>
-    <script src="../js/custom.js"></script>
-
-    <script src="../js/js-gyul.js"></script>
-
-    <!-- <script src="../js/js-gyul.js"></script> -->
+    <script src="js/jquery.superslides.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+    <script src="js/inewsticker.js"></script>
+    <script src="js/bootsnav.js."></script>
+    <script src="js/images-loded.min.js"></script>
+    <script src="js/isotope.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/baguetteBox.min.js"></script>
+    <script src="js/form-validator.min.js"></script>
+    <script src="js/contact-form-script.js"></script>
+    <script src="js/custom.js"></script>
 </body>
 
 </html>

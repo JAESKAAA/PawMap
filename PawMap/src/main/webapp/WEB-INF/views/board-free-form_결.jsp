@@ -95,31 +95,31 @@ pageEncoding="UTF-8"%>
     <!-- end Main Top -->
   
     <!-- 게시판 폼 시작 -->
-    <form class="form-horizontal board-form" method="POST" action="insertFreeAndNanumBoard" >
+    <form class="form-horizontal board-form" role="form" method="POST" action="form">
         <div class="container">
             <div class="card row">
                 <div class="option-select ml-5">
                     <select class="form-control" name="boardType">
-                        <option  value="f">자유게시판</option>
-                        <option  value="s">나눔게시판</option>
+                        <option value="f">자유게시판</option>
+                        <option value="s">나눔게시판</option>
                     </select>
                 </div>
                 <div class="form-group ml-5 ">
                     <label for="name" class="col-sm-2 control-label">닉네임</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control input-nickname" id="user_id" name="userId"  placeholder="로그인한 회원 닉네임(수정불가) " >
+                        <input type="text" class="form-control input-nickname" id="user_name" name="userId" value="" placeholder="로그인한 회원 닉네임(수정불가) ">
                     </div>
                 </div>
                 <div class="form-group ml-5 ">
                     <label for="title" class="col-sm-2 control-label">제목</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control input-title" id="title" name="title" placeholder="제목" required>
+                        <input type="text" class="form-control input-title" id="title" name="title" placeholder="제목" value="">
                     </div>
                 </div>
                 <div class="form-group ml-5">
-                    <label for="content" class="col-sm-2 control-label" >내용</label>
+                    <label for="content" class="col-sm-2 control-label">내용</label>
                     <div class="col-sm-10">
-                        <textarea class="form-control content" rows="4" name="content" required></textarea>
+                        <textarea class="form-control content" rows="4" id="content" name="content"></textarea>
                     </div>
                 </div>
                 <div class="r form-group ml-5">
