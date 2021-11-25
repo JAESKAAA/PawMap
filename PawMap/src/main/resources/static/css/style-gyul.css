@@ -1,0 +1,389 @@
+
+.board_title, .board_writer, .board_regDate, .board_seq{
+color: rgb(196, 118, 24);
+}
+.btn-update{
+color: rgb(189, 118, 25);
+}
+.btn-delete {
+color: red;
+}
+.btn-delete:hover {
+color: red;
+}
+.btn-success{
+background-color: rgba(204, 156, 22, 0.8);
+border:rgb(189, 118, 25) ;
+}
+.btn-success:hover{
+background-color: rgb(189, 118, 25);
+border:rgb(189, 118, 25) ;
+}
+
+/* board-free-from.html 관련 스타일 시작 */
+
+.option-select{
+    width: 150px;
+    padding: 15px;
+}
+.input-nickname, .input-title{
+    width: 25rem;
+    overflow: auto;
+}
+.content{
+    width: 100%;
+height: 100%; 
+box-sizing: border-box;
+}
+.card{
+    border: 3px solid rgb(216, 131, 51);
+}
+.btn-complete{
+    background-color:rgb(221, 194, 169) ;
+}
+.btn-complete:hover{
+    background-color:rgb(216, 131, 51);
+}
+.btn-file-upload{
+    padding: 12px;
+}
+
+/* board-free-from.html 관련 스타일 종료 */
+
+/* board-free.html 관련 스타일 */
+
+.cover-slides{
+    border-radius: 25px;
+    border: 1px solid rgba(204, 156, 22, 0.8);
+}
+
+  /* demo styles */
+ 
+#slides-shop{
+    height: 200px;
+}
+.text-center{
+    width: 100px;
+}
+.btn-next, .btn-prev{
+    background-color: aliceblue;
+}
+.line-paint{
+    border: thin solid rgb(209, 154, 34);
+    margin-top: 50px;
+    margin-bottom: 70px;
+    width: 80%;
+}
+.board-type{
+    display: inline-block;
+    margin-left: 10%;
+}
+.board-type > h1 {
+    color: rgb(209, 154, 34);
+    font-size: 40px;
+}
+.board-table{
+    width:100%;
+    table-layout: fixed;
+  }
+
+  
+  .tbl-header{
+    background-color: rgba(204, 156, 22, 0.8);
+   }
+  .tbl-content{
+    height:600px;
+    overflow:hidden;
+    margin-top: 0px;
+    border: 1px solid rgba(34, 31, 31, 0.8);
+  }
+  th{
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    color: rgb(29, 25, 25);
+    text-transform: uppercase;
+  }
+  td{
+    padding: 15px;
+    text-align: left;
+    vertical-align:middle;
+    font-weight: 300;
+    font-size: 12px;
+    color: rgb(29, 25, 25);
+    border-bottom: solid 1px rgba(255,255,255,0.1);
+    word-wrap: break-word;
+  }
+  
+  
+  /* demo styles */
+  
+  @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+
+  section{
+    margin: 50px;
+  }
+  .title{
+    width:60%;
+  }
+  
+  /* for custom scrollbar for webkit browser*/
+  
+  ::-webkit-scrollbar {
+      width: 6px;
+  } 
+  ::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  } 
+  ::-webkit-scrollbar-thumb {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  }
+  .page-div{
+      margin: 4%;
+  }
+  .page-link{
+    background-color: rgba(204, 156, 22, 0.8);
+    color: white;
+  }
+
+  /* 서치바 관련 스타일*/
+  
+  .main-search-input {
+    background: #fff;
+    padding: 0 120px 0 0;
+    border-radius: 1px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 0px 6px rgba(255, 255, 255, 0.3)
+}
+
+.fl-wrap {
+    float: left;
+    width: 100%;
+    position: relative
+}
+
+.main-search-input:before {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    width: 50px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.41);
+    left: 50%;
+    margin-left: -25px
+}
+
+.main-search-input-item {
+    float: left;
+    width: 100%;
+    box-sizing: border-box;
+    border-right: 1px solid #eee;
+    height: 50px;
+    position: relative
+}
+
+.main-search-input-item input:first-child {
+    border-radius: 100%
+}
+
+.main-search-input-item input {
+    float: left;
+    border: none;
+    width: 100%;
+    height: 50px;
+    padding-left: 20px
+}
+
+.main-search-button {
+    background: #e0a1187a
+}
+
+.main-search-button {
+    position: absolute;
+    right: 0px;
+    height: 50px;
+    width: 120px;
+    color: rgb(255, 255, 255);
+    top: 0;
+    border: none;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    cursor: pointer
+}
+.main-search-button:hover {
+  background: #665d087a;
+  cursor: pointer;
+}
+
+.main-search-input-wrap {
+    max-width: 500px;
+    margin: 20px auto;
+    
+    position: relative
+}
+
+:focus {
+    outline: 0
+}
+
+@media only screen and (max-width: 768px) {
+    .main-search-input {
+        background: rgba(255, 255, 255, 0.2);
+        padding: 14px 20px 10px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 0px 10px rgba(255, 255, 255, 0.0)
+    }
+
+    .main-search-input-item {
+        width: 100%;
+        border: 1px solid #eee;
+        height: 50px;
+        border: none;
+        margin-bottom: 10px
+    }
+
+    .main-search-input-item input {
+        border-radius: 6px !important;
+        background: #fff
+    }
+
+    .main-search-button {
+        position: relative;
+        float: left;
+        width: 100%;
+        border-radius: 6px
+    }
+    
+}
+/* 서치바 관련 스타일 종료 */
+
+/* ================join-form.html 관련 css 시작================== */
+
+.form-label{
+    color: brown;
+}
+/* .left-div{
+    background-color:#FFDAB9; 
+    border-radius: 50% 20% / 10% 40%;
+} */
+/* .column-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 270px;
+    background-color: antiquewhite;
+    border-radius: 100px;
+    margin: auto;
+} */
+
+/* =================  일반 회원 가입 태그들 관련 CSS 시작 ================  */
+.nomal-join{
+    background-image: url(images/결_animals_img-001.jpeg);
+    background-repeat:no-repeat;
+    background-size : 400px 300px;
+    background-position: center;
+}
+.nomal-join:hover .btn-join-nomal{
+    display: block;
+}
+.nomal-join:hover{
+    opacity:50%;
+    transition: all 0.5s ease-in-out;
+}
+.btn-join-nomal{
+    display: none;
+}
+/* =================  일반 회원 가입 태그들 관련 CSS 종료 ================  */
+
+
+/* =================  병원 회원 가입 태그들 관련 CSS ================  */
+.hospital-join{
+    background-image: url(images/결_hospital-img-001.jpeg);
+    background-repeat:no-repeat;
+    background-size : 300px 300px;
+    background-position: center;
+}
+.hospital-join:hover .btn-join-hospital{
+    display: block;
+}
+.hospital-join:hover{
+    opacity:50%;
+    transition: all 0.5s ease-in-out;
+}
+.btn-join-hospital{
+    display: none;
+}
+/* =================  병원 회원 가입 태그들 관련 CSS 종료 ================  */
+
+
+/* ====================== 회원 가입 태그 공통 속성 ===================  */
+.btn-join-hospital, .btn-join-nomal{
+    font-size: 40px;
+    border: 1px solid black;
+    border-radius: 20%;
+    box-shadow: 5px 5px 5px 5px black;
+}
+.btn-join-hospital:hover, .btn-join-nomal:hover{
+    opacity:90%;
+    background-color: gray;
+    color: black;
+}
+
+/* ========================= join-form.html 관련 css 종료 ================== */
+  
+
+/* ========================= login-form.html 관련 css 시작 ================== */
+
+.card-loginForm {
+    padding: 0px 15px;
+    border-radius: 20px
+}
+
+.c1-loginForm {
+    background-color: #d4a165;
+    border-radius: 20px
+}
+.nav-link {
+    padding: 1rem 1.4rem;
+    margin: 0rem 0.7rem
+}
+
+.btn-other {
+    font-weight: bold;
+    color: #e0726c;
+    font-size: 12px
+}
+
+.login-input, .login-btn {
+    width: 96%;
+    background-color: #e7dfd6;
+    border-radius: 8px;
+    padding: 8px 17px;
+    font-size: 13px;
+    border: 1px solid #f5f0ef;
+    color: black
+}
+.login-btn {
+    background-color: #d38510;
+    border: 1px solid rgb(300, 200, 200)
+}
+.login-btn:hover{
+    cursor: pointer;
+    background-color: #5c3a08;
+    border: 1px solid #5c3a08;
+}
+.login-input {
+    text-decoration: none;
+}
+
+.login-form {
+    margin-top: 70px
+}
+
+.login-form>* {
+    margin: 10px 0px
+}
+
+/* ========================= login-form.html 관련 css 종료 ================== */
