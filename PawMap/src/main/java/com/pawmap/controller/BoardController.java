@@ -1,9 +1,15 @@
 package com.pawmap.controller;
 
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,8 +49,8 @@ public class BoardController {
 	public String insertFreeAndNanumBoard(BoardVO vo) {
 		
 
-		System.out.println("insertFreeAndNanumBoard()탐");
 
+		System.out.println("insertFreeAndNanumBoard()탐");
 		System.out.println("BoardVO ====== "+vo);
 		
 		boardService.insertFreeAndNanumBoard(vo);
@@ -89,8 +95,10 @@ public class BoardController {
 		System.out.println("boardSeq ====== "+boardSeq);
 		
 
+
 		System.out.println(boardService.getFreeBoard(boardSeq));
 		
+
 
 		model.addAttribute("getFreeBoard",boardService.getFreeBoard(boardSeq));
 		

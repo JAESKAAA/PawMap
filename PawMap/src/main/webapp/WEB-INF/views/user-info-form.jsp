@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<<<<<<< HEAD
 
 <%@ include file="layout/header.jsp" %>
 
@@ -68,4 +69,6 @@ pageEncoding="UTF-8"%>
     </div>
     <!-- End 회원정보 영역-->
 
+
     <%@ include file="layout/footer.jsp" %>
+

@@ -1,5 +1,6 @@
 package com.pawmap.controller;
-
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -20,8 +21,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pawmap.VO.UserVO;
 import com.pawmap.configuration.auth.PrincipalDetails;
+import com.pawmap.mapper.UserMapper;
 import com.pawmap.service.UserService;
 import com.pawmap.util.CookieUtil;
+
+
+
 
 
 
@@ -34,6 +39,12 @@ public class UserController {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
+
+	 @Autowired 
+	 private UserMapper userMapper;
+	
+
+
 	@GetMapping("/test/login")
 	public @ResponseBody String loginTest(
 			Authentication authentication,
@@ -69,6 +80,7 @@ public class UserController {
 
 	
 	
+
 	//OAuth 로그인을해도 PrincipalDetails로 받을수 있고, userDetails로 로그인해도 PrincipalDetails로 받을 수 있음
 	@GetMapping("/user")
 	public @ResponseBody String user(@AuthenticationPrincipal PrincipalDetails principalDetails) {
@@ -149,7 +161,6 @@ public class UserController {
 	@PreAuthorize("hasRole('ROLE_ADMIN')") //하기 메서드가 실행하기 직전에 실행됨
 	@GetMapping("/data")
 	public @ResponseBody String data() {
-
 		return "login";
 	}
 	
@@ -172,19 +183,59 @@ public class UserController {
 	@GetMapping("/forgotPw")
 	public String showFindLoginPasswd() {
 		return "forgotPw";
+
 	}
 	// 비밀번호 찾기 화면에서 데이터 받기 
-	@RequestMapping("/doForgotPw")
-	@ResponseBody
-	public String doFindLoginPasswd(@RequestParam Map<String, Object> param) {
-		Map<String, Object> findLoginIdRs = userService.findLoginPasswd(param);
-		
-		return (String) findLoginIdRs.get("msg");
-		
-
-
-	}
+		@RequestMapping("/forgotPw")
+		@ResponseBody
+		public String doFindLoginPasswd(@RequestParam Map<String, Object> param , HttpServletResponse response) throws IOException {
+//			String msg= (String) findLoginIdRs.get("msg");
+			
+			
+			String userId = (String) param.get("userId");
+			String userName = (String) param.get("userName");
+			String userEmail = (String) param.get("userEmail");
+			
+			UserVO user  = userMapper.searchPwd(userId, userName);
+//			UserVO userWrongEmail = 
+//					(user.getUserId() ==(String) param.get("userId"))
+//					&& (user.getUserEmail() != (String) param.get("userEmail"));
+			
+			// 입력한 아이디 정보는 회원과 일치하지만 이메일정보는 일치하지 않을 때
+				
+			if (!user.getUserEmail().equals(userEmail)){
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				
+				out.println("<script>alert('이메일 정보가 일치하지 않습니다'); location.href='loginForm';</script>");
+				
+				out.flush();
+			
+			} else if(user == null) {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				
+				// 입력한 정보가 일치하지 않을 때
+				out.println("<script>alert('일치하는 회원이 없습니다'); location.href='loginForm';</script>");
+				
+				out.flush();
+			} else {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				
+				// 입력한 정보와 회원정보가 일치할 때 
+				out.println("<script>alert('입력하신 메일로 임시 패스워드가 발송되었습니다'); location.href='loginForm';</script>");
+				
+				out.flush();
+				Map<String, Object> findLoginIdRs = userService.findLoginPasswd(param);
+			
+			}
+			 
+			return "loginForm";
+			
+		}
 	
+
 	// 비밀번호를 잊어버렸습니까? -> forgotPW 
 	@GetMapping("forgotPw.do")
 	public String showFindLoginInfo() {
@@ -203,4 +254,5 @@ public class UserController {
 		return "user-info-form";
 	}
 	
+
 }

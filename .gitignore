@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+/.metadata/
+=======
+>>>>>>> 1ea15dc593a23aeaf0f474a874cd2cb0f55e9531
 application.properties
 .metadata
 /.metadata/
@@ -5,3 +11,4 @@ application.properties
 *.metadata
 *.DS_Store
 
+>>>>>>> a84f73784a254674bb19a44a66c0c833336fa097

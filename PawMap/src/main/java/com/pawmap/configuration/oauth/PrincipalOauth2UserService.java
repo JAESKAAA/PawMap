@@ -19,6 +19,7 @@ import com.pawmap.configuration.oauth.provider.NaverUserInfo;
 import com.pawmap.configuration.oauth.provider.OAuth2UserInfo;
 import com.pawmap.service.UserService;
 
+
 @Service
 public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 
@@ -37,6 +38,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 		System.out.println("getAccessToken : " + userRequest.getAccessToken().getTokenValue());
 		
 		OAuth2User oauth2User = super.loadUser(userRequest);
+
 		//구글 로그인버튼 클릭 -> 구글 로그인창 -> 로그인 완료 -> code 리턴(OAuth-Client라이브러리) -> AccessToken요청 후 토큰 수령. 여기까지가 userRequest 정보
 		//userRequest정보를 통해 -> loadUser함수 호출 -> 구글로부터 회원 프로필을 받아줌
 		System.out.println("getAttributes : " + oauth2User.getAttributes());
@@ -93,6 +95,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 					.providerId(providerId)
 					.build();
 					
+
 			//여기서 DB에 저장됨
 			userService.socialJoin(userEntity);
 		}else {

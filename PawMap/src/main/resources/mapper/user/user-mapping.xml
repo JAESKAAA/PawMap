@@ -51,6 +51,7 @@
   				#{role}
   		)
   	</insert>
+
   	 <!-- 쿼리통합,,추가  -->
 	<!-- 로그 -->
 	<select id="findByLoginId"
@@ -99,8 +100,6 @@
 		USER_ID = #{userId}
 		AND
 		USER_NAME = #{userName}
-		AND
-		USER_EMAIL = #{userEmail}
 	</select>
 
 	<!--로그인 비밀번호 변경  -->

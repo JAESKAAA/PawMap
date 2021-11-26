@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 
+
 <%@ include file="layout/header.jsp" %>
+
 
     <div class="board-type mt-5">
       <c:if test="${getFreeBoard.boardType eq 'f'} ">
@@ -22,7 +24,9 @@ pageEncoding="UTF-8"%>
                 </div>
                 <div class="col-lg-6" style="overflow:hidden;">
 
+
                     <h5 class="noo-sh-title-top mb-5 board_writer" id="freeBoardWriter" value="${getFreeBoard.userVO.userNickname }">작성자 : ${getFreeBoard.userVO.userNickname }</h5>
+
 
                 </div>
                 <div class="col-lg-6">
@@ -38,6 +42,7 @@ pageEncoding="UTF-8"%>
                   ${getFreeBoard.content}
                 </p>
               </div>
+
               <h1>${getFreeBoard.userId}</h1>
               <h1>${principal.user.userId}</h1>
               <div class="col-lg-6 mt-5">
@@ -66,6 +71,7 @@ pageEncoding="UTF-8"%>
                 <div class="card-body" style="padding: 1px;">
                     <div class="d-flex flex-start">
                         <form action="" style="width: 750px;">
+
                           <input type="hidden" name="userId" id="userId" value="${getFreeBoard.userId}">
                           <input type="hidden" name="boardSeq" id="freeBoardSeqHidden" value="${getFreeBoard.boardSeq}">
                           <input type="hidden" name="boardType" id="boardTypeForReply" value="${getFreeBoard.boardType}">
@@ -94,7 +100,9 @@ pageEncoding="UTF-8"%>
                                     <div class="w-100">
                                         <div class="form-outline">
 
+
                                             <textarea name="commentContent" class="form-control" id="reply-content" rows="4" cols="10"></textarea>
+
 
                                         </div>
                                         <div class="d-flex justify-content-between mt-3">
@@ -203,6 +211,7 @@ pageEncoding="UTF-8"%>
           </div>
         </div>
     </section> 
+
       
 
    <%@ include file="layout/footer.jsp" %>

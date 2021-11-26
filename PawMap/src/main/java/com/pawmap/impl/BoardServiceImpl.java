@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.pawmap.VO.BoardVO;
 
+
 import com.pawmap.VO.CommentVO;
+
 
 import com.pawmap.VO.Criteria;
 import com.pawmap.VO.UserVO;
@@ -30,6 +32,7 @@ public class BoardServiceImpl implements BoardService {
 		System.out.println("BoardServiceImpl :insertTest()");
 		boardMapper.insertTest(vo);
 	}
+
 
 	@Override
 	public void insertFreeAndNanumBoard(BoardVO vo) {
@@ -81,6 +84,7 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 
+
 	@Override
 	public void insertReplyForFreeBoard(CommentVO commentVO) {
 		boardMapper.insertReplyForFreeBoard(commentVO);
@@ -88,6 +92,6 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 
-	
+
 }
 

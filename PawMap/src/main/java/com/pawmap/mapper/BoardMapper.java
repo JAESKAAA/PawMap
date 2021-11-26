@@ -31,7 +31,9 @@ public interface BoardMapper {
 	int selectBoardCount(BoardVO vo);
 
 
+
 	void insertReplyForFreeBoard(CommentVO commentVO);
+
 
 }
 

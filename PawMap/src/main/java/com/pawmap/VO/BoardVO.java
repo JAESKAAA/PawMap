@@ -23,9 +23,9 @@ public class BoardVO {
 	private String keyword;
 	
 
+
 	private UserVO userVO;
 	
 	
 	
-
 }

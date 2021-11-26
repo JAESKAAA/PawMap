@@ -28,7 +28,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private PrincipalOauth2UserService principalOauth2UserService;
 	
-
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -51,12 +50,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 								//"/login" 주소가 호출되면 시큐리티가 낚아채서 대신 로그인을 진행해줌
 								.loginProcessingUrl("/login")
 								.defaultSuccessUrl("/")
+
 								// oauth2 라이브러리를 통한 소셜 로그인을 위한 코드
 								.and()
 								.oauth2Login()
 								.loginPage("/loginForm")
 								// 구글 로그인 완료된 후 후처리 필요. Tip. 구글로그인 완료시 하기의 정보를 받음
 								// 액세스 토큰 + 사용자 프로필정보
+
 								.userInfoEndpoint()
 								.userService(principalOauth2UserService);
 						

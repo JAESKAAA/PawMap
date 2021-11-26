@@ -1,15 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <!-- Basic -->
 
+
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal"/>
 </sec:authorize>
+
 
   <head>
     <meta charset="utf-8" />
@@ -19,12 +23,17 @@ pageEncoding="UTF-8"%>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Site Metas -->
+
     <title>PawMap - 우리집 주변 동물병원 찾기</title>
+
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
 
     <!-- Site Icons -->
+
+
+
     <link rel="shortcut icon" href="<%=request.getContextPath() %>/images/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="<%=request.getContextPath() %>/images/apple-touch-icon.png" />
     <!-- Fontawesome CSS-->
@@ -47,6 +56,7 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style-gyul.css">
     
         <!-- 결 커스텀 css -->
+
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -174,7 +184,9 @@ pageEncoding="UTF-8"%>
   </head>
 
   <body>
+
     <!-- Header 시작 -->
+
     <header class="main-header">
       <!-- Start Navigation -->
       <nav
@@ -199,10 +211,12 @@ pageEncoding="UTF-8"%>
             >
               <i class="fa fa-bars"></i>
             </button>
+
             <!--사이트 로고 부분-->
             <a class="navbar-brand" href="/pawmap">
               <div class="main_logo_box"></div>
             </a>
+
           </div>
           <!-- End Header Navigation -->
 
@@ -214,6 +228,7 @@ pageEncoding="UTF-8"%>
               data-out="fadeOutUp"
             >
               <li class="nav-item active">
+
                 <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
@@ -224,6 +239,7 @@ pageEncoding="UTF-8"%>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="contact-us.html">보호소 정보</a>
+
               </li>
               <li class="dropdown">
                 <a
@@ -233,6 +249,7 @@ pageEncoding="UTF-8"%>
                   >커뮤니티</a
                 >
                 <ul class="dropdown-menu">
+
                   <li><a href="shop.html">공지사항</a></li>
                   <li><a href="shop-detail.html">자유게시판</a></li>
                   <li><a href="cart.html">나눔게시판</a></li>
@@ -325,6 +342,7 @@ pageEncoding="UTF-8"%>
     <!-- Header 끝 부분 -->
 
 
+
     <!---------------------------------- 회원가입 폼 -------------------------->
 
     <section class="vh-100" style="background-color: #eee">
@@ -350,8 +368,10 @@ pageEncoding="UTF-8"%>
                       action="/pawmap/join"
                       method="post"
 
+
                       name="joinForm"
                       onsubmit="submitJoinForm(this); return false;"                      >
+
 
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
@@ -541,4 +561,5 @@ pageEncoding="UTF-8"%>
     <!-- End Main Top -->
 
   <%@ include file="layout/footer.jsp" %>
+
 

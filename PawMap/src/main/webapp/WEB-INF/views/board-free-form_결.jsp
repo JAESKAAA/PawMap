@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 
+
 <%@ include file="layout/header.jsp" %>
 
   
@@ -8,6 +9,7 @@ pageEncoding="UTF-8"%>
     <form class="form-horizontal board-form" method="POST" action="insertFreeAndNanumBoard" >
 
         <h1>유저 아이디 == ${principal.user.userId}</h1>
+
 
         <div class="container">
             <div class="card row">
@@ -20,6 +22,7 @@ pageEncoding="UTF-8"%>
                 <div class="form-group ml-5 ">
                     <label for="name" class="col-sm-2 control-label">닉네임</label>
                     <div class="col-sm-10">
+
 
                         <input type="hidden" class="form-control" id="user_id" name="userId" value="${principal.user.userId}" >
                         <input type="text" class="form-control input-nickname" id="user_nickname" name="${principal.user.userNickname}"  placeholder="${principal.user.userNickname}" readonly>
@@ -63,5 +66,7 @@ pageEncoding="UTF-8"%>
     </form>
     <!-- 게시판 폼 종료 -->
       
+
 <%@ include file="layout/footer.jsp" %>
       
+

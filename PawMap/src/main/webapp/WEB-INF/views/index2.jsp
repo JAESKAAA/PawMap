@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 
+
 <%@ include file="layout/header.jsp" %>
+
 
     <!-- Start Top Search -->
     <div class="top-search">
@@ -652,5 +654,7 @@ pageEncoding="UTF-8"%>
     </div> -->
     <!-- End Instagram Feed  -->
 
+
 <%@ include file="layout/footer.jsp" %>
  
+
