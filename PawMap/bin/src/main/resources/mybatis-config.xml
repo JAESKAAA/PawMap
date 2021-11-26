@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+		<!-- 전통적인 데이터베이스 칼럼명 형태인 A_COLUMN을 CamelCase형태의 자바 프로퍼티명 형태인 aColumn으로 자동으로 매핑하도록 함 -->
+		<setting name="callSettersOnNulls" value="true"/>
+		<!-- 쿼리 결과 필드값이 null인경우 원래 누락되어 나오는데, null값 초기화하여 누락 안되게 해주는 옵션 -->
+		<setting name="jdbcTypeForNull" value="NULL"/>
+		<!-- 쿼리에 보내는 파라미터가 Null인 경우 오류 발생하는 것을 방지해 줌 ex. #{search.user} 가 널인 경우 등등 -->
+	</settings>
+</configuration>
