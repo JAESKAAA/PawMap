@@ -60,24 +60,27 @@ let index = {
 	
 	updateFreeBoard:function(){
 		let freeBoardSeq = $("#boardSeq").val();
+		let freeBoardType = $("#boardType").val();
 		
 		let data = {
 			title: $("#title").val(),
 			content: $("#content").val(),
 			boardSeq : freeBoardSeq,
 			userId : $("#user_id").val(),
-			boardType : $("#boardType").val() 
+			boardType : freeBoardType
 		};
-		alert("글 수정하기");
-		console.log("updateFreeBoard:function 탐, freeBoardSeq ==="+freeBoardSeq+"data =======: "+ data);
+		alert("글 수정하기11111111");
+		console.log("updateFreeBoard:function 탐, freeBoardSeq ==="+freeBoardSeq
+												+ "freeBoardType ==="+freeBoardType 
+												+ "data ======= : "+ data);
 		$.ajax({
 			type: 'POST',
-			url: "updateFreeAndNanumBoardForm/api/"+freeBoardSeq,
+			url: "updateFreeAndNanumBoardForm/api/"+freeBoardSeq&freeBoardType,
 			data : JSON.stringify(data),
 			contentType : 'application/json; charset=utf-8',
 			success : function() {
-				alert("1111");
-				location.href ="getFreeBoard?boardSeq="+freeBoardSeq
+				alert("글 수정 완료했을때 뜨는 창");
+				location.href ="getFreeBoard?boardSeq="+freeBoardSeq+"&"+"boardType"+"="+freeBoardType
 			},
 			error : function(e) {
 				console.log(e);

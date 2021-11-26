@@ -130,6 +130,7 @@ public class UserController {
 		vo.setRole("ROLE_USER");
 		String rawPassword = vo.getUserPassword();
 		String encPassword = bCryptPasswordEncoder.encode(rawPassword);
+		vo.setUserType("N");
 		vo.setUserPassword(encPassword);
 		userService.insertUser(vo);
 		

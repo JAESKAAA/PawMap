@@ -79,7 +79,9 @@ pageEncoding="UTF-8"%>
                 <div class="form-group ml-5 ">
                     <label for="name" class="col-sm-2 control-label">닉네임</label>
                     <div class="col-sm-10">
+                        <!-- 이거 무조건 불러와야함 hidden으로 숨겨서라도 -->
                         <input type="hidden" id="boardSeq" value="${getBoard.boardSeq }"/>
+                        <input type="hidden" id="boardType" value="${getBoard.boardType }"/>
                         <input type="text" class="form-control input-nickname" id="user_id" name="userId"  placeholder="${getBoard.userId}" value="${getBoard.userId}" readonly>
                     </div>
                 </div>

@@ -3,11 +3,8 @@ package com.pawmap.service;
 import java.util.List;
 
 import com.pawmap.VO.BoardVO;
-
 import com.pawmap.VO.CommentVO;
-
 import com.pawmap.VO.Criteria;
-import com.pawmap.VO.UserVO;
 
 public interface BoardService {
 	
@@ -15,9 +12,12 @@ public interface BoardService {
 
 	List<BoardVO> getFreeBoardList(BoardVO vo, Criteria cri);
 
-	BoardVO getFreeBoard(int boardSeq);
+//	나눔게시판 리스트 - 은혜 추가
+	List<BoardVO> getNanumBoardList(BoardVO vo, Criteria cri);
+	
+	BoardVO getFreeBoard(int boardSeq, String boardType);
 
-	void deleteFreeBoardBySeq(int boardSeq);
+	void deleteFreeBoardBySeq(int boardSeq, String boardType);
 
 	void updateFreeBoardForm(BoardVO vo);
 
@@ -25,6 +25,11 @@ public interface BoardService {
 
 
 	void insertReplyForFreeBoard(CommentVO commentVO);
+
+
+
+
+
 
 	
 	

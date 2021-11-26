@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="layout/header.jsp" %>
 
     <div class="board-type mt-5">
-      <c:if test="${getFreeBoard.boardType eq 'f'} ">
+      <c:if test="${getFreeBoard.boardType eq 'f'}">
         <h1>자유게시판</h1>
       </c:if>
-      <h1>자유게시판</h1>
+      <c:if test="${getFreeBoard.boardType eq 's'}">
+        <h1>나눔게시판</h1>
+      </c:if>
     </div>
     
     <hr class="line-paint">
@@ -19,6 +22,7 @@ pageEncoding="UTF-8"%>
             <div class="row board-info">
                 <div class="col-lg-6">
                     <h2 class="noo-sh-title-top mb-5 board_title">제목 : ${getFreeBoard.title}</h2>
+                    <input type="hidden" id="getFreeBoard" value="${getFreeBoard.boardType }"/>
                 </div>
                 <div class="col-lg-6" style="overflow:hidden;">
 
@@ -43,7 +47,7 @@ pageEncoding="UTF-8"%>
               <div class="col-lg-6 mt-5">
                 <button onclick="location.href='/pawmap/board/getFreeBoardList'" type="button" class="btn btn-secondary">목록으로</button>
               <c:if test="${getFreeBoard.userId == principal.user.userId}">
-                <button onclick="location.href='/pawmap/board/updateFreeAndNanumBoardForm?boardSeq=${getFreeBoard.boardSeq}'" type="button" class="btn btn-primary">수정</button>
+                <button onclick="location.href='/pawmap/board/updateFreeAndNanumBoardForm?boardSeq=${getFreeBoard.boardSeq}&boardType=${getFreeBoard.boardType}'" type="button" class="btn btn-primary">수정</button>
                 <button id="delete-free-board" type="button" class="btn btn-secondary">삭제</button>
               </c:if>  
 

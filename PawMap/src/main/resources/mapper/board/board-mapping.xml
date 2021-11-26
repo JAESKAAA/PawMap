@@ -90,6 +90,34 @@
   		board_type = 'f';
   	</select> -->
   	
+  	
+  	
+  	
+  	<!-- 나눔게시판 리스트 - 은혜 추가-->
+	  	<select id="getNanumBoardList" parameterType="HashMap" resultMap="boardResult">
+  		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname
+  		FROM board AS b
+  		INNER JOIN user AS u
+  		ON b.user_id = u.user_id
+  		WHERE board_type = 's'
+  		<if test="board.keywordType == 'title'">
+			AND title LIKE CONCAT('%', #{board.keyword}, '%')
+		</if>
+		<if test="board.keywordType == 'content'">
+			AND `content` LIKE CONCAT('%', #{board.keyword}, '%')
+		</if>
+		<if test="board.keywordType == 'titleAndBody'">
+			AND (title LIKE CONCAT('%', #{board.keyword}, '%') OR `content` LIKE CONCAT('%', #{board.keyword}, '%'))
+		</if>
+  		ORDER BY board_seq DESC
+  		<!-- 최신글이 위로 오게 하는 쿼리 -->
+  		LIMIT #{criteria.amount} OFFSET #{criteria.startNum}
+		
+	</select>
+	
+	
+	
+  	
   	<select id="getFreeBoard" resultType="com.pawmap.VO.BoardVO" resultMap="boardResult">
   		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname 
   		FROM board AS b
@@ -97,16 +125,22 @@
   		ON b.user_id = u.user_id
   		WHERE b.board_seq = #{boardSeq}
   		AND
-  		b.board_type = 'f';
+  		b.board_type = #{boardType}
 
   	</select>
+  	
+  	
+  	
+  	
   	
   	<delete id="deleteFreeBoardBySeq">
   		DELETE FROM board
   		WHERE board_seq = #{boardSeq}
   		AND
-  		board_type = 'f';
+  		board_type = #{boardType}	
   	</delete>
+  	
+  	
   	
   	<update id="updateFreeBoardForm">
   		UPDATE board
@@ -117,6 +151,8 @@
   		AND
   		user_id = #{userId}
   	</update>
+  	
+  	
   	
   	<select id="selectBoardCount" resultType="int">
 		SELECT COUNT(*) FROM BOARD

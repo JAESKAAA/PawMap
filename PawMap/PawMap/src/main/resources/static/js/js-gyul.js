@@ -1,0 +1,130 @@
+let index = {
+	
+	init:function(){
+		$("#delete-free-board").on("click",()=>{
+			this.deleteFreeBoardBySeq();
+		});
+		//$("#searchBtn").on("click",()=>{
+		//	this.getSearchFreeBoardList();	
+		//});
+		$("#update-free-board").on("click",()=>{
+			this.updateFreeBoard();
+		});
+		$("#btn-reply-save").on("click",()=>{
+			this.replySaveFreeBoard();
+		})
+		
+	},
+	
+	deleteFreeBoardBySeq:function(){
+		
+		let freeBoardSeq = $("#freeBoardSeq").text().substring(9);
+		console.log(freeBoardSeq);
+		
+		if(confirm("정말 삭제하시겠습니까?")){
+			$.ajax({
+				type : "POST",
+				url: "deleteFreeBoard/api/"+freeBoardSeq,
+				contentType : "application/json; charset=utf-8",
+			}).done(function(resp){
+				alert("삭제 성공");
+				location.href = "getFreeBoardList"
+			}).fail(function(error){
+				alert(error);
+				console.log(error);
+			});
+			
+		}else{
+			
+		}
+	},
+	
+	getSearchFreeBoardList:function(){
+		console.log("탐");
+		alert("검색");
+		
+		$.ajax({
+			type: 'GET',
+			url: "getFreeBoardList",
+			data : $("form[name=search-form]").serialize()
+			
+		}).done(function(result){
+			alert("검색성공");
+			location.href = "getFreeBoard"
+			
+		}).fail(function(error){
+			alert(error);
+			console.log(error);
+		});
+	},
+	
+	updateFreeBoard:function(){
+		let freeBoardSeq = $("#boardSeq").val();
+		let freeBoardType = $("#boardType").val();
+		
+		let data = {
+			title: $("#title").val(),
+			content: $("#content").val(),
+			boardSeq : freeBoardSeq,
+			userId : $("#user_id").val(),
+			boardType : freeBoardType
+		};
+		alert("글 수정하기11111111");
+		console.log("updateFreeBoard:function 탐, freeBoardSeq ==="+freeBoardSeq
+												+ "freeBoardType ==="+freeBoardType 
+												+ "data ======= : "+ data);
+		$.ajax({
+			type: 'POST',
+			url: "updateFreeAndNanumBoardForm/api/"+freeBoardSeq,
+			data : JSON.stringify(data),
+			contentType : 'application/json; charset=utf-8',
+			success : function() {
+				alert("글 수정 완료했을때 뜨는 창");
+				location.href ="getFreeBoard?boardSeq="+freeBoardSeq
+			},
+			error : function(e) {
+				console.log(e);
+			}
+		});
+	},
+	
+	replySaveFreeBoard:function(){
+		
+		let seq = $("#freeBoardSeqHidden").val();
+		
+		let data={
+			boardSeq: $("#freeBoardSeqHidden").val(),	
+			boardType: $("#boardTypeForReply").val(),
+			userId: $("#userId").val(),
+			commentContent: $("#reply-content").val(),
+			hospitalSeq : $("#hospitalSeqForReply").val()
+		};
+		
+		console.log(data);
+		
+		if(data.replyContent == ""){
+			alert("내용을 입력해주세요");
+			
+		}else{
+			$.ajax({
+				type : "POST",
+				url: `insertReplyFreeBoard/api/${data.boardSeq}`,
+				data: JSON.stringify(data),
+				contentType : 'application/json; charset=utf-8',
+				dataType : "json",
+				success : function(){
+					alert("댓글댓글 성공");
+					location.href ="getFreeBoard?boardSeq="+seq
+				},
+				error : function(e){
+					console.log(e);
+				}
+			});
+		}
+	},
+	
+	
+	
+}
+
+index.init();

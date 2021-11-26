@@ -165,7 +165,7 @@ pageEncoding="UTF-8"%>
                   <c:forEach var="freeBoard" items="${freeBoardList }">
 			          	<tr>
 				        	<td>${freeBoard.boardSeq }</td>
-				        	<td class="title"><a href="getFreeBoard?boardSeq=${freeBoard.boardSeq}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}">${freeBoard.title }</a></td>
+				        	<td class="title"><a href="getFreeBoard?boardSeq=${freeBoard.boardSeq}&&boardType=${freeBoard.boardType }&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}">${freeBoard.title }</a></td>
                             <!-- <td class="title"><a href="getFreeBoard?boardSeq=${freeBoard.boardSeq}">${freeBoard.title }</a></td> -->
 
                             <td>${freeBoard.userVO.userNickname }</td>

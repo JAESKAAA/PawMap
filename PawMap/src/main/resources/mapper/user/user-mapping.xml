@@ -21,13 +21,18 @@
   	
   	<insert id="insertUser">
 
-  		INSERT INTO user(user_id, user_password, user_name, user_email, role) VALUES(
-  				#{userId},
-  				#{userPassword},
-  				#{userName},
-				#{userEmail},
-  				#{role}
-  		)
+        INSERT INTO user(user_seq, user_type, user_id, user_password, user_name, user_email, user_tel_num, address, user_nickname, role) VALUES(
+              (SELECT IFNULL(MAX(user_seq), 0) + 1 FROM user A WHERE user_type = #{userType}),
+              #{userType},
+              #{userId},
+              #{userPassword},
+              #{userName},
+            #{userEmail},
+            #{userTelNum},
+            #{address},
+            #{userNickname},
+              #{role}
+        )
   	</insert>
   
   	<insert id="socialJoin">

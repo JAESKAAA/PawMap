@@ -7,10 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.pawmap.VO.BoardVO;
-
 import com.pawmap.VO.CommentVO;
-
-import com.pawmap.VO.UserVO;
 
 
 @Mapper
@@ -21,9 +18,9 @@ public interface BoardMapper {
 
 	List<BoardVO> getFreeBoardList(Map<String,Object> map);
 
-	BoardVO getFreeBoard(@Param("boardSeq") int boardSeq);
+	BoardVO getFreeBoard(@Param("boardSeq") int boardSeq, @Param("boardType") String boardType);
 
-	void deleteFreeBoardBySeq(@Param("boardSeq") int boardSeq);
+	void deleteFreeBoardBySeq(@Param("boardSeq") int boardSeq, @Param("boardType") String boardType);
 
 	void updateFreeBoardForm(BoardVO vo);
 
@@ -31,6 +28,10 @@ public interface BoardMapper {
 
 
 	void insertReplyForFreeBoard(CommentVO commentVO);
+
+//	나눔게시판 - 은혜 추가
+	List<BoardVO> getNanumBoardList(Map<String,Object> map);
+
 
 }
 
