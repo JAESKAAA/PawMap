@@ -2,37 +2,51 @@ package com.pawmap.configuration.auth;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.pawmap.VO.UserVO;
 
+import lombok.Data;
+
 /*
- * ½ÃÅ¥¸®Æ¼°¡ "/login" ¿äÃ»À» ³¬¾ÆÃ¤¼­ ·Î±×ÀÎÀ» ÁøÇà½ÃÅ´
- * ·Î±×ÀÎ ÁøÇàÀÌ ¿Ï·áµÇ¸é ½ÃÅ¥¸®Æ¼ sessionÀ» ¸¸µé¾î ÁÜ. (Security ContextHolder(Å°°ªÀÓ))
- * Security°¡ °¡Áö°íÀÖ´Â ¼¼¼Ç¿¡ µé¾î°¥ ¼ö ÀÖ´Â ¿ÀºêÁ§Æ®´Â ÇÑÁ¤µÇ¾î ÀÖÀ½ (ÇÏ±âÂü°í)
- * Object => Authentication Å¸ÀÔ °´Ã¼
- * Authentication °´Ã¼ ¾È¿¡ UserÁ¤º¸°¡ ÀÖ¾î¾ßÇÔ
- * User¿ÀºêÁ§Æ®ÀÇ Å¸ÀÔ => UserDetails Å¸ÀÔ °´Ã¼¿©¾ßÇÔ
+ * ì‹œíë¦¬í‹°ê°€ "/login" ìš”ì²­ì„ ë‚šì•„ì±„ì„œ ë¡œê·¸ì¸ì„ ì§„í–‰ì‹œí‚´
+ * ë¡œê·¸ì¸ ì§„í–‰ì´ ì™„ë£Œë˜ë©´ ì‹œíë¦¬í‹° sessionì„ ë§Œë“¤ì–´ ì¤Œ. (Security ContextHolder(í‚¤ê°’ì„))
+ * Securityê°€ ê°€ì§€ê³ ìˆëŠ” ì„¸ì…˜ì— ë“¤ì–´ê°ˆ ìˆ˜ ìˆëŠ” ì˜¤ë¸Œì íŠ¸ëŠ” í•œì •ë˜ì–´ ìˆìŒ (í•˜ê¸°ì°¸ê³ )
+ * Object => Authentication íƒ€ì… ê°ì²´
+ * Authentication ê°ì²´ ì•ˆì— Userì •ë³´ê°€ ìˆì–´ì•¼í•¨
+ * Userì˜¤ë¸Œì íŠ¸ì˜ íƒ€ì… => UserDetails íƒ€ì… ê°ì²´ì—¬ì•¼í•¨
  * 
- * Security Session => Authentication => UserDetails Å¸ÀÔÀÌ¾î¾ßÇÔ
+ * Security Session => Authentication => UserDetails íƒ€ì…ì´ì–´ì•¼í•¨
  */
 
+@Data
+public class PrincipalDetails implements UserDetails, OAuth2User {
 
-public class PrincipalDetails implements UserDetails {
-
-	private UserVO user; //ÄÄÆ÷Áö¼Ç
+	private UserVO user; //ì»´í¬ì§€ì…˜
 	
+	//ì†Œì…œë¡œê·¸ì¸ ì •ë³´ë¥¼ ë‹´ê¸°ìœ„í•œ ë§µ
+	private Map<String, Object> attributes;
+	
+	//ì¼ë°˜ë¡œê·¸ì¸ì‹œ ì‚¬ìš©ë  ìƒì„±ì
 	public PrincipalDetails(UserVO user) {
 		this.user = user;
 	}
+
+	//OAuth ë¡œê·¸ì¸ì‹œ ì‚¬ìš©ë  ìƒì„±ì
+	public PrincipalDetails(UserVO user, Map<String, Object> attributes) {
+		this.user = user;
+		this.attributes = attributes;
+	}
 	
 	
-	//ÇØ´ç UserÀÇ ±ÇÇÑÀ» ¸®ÅÏÇÏ´Â °÷
+	//í•´ë‹¹ Userì˜ ê¶Œí•œì„ ë¦¬í„´í•˜ëŠ” ê³³
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		//¸®ÅÏÅ¸ÀÔÀÌ CollectionÀ¸·Î ¹Ş±â ‹š¹®¿¡, ÇöÀç StringÀ¸·Î µÇ¾îÀÖ´Â UserVOÀÇ type º¯¼ö¸¦ collctionÅ¸ÀÔÀ¸·Î º¯°æÇØÁà¾ßÇÔ(ÇÏ±âÂü°í)
+		//ë¦¬í„´íƒ€ì…ì´ Collectionìœ¼ë¡œ ë°›ê¸° ë–„ë¬¸ì—, í˜„ì¬ Stringìœ¼ë¡œ ë˜ì–´ìˆëŠ” UserVOì˜ type ë³€ìˆ˜ë¥¼ collctioníƒ€ì…ìœ¼ë¡œ ë³€ê²½í•´ì¤˜ì•¼í•¨(í•˜ê¸°ì°¸ê³ )
 		Collection<GrantedAuthority> collect = new ArrayList<>();
 		collect.add(new GrantedAuthority() {
 			
@@ -55,34 +69,52 @@ public class PrincipalDetails implements UserDetails {
 		return user.getUserName();
 	}
 
-	//°èÁ¤ ¸¸·á¿©ºÎ
+	//ê³„ì • ë§Œë£Œì—¬ë¶€
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
 	}
 
-	//°èÁ¤ Àá±İ ¿©ºÎ
+	//ê³„ì • ì ê¸ˆ ì—¬ë¶€
 	@Override
 	public boolean isAccountNonLocked() {
 		return true;
 	}
 
-	//°èÁ¤ ºñ¹Ğ¹øÈ£ À¯È¿±â°£ Áö³µ´ÂÁö È®ÀÎÇÏ´Â °Í
+	//ê³„ì • ë¹„ë°€ë²ˆí˜¸ ìœ íš¨ê¸°ê°„ ì§€ë‚¬ëŠ”ì§€ í™•ì¸í•˜ëŠ” ê²ƒ
 	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;
 	}
 
-	//°èÁ¤ È°¼ºÈ­ ¿©ºÎ
+	//ê³„ì • í™œì„±í™” ì—¬ë¶€
 	@Override
 	public boolean isEnabled() {
 		
-		//¿ì¸® »çÀÌÆ®¿¡¼­ 1³âµ¿¾È È¸¿øÀÌ ·Î±×ÀÎÀ» ¾ÈÇÏ¸é ÈŞ¸Õ °èÁ¤À¸·Î ÇÏ±â·Î ÇßÀ» °æ¿ì,
-		//DB¼Ó¼º¿¡ loginDate(Timestamp·Î) ¸¸µé¾î¼­ °ËÁõ ÇÒ ¼ö ÀÖÀ½ (ÇÏ±â ¿¹½Ã Âü°í)
-		//user.getLoginDate(); -> ÇöÀç ½Ã°£-·Î±×ÀÎ½Ã°£ => 1³â ÃÊ°ú½Ã return false;
+		//ìš°ë¦¬ ì‚¬ì´íŠ¸ì—ì„œ 1ë…„ë™ì•ˆ íšŒì›ì´ ë¡œê·¸ì¸ì„ ì•ˆí•˜ë©´ íœ´ë¨¼ ê³„ì •ìœ¼ë¡œ í•˜ê¸°ë¡œ í–ˆì„ ê²½ìš°,
+		//DBì†ì„±ì— loginDate(Timestampë¡œ) ë§Œë“¤ì–´ì„œ ê²€ì¦ í•  ìˆ˜ ìˆìŒ (í•˜ê¸° ì˜ˆì‹œ ì°¸ê³ )
+		//user.getLoginDate(); -> í˜„ì¬ ì‹œê°„-ë¡œê·¸ì¸ì‹œê°„ => 1ë…„ ì´ˆê³¼ì‹œ return false;
 		
 		return true;
 	}
 
+
+	@Override
+	public Map<String, Object> getAttributes() {
+		return attributes;
+	}
+
+
+	@Override
+	public String getName() {
+		System.out.println("principalDetailsì˜ username=="+user.getUserName());
+		return null;
+	}
+	
+
+	
+	public String getNickname() {
+		return user.getUserNickname();
+	}
 	
 }

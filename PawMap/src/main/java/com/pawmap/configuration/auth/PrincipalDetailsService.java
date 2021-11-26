@@ -9,15 +9,17 @@ import org.springframework.stereotype.Service;
 import com.pawmap.VO.UserVO;
 import com.pawmap.service.UserService;
 
-//½ÃÅ¥¸®Æ¼ ¼³Á¤¿¡¼­ loginProcessingUrl("/login");
-// "/login" ¿äÃ»ÀÌ ¿À¸é ÀÚµ¿À¸·Î UserDetailsService Å¸ÀÔÀ¸·Î IoCµÇ¾î ÀÖ´Â loadUserByUsername ÇÔ¼ö°¡ ½ÇÇàµÊ
+
+//ì‹œíë¦¬í‹° ì„¤ì •ì—ì„œ loginProcessingUrl("/login");
+// "/login" ìš”ì²­ì´ ì˜¤ë©´ ìë™ìœ¼ë¡œ UserDetailsService íƒ€ì…ìœ¼ë¡œ IoCë˜ì–´ ìˆëŠ” loadUserByUsername í•¨ìˆ˜ê°€ ì‹¤í–‰ë¨
+
 @Service
 public class PrincipalDetailsService implements UserDetailsService{
 
 	@Autowired
 	private UserService userService;
 	
-	//½ÃÅ¥¸®Æ¼ session(³»ºÎ Authentication(³»ºÎ UserDetails))
+	//ì‹œíë¦¬í‹° session(ë‚´ë¶€ Authentication(ë‚´ë¶€ UserDetails))
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		System.out.println("username : "+username);
