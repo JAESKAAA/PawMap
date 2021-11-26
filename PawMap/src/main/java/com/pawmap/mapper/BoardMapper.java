@@ -9,7 +9,7 @@ import org.apache.ibatis.annotations.Param;
 import com.pawmap.VO.BoardVO;
 
 import com.pawmap.VO.CommentVO;
-
+import com.pawmap.VO.FileVO;
 import com.pawmap.VO.UserVO;
 
 
@@ -29,8 +29,11 @@ public interface BoardMapper {
 
 	int selectBoardCount(BoardVO vo);
 
-
 	void insertReplyForFreeBoard(CommentVO commentVO);
+
+	int getFreeBoardSeq();
+
+	
 
 }
 
