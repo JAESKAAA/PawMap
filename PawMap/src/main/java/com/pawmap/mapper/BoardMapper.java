@@ -16,7 +16,6 @@ import com.pawmap.VO.UserVO;
 @Mapper
 public interface BoardMapper {
 
-
 	void insertFreeAndNanumBoard(BoardVO vo);
 
 	List<BoardVO> getFreeBoardList(Map<String,Object> map);
@@ -28,7 +27,6 @@ public interface BoardMapper {
 	void updateFreeBoardForm(BoardVO vo);
 
 	int selectBoardCount(BoardVO vo);
-
 
 	void insertReplyForFreeBoard(CommentVO commentVO);
 

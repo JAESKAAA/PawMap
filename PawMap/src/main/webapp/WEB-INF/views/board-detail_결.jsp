@@ -197,14 +197,10 @@ pageEncoding="UTF-8"%>
                   </div>
                 </div>
               </div>
-
-
             </div>
           </div>
         </div>
     </section> 
-      
-
    <%@ include file="layout/footer.jsp" %>
    
 

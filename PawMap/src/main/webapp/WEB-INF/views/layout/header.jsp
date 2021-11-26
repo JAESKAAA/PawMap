@@ -153,8 +153,8 @@ pageEncoding="UTF-8"%>
 			 </sec:authorize>
 			<sec:authorize access="isAuthenticated()">
 			 <li class="side-menu">
-                <a href="/pawmap/loginForm">
-                  <p>마이페이지 ${principal.user.userId} 님 환영합니다.</p>
+                <a href="/pawmap/mypage">
+                  <p>마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
                 </a>
               </li>
 			 <li class="side-menu">

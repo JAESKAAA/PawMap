@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.security.SecureRandom;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.groovy.util.Maps;
@@ -16,6 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.pawmap.VO.UserVO;
+import com.pawmap.configuration.auth.PrincipalDetails;
 import com.pawmap.mapper.UserMapper;
 
 import com.pawmap.service.BoardService;
@@ -52,6 +54,11 @@ public class UserServiceImpl implements UserService{
 	public void insertUser(UserVO vo) {
 		userMapper.insertUser(vo);
 }
+	@Override
+	public void insertHospitalUser(UserVO vo) {
+	userMapper.insertHospitalUser(vo);
+	}
+	
 	 @Override
 	public UserVO findByUsername(String username) {
 		return userMapper.findByUsername(username);
@@ -216,6 +223,34 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public UserVO checkDuplicateId(int userId) {
 		return userMapper.checkDuplicateId(userId);
+	}
+	
+	@Override
+	public void updateUser(UserVO vo) {
+		userMapper.updateUser(vo);
+	}
+
+	@Override
+	public void deleteUser(UserVO vo) {
+		userMapper.deleteUser(vo);
+	}
+	@Override
+	public List<UserVO> getUserList(UserVO vo) {
+		return userMapper.getUserList(vo);
+	}
+	@Override
+	public List<UserVO> getHospitalUserList(UserVO vo) {
+		return userMapper.getHospitalUserList(vo);
+	}
+	
+	@Override
+	public UserVO getUser(UserVO vo) {
+		return userMapper.getUser(vo);
+	}
+	
+	@Override
+	public void updateUserAdmin(UserVO vo) {
+		userMapper.updateUserAdmin(vo);
 	}
 }
 
