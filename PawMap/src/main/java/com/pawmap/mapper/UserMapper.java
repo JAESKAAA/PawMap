@@ -20,8 +20,6 @@ public interface UserMapper {
 	// 아이디 중복 검사
 	public int idCheck(String userId);
 
-<<<<<<< HEAD
-=======
 
 	public UserVO findByLoginId(@Param("userId") String userId);
 
@@ -38,7 +36,4 @@ public interface UserMapper {
 	//public void update(UserVO user);
 	public void update(UserVO vo);
 
-
-
->>>>>>> a818a5e80c6aba8eddd3e5c7a22a607eaaa4ceef
 }

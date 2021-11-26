@@ -133,7 +133,7 @@ public class UserController {
 		return "redirect:/loginForm";
 	}
 	
-	// 아이디 중복 검사
+	// 아이디 중복 검사 => 회원 가입 페이지에서 아이디 중복 메세지 안뜸
 	@RequestMapping(value = "/userIdChk", method = RequestMethod.POST)
 	@ResponseBody
 	public String userIdChk(String userId) throws Exception{
@@ -203,10 +203,4 @@ public class UserController {
 		return "user-info-form";
 	}
 	
-//	// 회원탈퇴
-//	@GetMapping("/userdelete")
-//	public String userdeleteview() {
-//		return "user-delete";
-//	}
-
 }

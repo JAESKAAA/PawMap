@@ -21,11 +21,16 @@
   	
   	<insert id="insertUser">
 
-  		INSERT INTO user(user_id, user_password, user_name, user_email, role) VALUES(
+  		INSERT INTO user(user_id, user_password, user_name, user_email, user_tel_num, address1, address2, address3, user_nickname ,role) VALUES(
   				#{userId},
   				#{userPassword},
   				#{userName},
 				#{userEmail},
+				#{userTelNum},
+				#{address1},
+				#{address2},
+				#{address3},
+				#{userNickname},
   				#{role}
   		)
   	</insert>
