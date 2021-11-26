@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Basic -->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Site Metas -->
+    <title>PawMap</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Custom_실비아 CSS -->
+    <link rel="stylesheet" href="css/custom-실비아.css">
+
+</head>
+
+<body>
+    <!-- Start Main Top -->
+    <header class="main-header">
+        <!-- Start Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            <div class="container">
+                <!-- Start Header Navigation -->
+                <div class="navbar-header">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="logo" alt=""></a>
+                </div>
+                <!-- End Header Navigation -->
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+					<ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+						<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+						<li class="dropdown active">
+							<a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">SHOP</a>
+							<ul class="dropdown-menu">
+								<li><a href="shop.html">Sidebar Shop</a></li>
+								<li><a href="shop-detail.html">Shop Detail</a></li>
+								<li><a href="cart.html">Cart</a></li>
+								<li><a href="checkout.html">Checkout</a></li>
+								<li><a href="my-account.html">My Account</a></li>
+								<li><a href="wishlist.html">Wishlist</a></li>
+							</ul>
+						</li>
+						<li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+						<li class="nav-item"><a class="nav-link" href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+        </nav>
+        <!-- End Navigation -->
+
+        <style>
+            table, th, td { 
+                border:1px solid gray;  /* 표의 테두리 - 1px 회색 실선 */
+                border-collapse:collapse;  /* 표 테두리와 셀 테두리 합치기 */
+
+            }
+            th, td {
+                width:150px;  /* 셀 너비 */
+                padding:5px;  /* 셀 패딩(테두리와 내용 사이의 여백) */
+            }
+
+            #test-span {
+                width: 350px;
+                color: #eb8f1f;
+            }
+            th {
+                color: #eb8f1f;
+            }
+        </style>
+
+
+    </header>
+    <!-- End Main Top -->
+
+    <!-- Start 예약조회 타이틀 영역 -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>예약조회</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End 예약조회 타이틀 영역 -->
+
+    <!-- End 예약조회 영역 -->
+    <div class="container" style="text-align: center; margin-top: 5%;" >
+    <table style="display:inline-block; width: auto; height: auto;">
+        <tr>
+            <th><span style="width: 100px;">번호</span></th>
+            <th><span>이름</span></th>
+            <th id="test-span"><span>병원</span></th>
+            <th><span>날짜</span></th>
+            <th><span>시간</span></th>
+            <th><span class="bb">상태</span></th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>미남</td>
+            <td>우리동물병원</td>
+            <td>2012/03/05</td>
+            <td>11:00</td>
+            <td style="color: gray;">진단서 미등록</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>미남</td>
+            <td>우리동물병원</td>
+            <td>2016/03/05</td>
+            <td>11:00</td>
+            <td><input type="button" value="진단서"></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>미남</td>
+            <td>우리동물병원</td>
+            <td>2018/03/05</td>
+            <td>11:00</td>
+            <td><input type="button" value="진단서"></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>미남</td>
+            <td>우리동물병원</td>
+            <td>2021/03/05</td>
+            <td>11:00</td>
+            <td style="color: rgb(4, 0, 255);">예약</td>
+        </tr>
+        </table>
+
+        <div class="row mt-2">
+            <div class="col-12">
+            <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
+            </nav>
+            </div>
+        </div>
+    </div>
+    <!-- End 예약조회 영역 -->
+
+    <!-- Start footer 영역-->
+
+    <!-- End footer 영역-->
+
+    <!--스크롤 업 버튼-->
+    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+    <!-- ALL JS FILES -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- ALL PLUGINS -->
+    <script src="js/jquery.superslides.min.js"></script>
+    <script src="js/bootstrap-select.js"></script>
+    <script src="js/inewsticker.js"></script>
+    <script src="js/bootsnav.js."></script>
+    <script src="js/images-loded.min.js"></script>
+    <script src="js/isotope.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/baguetteBox.min.js"></script>
+    <script src="js/form-validator.min.js"></script>
+    <script src="js/contact-form-script.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+
+</html>
