@@ -32,7 +32,7 @@ pageEncoding="UTF-8"%>
                     <h5 class=" mb-5 board_seq" id="freeBoardSeq">게시글 번호 : ${getFreeBoard.boardSeq}</h5>
                 </div>
             </div>
-            <img class="img-fluid" src="../images/결_pet_toy_001.jpeg" alt="" />
+            <img class="img-fluid" src="" alt="" />
             <div class="col-lg-6">
                 <p class="mt-5">
                   ${getFreeBoard.content}
@@ -57,7 +57,7 @@ pageEncoding="UTF-8"%>
           <div class="row d-flex justify-content-center">
             <div class="col-md-12 col-lg-10 col-xl-8">
               <div class="d-flex justify-content-between align-items-center mb-4">
-                <h4 class="text-dark mb-0">코멘트 (3)</h4>
+                <h4 class="text-dark mb-0">코멘트 수 ( ${commentSize} )</h4>
               </div>
       
               <!-- 댓글 다는곳 시작 -->
@@ -66,7 +66,8 @@ pageEncoding="UTF-8"%>
                 <div class="card-body" style="padding: 1px;">
                     <div class="d-flex flex-start">
                         <form action="" style="width: 750px;">
-                          <input type="hidden" name="userId" id="userId" value="${getFreeBoard.userId}">
+
+                          <input type="hidden" name="userId" id="userId" value="${principal.user.userId}">
                           <input type="hidden" name="boardSeq" id="freeBoardSeqHidden" value="${getFreeBoard.boardSeq}">
                           <input type="hidden" name="boardType" id="boardTypeForReply" value="${getFreeBoard.boardType}">
                           <input type="hidden" name="hospitalSeq" id="hospitalSeqForReply" value="${getFreeBoard.hospitalSeq}">
@@ -97,9 +98,18 @@ pageEncoding="UTF-8"%>
                                             <textarea name="commentContent" class="form-control" id="reply-content" rows="4" cols="10"></textarea>
 
                                         </div>
-                                        <div class="d-flex justify-content-between mt-3">
-                                            <button id="btn-reply-save" type="button" class="btn btn-success">등록하기</button>
-                                        </div>
+                                        <c:choose>
+                                          <c:when test="${empty principal}">
+                                            <div class="d-flex justify-content-between mt-3">
+                                              <button id="" onclick="alert('로그인이 필요합니다.')" type="button" class="btn btn-success">등록하기</button>
+                                            </div>
+                                          </c:when>
+                                          <c:otherwise>
+                                            <div class="d-flex justify-content-between mt-3">
+                                                <button id="btn-reply-save" type="button" class="btn btn-success">등록하기</button>
+                                            </div>
+                                          </c:otherwise>
+                                        </c:choose>
                                     </div>
                                 </div>
                             </div>
@@ -110,97 +120,99 @@ pageEncoding="UTF-8"%>
 
             <!-- 댓글 다는곳 종료 -->
 
+            <!-- ===============댓글 리스트 출력 시작================== -->
 
-              <div class="card mb-3">
-                <div class="card-body">
-                  <div class="d-flex flex-start">
-                    <img
+              <c:forEach var="reply" items="${freeBoardReplyList}" varStatus="i" >
+                <div class="card mb-3">
+                  
+                  <div class="card-body">
+                    <div class="d-flex flex-start">
+                      <img
                       class="rounded-circle shadow-1-strong me-3"
-                      src="https://mdbootstrap.com/img/Photos/Avatars/img%20(26).jpg"
-                      alt="avatar"
+                      alt="img"
                       width="40"
                       height="40"
-                    />
-                    <div class="w-100">
-                      <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h6 class="text-secondary fw-bold mb-0 ml-2 writer">
-                          {작성자}
-                          <span class="text-dark ms-2 ml-2">Hmm, This poster looks cool</span>
-                        </h6>
-                        <p class="mb-0">2 days ago</p>
-                      </div>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <p class="small mb-0" style="color: #aaa;">
-                          <a href="#!" class="link-grey ml-2 btn-update">수정하기</a> •
-                          <a href="#!" class="link-grey ml-2 btn-delete">삭제하기</a> •
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                      />
+                      <div class="w-100">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                          <h6 class="text-secondary fw-bold mb-0 ml-2 writer">
+                            ${reply.user_nickname}
+                            <div class="mt-3">
+                              <span class="text-dark ms-2 ml-2">${reply.comment_content}</span>
+                            </div>
+                          </h6>
+                          <p class="mb-5"><fmt:formatDate value="${reply.comment_regDate }" pattern="yyyy-MM-dd"/></p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                          <p class="small mb-0" style="color: #aaa;">
 
-              <div class="card mb-3">
-                <div class="card-body">
-                  <div class="d-flex flex-start">
-                    <img
-                      class="rounded-circle shadow-1-strong me-3"
-                      src="https://mdbootstrap.com/img/Photos/Avatars/img%20(26).jpg"
-                      alt="avatar"
-                      width="40"
-                      height="40"
-                    />
-                    <div class="w-100">
-                      <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h6 class="text-secondary fw-bold mb-0 ml-2 writer">
-                          {작성자}
-                          <span class="text-dark ms-2 ml-2">Hmm, This poster looks cool</span>
-                        </h6>
-                        <p class="mb-0">2 days ago</p>
-                      </div>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <p class="small mb-0" style="color: #aaa;">
-                          <a href="#!" class="link-grey ml-2 btn-update">수정하기</a> •
-                          <a href="#!" class="link-grey ml-2 btn-delete">삭제하기</a> •
-                        </p>
+
+                            <!-- <h5 id="testtest">${reply.comment_seq}</h5>
+                            <h5 id="testtest">${reply}</h5> -->
+                            
+                            <!-- <c:if test="${reply.user_id == principal.user.userId}">
+                              <input type="hidden"  value="${reply.comment_seq}"/>
+                              <a href="#!" class="link-grey ml-2 btn-update">수정하기</a> •
+                              <button onclick="index.freeBoardReplyDelete()" class="link-grey ml-2 btn-delete">삭제하기</button> •
+                            </c:if> -->
+
+                            <!-- 현재 세션의 principal id와 코멘트를 쓴 사용자가 동일 할때만 수정, 삭제 버튼이 나오도록 함 -->
+                            
+                            <c:if test="${reply.user_id == principal.user.userId}">
+                                <form action="deleteCommentOnFreeBoard" method="POST">
+                                  <input type="hidden" class="hiddenCommentSeq" name="commentSeq" value="${reply.comment_seq}"/>
+                                  <input type="hidden" name="boardSeq" value="${getFreeBoard.boardSeq}">
+                                  <button type="button" class="link-grey ml-2 btn-update btn-comment-update" data-toggle='modal' data-target='.modifyModal${i.index}'>수정하기</button> 
+                                  <button type="submit" class="link-grey ml-2 btn-delete">삭제하기</button> 
+                                </form>
+                                
+                              <!--=============== 댓글 수정 모달창 시작============== -->
+                                
+                              <form action="updateCommentOnFreeBoard" method="POST" >
+                                <div class="modal fade modifyModal${i.index}"  role="dialog">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <button type="button"  data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title">댓글 수정</h4>
+                                      </div>
+                                      <div class="modal-body">
+                                        <div class="">
+                                          <label for="replyText">댓글 내용</label>
+                                          <input type="text" class="form-control" id="commentContent" name="commentContent" placeholder="${reply.comment_content}">
+                                        </div>
+                                        <div class="">
+                                          <label for="replyWriter">댓글 작성자</label>
+                                          <input class="form-control" id="replyWriter" placeholder="${principal.user.userNickname}" readonly>
+                                          <input type="hidden" id="hiddenCommentUserId" name="userId" value="${principal.user.userId}">
+                                          <input type="hidden" id="hiddenFreeBoardSeq" name="boardSeq" value="${getFreeBoard.boardSeq}">
+                                          <input type="hidden" id="hiddenCommentSeq" name="commentSeq" value="${reply.comment_seq}">
+                                        </div>
+                                      </div>
+                                      <div class="modal-footer">
+                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">닫기</button>
+                                        <button type="submit" class="btn btn-success modalModBtn">수정</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </form>
+
+                              <!--=============== 댓글 수정 모달창 종료 ============== -->
+                                      
+                            </c:if>
+                          </p>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              
-              <div class="card mb-3">
-                <div class="card-body">
-                  <div class="d-flex flex-start">
-                    <img
-                      class="rounded-circle shadow-1-strong me-3"
-                      src="https://mdbootstrap.com/img/Photos/Avatars/img%20(26).jpg"
-                      alt="avatar"
-                      width="40"
-                      height="40"
-                    />
-                    <div class="w-100">
-                      <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h6 class="text-secondary fw-bold mb-0 ml-2 writer">
-                          {작성자}
-                          <span class="text-dark ms-2 ml-2">Hmm, This poster looks cool</span>
-                        </h6>
-                        <p class="mb-0">2 days ago</p>
-                      </div>
-                      <div class="d-flex justify-content-between align-items-center">
-                        <p class="small mb-0" style="color: #aaa;">
-                          <a href="#!" class="link-grey ml-2 btn-update">수정하기</a> •
-                          <a href="#!" class="link-grey ml-2 btn-delete">삭제하기</a> •
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              </c:forEach>
+              <!-- ===============댓글 리스트 출력 종료================== -->
             </div>
           </div>
         </div>
     </section> 
-   <%@ include file="layout/footer.jsp" %>
-   
 
+   <%@ include file="layout/footer.jsp" %>
+  

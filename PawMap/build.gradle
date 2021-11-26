@@ -35,13 +35,12 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.security:spring-security-taglibs'
-
 	implementation 'org.springframework:spring-context-support:5.3.12'
 	implementation 'com.sun.mail:javax.mail:1.6.2'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'commons-io:commons-io:2.11.0'
+	implementation 'commons-fileupload:commons-fileupload:1.4'
 	implementation 'org.codehaus.groovy:groovy-all:3.0.3'
-	
-	
 }
 
 test {

@@ -12,7 +12,10 @@ let index = {
 		});
 		$("#btn-reply-save").on("click",()=>{
 			this.replySaveFreeBoard();
-		})
+		});
+		//$("#updateCommentOnFreeBoard").on("click",()=>{
+		//	this.updateCommentOnFreeBoard();
+		//});
 		
 	},
 	
@@ -99,7 +102,8 @@ let index = {
 		
 		console.log(data);
 		
-		if(data.replyContent == ""){
+
+		if(data.commentContent == ""){
 			alert("내용을 입력해주세요");
 			
 		}else{
@@ -108,20 +112,46 @@ let index = {
 				url: `insertReplyFreeBoard/api/${data.boardSeq}`,
 				data: JSON.stringify(data),
 				contentType : 'application/json; charset=utf-8',
-				dataType : "json",
-				success : function(){
-					alert("댓글댓글 성공");
+
+				dataType : "text",
+				success : function(e){
 					location.href ="getFreeBoard?boardSeq="+seq
 				},
 				error : function(e){
+					alert("에러");
 					console.log(e);
 				}
 			});
 		}
 	},
 	
-	
-	
+	/*
+		updateCommentOnFreeBoard:function(){
+			let data = {
+				commentContent: $("#commentContent").val(),
+				userId: $("#hiddenCommentUserId").val(),
+				commentSeq: $("#hiddenCommentSeq").val(),
+				boardSeq: $("#hiddenFreeBoardSeq").val()
+				
+			};
+			console.log(data);
+			alert("탐");
+			
+			$.ajax({
+				type : "POST",
+				url: "updateCommentOnFreeBoard",
+				data: JSON.stringify(data),
+				contentType : 'application/json; charset=utf-8',
+				dataType : "text"
+			}).done(function(result){
+				alert("수정성공");
+			}).fail(function(){
+				alert("실패");
+			});
+		},
+	 */
+		
 }
+
 
 index.init();

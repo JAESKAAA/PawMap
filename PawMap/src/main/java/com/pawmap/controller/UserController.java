@@ -1,12 +1,11 @@
 package com.pawmap.controller;
 
 
+
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -16,6 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -42,6 +43,7 @@ public class UserController {
 	public String index() {
 		return "index2";
 	}
+
 	
 	//관리자 페이지 이동하는 메소드
 	@GetMapping("/admin")
@@ -67,7 +69,6 @@ public class UserController {
 		return "login-form";
 	}
 
-	//회원가입 유형 선택 페이지로 가는 메소드
 	@GetMapping("/joinForm")
 	public String joinForm() {
 		return "join-form";
@@ -188,6 +189,19 @@ public class UserController {
 		return "redirect:/loginForm";
 	}
 	
+	// 아이디 중복 검사 => 회원 가입 페이지에서 아이디 중복 메세지 안뜸
+	@RequestMapping(value = "/userIdChk", method = RequestMethod.POST)
+	@ResponseBody
+	public String userIdChk(String userId) throws Exception{
+		int result = userService.idCheck(userId);
+		if(result != 0) {
+			return "fail";	// 중복 아이디가 존재
+		} else {
+			return "success";	// 중복 아이디 x
+		}	
+	} // memberIdChkPOST() 종료	
+	
+
 	@PreAuthorize("hasRole('ROLE_ADMIN')") //하기 메서드가 실행하기 직전에 실행됨
 	@GetMapping("/data")
 	public @ResponseBody String data() {
@@ -205,7 +219,7 @@ public class UserController {
 		return (String) findLoginIdRs.get("msg");
 	}
 		
-	
+
 	// 비밀번호 찾기 화면에서 데이터 받기 
 	@RequestMapping("/doForgotPw")
 	@ResponseBody
@@ -275,4 +289,9 @@ public class UserController {
 			 
 			 return "redirect:/admin";
 		}
+
+	
+
+
+
 }

@@ -101,6 +101,12 @@
 
   	</select>
   	
+  	<select id="getFreeBoardSeq" resultType="int">
+		SELECT IFNULL(MAX(board_seq) ,0) + 1
+			FROM BOARD
+			WHERE board_type = 'f'
+	</select>
+  	
   	<delete id="deleteFreeBoardBySeq">
   		DELETE FROM board
   		WHERE board_seq = #{boardSeq}
@@ -116,6 +122,8 @@
   		WHERE board_seq = #{boardSeq}
   		AND
   		user_id = #{userId}
+  		AND
+  		board_type = 'f'
   	</update>
   	
   	<select id="selectBoardCount" resultType="int">
@@ -131,18 +139,5 @@
 			AND (title LIKE CONCAT('%', #{keyword}, '%') OR `content` LIKE CONCAT('%', #{keyword}, '%'))
 		</if>
 	</select>
-	
-	<insert id="insertReplyForFreeBoard" >
-		INSERT INTO comment(comment_seq,board_type,board_seq, user_id, comment_content,hospital_seq, comment_regDate) VALUES(
-  				(SELECT IFNULL(MAX(comment_seq), 0) + 1 FROM comment A WHERE BOARD_TYPE = #{boardType}),
-  				#{boardType},
-  				#{boardSeq},
-  				#{userId},
-  				#{commentContent},
-  				#{hopitalSeq},
-  				NOW()
-  		)
-	</insert>
 
-  	
   </mapper>	

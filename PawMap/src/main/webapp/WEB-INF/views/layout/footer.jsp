@@ -149,6 +149,7 @@
     <script src="${pageContext.request.contextPath}/js/form-validator.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/contact-form-script.js"></script>
     <script src="${pageContext.request.contextPath}/js/custom.js"></script>
+    <script src="${pageContext.request.contextPath}/js/custom-silbia.js"></script>
     <!-- FontAwesome 용 JS 파일-->
     <script
       src="https://kit.fontawesome.com/f0999a1ca0.js"

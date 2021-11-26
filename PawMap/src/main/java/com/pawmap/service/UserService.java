@@ -1,13 +1,9 @@
 package com.pawmap.service;
 
-
-
 import java.util.List;
 import java.util.Map;
-
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
-
 import com.pawmap.VO.UserVO;
 
 @Component
@@ -22,8 +18,9 @@ public interface UserService {
 
 	void socialJoin(UserVO vo);
 
+	// 아이디 중복 검사
+	public int idCheck(String userId) throws Exception;
 
-	
 	public UserVO checkDuplicateId(@Param("userId") int userId);
 
 	public Map<String, Object> login(Map<String, Object> args);
@@ -33,6 +30,7 @@ public interface UserService {
 	public Map<String, Object> findLoginId(Map<String, Object> param);
 
 	public Map<String, Object> findLoginPasswd(Map<String, Object> param);
+
 
 	//회원정보 수정 메서드
 	public void updateUser(UserVO vo);
@@ -50,4 +48,5 @@ public interface UserService {
 	
 	//관리자 페이지 수정 메서드
 	public void updateUserAdmin(UserVO vo);
+
 }
