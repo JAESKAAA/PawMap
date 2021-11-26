@@ -2,6 +2,8 @@ package com.pawmap.VO;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,6 +26,8 @@ public class BoardVO {
 	
 
 	private UserVO userVO;
+	
+	private MultipartFile uploadFiles;
 	
 	
 	

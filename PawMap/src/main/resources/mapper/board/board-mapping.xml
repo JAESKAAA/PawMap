@@ -90,6 +90,17 @@
   		board_type = 'f';
   	</select> -->
   	
+  	<!-- <select id="getFreeBoard" resultType="HashMap">
+  		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname 
+  		FROM board AS b
+  		INNER JOIN user AS u
+  		ON b.user_id = u.user_id
+  		WHERE b.board_seq = #{boardSeq}
+  		AND
+  		b.board_type = 'f';
+
+  	</select> -->
+  	
   	<select id="getFreeBoard" resultType="com.pawmap.VO.BoardVO" resultMap="boardResult">
   		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname 
   		FROM board AS b
@@ -100,6 +111,12 @@
   		b.board_type = 'f';
 
   	</select>
+  	
+  	<select id="getFreeBoardSeq" resultType="int">
+		SELECT IFNULL(MAX(board_seq) ,0) + 1
+			FROM BOARD
+			WHERE board_type = 'f'
+	</select>
   	
   	<delete id="deleteFreeBoardBySeq">
   		DELETE FROM board
@@ -116,6 +133,8 @@
   		WHERE board_seq = #{boardSeq}
   		AND
   		user_id = #{userId}
+  		AND
+  		board_type = 'f'
   	</update>
   	
   	<select id="selectBoardCount" resultType="int">
@@ -131,16 +150,6 @@
 			AND (title LIKE CONCAT('%', #{keyword}, '%') OR `content` LIKE CONCAT('%', #{keyword}, '%'))
 		</if>
 	</select>
-	
-	<insert id="insertReplyForFreeBoard" >
-		INSERT INTO comment(comment_seq,board_type,board_seq, user_id, comment_content,hospital_seq, comment_regDate) VALUES(
-  				(SELECT IFNULL(MAX(comment_seq), 0) + 1 FROM comment A WHERE BOARD_TYPE = #{boardType}),
-  				#{boardType},
-  				#{boardSeq},
-  				#{userId},
-  				#{commentContent},
-  				#{hopitalSeq},
-  				NOW()
-  		)
-	</insert>
+
   </mapper>	
+
