@@ -37,7 +37,7 @@
 
 </head>
 
-<body>
+<body style="background-color: #f8f9fa">
   <!--Thomas lee started working on this page since nov 16th-->
     <div class="main-top">
       <div class="container-fluid">
@@ -106,56 +106,95 @@
         </div>
         <!--search button finished...-->
         <!--제휴병원 관리 리스트 부분시작...-->
+        <!--nov25th, table style margin left and right were changed from auto to 3%, colgroup were added with width % value -->
           <div class="associatedvetlist" style="margin-top: 40px;">
-            <table style="margin-left: auto; margin-right: auto; text-align: center;">
-                <tbody>
+            <table class="table-list" style="margin-left: 3%; margin-right: 3%; text-align: center; border: 1px solid black">
+              <colgroup>
+                <col style="width:3%;">
+                <col style="width:5%;">
+                <col style="width:8%;">
+                <col style="width:12%;">
+                <col style="width:8%;">
+                <col style="width:14%;">
+                <col style="width:8%;">
+                <col style="width:3%;">
+                <col style="width:10%;">
+                <col style="width:7%;"> <!--consider binding the custom-tom.css file. this comment was left on november 25th 20:34pm by thomas lee-->
+              </colgroup>  
+              <thead style="background-color: lightgray">
                   <tr>
-                      <th>번째</th>
-                      <th>이름</th>
-                      <th>닉네임</th>
-                      <th>이메일</th>
+                      <th>#</th>
+                      <th>병원아이디</th>
+                      <th>병원이메일</th>
+                      <th>병원이름</th>
+                      <th>병원연락처</th>
+                      <th>병원주소</th>
                       <th>사업자등록번호</th>
+                      <th>종류</th>
+                      <th>회원등록일</th>
                       <th>관리</th>
                   </tr>
+                </thead>
+                <tbody>
                   <tr>
                       <td>1</td>
-                      <td>일산 동물병원</td>
-                      <td>아이디</td>
-                      <td>이메일</td>
+                      <td>pawhospital1</td>
+                      <td>paw4567890paw45@gmail.com</td>
+                      <td>발바닥_동물병원90123456789</td>
+                      <td>070-9999-1234</td>
+                      <td>서울시 강남구 반포동 눈누난나</td>
                       <td>74541845612354</td>
-                      <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
+                      <td>일반</td>
+                      <td>2021-11-24 16:54:38</td>
+                      <td><button style="margin-left: 30px; border-style: none;" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
                   </tr>
                   <tr>
                       <td>2</td>
-                      <td>일산 동물병원</td> 
-                      <td>아이디</td>
-                      <td>이메일</td>
-                      <td>74541845612354</td>
-                      <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
+                      <td>bowwhospital2</td>
+                      <td>bow4567890paw45@gmail.com</td>
+                      <td>손바닥_동물병원90123456789</td>
+                      <td>100-8888-1234</td>
+                      <td>서울시 서초구 반포동 눈누난나</td>
+                      <td>99991845612354</td>
+                      <td>병원</td>
+                      <td>2021-11-24 15:54:38</td>
+                      <td><button style="margin-left: 30px; border-style: none;" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
                   </tr>
                   <tr>
                       <td>3</td>
-                      <td>일산 동물병원</td>
                       <td>아이디</td>
                       <td>이메일</td>
+                      <td>일산 동물병원</td>
+                      <td>연락처</td>
+                      <td>주소</td>
                       <td>74541845612354</td>
-                      <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
+                      <td></td>
+                      <td></td>
+                      <td><button style="margin-left: 30px; border-style: none;" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
                   </tr>
                   <tr>
                       <td>4</td>
-                      <td>일산 동물병원</td>
                       <td>아이디</td>
                       <td>이메일</td>
+                      <td>일산 동물병원</td>
+                      <td></td>
+                      <td></td>
                       <td>74541845612354</td>
-                      <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
+                      <td></td>
+                      <td></td>
+                      <td><button style="margin-left: 30px; border-style: none;" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
                   </tr>
                   <tr>
                       <td>5</td>
-                      <td>일산 동물병원</td>
                       <td>아이디</td>
                       <td>이메일</td>
+                      <td>일산 동물병원</td>
+                      <td></td>
+                      <td></td>
                       <td>74541845612354</td>
-                      <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
+                      <td></td>
+                      <td></td>
+                      <td><button style="margin-left: 30px; border-style: none;" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
                   </tr>
                 </tbody>
               </table>
