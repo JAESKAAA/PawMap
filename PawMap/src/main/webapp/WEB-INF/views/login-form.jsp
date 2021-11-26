@@ -72,7 +72,12 @@ pageEncoding="UTF-8"%>
                     name="userPassword"
                     placeholder="Password"
                   />
-                  <a href="/pawmap/mypage" class="login-btn text-white text-weight-bold"> 로그인</a>
+                  <button
+                    type="submit"
+                    class="login-btn text-white text-weight-bold"
+                  >
+                    로그인
+                  </button>
                   <a
                     href="/pawmap/oauth2/authorization/google"
                     class="login-btn text-white text-weight-bold"
@@ -119,5 +124,5 @@ pageEncoding="UTF-8"%>
 
     <!---------------------------------- 로그인 폼 종료 -------------------------->
 
-  <%@ include file="layout/footer.jsp" %>
+   <%@ include file="layout/footer.jsp" %>
 

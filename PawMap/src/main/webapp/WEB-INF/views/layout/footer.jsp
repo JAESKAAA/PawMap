@@ -157,6 +157,9 @@
     ></script>
     <!-- 1:1 상담 관련 js 파일-->
     <script src="${pageContext.request.contextPath}/js/custom-jaeseok.js"></script>
+   
+    <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
+
       <!-- 아이디 비밀번호 공백확인 alert창 -->
     <script>
       function makeTestData() {
