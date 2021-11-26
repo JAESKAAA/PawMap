@@ -1,9 +1,6 @@
 package com.pawmap.impl;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-
 import java.security.SecureRandom;
 import java.util.Date;
 import java.util.HashMap;
@@ -12,16 +9,11 @@ import java.util.Map;
 import org.apache.groovy.util.Maps;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import org.springframework.stereotype.Service;
 
 import com.pawmap.VO.UserVO;
 import com.pawmap.mapper.UserMapper;
-
-import com.pawmap.service.BoardService;
-
 import com.pawmap.service.MailService;
-
 import com.pawmap.service.UserService;
 
 
@@ -60,7 +52,13 @@ public class UserServiceImpl implements UserService{
 	public void socialJoin(UserVO vo) {
 		userMapper.socialJoin(vo);
 	}
-
+	 
+	 // 아이디 중복 체크
+	@Override
+	public int idCheck(String userId) throws Exception {
+		return userMapper.idCheck(userId);
+	}
+	
 	@Override
 	public Map<String, Object> login(Map<String, Object> args) {
 		Map<String, Object> rs = new HashMap<>();
@@ -218,8 +216,4 @@ public class UserServiceImpl implements UserService{
 		return userMapper.checkDuplicateId(userId);
 	}
 }
-
-
-
-
 

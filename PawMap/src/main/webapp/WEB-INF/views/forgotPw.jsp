@@ -199,8 +199,6 @@ pageEncoding="UTF-8"%>
                 </div>
               </div>
               <div class="col-md-7 col-sm-12 col-xs-12 c2 px-5 pt-5">
-               
-    
 
                 <div>
                 <h1>비밀번호 찾기</h1>

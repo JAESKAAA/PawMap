@@ -4,7 +4,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
@@ -14,16 +13,14 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pawmap.VO.UserVO;
 import com.pawmap.configuration.auth.PrincipalDetails;
 import com.pawmap.service.UserService;
-
 import com.pawmap.util.CookieUtil;
 
 
@@ -69,6 +66,7 @@ public class UserController {
 	public String index() {
 		return "index2";
 	}
+
 	
 	
 	//OAuth 로그인을해도 PrincipalDetails로 받을수 있고, userDetails로 로그인해도 PrincipalDetails로 받을 수 있음
@@ -135,6 +133,19 @@ public class UserController {
 		return "redirect:/loginForm";
 	}
 	
+	// 아이디 중복 검사 => 회원 가입 페이지에서 아이디 중복 메세지 안뜸
+	@RequestMapping(value = "/userIdChk", method = RequestMethod.POST)
+	@ResponseBody
+	public String userIdChk(String userId) throws Exception{
+		int result = userService.idCheck(userId);
+		if(result != 0) {
+			return "fail";	// 중복 아이디가 존재
+		} else {
+			return "success";	// 중복 아이디 x
+		}	
+	} // memberIdChkPOST() 종료	
+	
+
 	@PreAuthorize("hasRole('ROLE_ADMIN')") //하기 메서드가 실행하기 직전에 실행됨
 	@GetMapping("/data")
 	public @ResponseBody String data() {
@@ -171,7 +182,25 @@ public class UserController {
 		return (String) findLoginIdRs.get("msg");
 		
 
+
 	}
 	
-
+	// 비밀번호를 잊어버렸습니까? -> forgotPW 
+	@GetMapping("forgotPw.do")
+	public String showFindLoginInfo() {
+		return "forgotPw";
+	}
+	
+	// 마이페이지
+	@GetMapping("/mypage") 
+	public String mypage() {
+		return "my-page";
+	}
+	
+	// 회원정보
+	@GetMapping("/infoForm")
+	public String inforForm() {
+		return "user-info-form";
+	}
+	
 }

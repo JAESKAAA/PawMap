@@ -1,20 +1,15 @@
 package com.pawmap.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.pawmap.configuration.oauth.PrincipalOauth2UserService;
 
 /*
-<<<<<<< HEAD
  * 소셜 로그인 시 대략적인 프로세스
  * 1. 코드받기 (인증) 
  * 2. 엑세스 토큰 획득 (권한)

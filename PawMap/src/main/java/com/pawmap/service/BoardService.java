@@ -11,6 +11,8 @@ import com.pawmap.VO.FileVO;
 import com.pawmap.VO.UserVO;
 
 public interface BoardService {
+
+	void insertTest(UserVO vo);
 	
 	void insertFreeAndNanumBoard(BoardVO vo);
 
