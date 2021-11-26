@@ -1,8 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
 <!DOCTYPE html>
 <html lang="en">
   <!-- Basic -->
+
+
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal"/>
+</sec:authorize>
+
 
   <head>
     <meta charset="utf-8" />
@@ -12,28 +23,78 @@ pageEncoding="UTF-8"%>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Site Metas -->
-    <title>Freshshop - Ecommerce Bootstrap 4 HTML Template</title>
+
+    <title>PawMap - 우리집 주변 동물병원 찾기</title>
+
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
 
+
+
+    <link rel="shortcut icon" href="<%=request.getContextPath() %>/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="<%=request.getContextPath() %>/images/apple-touch-icon.png" />
+    <!-- Fontawesome CSS-->
+    <link
+      href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
+      rel="stylesheet"
+    />
+    
+    <%-- <%=request.getContextPath() %> --%>
+    <!--  ${request.getContextPath } -->
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.min.css" />
     <!-- Site CSS -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css" />
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/responsive.css" />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/custom.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/custom-jaeseok.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style-gyul.css">
+    
+        <!-- 결 커스텀 css -->
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+        <!-- 항목별 공백 확인 alert창 스크립트-->
+        <script>
+
+          function submitJoinForm(form) {
+            form.userId.value = form.userId.value.trim();
+            if (form.userId.value.length == 0) {
+              alert('로그인 아이디를 입력해주세요.');
+              form.userId.focus();
+              return false;
+            }
+            form.userPassword.value = form.userPassword.value.trim();
+            if (form.userPassword.value.length == 0) {
+              alert('로그인 비밀번호를 입력해주세요.');
+              form.userPassword.focus();
+              return false;
+            }
+            
+            form.userName.value = form.userName.value.trim();
+            if (form.userName.value.length == 0) {
+              alert('이름을 입력해주세요.');
+              form.userName.focus();
+              return false;
+            }
+            form.userEmail.value = form.userEmail.value.trim();
+            if (form.userEmail.value.length == 0) {
+              alert('이메일을 입력해주세요.');
+              form.email.focus();
+              return false;
+            }
+            form.submit();
+          }
+        </script>
+
     <style>
       .form-label {
         color: #e1a963;
@@ -60,11 +121,9 @@ pageEncoding="UTF-8"%>
   </head>
 
   <body>
-    <!-- Start Main Top -->
 
-    <!-- End Main Top -->
+    <!-- Header 시작 -->
 
-    <!-- Start Main Top -->
     <header class="main-header">
       <!-- Start Navigation -->
       <nav
@@ -89,9 +148,12 @@ pageEncoding="UTF-8"%>
             >
               <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="index.html"
-              ><img src="images/logo.png" class="logo" alt=""
-            /></a>
+
+            <!--사이트 로고 부분-->
+            <a class="navbar-brand" href="/pawmap">
+              <div class="main_logo_box"></div>
+            </a>
+
           </div>
           <!-- End Header Navigation -->
 
@@ -103,13 +165,18 @@ pageEncoding="UTF-8"%>
               data-out="fadeOutUp"
             >
               <li class="nav-item active">
-                <a class="nav-link" href="#">홈</a>
+
+                <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">어바웃어스</a>
+                <a class="nav-link" href="about.html">회사소개</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">병원찾기</a>
+                <a class="nav-link" href="gallery.html">병원찾기</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="contact-us.html">보호소 정보</a>
+
               </li>
               <li class="dropdown">
                 <a
@@ -119,25 +186,99 @@ pageEncoding="UTF-8"%>
                   >커뮤니티</a
                 >
                 <ul class="dropdown-menu">
-                  <li><a href="shop.html">자유게시판</a></li>
-                  <li><a href="shop-detail.html">공지사항</a></li>
-                  <li><a href="cart.html">이벤트게시판</a></li>
-                  <li><a href="checkout.html">나눔게시판</a></li>
+
+                  <li><a href="shop.html">공지사항</a></li>
+                  <li><a href="shop-detail.html">자유게시판</a></li>
+                  <li><a href="cart.html">나눔게시판</a></li>
                 </ul>
-              </li>
-              <li class="nav-item"><a class="nav-link" href="#">보호소</a></li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">마이페이지</a>
-              </li>
-              <li class="nav-item"><a class="nav-link" href="#">로그인</a></li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">회원가입</a>
               </li>
             </ul>
           </div>
+          <!-- /.navbar-collapse -->
+
+          <!-- Start Atribute Navigation -->
+          <div class="attr-nav">
+            <ul>
+              <li class="search" style="display: none">
+                <a href="#"><i class="fa fa-search"></i></a>
+              </li>
+             <sec:authorize access="isAnonymous()">
+              <li class="side-menu">
+                <a href="/pawmap/loginForm">
+                  <p>로그인</p>
+                </a>
+              </li>
+              <li class="side-menu">
+                <a href="/pawmap/joinForm">
+                  <p>회원가입</p>
+                </a>
+              </li>
+			 </sec:authorize>
+			<sec:authorize access="isAuthenticated()">
+			 <li class="side-menu">
+                <a href="/pawmap/loginForm">
+                  <p>마이페이지 ${principal.user.userId} 님 환영합니다.</p>
+                </a>
+              </li>
+			 <li class="side-menu">
+                <a href="/pawmap/logout">
+                  <p>로그아웃</p>
+                </a>
+              </li>
+			</sec:authorize>
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<li class="side-menu">
+	                <a href="/pawmap/admin">
+	                  <p>관리자 페이지</p>
+	                </a>
+	              </li>
+			</sec:authorize>
+            </ul>
+          </div>
+          <!-- End Atribute Navigation -->
         </div>
+        <!-- Start Side Menu -->
+        <div class="side">
+          <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+          <li class="cart-box">
+            <ul class="cart-list">
+              <li>
+                <a href="#" class="photo"
+                  ><img src="images/img-pro-01.jpg" class="cart-thumb" alt=""
+                /></a>
+                <h6><a href="#">Delica omtantur </a></h6>
+                <p>1x - <span class="price">$80.00</span></p>
+              </li>
+              <li>
+                <a href="#" class="photo"
+                  ><img src="images/img-pro-02.jpg" class="cart-thumb" alt=""
+                /></a>
+                <h6><a href="#">Omnes ocurreret</a></h6>
+                <p>1x - <span class="price">$60.00</span></p>
+              </li>
+              <li>
+                <a href="#" class="photo"
+                  ><img src="images/img-pro-03.jpg" class="cart-thumb" alt=""
+                /></a>
+                <h6><a href="#">Agam facilisis</a></h6>
+                <p>1x - <span class="price">$40.00</span></p>
+              </li>
+              <li class="total">
+                <a href="#" class="btn btn-default hvr-hover btn-cart"
+                  >VIEW CART</a
+                >
+                <span class="float-right"><strong>Total</strong>: $180.00</span>
+              </li>
+            </ul>
+          </li>
+        </div>
+        <!-- End Side Menu -->
       </nav>
+      <!-- End Navigation -->
     </header>
+    <!-- Header 끝 부분 -->
+
+
 
     <!---------------------------------- 회원가입 폼 -------------------------->
 
@@ -163,7 +304,12 @@ pageEncoding="UTF-8"%>
                       class="mx-1 mx-md-4"
                       action="/pawmap/join"
                       method="post"
-                    >
+
+
+                      name="joinForm"
+                      onsubmit="submitJoinForm(this); return false;"                      >
+
+
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                           <div class="column-div">
@@ -704,172 +850,7 @@ pageEncoding="UTF-8"%>
     </div> -->
     <!-- End Instagram Feed  -->
 
-    <!-- Start Footer  -->
-    <footer>
-      <div class="footer-main">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4 col-md-12 col-sm-12">
-              <div class="footer-top-box">
-                <h3>Business Time</h3>
-                <ul class="list-time">
-                  <li>Monday - Friday: 08.00am to 05.00pm</li>
-                  <li>Saturday: 10.00am to 08.00pm</li>
-                  <li>Sunday: <span>Closed</span></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12">
-              <div class="footer-top-box">
-                <h3>Newsletter</h3>
-                <form class="newsletter-box">
-                  <div class="form-group">
-                    <input
-                      class=""
-                      type="email"
-                      name="Email"
-                      placeholder="Email Address*"
-                    />
-                    <i class="fa fa-envelope"></i>
-                  </div>
-                  <button class="btn hvr-hover" type="submit">Submit</button>
-                </form>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12">
-              <div class="footer-top-box">
-                <h3>Social Media</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                <ul>
-                  <li>
-                    <a href="#"
-                      ><i class="fab fa-facebook" aria-hidden="true"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      ><i class="fab fa-twitter" aria-hidden="true"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      ><i class="fab fa-linkedin" aria-hidden="true"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      ><i class="fab fa-google-plus" aria-hidden="true"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      ><i class="fab fa-pinterest-p" aria-hidden="true"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      ><i class="fab fa-whatsapp" aria-hidden="true"></i
-                    ></a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <hr />
-          <div class="row">
-            <div class="col-lg-4 col-md-12 col-sm-12">
-              <div class="footer-widget">
-                <h4>About Freshshop</h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12">
-              <div class="footer-link">
-                <h4>Information</h4>
-                <ul>
-                  <li><a href="#">About Us</a></li>
-                  <li><a href="#">Customer Service</a></li>
-                  <li><a href="#">Our Sitemap</a></li>
-                  <li><a href="#">Terms &amp; Conditions</a></li>
-                  <li><a href="#">Privacy Policy</a></li>
-                  <li><a href="#">Delivery Information</a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-12 col-sm-12">
-              <div class="footer-link-contact">
-                <h4>Contact Us</h4>
-                <ul>
-                  <li>
-                    <p>
-                      <i class="fas fa-map-marker-alt"></i>Address: Michael I.
-                      Days 3756 <br />Preston Street Wichita,<br />
-                      KS 67213
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      <i class="fas fa-phone-square"></i>Phone:
-                      <a href="tel:+1-888705770">+1-888 705 770</a>
-                    </p>
-                  </li>
-                  <li>
-                    <p>
-                      <i class="fas fa-envelope"></i>Email:
-                      <a href="mailto:contactinfo@gmail.com"
-                        >contactinfo@gmail.com</a
-                      >
-                    </p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- End Footer  -->
 
-    <!-- Start copyright  -->
-    <div class="footer-copyright">
-      <p class="footer-company">
-        All Rights Reserved. &copy; 2018 <a href="#">ThewayShop</a> Design By :
-        <a href="https://html.design/">html design</a>
-      </p>
-    </div>
-    <!-- End copyright  -->
+   <%@ include file="layout/footer.jsp" %>
+   
 
-    <a href="#" id="back-to-top" title="Back to top" style="display: none"
-      >&uarr;</a
-    >
-
-    <!-- ALL JS FILES -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- ALL PLUGINS -->
-    <script src="js/jquery.superslides.min.js"></script>
-    <script src="js/bootstrap-select.js"></script>
-    <script src="js/inewsticker.js"></script>
-    <script src="js/bootsnav.js."></script>
-    <script src="js/images-loded.min.js"></script>
-    <script src="js/isotope.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/baguetteBox.min.js"></script>
-    <script src="js/form-validator.min.js"></script>
-    <script src="js/contact-form-script.js"></script>
-    <script src="js/custom.js"></script>
-  </body>
-</html>

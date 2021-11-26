@@ -1,1 +1,11 @@
+<<<<<<< HEAD
 /.metadata/
+=======
+application.properties
+.metadata
+/.metadata/
+*.properties
+*.metadata
+*.DS_Store
+
+>>>>>>> a84f73784a254674bb19a44a66c0c833336fa097
