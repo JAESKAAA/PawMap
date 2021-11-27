@@ -168,7 +168,9 @@ public class UserController {
 		return "searchIdPw";
 	}
 	// 비밀번호 찾기 화면에서 데이터 받기 
+
 		@RequestMapping("/searchPw")
+
 		@ResponseBody
 		public String doFindLoginPasswd(@RequestParam Map<String, Object> param , HttpServletResponse response) throws IOException {
 //			String msg= (String) findLoginIdRs.get("msg");
@@ -216,8 +218,6 @@ public class UserController {
 			return "loginForm";
 			
 		}
-
-		
 
 
 }

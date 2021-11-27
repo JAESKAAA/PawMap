@@ -47,6 +47,7 @@ pageEncoding="UTF-8"%>
 
 
   <body>
+    <%@ include file ="/WEB-INF/views/userIdSearchModal.jsp"%>
     <!-- Start Main Top -->
     <header class="main-header">
       <!-- Start Navigation -->
@@ -165,8 +166,9 @@ pageEncoding="UTF-8"%>
                   <label class="custom-control-label font-weight-bold text-black" for="search_2">비밀번호 찾기</label>
                 </div>
                 
-                <%@ include file="/WEB-INF/views/userIdSearchModal.jsp" %>
-                  <form action="searchIdPw" id="searchI" style="display: none;"  name="forgotId" method="POST">
+
+               
+                  <form action="forgotId" id="searchI" style="display: none;"  name="forgotId" method="POST">
                     <div class="form-group" >
                       <label class="font-weight-bold " for="userName">이름</label>
                       <div>
@@ -177,11 +179,12 @@ pageEncoding="UTF-8"%>
                     <div class="form-group">
                       <label class="font-weight-bold " for="userTelNum">전화번호</label>
                       <div>
-                        <input type="tel" class="form-control" id="userTelNum"	name="userTelNum" type="tel" placeholder="ex) 010-1111-1111">
+
+                        <input type="tel" class="form-control" id="userTelNum"	name="userTelNum" type="email" placeholder="ex) ampawmap@gmail.com">
                       </div>
                     </div>
                     <div class="form-group">
-                      <button id="searchBtn" type="submit"  onclick="idSearch_click()" class="btn btn-primary btn-block">확인</button>
+                      <button id="searchBtn2" type="submit"  onclick="idSearch_click()" class="btn btn-primary btn-block">확인</button>
                     <a class="btn btn-outline-danger btn-block"	onclick="history.back();" style="color: red;" >취소</a>
                   </div>
                   </form>
@@ -275,26 +278,8 @@ pageEncoding="UTF-8"%>
     }
           
 
-  // 아이디 & 스토어 값 저장하기 위한 변수
-	var idV = "";
-	// 아이디 값 받고 출력하는 ajax
-	var idSearch_click = function(){
-		$.ajax({
-			type:"POST",
-			url:"${pageContext.request.contextPath}/views/SearchIdPw?userName="
-					+$('#userName').val()+"&userTelNum="+$('#userTelNum').val(),
-			success:function(data){
-				if(data == 0){
-					$('#id_value').text("회원 정보를 확인해주세요!");	
-				} else {
-					$('#id_value').text(data);
-					// 아이디값 별도로 저장
-					idV = data;
-				}
-			}
-		});
-	}
-
+</script>
+<script>
   $(document).ready(function() {
 		/////////모///달///기///능///////////
 		// 1. 모달창 히든 불러오기
