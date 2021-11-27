@@ -87,7 +87,9 @@
   	</select>
   
   	<insert id="socialJoin">
-  		INSERT INTO user(user_id, user_password, user_name, user_email, provider, providerId, role) VALUES(
+  		INSERT INTO user(user_seq, user_type, user_id, user_password, user_name, user_email, provider, providerId, role) VALUES(
+ 				(SELECT IFNULL(MAX(user_seq), 0) + 1 FROM user A WHERE user_type = #{userType}),
+  				#{userType},
   				#{userId},
   				#{userPassword},
   				#{userName},
