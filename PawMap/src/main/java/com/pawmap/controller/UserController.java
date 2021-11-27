@@ -149,18 +149,19 @@ public class UserController {
 	
 
 	// 아이디 찾기
-		@RequestMapping(value = "/pawmap/searchIdPw", method = RequestMethod.POST)
-		@ResponseBody
-		public String searchId(@RequestParam("userName") String userName, 
-			@RequestParam("userTelNum") String userTelNum) {
-			System.out.println("사용자 전화번호 : "+userTelNum);
-			String result = userMapper.searchId(userName, userTelNum);
-		    System.out.println("결과: "+result);
-		
-		
-		
-			return result;
-		}
+			@RequestMapping(value = "/pawmap/searchIdPw", method = RequestMethod.POST)
+			@ResponseBody
+			public String searchId(@RequestParam("userName") String userName, 
+				@RequestParam("userTelNum") String userTelNum) {
+				System.out.println("사용자 전화번호 : "+userTelNum);
+				String result = userMapper.searchId(userName, userTelNum);
+			    System.out.println("결과: "+result);
+			
+			
+			
+				return result;
+			}
+			
 		
 	// 비밀번호를 잊어버렸습니까? 클릭시 forgotPW 
 	@GetMapping("/searchIdPw")

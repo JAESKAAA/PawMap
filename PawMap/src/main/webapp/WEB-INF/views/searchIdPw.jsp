@@ -44,7 +44,7 @@ pageEncoding="UTF-8"%>
       .modal { 
         position: absolute; 
         /* visibility: hidden; */
-        display:none ;
+         display:none ;
         width: 100%; 
         height: 50%; 
         background-color: white;
@@ -57,7 +57,7 @@ pageEncoding="UTF-8"%>
     animation-duration: var(--modal-duration);
         margin: 10%;
 
-        display: table;
+        /* display: table; */
        
         vertical-align: middle;
          } 
@@ -145,7 +145,7 @@ pageEncoding="UTF-8"%>
               
               
                               <!-- 아이디 표출 모달-->
-                              <div id="modal" class="modal" role="dialog">
+                              <div id="modal"  class="modal" role="dialog">
                                 <div class="samsam">
                                 <div class="modal_header">
                                     <h4>손님 아이디는?</h4><span class="close">&times;</span>
