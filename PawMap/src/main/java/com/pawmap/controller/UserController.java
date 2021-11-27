@@ -58,7 +58,12 @@ public class UserController {
 	}
 	//마이페이지-> 회원정보 수정으로 이동하는 메소드
 	@GetMapping("/mypage/userInfo")
-	public  String userInfo() {
+	public  String userInfo(UserVO vo, Model model) {
+		UserVO user = userService.getUser(vo);
+		System.out.println("user 정보 출력== " + user);
+		
+		 model.addAttribute("user", userService.getUser(vo));
+		
 		return "my_account_update";
 	}
 
@@ -110,10 +115,19 @@ public class UserController {
 	 * */
 	//마이페이지 -> 유저 정보 업데이트
 	@PostMapping("/mypage/updateUser")
-	public String updateUser(UserVO vo, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+	public String updateUser(UserVO vo) {
 		System.out.println("updateUser 호출 !! ");
-		System.out.println("principal디테일 getNickname ====="+ principalDetails.getNickname());
 		System.out.println("UserVO getNickname ====="+ vo.getUserNickname());
+		System.out.println("UserVO getPassword====="+ vo.getUserNickname());
+		
+		
+		if(vo.getUserPassword() != null && !(vo.getUserPassword().equals(""))) {
+			String rawPassword = vo.getUserPassword();
+			String encPassword = bCryptPasswordEncoder.encode(rawPassword);
+			vo.setUserPassword(encPassword);
+		} else {
+			vo.setUserPassword(null);
+		}
 		userService.updateUser(vo);
 		
 		return "redirect:/";
@@ -201,7 +215,7 @@ public class UserController {
 		} else {
 			return "success";	// 중복 아이디 x
 		}	
-
+		
 	} // memberIdChkPOST() 종료	
 	
 

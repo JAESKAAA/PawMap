@@ -77,7 +77,7 @@
   	<!-- (관리자페이지) 유저 정보 수정 -->
   	<select id="getUser" resultMap="userList">
   		SELECT user_seq, user_type, user_id, user_email, user_name, user_nickname, user_tel_num, address, com_num FROM user 
-  				WHERE user_seq = #{userSeq} AND user_type = #{userType}
+  				WHERE user_id = #{userId}
   	</select>
   
 
@@ -182,8 +182,23 @@
   	
  	<update id="updateUser" parameterType="com.pawmap.VO.UserVO" >
 		UPDATE user
-			SET
-				user_nickname = #{userNickname}, user_tel_num = #{userTelNum}, user_email = #{userEmail}, address = #{address} 
+			<set>
+				<if test ="userNickname != null">
+					user_nickname = #{userNickname},
+				</if> 
+				<if test ="userTelNum != null">
+					user_tel_num = #{userTelNum},
+				</if> 
+				<if test ="userEmail != null">
+					user_email = #{userEmail},
+				</if> 
+				<if test ="address != null">
+					 address = #{address},
+				</if> 
+				<if test ="userPassword != null">
+					 user_password = #{userPassword},
+				</if> 
+			</set>
 			WHERE 
 				USER_ID = #{userId}
 	</update> 
