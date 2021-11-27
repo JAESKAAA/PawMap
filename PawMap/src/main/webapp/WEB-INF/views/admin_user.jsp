@@ -127,7 +127,7 @@ pageEncoding="UTF-8"%>
                 <td>${user.userNickname }</td>
                 <td>${user.userEmail }</td>
                 <td>${user.userTelNum }</td>
-                <td><button style="margin-left: 30px;" type="button" onclick="location.href='/pawmap/getUser?userSeq=${user.userSeq}&userType=${user.userType }'">관리하기</button></td>
+                <td><button style="margin-left: 30px;" type="button" onclick="location.href='/pawmap/getUser?userId=${user.userId}'">관리하기</button></td>
             </tr>
            </c:forEach>
         </table>

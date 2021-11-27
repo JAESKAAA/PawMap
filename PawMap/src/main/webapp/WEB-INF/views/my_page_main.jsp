@@ -25,7 +25,7 @@ pageEncoding="UTF-8"%>
                         <div class="account-box">
                             <div class="service-box">
                                 <div class="service-icon">
-                                    <a href="/pawmap/mypage/userInfo"><i class="fas fa-user-cog"></i></a>
+                                    <a href="/pawmap/mypage/userInfo?userId=${principal.user.userId}"><i class="fas fa-user-cog"></i></a>
                                 </div>
                                 <div class="service-desc">
                                     <h4>회원정보수정</h4>
