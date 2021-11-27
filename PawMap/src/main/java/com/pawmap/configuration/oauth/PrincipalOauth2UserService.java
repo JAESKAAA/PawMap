@@ -85,6 +85,9 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 			System.out.println("소셜 로그인이 최초입니다.");
 			userEntity = UserVO.builder()
 					.userId(userId)
+
+					.userType("N")
+
 					.userPassword(password)
 					.userName(userName)
 					.userEmail(email)
