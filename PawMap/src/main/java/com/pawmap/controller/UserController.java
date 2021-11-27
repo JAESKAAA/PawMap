@@ -201,7 +201,7 @@ public class UserController {
 		} else {
 			return "success";	// 중복 아이디 x
 		}	
-		
+
 	} // memberIdChkPOST() 종료	
 	
 
