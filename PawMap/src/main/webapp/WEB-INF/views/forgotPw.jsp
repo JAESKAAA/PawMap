@@ -40,52 +40,6 @@ pageEncoding="UTF-8"%>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script>
-     
-
-        // 로그인 실패시
-        function FindLoginPasswordForm__submit(form){
-            if(isNoeLoading()) {
-                alert('처리중입니다.');
-                return;
-            }
-    
-            form.userId.value = form.userId.value.trim();
-            form.userId.value = form.userId.value.replaceAll('-','');
-            form.userId.value = form.userId.value.replaceAll('_','');
-            form.userId.value = form.userId.value.replaceAll(' ','');
-    
-            if(form.userId.value.length == 0) {
-                form.userId.focus();
-                alert('아이디를 입력해주세요.');
-     
-    
-                return;
-            }
-            
-            form.userName.value = form.userName.value.trim();
-    
-            if (form.userName.value.length == 0) {
-                alert('이름을 입력해주세요.');
-                form.userName.focus();
-                return false;
-            }
-    
-    
-            form.userEmail.value = form.userEmail.value.trim();
-            form.userEmail.value = form.userEmail.value.replaceAll(' ','');
-    
-            if(form.userEmail.value.length == 0) {
-                form.userEmail.focus();
-                alert('이메일을 입력해주세요.');
-              
-    
-                return;
-            }
-            form.submit();
-            startLoading();
-        }
-        </script>
     <style></style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/"></script>
   </head>
@@ -97,29 +51,29 @@ pageEncoding="UTF-8"%>
     <header class="main-header">
       <!-- Start Navigation -->
       <nav
-        class="
-          navbar navbar-expand-lg navbar-light
-          bg-light
-          navbar-default
-          bootsnav
-        "
+      class="
+      navbar navbar-expand-lg navbar-light
+      bg-light
+      navbar-default
+      bootsnav
+      "
       >
         <div class="container">
           <!-- Start Header Navigation -->
           <div class="navbar-header">
             <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbar-menu"
-              aria-controls="navbars-rs-food"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbar-menu"
+            aria-controls="navbars-rs-food"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
             >
               <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand" href="index.html"
-              ><img src="images/logo.png" class="logo" alt=""
+            ><img src="images/logo.png" class="logo" alt=""
             /></a>
           </div>
           <!-- End Header Navigation -->
@@ -127,9 +81,9 @@ pageEncoding="UTF-8"%>
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="navbar-menu">
             <ul
-              class="nav navbar-nav ml-auto"
-              data-in="fadeInDown"
-              data-out="fadeOutUp"
+            class="nav navbar-nav ml-auto"
+            data-in="fadeInDown"
+            data-out="fadeOutUp"
             >
               <li class="nav-item active">
                 <a class="nav-link" href="#">홈</a>
@@ -142,10 +96,10 @@ pageEncoding="UTF-8"%>
               </li>
               <li class="dropdown">
                 <a
-                  href="#"
-                  class="nav-link dropdown-toggle arrow"
-                  data-toggle="dropdown"
-                  >커뮤니티</a>
+                href="#"
+                class="nav-link dropdown-toggle arrow"
+                data-toggle="dropdown"
+                >커뮤니티</a>
                 <ul class="dropdown-menu">
                   <li><a href="shop.html">자유게시판</a></li>
                   <li><a href="shop-detail.html">공지사항</a></li>
@@ -168,6 +122,7 @@ pageEncoding="UTF-8"%>
     </header>
 
     <!---------------------------------- 비밀번호 찾기 폼 시작 -------------------------->
+    
     <div class="container-fluid">
       <div class="row justify-content-center">
         <div class="col-12 col-sm-10 col-md-12 col-lg-11 col-xl-10">
@@ -178,21 +133,21 @@ pageEncoding="UTF-8"%>
                   <img src="" width="70vw" height="55vh" alt="" />
                 </div>
                 <img
-                  src="images/gyul_animals_img-001.jpg"
-                  width="250vw"
-                  height="120vh"
-                  class="mx-auto d-flex"
-                  style="border-radius: 30px"
+                src="images/gyul_animals_img-001.jpg"
+                width="250vw"
+                height="120vh"
+                class="mx-auto d-flex"
+                style="border-radius: 30px"
                 />
                 <div class="row justify-content-center">
                   <div
-                    class="
-                      w-75
-                      mx-md-5 mx-1 mx-sm-2
-                      mb-5
-                      mt-4
-                      px-sm-5 px-md-2 px-xl-1 px-2
-                    "
+                  class="
+                  w-75
+                  mx-md-5 mx-1 mx-sm-2
+                  mb-5
+                  mt-4
+                  px-sm-5 px-md-2 px-xl-1 px-2
+                  "
                   >
                     <h1 class="wlcm">Welcome PawMap</h1>
                   </div>
@@ -200,12 +155,67 @@ pageEncoding="UTF-8"%>
               </div>
               <div class="col-md-7 col-sm-12 col-xs-12 c2 px-5 pt-5">
                
-    
+                <div style="margin-bottom: 10px;"
+                  class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="search_1" name="search_total" onclick="search_check(1)" checked="checked">
+                  <label class="custom-control-label font-weight-bold text-black"	for="search_1">아이디 찾기</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" id="search_2" name="search_total" onclick="search_check(2)"> 
+                  <label class="custom-control-label font-weight-bold text-black" for="search_2">비밀번호 찾기</label>
+                </div>
+                
+                <%@ include file="/WEB-INF/views/userIdSearchModal.jsp" %>
+                  <form action="searchIdPw" id="searchI" style="display: none;"  name="forgotId" method="POST">
+                    <div class="form-group" >
+                      <label class="font-weight-bold " for="userName">이름</label>
+                      <div>
+                        <input type="text" class="form-control" id="userName" name="userName" required="required" autofocus="autofocus" placeholder="ex) 은혜">
+                      </div>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label class="font-weight-bold " for="userTelNum">전화번호</label>
+                      <div>
+                        <input type="tel" class="form-control" id="userTelNum"	name="userTelNum" type="tel" placeholder="ex) 010-1111-1111">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <button id="searchBtn" type="submit"  onclick="idSearch_click()" class="btn btn-primary btn-block">확인</button>
+                    <a class="btn btn-outline-danger btn-block"	onclick="history.back();" style="color: red;" >취소</a>
+                  </div>
+                  </form>
+               
+                <form action="forgotPw" id="searchP" style="display: none;"  name="forgotPw" method="POST">
+                  <div class="form-group" >
+                    <label class="font-weight-bold " for="userId">아이디</label>
+                    <div>
+                      <input type="text" class="form-control" id="userId" name="userId" required="required" autofocus="autofocus" placeholder="ex) ampawmap">
+                    </div>
+                  </div>
+                  <div class="form-group" >
+                    <label class="font-weight-bold " for="userName">이름</label>
+                    <div>
+                      <input type="text" class="form-control" id="userName" name="userName" required="required" autofocus="autofocus" placeholder="ex) 고결">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="font-weight-bold " for="userEmail">이메일</label>
+                    <div>
+                      <input type="email" class="form-control" id="userEmail"	name="userEmail" type="email" placeholder="ex) ampawmap@gmail.com">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button id="searchBtn2" type="submit" class="btn btn-primary btn-block">확인</button>
+                  <a class="btn btn-outline-danger btn-block"	onclick="history.back();">취소</a>
+                </div>
+                </form>
+              
 
-                <div>
+                <!-- <div>
                 <h1>비밀번호 찾기</h1>
                 <form name="forgotPw" 
-                    action="forgotPw" method="POST" onsubmit="DoFindLoginPassword__submit(this); return false;">
+                action="forgotPw" method="POST" onsubmit="DoFindLoginPassword__submit(this); return false;">
                     <input type="hidden" name="loginPwReal"/>
                     <hr />
                     <div>
@@ -220,8 +230,8 @@ pageEncoding="UTF-8"%>
                             <span>이름</span>
                             <div>
                                 <input autocomplete="off" type="text" name="userName"
-                                    required="required" autofocus="autofocus" maxlength="30"
-                                    placeholder="이름" />
+                                required="required" autofocus="autofocus" maxlength="30"
+                                placeholder="이름" />
                             </div>
                         </div>
 
@@ -243,12 +253,112 @@ pageEncoding="UTF-8"%>
                     </div>
                     </form>
 
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
 </div>
 </div>
 </div>
+
+<script>
+  // 아이디찾기 화면, 비밀번호 찾기화면 선택하는 스크립트 
+  //체크 버튼에 따라 아이디/비밀번호 기능이 달라진다
+    function search_check(num) {
+      if (num == '1') {
+        document.getElementById("searchP").style.display = "none";
+        document.getElementById("searchI").style.display = "";	
+      } else {
+        document.getElementById("searchI").style.display = "none";
+        document.getElementById("searchP").style.display = "";
+      }
+    }
+          
+
+  // 아이디 & 스토어 값 저장하기 위한 변수
+	var idV = "";
+	// 아이디 값 받고 출력하는 ajax
+	var idSearch_click = function(){
+		$.ajax({
+			type:"POST",
+			url:"${pageContext.request.contextPath}/views/SearchIdPw?userName="
+					+$('#userName').val()+"&userTelNum="+$('#userTelNum').val(),
+			success:function(data){
+				if(data == 0){
+					$('#id_value').text("회원 정보를 확인해주세요!");	
+				} else {
+					$('#id_value').text(data);
+					// 아이디값 별도로 저장
+					idV = data;
+				}
+			}
+		});
+	}
+
+  $(document).ready(function() {
+		/////////모///달///기///능///////////
+		// 1. 모달창 히든 불러오기
+		$('#searchBtn').click(function() {
+			$('#background_modal').show();
+		});
+		// 2. 모달창 닫기 버튼
+		$('.close').on('click', function() {
+			$('#background_modal').hide();
+		});
+		// 3. 모달창 위도우 클릭 시 닫기
+		$(window).on('click', function() {
+			if (event.target == $('#background_modal').get(0)) {
+	            $('#background_modal').hide();
+	         }
+		});
+	});
+</script>
+                                <!-- <script>
+                                 
+                            
+                                    // 로그인 실패시
+                                    function FindLoginPasswordForm__submit(form){
+                                        if(isNoeLoading()) {
+                                            alert('처리중입니다.');
+                                            return;
+                                        }
+                                
+                                        form.userId.value = form.userId.value.trim();
+                                        form.userId.value = form.userId.value.replaceAll('-','');
+                                        form.userId.value = form.userId.value.replaceAll('_','');
+                                        form.userId.value = form.userId.value.replaceAll(' ','');
+                                
+                                        if(form.userId.value.length == 0) {
+                                            form.userId.focus();
+                                            alert('아이디를 입력해주세요.');
+                                 
+                                
+                                            return;
+                                        }
+                                        
+                                        form.userName.value = form.userName.value.trim();
+                                
+                                        if (form.userName.value.length == 0) {
+                                            alert('이름을 입력해주세요.');
+                                            form.userName.focus();
+                                            return false;
+                                        }
+                                
+                                
+                                        form.userEmail.value = form.userEmail.value.trim();
+                                        form.userEmail.value = form.userEmail.value.replaceAll(' ','');
+                                
+                                        if(form.userEmail.value.length == 0) {
+                                            form.userEmail.focus();
+                                            alert('이메일을 입력해주세요.');
+                                          
+                                
+                                            return;
+                                        }
+                                        form.submit();
+                                        startLoading();
+                                    }
+                                    </script> -->
+                                
 </body>
 </html>

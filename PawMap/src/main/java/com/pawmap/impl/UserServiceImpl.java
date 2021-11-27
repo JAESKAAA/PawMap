@@ -2,29 +2,20 @@ package com.pawmap.impl;
 
 
 
-import org.springframework.beans.factory.annotation.Autowired;
-
-
 import java.security.SecureRandom;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.groovy.util.Maps;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import org.springframework.stereotype.Service;
 
 import com.pawmap.VO.UserVO;
 import com.pawmap.mapper.UserMapper;
-
-
-import com.pawmap.service.BoardService;
-
 import com.pawmap.service.MailService;
-
-
 import com.pawmap.service.UserService;
 
 
@@ -47,7 +38,12 @@ public class UserServiceImpl implements UserService{
 	 MailService mailService;
 	 
 	 @Autowired
-	    BCryptPasswordEncoder passwordEncoder;
+	   BCryptPasswordEncoder passwordEncoder;
+	 
+	 @Autowired
+	 private SqlSessionTemplate sqlSession;
+	 
+	
 
 	 
 	@Override
@@ -112,20 +108,6 @@ public class UserServiceImpl implements UserService{
 
 		return rs;
 	}
-	@Override
-	public Map<String, Object> findLoginId(Map<String, Object> param) {
-		String userName = (String) param.get("userName");
-		String userEmail = (String) param.get("userEmail");
-
-		UserVO user  = userMapper.searchId(userName, userEmail);
-
-		if (user == null) {
-			return Maps.of("resultCode", "F-1", "msg", "일치하는 회원이 없습니다.");
-		}
-
-		return Maps.of("resultCode", "S-1", "msg", "당신의 로그인 아이디는 " + user.getUserId() + " 입니다.");
-
-	}
 	
 	
 	
@@ -135,9 +117,7 @@ public class UserServiceImpl implements UserService{
 		String userName = (String) param.get("userName");
 		String userEmail = (String) param.get("userEmail");
 
-
 		UserVO user  = userMapper.searchPwd(userId, userName);
-
 
 		if (user == null) {
 			return Maps.of("resultCode", "F-1", "msg", "일치하는 회원이 없습니다.");
@@ -164,6 +144,7 @@ public class UserServiceImpl implements UserService{
 		String tempLoginPasswd = sb.toString();
 				
 		user.setUserPassword(tempLoginPasswd);
+
 		
 		String mailTitle = userName + "님, 당신의 계정(" + userId + ")의 임시 패스워드 입니다.";
 		String mailBody = "임시 패스워드 : " + tempLoginPasswd;
@@ -189,7 +170,26 @@ public class UserServiceImpl implements UserService{
 	public UserVO checkDuplicateId(int userId) {
 		return userMapper.checkDuplicateId(userId);
 	}
+	
+	@Override
+	public String searchId(String userName, String userTelNum) {
+		userMapper = sqlSession.getMapper(UserMapper.class);
+		System.out.println(userName + userTelNum);
+
+		String result = "";
+		System.out.println(result);
+
+		try {
+			result = userMapper.searchId(userName, userTelNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
 }
+
 
 
 

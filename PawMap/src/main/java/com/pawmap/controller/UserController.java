@@ -1,12 +1,9 @@
 package com.pawmap.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.groovy.util.Maps;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -17,15 +14,13 @@ import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pawmap.VO.UserVO;
 import com.pawmap.configuration.auth.PrincipalDetails;
-
 import com.pawmap.mapper.UserMapper;
 import com.pawmap.service.UserService;
 import com.pawmap.util.CookieUtil;
@@ -43,9 +38,9 @@ public class UserController {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
-
 	 @Autowired 
 	 private UserMapper userMapper;
+	
 
 	@GetMapping("/test/login")
 	public @ResponseBody String loginTest(
@@ -107,8 +102,7 @@ public class UserController {
 	}
 
 		
-	//로그인 시 아이디 비밀번호 확인 메소드 
-	 //cookieUtil에 setAttribute
+	
 	 @RequestMapping("/doLogin")
 	 @ResponseBody
 	 public String doLogin(HttpServletResponse response, @RequestParam Map<String, Object> param) {
@@ -154,76 +148,76 @@ public class UserController {
 	}
 	
 
-	// 아이디 찾기 화면으로 보내주기 
-	@RequestMapping("findLoginId")
-	public String showFindLoginId() {
-		return "findLoginId";
-	}
-	// 아이디 찾기 화면에서 데이터 받기 
-	@RequestMapping("/doFindLoginId")
-	@ResponseBody
-	public String doFindLoginId(@RequestParam Map<String, Object> param) {
-		Map<String, Object> findLoginIdRs = userService.findLoginId(param);
-
-		return (String) findLoginIdRs.get("msg");
-	}
+	// 아이디 찾기
+		@RequestMapping(value = "/pawmap/searchIdPw", method = RequestMethod.POST)
+		@ResponseBody
+		public String searchId(@RequestParam("userName") String userName, 
+			@RequestParam("userTelNum") String userTelNum) {
+			System.out.println("사용자 전화번호 : "+userTelNum);
+			String result = userMapper.searchId(userName, userTelNum);
+		    System.out.println("결과: "+result);
+		
+		
+		
+			return result;
+		}
 		
 	// 비밀번호를 잊어버렸습니까? 클릭시 forgotPW 
-	@GetMapping("/forgotPw")
+	@GetMapping("/searchIdPw")
 	public String showFindLoginPasswd() {
-		return "forgotPw";
+		return "searchIdPw";
 	}
 	// 비밀번호 찾기 화면에서 데이터 받기 
-
-	@RequestMapping("/forgotPw")
-	@ResponseBody
-	public String doFindLoginPasswd(@RequestParam Map<String, Object> param , HttpServletResponse response) throws IOException {
-//		String msg= (String) findLoginIdRs.get("msg");
-		
-		
-		String userId = (String) param.get("userId");
-		String userName = (String) param.get("userName");
-		String userEmail = (String) param.get("userEmail");
-		
-		UserVO user  = userMapper.searchPwd(userId, userName);
-//		UserVO userWrongEmail = 
-//				(user.getUserId() ==(String) param.get("userId"))
-//				&& (user.getUserEmail() != (String) param.get("userEmail"));
-		
-		// 입력한 아이디 정보는 회원과 일치하지만 이메일정보는 일치하지 않을 때
+		@RequestMapping("/searchPw")
+		@ResponseBody
+		public String doFindLoginPasswd(@RequestParam Map<String, Object> param , HttpServletResponse response) throws IOException {
+//			String msg= (String) findLoginIdRs.get("msg");
 			
-		if (!user.getUserEmail().equals(userEmail)){
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
 			
-			out.println("<script>alert('이메일 정보가 일치하지 않습니다'); location.href='loginForm';</script>");
+			String userId = (String) param.get("userId");
+			String userName = (String) param.get("userName");
+			String userEmail = (String) param.get("userEmail");
 			
-			out.flush();
-		
-		} else if(user == null) {
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
+			UserVO user  = userMapper.searchPwd(userId, userName);
+//			UserVO userWrongEmail = 
+//					(user.getUserId() ==(String) param.get("userId"))
+//					&& (user.getUserEmail() != (String) param.get("userEmail"));
 			
-			// 입력한 정보가 일치하지 않을 때
-			out.println("<script>alert('일치하는 회원이 없습니다'); location.href='loginForm';</script>");
+			// 입력한 아이디 정보는 회원과 일치하지만 이메일정보는 일치하지 않을 때
+				
+			if (!user.getUserEmail().equals(userEmail)){
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				
+				out.println("<script>alert('이메일 정보가 일치하지 않습니다'); location.href='loginForm';</script>");
+				
+				out.flush();
 			
-			out.flush();
-		} else {
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out = response.getWriter();
+			} else if(user == null) {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				
+				// 입력한 정보가 일치하지 않을 때
+				out.println("<script>alert('일치하는 회원이 없습니다'); location.href='loginForm';</script>");
+				
+				out.flush();
+			} else {
+				response.setContentType("text/html; charset=UTF-8");
+				PrintWriter out = response.getWriter();
+				
+				// 입력한 정보와 회원정보가 일치할 때 
+				out.println("<script>alert('입력하신 메일로 임시 패스워드가 발송되었습니다'); location.href='loginForm';</script>");
+				
+				out.flush();
+				Map<String, Object> findLoginIdRs = userService.findLoginPasswd(param);
 			
-			// 입력한 정보와 회원정보가 일치할 때 
-			out.println("<script>alert('입력하신 메일로 임시 패스워드가 발송되었습니다'); location.href='loginForm';</script>");
+			}
+			 
+			return "loginForm";
 			
-			out.flush();
-			Map<String, Object> findLoginIdRs = userService.findLoginPasswd(param);
-		
 		}
-		 
-		return "loginForm";
+
 		
 
-	}
-	
 
 }
