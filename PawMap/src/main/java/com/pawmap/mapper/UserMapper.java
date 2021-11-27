@@ -23,14 +23,12 @@ public interface UserMapper {
 
 	public UserVO searchPwd(@Param("userId")String userId, @Param("userName")String userName);
 
-	public UserVO searchId(@Param("userName")String userName, @Param("userEmail")String userEmail);
 
 	public void changePwd(@Param("userId")int userId, @Param("userPassword")String userPasswd);
 	
-	//public void update(UserVO user);
 	public void update(UserVO vo);
 
-//	UserVO searchEmail(String userId, String userName);
+	String searchId(@Param("userName")String userName, @Param("userTelNum")String userTelNum);
 
 
 }

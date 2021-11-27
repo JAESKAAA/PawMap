@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="com.pawmap.mapper.UserMapper" >
   
-  <mapper namespace="com.pawmap.mapper.UserMapper">
 <!--   	<resultMap type="com.cos.blog.vo.BoardVO" id="boardResult">
   		<id property="id" column="id"/>
   		<result property="title" column="title"/>
@@ -71,13 +72,15 @@
 	
 	<!-- findByNameAndEmail 이름과 이메일로 조회 
 		아이디 찾기 -->
-	<select id="searchId"
-		resultType="com.pawmap.VO.UserVO">
-		SELECT *
-		FROM USER
-		WHERE USER_NAME = #{userName}
-		AND
-		USER_EMAIL = #{userEmail}
+	<select id="searchId" 
+		resultType="String">
+		SELECT IFNULL(user_id, 0) 
+		FROM USER 
+        WHERE 
+        USER_NAME = #{userName} 
+        AND 
+        USER_TEL_NUM = #{userTelNum} 
+        
 	</select>
 	<!-- findByLoginIdAndNameAndEmail 아이디, 이름, 이메일로 조회 
 		비밀번호 찾기-->

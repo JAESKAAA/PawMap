@@ -40,6 +40,7 @@ dependencies {
 	implementation 'com.sun.mail:javax.mail:1.6.2'
 	implementation 'org.codehaus.groovy:groovy-all:3.0.3'	
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	
 
 }
 

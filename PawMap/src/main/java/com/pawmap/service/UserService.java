@@ -24,8 +24,10 @@ public interface UserService {
 
 	public Map<String, Object> loginV2(Map<String, Object> args);
 	
-	public Map<String, Object> findLoginId(Map<String, Object> param);
 
 	public Map<String, Object> findLoginPasswd(Map<String, Object> param);
+
+	String searchId(@Param("userName")String userName, @Param("userTelNum")String userTelNum);
+
 
 }
