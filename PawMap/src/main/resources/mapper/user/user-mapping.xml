@@ -130,13 +130,15 @@
 	
 	<!-- findByNameAndEmail 이름과 이메일로 조회 
 		아이디 찾기 -->
-	<select id="searchId"
-		resultType="com.pawmap.VO.UserVO">
-		SELECT *
-		FROM USER
-		WHERE USER_NAME = #{userName}
-		AND
-		USER_EMAIL = #{userEmail}
+	<select id="searchId" 
+		resultType="String">
+		SELECT IFNULL(user_id, 0) 
+		FROM USER 
+        WHERE 
+        USER_NAME = #{userName} 
+        AND 
+        USER_TEL_NUM = #{userTelNum} 
+        
 	</select>
 	<!-- findByLoginIdAndNameAndEmail 아이디, 이름, 이메일로 조회 
 		비밀번호 찾기-->
@@ -148,8 +150,6 @@
 		USER_ID = #{userId}
 		AND
 		USER_NAME = #{userName}
-		AND
-		USER_EMAIL = #{userEmail}
 	</select>
 
 	<!--로그인 비밀번호 변경  -->
