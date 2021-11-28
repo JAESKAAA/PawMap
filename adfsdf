@@ -1,0 +1,1078 @@
+[33mcommit cee0fc4aa2bf18123e57aee76e0608e05018f77f[m[33m ([m[1;36mHEAD -> [m[1;32myh.thomas.lee[m[33m, [m[1;31morigin/yh.thomas.lee[m[33m)[m
+Merge: 7d2cd69 cf6aef4
+Author: thomas lee <yh.thomas.lee@gmail.com>
+Date:   Fri Nov 26 15:33:15 2021 +0900
+
+    1차 병합
+
+[33mcommit cf6aef4aa6e12da081a212171ae0d7e969609e92[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 7139c80 a818a5e
+Author: JAESKAAA <78363202+JAESKAAA@users.noreply.github.com>
+Date:   Thu Nov 25 14:45:54 2021 +0900
+
+    Merge pull request #38 from JAESKAAA/develop
+    
+    2차 병합 - 임시비밀번호 메일 전송 / 헤더 푸터 나눔
+
+[33mcommit a818a5e80c6aba8eddd3e5c7a22a607eaaa4ceef[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Thu Nov 25 14:42:35 2021 +0900
+
+     2차 병합-비밀번호찾기 및 헤더 푸터 따로 나눔
+
+[33mcommit 077feb875957e4fc078ab711a4ba6c8ef172b96f[m
+Merge: 5caf5ca 2cdea8d
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Thu Nov 25 13:42:20 2021 +0900
+
+    병합 테스트
+
+[33mcommit 5caf5ca5fa4906d222f2a14e1ad8d2882b847241[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Thu Nov 25 13:28:12 2021 +0900
+
+    병합전 커밋
+
+[33mcommit 2cdea8da185d06a937bf04a0660a0242ff978f80[m
+Merge: 70afd20 854a352
+Author: GoGyul <85237583+GoGyul@users.noreply.github.com>
+Date:   Thu Nov 25 12:24:21 2021 +0900
+
+    Merge pull request #37 from JAESKAAA/gogo
+    
+    11.25점심 결 수정
+
+[33mcommit 854a352c675230c5b2e1367d1b835609c2d20b73[m
+Merge: 7c03394 70afd20
+Author: GoGyul <rhruf11@naver.com>
+Date:   Thu Nov 25 12:22:01 2021 +0900
+
+    로그인후 게시판에서 사용가능등등, 코멘트 디비에 인서트까지만 , 헤더푸터 다 날림
+
+[33mcommit 7c03394f01dd9ae9e2f0b9e9b75c2f1f26da1ceb[m
+Author: GoGyul <rhruf11@naver.com>
+Date:   Thu Nov 25 11:51:33 2021 +0900
+
+    결코밋
+
+[33mcommit 70afd2053d5771710ea74add97dd191f8e793d5f[m
+Author: beetrootfarmer <pos04118@gmail.com>
+Date:   Thu Nov 25 11:47:25 2021 +0900
+
+    몌지 비밀번호 찾기 병합
+
+[33mcommit 7139c800afc0175dd91b44568c5e3a2e6d09643a[m
+Merge: 8d0b0b1 19a38bf
+Author: JAESKAAA <78363202+JAESKAAA@users.noreply.github.com>
+Date:   Thu Nov 25 09:45:48 2021 +0900
+
+    Merge pull request #36 from JAESKAAA/develop
+    
+    Develop 브랜치 1차 병합
+
+[33mcommit c14856481d7ca115b95b54a2e8ee723116bd5d98[m
+Merge: 6de93ca 19a38bf
+Author: GoGyul <rhruf11@naver.com>
+Date:   Wed Nov 24 17:20:21 2021 +0900
+
+    결 코밋
+
+[33mcommit 6de93ca766be82d2697e97789e5a859dc7866a79[m
+Author: GoGyul <rhruf11@naver.com>
+Date:   Wed Nov 24 17:17:19 2021 +0900
+
+    결 코밋
+
+[33mcommit 19a38bf96e0cca53f75dbb8e4d8ccf5ea69911dc[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Wed Nov 24 17:12:05 2021 +0900
+
+    미비된 충돌파일 수정
+
+[33mcommit 0e303668049e437958da406d51a60b2d18eaf19d[m
+Merge: 67e1a75 8f6657b
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Wed Nov 24 17:08:27 2021 +0900
+
+    결님자료 병합 완료
+
+[33mcommit 67e1a7508676b6e10b84cf3f8b6f6bcbbf95a34d[m
+Merge: a585cf8 8d0b0b1
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Wed Nov 24 16:44:06 2021 +0900
+
+    Merge remote-tracking branch 'origin' into develop
+
+[33mcommit 8f6657beaf2b1d5e70dc7e4ee536dc5ccdec9349[m
+Author: GoGyul <rhruf11@naver.com>
+Date:   Wed Nov 24 16:28:47 2021 +0900
+
+    결 코밋
+
+[33mcommit 6313312e6a43c8e98e91e0abf88fcd3f87ca0e14[m
+Author: GoGyul <rhruf11@naver.com>
+Date:   Wed Nov 24 16:10:48 2021 +0900
+
+    결코밋
+
+[33mcommit a585cf8b28a0ece17d104162930330d6524de2bb[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Wed Nov 24 14:54:56 2021 +0900
+
+    인코딩수정 및 누락페이지 연동
+
+[33mcommit 66e88cf68d60efc879ab88a028610138f7c41a8b[m
+Merge: f736e8c 4cdfa35
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Wed Nov 24 14:51:42 2021 +0900
+
+    인코딩설정 및 관리자페이지 연동완료
+
+[33mcommit f736e8c37fc4ca69fa8efb9ed8ed71f39096ff01[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Wed Nov 24 14:34:18 2021 +0900
+
+    UTF-8로 변경, 관리자페이지 연동 완료
+
+[33mcommit 4cdfa358b8235aec72e8d4aa2f69caa29499e5ca[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Wed Nov 24 11:45:48 2021 +0900
+
+    ignore 파일 적용
+
+[33mcommit cd14cecd52c3740680a92c64aeb202605cf78f0b[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Wed Nov 24 11:16:33 2021 +0900
+
+    remove ignored files
+
+[33mcommit 559560f5279aede3d0255318fddc0359360292c7[m
+Merge: 8aa0487 e317ea1
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Mon Nov 22 19:29:50 2021 +0900
+
+    Merge branch 'develop' of https://github.com/JAESKAAA/PawMap into develop
+
+[33mcommit 91aa43988a43a075e6ef5c1e3d741e3f92a5cea4[m
+Merge: a55b711 a0abb4a
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Mon Nov 22 19:29:50 2021 +0900
+
+    Merge branch 'develop' of https://github.com/JAESKAAA/PawMap into develop
+
+[33mcommit 8aa04877a87850168e5c0fad5e4244bd48f37d13[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Mon Nov 22 19:17:00 2021 +0900
+
+    로그인 1차 구현 / 회원가입 일부구현
+
+[33mcommit a55b711696a8fe45623c5bd51791c83181090ca7[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Mon Nov 22 19:17:00 2021 +0900
+
+    로그인 1차 구현 / 회원가입 일부구현
+
+[33mcommit e317ea166190740be36b6e1f23beeca74c57bb20[m
+Author: CHOI SILBIA <88011615+BIBI-CHOI@users.noreply.github.com>
+Date:   Mon Nov 22 14:12:19 2021 +0900
+
+    병원관리페이지(수의사 관리) 누락페이지 추가
+
+[33mcommit a0abb4a4ee7a537a5c7913f2785b4fbeeff13109[m
+Author: CHOI SILBIA <88011615+BIBI-CHOI@users.noreply.github.com>
+Date:   Mon Nov 22 14:12:19 2021 +0900
+
+    병원관리페이지(수의사 관리) 누락페이지 추가
+
+[33mcommit 0ef0ce0f314c545fe855b9f498bf54bbd41acd67[m
+Author: CHOI SILBIA <88011615+BIBI-CHOI@users.noreply.github.com>
+Date:   Mon Nov 22 14:11:47 2021 +0900
+
+    Delete hospital_account(수의사관리)-실비아.html
+
+[33mcommit 5d8949752dfd7810c99fafd0ff30d8aa22eb02a9[m
+Author: CHOI SILBIA <88011615+BIBI-CHOI@users.noreply.github.com>
+Date:   Mon Nov 22 14:11:47 2021 +0900
+
+    Delete hospital_account(수의사관리)-실비아.html
+
+[33mcommit d9914f0703ec12307c3d351a4f8c2235cb2c35f5[m
+Author: CHOI SILBIA <88011615+BIBI-CHOI@users.noreply.github.com>
+Date:   Mon Nov 22 14:10:37 2021 +0900
+
+    병원관리페이지(수의사관리) 누락페이지 추가
+
+[33mcommit 421b4c472911b0f5d02b287d830e4e033bf71892[m
+Author: CHOI SILBIA <88011615+BIBI-CHOI@users.noreply.github.com>
+Date:   Mon Nov 22 14:10:37 2021 +0900
+
+    병원관리페이지(수의사관리) 누락페이지 추가
+
+[33mcommit 604f139877af39cd0fc836791fbb0b15e49d37a3[m
+Author: CHOI SILBIA <88011615+BIBI-CHOI@users.noreply.github.com>
+Date:   Mon Nov 22 14:05:53 2021 +0900
+
+    pet 이미지 파일 추가
+
+[33mcommit ee53f9df99472641f6ec4860911c4f606c762915[m
+Author: CHOI SILBIA <88011615+BIBI-CHOI@users.noreply.github.com>
+Date:   Mon Nov 22 14:05:53 2021 +0900
+
+    pet 이미지 파일 추가
+
+[33mcommit eb365c1d250c1c9c1261e47fe3edd73e539f09ac[m
+Author: CHOI SILBIA <88011615+BIBI-CHOI@users.noreply.github.com>
+Date:   Mon Nov 22 14:05:20 2021 +0900
+
+    마이페이지(동물관리) 수정
+
+[33mcommit bb47ca628573f39395602deff55d820a20178136[m
+Author: CHOI SILBIA <88011615+BIBI-CHOI@users.noreply.github.com>
+Date:   Mon Nov 22 14:05:20 2021 +0900
+
+    마이페이지(동물관리) 수정
+
+[33mcommit e66f05f71504c0b32dc4ab3a9070c178d79129e9[m
+Author: unene <87972078+help-Extinguisher@users.noreply.github.com>
+Date:   Mon Nov 22 11:41:28 2021 +0900
+
+    Delete uenene.txt
+
+[33mcommit db5a839eb675dfb0f21cdd45b1126fad7cb24351[m
+Author: unene <87972078+help-Extinguisher@users.noreply.github.com>
+Date:   Mon Nov 22 11:41:28 2021 +0900
+
+    Delete uenene.txt
+
+[33mcommit afcb1bc5d5b11659ee6f088c4a0575421cb7017b[m
+Author: beetrootfarmer <87971876+beetrootfarmer@users.noreply.github.com>
+Date:   Mon Nov 22 11:40:37 2021 +0900
+
+    Delete calendar.js
+
+[33mcommit 8efa783e520020e6df21d44b838eb61c0baeb60c[m
+Author: beetrootfarmer <87971876+beetrootfarmer@users.noreply.github.com>
+Date:   Mon Nov 22 11:40:37 2021 +0900
+
+    Delete calendar.js
+
+[33mcommit c82a83e5abcc96ee5a84ee3b0c25b901f3af7a3f[m
+Merge: 157dcca 3931230
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Mon Nov 22 11:40:17 2021 +0900
+
+    Merge branch 'develop' of https://github.com/JAESKAAA/PawMap into develop
+
+[33mcommit afb5c20319d886e42a936ce845731e00ecd054b4[m
+Merge: 7b332c5 d1fdd3f
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Mon Nov 22 11:40:17 2021 +0900
+
+    Merge branch 'develop' of https://github.com/JAESKAAA/PawMap into develop
+
+[33mcommit 157dccaf6bfcff3d91f62dff53be5c5b89f5f970[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Mon Nov 22 11:39:41 2021 +0900
+
+    pawmap 기능 구현 관련 1차 초안
+
+[33mcommit 7b332c5dc36307db2b14b4d8f51338cfa2a369d8[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Mon Nov 22 11:39:41 2021 +0900
+
+    pawmap 기능 구현 관련 1차 초안
+
+[33mcommit 3931230208b038ab5af95672329420a48e82ffa7[m
+Author: Thom <81919273+leeyou31@users.noreply.github.com>
+Date:   Thu Nov 18 20:51:21 2021 +0900
+
+    tom's custom css added
+
+[33mcommit d1fdd3fa8be2df09e0e73f6078cba5764b5c3955[m
+Author: Thom <81919273+leeyou31@users.noreply.github.com>
+Date:   Thu Nov 18 20:51:21 2021 +0900
+
+    tom's custom css added
+
+[33mcommit 66fe5dae4df1b81c4fcb3aac5a8e704ef891e727[m
+Author: Thom <81919273+leeyou31@users.noreply.github.com>
+Date:   Thu Nov 18 20:50:43 2021 +0900
+
+    nov 18th work until 9pm
+    
+    footer added.
+    
+    search function added.
+    
+    page navigation added
+
+[33mcommit 664c87fd0ab9c583041ff1c93fc68407938516be[m
+Author: Thom <81919273+leeyou31@users.noreply.github.com>
+Date:   Thu Nov 18 20:50:43 2021 +0900
+
+    nov 18th work until 9pm
+    
+    footer added.
+    
+    search function added.
+    
+    page navigation added
+
+[33mcommit 45b42ec642054e0484b196e362dd9e56fa2b06c1[m
+Merge: db1b2ba 59beb4f
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Thu Nov 18 20:10:32 2021 +0900
+
+    Merge branch 'develop' of https://github.com/JAESKAAA/PawMap into develop
+
+[33mcommit 52f56a6f2258af44f8d3667b06b365e0c6fd9e88[m
+Merge: 96c8d11 fb84441
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Thu Nov 18 20:10:32 2021 +0900
+
+    Merge branch 'develop' of https://github.com/JAESKAAA/PawMap into develop
+
+[33mcommit db1b2ba3e19f6e14ff94d147304a72c08ba278c3[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Thu Nov 18 20:08:59 2021 +0900
+
+    요구사항명세서, ERD, ppt 최종본
+
+[33mcommit 96c8d11bfdcf98971f2a18f9aca90e93066993b3[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Thu Nov 18 20:08:59 2021 +0900
+
+    요구사항명세서, ERD, ppt 최종본
+
+[33mcommit 59beb4f9560c8270ca96c250ba5d172522f8a676[m
+Merge: 5e21ece d169594
+Author: unene <87972078+help-Extinguisher@users.noreply.github.com>
+Date:   Thu Nov 18 17:46:39 2021 +0900
+
+    Merge pull request #28 from JAESKAAA/unene
+    
+    02 unene test
+
+[33mcommit fb844415760dcbef3f5fc366d1e507a232a8e328[m
+Merge: dc45fb7 c923b27
+Author: unene <87972078+help-Extinguisher@users.noreply.github.com>
+Date:   Thu Nov 18 17:46:39 2021 +0900
+
+    Merge pull request #28 from JAESKAAA/unene
+    
+    02 unene test
+
+[33mcommit d1695943afa89d43dae3a498793656c0212c5e8f[m
+Merge: 2d6c390 5e21ece
+Author: help-Extinguisher <help-extinguisher>
+Date:   Thu Nov 18 17:44:55 2021 +0900
+
+    02 unene html 이름변경
+
+[33mcommit c923b27c679a40f3784ecfdca6905e629b190762[m
+Merge: 0f7dd05 dc45fb7
+Author: help-Extinguisher <help-extinguisher>
+Date:   Thu Nov 18 17:44:55 2021 +0900
+
+    02 unene html 이름변경
+
+[33mcommit 2d6c3909d4ce36a8312528bbc017b626670adb52[m
+Author: help-Extinguisher <help-extinguisher>
+Date:   Thu Nov 18 17:19:53 2021 +0900
+
+    02 une test
+
+[33mcommit 0f7dd0523f00ac1200e34124b455cbba1bb183ad[m
+Author: help-Extinguisher <help-extinguisher>
+Date:   Thu Nov 18 17:19:53 2021 +0900
+
+    02 une test
+
+[33mcommit 5e21ecef286126f8526aedea4b61c85801f8a2fe[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Thu Nov 18 17:09:52 2021 +0900
+
+    style.css 및 superslides 에러 수정 및 공통된 부분 변경
+
+[33mcommit dc45fb77e1133d42c118d0f6cff04a892b21632b[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Thu Nov 18 17:09:52 2021 +0900
+
+    style.css 및 superslides 에러 수정 및 공통된 부분 변경
+
+[33mcommit 01d7e1cd131bf64d05631f9546b22331394b29de[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Thu Nov 18 17:05:10 2021 +0900
+
+    style.css 통합 및 superslides 이슈 해결, 결님 파일 통합
+
+[33mcommit 3b28bda2431c7ee3c01a7f6f7c10db3bde746dfd[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Thu Nov 18 17:05:10 2021 +0900
+
+    style.css 통합 및 superslides 이슈 해결, 결님 파일 통합
+
+[33mcommit a2d89df2437c594115fb9c83902532e1ec4e76ff[m
+Merge: fdc825d 66a4c71
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Thu Nov 18 16:59:23 2021 +0900
+
+    Merge branch 'develop' of https://github.com/JAESKAAA/PawMap into develop
+
+[33mcommit 8b6a20df8a9ccfbecbce2316b52b662b7e253857[m
+Merge: b474f8d 7832faa
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Thu Nov 18 16:59:23 2021 +0900
+
+    Merge branch 'develop' of https://github.com/JAESKAAA/PawMap into develop
+
+[33mcommit fdc825d1c8fe9299b4314e2be27fe66bd6bc143c[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Thu Nov 18 16:57:22 2021 +0900
+
+    style.css 및 superslides 에러 수정 및 공통된 부분 변경
+
+[33mcommit b474f8d1849a100752b8e8f7f18ff1df5f8dd481[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Thu Nov 18 16:57:22 2021 +0900
+
+    style.css 및 superslides 에러 수정 및 공통된 부분 변경
+
+[33mcommit 66a4c719ba7e55645e8e961e89d488910d9dd57b[m
+Merge: 28503e6 1659890
+Author: GoGyul <85237583+GoGyul@users.noreply.github.com>
+Date:   Thu Nov 18 16:09:48 2021 +0900
+
+    Merge pull request #25 from JAESKAAA/gogo
+    
+    Gogo
+
+[33mcommit 7832faad299618063a0e291bc49d61a029b5120d[m
+Merge: effbd3f ff512ad
+Author: GoGyul <85237583+GoGyul@users.noreply.github.com>
+Date:   Thu Nov 18 16:09:48 2021 +0900
+
+    Merge pull request #25 from JAESKAAA/gogo
+    
+    Gogo
+
+[33mcommit 1659890968a2497533a03bc43b901b62f7678b39[m
+Merge: 2900fc0 b9ef779
+Author: GoGyul <rhruf11@naver.com>
+Date:   Thu Nov 18 16:07:29 2021 +0900
+
+    결 코밋4
+
+[33mcommit ff512ad655eff4540003e04732001d489378d531[m
+Merge: 8447cd2 c104a7c
+Author: GoGyul <rhruf11@naver.com>
+Date:   Thu Nov 18 16:07:29 2021 +0900
+
+    결 코밋4
+
+[33mcommit 28503e6b57a8fe7d04d78389a060cdbec7bf6d34[m
+Author: beetrootfarmer <87971876+beetrootfarmer@users.noreply.github.com>
+Date:   Thu Nov 18 15:58:14 2021 +0900
+
+    mye_css
+
+[33mcommit effbd3f6fea456938657379bd2c0a984a880769b[m
+Author: beetrootfarmer <87971876+beetrootfarmer@users.noreply.github.com>
+Date:   Thu Nov 18 15:58:14 2021 +0900
+
+    mye_css
+
+[33mcommit 2900fc01c74f9c48239ac14da12df2e98adaf1e9[m
+Author: GoGyul <rhruf11@naver.com>
+Date:   Thu Nov 18 15:30:27 2021 +0900
+
+    결 커밋 4
+
+[33mcommit 8447cd2882ae1311c20667ea88874009a22d088f[m
+Author: GoGyul <rhruf11@naver.com>
+Date:   Thu Nov 18 15:30:27 2021 +0900
+
+    결 커밋 4
+
+[33mcommit b9ef77974f3e52a10f48a05f8029027691a74505[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Thu Nov 18 15:28:24 2021 +0900
+
+    1차 통합!!
+
+[33mcommit c104a7c0e6378ab9ec5480cb0b982de2e465cce8[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Thu Nov 18 15:28:24 2021 +0900
+
+    1차 통합!!
+
+[33mcommit 2cd796f10a055588e7e9594ee1fab8fbc9258313[m
+Author: beetrootfarmer <87971876+beetrootfarmer@users.noreply.github.com>
+Date:   Thu Nov 18 15:20:40 2021 +0900
+
+    mye
+
+[33mcommit 47856694822bc216bc6c9c7dea1630329bd429ea[m
+Author: beetrootfarmer <87971876+beetrootfarmer@users.noreply.github.com>
+Date:   Thu Nov 18 15:20:40 2021 +0900
+
+    mye
+
+[33mcommit 8da98287dd3dd791402f1e7fcfea2a1aaeca4a7f[m
+Author: beetrootfarmer <87971876+beetrootfarmer@users.noreply.github.com>
+Date:   Thu Nov 18 15:19:24 2021 +0900
+
+    mye
+
+[33mcommit b5d9350f75729d29638d74744647236bee1f2903[m
+Author: beetrootfarmer <87971876+beetrootfarmer@users.noreply.github.com>
+Date:   Thu Nov 18 15:19:24 2021 +0900
+
+    mye
+
+[33mcommit 6b8eb116c3dbb2413f5804f5218dcfab8239f816[m
+Author: beetrootfarmer <87971876+beetrootfarmer@users.noreply.github.com>
+Date:   Thu Nov 18 15:18:33 2021 +0900
+
+    mye
+
+[33mcommit 69fe717bc91903b9ceadbf9c6fe9ae90192cf04c[m
+Author: beetrootfarmer <87971876+beetrootfarmer@users.noreply.github.com>
+Date:   Thu Nov 18 15:18:33 2021 +0900
+
+    mye
+
+[33mcommit 714117c736ceace31c94a48b9c07be63b37c3668[m
+Author: beetrootfarmer <87971876+beetrootfarmer@users.noreply.github.com>
+Date:   Thu Nov 18 15:17:50 2021 +0900
+
+    mye
+
+[33mcommit f6f7499630e79a0c78ac71899e20d292df8fa3a5[m
+Author: beetrootfarmer <87971876+beetrootfarmer@users.noreply.github.com>
+Date:   Thu Nov 18 15:17:50 2021 +0900
+
+    mye
+
+[33mcommit 0acb9cf0126c6f7f5278b323ff9096b5ebdc2a03[m
+Merge: 30e0855 a77a024
+Author: GoGyul <85237583+GoGyul@users.noreply.github.com>
+Date:   Thu Nov 18 14:57:26 2021 +0900
+
+    Merge pull request #23 from JAESKAAA/gogo
+    
+    결 커밋3
+
+[33mcommit 82d034eb89a56dbb5dbf53fe33e3fc10fd61a688[m
+Merge: 1e0528d 9c373a3
+Author: GoGyul <85237583+GoGyul@users.noreply.github.com>
+Date:   Thu Nov 18 14:57:26 2021 +0900
+
+    Merge pull request #23 from JAESKAAA/gogo
+    
+    결 커밋3
+
+[33mcommit a77a024763acc4869680f6e978d26c963cbf5ceb[m
+Author: GoGyul <rhruf11@naver.com>
+Date:   Thu Nov 18 14:55:53 2021 +0900
+
+    결 커밋2
+
+[33mcommit 9c373a3eb996436d4d843d13ff66ce9f9070dccd[m
+Author: GoGyul <rhruf11@naver.com>
+Date:   Thu Nov 18 14:55:53 2021 +0900
+
+    결 커밋2
+
+[33mcommit 30e0855556c11a93acb763a25f5dddf9d84a261a[m
+Merge: 0a4f10b 98ae6fa
+Author: unene <87972078+help-Extinguisher@users.noreply.github.com>
+Date:   Thu Nov 18 14:52:09 2021 +0900
+
+    Merge pull request #22 from JAESKAAA/unene
+    
+    01 unene
+
+[33mcommit 1e0528da10f014c611856a8833a57645eb1dd175[m
+Merge: f6505e6 1210b96
+Author: unene <87972078+help-Extinguisher@users.noreply.github.com>
+Date:   Thu Nov 18 14:52:09 2021 +0900
+
+    Merge pull request #22 from JAESKAAA/unene
+    
+    01 unene
+
+[33mcommit 98ae6faf1d70e93473895d1e95e47f2263e845a8[m
+Merge: 1510064 0a4f10b
+Author: unene <87972078+help-Extinguisher@users.noreply.github.com>
+Date:   Thu Nov 18 14:51:59 2021 +0900
+
+    Merge branch 'develop' into unene
+
+[33mcommit 1210b96307b85134e4a4b44458cb72d5d97a79df[m
+Merge: 569ab2e f6505e6
+Author: unene <87972078+help-Extinguisher@users.noreply.github.com>
+Date:   Thu Nov 18 14:51:59 2021 +0900
+
+    Merge branch 'develop' into unene
+
+[33mcommit 0a4f10be0e71765916f3fa4dd1280d20b3343b2e[m
+Author: CHOI SILBIA <88011615+BIBI-CHOI@users.noreply.github.com>
+Date:   Thu Nov 18 14:44:06 2021 +0900
+
+    실비아 커밋
+
+[33mcommit f6505e61a3e440a2762b6606b85722d52367519b[m
+Author: CHOI SILBIA <88011615+BIBI-CHOI@users.noreply.github.com>
+Date:   Thu Nov 18 14:44:06 2021 +0900
+
+    실비아 커밋
+
+[33mcommit 7d528604d37fa915a926e55053976dd43bc7b2b8[m
+Author: Thom <81919273+leeyou31@users.noreply.github.com>
+Date:   Thu Nov 18 14:42:09 2021 +0900
+
+    tom lee is going to use this js file
+
+[33mcommit bdac57e61863325ce113ef2ce6508992cce6f7df[m
+Author: Thom <81919273+leeyou31@users.noreply.github.com>
+Date:   Thu Nov 18 14:42:09 2021 +0900
+
+    tom lee is going to use this js file
+
+[33mcommit c0bae3e46684e3c273f6840363e22f8ea4d7d9f4[m
+Author: CHOI SILBIA <88011615+BIBI-CHOI@users.noreply.github.com>
+Date:   Thu Nov 18 14:42:06 2021 +0900
+
+    실비아 커밋
+
+[33mcommit 48a757a17c12756adeee1da6d518fc9e44989a52[m
+Author: CHOI SILBIA <88011615+BIBI-CHOI@users.noreply.github.com>
+Date:   Thu Nov 18 14:42:06 2021 +0900
+
+    실비아 커밋
+
+[33mcommit 191e86791605cef44af5e96708209a6eb17462b5[m
+Author: CHOI SILBIA <88011615+BIBI-CHOI@users.noreply.github.com>
+Date:   Thu Nov 18 14:41:28 2021 +0900
+
+    실비아 커밋
+
+[33mcommit 30320bd9464667007cd5e92e4aac890c9fa4eebb[m
+Author: CHOI SILBIA <88011615+BIBI-CHOI@users.noreply.github.com>
+Date:   Thu Nov 18 14:41:28 2021 +0900
+
+    실비아 커밋
+
+[33mcommit 755e3f9c350037c1009fc95da3f9cc5cd54ec413[m
+Author: Thom <81919273+leeyou31@users.noreply.github.com>
+Date:   Thu Nov 18 14:41:26 2021 +0900
+
+    thomas lee is going to use this css file.
+
+[33mcommit b0c471e3ecc53ba8d332442dd38c3277efb0c260[m
+Author: Thom <81919273+leeyou31@users.noreply.github.com>
+Date:   Thu Nov 18 14:41:26 2021 +0900
+
+    thomas lee is going to use this css file.
+
+[33mcommit e4f65d028ef435c02e28f982239a582ca369dc44[m
+Author: CHOI SILBIA <88011615+BIBI-CHOI@users.noreply.github.com>
+Date:   Thu Nov 18 14:40:36 2021 +0900
+
+    실비아 커밋
+
+[33mcommit 6a6ab5763c7621d00f93df584ba8c2b307936350[m
+Author: CHOI SILBIA <88011615+BIBI-CHOI@users.noreply.github.com>
+Date:   Thu Nov 18 14:40:36 2021 +0900
+
+    실비아 커밋
+
+[33mcommit 15100642b015b994cca023630bf35445d218d562[m
+Author: help-Extinguisher <help-extinguisher>
+Date:   Thu Nov 18 14:38:02 2021 +0900
+
+    01 unene
+
+[33mcommit 569ab2e0e942790a126b879ebcd59173cdf7d50e[m
+Author: help-Extinguisher <help-extinguisher>
+Date:   Thu Nov 18 14:38:02 2021 +0900
+
+    01 unene
+
+[33mcommit a566c339d2e2455be4d8e9c0de4a58b67751622f[m
+Author: Thom <81919273+leeyou31@users.noreply.github.com>
+Date:   Thu Nov 18 14:30:30 2021 +0900
+
+    thomas lee added the temporary logo
+    
+    this following logo is temporary and it is not official.
+    it was used for his admin pasges
+
+[33mcommit 0ca35fcf11fd6ec8c84edd29a5b5875888dd5c37[m
+Author: Thom <81919273+leeyou31@users.noreply.github.com>
+Date:   Thu Nov 18 14:30:30 2021 +0900
+
+    thomas lee added the temporary logo
+    
+    this following logo is temporary and it is not official.
+    it was used for his admin pasges
+
+[33mcommit 8dee3447673addb3e423c8bb653e55a25b7ef29a[m
+Author: Thom <81919273+leeyou31@users.noreply.github.com>
+Date:   Thu Nov 18 14:28:02 2021 +0900
+
+    thomas lee added his first admin pages
+    
+    following htmls are the drafts of admin pages
+
+[33mcommit e2051e305a3880c37e7a69bc023d38b86a6c6aea[m
+Author: Thom <81919273+leeyou31@users.noreply.github.com>
+Date:   Thu Nov 18 14:28:02 2021 +0900
+
+    thomas lee added his first admin pages
+    
+    following htmls are the drafts of admin pages
+
+[33mcommit 569e45c4308d3b815f2cb48cf88bbec68c632e86[m
+Merge: 6560aa3 79c485f
+Author: JAESKAAA <78363202+JAESKAAA@users.noreply.github.com>
+Date:   Thu Nov 18 14:23:53 2021 +0900
+
+    Merge pull request #21 from JAESKAAA/jaeskaaa
+    
+    1차 통합
+
+[33mcommit 82668ca9762cf49187bd872215c88845b662aa6e[m
+Merge: 0477589 d7a3576
+Author: JAESKAAA <78363202+JAESKAAA@users.noreply.github.com>
+Date:   Thu Nov 18 14:23:53 2021 +0900
+
+    Merge pull request #21 from JAESKAAA/jaeskaaa
+    
+    1차 통합
+
+[33mcommit 79c485f2dd914a6ddbcf93c19ee5076e0d03edaa[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Thu Nov 18 14:21:45 2021 +0900
+
+    1차 통합
+
+[33mcommit d7a3576be4d0fcb5c4c5ffc8e7d6712ea85f31e7[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Thu Nov 18 14:21:45 2021 +0900
+
+    1차 통합
+
+[33mcommit 6560aa31fe10098adc196789de105ce0e8bebff9[m
+Merge: 878f487 719937b
+Author: GoGyul <85237583+GoGyul@users.noreply.github.com>
+Date:   Thu Nov 18 14:02:23 2021 +0900
+
+    Merge pull request #20 from JAESKAAA/gogo
+    
+    고결 커밋2
+
+[33mcommit 0477589c43b0326048482865def1554d1fcce492[m
+Merge: 1f114f7 bbfe46e
+Author: GoGyul <85237583+GoGyul@users.noreply.github.com>
+Date:   Thu Nov 18 14:02:23 2021 +0900
+
+    Merge pull request #20 from JAESKAAA/gogo
+    
+    고결 커밋2
+
+[33mcommit 719937bc2bd7884f21d4fc2ab49d69fa167e5c41[m
+Author: GoGyul <rhruf11@naver.com>
+Date:   Thu Nov 18 13:57:51 2021 +0900
+
+    고결 커밋2
+
+[33mcommit bbfe46e598fb92ef7bc98fc1e86b1e17e7508409[m
+Author: GoGyul <rhruf11@naver.com>
+Date:   Thu Nov 18 13:57:51 2021 +0900
+
+    고결 커밋2
+
+[33mcommit 878f4872c4691873b1a2043e27185e4a8371dc49[m
+Merge: 3db960e e1abdca
+Author: beetrootfarmer <87971876+beetrootfarmer@users.noreply.github.com>
+Date:   Tue Nov 16 17:35:14 2021 +0900
+
+    Merge pull request #19 from JAESKAAA/myezi
+    
+    mye1116
+
+[33mcommit 1f114f7ff2a7dc5f43d84c52a3fe430c3ecfd10c[m
+Merge: 17b0167 2d2a403
+Author: beetrootfarmer <87971876+beetrootfarmer@users.noreply.github.com>
+Date:   Tue Nov 16 17:35:14 2021 +0900
+
+    Merge pull request #19 from JAESKAAA/myezi
+    
+    mye1116
+
+[33mcommit e1abdcaa2e5464bc0da025f5aafdc278086b4ef2[m
+Author: beetrootfarmer <pos04118@gmail.com>
+Date:   Tue Nov 16 17:28:34 2021 +0900
+
+    mye1116
+
+[33mcommit 2d2a40390ae39ea5cba8d6e0fa3e200408f52dff[m
+Author: beetrootfarmer <pos04118@gmail.com>
+Date:   Tue Nov 16 17:28:34 2021 +0900
+
+    mye1116
+
+[33mcommit 3db960e8c29d7a40daf5fe7e9e8a33346b319652[m
+Merge: 85add56 04e20d9
+Author: GoGyul <85237583+GoGyul@users.noreply.github.com>
+Date:   Tue Nov 16 17:07:56 2021 +0900
+
+    Merge pull request #17 from JAESKAAA/gogo
+    
+    Gogo commit 1
+
+[33mcommit 17b0167d54c9eab1c84113da16b3342b845f0a0c[m
+Merge: 7615c09 c6e2927
+Author: GoGyul <85237583+GoGyul@users.noreply.github.com>
+Date:   Tue Nov 16 17:07:56 2021 +0900
+
+    Merge pull request #17 from JAESKAAA/gogo
+    
+    Gogo commit 1
+
+[33mcommit 04e20d9fa23e0e81d12b6815c4a3a649f9679ebe[m
+Author: GoGyul <rhruf11@naver.com>
+Date:   Tue Nov 16 17:06:36 2021 +0900
+
+    go commit1
+
+[33mcommit c6e29278eb392d2503927815616d4896c34f89f8[m
+Author: GoGyul <rhruf11@naver.com>
+Date:   Tue Nov 16 17:06:36 2021 +0900
+
+    go commit1
+
+[33mcommit 7d00ad5577480123b996d08cce6d3de5083dbd7e[m
+Merge: 5d6b7be 85add56
+Author: JAESKAAA <78363202+JAESKAAA@users.noreply.github.com>
+Date:   Tue Nov 16 16:54:03 2021 +0900
+
+    Merge pull request #16 from JAESKAAA/develop
+    
+    Develop 브랜치 생성
+
+[33mcommit 5241083a3a72cd0cbf6fb225ba989dd1bf5faa03[m
+Merge: f1fb1ec 7615c09
+Author: JAESKAAA <78363202+JAESKAAA@users.noreply.github.com>
+Date:   Tue Nov 16 16:54:03 2021 +0900
+
+    Merge pull request #16 from JAESKAAA/develop
+    
+    Develop 브랜치 생성
+
+[33mcommit 85add56a76998f41eed4ee4b503d2b79b5ef4994[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Tue Nov 16 16:51:29 2021 +0900
+
+    Develop 브랜치 생성
+
+[33mcommit 7615c09ee0911c3c7cf5f521ccab9998f14d1712[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Tue Nov 16 16:51:29 2021 +0900
+
+    Develop 브랜치 생성
+
+[33mcommit 5d6b7bef26eee43edbf81b72aaff65c6147016c9[m
+Merge: 3432a1e 6bdc32a
+Author: JAESKAAA <78363202+JAESKAAA@users.noreply.github.com>
+Date:   Tue Nov 16 16:49:25 2021 +0900
+
+    Merge pull request #15 from JAESKAAA/develop
+    
+    요구사항 명세서 업로드
+
+[33mcommit f1fb1eccb1b4365c9f316d2758767c8a041922ea[m
+Merge: 4575381 27ca6fb
+Author: JAESKAAA <78363202+JAESKAAA@users.noreply.github.com>
+Date:   Tue Nov 16 16:49:25 2021 +0900
+
+    Merge pull request #15 from JAESKAAA/develop
+    
+    요구사항 명세서 업로드
+
+[33mcommit 6bdc32a5f4a8ffa867a72709ddf34cf7db7574d9[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Tue Nov 16 16:47:07 2021 +0900
+
+    요구사항 명세서 업로드
+
+[33mcommit 27ca6fbbea5ae062056f1ee858208a345ec823e8[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Tue Nov 16 16:47:07 2021 +0900
+
+    요구사항 명세서 업로드
+
+[33mcommit 3432a1e8b56cb31b2303c8f5408e76f9f47ffd8a[m
+Merge: 0e1eaae c667334
+Author: JAESKAAA <78363202+JAESKAAA@users.noreply.github.com>
+Date:   Mon Nov 15 15:45:23 2021 +0900
+
+    Merge pull request #7 from JAESKAAA/jaeskaaa
+    
+    ERD 업로드
+
+[33mcommit 4575381ef5f7a76862d4ed02022f9c545917bc31[m
+Merge: f37b9db 9d2de26
+Author: JAESKAAA <78363202+JAESKAAA@users.noreply.github.com>
+Date:   Mon Nov 15 15:45:23 2021 +0900
+
+    Merge pull request #7 from JAESKAAA/jaeskaaa
+    
+    ERD 업로드
+
+[33mcommit c6673344e492bab9b8c3e44599581ad65c4ff05e[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Mon Nov 15 15:44:23 2021 +0900
+
+    ERD 업로드
+
+[33mcommit 9d2de269e306d9f8751691b57a52fc959653a724[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Mon Nov 15 15:44:23 2021 +0900
+
+    ERD 업로드
+
+[33mcommit 0e1eaaee3cbff53afda8f4e17cd4fa2f5ec844c8[m
+Merge: 3fa08aa 2c4f4c2
+Author: JAESKAAA <78363202+JAESKAAA@users.noreply.github.com>
+Date:   Mon Nov 15 14:44:57 2021 +0900
+
+    Merge pull request #6 from JAESKAAA/jaeskaaa
+    
+    요구사항 명세서 업로드
+
+[33mcommit f37b9db6bd2b862b763e969bfa3c390dfa977aab[m
+Merge: cedc651 04640bc
+Author: JAESKAAA <78363202+JAESKAAA@users.noreply.github.com>
+Date:   Mon Nov 15 14:44:57 2021 +0900
+
+    Merge pull request #6 from JAESKAAA/jaeskaaa
+    
+    요구사항 명세서 업로드
+
+[33mcommit 2c4f4c2d3d12c9ec989e17e9e802fd628201aeab[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Mon Nov 15 14:44:01 2021 +0900
+
+    요구사항 명세서 업로드
+
+[33mcommit 04640bcb09c77baa457e2c1e1a36bcaa006b770e[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Mon Nov 15 14:44:01 2021 +0900
+
+    요구사항 명세서 업로드
+
+[33mcommit 3fa08aa927533884b89248a78f34e59c1acdbcc0[m
+Merge: a8e87fc 426c8a2
+Author: JAESKAAA <78363202+JAESKAAA@users.noreply.github.com>
+Date:   Sat Nov 13 20:12:57 2021 +0900
+
+    Merge pull request #2 from JAESKAAA/jaeskaaa
+    
+    관련 문서 업데이트
+
+[33mcommit cedc65155529cacd74aea4622f52c2da9b150c01[m
+Merge: 548cd88 e7d948a
+Author: JAESKAAA <78363202+JAESKAAA@users.noreply.github.com>
+Date:   Sat Nov 13 20:12:57 2021 +0900
+
+    Merge pull request #2 from JAESKAAA/jaeskaaa
+    
+    관련 문서 업데이트
+
+[33mcommit 426c8a2f12922edbf94c4b0a4b054bc2fb6a99c1[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Sat Nov 13 20:11:22 2021 +0900
+
+    관련 문서 업데이트
+
+[33mcommit e7d948a9a9907ce2ce01c59cae2c438dc96b9654[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Sat Nov 13 20:11:22 2021 +0900
+
+    관련 문서 업데이트
+
+[33mcommit 8d0b0b14d9e79ce5646d36119559be5bdef9c12f[m
+Merge: 256209d 548cd88
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Sat Nov 13 20:09:10 2021 +0900
+
+    Merge branch 'main' of https://github.com/JAESKAAA/PawMap
+
+[33mcommit a8e87fc6a1a0663771b610852640cddba89972fd[m
+Merge: cd209bf 0f12994
+Author: JAESKAAA <78363202+JAESKAAA@users.noreply.github.com>
+Date:   Sat Nov 13 20:08:56 2021 +0900
+
+    Merge pull request #1 from JAESKAAA/unene
+    
+    commit une
+
+[33mcommit 548cd880adfc795ac44a9c780e452933685f4e9e[m
+Merge: 37c5ac5 742e6ef
+Author: JAESKAAA <78363202+JAESKAAA@users.noreply.github.com>
+Date:   Sat Nov 13 20:08:56 2021 +0900
+
+    Merge pull request #1 from JAESKAAA/unene
+    
+    commit une
+
+[33mcommit 7d2cd69ed7d7956871d6e8a38e26379c9fe6766d[m
+Author: thomas lee <yh.thomas.lee@gmail.com>
+Date:   Fri Nov 12 19:53:42 2021 +0900
+
+    fixing jaeskaaa's readme fileeeeee
+
+[33mcommit 0f1299463b1505a97aa4f02e627d4f442dd782bc[m[33m ([m[1;31morigin/unene[m[33m)[m
+Author: help-Extinguisher <help-extinguisher>
+Date:   Fri Nov 12 19:53:22 2021 +0900
+
+    commit une
+
+[33mcommit 742e6ef7fb812d3d94f49542376c4c36e1c7f1f6[m
+Author: help-Extinguisher <help-extinguisher>
+Date:   Fri Nov 12 19:53:22 2021 +0900
+
+    commit une
+
+[33mcommit 256209dc8f6285521dbb44bba81c5250fce71d7a[m
+Author: JAESKAAA <jaeskaaa@gmail.com>
+Date:   Fri Nov 12 19:40:25 2021 +0900
+
+    첫커밋
+
+[33mcommit f9b6c97aee0d91a196424a77ac7afc2806aef24b[m[33m ([m[1;32mmain[m[33m, [m[1;32mleeyou31[m[33m)[m
+Author: thomas lee <yh.thomas.lee@gmail.com>
+Date:   Fri Nov 12 19:35:54 2021 +0900
+
+    yo man this is the first time commiting
+
+[33mcommit cd209bfcde4fe0716075827d82bb3b7c2c815174[m[33m ([m[1;31morigin/jaeskaaa[m[33m)[m
+Author: JAESKAAA <78363202+JAESKAAA@users.noreply.github.com>
+Date:   Fri Nov 12 19:33:40 2021 +0900
+
+    Initial commit
+
+[33mcommit 37c5ac51b5bc9cb6e348eeeddf47514284e233c2[m
+Author: JAESKAAA <78363202+JAESKAAA@users.noreply.github.com>
+Date:   Fri Nov 12 19:33:40 2021 +0900
+
+    Initial commit
+
+[33mcommit d035cbe524807f96a2112ac66f6b4337f480d8a8[m
+Author: JAESKAAA <78363202+JAESKAAA@users.noreply.github.com>
+Date:   Fri Nov 12 19:17:29 2021 +0900
+
+    Initial commit
