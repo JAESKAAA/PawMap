@@ -149,6 +149,7 @@ public class UserController {
 	
 
 	// 아이디 찾기
+
 			@RequestMapping(value = "/pawmap/searchIdPw", method = RequestMethod.POST)
 			@ResponseBody
 			public String searchId(@RequestParam("userName") String userName, 
@@ -162,6 +163,7 @@ public class UserController {
 				return result;
 			}
 			
+
 		
 	// 비밀번호를 잊어버렸습니까? 클릭시 forgotPW 
 	@GetMapping("/searchIdPw")
