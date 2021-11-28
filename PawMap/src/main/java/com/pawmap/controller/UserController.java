@@ -4,24 +4,32 @@ package com.pawmap.controller;
 
 import java.util.List;
 import java.util.Map;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.pawmap.VO.UserVO;
 import com.pawmap.configuration.auth.PrincipalDetails;
+import com.pawmap.configuration.auth.PrincipalDetailsService;
 import com.pawmap.service.UserService;
 import com.pawmap.util.CookieUtil;
 
@@ -32,8 +40,14 @@ public class UserController {
 	private UserService userService;
 	
 	@Autowired
+	private PrincipalDetailsService principalDetailsService;
+	
+	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
+
+	@Autowired
+	private AuthenticationManager authenticationManager;
 	/*
 	 * 페이지 이동 관련 메소드
 	 * 
@@ -115,10 +129,11 @@ public class UserController {
 	 * */
 	//마이페이지 -> 유저 정보 업데이트
 	@PostMapping("/mypage/updateUser")
-	public String updateUser(UserVO vo) {
+	public String updateUser(UserVO vo, @AuthenticationPrincipal PrincipalDetails principal, HttpSession session) {
 		System.out.println("updateUser 호출 !! ");
 		System.out.println("UserVO getNickname ====="+ vo.getUserNickname());
-		System.out.println("UserVO getPassword====="+ vo.getUserNickname());
+		System.out.println("UserVO getUserId====="+ vo.getUserId());
+		System.out.println("UserVO getpassword====="+ vo.getUserPassword());
 		
 		
 		if(vo.getUserPassword() != null && !(vo.getUserPassword().equals(""))) {
@@ -128,7 +143,21 @@ public class UserController {
 		} else {
 			vo.setUserPassword(null);
 		}
+		
 		userService.updateUser(vo);
+		
+		// user에 직접 들어갈 수 있도록 여기서 데이터 입력해줌
+		UserDetails userDetails = principalDetailsService.loadUserByUsername(vo.getUserId());
+		//세션 등록
+		
+		Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
+		SecurityContext securityContext = SecurityContextHolder.getContext();
+		securityContext.setAuthentication(authentication);
+		
+		session.setAttribute("SPRING_SECURITY_CONTEXT", securityContext);
+		
+//		Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(vo.getUserId(), vo.getUserPassword(),principal.getAuthorities()));
+//		SecurityContextHolder.getContext().setAuthentication(authentication);
 		
 		return "redirect:/";
 	}
@@ -307,6 +336,13 @@ public class UserController {
 			 return "redirect:/admin";
 		}
 
+		
+	//시큐리티 세션 참고용 메서드
+	@GetMapping("/check")
+	public @ResponseBody String check(@AuthenticationPrincipal PrincipalDetails principal) {
+		String name = principal.toString();
+		return name;
+	}
 	
 
 
