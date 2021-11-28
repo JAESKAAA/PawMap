@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import java.util.List;
-import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +21,6 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,6 +56,10 @@ public class UserController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	
+	 @Autowired 
+	 private UserMapper userMapper;
+	 
 	/*
 	 * 페이지 이동 관련 메소드
 	 * 
@@ -122,10 +123,10 @@ public class UserController {
 	}
 				
 	// 비밀번호를 잊어버렸습니까? 클릭시 forgotPW 
-	@GetMapping("/forgotPw")
-	public String showFindLoginPasswd() {
-		return "forgotPw";
-	}
+		@GetMapping("/searchIdPw")
+		public String showFindLoginPasswd() {
+			return "searchIdPw";
+		}
 	
 	//관리자페이지 -> 회원정보 관리로 이동
 	@GetMapping("/admin/userInfo")
@@ -266,14 +267,7 @@ public class UserController {
 	}
 	
 	
-	// 아이디 찾기 화면에서 데이터 받기 
-	@RequestMapping("/doFindLoginId")
-	@ResponseBody
-	public String doFindLoginId(@RequestParam Map<String, Object> param) {
-		Map<String, Object> findLoginIdRs = userService.findLoginId(param);
-
-		return (String) findLoginIdRs.get("msg");
-	}
+	
 		
 
 	// 비밀번호 찾기 화면에서 데이터 받기 
@@ -373,12 +367,7 @@ public class UserController {
 			}
 			
 
-		
-	// 비밀번호를 잊어버렸습니까? 클릭시 forgotPW 
-	@GetMapping("/searchIdPw")
-	public String showFindLoginPasswd() {
-		return "searchIdPw";
-	}
+
 	// 비밀번호 찾기 화면에서 데이터 받기 
 
 		@RequestMapping("/searchPw")

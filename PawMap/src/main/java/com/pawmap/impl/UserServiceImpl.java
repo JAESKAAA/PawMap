@@ -11,7 +11,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.apache.groovy.util.Maps;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -216,6 +215,23 @@ public class UserServiceImpl implements UserService{
 	public void updateUserAdmin(UserVO vo) {
 		userMapper.updateUserAdmin(vo);
 	}
+	@Override
+	public String searchId(String userName, String userTelNum) {
+		userMapper = sqlSession.getMapper(UserMapper.class);
+		System.out.println(userName + userTelNum);
+
+		String result = "";
+		System.out.println(result);
+
+		try {
+			result = userMapper.searchId(userName, userTelNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
 
 }
 
