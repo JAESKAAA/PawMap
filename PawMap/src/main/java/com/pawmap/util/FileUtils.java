@@ -28,7 +28,7 @@ public class FileUtils {
 		List<FileVO> fileList = new ArrayList<FileVO>();
 		
 		String root_path = request.getSession().getServletContext().getRealPath("/");
-		String attach_path = "/upload/";
+		String attach_path = "upload/";
 		
 		File file = new File(root_path + attach_path);
 		if(file.exists() == false) {

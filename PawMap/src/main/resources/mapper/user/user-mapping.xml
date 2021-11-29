@@ -21,17 +21,19 @@
   	
   	<insert id="insertUser">
 
-  		INSERT INTO user(user_id, user_password, user_name, user_email, user_tel_num, address1, address2, address3, user_nickname ,role) VALUES(
+  		INSERT INTO user(user_seq, user_type, user_id, user_password, user_name, user_email, user_tel_num, post_num, address, address_detail, user_nickname, role) VALUES(
+  				(SELECT IFNULL(MAX(user_seq), 0) + 1 FROM user A WHERE user_type = 'user'),
+  				'user',
   				#{userId},
   				#{userPassword},
   				#{userName},
 				#{userEmail},
 				#{userTelNum},
-				#{address1},
-				#{address2},
-				#{address3},
+				#{postNum},
+				#{address},
+				#{addressDetail},
 				#{userNickname},
-  				#{role}
+  			#{role}
   		)
   	</insert>
   

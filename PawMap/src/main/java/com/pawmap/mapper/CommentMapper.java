@@ -21,4 +21,6 @@ public interface CommentMapper {
 	
 	void updateCommentOnFreeBoard(CommentVO commentVO);
 
+	void deleteCommentsBySeq(@Param("boardSeq") int boardSeq);
+
 }

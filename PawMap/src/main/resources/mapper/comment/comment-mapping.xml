@@ -34,7 +34,12 @@
 		board_seq = #{boardSeq}
 		AND
 		board_type = 'f';
+	</delete>
 	
+	<delete id="deleteCommentsBySeq">
+		DELETE FROM comment
+		WHERE board_seq = #{boardSeq}
+		AND board_type = 'f'
 	</delete>
 	
 	<update id="updateCommentOnFreeBoard">

@@ -3,6 +3,9 @@ pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
+<!-- jstl 함수사용을 위한 설정 -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal"/>
 </sec:authorize>
@@ -69,50 +72,59 @@ pageEncoding="UTF-8"%>
   
 <div class="board-type mt-5">
     <h1>자유게시판</h1>
+    <h1>${latelyBoardListForMain}</h1>
+   
 </div>
 <div class="container mt-5" style="width: 70%;">
     <div class="board-free" >
         <div id="slides-shop" class="cover-slides">
             <ul class="slides-container">
+                
                 <li class="text-center">
-                    <img src="../images/gyul_dog_img_001.jpg" alt="">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <h2 class="m-b-20"><strong style="color: aliceblue;">글 제목</strong></h2>
-                                <p><a class="btn hvr-hover" href="#" style="background: none; font-size:15px;">글 보러가기</a></p>
+                                <c:set var="thumnails" value="${latelyBoardListForMain}" />
+                                    <img src="${pageContext.request.contextPath}/upload/${thumnails[0].originalFilename}" alt="">
+                                    <h2 class="m-b-20"><strong style="color: rgb(241, 238, 233);">${latelyBoardListForMain[0].title}</strong></h2>
+                                    <p><a class="btn hvr-hover" href="getFreeBoard?boardSeq=${latelyBoardListForMain[0].board_seq}" style="background: none; font-size:15px;">글 보러가기</a></p>
+                                    
                             </div>
                         </div>
                     </div>
                 </li>
+
                 <li class="text-center">
-                    <img src="../images/gyul_dog_img_002.jpg" alt="">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <h2 class="m-b-20"><strong style="color: aliceblue;">글 제목</strong></h2>
-                                <p><a class="btn hvr-hover" href="#" style="background: none; font-size:15px;">글 보러가기</a></p>
+                                    <img src="${pageContext.request.contextPath}/upload/${thumnails[1].originalFilename}" alt="">
+                                    <h2 class="m-b-20"><strong style="color: rgb(245, 242, 238);">${latelyBoardListForMain[1].title}</strong></h2>
+                                    <p><a class="btn hvr-hover" href="getFreeBoard?boardSeq=${latelyBoardListForMain[1].board_seq}" style="background: none; font-size:15px;">글 보러가기</a></p>
+                                  
                             </div>
                         </div>
                     </div>
                 </li>
+
                 <li class="text-center">
-                    <img src="../images/gyul_dog_img_003.jpg" alt="">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <h2 class="m-b-20"><strong style="color: aliceblue;">글 제목</strong></h2>
-                                <p><a class="btn hvr-hover" href="#" style="background: none; font-size:15px;">글 보러가기</a></p>
+                                    <img src="${pageContext.request.contextPath}/upload/${thumnails[2].originalFilename}" alt="">
+                                    <h2 class="m-b-20"><strong style="color: rgb(238, 235, 229);">${latelyBoardListForMain[2].title}</strong></h2>
+                                    <p><a class="btn hvr-hover" href="getFreeBoard?boardSeq=${latelyBoardListForMain[2].board_seq}" style="background: none; font-size:15px;">글 보러가기</a></p>
+                                  
                             </div>
                         </div>
                     </div>
                 </li>
+                
             </ul>
         </div>  
     </div>
 </div>    
 <hr class="line-paint">
-
 
 
 <!-- board list form 시작 -->

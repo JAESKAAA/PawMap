@@ -39,7 +39,7 @@ pageEncoding="UTF-8"%>
                     <div class="col-sm-10 col-sm-offset-2">
                         <div class="row form-group">  
                             <div class="col-10 col-md-6">  
-                                <div class="control-group" id="fields">  
+                                <div class="control-group">  
                                     <div class="controls">  
                                         <div class="entry input-group upload-input-group">  
                                             <input class="form-control btn-file-upload" name="uploadFiles" multiple="multiple" type="file">  
@@ -58,7 +58,13 @@ pageEncoding="UTF-8"%>
             </div>    
         </div>    
     </form>
-    <!-- 게시판 폼 종료 -->
+
+    <!-- <form action="FileUploadServlet" method="post" enctype="multipart/form-data">
+        Select File to Upload:<input type="file"  name="fileName" multiple/>
+        <br>
+        <input type="submit" value="Upload"/> -->
+    
+        <!-- 게시판 폼 종료 -->
       
 <%@ include file="layout/footer.jsp" %>
       

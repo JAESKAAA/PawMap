@@ -32,7 +32,19 @@ pageEncoding="UTF-8"%>
                     <h5 class=" mb-5 board_seq" id="freeBoardSeq">게시글 번호 : ${getFreeBoard.boardSeq}</h5>
                 </div>
             </div>
-            <img class="img-fluid" src="" alt="" />
+            
+            <!-- 현재 파일 이름이 한글이면 출력이 안되는 오류 있음 -->
+            <c:choose>
+              <c:when test="${empty freeBoardFileList}">
+                <h1>테스트용 :: 파일이 없음</h1>
+              </c:when>
+              <c:otherwise>
+                <c:forEach items="${freeBoardFileList}" var="fileList" varStatus="i">
+                  <img class="img-fluid" src="${pageContext.request.contextPath}/upload/${fileList.originalFileName}" alt="" />
+                </c:forEach>
+              </c:otherwise>
+            </c:choose>
+
             <div class="col-lg-6">
                 <p class="mt-5">
                   ${getFreeBoard.content}
@@ -160,7 +172,7 @@ pageEncoding="UTF-8"%>
                                   <input type="hidden" class="hiddenCommentSeq" name="commentSeq" value="${reply.comment_seq}"/>
                                   <input type="hidden" name="boardSeq" value="${getFreeBoard.boardSeq}">
                                   <button type="button" class="link-grey ml-2 btn-update btn-comment-update" data-toggle='modal' data-target='.modifyModal${i.index}'>수정하기</button> 
-                                  <button type="submit" class="link-grey ml-2 btn-delete">삭제하기</button> 
+                                  <button onclick="if(!confirm('삭제 하시겠습니까?')){return false}" class="link-grey ml-2 btn-delete">삭제하기</button> 
                                 </form>
                                 
                               <!--=============== 댓글 수정 모달창 시작============== -->

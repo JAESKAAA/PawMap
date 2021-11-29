@@ -1,5 +1,6 @@
 package com.pawmap.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.pawmap.VO.BoardVO;
@@ -29,6 +30,8 @@ public interface BoardService {
 	void insertReplyForFreeBoard(CommentVO commentVO);
 
 	int getFreeBoardSeq();
+
+	List<HashMap<String, Object>> getLatelyBoardListForBoardMain();
 
 	
 

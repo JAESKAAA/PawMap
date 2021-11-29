@@ -17,6 +17,7 @@ let index = {
 		//	this.updateCommentOnFreeBoard();
 		//});
 		
+		
 	},
 	
 	deleteFreeBoardBySeq:function(){
@@ -148,6 +149,8 @@ let index = {
 			});
 		},
 	 */
+	 
+	 
 		
 }
 

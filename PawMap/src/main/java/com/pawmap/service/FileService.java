@@ -10,4 +10,8 @@ public interface FileService {
 	
 	void insertBoardFileList(List<FileVO> fileList);
 
+	void deleteFileByBoardSeq(int boardSeq);
+
+	void deleteOneFile(int fileSeq, int boardSeq);
+
 }

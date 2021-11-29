@@ -1,5 +1,6 @@
 package com.pawmap.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,6 +34,8 @@ public interface BoardMapper {
 	void insertReplyForFreeBoard(CommentVO commentVO);
 
 	int getFreeBoardSeq();
+
+	List<HashMap<String, Object>> getLatelyBoardListForBoardMain();
 
 	
 
