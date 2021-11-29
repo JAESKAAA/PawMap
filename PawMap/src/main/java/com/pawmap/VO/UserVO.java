@@ -56,7 +56,7 @@ public class UserVO {
 		this.comNum = comNum;
 	}
 	
-	
+}	
 	
 	
 	
@@ -65,5 +65,3 @@ public class UserVO {
 
 	
 	
-	
-}

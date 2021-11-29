@@ -25,6 +25,9 @@ public class BoardServiceImpl implements BoardService {
 	BoardMapper boardMapper;
 	
 
+
+
+
 	@Override
 	public void insertFreeAndNanumBoard(BoardVO vo) {
 		boardMapper.insertFreeAndNanumBoard(vo);

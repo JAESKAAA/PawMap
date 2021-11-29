@@ -7,6 +7,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,6 +16,10 @@ import com.pawmap.configuration.auth.PrincipalDetailsService;
 import com.pawmap.configuration.oauth.PrincipalOauth2UserService;
 
 /*
+import com.pawmap.configuration.oauth.PrincipalOauth2UserService;
+
+/*
+
  * 소셜 로그인 시 대략적인 프로세스
  * 1. 코드받기 (인증) 
  * 2. 엑세스 토큰 획득 (권한)

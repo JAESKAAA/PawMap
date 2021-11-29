@@ -8,8 +8,7 @@ import com.pawmap.VO.UserVO;
 
 @Component
 public interface UserService {
-
-	//일반 회원 가입
+	
 	void insertUser(UserVO vo);
 	//병원 회원 가입
 	void insertHospitalUser(UserVO vo);
@@ -27,7 +26,7 @@ public interface UserService {
 
 	public Map<String, Object> loginV2(Map<String, Object> args);
 	
-	public Map<String, Object> findLoginId(Map<String, Object> param);
+	String searchId(@Param("userName")String userName, @Param("userTelNum")String userTelNum);
 
 	public Map<String, Object> findLoginPasswd(Map<String, Object> param);
 
