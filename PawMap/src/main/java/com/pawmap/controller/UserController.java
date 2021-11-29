@@ -7,13 +7,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
-
-import java.util.List;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -49,13 +44,9 @@ public class UserController {
 	
 	@Autowired
 	private PrincipalDetailsService principalDetailsService;
-
-	@Autowired
-	private AuthenticationManager authenticationManager;
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-
 	
 	 @Autowired 
 	 private UserMapper userMapper;
@@ -160,7 +151,8 @@ public class UserController {
 		
 		// user에 직접 들어갈 수 있도록 여기서 데이터 입력해줌
 		UserDetails userDetails = principalDetailsService.loadUserByUsername(vo.getUserId());
-
+		
+		//세션 등록
 		Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 		SecurityContext securityContext = SecurityContextHolder.getContext();
 		securityContext.setAuthentication(authentication);
@@ -191,7 +183,6 @@ public class UserController {
 		System.out.println("principalDetails : "+principalDetails.getUser());
 		return "user";
 	}
-
 	
 
 	
@@ -200,7 +191,6 @@ public class UserController {
 		return "manager";
 	}
 	
-
 
 	//로그인 시 아이디 비밀번호 확인 메소드 
 	//cookieUtil에 setAttribute
@@ -259,7 +249,9 @@ public class UserController {
 		}	
 		
 	} // memberIdChkPOST() 종료	
-
+	
+		
+	
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')") //하기 메서드가 실행하기 직전에 실행됨
 	@GetMapping("/data")
