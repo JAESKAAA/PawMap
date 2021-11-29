@@ -33,6 +33,7 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom.css">
     <!-- Custom-tom CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-tom.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-jaeseok.css" />
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -73,7 +74,7 @@ pageEncoding="UTF-8"%>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
-                <a class="navbar-brand" href="index.html"><img src="${pageContext.request.contextPath}/images/pawmaplogo.png" class="logo" alt="" width="216" height="118"></a>
+                <a class="navbar-brand" href="index.html"><div class="main_logo_box"></div></a>
             </div>
             <!-- End Header Navigation -->
 
