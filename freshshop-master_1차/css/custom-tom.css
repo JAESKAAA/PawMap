@@ -110,11 +110,3 @@
     
 }
 /* 서치바 관련 스타일 종료 */
-
-/* 관리자 페이지 : 제휴병원 정보 관리에 필요한 테이블 css... */
-
-    .table{
-        width: 100%;
-        border-spacing: 0;
-        border-collapse: separate;
-    }
