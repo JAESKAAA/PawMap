@@ -55,12 +55,14 @@ public class BoardController {
 	@PostMapping("/board/insertFreeAndNanumBoard")
 	public String insertFreeAndNanumBoard(BoardVO vo, HttpServletRequest request,
 			MultipartHttpServletRequest mhsr) throws IOException  {
+
 		
 		int boardSeq = boardService.getFreeBoardSeq();
 		String userId = vo.getUserId();
  		
 		System.out.println("boardSeq=========="+boardSeq);
 		System.out.println("userId=========="+userId);
+
 		
 		FileUtils fileUtils = new FileUtils();
 		List<FileVO> fileList = fileUtils.parseFileInfo(boardSeq, request, mhsr,userId);
@@ -68,6 +70,7 @@ public class BoardController {
 		if(CollectionUtils.isEmpty(fileList) == false) {
 			fileService.insertBoardFileList(fileList);
 		}
+
 
 		System.out.println("insertFreeAndNanumBoard()탐");
 		System.out.println("BoardVO ====== "+vo);
@@ -125,6 +128,7 @@ public class BoardController {
 		
 		System.out.println("fileList ============== "+ fileList);
 		
+
 		model.addAttribute("freeBoardFileList",fileList);
 		model.addAttribute("commentSize",replyList.size());
 		model.addAttribute("freeBoardReplyList",replyList);
@@ -235,8 +239,8 @@ public class BoardController {
 		return "redirect:updateFreeAndNanumBoardForm?boardSeq="+boardSeq;
 		
 	}
-	
-	
 
+	
+	
 
 }

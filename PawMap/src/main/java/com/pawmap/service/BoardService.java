@@ -30,8 +30,9 @@ public interface BoardService {
 	void insertReplyForFreeBoard(CommentVO commentVO);
 
 	int getFreeBoardSeq();
-
+	
 	List<HashMap<String, Object>> getLatelyBoardListForBoardMain();
+
 
 	
 

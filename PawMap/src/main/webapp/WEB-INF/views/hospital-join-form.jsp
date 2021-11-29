@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+pageEncoding="UTF-8"%> <%@ taglib uri="http://java.sun.com/jsp/jstl/core"
+prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
 <html lang="en">
   <!-- Basic -->
 
-<sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal" var="principal"/>
-</sec:authorize>
+  <sec:authorize access="isAuthenticated()">
+    <sec:authentication property="principal" var="principal" />
+  </sec:authorize>
 
   <head>
     <meta charset="utf-8" />
@@ -24,7 +23,7 @@ pageEncoding="UTF-8"%>
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-     <!-- Site Icons -->
+      <!-- Site Icons -->
     <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/apple-touch-icon.png" />
     <!-- Fontawesome CSS-->
@@ -45,14 +44,47 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-jaeseok.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-gyul.css">
     
-        <!-- 결 커스텀 css -->
+
+    <!-- 결 커스텀 css -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-        <!--주소검색-->
-        <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <!-- 항목별 공백 확인 alert창 스크립트-->
+    <script>
+      function submitJoinForm(form) {
+        form.userId.value = form.userId.value.trim();
+        if (form.userId.value.length == 0) {
+          alert("로그인 아이디를 입력해주세요.");
+          form.userId.focus();
+          return false;
+        }
+        form.userPassword.value = form.userPassword.value.trim();
+        if (form.userPassword.value.length == 0) {
+          alert("로그인 비밀번호를 입력해주세요.");
+          form.userPassword.focus();
+          return false;
+        }
+
+        form.userName.value = form.userName.value.trim();
+        if (form.userName.value.length == 0) {
+          alert("이름을 입력해주세요.");
+          form.userName.focus();
+          return false;
+        }
+        form.userEmail.value = form.userEmail.value.trim();
+        if (form.userEmail.value.length == 0) {
+          alert("이메일을 입력해주세요.");
+          form.email.focus();
+          return false;
+        }
+        form.submit();
+      }
+    </script>
+
+	 <!--주소검색-->
+       <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
         <!--다음 주소 연동-->
         <script>
@@ -100,7 +132,7 @@ pageEncoding="UTF-8"%>
             }).open();
           }
         </script>
-
+        
     <style>
       .form-label {
         color: #e1a963;
@@ -122,18 +154,6 @@ pageEncoding="UTF-8"%>
         background-color: antiquewhite;
         border-radius: 100px;
         margin: auto;
-      }
-
-      /* 중복아이디가 존재 하지 않을 경우 */
-      .user_id_re_1 { 
-        color: green;
-        display: none;
-      }
-
-      /* 중복아이디가 존재 하는 경우 */
-      .user_id_re_2 {
-        color: red;
-        display: none;
       }
     </style>
   </head>
@@ -180,7 +200,6 @@ pageEncoding="UTF-8"%>
             >
               <li class="nav-item active">
                 <a class="nav-link" href="index.html">Home</a>
-
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="about.html">회사소개</a>
@@ -214,37 +233,37 @@ pageEncoding="UTF-8"%>
               <li class="search" style="display: none">
                 <a href="#"><i class="fa fa-search"></i></a>
               </li>
-             <sec:authorize access="isAnonymous()">
-              <li class="side-menu">
-                <a href="/pawmap/loginForm">
-                  <p>로그인</p>
-                </a>
-              </li>
-              <li class="side-menu">
-                <a href="/pawmap/joinForm">
-                  <p>회원가입</p>
-                </a>
-              </li>
-			 </sec:authorize>
-			<sec:authorize access="isAuthenticated()">
-			 <li class="side-menu">
-                <a href="/pawmap/loginForm">
-                  <p>마이페이지 ${principal.user.userId} 님 환영합니다.</p>
-                </a>
-              </li>
-			 <li class="side-menu">
-                <a href="/pawmap/logout">
-                  <p>로그아웃</p>
-                </a>
-              </li>
-			</sec:authorize>
-			<sec:authorize access="hasRole('ROLE_ADMIN')">
-				<li class="side-menu">
-	                <a href="/pawmap/admin">
-	                  <p>관리자 페이지</p>
-	                </a>
-	              </li>
-			</sec:authorize>
+              <sec:authorize access="isAnonymous()">
+                <li class="side-menu">
+                  <a href="/pawmap/loginForm">
+                    <p>로그인</p>
+                  </a>
+                </li>
+                <li class="side-menu">
+                  <a href="/pawmap/joinForm">
+                    <p>회원가입</p>
+                  </a>
+                </li>
+              </sec:authorize>
+              <sec:authorize access="isAuthenticated()">
+                <li class="side-menu">
+                  <a href="/pawmap/loginForm">
+                    <p>마이페이지 ${principal.user.userId} 님 환영합니다.</p>
+                  </a>
+                </li>
+                <li class="side-menu">
+                  <a href="/pawmap/logout">
+                    <p>로그아웃</p>
+                  </a>
+                </li>
+              </sec:authorize>
+              <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <li class="side-menu">
+                  <a href="/pawmap/admin">
+                    <p>관리자 페이지</p>
+                  </a>
+                </li>
+              </sec:authorize>
             </ul>
           </div>
           <!-- End Atribute Navigation -->
@@ -284,13 +303,11 @@ pageEncoding="UTF-8"%>
             </ul>
           </li>
         </div>
-
         <!-- End Side Menu -->
       </nav>
       <!-- End Navigation -->
     </header>
     <!-- Header 끝 부분 -->
-
 
     <!---------------------------------- 회원가입 폼 -------------------------->
 
@@ -309,17 +326,16 @@ pageEncoding="UTF-8"%>
                     "
                   >
                     <p class="text-center h3 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                      유저 회원가입
+                      제휴 병원 회원가입
                     </p>
 
                     <form
                       class="mx-1 mx-md-4"
-                      action="/pawmap/join"
+                      action="/pawmap/hospitalJoin"
                       method="post"
-
                       name="joinForm"
-                      onsubmit="submitJoinForm(this); return false;"                      >
-
+                      onsubmit="submitJoinForm(this); return false;"
+                    >
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                           <div class="column-div">
@@ -337,10 +353,9 @@ pageEncoding="UTF-8"%>
                             placeholder="아이디"
                             required
                           />
-                          <span class="user_id_re_1">사용 가능한 아이디입니다.</span> 
-                          <span class="user_id_re_2">아이디가 이미 존재합니다.</span>
                         </div>
                       </div>
+
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                           <div class="column-div">
@@ -360,6 +375,7 @@ pageEncoding="UTF-8"%>
                           />
                         </div>
                       </div>
+
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                           <div class="column-div">
@@ -379,6 +395,7 @@ pageEncoding="UTF-8"%>
                           />
                         </div>
                       </div>
+
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                           <div class="column-div">
@@ -398,6 +415,7 @@ pageEncoding="UTF-8"%>
                           />
                         </div>
                       </div>
+
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                           <div class="column-div">
@@ -417,20 +435,27 @@ pageEncoding="UTF-8"%>
                           />
                         </div>
                       </div>
-                      <!---------------기존 주소 form----------------->
-                      <!-- <div class="d-flex flex-row align-items-center mb-4">
+<!-- 
+                      <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                           <div class="column-div">
                             <div>
                               <label class="form-label mt-2" for="user_address"
-                                >주소</label>
+                                >주소</label
+                              >
                             </div>
                           </div>
-                          <input type="text" name="address" id="user_address" class="form-control" placeholder="주소" required/>
+                          <input
+                            type="tel"
+                            name="address"
+                            id="user_address"
+                            class="form-control"
+                            placeholder="주소"
+                            required
+                          />
                         </div>
                       </div> -->
-
-                      <!-----------------start 주소찾기 구현 => db에 저장되게 변수명 바꿔주기 11.25 오후 8시------------------------->
+                     <!-----------------start 주소찾기 구현 => db에 저장되게 변수명 바꿔주기 11.25 오후 8시------------------------->
                       <div class="address_wrap">
                         <div class="address_name">주소</div>
                         <div class="address_input_1_wrap">
@@ -472,6 +497,27 @@ pageEncoding="UTF-8"%>
                           />
                         </div>
                       </div>
+
+                      <div class="d-flex flex-row align-items-center mb-4">
+                        <div class="form-outline flex-fill mb-0">
+                          <div class="column-div">
+                            <div>
+                              <label class="form-label mt-2" for="comNum"
+                                >사업자등록번호</label
+                              >
+                            </div>
+                          </div>
+                          <input
+                            type="tel"
+                            name="comNum"
+                            id="user_nickname"
+                            class="form-control"
+                            placeholder="사업자등록번호"
+                            required
+                          />
+                        </div>
+                      </div>
+
                       <div
                         class="d-flex justify-content-center mx-4 mb-3 mb-lg-4"
                       >
@@ -506,7 +552,6 @@ pageEncoding="UTF-8"%>
       </div>
     </section>
     <!-- End Main Top -->
-
 
     <!-- Start Top Search -->
     <!-- <div class="top-search">
@@ -570,6 +615,7 @@ pageEncoding="UTF-8"%>
     <!-- Start Categories  -->
     <!-- <div class="categories-shop">
         <div class="container">
+
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="shop-cat-box">
@@ -616,6 +662,7 @@ pageEncoding="UTF-8"%>
                     </div>
                 </div>
             </div>
+
             <div class="row special-list">
                 <div class="col-lg-3 col-md-6 special-grid best-seller">
                     <div class="products-single fix">
@@ -639,6 +686,7 @@ pageEncoding="UTF-8"%>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-3 col-md-6 special-grid top-featured">
                     <div class="products-single fix">
                         <div class="box-img-hover">
@@ -661,6 +709,7 @@ pageEncoding="UTF-8"%>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-3 col-md-6 special-grid top-featured">
                     <div class="products-single fix">
                         <div class="box-img-hover">
@@ -683,6 +732,7 @@ pageEncoding="UTF-8"%>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-3 col-md-6 special-grid best-seller">
                     <div class="products-single fix">
                         <div class="box-img-hover">
@@ -868,6 +918,6 @@ pageEncoding="UTF-8"%>
     </div> -->
     <!-- End Instagram Feed  -->
 
-   <%@ include file="layout/footer.jsp" %>
-
-
+    <%@ include file="layout/footer.jsp" %>
+  </body>
+</html>

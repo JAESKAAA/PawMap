@@ -150,6 +150,7 @@
 			AND (title LIKE CONCAT('%', #{keyword}, '%') OR `content` LIKE CONCAT('%', #{keyword}, '%'))
 		</if>
 	</select>
+
 	
 	<select id="getLatelyBoardListForBoardMain" resultType="HashMap">
 		select b.*, f.originalFilename
@@ -179,4 +180,5 @@
 	</select> -->
 
   </mapper>	
+
 

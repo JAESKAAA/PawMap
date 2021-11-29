@@ -5,6 +5,7 @@ pageEncoding="UTF-8"%>
 
   
     <!-- 게시판 폼 시작 -->
+
     <form class="form-horizontal board-form" method="POST" action="insertFreeAndNanumBoard" enctype="multipart/form-data">
         <div class="container">
             <div class="card row">

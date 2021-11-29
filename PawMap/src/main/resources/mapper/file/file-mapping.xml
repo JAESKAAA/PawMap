@@ -36,6 +36,7 @@
 		)
 	</insert>
 	
+
 	<delete id="deleteFileByBoardSeq">
 		DELETE FROM file
 		WHERE board_seq = #{boardSeq}
@@ -49,6 +50,7 @@
 		board_seq = #{boardSeq}
 	</delete>
 	
+
 
   	
 </mapper>	

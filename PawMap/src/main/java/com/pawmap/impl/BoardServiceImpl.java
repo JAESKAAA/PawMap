@@ -24,6 +24,7 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	BoardMapper boardMapper;
 	
+
 	@Override
 	public void insertFreeAndNanumBoard(BoardVO vo) {
 		boardMapper.insertFreeAndNanumBoard(vo);
@@ -65,11 +66,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void insertReplyForFreeBoard(CommentVO commentVO) {
 		boardMapper.insertReplyForFreeBoard(commentVO);
-	}
 
-	@Override
-	public int getFreeBoardSeq() {
-		return boardMapper.getFreeBoardSeq();
 	}
 
 
@@ -77,15 +74,14 @@ public class BoardServiceImpl implements BoardService {
 	public List<HashMap<String, Object>> getLatelyBoardListForBoardMain() {
 		
 		return boardMapper.getLatelyBoardListForBoardMain();
+
 	}
 
+	@Override
+	public int getFreeBoardSeq() {
+		return boardMapper.getFreeBoardSeq();
 
-	
+	}
 
-
-	
-
-
-	
 }
 

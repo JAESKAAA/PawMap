@@ -10,7 +10,9 @@ import org.apache.ibatis.annotations.Param;
 import com.pawmap.VO.BoardVO;
 
 import com.pawmap.VO.CommentVO;
+
 import com.pawmap.VO.FileVO;
+
 import com.pawmap.VO.UserVO;
 
 
@@ -18,6 +20,9 @@ import com.pawmap.VO.UserVO;
 public interface BoardMapper {
 
 	
+
+	int insertTest(UserVO vo);
+
 
 	void insertFreeAndNanumBoard(BoardVO vo);
 
@@ -33,11 +38,13 @@ public interface BoardMapper {
 
 	void insertReplyForFreeBoard(CommentVO commentVO);
 
+
 	int getFreeBoardSeq();
 
 	List<HashMap<String, Object>> getLatelyBoardListForBoardMain();
 
 	
+
 
 }
 

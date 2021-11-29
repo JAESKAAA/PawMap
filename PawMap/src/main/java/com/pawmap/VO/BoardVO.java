@@ -20,16 +20,13 @@ public class BoardVO {
 	private String title;
 	private String content;
 	private Date regDate;
-	
 	private String keywordType;
 	private String keyword;
-	
-
 	private UserVO userVO;
+
 	
 	private MultipartFile uploadFiles;
 	
-	
-	
+
 
 }

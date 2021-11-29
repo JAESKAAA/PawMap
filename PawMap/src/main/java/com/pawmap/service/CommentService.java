@@ -21,5 +21,6 @@ public interface CommentService {
 
 	void deleteCommentsBySeq(int boardSeq);
 
+
 	
 }

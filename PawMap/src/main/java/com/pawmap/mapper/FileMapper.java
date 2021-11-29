@@ -18,4 +18,5 @@ public interface FileMapper {
 
 	void deleteOneFile(@Param("fileSeq")int fileSeq,@Param("boardSeq") int boardSeq);
 
+
 }

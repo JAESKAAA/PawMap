@@ -99,7 +99,7 @@ pageEncoding="UTF-8"%>
             <div class="account-box">
                 <div class="service-box">
                     <div class="service-icon">
-                        <a href="adminpage2vetmange-tom.html"> <i class="far fa-hospital"></i> </a>
+                        <a href="/pawmap/getHospitalList"> <i class="far fa-hospital"></i> </a>
                     </div>
                     <div class="service-desc">
                         <h4>제휴병원 관리</h4>
@@ -112,7 +112,7 @@ pageEncoding="UTF-8"%>
             <div class="account-box">
                 <div class="service-box">
                     <div class="service-icon">
-                        <a href="adminpage4usermanage-tom.html"><i class="fas fa-user-cog"></i> </a>
+                        <a href="/pawmap/getUserList"><i class="fas fa-user-cog"></i> </a>
                     </div>
                     <div class="service-desc">
                         <h4>회원정보 관리</h4>

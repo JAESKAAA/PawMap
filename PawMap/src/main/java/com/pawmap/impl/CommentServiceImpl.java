@@ -38,10 +38,12 @@ public class CommentServiceImpl implements CommentService {
 		commentMapper.updateCommentOnFreeBoard(commentVO);
 	}
 
+
 	@Override
 	public void deleteCommentsBySeq(int boardSeq) {
 		commentMapper.deleteCommentsBySeq(boardSeq);
 	}
+
 	
 	
 	

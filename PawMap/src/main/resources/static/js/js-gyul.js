@@ -16,7 +16,7 @@ let index = {
 		//$("#updateCommentOnFreeBoard").on("click",()=>{
 		//	this.updateCommentOnFreeBoard();
 		//});
-		
+
 		
 	},
 	
@@ -103,6 +103,7 @@ let index = {
 		
 		console.log(data);
 		
+
 		if(data.commentContent == ""){
 			alert("내용을 입력해주세요");
 			
@@ -112,6 +113,7 @@ let index = {
 				url: `insertReplyFreeBoard/api/${data.boardSeq}`,
 				data: JSON.stringify(data),
 				contentType : 'application/json; charset=utf-8',
+
 				dataType : "text",
 				success : function(e){
 					location.href ="getFreeBoard?boardSeq="+seq
@@ -149,8 +151,7 @@ let index = {
 			});
 		},
 	 */
-	 
-	 
+
 		
 }
 

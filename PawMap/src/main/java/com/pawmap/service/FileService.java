@@ -14,4 +14,5 @@ public interface FileService {
 
 	void deleteOneFile(int fileSeq, int boardSeq);
 
+
 }

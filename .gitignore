@@ -1,7 +1,10 @@
 application.properties
+<<<<<<< HEAD
 .metadata
+=======
+
+>>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
 /.metadata/
-*.properties
 *.metadata
 *.DS_Store
 

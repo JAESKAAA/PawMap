@@ -23,4 +23,5 @@ public interface CommentMapper {
 
 	void deleteCommentsBySeq(@Param("boardSeq") int boardSeq);
 
+
 }

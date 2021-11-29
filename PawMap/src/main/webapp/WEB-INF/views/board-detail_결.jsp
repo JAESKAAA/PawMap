@@ -32,6 +32,7 @@ pageEncoding="UTF-8"%>
                     <h5 class=" mb-5 board_seq" id="freeBoardSeq">게시글 번호 : ${getFreeBoard.boardSeq}</h5>
                 </div>
             </div>
+
             
             <!-- 현재 파일 이름이 한글이면 출력이 안되는 오류 있음 -->
             <c:choose>
@@ -44,6 +45,7 @@ pageEncoding="UTF-8"%>
                 </c:forEach>
               </c:otherwise>
             </c:choose>
+
 
             <div class="col-lg-6">
                 <p class="mt-5">
@@ -76,6 +78,7 @@ pageEncoding="UTF-8"%>
                 <div class="card-body" style="padding: 1px;">
                     <div class="d-flex flex-start">
                         <form action="" style="width: 750px;">
+
                           <input type="hidden" name="userId" id="userId" value="${principal.user.userId}">
                           <input type="hidden" name="boardSeq" id="freeBoardSeqHidden" value="${getFreeBoard.boardSeq}">
                           <input type="hidden" name="boardType" id="boardTypeForReply" value="${getFreeBoard.boardType}">
@@ -173,6 +176,7 @@ pageEncoding="UTF-8"%>
                                   <input type="hidden" name="boardSeq" value="${getFreeBoard.boardSeq}">
                                   <button type="button" class="link-grey ml-2 btn-update btn-comment-update" data-toggle='modal' data-target='.modifyModal${i.index}'>수정하기</button> 
                                   <button onclick="if(!confirm('삭제 하시겠습니까?')){return false}" class="link-grey ml-2 btn-delete">삭제하기</button> 
+
                                 </form>
                                 
                               <!--=============== 댓글 수정 모달창 시작============== -->
@@ -218,13 +222,17 @@ pageEncoding="UTF-8"%>
                 </div>
               </c:forEach>
 
+
               <!-- ===============댓글 리스트 출력 종료================== -->
+
 
             </div>
           </div>
         </div>
     </section> 
+
       
     
    <%@ include file="layout/footer.jsp" %>
    
+

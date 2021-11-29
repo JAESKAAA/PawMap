@@ -104,7 +104,8 @@ pageEncoding="UTF-8"%>
                   </a>
                   <div>
 
-                    <a href="/pawmap/forgotPw" class="btn-other" id="forgot">
+
+                    <a href="/pawmap/searchIdPw" class="btn-other" id="forgot">
 
                       비밀번호를 잊어버렸습니까?</a
                     >
