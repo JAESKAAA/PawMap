@@ -106,80 +106,99 @@
         </div>
         <!--search button finished...-->
         <!--보호소정보 관리 리스트 시작-->
-    <div style="margin-top: 40px; border-style: 3px solid orange ">
-      <table style="margin-left: auto; margin-right: auto; text-align: center;">
-          <tr>
-               <th>번째</th>
-               <th>이름</th>
-               <th>사업자등록번호</th>
-               <th>연락처</th>
-               <th>관리</th>
-               <th>액션</th>
-          </tr>
-          <tr>
-               <td>1</td>
-               <td>일산 보호소</td>
-               <td>002-20-00010</td>
-               <td>031-222-5432</td>
-               <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage8sheltermodify-tom.html'">관리하기</button></td>
-               <td><button style="margin-left: 30px;" type="button" onclick="location.href='#'">삭제</button></td>
-          </tr>
-          <tr>
-               <td>2</td>
-               <td>강남 보호소</td>
-               <td>002-20-00010</td>
-               <td>031-222-5432</td>
-               <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage8sheltermodify-tom.html'">관리하기</button></td>
-               <td><button style="margin-left: 30px;" type="button" onclick="location.href='#'">삭제</button></td>
-          </tr>
-          <tr>
-               <td>3</td>
-               <td>분당 보호소</td>
-               <td>002-20-00010</td>
-               <td>031-222-5432</td>
-               <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage8sheltermodify-tom.html'">정보수정</button></td>
-               <td><button style="margin-left: 30px;" type="button" onclick="location.href='#'">삭제</button></td>
-          </tr>
-          <tr>
-               <td>4</td>
-               <td>송파 보호소</td>
-               <td>002-20-00010</td>
-               <td>031-222-5432</td>
-               <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage8sheltermodify-tom.html'">정보수정</button></td>                <td><button style="margin-left: 30px;" type="button" onclick="location.href='#'">삭제</button></td>
-          </tr>
-          <tr>
-               <td>5</td>
-               <td>종로 보호소</td>
-               <td>002-20-00010</td>
-               <td>031-222-5432</td>
-               <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage8sheltermodify-tom.html'">정보수정</button></td>
-               <td><button style="margin-left: 30px;" type="button" onclick="location.href='#'">삭제</button></td>
-          </tr>
-      </table>
-    </div>
-    <div style="margin-top: 40px">
-      <table style="margin-left:auto; margin-right:auto; text-align: center;">
-          <tr>
-              <td><button style="margin: center;" type="button" onclick="location.href='adminpage7shelteradd-tom.html'">보호소 등록</button></td>
-          </tr>
-      </table>
-    </div>
-    <!--page navigation-->
-    <div class="row mt-2">
-      <div class="col-12" style="margin-top: 40px;">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-center">
-              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item"><a class="page-link" href="#">5</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
+        <!--nov29th, table style margin left and right were changed from auto to 3%, colgroup were added with width % value -->
+        <div style="margin-top: 40px;">
+          <form id="thismustcalldbfrompawmapuser" action="must put method" name="POST" method="GET"><!-- tom is working on this section on nov 26th 5:20pm-->
+          <table class="table-list" style="margin-left: auto; margin-right: auto; text-align: center;">
+            <colgroup>
+              <col style="width:3%;">
+              <col style="width:5%;">
+              <col style="width:8%;">
+              <col style="width:12%;">
+              <col style="width:8%;">
+              <col style="width:14%;">
+              <col style="width:8%;">
+              <col style="width:3%;">
+              <col style="width:10%;">
+              <col style="width:7%;">
+              <!--consider binding the custom-tom.css file. this comment was left on november 25th 20:34pm by thomas lee-->
+            </colgroup>
+            <thead style="background-color: lightgray">
+              <tr>
+                    <th>#</th>
+                    <th>이름</th>
+                    <th>사업자등록번호</th>
+                    <th>연락처</th>
+                    <th>관리</th>
+                    <th>액션</th>
+                </tr>
+            </thead>
+            <tbody><!-- 4:49 pm on nov 29th tom is working on this section... -->
+              <tr>
+                  <td>1</td>
+                  <td>일산 보호소</td>
+                  <td>002-20-00010</td>
+                  <td>031-222-5432</td>
+                  <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage8sheltermodify-tom.html'">관리하기</button></td>
+                  <td><button style="margin-left: 30px;" type="button" onclick="location.href='#'">삭제</button></td>
+              </tr>
+              <tr>
+                  <td>2</td>
+                  <td>강남 보호소</td>
+                  <td>002-20-00010</td>
+                  <td>031-222-5432</td>
+                  <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage8sheltermodify-tom.html'">관리하기</button></td>
+                  <td><button style="margin-left: 30px;" type="button" onclick="location.href='#'">삭제</button></td>
+              </tr>
+              <tr>
+                  <td>3</td>
+                  <td>분당 보호소</td>
+                  <td>002-20-00010</td>
+                  <td>031-222-5432</td>
+                  <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage8sheltermodify-tom.html'">정보수정</button></td>
+                  <td><button style="margin-left: 30px;" type="button" onclick="location.href='#'">삭제</button></td>
+              </tr>
+              <tr>
+                  <td>4</td>
+                  <td>송파 보호소</td>
+                  <td>002-20-00010</td>
+                  <td>031-222-5432</td>
+                  <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage8sheltermodify-tom.html'">정보수정</button></td>                <td><button style="margin-left: 30px;" type="button" onclick="location.href='#'">삭제</button></td>
+              </tr>
+              <tr>
+                  <td>5</td>
+                  <td>종로 보호소</td>
+                  <td>002-20-00010</td>
+                  <td>031-222-5432</td>
+                  <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage8sheltermodify-tom.html'">정보수정</button></td>
+                  <td><button style="margin-left: 30px;" type="button" onclick="location.href='#'">삭제</button></td>
+              </tr>
+            </tbody>   
+          </table>
+        </div>
+        <div style="margin-top: 40px">
+          <table style="margin-left:auto; margin-right:auto; text-align: center;">
+              <tr>
+                  <td><button style="margin: center;" type="button" onclick="location.href='adminpage7shelteradd-tom.html'">보호소 등록</button></td>
+              </tr>
+          </table>
+        </div>
+        <!--page navigation-->
+        <div class="row mt-2">
+          <div class="col-12" style="margin-top: 40px;">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item"><a class="page-link" href="#">4</a></li>
+                  <li class="page-item"><a class="page-link" href="#">5</a></li>
+                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
 
     
 

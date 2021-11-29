@@ -96,6 +96,11 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 					
 			//여기서 DB에 저장됨
 			userService.socialJoin(userEntity);
+			//소셜로그인시 닉네임을 provider+user_seq 값으로 저장하여 세션에 저장하도록 변경
+			UserVO afterJoinValue = userService.getUser(userEntity);
+			userEntity.setUserNickname(afterJoinValue.getUserNickname());
+//			UserVO joinedUser = userService.getUser(userEntity);
+//			String userNickname = provider + joinedUser.getUserSeq();
 		}else {
 			System.out.println("소셜 로그인을 이미 진행하여, 자동 회원가입이 되어 있습니다.");
 

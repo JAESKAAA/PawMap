@@ -106,8 +106,9 @@
         </div>
         <!--search button finished...-->
         <!--회원정보 관리 리스트 시작-->
-        <!--nov25th, table style margin left and right were changed from auto to 3%, colgroup were added with width % value -->
+        <!--nov29th, table style margin left and right were changed from auto to 3%, colgroup were added with width % value -->
         <div class="userlistforadminmanage"style="margin-top: 40px;">
+          <form id="thismustcalldbfrompawmapuser" action="must put method" name="POST" method="GET"><!-- tom is working on this section on nov 29th 4:45pm-->
           <table class="table-list" style="margin-left: 3%; margin-right: 3%; text-align: center;">
             <colgroup>
               <col style="width:3%;">
@@ -120,7 +121,7 @@
               <col style="width:3%;">
               <col style="width:10%;">
               <col style="width:7%;">
-              <!--consider binding the custom-tom.css file. this comment was left on november 25th 20:34pm by thomas lee-->
+              <!--consider binding the custom-tom.css file. this comment was left on november 29th 16:43pm by thomas lee-->
             </colgroup>
             <thead style="background-color: lightgray">
               <tr>
@@ -200,7 +201,9 @@
             </tbody>
           </table>
         </div>
-    <!--page navigation-->
+      <!--유저 관리 테이블 리스트 끝-->
+      </form> <!-- this is closing form tag for any data that was saved on DB would show up--> 
+      <!--페이지 네비게이션 시작-->
     <div class="row mt-2">
       <div class="col-12" style="margin-top: 40px;">
         <nav aria-label="Page navigation example">

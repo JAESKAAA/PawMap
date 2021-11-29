@@ -158,6 +158,7 @@
     <!-- 커스텀 JS 파일 - 재석-->
     <script src="${pageContext.request.contextPath}/js/custom-jaeseok.js"></script>
 <<<<<<< HEAD
+<<<<<<< HEAD
    
     <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
 
@@ -165,6 +166,11 @@
     <!-- 커스텀 JS 파일 - 고결-->
     <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
 >>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
+=======
+   
+    <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
+
+>>>>>>> 4fa110d214c0d1d15a62db3292c72a9eccb2dc3f
       <!-- 아이디 비밀번호 공백확인 alert창 -->
     <script>
       function makeTestData() {
