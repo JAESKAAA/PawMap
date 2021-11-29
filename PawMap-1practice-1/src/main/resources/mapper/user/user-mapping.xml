@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.pawmap.mapper.UserMapper">
+<!--   	<resultMap type="com.cos.blog.vo.BoardVO" id="boardResult">
+  		<id property="id" column="id"/>
+  		<result property="title" column="title"/>
+  		<result property="content" column="content"/>
+  		<result property="count" column="count"/>
+  		<result property="userId" column="userId"/>
+  	</resultMap> -->
+  	
+<!--   	<select id="selectTest" resultType="com.cos.blog.vo.BoardVO">
+  		SELECT * FROM BOARD WHERE id=#{id}
+  	</select> -->
+  	
+  	<select id="findByUsername" parameterType="String" resultType="com.pawmap.VO.UserVO">
+  		SELECT * FROM user WHERE user_id = #{username}
+  	</select>
+  	
+  	<insert id="insertUser">
+  		INSERT INTO user(user_id, user_password, user_name, role) VALUES(
+  				#{userId},
+  				#{userPassword},
+  				#{userName},
+  				#{role}
+  		)
+  	</insert>
+  
+  	<insert id="socialJoin">
+  		INSERT INTO user(user_id, user_password, user_name, user_email, provider, providerId, role) VALUES(
+  				#{userId},
+  				#{userPassword},
+  				#{userName},
+  				#{userEmail},
+  				#{provider},
+  				#{providerId},
+  				#{role}
+  		)
+  	</insert>
+  	
+  	
+  </mapper>	

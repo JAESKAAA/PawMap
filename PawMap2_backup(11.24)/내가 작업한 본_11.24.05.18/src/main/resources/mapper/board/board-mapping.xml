@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.pawmap.mapper.BoardMapper">
+  <!-- 
+   	<resultMap type="com.pawmap.VO.BoardVO" id="boardResult">
+  		<id property="id" column="id"/>
+  		<result property="boardSeq" column="board_seq"/>
+  		<result property="boardType" column="board_type"/>
+  		<result property="userId" column="user_id"/>
+  		<result property="hospitalSeq" column="hospital_seq"/>
+  		<result property="title" column="title"/>
+  		<result property="content" column="content"/>
+  		<result property="regDate" column="regDate"/>
+  	</resultMap>
+  	 -->
+<!--   	<select id="selectTest" resultType="com.cos.blog.vo.BoardVO">
+  		SELECT * FROM BOARD WHERE id=#{id}
+  	</select> -->
+  <!-- 
+  	 <select id="findByUsername" parameterType="String" resultType="com.pawmap.VO.UserVO">
+  		SELECT * FROM user WHERE user_id = #{username}
+  	</select>
+  	 -->
+  	 <!--
+  	   	<insert id="insertBoard">
+  		INSERT INTO BOARD(boardSeq, boardType, userId, hospitalSeq, title, content, regDate) VALUES(
+  				(SELECT IFNULL(MAX(boardSeq), 0)+1 FROM BOARD A),
+  				#{boardType},
+  				#{userId},
+  				(SELECT IFNULL(MAX(hospitalSeq), 0)+1 FROM BOARD A),
+  				#{title},
+  				#{content},
+  				NOW()
+  		)
+  	</insert>
+  	 -->
+  	<insert id="insertBoard">
+  		INSERT INTO pawmap.board(board_seq, board_type, user_id, hospital_seq, title, content, regDate) VALUES(		
+				(SELECT IFNULL(MAX(board_seq), 0) + 1 FROM pawmap.BOARD A WHERE BOARD_TYPE = #{boardType}),
+  				#{boardType},
+  				#{userId},
+  				#{hospitalSeq},
+  				#{title},
+  				#{content},
+  				NOW()
+  		)
+  	</insert>
+  </mapper>	

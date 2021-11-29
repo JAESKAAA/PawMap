@@ -1,0 +1,60 @@
+
+/*
+// ---------------------------------------------------------
+// @Sidebar
+// ---------------------------------------------------------
+*/
+.sidebar {
+  background-color: #fff;
+  bottom: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  width: 280px;
+  z-index: 1000;
+}
+
+.sidebar-logo {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.0625);
+  border-right: 1px solid rgba(0, 0, 0, 0.0625);
+  line-height: 0;
+  padding: 0 20px;
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.sidebar-menu-scrollable-pos-r-ps {
+  border-right: 1px solid rgba(0, 0, 0, 0.0625);
+  height: calc(100vh- 65px);
+  list-style: none;
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+  position: relative;
+
+}
+
+
+/*
+---------------------------------------------------------
+ @Sidebar related style....
+---------------------------------------------------------
+*/
+
+
+body {
+  font-family: Roboto, -apple-system, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  color: #72777a;
+  line-height: 1.5;
+  letter-spacing: 0.2px;
+  overflow-x: hidden;
+}
+
+div {
+  display: block;
+}
