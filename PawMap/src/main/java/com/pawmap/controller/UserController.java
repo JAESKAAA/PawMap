@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -48,10 +47,6 @@ public class UserController {
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
-
-	@Autowired
-	private AuthenticationManager authenticationManager;
 	
 	 @Autowired 
 	 private UserMapper userMapper;
@@ -156,8 +151,8 @@ public class UserController {
 		
 		// user에 직접 들어갈 수 있도록 여기서 데이터 입력해줌
 		UserDetails userDetails = principalDetailsService.loadUserByUsername(vo.getUserId());
-		//세션 등록
 		
+		//세션 등록
 		Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 		SecurityContext securityContext = SecurityContextHolder.getContext();
 		securityContext.setAuthentication(authentication);
