@@ -133,7 +133,35 @@ pageEncoding="UTF-8"%>
               }
             }).open();
           }
+
+          $('.user_id').on("propertychange change keyup paste input", function(){
+
+          /* console.log("keyup 테스트"); */
+
+          var userId = $('.user_id').val();			// .user_id에 입력되는 값
+          var data = {userId : userId}				// '컨트롤에 넘길 데이터 이름' : '데이터(.user_id에 입력되는 값)'
+
+          $.ajax({
+            type : "post",
+            url : "/member/memberIdChk",
+            data : data,
+            success : function(result){
+              // console.log("성공 여부" + result);
+              if(result != 'fail'){
+                $('.user_id_re_1').css("display","inline-block");
+                $('.user_id_re_2').css("display", "none");	
+                idckCheck = true;
+              } else {
+                $('.user_id_re_2').css("display","inline-block");
+                $('.user_id_re_1').css("display", "none");
+                idckCheck = false;
+              }	
+            }// success 종료
+          }); // ajax 종료	
+
+          });// function 종료
         </script>
+        
 
     <style>
       .form-label {
