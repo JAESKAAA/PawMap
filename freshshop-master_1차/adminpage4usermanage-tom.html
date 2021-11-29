@@ -106,58 +106,100 @@
         </div>
         <!--search button finished...-->
         <!--회원정보 관리 리스트 시작-->
-    <div style="margin-top: 40px; border-style: 3px solid orange ">
-        <table style="margin-left: auto; margin-right: auto; text-align: center;">
-            <tr>
-                <th>번째</th>
-                <th>이름</th>
-                <th>닉네임</th>
-                <th>이메일</th>
-                <th>연락처</th>
-                <th>관리</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>고결</td>
-                <td>Noble</td>
-                <td>NobletheNoble@google.com</td>
-                <td>010-2222-2222</td>
-                <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>고귤</td>
-                <td>HighOrange</td>
-                <td>OrangefromJeju@google.com</td>
-                <td>010-3333-4444</td>
-                <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>재석</td>
-                <td>jaeskaaa</td>
-                <td>dancemachine@google.com</td>
-                <td>010-205-2898</td>
-                <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>은혜</td>
-                <td>Glory</td>
-                <td>dontgetmynerve@google.com</td>
-                <td>010-2122-5461</td>
-                <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>이영호</td>
-                <td>코드노예</td>
-                <td>Somebodyhelpme@google.com</td>
-                <td>010-205-0505</td>
-                <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
-            </tr>
-        </table>
-    </div>
+        <!--nov25th, table style margin left and right were changed from auto to 3%, colgroup were added with width % value -->
+        <div class="userlistforadminmanage"style="margin-top: 40px;">
+          <table class="table-list" style="margin-left: 3%; margin-right: 3%; text-align: center;">
+            <colgroup>
+              <col style="width:3%;">
+              <col style="width:5%;">
+              <col style="width:8%;">
+              <col style="width:12%;">
+              <col style="width:8%;">
+              <col style="width:14%;">
+              <col style="width:8%;">
+              <col style="width:3%;">
+              <col style="width:10%;">
+              <col style="width:7%;">
+              <!--consider binding the custom-tom.css file. this comment was left on november 25th 20:34pm by thomas lee-->
+            </colgroup>
+            <thead style="background-color: lightgray">
+              <tr>
+                  <th>#</th>
+                  <th>회원아이디</th>
+                  <th>회원이메일</th>
+                  <th>회원이름</th>
+                  <th>회원연락처</th>
+                  <th>회원주소</th>
+                  <th>회원닉네임</th>
+                  <th>회원타입</th>
+                  <th>회원등록일</th>
+                  <th>관리</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>noblegoital1</td>
+                  <td>noblego890paw45@gmail.com</td>
+                  <td>고결고걀_물병원90123456789</td>
+                  <td>010-9222-1234</td>
+                  <td>고양시 일상동구 반동 눈누난나</td>
+                  <td>고결이즈고결354</td>
+                  <td>일반</td>
+                  <td>2021-11-28 16:54:38</td>
+                  <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
+              </tr>
+              <tr>
+                  <td>2</td>
+                  <td>thomaslee</td>
+                  <td>tomthecat@gmail.com</td>
+                  <td>thomaslee</td>
+                  <td>010-4111-1234</td>
+                  <td>성남시 분당구 구미동 눈누난나</td>
+                  <td>톰은나의닉네임</td>
+                  <td>관리자</td>
+                  <td>2021-11-29 16:54:38</td>
+                  <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
+              </tr>
+              <tr>
+                  <td>3</td>
+                  <td>jaeskaaa</td>
+                  <td>dancemachine@google.com</td>
+                  <td>최재석</td>
+                  <td>010-2005-2898</td>
+                  <td>강릉시 강릉구 구미동 눈누난나</td>
+                  <td>재석이는슈퍼스타</td>
+                  <td>관리자</td>
+                  <td>2021-11-29 18:54:38</td>                  
+                  <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
+              </tr>
+              <tr>
+                  <td>4</td>
+                  <td>Glory</td>
+                  <td>dontgetmynerve@google.com</td>
+                  <td>지은혜</td>
+                  <td>010-2122-5461</td>
+                  <td>강릉시 강릉구 구미동 눈누난나</td>
+                  <td>도움과소화전</td>
+                  <td>일반</td>
+                  <td>2021-11-29 19:54:38</td>                      
+                  <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
+              </tr>
+              <tr>
+                  <td>5</td>
+                  <td>Silver</td>
+                  <td>silver@gmail.com</td>
+                  <td>최실비아</td>
+                  <td>010-205-0505</td>
+                  <td>창원시 북구 친구동 눈누난나</td>
+                  <td>실비아입니다</td>
+                  <td>일반</td>
+                  <td>2021-11-29 19:59:59</td>                     
+                  <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
     <!--page navigation-->
     <div class="row mt-2">
       <div class="col-12" style="margin-top: 40px;">
