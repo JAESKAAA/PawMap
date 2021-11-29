@@ -19,4 +19,6 @@ public class PawMapApplication {
 		public BCryptPasswordEncoder encodePwd() {
 			return new BCryptPasswordEncoder();
 		}
+		
+	
 }

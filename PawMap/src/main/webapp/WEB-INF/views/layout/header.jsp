@@ -48,6 +48,10 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-jaeseok.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-gyul.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-silbia.css">
+<<<<<<< HEAD
+=======
+
+>>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
         <!-- 결 커스텀 css -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -153,8 +157,14 @@ pageEncoding="UTF-8"%>
 			 </sec:authorize>
 			<sec:authorize access="isAuthenticated()">
 			 <li class="side-menu">
+<<<<<<< HEAD
                 <a href="/pawmap/loginForm">
                   <p>마이페이지 ${principal.user.userId} 님 환영합니다.</p>
+=======
+                <a href="/pawmap/mypage">
+                  <p>마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
+
+>>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
                 </a>
               </li>
 			 <li class="side-menu">

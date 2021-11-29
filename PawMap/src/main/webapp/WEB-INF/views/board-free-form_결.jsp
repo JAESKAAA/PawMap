@@ -5,10 +5,8 @@ pageEncoding="UTF-8"%>
 
   
     <!-- 게시판 폼 시작 -->
-    <form class="form-horizontal board-form" method="POST" action="insertFreeAndNanumBoard" >
 
-        <h1>유저 아이디 == ${principal.user.userId}</h1>
-
+    <form class="form-horizontal board-form" method="POST" action="insertFreeAndNanumBoard" enctype="multipart/form-data">
         <div class="container">
             <div class="card row">
                 <div class="option-select ml-5">
@@ -45,7 +43,7 @@ pageEncoding="UTF-8"%>
                                 <div class="control-group" id="fields">  
                                     <div class="controls">  
                                         <div class="entry input-group upload-input-group">  
-                                            <input class="form-control btn-file-upload" name="fields[]" type="file">  
+                                            <input class="form-control btn-file-upload" name="uploadFiles" multiple="multiple" type="file">  
                                         </div>  
                                     </div>  
                                 </div>  

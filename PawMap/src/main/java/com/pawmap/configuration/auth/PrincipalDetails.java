@@ -110,6 +110,11 @@ public class PrincipalDetails implements UserDetails, OAuth2User {
 		System.out.println("principalDetails의 username=="+user.getUserName());
 		return null;
 	}
+	
 
+	
+	public String getNickname() {
+		return user.getUserNickname();
+	}
 	
 }

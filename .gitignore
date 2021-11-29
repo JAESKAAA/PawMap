@@ -1,7 +1,6 @@
-*.properties
-.metadata
+application.properties
+
 /.metadata/
-*.properties
 *.metadata
 *.DS_Store
 

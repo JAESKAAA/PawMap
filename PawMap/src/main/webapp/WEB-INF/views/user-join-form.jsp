@@ -54,7 +54,6 @@ pageEncoding="UTF-8"%>
 
         <!-- 항목별 공백 확인 alert창 스크립트-->
         <script>
-
           function submitJoinForm(form) {
             form.userId.value = form.userId.value.trim();
             if (form.userId.value.length == 0) {

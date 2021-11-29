@@ -98,9 +98,7 @@ pageEncoding="UTF-8"%>
                     카카오 로그인
                   </a>
                   <div>
-
-                    <a href="/pawmap/forgotPw" class="btn-other" id="forgot">
-
+                    <a href="/pawmap/searchIdPw" class="btn-other" id="forgot">
                       비밀번호를 잊어버렸습니까?</a
                     >
                   </div>
@@ -119,5 +117,5 @@ pageEncoding="UTF-8"%>
 
     <!---------------------------------- 로그인 폼 종료 -------------------------->
 
-  <%@ include file="layout/footer.jsp" %>
-
+   <%@ include file="layout/footer.jsp" %>
+   
