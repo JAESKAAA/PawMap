@@ -1,10 +1,14 @@
 package com.pawmap.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
+<<<<<<< HEAD
+=======
+import java.util.List;
+>>>>>>> 4fa110d214c0d1d15a62db3292c72a9eccb2dc3f
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 
 
@@ -12,7 +16,10 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+<<<<<<< HEAD
 import org.springframework.security.authentication.AuthenticationManager;
+=======
+>>>>>>> 4fa110d214c0d1d15a62db3292c72a9eccb2dc3f
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -32,8 +39,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.pawmap.VO.UserVO;
 import com.pawmap.configuration.auth.PrincipalDetails;
 import com.pawmap.configuration.auth.PrincipalDetailsService;
+<<<<<<< HEAD
 import com.pawmap.service.UserService;
 import com.pawmap.mapper.UserMapper;
+=======
+import com.pawmap.mapper.UserMapper;
+import com.pawmap.service.UserService;
+>>>>>>> 4fa110d214c0d1d15a62db3292c72a9eccb2dc3f
 import com.pawmap.util.CookieUtil;
 
 
@@ -48,6 +60,7 @@ public class UserController {
 	
 	@Autowired
 	private PrincipalDetailsService principalDetailsService;
+<<<<<<< HEAD
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -55,6 +68,11 @@ public class UserController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
+=======
+	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+>>>>>>> 4fa110d214c0d1d15a62db3292c72a9eccb2dc3f
 	
 	 @Autowired 
 	 private UserMapper userMapper;
@@ -159,8 +177,13 @@ public class UserController {
 		
 		// user에 직접 들어갈 수 있도록 여기서 데이터 입력해줌
 		UserDetails userDetails = principalDetailsService.loadUserByUsername(vo.getUserId());
+<<<<<<< HEAD
 		//세션 등록
 		
+=======
+		
+		//세션 등록
+>>>>>>> 4fa110d214c0d1d15a62db3292c72a9eccb2dc3f
 		Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 		SecurityContext securityContext = SecurityContextHolder.getContext();
 		securityContext.setAuthentication(authentication);
@@ -191,6 +214,7 @@ public class UserController {
 		System.out.println("principalDetails : "+principalDetails.getUser());
 		return "user";
 	}
+<<<<<<< HEAD
 	
 
 	
@@ -200,6 +224,17 @@ public class UserController {
 	}
 	
 
+=======
+	
+
+	
+	@GetMapping("/manager")
+	public @ResponseBody String manager() {
+		return "manager";
+	}
+	
+
+>>>>>>> 4fa110d214c0d1d15a62db3292c72a9eccb2dc3f
 	//로그인 시 아이디 비밀번호 확인 메소드 
 	//cookieUtil에 setAttribute
 	@RequestMapping("/doLogin")
@@ -257,9 +292,15 @@ public class UserController {
 		}	
 		
 	} // memberIdChkPOST() 종료	
+<<<<<<< HEAD
 	
 		
 	
+=======
+	
+		
+	
+>>>>>>> 4fa110d214c0d1d15a62db3292c72a9eccb2dc3f
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')") //하기 메서드가 실행하기 직전에 실행됨
 	@GetMapping("/data")

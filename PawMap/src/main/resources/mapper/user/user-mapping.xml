@@ -88,12 +88,17 @@
   	</select>
   
   	<insert id="socialJoin">
+<<<<<<< HEAD
   		INSERT INTO user(user_seq, user_type, user_id, user_password, user_name, user_email, provider, providerId, role) VALUES(
+=======
+  		INSERT INTO user(user_seq, user_type, user_id, user_password, user_name, user_nickname, user_email, provider, providerId, role) VALUES(
+>>>>>>> 4fa110d214c0d1d15a62db3292c72a9eccb2dc3f
  				(SELECT IFNULL(MAX(user_seq), 0) + 1 FROM user A WHERE user_type = #{userType}),
   				#{userType},
   				#{userId},
   				#{userPassword},
   				#{userName},
+  				(SELECT CONCAT(#{provider}, (SELECT IFNULL(MAX(user_seq), 0) + 1 FROM user B))),
   				#{userEmail},
   				#{provider},
   				#{providerId},
