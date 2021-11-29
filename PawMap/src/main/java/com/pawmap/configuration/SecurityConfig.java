@@ -15,11 +15,11 @@ import com.pawmap.configuration.auth.PrincipalDetailsService;
 import com.pawmap.configuration.oauth.PrincipalOauth2UserService;
 
 /*
-=======
 import com.pawmap.configuration.auth.PrincipalDetailsService;
 import com.pawmap.configuration.oauth.PrincipalOauth2UserService;
 
 /*
+
 import com.pawmap.configuration.oauth.PrincipalOauth2UserService;
 
 /*

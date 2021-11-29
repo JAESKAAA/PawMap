@@ -37,5 +37,20 @@
 	</insert>
 	
 
+	<delete id="deleteFileByBoardSeq">
+		DELETE FROM file
+		WHERE board_seq = #{boardSeq}
+		AND board_type = 'f'
+	</delete>
+	
+	<delete id="deleteOneFile">
+		DELETE FROM file
+		WHERE file_seq = #{fileSeq}
+		AND 
+		board_seq = #{boardSeq}
+	</delete>
+	
+
+
   	
 </mapper>	

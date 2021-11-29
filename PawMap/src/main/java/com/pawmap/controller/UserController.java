@@ -33,6 +33,10 @@ import com.pawmap.mapper.UserMapper;
 import com.pawmap.service.UserService;
 import com.pawmap.util.CookieUtil;
 
+
+
+
+
 @Controller
 public class UserController {
 	
@@ -40,25 +44,7 @@ public class UserController {
 	private UserService userService;
 	
 	@Autowired
-
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
-	@GetMapping("/test/login")
-	public @ResponseBody String loginTest(
-			Authentication authentication,
-			//@AuthenticationPrincipal : 어노테이션을 통해 세션정보에 접근가능
-			//PrincipalDetails는 UserDetails의 구현클래스이므로 해당 클래스로 쓸 수 있음
-			@AuthenticationPrincipal PrincipalDetails userDetails) { //DI(의존성 주입)
-		System.out.println("/test/login======================");
-		PrincipalDetails principalDetails = (PrincipalDetails)authentication.getPrincipal();
-		System.out.println("authentication : " + principalDetails.getUser());
-		
-		System.out.println("userDetails : "+userDetails.getUser());
-		return "세션 정보 확인하기";
-	}
-
 	private PrincipalDetailsService principalDetailsService;
-
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -67,7 +53,6 @@ public class UserController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	
-
 	 @Autowired 
 	 private UserMapper userMapper;
 	 
@@ -76,25 +61,13 @@ public class UserController {
 	 * 
 	 * */
 	//공백 및 / 요청시 메인페이지로 이동
-
 	@GetMapping({"","/"})
 	public String index() {
 		return "index2";
 	}
 
 	
-
-	
-	//OAuth 로그인을해도 PrincipalDetails로 받을수 있고, userDetails로 로그인해도 PrincipalDetails로 받을 수 있음
-	@GetMapping("/user")
-	public @ResponseBody String user(@AuthenticationPrincipal PrincipalDetails principalDetails) {
-		System.out.println("principalDetails : "+principalDetails.getUser());
-		return "user";
-	}
-	
-
 	//관리자 페이지 이동하는 메소드
-
 	@GetMapping("/admin")
 	public  String admin() {
 		return "admin_index";
@@ -105,7 +78,6 @@ public class UserController {
 	public  String mypageIndex() {
 		return "my_page_main";
 	}
-
 	//마이페이지-> 회원정보 수정으로 이동하는 메소드
 	@GetMapping("/mypage/userInfo")
 	public  String userInfo(UserVO vo, Model model) {
@@ -117,33 +89,12 @@ public class UserController {
 		return "my_account_update";
 	}
 
-
 	//스프링 시큐리티가 해당 주소를 낚아채감 추후 설정 필요
 	//SecurityConfig파일 생성 후 활성화안됨 (스프링 필터가 가로채기때문)
 	@GetMapping("/loginForm")
 	public String loginForm() {
 		return "login-form";
 	}
-
-
-		
-	//로그인 시 아이디 비밀번호 확인 메소드 
-	 //cookieUtil에 setAttribute
-	 @RequestMapping("/doLogin")
-	 @ResponseBody
-	 public String doLogin(HttpServletResponse response, @RequestParam Map<String, Object> param) {
-		 Map<String, Object> rs = userService.loginV2(param);
- 
-		 String resultCode = (String) rs.get("resultCode");
-		 UserVO userId = (UserVO) rs.get("User");
- 
-		 if (resultCode.startsWith("S-")) {
-			 CookieUtil.setAttribute(response, "uerId", userId.getUserId() + "");
-		 }
- 
-		 return (String) rs.get("msg");
-		 
-	 }
 
 	@GetMapping("/joinForm")
 	public String joinForm() {
@@ -304,18 +255,7 @@ public class UserController {
 		
 	} // memberIdChkPOST() 종료	
 	
-
-	// 아이디 중복 검사 => 회원 가입 페이지에서 아이디 중복 메세지 안뜸
-	@RequestMapping(value = "/userIdChk", method = RequestMethod.POST)
-	@ResponseBody
-	public String userIdChk(String userId) throws Exception{
-		int result = userService.idCheck(userId);
-		if(result != 0) {
-			return "fail";	// 중복 아이디가 존재
-		} else {
-			return "success";	// 중복 아이디 x
-		}	
-	} // memberIdChkPOST() 종료	
+		
 	
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')") //하기 메서드가 실행하기 직전에 실행됨
@@ -325,58 +265,9 @@ public class UserController {
 		return "login";
 	}
 	
-
-	// 아이디 찾기 화면으로 보내주기 
-	@RequestMapping("findLoginId")
-	public String showFindLoginId() {
-		return "findLoginId";
-	}
-	// 아이디 찾기 화면에서 데이터 받기 
-	@RequestMapping("/doFindLoginId")
-	@ResponseBody
-	public String doFindLoginId(@RequestParam Map<String, Object> param) {
-		Map<String, Object> findLoginIdRs = userService.findLoginId(param);
-
-		return (String) findLoginIdRs.get("msg");
-	}
+	
+	
 		
-	// 비밀번호를 잊어버렸습니까? 클릭시 forgotPW 
-	@GetMapping("/forgotPw")
-	public String showFindLoginPasswd() {
-		return "forgotPw";
-	}
-	// 비밀번호 찾기 화면에서 데이터 받기 
-	@RequestMapping("/doForgotPw")
-	@ResponseBody
-	public String doFindLoginPasswd(@RequestParam Map<String, Object> param) {
-		Map<String, Object> findLoginIdRs = userService.findLoginPasswd(param);
-		
-		return (String) findLoginIdRs.get("msg");
-		
-
-
-	}
-	
-	// 비밀번호를 잊어버렸습니까? -> forgotPW 
-	@GetMapping("forgotPw.do")
-	public String showFindLoginInfo() {
-		return "forgotPw";
-	}
-	
-	// 마이페이지
-	@GetMapping("/mypage") 
-	public String mypage() {
-		return "my-page";
-	}
-	
-	// 회원정보
-	@GetMapping("/infoForm")
-	public String inforForm() {
-		return "user-info-form";
-	}
-	
-	}
-	
 
 	// 비밀번호 찾기 화면에서 데이터 받기 
 	@RequestMapping("/doForgotPw")
@@ -447,6 +338,7 @@ public class UserController {
 			 
 			 return "redirect:/admin";
 		}
+
 
 		
 	//시큐리티 세션 참고용 메서드
@@ -527,5 +419,7 @@ public class UserController {
 			return "loginForm";
 			
 		}
+
+
 
 }

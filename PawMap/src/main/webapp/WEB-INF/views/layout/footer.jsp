@@ -155,15 +155,16 @@
       src="https://kit.fontawesome.com/f0999a1ca0.js"
       crossorigin="anonymous"
     ></script>
-<<<<<<< HEAD
+
     <!-- 1:1 상담 관련 js 파일-->
     <script src="${pageContext.request.contextPath}/js/custom-jaeseok.js"></script>
-=======
+
     <!-- 커스텀 JS 파일 - 재석-->
     <script src="${pageContext.request.contextPath}/js/custom-jaeseok.js"></script>
+
     <!-- 커스텀 JS 파일 - 고결-->
     <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
->>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
+
       <!-- 아이디 비밀번호 공백확인 alert창 -->
     <script>
       function makeTestData() {
@@ -187,8 +188,7 @@
     
         form.submit();
       }
-<<<<<<< HEAD
-=======
+
       //회원탈퇴 체크용
       function deleteUserCheck(){
       var result = confirm("정말 탈퇴하시겠습니까...?")
@@ -199,7 +199,7 @@
 
       }
   }
->>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
+
     </script>
   </body>
 </html>

@@ -27,7 +27,6 @@ public class BoardServiceImpl implements BoardService {
 		System.out.println("BoardServiceImpl :insertFreeAndNanumBoard()");
 	}
 
-
 	@Override
 	public List<BoardVO> getFreeBoardList(BoardVO vo, Criteria cri) {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
@@ -60,10 +59,17 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.selectBoardCount(vo);
 	}
 
-
 	@Override
 	public void insertReplyForFreeBoard(CommentVO commentVO) {
 		boardMapper.insertReplyForFreeBoard(commentVO);
+
+	}
+
+
+	@Override
+	public List<HashMap<String, Object>> getLatelyBoardListForBoardMain() {
+		
+		return boardMapper.getLatelyBoardListForBoardMain();
 
 	}
 

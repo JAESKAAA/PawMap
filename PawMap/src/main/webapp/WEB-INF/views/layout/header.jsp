@@ -48,11 +48,8 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-jaeseok.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-gyul.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-silbia.css">
-<<<<<<< HEAD
-=======
 
->>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
-        <!-- 결 커스텀 css -->
+    <!-- 결 커스텀 css -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -143,43 +140,37 @@ pageEncoding="UTF-8"%>
               <li class="search" style="display: none">
                 <a href="#"><i class="fa fa-search"></i></a>
               </li>
-             <sec:authorize access="isAnonymous()">
-              <li class="side-menu">
-                <a href="/pawmap/loginForm">
-                  <p>로그인</p>
-                </a>
-              </li>
-              <li class="side-menu">
-                <a href="/pawmap/joinForm">
-                  <p>회원가입</p>
-                </a>
-              </li>
-			 </sec:authorize>
-			<sec:authorize access="isAuthenticated()">
-			 <li class="side-menu">
-<<<<<<< HEAD
-                <a href="/pawmap/loginForm">
-                  <p>마이페이지 ${principal.user.userId} 님 환영합니다.</p>
-=======
-                <a href="/pawmap/mypage">
-                  <p>마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
-
->>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
-                </a>
-              </li>
-			 <li class="side-menu">
-                <a href="/pawmap/logout">
-                  <p>로그아웃</p>
-                </a>
-              </li>
-			</sec:authorize>
-			<sec:authorize access="hasRole('ROLE_ADMIN')">
-				<li class="side-menu">
-	                <a href="/pawmap/admin">
-	                  <p>관리자 페이지</p>
-	                </a>
-	              </li>
-			</sec:authorize>
+              <sec:authorize access="isAnonymous()">
+                <li class="side-menu">
+                  <a href="/pawmap/loginForm">
+                    <p>로그인</p>
+                  </a>
+                </li>
+                <li class="side-menu">
+                  <a href="/pawmap/joinForm">
+                    <p>회원가입</p>
+                  </a>
+                </li>
+              </sec:authorize>
+              <sec:authorize access="isAuthenticated()">
+                <li class="side-menu">
+                  <a href="/pawmap/mypage">
+                    <p>마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
+                  </a>
+                </li>
+                <li class="side-menu">
+                  <a href="/pawmap/logout">
+                    <p>로그아웃</p>
+                  </a>
+                </li>
+              </sec:authorize>
+              <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <li class="side-menu">
+                  <a href="/pawmap/admin">
+                    <p>관리자 페이지</p>
+                  </a>
+                </li>
+              </sec:authorize>
             </ul>
           </div>
           <!-- End Atribute Navigation -->

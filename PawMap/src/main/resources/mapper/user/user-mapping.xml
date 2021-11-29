@@ -23,6 +23,7 @@
   	</select>
   	
 
+
 	<insert id="insertUser">
 
   		INSERT INTO user(user_seq, user_type, user_id, user_password, user_name, user_email, user_tel_num, post_num, address, address_detail, user_nickname, role) VALUES(
@@ -81,11 +82,6 @@
   	</select>
   
 
-  	<!-- 아이디 중복검사 -->
-  	<select id="idCheck" parameterType="String" resultType="com.pawmap.VO.UserVO">
-  		SELECT * FROM user WHERE user_id = #{userId}
-  	</select>
-  
   	<!-- 아이디 중복검사 -->
   	<select id="idCheck" parameterType="String" resultType="com.pawmap.VO.UserVO">
   		SELECT * FROM user WHERE user_id = #{userId}

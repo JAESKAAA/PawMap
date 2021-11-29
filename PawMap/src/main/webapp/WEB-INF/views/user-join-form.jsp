@@ -133,33 +133,6 @@ pageEncoding="UTF-8"%>
               }
             }).open();
           }
-
-          $('.user_id').on("propertychange change keyup paste input", function(){
-
-          /* console.log("keyup 테스트"); */
-
-          var userId = $('.user_id').val();			// .user_id에 입력되는 값
-          var data = {userId : userId}				// '컨트롤에 넘길 데이터 이름' : '데이터(.user_id에 입력되는 값)'
-
-          $.ajax({
-            type : "post",
-            url : "/member/memberIdChk",
-            data : data,
-            success : function(result){
-              // console.log("성공 여부" + result);
-              if(result != 'fail'){
-                $('.user_id_re_1').css("display","inline-block");
-                $('.user_id_re_2').css("display", "none");	
-                idckCheck = true;
-              } else {
-                $('.user_id_re_2').css("display","inline-block");
-                $('.user_id_re_1').css("display", "none");
-                idckCheck = false;
-              }	
-            }// success 종료
-          }); // ajax 종료	
-
-          });// function 종료
         </script>
         
 
@@ -184,18 +157,6 @@ pageEncoding="UTF-8"%>
         background-color: antiquewhite;
         border-radius: 100px;
         margin: auto;
-      }
-
-      /* 중복아이디가 존재 하지 않을 경우 */
-      .user_id_re_1 { 
-        color: green;
-        display: none;
-      }
-
-      /* 중복아이디가 존재 하는 경우 */
-      .user_id_re_2 {
-        color: red;
-        display: none;
       }
     </style>
   </head>
@@ -397,8 +358,6 @@ pageEncoding="UTF-8"%>
                             placeholder="아이디"
                             required
                           />
-                          <span class="user_id_re_1">사용 가능한 아이디입니다.</span> 
-                          <span class="user_id_re_2">아이디가 이미 존재합니다.</span>
                         </div>
                       </div>
                       <div class="d-flex flex-row align-items-center mb-4">

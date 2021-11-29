@@ -23,6 +23,7 @@ public interface UserService {
 	public int idCheck(String userId) throws Exception;
 
 	public UserVO checkDuplicateId(@Param("userId") int userId);
+	
 
 	public Map<String, Object> login(Map<String, Object> args);
 
@@ -32,6 +33,7 @@ public interface UserService {
 
 
 	public Map<String, Object> findLoginPasswd(Map<String, Object> param);
+
 
 
 	//회원정보 수정 메서드
@@ -50,5 +52,6 @@ public interface UserService {
 	
 	//관리자 페이지 수정 메서드
 	public void updateUserAdmin(UserVO vo);
+
 
 }

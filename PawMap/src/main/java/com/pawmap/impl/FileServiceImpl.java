@@ -17,7 +17,7 @@ public class FileServiceImpl implements FileService {
 
 	@Override
 	public List<FileVO> getFileListByFreeBoardSeq(int boardSeq) {
-		
+
 		return fileMapper.getFileListByFreeBoardSeq(boardSeq);
 	}
 
@@ -28,6 +28,16 @@ public class FileServiceImpl implements FileService {
 			System.out.println(vo.getBoardSeq());
 
 		}
+	}
+
+	@Override
+	public void deleteFileByBoardSeq(int boardSeq) {
+		fileMapper.deleteFileByBoardSeq(boardSeq);
+	}
+
+	@Override
+	public void deleteOneFile(int fileSeq, int boardSeq) {
+		fileMapper.deleteOneFile(fileSeq,boardSeq);
 	}
 	
 }

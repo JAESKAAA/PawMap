@@ -1,5 +1,6 @@
 package com.pawmap.impl;
 
+
 import java.security.SecureRandom;
 import java.util.Date;
 import java.util.HashMap;
@@ -118,22 +119,6 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public Map<String, Object> findLoginId(Map<String, Object> param) {
-		String userName = (String) param.get("userName");
-		String userEmail = (String) param.get("userEmail");
-
-		UserVO user  = userMapper.searchId(userName, userEmail);
-
-		if (user == null) {
-			return Maps.of("resultCode", "F-1", "msg", "일치하는 회원이 없습니다.");
-		}
-
-		return Maps.of("resultCode", "S-1", "msg", "당신의 로그인 아이디는 " + user.getUserId() + " 입니다.");
-
-	}
-
-
-	@Override
 	public Map<String, Object> findLoginPasswd(Map<String, Object> param) {
 		String userId = (String) param.get("userId");
 		String userName = (String) param.get("userName");
@@ -189,6 +174,7 @@ public class UserServiceImpl implements UserService{
 	public UserVO checkDuplicateId(int userId) {
 		return userMapper.checkDuplicateId(userId);
 	}
+
 	
 	@Override
 	public void updateUser(UserVO vo) {
@@ -234,8 +220,6 @@ public class UserServiceImpl implements UserService{
 		return result;
 	}
 
+
 }
-
-
-
 
