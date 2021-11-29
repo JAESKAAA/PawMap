@@ -1,18 +1,14 @@
 package com.pawmap.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
-
-
-
-
-import java.util.List;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -32,8 +28,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.pawmap.VO.UserVO;
 import com.pawmap.configuration.auth.PrincipalDetails;
 import com.pawmap.configuration.auth.PrincipalDetailsService;
-import com.pawmap.service.UserService;
 import com.pawmap.mapper.UserMapper;
+import com.pawmap.service.UserService;
 import com.pawmap.util.CookieUtil;
 
 
@@ -51,10 +47,6 @@ public class UserController {
 	
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-	
-
-	@Autowired
-	private AuthenticationManager authenticationManager;
 	
 	 @Autowired 
 	 private UserMapper userMapper;

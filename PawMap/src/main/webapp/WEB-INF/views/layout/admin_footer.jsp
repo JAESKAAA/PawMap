@@ -155,11 +155,11 @@
       src="https://kit.fontawesome.com/f0999a1ca0.js"
       crossorigin="anonymous"
     ></script>
-    <!-- 커스텀 JS 파일 - 재석-->
-    <script src="${pageContext.request.contextPath}/js/custom-jaeseok.js"></script>
-   
+
     <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
 
+    <!-- 커스텀 JS 파일 - 고결-->
+    <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
       <!-- 아이디 비밀번호 공백확인 alert창 -->
     <script>
       function makeTestData() {
