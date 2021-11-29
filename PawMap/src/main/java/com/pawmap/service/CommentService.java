@@ -19,5 +19,8 @@ public interface CommentService {
 	
 	void updateCommentOnFreeBoard(CommentVO commentVO);
 
+	void deleteCommentsBySeq(int boardSeq);
+
+
 	
 }

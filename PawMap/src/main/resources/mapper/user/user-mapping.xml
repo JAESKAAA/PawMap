@@ -23,6 +23,7 @@
   	</select>
   	
 
+
 	<insert id="insertUser">
 
   		INSERT INTO user(user_seq, user_type, user_id, user_password, user_name, user_email, user_tel_num, post_num, address, address_detail, user_nickname, role) VALUES(

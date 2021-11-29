@@ -31,6 +31,7 @@ public interface UserService {
 	public Map<String, Object> findLoginPasswd(Map<String, Object> param);
 
 
+
 	//회원정보 수정 메서드
 	public void updateUser(UserVO vo);
 	
@@ -47,5 +48,6 @@ public interface UserService {
 	
 	//관리자 페이지 수정 메서드
 	public void updateUserAdmin(UserVO vo);
+
 
 }

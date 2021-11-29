@@ -2,7 +2,9 @@ package com.pawmap.impl;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 
 
 import java.security.SecureRandom;
@@ -18,6 +20,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import com.pawmap.VO.UserVO;
 import com.pawmap.configuration.auth.PrincipalDetails;
 import com.pawmap.mapper.UserMapper;
+
 import com.pawmap.service.BoardService;
 import com.pawmap.service.MailService;
 import com.pawmap.service.UserService;
@@ -187,6 +190,7 @@ public class UserServiceImpl implements UserService{
 		return userMapper.checkDuplicateId(userId);
 	}
 
+
 	
 	@Override
 	public void updateUser(UserVO vo) {
@@ -234,6 +238,7 @@ public class UserServiceImpl implements UserService{
 
 
 }
+
 
 
 

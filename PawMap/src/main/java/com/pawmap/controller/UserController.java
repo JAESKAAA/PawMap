@@ -7,10 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
 import java.util.List;
-
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -259,6 +258,9 @@ public class UserController {
 		
 	} // memberIdChkPOST() 종료	
 	
+		
+	
+
 	@PreAuthorize("hasRole('ROLE_ADMIN')") //하기 메서드가 실행하기 직전에 실행됨
 	@GetMapping("/data")
 	public @ResponseBody String data() {
@@ -340,6 +342,7 @@ public class UserController {
 			 return "redirect:/admin";
 		}
 
+
 		
 	//시큐리티 세션 참고용 메서드
 	@GetMapping("/check")
@@ -419,6 +422,7 @@ public class UserController {
 			return "loginForm";
 			
 		}
+
 
 
 }

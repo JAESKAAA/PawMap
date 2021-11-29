@@ -14,4 +14,9 @@ public interface FileMapper {
 	
 	void insertBoardFileList(FileVO vo);
 
+	void deleteFileByBoardSeq(@Param("boardSeq") int boardSeq);
+
+	void deleteOneFile(@Param("fileSeq")int fileSeq,@Param("boardSeq") int boardSeq);
+
+
 }

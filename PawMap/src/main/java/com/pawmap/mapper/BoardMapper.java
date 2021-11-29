@@ -1,5 +1,6 @@
 package com.pawmap.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,6 +19,7 @@ import com.pawmap.VO.UserVO;
 @Mapper
 public interface BoardMapper {
 
+	
 
 	int insertTest(UserVO vo);
 
@@ -38,6 +40,11 @@ public interface BoardMapper {
 
 
 	int getFreeBoardSeq();
+
+	List<HashMap<String, Object>> getLatelyBoardListForBoardMain();
+
+	
+
 
 }
 

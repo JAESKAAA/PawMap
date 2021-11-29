@@ -55,13 +55,14 @@ public class BoardController {
 	@PostMapping("/board/insertFreeAndNanumBoard")
 	public String insertFreeAndNanumBoard(BoardVO vo, HttpServletRequest request,
 			MultipartHttpServletRequest mhsr) throws IOException  {
-		
 
+		
 		int boardSeq = boardService.getFreeBoardSeq();
 		String userId = vo.getUserId();
  		
 		System.out.println("boardSeq=========="+boardSeq);
 		System.out.println("userId=========="+userId);
+
 		
 		FileUtils fileUtils = new FileUtils();
 		List<FileVO> fileList = fileUtils.parseFileInfo(boardSeq, request, mhsr,userId);
@@ -69,6 +70,7 @@ public class BoardController {
 		if(CollectionUtils.isEmpty(fileList) == false) {
 			fileService.insertBoardFileList(fileList);
 		}
+
 
 		System.out.println("insertFreeAndNanumBoard()탐");
 		System.out.println("BoardVO ====== "+vo);
@@ -90,7 +92,6 @@ public class BoardController {
 			vo.setKeyword("");
 		}
 		
-		
 		if(!keyword.equals(vo.getKeyword())) {
 			System.out.println("다릅니다.");
 			cri.setPageNum(1);
@@ -100,8 +101,12 @@ public class BoardController {
 		
 		int total = boardService.selectBoardCount(vo);
 		
-		System.out.println("getKeywordType=================="+vo.getKeywordType());
+		List<HashMap<String,Object>> latelyBoardListForMain = boardService.getLatelyBoardListForBoardMain();
+		
+		System.out.println("getFreeBoardList 의 latelyBoardListForMain ============"+ latelyBoardListForMain);
+		
 		model.addAttribute("freeBoardList", boardService.getFreeBoardList(vo,cri));
+		model.addAttribute("latelyBoardListForMain", latelyBoardListForMain);
 		model.addAttribute("pageMaker", new PageVO(cri, total));
 		model.addAttribute("keyword", vo.getKeyword());
 		model.addAttribute("keywordType", vo.getKeywordType());
@@ -115,16 +120,15 @@ public class BoardController {
 		System.out.println("getFreeBoard============ 탐");
 		System.out.println("getFreeBoard boardSeq ========== "+boardSeq);
 		
-
 		// 댓글 리스트로 가져오기
 		List<HashMap<String,Object>> replyList = commentService.getReplyListByBoardSeq(boardSeq);
 
 		// 파일리스트 가져오기
 		List<FileVO> fileList = fileService.getFileListByFreeBoardSeq(boardSeq);
-
 		
 		System.out.println("fileList ============== "+ fileList);
 		
+
 		model.addAttribute("freeBoardFileList",fileList);
 		model.addAttribute("commentSize",replyList.size());
 		model.addAttribute("freeBoardReplyList",replyList);
@@ -140,6 +144,8 @@ public class BoardController {
 		System.out.println("deleteFreeBoard 들어옴");
 		System.out.println("deleteFreeBoard 들어옴 boardSeq : "+boardSeq);
 		boardService.deleteFreeBoardBySeq(boardSeq);
+		commentService.deleteCommentsBySeq(boardSeq);
+		fileService.deleteFileByBoardSeq(boardSeq);
 		
 	}
 	
@@ -148,6 +154,9 @@ public class BoardController {
 		System.out.println("updateFreeBoard   들어옴");
 		System.out.println(boardSeq);
 		
+		List<FileVO> fileList = fileService.getFileListByFreeBoardSeq(boardSeq);
+		
+		model.addAttribute("fileList",fileList);
 		model.addAttribute("getBoard",boardService.getFreeBoard(boardSeq));
 		
 		System.out.println(model);
@@ -175,7 +184,6 @@ public class BoardController {
 									 @RequestBody CommentVO	commentVO) {
 		System.out.println("insertReplyFreeBoard =======  들어옴");
 		System.out.println(commentVO);
-
 		commentService.insertReplyForFreeBoard(commentVO);
 		
 	}
@@ -202,5 +210,37 @@ public class BoardController {
 		return "redirect:getFreeBoard?boardSeq="+boardSeq;
 		
 	}
+	
+	@RequestMapping("/board/saperateDeleteFileOnFreeBoard")
+	public String saperateDeleteFile(int fileSeq, int boardSeq) {
+		System.out.println(fileSeq);
+		System.out.println(boardSeq);
+		System.out.println("saperateDeleteFile 들엉옴");
+		
+		fileService.deleteOneFile(fileSeq,boardSeq);
+		
+		return "redirect:updateFreeAndNanumBoardForm?boardSeq="+boardSeq;
+		
+	}
+	
+	@RequestMapping("/board/updateFreeBoardFormInsertFiles")
+	public String updateFreeBoardFormInsertFiles(String userId,HttpServletRequest request,
+			MultipartHttpServletRequest mhsr, int boardSeq) throws IOException {
+		
+		System.out.println("들어옴");
+		
+		FileUtils fileUtils = new FileUtils();
+		List<FileVO> fileList = fileUtils.parseFileInfo(boardSeq, request, mhsr,userId);
+		
+		if(CollectionUtils.isEmpty(fileList) == false) {
+			fileService.insertBoardFileList(fileList);
+		}
+		
+		return "redirect:updateFreeAndNanumBoardForm?boardSeq="+boardSeq;
+		
+	}
+
+	
+	
 
 }

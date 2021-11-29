@@ -16,6 +16,7 @@ let index = {
 		//$("#updateCommentOnFreeBoard").on("click",()=>{
 		//	this.updateCommentOnFreeBoard();
 		//});
+
 		
 	},
 	
@@ -150,6 +151,7 @@ let index = {
 			});
 		},
 	 */
+
 		
 }
 

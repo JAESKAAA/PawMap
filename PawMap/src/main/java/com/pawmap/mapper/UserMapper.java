@@ -26,8 +26,10 @@ public interface UserMapper {
 	
 	// 아이디 중복 검사
 	public int idCheck(String userId);
+
 	//아이디 찾기 
 	String searchId(@Param("userName")String userName, @Param("userTelNum")String userTelNum);
+
 
 	public UserVO findByLoginId(@Param("userId") String userId);
 
@@ -41,6 +43,7 @@ public interface UserMapper {
 	
 	//public void update(UserVO user);
 	public void update(UserVO vo);
+
 
 	//회원정보 수정 메서드
 	public void updateUser(UserVO vo);
@@ -60,6 +63,7 @@ public interface UserMapper {
 	//관리자 페이지 수정 메서드
 	public void updateUserAdmin(UserVO vo);
 	public UserVO searchPwd(@Param("userId")String userId, @Param("userName")String userName);
+
 
 
 
