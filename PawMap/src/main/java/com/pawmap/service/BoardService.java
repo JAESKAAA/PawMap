@@ -5,6 +5,11 @@ import java.util.List;
 import com.pawmap.VO.BoardVO;
 import com.pawmap.VO.CommentVO;
 import com.pawmap.VO.Criteria;
+<<<<<<< HEAD
+=======
+import com.pawmap.VO.FileVO;
+import com.pawmap.VO.UserVO;
+>>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
 
 public interface BoardService {
 	
@@ -23,13 +28,18 @@ public interface BoardService {
 
 	int selectBoardCount(BoardVO vo);
 
-
 	void insertReplyForFreeBoard(CommentVO commentVO);
 
+<<<<<<< HEAD
 
 
 
 
+=======
+	int getFreeBoardSeq();
+
+	
+>>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
 
 	
 	

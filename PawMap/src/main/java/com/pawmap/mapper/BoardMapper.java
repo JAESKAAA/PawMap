@@ -9,9 +9,19 @@ import org.apache.ibatis.annotations.Param;
 import com.pawmap.VO.BoardVO;
 import com.pawmap.VO.CommentVO;
 
+<<<<<<< HEAD
+=======
+import com.pawmap.VO.FileVO;
+
+import com.pawmap.VO.UserVO;
+
+>>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
 
 @Mapper
 public interface BoardMapper {
+
+
+	int insertTest(UserVO vo);
 
 
 	void insertFreeAndNanumBoard(BoardVO vo);
@@ -26,12 +36,16 @@ public interface BoardMapper {
 
 	int selectBoardCount(BoardVO vo);
 
-
 	void insertReplyForFreeBoard(CommentVO commentVO);
 
+<<<<<<< HEAD
 //	나눔게시판 - 은혜 추가
 	List<BoardVO> getNanumBoardList(Map<String,Object> map);
 
+=======
+
+	int getFreeBoardSeq();
+>>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
 
 }
 

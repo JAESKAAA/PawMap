@@ -149,13 +149,16 @@
     <script src="${pageContext.request.contextPath}/js/form-validator.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/contact-form-script.js"></script>
     <script src="${pageContext.request.contextPath}/js/custom.js"></script>
+    <script src="${pageContext.request.contextPath}/js/custom-silbia.js"></script>
     <!-- FontAwesome 용 JS 파일-->
     <script
       src="https://kit.fontawesome.com/f0999a1ca0.js"
       crossorigin="anonymous"
     ></script>
-    <!-- 1:1 상담 관련 js 파일-->
+    <!-- 커스텀 JS 파일 - 재석-->
     <script src="${pageContext.request.contextPath}/js/custom-jaeseok.js"></script>
+    <!-- 커스텀 JS 파일 - 고결-->
+    <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
       <!-- 아이디 비밀번호 공백확인 alert창 -->
     <script>
       function makeTestData() {
@@ -179,6 +182,16 @@
     
         form.submit();
       }
+      //회원탈퇴 체크용
+      function deleteUserCheck(){
+      var result = confirm("정말 탈퇴하시겠습니까...?")
+      
+      if(result){
+          location.replace("/pawmap/mypage/deleteUser?userId=${principal.user.userId}");
+      }else{
+
+      }
+  }
     </script>
   </body>
 </html>

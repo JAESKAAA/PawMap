@@ -1,27 +1,25 @@
 package com.pawmap.impl;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 
 import java.security.SecureRandom;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
 import org.apache.groovy.util.Maps;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import org.springframework.stereotype.Service;
+import org.mybatis.spring.SqlSessionTemplate;
 
 import com.pawmap.VO.UserVO;
+import com.pawmap.configuration.auth.PrincipalDetails;
 import com.pawmap.mapper.UserMapper;
-
 import com.pawmap.service.BoardService;
-
 import com.pawmap.service.MailService;
-
 import com.pawmap.service.UserService;
 
 
@@ -40,18 +38,27 @@ public class UserServiceImpl implements UserService{
 	 @Autowired 
 	 private UserMapper userMapper;
 
-
 	 @Autowired
 	 MailService mailService;
 	 
 	 @Autowired
-	    BCryptPasswordEncoder passwordEncoder;
+	   BCryptPasswordEncoder passwordEncoder;
+	 
+	 @Autowired
+	 private SqlSessionTemplate sqlSession;
+	 
+	
 
 	 
 	@Override
 	public void insertUser(UserVO vo) {
 		userMapper.insertUser(vo);
 }
+	@Override
+	public void insertHospitalUser(UserVO vo) {
+	userMapper.insertHospitalUser(vo);
+	}
+	
 	 @Override
 	public UserVO findByUsername(String username) {
 		return userMapper.findByUsername(username);
@@ -59,6 +66,13 @@ public class UserServiceImpl implements UserService{
 	 @Override
 	public void socialJoin(UserVO vo) {
 		userMapper.socialJoin(vo);
+	}
+
+	 
+	 // 아이디 중복 체크
+	@Override
+	public int idCheck(String userId) throws Exception {
+		return userMapper.idCheck(userId);
 	}
 
 	@Override
@@ -110,20 +124,6 @@ public class UserServiceImpl implements UserService{
 
 		return rs;
 	}
-	@Override
-	public Map<String, Object> findLoginId(Map<String, Object> param) {
-		String userName = (String) param.get("userName");
-		String userEmail = (String) param.get("userEmail");
-
-		UserVO user  = userMapper.searchId(userName, userEmail);
-
-		if (user == null) {
-			return Maps.of("resultCode", "F-1", "msg", "일치하는 회원이 없습니다.");
-		}
-
-		return Maps.of("resultCode", "S-1", "msg", "당신의 로그인 아이디는 " + user.getUserId() + " 입니다.");
-
-	}
 	
 	
 	
@@ -133,7 +133,7 @@ public class UserServiceImpl implements UserService{
 		String userName = (String) param.get("userName");
 		String userEmail = (String) param.get("userEmail");
 
-		UserVO user  = userMapper.searchPwd(userId, userName, userEmail);
+		UserVO user  = userMapper.searchPwd(userId, userName);
 
 		if (user == null) {
 			return Maps.of("resultCode", "F-1", "msg", "일치하는 회원이 없습니다.");
@@ -161,20 +161,10 @@ public class UserServiceImpl implements UserService{
 				
 		user.setUserPassword(tempLoginPasswd);
 
-		//memberDao.updateLoginPasswd(member.getId(), tempLoginPasswd);
-		
-		/*
-		Member a = new Member();
-		a.setId(1);
-		a.setName("배고파");
-		memberDao.update(a);
-		*/
 		
 		String mailTitle = userName + "님, 당신의 계정(" + userId + ")의 임시 패스워드 입니다.";
 		String mailBody = "임시 패스워드 : " + tempLoginPasswd;
 		mailService.send(userEmail, mailTitle, mailBody);
-
-//		System.out.println(userId);
 		
 		
 		// 비밀번호 암호화해주는 메서드
@@ -192,33 +182,58 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	
-//	@RequestMapping(value = "/secuTest", method = RequestMethod.GET)
-//    public void secuTest() {
-//		String rawPassword = "vam123";                //인코딩 전 메서드
-//        String encdoePassword1;                        // 인코딩된 메서드
-//        String encdoePassword2;                        // 똑같은 비밀번호 데이터를 encdoe()메서드를 사용했을 때 동일한 인코딩된 값이 나오는지 확인하기 위해 추가
-//        
-//        encdoePassword1 = passwordEncoder.encode(rawPassword);
-//        encdoePassword2 = passwordEncoder.encode(rawPassword);
-//        
-//        // 인코딩된 패스워드 출력
-//        System.out.println("encdoePassword1 : " +encdoePassword1);
-//        System.out.println(" encdoePassword2 : " + encdoePassword2);
-//        
-//        String truePassowrd = "vam123";
-//        String falsePassword = "asdfjlasf";
-//        
-//        System.out.println("truePassword verify : " + passwordEncoder.matches(truePassowrd, encdoePassword1));
-//        System.out.println("falsePassword verify : " + passwordEncoder.matches(falsePassword, encdoePassword1));  
-//        
-//    }
-	
 	@Override
 	public UserVO checkDuplicateId(int userId) {
 		return userMapper.checkDuplicateId(userId);
 	}
-}
 
+	
+	@Override
+	public void updateUser(UserVO vo) {
+		userMapper.updateUser(vo);
+	}
+
+	@Override
+	public void deleteUser(UserVO vo) {
+		userMapper.deleteUser(vo);
+	}
+	@Override
+	public List<UserVO> getUserList(UserVO vo) {
+		return userMapper.getUserList(vo);
+	}
+	@Override
+	public List<UserVO> getHospitalUserList(UserVO vo) {
+		return userMapper.getHospitalUserList(vo);
+	}
+	
+	@Override
+	public UserVO getUser(UserVO vo) {
+		return userMapper.getUser(vo);
+	}
+	
+	@Override
+	public void updateUserAdmin(UserVO vo) {
+		userMapper.updateUserAdmin(vo);
+	}
+	@Override
+	public String searchId(String userName, String userTelNum) {
+		userMapper = sqlSession.getMapper(UserMapper.class);
+		System.out.println(userName + userTelNum);
+
+		String result = "";
+		System.out.println(result);
+
+		try {
+			result = userMapper.searchId(userName, userTelNum);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+
+}
 
 
 

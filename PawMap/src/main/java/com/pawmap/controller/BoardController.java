@@ -1,8 +1,19 @@
 package com.pawmap.controller;
 
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.annotations.Param;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,12 +22,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.pawmap.VO.BoardVO;
 import com.pawmap.VO.CommentVO;
 import com.pawmap.VO.Criteria;
+import com.pawmap.VO.FileVO;
 import com.pawmap.VO.PageVO;
 import com.pawmap.service.BoardService;
+import com.pawmap.service.CommentService;
+import com.pawmap.service.FileService;
+import com.pawmap.util.FileUtils;
 
 @Controller
 public class BoardController {
@@ -24,16 +40,13 @@ public class BoardController {
 	static String keyword = "";
 	
 	@Autowired
-	public BoardService boardService;
-
-//	@ModelAttribute("conditionMap")
-//	public Map<String, String> searchConditionMap() {
-//		Map<String, String> conditionMap = new HashMap<String, String>();
-//		conditionMap.put("제목", "title");
-//		conditionMap.put("내용", "content");
-//		
-//		return conditionMap;
-//	}
+	private BoardService boardService;
+	
+	@Autowired
+	private CommentService commentService;
+	
+	@Autowired
+	private FileService fileService;
 	
 //	어떻게 분기해야하는지 생각해보기 (글작성하면 카테고리에 상관없이 자유게시판으로감)
 	@GetMapping("/board/form")
@@ -84,11 +97,24 @@ public class BoardController {
 	
 	
 	@PostMapping("/board/insertFreeAndNanumBoard")
-	public String insertFreeAndNanumBoard(BoardVO vo) {
+	public String insertFreeAndNanumBoard(BoardVO vo, HttpServletRequest request,
+			MultipartHttpServletRequest mhsr) throws IOException  {
 		
 
-		System.out.println("insertFreeAndNanumBoard()탐");
+		int boardSeq = boardService.getFreeBoardSeq();
+		String userId = vo.getUserId();
+ 		
+		System.out.println("boardSeq=========="+boardSeq);
+		System.out.println("userId=========="+userId);
+		
+		FileUtils fileUtils = new FileUtils();
+		List<FileVO> fileList = fileUtils.parseFileInfo(boardSeq, request, mhsr,userId);
+		
+		if(CollectionUtils.isEmpty(fileList) == false) {
+			fileService.insertBoardFileList(fileList);
+		}
 
+		System.out.println("insertFreeAndNanumBoard()탐");
 		System.out.println("BoardVO ====== "+vo);
 		
 		boardService.insertFreeAndNanumBoard(vo);
@@ -99,7 +125,7 @@ public class BoardController {
 	@RequestMapping("/board/getFreeBoardList")
 	public String getFreeBoardList(BoardVO vo, Model model,Criteria cri){
 		
-		System.out.println("getFreeBoard() 탐");
+		System.out.println("getFreeBoardList() 탐");
 		
 		if(vo.getKeywordType() == null || vo.getKeywordType().isEmpty()) {
 			vo.setKeywordType("titleAndContent");
@@ -136,6 +162,7 @@ public class BoardController {
 	}
 	
 	@GetMapping("/board/getFreeBoard")
+<<<<<<< HEAD
 	public String getFreeBoard(@RequestParam int boardSeq, @RequestParam String boardType, Model model) {
 		System.out.println("boardSeq ====== "+boardSeq);
 		
@@ -147,6 +174,26 @@ public class BoardController {
 		
 		BoardVO voTest = boardService.getFreeBoard(boardSeq, boardType);
 		System.out.println("보드타입 ========  "+voTest.getBoardType());
+=======
+	public String getFreeBoard(@RequestParam int boardSeq, Model model) {
+		System.out.println("getFreeBoard============ 탐");
+		System.out.println("getFreeBoard boardSeq ========== "+boardSeq);
+		
+
+		// 댓글 리스트로 가져오기
+		List<HashMap<String,Object>> replyList = commentService.getReplyListByBoardSeq(boardSeq);
+
+		// 파일리스트 가져오기
+		List<FileVO> fileList = fileService.getFileListByFreeBoardSeq(boardSeq);
+
+		
+		System.out.println("fileList ============== "+ fileList);
+		
+		model.addAttribute("freeBoardFileList",fileList);
+		model.addAttribute("commentSize",replyList.size());
+		model.addAttribute("freeBoardReplyList",replyList);
+		model.addAttribute("getFreeBoard",boardService.getFreeBoard(boardSeq));
+>>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
 		
 		return "board-detail_결";
 	}
@@ -161,11 +208,18 @@ public class BoardController {
 		
 	}
 	
+<<<<<<< HEAD
 //	@GetMapping("" )
 	@RequestMapping (value="/board/updateFreeAndNanumBoardForm", method = {RequestMethod.GET, RequestMethod.POST})
 	public String updateFreeBoard(@RequestParam int boardSeq, @RequestParam String boardType, Model model) {
 		System.out.println("들어옴");
 		System.out.println(boardSeq + "<-seq type->" +boardType);
+=======
+	@GetMapping("/board/updateFreeAndNanumBoardForm")
+	public String updateFreeBoard(@RequestParam int boardSeq, Model model) {
+		System.out.println("updateFreeBoard   들어옴");
+		System.out.println(boardSeq);
+>>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
 		
 		
 		model.addAttribute("getBoard",boardService.getFreeBoard(boardSeq, boardType));
@@ -182,7 +236,11 @@ public class BoardController {
 	public void updateFreeBoardForm(@PathVariable int boardSeq,
 									@RequestParam String boardType, 
 									@RequestBody BoardVO vo) {
+<<<<<<< HEAD
 		System.out.println("1111111111111111updateFreeAndNanumBoardForm  : " + "들어옴====");
+=======
+		System.out.println("updateFreeBoardForm  : " + "들어옴====");
+>>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
 		System.out.println("vo ======== "+ vo);
 		
 		if(vo.getBoardSeq() == boardService.getFreeBoard(boardSeq, boardType).getBoardSeq()) {
@@ -199,8 +257,32 @@ public class BoardController {
 									 @RequestBody CommentVO	commentVO) {
 		System.out.println("insertReplyFreeBoard =======  들어옴");
 		System.out.println(commentVO);
-		boardService.insertReplyForFreeBoard(commentVO);
-	}
 
+		commentService.insertReplyForFreeBoard(commentVO);
+		
+	}
+	
+	@PostMapping("/board/deleteCommentOnFreeBoard")
+	public String deleteCommentOnFreeBoard(int commentSeq, int boardSeq) {
+		System.out.println("adadasdsadsadada");
+		System.out.println(commentSeq);
+		System.out.println(boardSeq);
+		
+		commentService.deleteCommentOnFreeBoard(commentSeq,boardSeq);
+		
+		return "redirect:getFreeBoard?boardSeq="+boardSeq;
+		
+	}
+	
+	@RequestMapping("/board/updateCommentOnFreeBoard")
+	public String updateCommentOnFreeBoard(CommentVO commentVO) {
+		System.out.println("updateCommentOnFreeBoard() 들어옴");
+		System.out.println("commentSeq========"+commentVO);
+		int boardSeq = commentVO.getBoardSeq();
+		commentService.updateCommentOnFreeBoard(commentVO);
+		
+		return "redirect:getFreeBoard?boardSeq="+boardSeq;
+		
+	}
 
 }

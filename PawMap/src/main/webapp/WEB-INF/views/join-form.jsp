@@ -22,7 +22,7 @@ pageEncoding="UTF-8"%>
                   >
                     <div class="column-div hospital-join">
                       <div>
-                        <a class="btn-join-hospital" href="#">병원회원 가입</a>
+                        <a class="btn-join-hospital" href="/pawmap/hospitalJoinForm">병원회원 가입</a>
                       </div>
                     </div>
                   </div>

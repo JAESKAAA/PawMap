@@ -121,7 +121,6 @@ pageEncoding="UTF-8"%>
         </div>    
     </form>
     <!-- 게시판 폼 종료 -->
-      
 
     <!-- End copyright  -->
 
