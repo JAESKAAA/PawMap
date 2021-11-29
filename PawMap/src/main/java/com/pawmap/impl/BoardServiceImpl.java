@@ -8,10 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pawmap.VO.BoardVO;
+
+import com.pawmap.VO.CommentVO;
+
 import com.pawmap.VO.Criteria;
 import com.pawmap.VO.UserVO;
 import com.pawmap.mapper.BoardMapper;
 import com.pawmap.service.BoardService;
+
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -20,12 +24,12 @@ public class BoardServiceImpl implements BoardService {
 	BoardMapper boardMapper;
 	
 
+
 	@Override
 	public void insertTest(UserVO vo) {
 		System.out.println("BoardServiceImpl :insertTest()");
 		boardMapper.insertTest(vo);
 	}
-
 
 	@Override
 	public void insertFreeAndNanumBoard(BoardVO vo) {
@@ -75,5 +79,15 @@ public class BoardServiceImpl implements BoardService {
 		
 		return boardMapper.selectBoardCount(vo);
 	}
+
+
+	@Override
+	public void insertReplyForFreeBoard(CommentVO commentVO) {
+		boardMapper.insertReplyForFreeBoard(commentVO);
+
+	}
+
+
+	
 }
 
