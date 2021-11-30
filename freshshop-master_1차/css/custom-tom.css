@@ -121,7 +121,8 @@
 */
 
 /* adminpagecounseloneonone (adminpage11counseloneonone-tom.html)
-    에 있는 하이퍼 링크용 css 스타일... this was updated on Nov30th 15:45pm*/
+*    에 있는 하이퍼 링크용 css 스타일... this was updated on Nov30th 15:45pm
+*/
 
     a.oneononecounsel{
         font-weight: normal;
@@ -131,3 +132,119 @@
         border-bottom: 1px solid black;
         font-weight: bold
     }
+/* adminpage13donationmanage  용 css...
+*  this was created on Nov 30th.
+*/
+    h1.adminpagetoph1 {
+        text-align: center;
+        font-size:30px;
+        margin-top:5%;
+    }
+
+    .adminpagetablediv {
+        margin-top: 40px;
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+
+    table.adminpagetable {
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    thead.admintablehead {
+        background-color: lightgray;
+    }
+    tr .admin-userseq {
+        width:3%;
+        height:2%;
+    }
+    tr .admin-userid {
+        width:5%;
+        height:2%;
+    }
+    tr .admin-useremail {
+        width:8%;
+        height:2%;
+    }
+    tr .admin-username {
+        width:12%;
+        height:2%;
+    }
+    tr .admin-usertelnum {
+        width: 8%;
+        height: 2%;
+    }
+    tr .admin-address {
+        width: 14%;
+        height: 2%;
+    }
+    tr .admin-comnum {
+        width: 8%;
+        height: 2%;
+    }
+    tr .admin-role {
+        width: 4%;
+        height: 2%;
+    }
+    tr .admin-userregdate {
+        width: 10%;
+        height: 2%;
+    }
+    tr .admin-useractionbutton {
+        width: 7%;
+        height: 2%;
+
+    }
+    /*
+    * 하기는 테이블에 필요한 기타 항목들...
+    */
+
+    tr .admin-userdonation {
+        width: 7%;
+        height: 2%;
+    }
+    tr .admin-usernickname {
+        width: 8%;
+        height: 2%;
+    }
+
+    /*
+    * adminpage13donationmanage-tom 끝.
+    */
+
+    /*
+    * adminpage2vetmanage-tom 시작.
+    */
+
+
+    button.adminpagebuttonformanage {
+        font-weight: 400;
+        color: #fff;
+        border-style: none;
+        cursor:pointer;
+        background-color:rgba(220, 139, 31, 1);
+    }
+    button.adminpagebuttonformanage::after {
+        pointer-events: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        top: 0;
+        left: 0;
+        padding: 0;
+        z-index: -1;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+        opacity: 0;
+    }
+
+    button.adminpagebuttonformanage:hover {
+        background: rgba(220, 139, 31, 0.5);
+        color: #fff;
+    }
+
+    /*
+    * adminpage2vetmanage-tom 끝.
+    */
