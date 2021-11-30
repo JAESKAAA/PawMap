@@ -26,8 +26,8 @@
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="css/responsive.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css">
-    
+    <link rel="stylesheet" href="css/custom-tom.css">
+    <link rel="stylesheet" href="css/custom-jaeseok.css" /> <!--Nov30th, jaeskaa's css was added at 15:50pm-->    
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -67,7 +67,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fa fa-bars"></i>
             </button>
-                <a class="navbar-brand" href="index.html"><img src="images/pawmaplogo.png" class="logo" alt="" width="216" height="118"></a>
+                <a class="navbar-brand" href="index.html"><div class="main_logo_box"></div></a>
             </div>
             <!-- End Header Navigation -->
 
@@ -91,14 +91,17 @@
     <div> 
         <h1 style="text-align: center; font-size:30px; margin-top:5%;">후원금 관리</h1>
     </div>
-    <div style="margin-top: 40px; border-style: 3px solid orange ">
-      <table style="margin-left: auto; margin-right: auto; text-align: center;">
-            <tr>
-                <th>번째</th>
-                <th>ID</th>
-                <th>기부금</th>
-                <th>등록일</th>
-            </tr>
+    <div class="donationmanage" style="margin-top: 40px;">
+      <table class="table-striped table-hover" style="margin-left: auto; margin-right: auto; text-align: center;">
+           <thead> 
+              <tr>
+                  <th>#</th>
+                  <th>ID</th>
+                  <th>기부금</th>
+                  <th>등록일</th>
+              </tr>
+          </thead>
+          <tbody>
             <tr>
                 <td>1</td>
                 <td>thomas</td>
@@ -129,6 +132,7 @@
                 <td>1,100,000 won</td>
                 <td>2021-11-17</td>
             </tr>
+          </tbody>
       </table>
     </div>
     <!--page navigation-->

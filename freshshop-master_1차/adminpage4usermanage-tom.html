@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="css/custom.css">
     <!-- Custom-tom CSS -->
     <link rel="stylesheet" href="css/custom-tom.css">
-
+    <link rel="stylesheet" href="css/custom-jaeseok.css" /> <!--Nov30th, jaeskaa's css was added at 10:39am-->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -38,7 +38,7 @@
 </head>
 
 <body>
-  <!--Thomas lee started working on this page since nov 16th-->
+  <!--Thomas lee started working on this page since nov 16th--><!--Nov30th, Thomas is fixing this html file and use jaeskaaa's jsp as reference.-->
     <div class="main-top">
       <div class="container-fluid">
         <div class="row">
@@ -64,14 +64,14 @@
     <!-- Start Navigation --> <!--하기 navbar navbar-expand-lg를 md로 교체-->
     <nav class="navbar navbar-expand-md navbar-light bg-light navbar-default bootsnav">
         <div class="container">
-            <!-- Start Header Navigation -->
-            <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fa fa-bars"></i>
-            </button>
-                <a class="navbar-brand" href="index.html"><img src="images/pawmaplogo.png" class="logo" alt="" width="216" height="118"></a>
-            </div>
-            <!-- End Header Navigation -->
+           <!-- Start Header Navigation -->
+           <div class="navbar-header">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-bars"></i>
+        </button>
+            <a class="navbar-brand" href="index.html"><div class="main_logo_box"></div></a>
+        </div>
+        <!-- End Header Navigation -->
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
@@ -109,100 +109,100 @@
         <!--nov29th, table style margin left and right were changed from auto to 3%, colgroup were added with width % value -->
         <div class="userlistforadminmanage"style="margin-top: 40px;">
           <form id="thismustcalldbfrompawmapuser" action="must put method" name="POST" method="GET"><!-- tom is working on this section on nov 29th 4:45pm-->
-          <table class="table-list" style="margin-left: 3%; margin-right: 3%; text-align: center;">
-            <colgroup>
-              <col style="width:3%;">
-              <col style="width:5%;">
-              <col style="width:8%;">
-              <col style="width:12%;">
-              <col style="width:8%;">
-              <col style="width:14%;">
-              <col style="width:8%;">
-              <col style="width:3%;">
-              <col style="width:10%;">
-              <col style="width:7%;">
-              <!--consider binding the custom-tom.css file. this comment was left on november 29th 16:43pm by thomas lee-->
-            </colgroup>
-            <thead style="background-color: lightgray">
-              <tr>
-                  <th>#</th>
-                  <th>회원아이디</th>
-                  <th>회원이메일</th>
-                  <th>회원이름</th>
-                  <th>회원연락처</th>
-                  <th>회원주소</th>
-                  <th>회원닉네임</th>
-                  <th>회원타입</th>
-                  <th>회원등록일</th>
-                  <th>관리</th>
-              </tr>
-            </thead>
-            <tbody>
+            <table class="table-striped table-hover" style="margin-left: 3%; margin-right: 3%; text-align: center;">
+              <colgroup style ="margin-left: auto; margin-right: auto;">
+                <col style="width:3%; height:2%;">
+                <col style="width:5%; height:2%;">
+                <col style="width:8%; height:2%;">
+                <col style="width:12%; height:2%;">
+                <col style="width:8%; height:2%;">
+                <col style="width:14%; height:2%;">
+                <col style="width:8%; height:2%;">
+                <col style="width:4%; height:2%;">
+                <col style="width:10%; height:2%;">
+                <col style="width:7%; height:2%;">
+                <!--consider binding the custom-tom.css file. this comment was left on november 29th 16:43pm by thomas lee-->
+              </colgroup>
+              <thead style="background-color: lightgray">
                 <tr>
-                  <td>1</td>
-                  <td>noblegoital1</td>
-                  <td>noblego890paw45@gmail.com</td>
-                  <td>고결고걀_물병원90123456789</td>
-                  <td>010-9222-1234</td>
-                  <td>고양시 일상동구 반동 눈누난나</td>
-                  <td>고결이즈고결354</td>
-                  <td>일반</td>
-                  <td>2021-11-28 16:54:38</td>
-                  <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
-              </tr>
-              <tr>
-                  <td>2</td>
-                  <td>thomaslee</td>
-                  <td>tomthecat@gmail.com</td>
-                  <td>thomaslee</td>
-                  <td>010-4111-1234</td>
-                  <td>성남시 분당구 구미동 눈누난나</td>
-                  <td>톰은나의닉네임</td>
-                  <td>관리자</td>
-                  <td>2021-11-29 16:54:38</td>
-                  <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
-              </tr>
-              <tr>
-                  <td>3</td>
-                  <td>jaeskaaa</td>
-                  <td>dancemachine@google.com</td>
-                  <td>최재석</td>
-                  <td>010-2005-2898</td>
-                  <td>강릉시 강릉구 구미동 눈누난나</td>
-                  <td>재석이는슈퍼스타</td>
-                  <td>관리자</td>
-                  <td>2021-11-29 18:54:38</td>                  
-                  <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
-              </tr>
-              <tr>
-                  <td>4</td>
-                  <td>Glory</td>
-                  <td>dontgetmynerve@google.com</td>
-                  <td>지은혜</td>
-                  <td>010-2122-5461</td>
-                  <td>강릉시 강릉구 구미동 눈누난나</td>
-                  <td>도움과소화전</td>
-                  <td>일반</td>
-                  <td>2021-11-29 19:54:38</td>                      
-                  <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
-              </tr>
-              <tr>
-                  <td>5</td>
-                  <td>Silver</td>
-                  <td>silver@gmail.com</td>
-                  <td>최실비아</td>
-                  <td>010-205-0505</td>
-                  <td>창원시 북구 친구동 눈누난나</td>
-                  <td>실비아입니다</td>
-                  <td>일반</td>
-                  <td>2021-11-29 19:59:59</td>                     
-                  <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
-              </tr>
-            </tbody>
-          </table>
+                    <th>#</th>
+                    <th>회원아이디</th>
+                    <th>회원이메일</th>
+                    <th>회원이름</th>
+                    <th>회원연락처</th>
+                    <th>회원주소</th>
+                    <th>회원닉네임</th>
+                    <th>회원타입</th>
+                    <th>회원등록일</th>
+                    <th>관리</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>noblegoital1</td>
+                    <td>noblego890paw45@gmail.com</td>
+                    <td>고결고걀_물병원90123456789</td>
+                    <td>010-9222-1234</td>
+                    <td>고양시 일상동구 반동 눈누난나</td>
+                    <td>고결이즈고결354</td>
+                    <td>일반</td>
+                    <td>2021-11-28 16:54:38</td>
+                    <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>thomaslee</td>
+                    <td>tomthecat@gmail.com</td>
+                    <td>thomaslee</td>
+                    <td>010-4111-1234</td>
+                    <td>성남시 분당구 구미동 눈누난나</td>
+                    <td>톰은나의닉네임</td>
+                    <td>관리자</td>
+                    <td>2021-11-29 16:54:38</td>
+                    <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>jaeskaaa</td>
+                    <td>dancemachine@google.com</td>
+                    <td>최재석</td>
+                    <td>010-2005-2898</td>
+                    <td>강릉시 강릉구 구미동 눈누난나</td>
+                    <td>재석이는슈퍼스타</td>
+                    <td>관리자</td>
+                    <td>2021-11-29 18:54:38</td>                  
+                    <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Glory</td>
+                    <td>dontgetmynerve@google.com</td>
+                    <td>지은혜</td>
+                    <td>010-2122-5461</td>
+                    <td>강릉시 강릉구 구미동 눈누난나</td>
+                    <td>도움과소화전</td>
+                    <td>일반</td>
+                    <td>2021-11-29 19:54:38</td>                      
+                    <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Silver</td>
+                    <td>silver@gmail.com</td>
+                    <td>최실비아</td>
+                    <td>010-205-0505</td>
+                    <td>창원시 북구 친구동 눈누난나</td>
+                    <td>실비아입니다</td>
+                    <td>일반</td>
+                    <td>2021-11-29 19:59:59</td>                     
+                    <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </form> <!-- this is closing form tag for any data that was saved on DB would show up--> 
         </div>
       <!--유저 관리 테이블 리스트 끝-->
-      </form> <!-- this is closing form tag for any data that was saved on DB would show up--> 
       <!--페이지 네비게이션 시작-->
     <div class="row mt-2">
       <div class="col-12" style="margin-top: 40px;">

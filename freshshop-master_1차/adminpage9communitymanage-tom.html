@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="css/custom.css">
     <!-- Custom-tom CSS -->
     <link rel="stylesheet" href="css/custom-tom.css">
-    
+    <link rel="stylesheet" href="css/custom-jaeseok.css" /> <!--Nov30th, jaeskaa's css was added at 11:54am-->    
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -66,10 +66,10 @@
         <div class="container">
             <!-- Start Header Navigation -->
             <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fa fa-bars"></i>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fa fa-bars"></i>
             </button>
-                <a class="navbar-brand" href="index.html"><img src="images/pawmaplogo.png" class="logo" alt="" width="216" height="118"></a>
+                <a class="navbar-brand" href="index.html"><div class="main_logo_box"></div></a>
             </div>
             <!-- End Header Navigation -->
 
@@ -106,50 +106,67 @@
         </div>
         <!--search button finished...-->
         <!--회원정보 관리 리스트 시작-->
-      <div style="margin-top: 40px; border-style: 3px solid orange ">
-        <table style="margin-left: auto; margin-right: auto; text-align: center;">
+      <div class="communitymanage" style="margin-top: 40px;">
+        <table class="table-striped table-hover" style="margin-left: 3%; margin-right: 3%; text-align: center;">
+          <colgroup style ="margin-left: auto; margin-right: auto;">
+            <col style="width:3%; height:2%;">
+            <col style="width:5%; height:2%;">
+            <col style="width:8%; height:2%;">
+<!--            <col style="width:12%; height:2%;">
+            <col style="width:8%; height:2%;">
+            <col style="width:14%; height:2%;">
+            <col style="width:8%; height:2%;">
+            <col style="width:4%; height:2%;"> 커뮤니티 계시판 이용을 위해 주석처리함... on Nov 30th, 14:35pm by thomas-->
+            <col style="width:10%; height:2%;">
+            <col style="width:7%; height:2%;">
+            <!--consider binding the custom-tom.css file. this comment was left on november 25th 20:34pm by thomas lee-->
+          </colgroup>
+          <thead style="background-color: lightgray">
             <tr>
-                <th>번째</th>
+                <th>#</th>
                 <th>ID</th>
                 <th>제목</th>
                 <th>등록일</th>
                 <th>액션</th>
             </tr>
+          </thead>
+          <tbody>
             <tr>
                 <td>1</td>
                 <td>고결</td>
                 <td>안녕하세요</td>
-                <td>2021-11-17</td>
-                <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage10community-tom.html'">관리하기</button></td>
+                <td>2021-11-24 16:54:38</td>
+                <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage10community-tom.html'">관리하기</button></td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>이영호</td>
                 <td>헬로</td>
                 <td>2021-11-17</td>
-                <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage10community-tom.html'">관리하기</button></td>
+                <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage10community-tom.html'">관리하기</button></td>
             </tr>
             <tr>
                 <td>3</td>
                 <td>재석</td>
                 <td>guten morgen</td>
                 <td>2021-11-17</td>
-                <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage10community-tom.html'">관리하기</button></td>
+                <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage10community-tom.html'">관리하기</button></td>
             </tr>
             <tr>
                 <td>4</td>
                 <td>고결결고</td>
                 <td>안녕하시렵니까?</td>
                 <td>2021-11-17</td>
-                <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage10community-tom.html'">관리하기</button></td>
+                <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage10community-tom.html'">관리하기</button></td>
             </tr>
             <tr>
                 <td>5</td>
                 <td>고귤</td>
                 <td>히히히</td>
                 <td>2021-11-17</td>
-                <td><button style="margin-left: 30px;" type="button" onclick="location.href='adminpage10community-tom.html'">관리하기</button></td>
+                <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage10community-tom.html'">관리하기</button></td>
             </tr>
+          </tbody>
         </table>
       </div>
       <!--page navigation-->

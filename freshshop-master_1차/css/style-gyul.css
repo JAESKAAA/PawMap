@@ -280,7 +280,7 @@ box-sizing: border-box;
 
 /* =================  일반 회원 가입 태그들 관련 CSS 시작 ================  */
 .nomal-join{
-    background-image: url(images/결_animals_img-001.jpeg);
+    background-image: url(images/gyul_animals_img-001.jpg);
     background-repeat:no-repeat;
     background-size : 400px 300px;
     background-position: center;
@@ -300,7 +300,7 @@ box-sizing: border-box;
 
 /* =================  병원 회원 가입 태그들 관련 CSS ================  */
 .hospital-join{
-    background-image: url(images/결_hospital-img-001.jpeg);
+    background-image: url(images/gyul_hospital-img-001.jpg);
     background-repeat:no-repeat;
     background-size : 300px 300px;
     background-position: center;
@@ -387,3 +387,73 @@ box-sizing: border-box;
 }
 
 /* ========================= login-form.html 관련 css 종료 ================== */
+ .form-label {
+       color: brown;
+     }
+ .left-div {
+   background-color: #ffdab9;
+   border-radius: 50% 20% / 10% 40%;
+ }
+ .column-div {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 400px;
+   height: 270px;
+   background-color: antiquewhite;
+   border-radius: 100px;
+   margin: auto;
+ }
+
+ /* =================  일반 회원 가입 태그들 관련 CSS 시작 ================  */
+ .nomal-join {
+   background-image: url(images/gyul_animals_img-001.jpg);
+   background-repeat: no-repeat;
+   background-size: 400px 300px;
+   background-position: center;
+ }
+ .nomal-join:hover .btn-join-nomal {
+   display: block;
+ }
+ .nomal-join:hover {
+   opacity: 50%;
+   transition: all 0.5s ease-in-out;
+ }
+ .btn-join-nomal {
+   display: none;
+ }
+ /* =================  일반 회원 가입 태그들 관련 CSS 종료 ================  */
+
+ /* =================  병원 회원 가입 태그들 관련 CSS ================  */
+ .hospital-join {
+   background-image: url(images/gyul_hospital-img-001.jpg);
+   background-repeat: no-repeat;
+   background-size: 300px 300px;
+   background-position: center;
+ }
+ .hospital-join:hover .btn-join-hospital {
+   display: block;
+ }
+ .hospital-join:hover {
+   opacity: 50%;
+   transition: all 0.5s ease-in-out;
+ }
+ .btn-join-hospital {
+   display: none;
+ }
+ /* =================  병원 회원 가입 태그들 관련 CSS 종료 ================  */
+
+ /* ====================== 회원 가입 태그 공통 속성 ===================  */
+ .btn-join-hospital,
+ .btn-join-nomal {
+   font-size: 40px;
+   border: 1px solid black;
+   border-radius: 20%;
+   box-shadow: 5px 5px 5px 5px black;
+ }
+ .btn-join-hospital:hover,
+ .btn-join-nomal:hover {
+   opacity: 90%;
+   background-color: gray;
+   color: black;
+}

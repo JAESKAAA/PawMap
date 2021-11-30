@@ -28,8 +28,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom-tom.css">    
-
+    <link rel="stylesheet" href="css/custom-tom.css">
+    <link rel="stylesheet" href="css/custom-jaeseok.css" /> <!--Nov30th, jaeskaa's css was added at 14:44pm-->    
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -66,10 +66,10 @@
         <div class="container">
             <!-- Start Header Navigation -->
             <div class="navbar-header">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fa fa-bars"></i>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fa fa-bars"></i>
             </button>
-                <a class="navbar-brand" href="index.html"><img src="images/pawmaplogo.png" class="logo" alt="" width="216" height="118"></a>
+                <a class="navbar-brand" href="index.html"><div class="main_logo_box"></div></a>
             </div>
             <!-- End Header Navigation -->
 
@@ -106,33 +106,61 @@
             </div>
             <!--search button finished...-->
             <!--1:1 상담 관리 리스트 시작-->
-    <div style="margin-top: 40px; border-style: 3px solid orange ">
-        <table style="margin-left: auto; margin-right: auto; text-align: center;">
-          <tr>
-              <td>2552 </td>
+    <div class="oneononecouncelmanage" style="margin-top: 40px;">
+        <table class="table-striped table-hover" style="margin-left: 3%; margin-right: 3%; text-align: center;">
+          <colgroup style ="margin-left: auto; margin-right: auto;">
+            <col style="width:3%; height:2%;">
+            <col style="width:5%; height:2%;">
+            <col style="width:8%; height:2%;">
+            <col style="width:12%; height:2%;">
+<!--            <col style="width:8%; height:2%;">
+            <col style="width:14%; height:2%;">
+            <col style="width:8%; height:2%;">
+            <col style="width:4%; height:2%;">
+            <col style="width:10%; height:2%;">
+            <col style="width:7%; height:2%;"> 1:1상담 계시판 이용을 위해 주석처리함... on Nov 30th, 14:51pm by thomas -->
+            <!--consider binding the custom-tom.css file. this comment was left on november 25th 20:34pm by thomas lee-->
+          </colgroup>
+          <thead style="background-color: lightgray">
+            <tr>
+              <th>#</th>
+              <th>ID</th>
+              <th>상담 메세지</th>
+              <th>상담 요청 시간</th>
+          </tr>      
+          </thead>
+          <tbody>
+            <tr>
+                <td>2552 </td>
+                <td>rhruf11</td>
+                <td><a href="#" class="oneononecounsel">증상 좀 봐주세요~ ㅠ</a></td>
+                <td>2021-11-29 16:54:38</td>
+              </tr>
+            <tr>
+                <td>2551</td>
+                <td>rhruf11</td>
+                <td><a href="#" class="oneononecounsel"> 저희집 댕댕이가 이상한걸 삼켰어요!!! 응답 부탁드려요!!!~ ㅠ</a></td>
+                <td>2021-11-28 17:54:38</td>
+              </tr>
+            <tr>
+                <td>2550</td>
+                <td>rhruf11</td>
+                <td><a href="#" class="oneononecounsel">고양이 털이 자꾸 빠지고 피부에 염증나요!!</a></td>
+                <td>2021-11-27 11:54:38</td>
+            </tr>
+            <tr>
+                <td>2549</td>
+                <td>rhruf11</td>
+                <td><a href="#" class="oneononecounsel">인근에 가까운 병원이 검색이 안되요</a></td>
+                <td>2021-11-26 20:54:38</td>
+            </tr>
+            <tr>
+              <td>2548</td>
               <td>rhruf11</td>
-              <td style="border-bottom: 1px solid black"><a href="#">증상 좀 봐주세요~ ㅠ</a></td>
-          </tr>
-          <tr>
-              <td>2551</td>
-              <td>rhruf11</td>
-              <td style="border-bottom: 1px solid black"><a href="#">증상 좀 봐주세요~ ㅠ</a></td>
-          </tr>
-          <tr>
-              <td>2550</td>
-              <td>rhruf11</td>
-              <td style="border-bottom: 1px solid black"><a href="#">증상 좀 봐주세요~ ㅠ</a></td>
-          </tr>
-          <tr>
-              <td>2549</td>
-              <td>rhruf11</td>
-              <td style="border-bottom: 1px solid black"><a href="#">증상 좀 봐주세요~ ㅠ</a></td>
-          </tr>
-          <tr>
-            <td>2548</td>
-            <td>rhruf11</td>
-            <td style="border-bottom: 1px solid black"><a href="#">증상 좀 봐주세요~ ㅠ</a></td>
-        </tr>
+              <td><a href="#" class="oneononecounsel">제 이용기록 지우고 싶어요!</a></td>
+              <td>2021-11-26 20:54:38</td>
+            </tr>
+          </tbody>
         </table>
     </div>
 

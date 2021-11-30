@@ -112,9 +112,22 @@
 /* 서치바 관련 스타일 종료 */
 
 /* 관리자 페이지 : 제휴병원 정보 관리에 필요한 테이블 css... */
-
-    .table{
+/* 하기 관리자 페이지용 테이블 리스트 css는 현상황에서 필요가 없어 주석처리함 by thomas lee on nov 30th 13:42pm *//*
+    .table-list{
         width: 100%;
         border-spacing: 0;
         border-collapse: separate;
+    }
+*/
+
+/* adminpagecounseloneonone (adminpage11counseloneonone-tom.html)
+    에 있는 하이퍼 링크용 css 스타일... this was updated on Nov30th 15:45pm*/
+
+    a.oneononecounsel{
+        font-weight: normal;
+    }
+
+    a.oneononecounsel:hover{ /* 하이퍼 링크 눌를시, 보더 아래에 검은색 줄과 폰트 두꺼워짐*/
+        border-bottom: 1px solid black;
+        font-weight: bold
     }
