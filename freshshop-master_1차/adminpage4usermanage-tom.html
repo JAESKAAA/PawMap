@@ -107,48 +107,47 @@
         <!--search button finished...-->
         <!--회원정보 관리 리스트 시작-->
         <!--nov29th, table style margin left and right were changed from auto to 3%, colgroup were added with width % value -->
-        <div class="userlistforadminmanage"style="margin-top: 40px;">
+        <div id="adminusermanage" class="adminpagetablediv">
           <form id="thismustcalldbfrompawmapuser" action="must put method" name="POST" method="GET"><!-- tom is working on this section on nov 29th 4:45pm-->
-            <table class="table-striped table-hover" style="margin-left: 3%; margin-right: 3%; text-align: center;">
-              <colgroup style ="margin-left: auto; margin-right: auto;">
-                <col style="width:3%; height:2%;">
-                <col style="width:5%; height:2%;">
-                <col style="width:8%; height:2%;">
-                <col style="width:12%; height:2%;">
-                <col style="width:8%; height:2%;">
-                <col style="width:14%; height:2%;">
-                <col style="width:8%; height:2%;">
-                <col style="width:4%; height:2%;">
-                <col style="width:10%; height:2%;">
-                <col style="width:7%; height:2%;">
-                <!--consider binding the custom-tom.css file. this comment was left on november 29th 16:43pm by thomas lee-->
+            <table class="table-striped table-hover adminpagetable">
+              <colgroup>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col style="background-color: white;">
               </colgroup>
-              <thead style="background-color: lightgray">
+              <thead class="admintablehead"> 
                 <tr>
-                    <th>#</th>
-                    <th>회원아이디</th>
-                    <th>회원이메일</th>
-                    <th>회원이름</th>
-                    <th>회원연락처</th>
-                    <th>회원주소</th>
-                    <th>회원닉네임</th>
-                    <th>회원타입</th>
-                    <th>회원등록일</th>
-                    <th>관리</th>
+                    <th class="admin-userseq">#</th>
+                    <th class="admin-userid">회원아이디</th>
+                    <th class="admin-useremail">회원이메일</th>
+                    <th class="admin-username">회원이름</th>
+                    <th class="admin-usertelnum">회원연락처</th>
+                    <th class="admin-address">회원주소</th>
+                    <th class="admin-usernickname">회원닉네임</th>
+                    <th class="admin-role">회원타입</th>
+                    <th class="admin-userregdate">회원등록일</th>
+                    <th class="admin-useractionbutton" style="background-color: white;"></th>
                 </tr>
               </thead>
               <tbody>
                   <tr>
-                    <td>1</td>
-                    <td>noblegoital1</td>
-                    <td>noblego890paw45@gmail.com</td>
-                    <td>고결고걀_물병원90123456789</td>
-                    <td>010-9222-1234</td>
-                    <td>고양시 일상동구 반동 눈누난나</td>
-                    <td>고결이즈고결354</td>
-                    <td>일반</td>
-                    <td>2021-11-28 16:54:38</td>
-                    <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
+                    <td class="admin-userseq">1</td>
+                    <td class="admin-userid">noblegoital1</td>
+                    <td class="admin-useremail">noblego890paw45@gmail.com</td>
+                    <td class="admin-username">고결고걀_물병원90123456789</td>
+                    <td class="admin-usertelnum">010-9222-1234</td>
+                    <td class="admin-address">고양시 일상동구 반동 눈누난나</td>
+                    <td class="admin-usernickname">고결이즈고결354</td>
+                    <td class="admin-role">일반</td>
+                    <td class="admin-userregdate">2021-11-28 16:54:38</td>
+                    <td class="admin-useractionbutton" style="background-color: white;"><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
                 </tr>
                 <tr>
                     <td>2</td>
@@ -160,7 +159,7 @@
                     <td>톰은나의닉네임</td>
                     <td>관리자</td>
                     <td>2021-11-29 16:54:38</td>
-                    <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
+                    <td><button class="adminpagebuttonformanage"  type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
                 </tr>
                 <tr>
                     <td>3</td>
@@ -172,7 +171,7 @@
                     <td>재석이는슈퍼스타</td>
                     <td>관리자</td>
                     <td>2021-11-29 18:54:38</td>                  
-                    <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
+                    <td><button class="adminpagebuttonformanage"  type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
                 </tr>
                 <tr>
                     <td>4</td>
@@ -184,7 +183,7 @@
                     <td>도움과소화전</td>
                     <td>일반</td>
                     <td>2021-11-29 19:54:38</td>                      
-                    <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
+                    <td><button class="adminpagebuttonformanage"  type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
                 </tr>
                 <tr>
                     <td>5</td>
@@ -196,7 +195,7 @@
                     <td>실비아입니다</td>
                     <td>일반</td>
                     <td>2021-11-29 19:59:59</td>                     
-                    <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
+                    <td><button class="adminpagebuttonformanage"  type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
                 </tr>
               </tbody>
             </table>

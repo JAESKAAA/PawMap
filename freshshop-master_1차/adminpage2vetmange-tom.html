@@ -91,7 +91,7 @@
   </header>
   <!--관리자의 제휴 병원 관리 리스트 페이지 시작-->
         <div> 
-            <h1 style="text-align: center; font-size:30px; margin-top:5%;">제휴 병원 관리</h1>
+            <h1 class="adminpagetoph1">제휴 병원 관리</h1>
         </div>
         <!-- search 버튼 시작 -->
         <div class="row">
@@ -107,47 +107,46 @@
         <!--search button finished...-->
         <!--제휴병원 관리 리스트 부분시작...-->
         <!--nov25th, table style margin left and right were changed from auto to 3%, colgroup were added with width % value -->
-          <div class="associatedvetlist" style="margin-top: 40px;">
-            <table class="table-striped table-hover" style="margin-left: 3%; margin-right: 3%; text-align: center;">
-              <colgroup style ="margin-left: auto; margin-right: auto;">
-                <col style="width:3%; height:2%;">
-                <col style="width:5%; height:2%;">
-                <col style="width:8%; height:2%;">
-                <col style="width:12%; height:2%;">
-                <col style="width:8%; height:2%;">
-                <col style="width:14%; height:2%;">
-                <col style="width:8%; height:2%;">
-                <col style="width:4%; height:2%;">
-                <col style="width:10%; height:2%;">
-                <col style="width:7%; height:2%;">
-                <!--consider binding the custom-tom.css file. this comment was left on november 25th 20:34pm by thomas lee-->
-              </colgroup>  
-              <thead style="background-color: lightgray">
+          <div id="adminvetmanage" class="adminpagetablediv">
+            <table class="table-striped table-hover adminpagetable">
+              <colgroup>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col style="background-color: white;">
+              </colgroup>
+              <thead class="admintablehead"> 
                   <tr>
-                      <th>#</th>
-                      <th>병원아이디</th>
-                      <th>병원이메일</th>
-                      <th>병원이름</th>
-                      <th>병원연락처</th>
-                      <th>병원주소</th>
-                      <th>사업자등록번호</th>
-                      <th>종류</th>
-                      <th>회원등록일</th>
-                      <th>관리</th>
+                      <th class="admin-userseq">#</th>
+                      <th class="admin-userid">병원아이디</th>
+                      <th class="admin-useremail">병원이메일</th>
+                      <th class="admin-username">병원이름</th>
+                      <th class="admin-usertelnum">병원연락처</th>
+                      <th class="admin-address">병원주소</th>
+                      <th class="admin-comnum">사업자등록번호</th>
+                      <th class="admin-role">종류</th>
+                      <th class="admin-userregdate">회원등록일</th>
+                      <th class="admin-useractionbutton" style="background-color: white;"></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                      <td>1</td>
-                      <td>pawhospital1</td>
-                      <td>paw4567890paw45@gmail.com</td>
-                      <td>발바닥_동물병원90123456789</td>
-                      <td>070-9999-1234</td>
-                      <td>서울시 강남구 반포동 눈누난나</td>
-                      <td>74541845612354</td>
-                      <td>일반</td>
-                      <td>2021-11-24 16:54:38</td>
-                      <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
+                      <td class="admin-userseq">1</td>
+                      <td class="admin-userid">pawhospital1</td>
+                      <td class="admin-useremail">paw4567890paw45@gmail.com</td>
+                      <td class="admin-username">발바닥_동물병원90123456789</td>
+                      <td class="admin-usertelnum">070-9999-1234</td>
+                      <td class="admin-address">서울시 강남구 반포동 눈누난나</td>
+                      <td class="admin-comnum">74541845612354</td>
+                      <td class="admin-role">일반</td>
+                      <td class="admin-userregdate">2021-11-24 16:54:38</td>
+                      <td class="admin-useractionbutton"><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
                   </tr>
                   <tr>
                       <td>2</td>
@@ -159,7 +158,7 @@
                       <td>99991845612354</td>
                       <td>병원</td>
                       <td>2021-11-24 15:54:38</td>
-                      <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
+                      <td><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
                   </tr>
                   <tr>
                       <td>3</td>
@@ -171,7 +170,7 @@
                       <td>74541845612354</td>
                       <td></td>
                       <td></td>
-                      <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
+                      <td><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
                   </tr>
                   <tr>
                       <td>4</td>
@@ -183,7 +182,7 @@
                       <td>74541845612354</td>
                       <td></td>
                       <td></td>
-                      <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
+                      <td><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
                   </tr>
                   <tr>
                       <td>5</td>
@@ -195,7 +194,7 @@
                       <td>74541845612354</td>
                       <td></td>
                       <td></td>
-                      <td><button style="margin: auto; border-style: none; cursor:pointer;" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
+                      <td><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
                   </tr>
                 </tbody>
               </table>
