@@ -78,7 +78,6 @@ pageEncoding="UTF-8"%>
                 <div class="card-body" style="padding: 1px;">
                     <div class="d-flex flex-start">
                         <form action="" style="width: 750px;">
-
                           <input type="hidden" name="userId" id="userId" value="${principal.user.userId}">
                           <input type="hidden" name="boardSeq" id="freeBoardSeqHidden" value="${getFreeBoard.boardSeq}">
                           <input type="hidden" name="boardType" id="boardTypeForReply" value="${getFreeBoard.boardType}">

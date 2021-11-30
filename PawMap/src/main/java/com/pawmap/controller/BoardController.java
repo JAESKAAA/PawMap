@@ -1,14 +1,12 @@
 package com.pawmap.controller;
 
 
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-
-import org.apache.ibatis.annotations.Param;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -67,6 +65,9 @@ public class BoardController {
 		FileUtils fileUtils = new FileUtils();
 		List<FileVO> fileList = fileUtils.parseFileInfo(boardSeq, request, mhsr,userId);
 		
+
+		System.out.println("insertFreeAndNanumBoard()탐");
+
 		if(CollectionUtils.isEmpty(fileList) == false) {
 			fileService.insertBoardFileList(fileList);
 		}
@@ -120,11 +121,16 @@ public class BoardController {
 		System.out.println("getFreeBoard============ 탐");
 		System.out.println("getFreeBoard boardSeq ========== "+boardSeq);
 		
+
 		// 댓글 리스트로 가져오기
 		List<HashMap<String,Object>> replyList = commentService.getReplyListByBoardSeq(boardSeq);
 
 		// 파일리스트 가져오기
 		List<FileVO> fileList = fileService.getFileListByFreeBoardSeq(boardSeq);
+
+
+
+
 		
 		System.out.println("fileList ============== "+ fileList);
 		
@@ -184,6 +190,10 @@ public class BoardController {
 									 @RequestBody CommentVO	commentVO) {
 		System.out.println("insertReplyFreeBoard =======  들어옴");
 		System.out.println(commentVO);
+
+
+
+
 		commentService.insertReplyForFreeBoard(commentVO);
 		
 	}
@@ -242,5 +252,6 @@ public class BoardController {
 
 	
 	
+
 
 }

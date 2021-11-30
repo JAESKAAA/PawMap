@@ -236,22 +236,6 @@ public class UserController {
 		
 		return "redirect:/loginForm";
 	}
-	
-	// 아이디 중복 검사 => 회원 가입 페이지에서 아이디 중복 메세지 안뜸
-	@RequestMapping(value = "/userIdChk", method = RequestMethod.POST)
-	@ResponseBody
-	public String userIdChk(String userId) throws Exception{
-		int result = userService.idCheck(userId);
-		if(result != 0) {
-			return "fail";	// 중복 아이디가 존재
-		} else {
-			return "success";	// 중복 아이디 x
-		}	
-		
-	} // memberIdChkPOST() 종료	
-	
-		
-	
 
 	@PreAuthorize("hasRole('ROLE_ADMIN')") //하기 메서드가 실행하기 직전에 실행됨
 	@GetMapping("/data")
@@ -260,9 +244,6 @@ public class UserController {
 		return "login";
 	}
 	
-	
-	
-		
 
 	// 비밀번호 찾기 화면에서 데이터 받기 
 	@RequestMapping("/doForgotPw")
@@ -415,6 +396,30 @@ public class UserController {
 			
 		}
 
-
+		// 아이디 중복 체크
+		@RequestMapping("idCheck")
+		@ResponseBody
+		public String idCheck(@RequestParam("id") String id) throws Exception {
+			int result = userService.idCheck(id);
+			
+			if(result > 0) {
+				return "fail";
+			} else {
+				return "ok";
+			}
+		}
+		
+		// 닉네임 중복 체크
+		@RequestMapping("nickCheck")
+		@ResponseBody
+		public String nickCheck(@RequestParam("nickname") String nickname) throws Exception {
+			int result = userService.nickCheck(nickname);
+			
+			if(result > 0) {
+				return "fail";
+			} else {
+				return "ok";
+			}
+		}
 
 }

@@ -24,32 +24,101 @@ pageEncoding="UTF-8"%>
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-     <!-- Site Icons -->
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/apple-touch-icon.png" />
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="<%=request.getContextPath() %>/images/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="<%=request.getContextPath() %>/images/apple-touch-icon.png" />
     <!-- Fontawesome CSS-->
     <link
       href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
       rel="stylesheet"
     />
     
+    <%-- <%=request.getContextPath() %> --%>
     <!--  ${request.getContextPath } -->
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/bootstrap.min.css" />
     <!-- Site CSS -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css" />
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/responsive.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/responsive.css" />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-jaeseok.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-gyul.css">
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/custom.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/custom-jaeseok.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style-gyul.css">
     
         <!-- 결 커스텀 css -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+        <!-- 항목별 공백 확인 alert창 스크립트-->
+        <script>
+          function submitJoinForm(form) {
+            form.userId.value = form.userId.value.trim();
+            if (form.userId.value.length == 0) {
+              alert('로그인 아이디를 입력해주세요.');
+              form.userId.focus();
+              return false;
+            }
+            form.userPassword.value = form.userPassword.value.trim();
+            if (form.userPassword.value.length == 0) {
+              alert('로그인 비밀번호를 입력해주세요.');
+              form.userPassword.focus();
+              return false;
+            }
+            
+            form.userName.value = form.userName.value.trim();
+            if (form.userName.value.length == 0) {
+              alert('이름을 입력해주세요.');
+              form.userName.focus();
+              return false;
+            }
+            form.userEmail.value = form.userEmail.value.trim();
+            if (form.userEmail.value.length == 0) {
+              alert('이메일을 입력해주세요.');
+              form.email.focus();
+              return false;
+            }
+            form.submit();
+          }
+
+          /* 아이디 중복 체크 */
+          function fn_idcheck() {
+            $.ajax({
+              url:'idCheck',
+              data: {id:$("#user_id").val()},
+              type:"POST",
+              success:function(data) {
+                var status = $.trim(data);
+                if(status == "fail") {
+                  alert("중복된 아이디입니다.");
+                } else {
+                  alert("사용 가능한 아이디입니다.");
+                }
+              }
+            });
+          }
+
+          /* 닉네임 중복 체크 */
+          function fn_nickcheck() {
+            $.ajax({
+              url:'nickCheck',
+              data: {nickname:$("#user_nickname").val()},
+              type:"POST",
+              success:function(data) {
+                var status = $.trim(data);
+                if(status == "fail") {
+                  alert("중복된 닉네임입니다.");
+                } else {
+                  alert("사용 가능한 닉네임입니다.");
+                } 
+              }
+            });
+          }
+        </script>
+
+
 
         <!--주소검색-->
         <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -100,6 +169,7 @@ pageEncoding="UTF-8"%>
             }).open();
           }
         </script>
+        
 
     <style>
       .form-label {
@@ -122,18 +192,6 @@ pageEncoding="UTF-8"%>
         background-color: antiquewhite;
         border-radius: 100px;
         margin: auto;
-      }
-
-      /* 중복아이디가 존재 하지 않을 경우 */
-      .user_id_re_1 { 
-        color: green;
-        display: none;
-      }
-
-      /* 중복아이디가 존재 하는 경우 */
-      .user_id_re_2 {
-        color: red;
-        display: none;
       }
     </style>
   </head>
@@ -180,7 +238,6 @@ pageEncoding="UTF-8"%>
             >
               <li class="nav-item active">
                 <a class="nav-link" href="index.html">Home</a>
-
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="about.html">회사소개</a>
@@ -240,10 +297,10 @@ pageEncoding="UTF-8"%>
 			</sec:authorize>
 			<sec:authorize access="hasRole('ROLE_ADMIN')">
 				<li class="side-menu">
-	                <a href="/pawmap/admin">
-	                  <p>관리자 페이지</p>
-	                </a>
-	              </li>
+                  <a href="/pawmap/admin">
+                    <p>관리자 페이지</p>
+                  </a>
+                  </li>
 			</sec:authorize>
             </ul>
           </div>
@@ -284,7 +341,6 @@ pageEncoding="UTF-8"%>
             </ul>
           </li>
         </div>
-
         <!-- End Side Menu -->
       </nav>
       <!-- End Navigation -->
@@ -336,9 +392,8 @@ pageEncoding="UTF-8"%>
                             class="form-control"
                             placeholder="아이디"
                             required
-                          />
-                          <span class="user_id_re_1">사용 가능한 아이디입니다.</span> 
-                          <span class="user_id_re_2">아이디가 이미 존재합니다.</span>
+                          />(4자~12자)
+                          <button type="button" onclick="fn_idcheck()">중복체크</button>
                         </div>
                       </div>
                       <div class="d-flex flex-row align-items-center mb-4">
@@ -417,42 +472,27 @@ pageEncoding="UTF-8"%>
                           />
                         </div>
                       </div>
-                      <!---------------기존 주소 form----------------->
-                      <!-- <div class="d-flex flex-row align-items-center mb-4">
-                        <div class="form-outline flex-fill mb-0">
-                          <div class="column-div">
-                            <div>
-                              <label class="form-label mt-2" for="user_address"
-                                >주소</label>
-                            </div>
-                          </div>
-                          <input type="text" name="address" id="user_address" class="form-control" placeholder="주소" required/>
-                        </div>
-                      </div> -->
-
-                      <!-----------------start 주소찾기 구현 => db에 저장되게 변수명 바꿔주기 11.25 오후 8시------------------------->
+                      <!------회원가입시 입력칸이 다 채워지고 주소 검색하면 회원가입으로 넘어가는 오류 있음------------------------------------->
                       <div class="address_wrap">
                         <div class="address_name">주소</div>
                         <div class="address_input_1_wrap">
                           <div class="address_input_1_box">
-                            <input class="address_input_1" name="postNum" readonly="readonly">
+                            <input class="address_input_1" name="address1" readonly="readonly">
                           </div>
                             <button class="address_button" onclick="execution_daum_address()">주소찾기</button>
                           <div class="clearfix"></div>
                         </div>
                         <div class ="address_input_2_wrap">
                           <div class="address_input_2_box">
-                            <input class="address_input_2" name="address" readonly="readonly">
+                            <input class="address_input_2" name="address2" readonly="readonly">
                           </div>
                         </div>
                         <div class ="address_input_3_wrap">
                           <div class="address_input_3_box">
-                            <input class="address_input_3" name="addressDetail" readonly="readonly">
+                            <input class="address_input_3" name="address3" readonly="readonly">
                           </div>
                         </div>
                       </div>
-                      <!-----------------end 주소찾기 구현 => db에 저장되게 변수명 바꿔주기 11.25 오후 8시------------------------->
-
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                           <div class="column-div">
@@ -470,6 +510,7 @@ pageEncoding="UTF-8"%>
                             placeholder="닉네임"
                             required
                           />
+                          <button type="button" onclick="fn_nickcheck()">중복체크</button>
                         </div>
                       </div>
                       <div
@@ -507,367 +548,5 @@ pageEncoding="UTF-8"%>
     </section>
     <!-- End Main Top -->
 
-
-    <!-- Start Top Search -->
-    <!-- <div class="top-search">
-        <div class="container">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                <input type="text" class="form-control" placeholder="Search">
-                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-            </div>
-        </div>
-    </div> -->
-    <!-- End Top Search -->
-
-    <!-- Start Slider -->
-    <!-- <div id="slides-shop" class="cover-slides">
-        <ul class="slides-container">
-            <li class="text-center">
-                <img src="" alt="">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>환영 <br> 반가워</strong></h1>
-                            <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="text-center">
-                <img src="" alt="">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>환영  <br> 반가워</strong></h1>
-                            <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li class="text-center">
-                <img src="" alt="">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1 class="m-b-20"><strong>환영 <br> 반가워</strong></h1>
-                            <p class="m-b-40">See how your users experience your website in realtime or view <br> trends to see any changes in performance over time.</p>
-                            <p><a class="btn hvr-hover" href="#">Shop New</a></p>
-                        </div>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <div class="slides-navigation">
-            <a href="#" class="next"><i class="fa fa-angle-right" aria-hidden="true"></i></a>
-            <a href="#" class="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-        </div>
-    </div> -->
-    <!-- End Slider -->
-
-    <!-- Start Categories  -->
-    <!-- <div class="categories-shop">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="images/categories_img_01.jpg" alt="" />
-                        <a class="btn hvr-hover" href="#">Lorem ipsum dolor</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="images/categories_img_02.jpg" alt="" />
-                        <a class="btn hvr-hover" href="#">Lorem ipsum dolor</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                    <div class="shop-cat-box">
-                        <img class="img-fluid" src="images/categories_img_03.jpg" alt="" />
-                        <a class="btn hvr-hover" href="#">Lorem ipsum dolor</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- End Categories -->
-
-    <!-- Start Products  -->
-    <!-- <div class="products-box">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="title-all text-center">
-                        <h1>Fruits & Vegetables</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="special-menu text-center">
-                        <div class="button-group filter-button-group">
-                            <button class="active" data-filter="*">All</button>
-                            <button data-filter=".top-featured">Top featured</button>
-                            <button data-filter=".best-seller">Best seller</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row special-list">
-                <div class="col-lg-3 col-md-6 special-grid best-seller">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <div class="type-lb">
-                                <p class="sale">Sale</p>
-                            </div>
-                            <img src="images/img-pro-01.jpg" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                </ul>
-                                <a class="cart" href="#">Add to Cart</a>
-                            </div>
-                        </div>
-                        <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <h5> $7.79</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 special-grid top-featured">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <div class="type-lb">
-                                <p class="new">New</p>
-                            </div>
-                            <img src="images/img-pro-02.jpg" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                </ul>
-                                <a class="cart" href="#">Add to Cart</a>
-                            </div>
-                        </div>
-                        <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <h5> $9.79</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 special-grid top-featured">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <div class="type-lb">
-                                <p class="sale">Sale</p>
-                            </div>
-                            <img src="images/img-pro-03.jpg" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                </ul>
-                                <a class="cart" href="#">Add to Cart</a>
-                            </div>
-                        </div>
-                        <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <h5> $10.79</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 special-grid best-seller">
-                    <div class="products-single fix">
-                        <div class="box-img-hover">
-                            <div class="type-lb">
-                                <p class="sale">Sale</p>
-                            </div>
-                            <img src="images/img-pro-04.jpg" class="img-fluid" alt="Image">
-                            <div class="mask-icon">
-                                <ul>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
-                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                </ul>
-                                <a class="cart" href="#">Add to Cart</a>
-                            </div>
-                        </div>
-                        <div class="why-text">
-                            <h4>Lorem ipsum dolor sit amet</h4>
-                            <h5> $15.79</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- End Products  -->
-
-    <!-- Start Blog  -->
-    <!-- <div class="latest-blog">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="title-all text-center">
-                        <h1>latest blog</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-lg-4 col-xl-4">
-                    <div class="blog-box">
-                        <div class="blog-img">
-                            <img class="img-fluid" src="images/blog-img.jpg" alt="" />
-                        </div>
-                        <div class="blog-content">
-                            <div class="title-blog">
-                                <h3>Fusce in augue non nisi fringilla</h3>
-                                <p>Nulla ut urna egestas, porta libero id, suscipit orci. Quisque in lectus sit amet urna dignissim feugiat. Mauris molestie egestas pharetra. Ut finibus cursus nunc sed mollis. Praesent laoreet lacinia elit id lobortis.</p>
-                            </div>
-                            <ul class="option-blog">
-                                <li><a href="#"><i class="far fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#"><i class="far fa-comments"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-4">
-                    <div class="blog-box">
-                        <div class="blog-img">
-                            <img class="img-fluid" src="images/blog-img-01.jpg" alt="" />
-                        </div>
-                        <div class="blog-content">
-                            <div class="title-blog">
-                                <h3>Fusce in augue non nisi fringilla</h3>
-                                <p>Nulla ut urna egestas, porta libero id, suscipit orci. Quisque in lectus sit amet urna dignissim feugiat. Mauris molestie egestas pharetra. Ut finibus cursus nunc sed mollis. Praesent laoreet lacinia elit id lobortis.</p>
-                            </div>
-                            <ul class="option-blog">
-                                <li><a href="#"><i class="far fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#"><i class="far fa-comments"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4 col-xl-4">
-                    <div class="blog-box">
-                        <div class="blog-img">
-                            <img class="img-fluid" src="images/blog-img-02.jpg" alt="" />
-                        </div>
-                        <div class="blog-content">
-                            <div class="title-blog">
-                                <h3>Fusce in augue non nisi fringilla</h3>
-                                <p>Nulla ut urna egestas, porta libero id, suscipit orci. Quisque in lectus sit amet urna dignissim feugiat. Mauris molestie egestas pharetra. Ut finibus cursus nunc sed mollis. Praesent laoreet lacinia elit id lobortis.</p>
-                            </div>
-                            <ul class="option-blog">
-                                <li><a href="#"><i class="far fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                                <li><a href="#"><i class="far fa-comments"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- End Blog  -->
-
-    <!-- Start Instagram Feed  -->
-    <!-- <div class="instagram-box">
-        <div class="main-instagram owl-carousel owl-theme">
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-01.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-02.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-03.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-04.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-05.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-06.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-07.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-08.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-09.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="images/instagram-img-05.jpg" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- End Instagram Feed  -->
-
-   <%@ include file="layout/footer.jsp" %>
-
+  <%@ include file="layout/footer.jsp" %>
 
