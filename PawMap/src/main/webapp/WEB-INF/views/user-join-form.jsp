@@ -83,7 +83,42 @@ pageEncoding="UTF-8"%>
             form.submit();
           }
 
+          /* 아이디 중복 체크 */
+          function fn_idcheck() {
+            $.ajax({
+              url:'idCheck',
+              data: {id:$("#user_id").val()},
+              type:"POST",
+              success:function(data) {
+                var status = $.trim(data);
+                if(status == "fail") {
+                  alert("중복된 아이디입니다.");
+                } else {
+                  alert("사용 가능한 아이디입니다.");
+                }
+              }
+            });
+          }
+
+          /* 닉네임 중복 체크 */
+          function fn_nickcheck() {
+            $.ajax({
+              url:'nickCheck',
+              data: {nickname:$("#user_nickname").val()},
+              type:"POST",
+              success:function(data) {
+                var status = $.trim(data);
+                if(status == "fail") {
+                  alert("중복된 닉네임입니다.");
+                } else {
+                  alert("사용 가능한 닉네임입니다.");
+                } 
+              }
+            });
+          }
         </script>
+
+
 
         <!--주소검색-->
         <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -357,7 +392,8 @@ pageEncoding="UTF-8"%>
                             class="form-control"
                             placeholder="아이디"
                             required
-                          />
+                          />(4자~12자)
+                          <button type="button" onclick="fn_idcheck()">중복체크</button>
                         </div>
                       </div>
                       <div class="d-flex flex-row align-items-center mb-4">
@@ -436,20 +472,7 @@ pageEncoding="UTF-8"%>
                           />
                         </div>
                       </div>
-                      <!---------------기존 주소 form----------------->
-                      <!-- <div class="d-flex flex-row align-items-center mb-4">
-                        <div class="form-outline flex-fill mb-0">
-                          <div class="column-div">
-                            <div>
-                              <label class="form-label mt-2" for="user_address"
-                                >주소</label>
-                            </div>
-                          </div>
-                          <input type="text" name="address" id="user_address" class="form-control" placeholder="주소" required/>
-                        </div>
-                      </div> -->
-
-                      <!-----------------start 주소찾기 구현 => db에 저장되게 변수명 바꿔주기 11.25 오후 8시------------------------->
+                      <!------회원가입시 입력칸이 다 채워지고 주소 검색하면 회원가입으로 넘어가는 오류 있음------------------------------------->
                       <div class="address_wrap">
                         <div class="address_name">주소</div>
                         <div class="address_input_1_wrap">
@@ -470,8 +493,6 @@ pageEncoding="UTF-8"%>
                           </div>
                         </div>
                       </div>
-                      <!-----------------end 주소찾기 구현 => db에 저장되게 변수명 바꿔주기 11.25 오후 8시------------------------->
-
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
                           <div class="column-div">
@@ -489,6 +510,7 @@ pageEncoding="UTF-8"%>
                             placeholder="닉네임"
                             required
                           />
+                          <button type="button" onclick="fn_nickcheck()">중복체크</button>
                         </div>
                       </div>
                       <div

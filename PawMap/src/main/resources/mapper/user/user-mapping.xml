@@ -83,8 +83,13 @@
   
 
   	<!-- 아이디 중복검사 -->
-  	<select id="idCheck" parameterType="String" resultType="com.pawmap.VO.UserVO">
-  		SELECT * FROM user WHERE user_id = #{userId}
+  	<select id="idCheck" parameterType="String" resultType="int">
+  		SELECT count(*) FROM user WHERE user_id = #{id}
+  	</select>
+  	
+  	<!-- 닉네임 중복검사 -->
+  	<select id="nickCheck" parameterType="String" resultType="int">
+  		SELECT count(*) FROM user WHERE user_nickname = #{nickname}
   	</select>
   
   	<insert id="socialJoin">

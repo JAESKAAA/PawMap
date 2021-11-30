@@ -21,7 +21,11 @@ public interface UserMapper {
 	void socialJoin(UserVO vo);
 	
 	// 아이디 중복 검사
-	public int idCheck(String userId);
+	public int idCheck(String id);
+	
+	// 닉네임 중복 검사
+	public int nickCheck(String nickname);
+
 
 	//아이디 찾기 
 	String searchId(@Param("userName")String userName, @Param("userTelNum")String userTelNum);

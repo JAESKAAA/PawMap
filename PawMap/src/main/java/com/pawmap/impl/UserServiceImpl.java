@@ -64,8 +64,14 @@ public class UserServiceImpl implements UserService{
 	 
 	 // 아이디 중복 체크
 	@Override
-	public int idCheck(String userId) throws Exception {
-		return userMapper.idCheck(userId);
+	public int idCheck(String id) throws Exception {
+		return userMapper.idCheck(id);
+	}
+	
+	 // 닉네임 중복 체크
+	@Override
+	public int nickCheck(String nickname) throws Exception {
+		return userMapper.nickCheck(nickname);
 	}
 
 	@Override
