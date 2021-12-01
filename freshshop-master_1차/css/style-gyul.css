@@ -52,7 +52,7 @@ box-sizing: border-box;
 
 /* board-free.html 관련 스타일 */
 
-.cover-slides{
+.cover-slides-free-board{
     border-radius: 25px;
     border: 1px solid rgba(204, 156, 22, 0.8);
 }
@@ -62,7 +62,7 @@ box-sizing: border-box;
 #slides-shop{
     height: 200px;
 }
-.text-center{
+p.text-center{
     width: 100px;
 }
 .btn-next, .btn-prev{

@@ -77,10 +77,10 @@ pageEncoding="UTF-8"%>
 </div>
 <div class="container mt-5" style="width: 70%;">
     <div class="board-free" >
-        <div id="slides-shop" class="cover-slides">
+        <div id="slides-shop" class="cover-slides cover-slides-board-free"> <!--modified by thomas lee on dec 1st at 20:33pm. it was class="cover-slides" and it replaced to class="cover-slides cover-slides-board-free". if anything please refer to Style-gyul.css file at line 55, 65 -->
             <ul class="slides-container">
                 
-                <li class="text-center">
+                <li class="">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
@@ -94,7 +94,7 @@ pageEncoding="UTF-8"%>
                     </div>
                 </li>
 
-                <li class="text-center">
+                <li class="">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
@@ -107,7 +107,7 @@ pageEncoding="UTF-8"%>
                     </div>
                 </li>
 
-                <li class="text-center">
+                <li class="">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
