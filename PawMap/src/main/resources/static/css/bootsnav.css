@@ -1363,7 +1363,7 @@ nav.navbar.bootsnav ul.dropdown-menu.megamenu-content .content ul.menu-col li a:
         width: 100%;
         display: block;
     }
-
+}
 
 @media (max-width: 767px) {
     nav.navbar.bootsnav .navbar-header {
@@ -1463,6 +1463,5 @@ nav.navbar.bootsnav ul.dropdown-menu.megamenu-content .content ul.menu-col li a:
     nav.bootsnav.navbar-full ul.nav{
         padding-top: 30px;
         padding-bottom: 30px;
-        }
     }
 }

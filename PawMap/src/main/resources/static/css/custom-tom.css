@@ -1,8 +1,24 @@
 
 /** ADD YOUR AWESOME CODES HERE **/
+/** color  
+    메인 : #E1A963
+      #FFCE91
+      #EDB56F
+
+    보색  : #2B7AA1
+      #6FC4ED
+**/
   /* 서치바 관련 스타일*/
+
+.tbl-header {
+    background-color: #EDB56F;
+    max-width: 1783px;
+    margin-right: 60px;
+    margin-left: 60px;
+}  
   
-  .main-search-input {
+
+.main-search-input {
     background: #fff;
     padding: 0 120px 0 0;
     border-radius: 1px;
@@ -19,7 +35,6 @@
 .main-search-input:before {
     content: '';
     position: absolute;
-    bottom: -40px;
     width: 50px;
     height: 1px;
     background: rgba(255, 255, 255, 0.41);
@@ -49,7 +64,7 @@
 }
 
 .main-search-button {
-    background: #e0a1187a
+    background: rgb(220, 139, 31, 1)
 }
 
 .main-search-button {
@@ -65,14 +80,16 @@
     cursor: pointer
 }
 .main-search-button:hover {
-  background: #665d087a;
+  background: rgb(220, 139, 31, 0.5);
   cursor: pointer;
 }
 
 .main-search-input-wrap {
     max-width: 500px;
-    margin: 20px auto;
-    
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
     position: relative
 }
 
@@ -112,9 +129,264 @@
 /* 서치바 관련 스타일 종료 */
 
 /* 관리자 페이지 : 제휴병원 정보 관리에 필요한 테이블 css... */
-
-    .table{
+/* 하기 관리자 페이지용 테이블 리스트 css는 현상황에서 필요가 없어 주석처리함 by thomas lee on nov 30th 13:42pm *//*
+    .table-list{
         width: 100%;
         border-spacing: 0;
         border-collapse: separate;
     }
+*/
+
+/* adminpagecounseloneonone (adminpage11counseloneonone-tom.html)
+*    에 있는 하이퍼 링크용 css 스타일... this was updated on Nov30th 15:45pm
+*/
+
+    a.oneononecounsel{
+        font-weight: normal;
+    }
+
+    a.oneononecounsel:hover{ /* 하이퍼 링크 눌를시, 보더 아래에 검은색 줄과 폰트 두꺼워짐*/
+        border-bottom: 1px solid rgba(220, 139, 31, 1);
+        font-weight: bold;
+        color:rgba(220, 139, 31, 1)
+    }
+/* adminpage13donationmanage  용 css...
+*  this was created on Nov 30th.
+* admin-뒤에 붙어있는 noun들은 DB에 들어갈 항목 이름과 매치함.
+*/
+    h1.adminpagetoph1 {
+        text-align: center;
+        font-size:30px;
+        margin-top:5%;
+        color:white;
+        padding-top: 50px;
+    }
+
+    .adminpagetablediv {
+        margin-left: 60px;
+        margin-right: 60px;
+        max-width: 1783px;
+    }
+
+    table.adminpagetable {
+        width: 100%;
+        text-align: center;
+    }
+
+    thead.admintablehead {
+        background-color: lightgray;
+    }
+    tr .admin-userseq {
+        width: 3%;
+        min-height: 2%;
+        max-height: 4%;
+    }
+    tr .admin-userid {
+        width:10%;
+        height:2%;
+    }
+    tr .admin-useremail {
+        width:12%;
+        height:2%;
+    }
+    tr .admin-username {
+        width:14%;
+        height:2%;
+    }
+    tr .admin-usertelnum {
+        width: 8%;
+        height: 2%;
+    }
+    tr .admin-address {
+        width: 18%;
+        height: 2%;
+    }
+    tr .admin-comnum {
+        width: 10%;
+        height: 2%;
+    }
+    tr .admin-role {
+        width: 6%;
+        height: 2%;
+    }
+    tr .admin-userregdate {
+        width: 12%;
+        height: 2%;
+    }
+    tr .admin-useractionbutton {
+        width: 7%;
+        height: 2%;
+
+    }
+    /*
+    * 하기는 UI 테이블 항목에 따라 DB에 적용 가능성이 있는 기타 DB항목 이름들나열...
+    */
+
+    tr .admin-userdonation {
+        width: 7%;
+        height: 2%;
+    }
+    tr .admin-usernickname {
+        width: 8%;
+        height: 2%;
+    }
+
+    tr .admin-usercommunityposttitle {
+        width: 18%;
+        height: 2%;
+    }
+
+    tr .admin-usercommunitypostregdate {
+        width: 12%;
+        height: 2%;
+    }
+    tr .admin-useroneononecounseltitle {
+        width: 18%;
+        height: 2%;
+    }
+
+    tr .admin-useroneononecounselregdate {
+        width: 12%;
+        height: 2%;
+    }
+
+
+
+
+
+    
+
+
+
+
+
+
+
+/*
+* adminpage13donationmanage-tom 끝.  (the css description was finished Nov 30th 21:00pm)
+*/
+
+/*
+* adminpage2vetmanage-tom 시작.
+*/
+    /*
+    * admin 페이지상 사용된 button태그에 필요한 스타일 적용. start
+    */
+
+
+    button.adminpagebuttonformanage {
+        min-width: 60px;
+        max-width: 120px;
+        font-weight: 400;
+        color: #fff;
+        border-style: none;
+        cursor:pointer;
+        background-color:rgba(220, 139, 31, 1);
+    }
+    button.adminpagebuttonformanage::after {
+        pointer-events: none;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        top: 0;
+        left: 0;
+        padding: 0;
+        z-index: -1;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+        opacity: 0;
+    }
+
+    button.adminpagebuttonformanage:hover {
+        background: rgba(220, 139, 31, 0.5);
+        color: #fff;
+    }
+
+    td button.adminbuttonmargin-right {
+        margin-right:2%;
+    }
+
+    td button.adminbuttonmargin-left {
+        margin-left:2%;
+    }
+    /*
+    * admin 페이지상 사용된 button태그에 필요한 스타일 끝 (the css description was finished Nov 30th 21:00pm)
+    */
+
+    /*
+    * admin 페이지상에 있는 테이블에 커서를 둘 시 색변화 적용 시작
+    */
+
+
+    .table-striped tbody tr:nth-of-type(odd){
+        background-color:rgba(255, 255, 255, 1);
+    }
+
+    .table-hover tbody tr:hover:nth-of-type(odd){
+        background-color:rgba(0,0,0,.075);
+        font-weight: bold;
+    }
+    .table-striped tbody tr:nth-of-type(even){
+        background-color:rgba(255, 255, 255, 1);
+    }
+
+    .table-hover tbody tr:hover:nth-of-type(even){
+        background-color:rgba(0,0,0,.075);
+        font-weight: bold;
+    }
+    /*
+    * admin 페이지상에 있는 테이블에 커서를 둘 시 색변화 적용 끝 (the css description was finished Dec 1st 10:58am)
+    */
+    /*
+    * pagination css 파일....
+    */
+
+    .page-link{
+        position:relative;
+        display:block;
+        padding:.5rem .75rem;
+        margin-left:-1px;
+        line-height:1.25;
+        color:rgba(220, 139, 31, 1);
+        background-color:#fff;
+        border:1px solid #dee2e6
+    }
+    .page-link:hover{
+        z-index:2;
+        color:rgba(220, 139, 31, 0.5);
+        text-decoration:none;
+        background-color:#e9ecef;
+        border-color:#dee2e6
+    }
+    .page-link:focus{ /*커서를 두고 누를 경우 박스 테두리에 rgba값의 보더라인 색이 나옴 */
+        z-index:2;
+        outline:0;
+        box-shadow:0 0 0 .2rem rgba(220,139,31, 1)}
+    .page-link:not(:disabled):not(.disabled){
+        cursor:pointer
+    }
+    .page-item:first-child .page-link{
+        margin-left:0;border-top-left-radius:.25rem;
+        border-bottom-left-radius:.25rem
+    }
+    .page-item:last-child .page-link{
+        border-top-right-radius:.25rem;
+        border-bottom-right-radius:.25rem
+    }
+    .page-item.active .page-link{
+        z-index:1;color:#fff;
+        background-color:rgba(220, 139, 31, 1);;
+        border-color:rgba(220, 139, 31, 1);
+    }
+    .page-item.disabled .page-link{
+        color:#6c757d;
+        pointer-events:none;
+        cursor:auto;
+        background-color:#fff;
+        border-color:#dee2e6
+    }
+
+/*
+* adminpage2vetmanage-tom 끝.
+*/
+
