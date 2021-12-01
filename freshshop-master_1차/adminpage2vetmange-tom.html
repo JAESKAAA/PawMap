@@ -76,7 +76,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
               <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                  <li class="nav-item active"><a class="nav-link" href="adminpage2vetmange-tom.html"> 제휴병원 관리</a></li>
+                  <li class="nav-item"><a class="nav-link" href="adminpage2vetmange-tom.html"> 제휴병원 관리</a></li>
                   <li class="nav-item"><a class="nav-link" href="adminpage4usermanage-tom.html"> 회원정보 관리</a></li>
                   <li class="nav-item"><a class="nav-link" href="adminpage6sheltermanage-tom.html"> 보호소정보 관리</a></li>
                   <li class="nav-item"><a class="nav-link" href="adminpage9communitymanage-tom.html"> 커뮤니티 게시판 관리</a></li>
@@ -90,15 +90,15 @@
     <!-- End Navigation --> <!--관리자 페이지 공통 부분 완료...-->
   </header>
   <!--관리자의 제휴 병원 관리 리스트 페이지 시작-->
-        <div> 
+        <div class="tbl-header"> 
             <h1 class="adminpagetoph1">제휴 병원 관리</h1>
         </div>
         <!-- search 버튼 시작 -->
-        <div class="row">
+        <div class="row tbl-header">
           <div class="main-search-input-wrap" >
-              <div class="main-search-input fl-wrap" style="margin-top: 30px;">
+              <div class="main-search-input fl-wrap">
                   <div class="main-search-input-item"> 
-                      <input type="text" value="" placeholder="Search Products..."> 
+                      <input type="text" value="" placeholder="검색창입니다."> 
                   </div> 
                 <button class="main-search-button">Search</button>
               </div>
@@ -119,7 +119,7 @@
                 <col>
                 <col>
                 <col>
-                <col style="background-color: white;">
+                <col >
               </colgroup>
               <thead class="admintablehead"> 
                   <tr>
@@ -132,12 +132,12 @@
                       <th class="admin-comnum">사업자등록번호</th>
                       <th class="admin-role">종류</th>
                       <th class="admin-userregdate">회원등록일</th>
-                      <th class="admin-useractionbutton" style="background-color: white;"></th>
+                      <th class="admin-useractionbutton"></th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                      <td class="admin-userseq">1</td>
+                      <td class="admin-userseq">1,000,000</td>
                       <td class="admin-userid">pawhospital1</td>
                       <td class="admin-useremail">paw4567890paw45@gmail.com</td>
                       <td class="admin-username">발바닥_동물병원90123456789</td>
@@ -146,7 +146,7 @@
                       <td class="admin-comnum">74541845612354</td>
                       <td class="admin-role">일반</td>
                       <td class="admin-userregdate">2021-11-24 16:54:38</td>
-                      <td class="admin-useractionbutton"><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
+                      <td class="admin-useractionbutton"><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">수정</button></td>
                   </tr>
                   <tr>
                       <td>2</td>
@@ -158,7 +158,7 @@
                       <td>99991845612354</td>
                       <td>병원</td>
                       <td>2021-11-24 15:54:38</td>
-                      <td><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
+                      <td><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">수정</button></td>
                   </tr>
                   <tr>
                       <td>3</td>
@@ -170,7 +170,7 @@
                       <td>74541845612354</td>
                       <td></td>
                       <td></td>
-                      <td><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
+                      <td><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">수정</button></td>
                   </tr>
                   <tr>
                       <td>4</td>
@@ -182,7 +182,7 @@
                       <td>74541845612354</td>
                       <td></td>
                       <td></td>
-                      <td><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
+                      <td><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">수정</button></td>
                   </tr>
                   <tr>
                       <td>5</td>
@@ -194,7 +194,7 @@
                       <td>74541845612354</td>
                       <td></td>
                       <td></td>
-                      <td><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">관리하기</button></td>
+                      <td><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage3vetmodify-tom.html'">수정</button></td>
                   </tr>
                 </tbody>
               </table>
