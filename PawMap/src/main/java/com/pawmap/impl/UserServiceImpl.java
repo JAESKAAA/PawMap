@@ -1,27 +1,20 @@
 package com.pawmap.impl;
 
 
-
-
-import org.springframework.beans.factory.annotation.Autowired;
-
-
-
 import java.security.SecureRandom;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.groovy.util.Maps;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.mybatis.spring.SqlSessionTemplate;
 
 import com.pawmap.VO.UserVO;
-import com.pawmap.configuration.auth.PrincipalDetails;
 import com.pawmap.mapper.UserMapper;
-
-import com.pawmap.service.BoardService;
 import com.pawmap.service.MailService;
 import com.pawmap.service.UserService;
 
@@ -40,19 +33,16 @@ public class UserServiceImpl implements UserService{
 	
 	 @Autowired 
 	 private UserMapper userMapper;
-
+	
 	 @Autowired
 	 MailService mailService;
 	 
 	 @Autowired
-	   BCryptPasswordEncoder passwordEncoder;
+	 BCryptPasswordEncoder passwordEncoder;
 	 
 	 @Autowired
 	 private SqlSessionTemplate sqlSession;
-	 
-	
-
-	 
+ 
 	@Override
 	public void insertUser(UserVO vo) {
 		userMapper.insertUser(vo);
@@ -74,8 +64,14 @@ public class UserServiceImpl implements UserService{
 	 
 	 // 아이디 중복 체크
 	@Override
-	public int idCheck(String userId) throws Exception {
-		return userMapper.idCheck(userId);
+	public int idCheck(String id) throws Exception {
+		return userMapper.idCheck(id);
+	}
+	
+	 // 닉네임 중복 체크
+	@Override
+	public int nickCheck(String nickname) throws Exception {
+		return userMapper.nickCheck(nickname);
 	}
 
 	@Override
@@ -127,15 +123,12 @@ public class UserServiceImpl implements UserService{
 
 		return rs;
 	}
-	
-	
-	
+
 	@Override
 	public Map<String, Object> findLoginPasswd(Map<String, Object> param) {
 		String userId = (String) param.get("userId");
 		String userName = (String) param.get("userName");
 		String userEmail = (String) param.get("userEmail");
-
 		UserVO user  = userMapper.searchPwd(userId, userName);
 
 		if (user == null) {
@@ -163,13 +156,12 @@ public class UserServiceImpl implements UserService{
 		String tempLoginPasswd = sb.toString();
 				
 		user.setUserPassword(tempLoginPasswd);
-
 		
 		String mailTitle = userName + "님, 당신의 계정(" + userId + ")의 임시 패스워드 입니다.";
 		String mailBody = "임시 패스워드 : " + tempLoginPasswd;
 		mailService.send(userEmail, mailTitle, mailBody);
-		
-		
+
+
 		// 비밀번호 암호화해주는 메서드
 		tempLoginPasswd = passwordEncoder.encode(tempLoginPasswd);
 		//tempLoginPasswd = PawMap1124Application.encodePwd(tempLoginPasswd);
@@ -184,12 +176,10 @@ public class UserServiceImpl implements UserService{
 		
 	}
 	
-	
 	@Override
 	public UserVO checkDuplicateId(int userId) {
 		return userMapper.checkDuplicateId(userId);
 	}
-
 
 	
 	@Override
@@ -238,8 +228,4 @@ public class UserServiceImpl implements UserService{
 
 
 }
-
-
-
-
 

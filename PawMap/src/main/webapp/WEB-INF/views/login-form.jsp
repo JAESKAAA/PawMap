@@ -103,10 +103,7 @@ pageEncoding="UTF-8"%>
                     카카오 로그인
                   </a>
                   <div>
-
-
                     <a href="/pawmap/searchIdPw" class="btn-other" id="forgot">
-
                       비밀번호를 잊어버렸습니까?</a
                     >
                   </div>

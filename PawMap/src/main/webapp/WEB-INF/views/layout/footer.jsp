@@ -155,6 +155,10 @@
       src="https://kit.fontawesome.com/f0999a1ca0.js"
       crossorigin="anonymous"
     ></script>
+
+    <!-- 1:1 상담 관련 js 파일-->
+    <script src="${pageContext.request.contextPath}/js/custom-jaeseok.js"></script>
+
     <!-- 커스텀 JS 파일 - 재석-->
     <script src="${pageContext.request.contextPath}/js/custom-jaeseok.js"></script>
    
@@ -183,6 +187,7 @@
     
         form.submit();
       }
+
       //회원탈퇴 체크용
       function deleteUserCheck(){
       var result = confirm("정말 탈퇴하시겠습니까...?")
@@ -193,6 +198,7 @@
 
       }
   }
+
     </script>
     
   </body>

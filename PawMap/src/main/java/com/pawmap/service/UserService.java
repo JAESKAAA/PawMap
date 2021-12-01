@@ -2,8 +2,10 @@ package com.pawmap.service;
 
 import java.util.List;
 import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
+
 import com.pawmap.VO.UserVO;
 
 @Component
@@ -18,15 +20,20 @@ public interface UserService {
 	void socialJoin(UserVO vo);
 
 	// 아이디 중복 검사
-	public int idCheck(String userId) throws Exception;
+	public int idCheck(String id) throws Exception;
+	
+	// 닉네임 중복 검사
+	public int nickCheck(String nickname) throws Exception;
 
 	public UserVO checkDuplicateId(@Param("userId") int userId);
+	
 
 	public Map<String, Object> login(Map<String, Object> args);
 
 	public Map<String, Object> loginV2(Map<String, Object> args);
 	
 	String searchId(@Param("userName")String userName, @Param("userTelNum")String userTelNum);
+
 
 	public Map<String, Object> findLoginPasswd(Map<String, Object> param);
 

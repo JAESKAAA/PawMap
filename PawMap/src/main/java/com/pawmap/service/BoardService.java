@@ -4,16 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.pawmap.VO.BoardVO;
-
 import com.pawmap.VO.CommentVO;
-
 import com.pawmap.VO.Criteria;
-import com.pawmap.VO.FileVO;
-import com.pawmap.VO.UserVO;
 
 public interface BoardService {
 
-	
 	
 	void insertFreeAndNanumBoard(BoardVO vo);
 
@@ -30,12 +25,9 @@ public interface BoardService {
 	void insertReplyForFreeBoard(CommentVO commentVO);
 
 	int getFreeBoardSeq();
+
 	
 	List<HashMap<String, Object>> getLatelyBoardListForBoardMain();
 
-
-	
-
-	
 	
 }
