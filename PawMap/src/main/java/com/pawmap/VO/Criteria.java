@@ -1,7 +1,7 @@
 package com.pawmap.VO;
 
 public class Criteria {
-
+	
 	private int pageNum;
 	private int amount;
 	private int startNum;

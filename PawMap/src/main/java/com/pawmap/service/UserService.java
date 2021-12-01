@@ -15,6 +15,9 @@ public interface UserService {
 	//병원 회원 가입
 	void insertHospitalUser(UserVO vo);
 	
+	//제휴 병원 hospital_data 테이블에 삽입
+	void insertHospitalData(UserVO vo);
+	
 	UserVO findByUsername(String username);
 
 	void socialJoin(UserVO vo);

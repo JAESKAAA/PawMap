@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
+import com.pawmap.VO.Criteria;
 import com.pawmap.VO.HospitalVO;
 import com.pawmap.mapper.SearchMapper;
 
@@ -30,9 +30,14 @@ public class SearchServiceImpl implements SearchMapper {
 	}
 	
 	@Override
-	public List<HospitalVO> getHospitalList(HospitalVO vo) {
+	public List<HospitalVO> getHospitalList() {
 
-		return searchMapper.getHospitalList(vo);
+		return searchMapper.getHospitalList();
+	}
+	@Override
+	public List<HospitalVO> getHospitalList(Criteria cri) {
+		
+		return searchMapper.getHospitalList(cri);
 	}
 	
 	@Override
@@ -44,5 +49,9 @@ public class SearchServiceImpl implements SearchMapper {
 	public HospitalVO getHospital(HospitalVO vo) {
 		return searchMapper.getHospital(vo);
 	}
-
+	@Override
+	public List<HospitalVO> getListWithPaging(Criteria cri) {
+	// TODO Auto-generated method stub
+	return null;
+}
 }

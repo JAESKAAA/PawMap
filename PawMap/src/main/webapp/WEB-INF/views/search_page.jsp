@@ -192,15 +192,21 @@ pageEncoding="UTF-8"%>
    <script>
    var nameList =[];
    var addressList =[];
+   var idList =[];
+   var seq =[];
    	<c:forEach var="hospital" items="${hospitalList}" varStatus="status">
    		nameList.push("${hospital.hospitalName}");
-   		addressList.push("${hospital.hospitalAddress}")
+   		addressList.push("${hospital.hospitalAddress}");
+   		idList.push("${hospital.hospitalId}");
+   		seq.push("${hospital.hospitalSeq}");
    	</c:forEach>
    	
    	console.log(nameList);
    	console.log(nameList[0]);
    	console.log(nameList.length);
    	console.log(addressList);
+   	console.log(idList);
+   	console.log(seq);
 	
 	var mapContainer = document.getElementById('map'); // 지도를 표시할 div  
 	   mapOption = { 
@@ -262,6 +268,10 @@ pageEncoding="UTF-8"%>
 			  // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
 			    infowindow.close();
 				});
+			// 마커에 마우스오버/아웃 이벤트를 등록합니다
+			kakao.maps.event.addListener(marker, 'click', function() {
+				window.location.href = "/pawmap/detailHospital?hospitalSeq="+seq[i];
+				});
 		   
 			});
 		}
@@ -278,7 +288,6 @@ pageEncoding="UTF-8"%>
 	         map.setCenter(addressValue);
 	         }
 	      });
-		
     </script>
   </body>
 </html>

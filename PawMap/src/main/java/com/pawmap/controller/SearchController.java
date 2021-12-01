@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.pawmap.VO.Criteria;
 import com.pawmap.VO.HospitalVO;
 import com.pawmap.handler.OpenApiHandler;
 import com.pawmap.mapper.SearchMapper;
@@ -24,9 +24,9 @@ public class SearchController {
 	private SearchMapper searchMapper;
 	
 	@GetMapping("/search")
-	public String showSearchPage(HospitalVO vo, Model model) {
+	public String showSearchPage( Model model , Criteria cri) {
 		
-		List<HospitalVO> hospitalList = searchMapper.getHospitalList(vo);
+		List<HospitalVO> hospitalList = searchMapper.getListWithPaging(cri);
 		System.out.println("hospitalList 표출 : "+hospitalList.get(0) );
 		System.out.println("hospitalList 갯수 : "+hospitalList.size());
 		

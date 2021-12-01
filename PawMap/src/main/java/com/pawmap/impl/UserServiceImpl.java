@@ -52,6 +52,11 @@ public class UserServiceImpl implements UserService{
 	userMapper.insertHospitalUser(vo);
 	}
 	
+	@Override
+	public void insertHospitalData(UserVO vo) {
+		userMapper.insertHospitalData(vo);
+	}
+	
 	 @Override
 	public UserVO findByUsername(String username) {
 		return userMapper.findByUsername(username);

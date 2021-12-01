@@ -23,15 +23,19 @@
   	</select>
   	
   	<select id="searchHospitalList" resultMap="hospitalList" parameterType="String">
-  		SELECT hospital_seq, hospital_id, hospital_name, hospital_address, hospital_tel_num FROM hospital_data 
-  				WHERE hospital_status_code = '01'
-  				AND hospital_address LIKE CONCAT('%',#{value},'%')
-  				ORDER BY hospital_seq
+		SELECT hospital_seq, hospital_id, hospital_name, hospital_address, hospital_tel_num FROM hospital_data 
+  				WHERE (hospital_address LIKE CONCAT('%',#{value},'%') OR hospital_name LIKE CONCAT('%',#{value},'%')) 
+  				AND hospital_status_code = "01"
+  				ORDER BY hospital_seq;
   	</select>
 	
 	<select id="getHospital" resultMap="hospitalList">
-  		SELECT hospital_seq, hospital_id, hospital_name, hospital_address, hospital_tel_num FROM hospital_data 
+  		SELECT hospital_seq, hospital_id, hospital_name, hospital_address, hospital_tel_num, hospital_com_num, hospital_type FROM hospital_data 
   				WHERE hospital_status_code = '01' AND hospital_seq = #{hospitalSeq}
+  	</select>
+  	
+  	<select id="getListWithPaging" resultType="com.pawmap.VO.HospitalVO">
+  		SELECT * FROM hospital_data limit #{startNum}, #{amount};
   	</select>
   	
 	<insert id="insertHospitalData" parameterType="com.pawmap.VO.HospitalVO">

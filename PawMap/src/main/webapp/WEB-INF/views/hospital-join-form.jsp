@@ -341,7 +341,7 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
                           <div class="column-div">
                             <div>
                               <label class="form-label mt-2" for="user_id"
-                                >회원 아이디</label
+                                >아이디</label
                               >
                             </div>
                           </div>
@@ -381,7 +381,7 @@ prefix="c" %> <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
                           <div class="column-div">
                             <div>
                               <label class="form-label mt-2" for="user_name"
-                                >이름</label
+                                >병원 상호명</label
                               >
                             </div>
                           </div>

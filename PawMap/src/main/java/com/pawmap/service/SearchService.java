@@ -17,7 +17,5 @@ public interface SearchService {
 
 	HospitalVO getHospital(HospitalVO vo);
 	
-
-	
 	
 }
