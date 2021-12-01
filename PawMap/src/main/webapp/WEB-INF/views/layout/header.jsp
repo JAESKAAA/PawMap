@@ -112,7 +112,7 @@ pageEncoding="UTF-8"%>
                 <a class="nav-link" href="about.html">회사소개</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="gallery.html">병원찾기</a>
+                <a class="nav-link"  id="findHospital" href="/pawmap/search">병원찾기</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="contact-us.html">보호소 정보</a>

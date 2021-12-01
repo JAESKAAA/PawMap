@@ -1,3 +1,12 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
+
+<spring:eval expression="@environment.getProperty('kakao.app.key')" var="kakaoAppKey"/>
+
 <!DOCTYPE html>
 <html lang="ko">
   <!-- Basic -->
@@ -10,7 +19,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Site Metas -->
-    <title>페이지 1</title>
+    <title>PawMap - 동물 병원 찾기</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <meta name="author" content="" />
@@ -44,11 +53,12 @@
       <h1>동물병원 찾기</h1>
       <div class="search-box">
         <div class="search-icon"><i class="fa fa-search search-icon"></i></div>
-        <form action="" class="search-form">
+        <form action="/pawmap/searchDetail" method="get" class="search-form">
           <input
             type="text"
             placeholder="내용을 입력해주세요."
             id="search"
+            name="value"
             autocomplete="off"
           />
         </form>
@@ -94,232 +104,54 @@
         <tr>
           <th data-breakpoints="xs sm md">병원 이름</th>
           <th data-breakpoints="xs">위치</th>
-          <th data-breakpoints="xs">주차 여부</th>
           <th data-breakpoints="xs">진료 시간</th>
-          <th data-breakpoints="xs">응급 진료 여부</th>
           <th data-breakpoints="xs">자세히</th>
-          <th data-breakpoints="xs">전화</th>
         </tr>
       </thead>
       <tbody>
+      
+      <!-- 페이지네이션 부분 시작-->
+	     <div class="page-div">
+		    <ul class="pagination justify-content-center">
+		        <c:if test="${pageMaker.prev }">
+		            <li class="page-item pagination_button">
+		                <a class="page-link" href="${pageMaker.startPage - 1 }" >Prev</a>
+		            </li>
+		        </c:if>
+		        <c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage +1}">
+		        <li class="page-item pagination_button ${num == pageMaker.cri.pageNum? "active" : "" }" > 
+		            <a id="nowPage" class="page-link" href="${num }">${num }</a>
+		        </li>
+		        </c:forEach>
+		        <c:if test="${pageMaker.next }">
+		        <li class="page-item pagination_button">
+		            <a class="page-link" href="${pageMaker.endPage + 1 }">Next</a>
+		        </li>
+		        </c:if>
+		    </ul>
+		</div>
+		<!-- 페이지네이션 부분 시작-->
+      <c:forEach var="hospital" items="${hospitalList }">
         <tr data-expanded="true">
-          <td>실비아 동물병원</td>
-          <td>강남구</td>
-          <td>주차가능</td>
-          <td>오전 ~ 오후</td>
-          <td>응급</td>
+          <td>${hospital.hospitalName}</td>
+          <td>${hospital.hospitalAddress}</td>
+          <td>오전 9:00 ~ 오후 18:00</td>
           <td>
-            <button
-              type="button"
+            <a
+            	href="/pawmap/detailHospital?hospitalSeq=${hospital.hospitalSeq }"
               class="btn btn-primary btn-rounded btn-sm"
               data-mdb-ripple-color="#ffffff"
               style="background-color: #e4b407"
             >
               자세히
-            </button>
-          </td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-primary btn-rounded btn-sm"
-              data-mdb-ripple-color="#ffffff"
-              style="background-color: #e4b407"
-            >
-              전화
-            </button>
+            </a>
           </td>
         </tr>
-        <tr data-expanded="true">
-          <td>실비아 동물병원</td>
-          <td>강남구</td>
-          <td>주차가능</td>
-          <td>오전 ~ 오후</td>
-          <td>응급</td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-primary btn-rounded btn-sm"
-              data-mdb-ripple-color="#ffffff"
-              style="background-color: #e4b407"
-            >
-              자세히
-            </button>
-          </td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-primary btn-rounded btn-sm"
-              data-mdb-ripple-color="#ffffff"
-              style="background-color: #e4b407"
-            >
-              전화
-            </button>
-          </td>
-        </tr>
-        <tr data-expanded="true">
-          <td>실비아 동물병원</td>
-          <td>강남구</td>
-          <td>주차가능</td>
-          <td>오전 ~ 오후</td>
-          <td>응급</td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-primary btn-rounded btn-sm"
-              data-mdb-ripple-color="#ffffff"
-              style="background-color: #e4b407"
-            >
-              자세히
-            </button>
-          </td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-primary btn-rounded btn-sm"
-              data-mdb-ripple-color="#ffffff"
-              style="background-color: #e4b407"
-            >
-              전화
-            </button>
-          </td>
-        </tr>
-        <tr data-expanded="true">
-          <td>실비아 동물병원</td>
-          <td>강남구</td>
-          <td>주차가능</td>
-          <td>오전 ~ 오후</td>
-          <td>응급</td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-primary btn-rounded btn-sm"
-              data-mdb-ripple-color="#ffffff"
-              style="background-color: #e4b407"
-            >
-              자세히
-            </button>
-          </td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-primary btn-rounded btn-sm"
-              data-mdb-ripple-color="#ffffff"
-              style="background-color: #e4b407"
-            >
-              전화
-            </button>
-          </td>
-        </tr>
-        <tr data-expanded="true">
-          <td>실비아 동물병원</td>
-          <td>강남구</td>
-          <td>주차가능</td>
-          <td>오전 ~ 오후</td>
-          <td>응급</td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-primary btn-rounded btn-sm"
-              data-mdb-ripple-color="#ffffff"
-              style="background-color: #e4b407"
-            >
-              자세히
-            </button>
-          </td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-primary btn-rounded btn-sm"
-              data-mdb-ripple-color="#ffffff"
-              style="background-color: #e4b407"
-            >
-              전화
-            </button>
-          </td>
-        </tr>
-        <tr data-expanded="true">
-          <td>실비아 동물병원</td>
-          <td>강남구</td>
-          <td>주차가능</td>
-          <td>오전 ~ 오후</td>
-          <td>응급</td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-primary btn-rounded btn-sm"
-              data-mdb-ripple-color="#ffffff"
-              style="background-color: #e4b407"
-            >
-              자세히
-            </button>
-          </td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-primary btn-rounded btn-sm"
-              data-mdb-ripple-color="#ffffff"
-              style="background-color: #e4b407"
-            >
-              전화
-            </button>
-          </td>
-        </tr>
-        <tr data-expanded="true">
-          <td>실비아 동물병원</td>
-          <td>강남구</td>
-          <td>주차가능</td>
-          <td>오전 ~ 오후</td>
-          <td>응급</td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-primary btn-rounded btn-sm"
-              data-mdb-ripple-color="#ffffff"
-              style="background-color: #e4b407"
-            >
-              자세히
-            </button>
-          </td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-primary btn-rounded btn-sm"
-              data-mdb-ripple-color="#ffffff"
-              style="background-color: #e4b407"
-            >
-              전화
-            </button>
-          </td>
-        </tr>
-        <tr data-expanded="true">
-          <td>실비아 동물병원</td>
-          <td>강남구</td>
-          <td>주차가능</td>
-          <td>오전 ~ 오후</td>
-          <td>응급</td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-primary btn-rounded btn-sm"
-              data-mdb-ripple-color="#ffffff"
-              style="background-color: #e4b407"
-            >
-              자세히
-            </button>
-          </td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-primary btn-rounded btn-sm"
-              data-mdb-ripple-color="#ffffff"
-              style="background-color: #e4b407"
-            >
-              전화
-            </button>
-          </td>
-        </tr>
+      </c:forEach>
       </tbody>
     </table>
+    <form id="frm">
+    </form>
     <!-- 쇼케이스 버전 테이블 끝 -->
 
     <!-- ALL JS FILES -->
@@ -346,20 +178,107 @@
     <script src="js/contact-form-script.js"></script>
     <script src="js/custom.js"></script>
 
+
+	<script>
+		
+	</script>
+
+
     <!-- kakaomap api test -->
     <script
       type="text/javascript"
-      src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=7f7aaf0e4c0e87d3a6bc257b1b323e35"
+      src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=${kakaoAppKey}&libraries=services,clusterer,drawing"
     ></script>
-    <script>
-      var mapContainer = document.getElementById("map"), // 지도를 표시할 div
-        mapOption = {
-          center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-          level: 3, // 지도의 확대 레벨
-        };
+   <script>
+   var nameList =[];
+   var addressList =[];
+   	<c:forEach var="hospital" items="${hospitalList}" varStatus="status">
+   		nameList.push("${hospital.hospitalName}");
+   		addressList.push("${hospital.hospitalAddress}")
+   	</c:forEach>
+   	
+   	console.log(nameList);
+   	console.log(nameList[0]);
+   	console.log(nameList.length);
+   	console.log(addressList);
+	
+	var mapContainer = document.getElementById('map'); // 지도를 표시할 div  
+	   mapOption = { 
+	       center: new kakao.maps.LatLng(37.56623853482794, 126.97853923627761), // 지도의 중심좌표
+	       level: 6 // 지도의 확대 레벨
+	   };
 
-      // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-      var map = new kakao.maps.Map(mapContainer, mapOption);
+		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+	//주소-좌표 변환 객체를 생성합니다
+	var geocoder = new kakao.maps.services.Geocoder();
+	
+		var coords=[];
+		let addressValue = "";
+		// 주소로 좌표를 검색합니다
+		for(let i=0; i<addressList.length; i++){
+			
+		geocoder.addressSearch(addressList[i], function(result, status) {
+			// 정상적으로 검색이 완료됐으면 
+			if (status === kakao.maps.services.Status.OK) {
+				addressValue = new kakao.maps.LatLng(result[0].y, result[0].x);
+				coords[i] = addressValue;
+				console.log("좌표값 : "+coords[i]+" "+i);
+				}
+			//마커 이미지의 이미지 주소입니다
+			var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+			   
+		   // 마커 이미지의 이미지 크기 입니다
+		   var imageSize = new kakao.maps.Size(24, 35); 
+		   
+		   // 마커 이미지를 생성합니다    
+		   var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+		   
+		   // 마커를 생성합니다
+		   var marker = new kakao.maps.Marker({
+		       map: map, // 마커를 표시할 지도
+		       position: coords[i], // 마커를 표시할 위치
+		       title : nameList[i], // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+		       image : markerImage, // 마커 이미지 
+		   		clickable : true
+		 	  });
+		   var iwContent = '<div style="padding:5px;">'+nameList[i]+'</div>'; // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+			var iwPosition = new kakao.maps.LatLng(33.450701, 126.570667);
+			// 인포윈도우를 생성합니다
+			var infowindow = new kakao.maps.InfoWindow({
+			    content : iwContent
+			});
+			
+			console.log("iwContent"+iwContent);
+			console.log("infowindow"+infowindow);
+			
+
+			// 마커에 마우스오버/아웃 이벤트를 등록합니다
+			kakao.maps.event.addListener(marker, 'mouseover', function() {
+			    infowindow.open(map, marker);
+				});
+			// 마커에 마우스오버 이벤트를 등록합니다
+			kakao.maps.event.addListener(marker, 'mouseout', function() {
+			  // 마커에 마우스오버 이벤트가 발생하면 인포윈도우를 마커위에 표시합니다
+			    infowindow.close();
+				});
+		   
+			});
+		}
+		
+		 //지도 위치를 처음 검색된 곳으로 이동시켜줌
+	      geocoder.addressSearch(addressList[1], function(result, status) {
+	         // 정상적으로 검색이 완료됐으면 
+	         if (status === kakao.maps.services.Status.OK) {
+	            addressValue = new kakao.maps.LatLng(result[0].y, result[0].x);
+	            coords[1] = addressValue;   
+	            }
+	         //전체 리스트 표출되면 적용안되도록 제한
+	         if(nameList.length < 800){
+	         map.setCenter(addressValue);
+	         }
+	      });
+		
     </script>
   </body>
 </html>

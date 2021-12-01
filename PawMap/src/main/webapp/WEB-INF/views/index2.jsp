@@ -97,20 +97,22 @@ pageEncoding="UTF-8"%>
 
     <!-- 검색 부분-->
     <div class="container custom_margin">
-      <div class="d-flex justify-content-center">
-        <div class="search">
-          <h3 class="text-center text-uppercase font-weight-bold">
-            우리 동네 병원을 찾아보세요!
-          </h3>
-          <input
-            class="search_input"
-            type="text"
-            name=""
-            placeholder="search items !"
-          />
-          <a href="#" class="search_icon"><i class="fa fa-search"></i></a>
-        </div>
-      </div>
+      <form action="/pawmap/searchDetail" method="get">
+	      <div class="d-flex justify-content-center">
+	        <div class="search">
+	          <h3 class="text-center text-uppercase font-weight-bold">
+	            우리 동네 병원을 찾아보세요!
+	          </h3>
+	          <input
+	            class="search_input"
+	            type="text"
+	            name="value"
+	            placeholder="search items !"
+	          />
+	          <button type="submit"  class="search_icon"><i class="fa fa-search"></i></button>
+	        </div>
+	      </div>
+      </form>
     </div>
     <!-- 검색 부분 끝-->
 
