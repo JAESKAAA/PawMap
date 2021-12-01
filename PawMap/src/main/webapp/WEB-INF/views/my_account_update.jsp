@@ -2,7 +2,7 @@
 pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
 
 <!-- Start 회원정보 타이틀 영역 -->
-<div class="all-title-box">
+<div class="pet-all-title-box">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -79,10 +79,10 @@ pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
             style="display: inline-block; width: 70%"
             name="userNickname"
             class="form-control"
-            id="nickname"
+            id="user_nickname"
             value="${user.userNickname }"
           />
-          <button class="btn btn-lg btn-success">중복확인</button>
+          <button type="button" onclick="fn_mnickcheck()">중복체크</button>
         </div>
         <div class="mb-3">
           <label for="phone">연락처</label>
@@ -103,11 +103,11 @@ pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
             style="display: inline-block; width: 70%"
             class="form-control"
             name="userEmail"
-            id="email"
+            id="user_email"
             value="${user.userEmail }"
             required
           />
-          <button class="btn btn-lg btn-success">중복확인</button>
+          <button type="button" onclick="fn_emailcheck()">중복체크</button>
         </div>
         <div class="mb-3">
           <label for="address">주소</label>
@@ -131,7 +131,7 @@ pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
           </button>
         </div>
       </form>
-      <button class="btn btn-lg btn-success mt-3" onclick="deleteUserCheck()">
+      <button class="btn btn-lg btn-success mt-3" onclick="deleteUserCheck()" >
         회원탈퇴
       </button>
     </div>
