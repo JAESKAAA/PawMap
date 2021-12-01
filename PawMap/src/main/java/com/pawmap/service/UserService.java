@@ -24,6 +24,9 @@ public interface UserService {
 	
 	// 닉네임 중복 검사
 	public int nickCheck(String nickname) throws Exception;
+	
+	// 이메일 중복 검사
+	public int emailCheck(String email) throws Exception;
 
 	public UserVO checkDuplicateId(@Param("userId") int userId);
 	
