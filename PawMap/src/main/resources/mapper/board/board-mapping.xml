@@ -151,6 +151,7 @@
 		</if>
 	</select>
 
+
 	
 	<select id="getLatelyBoardListForBoardMain" resultType="HashMap">
 		select b.*, f.originalFilename
@@ -180,5 +181,4 @@
 	</select> -->
 
   </mapper>	
-
 

@@ -30,6 +30,7 @@
 .search:hover > .search_icon {
   background: red;
   color: #fff;
+  
 }
 
 .search_icon {
@@ -40,8 +41,10 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  color: white;
+  color: #e1a963;
   background-color: black;
+  border : none;
+  transition : all 0.2s linear;
 }
 
 a:link {
