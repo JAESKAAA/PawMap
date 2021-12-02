@@ -1,3 +1,6 @@
 hyegee helped me connecting the github on my visual studio.
 
 from thomas the great
+
+index2.jsp에 발생한 cover-slide의 border radius 이슈, 그리고 h3 태그에 있는 text-ceneter에 강제로 width 100px 잡혀 있던 이슈 해결.
+Dec 1st at 8:37pm, jaeskaaa requested to identify and modify any duplicated css class name. this is the revised version of jsp and css file."

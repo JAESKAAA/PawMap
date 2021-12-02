@@ -52,7 +52,7 @@ box-sizing: border-box;
 
 /* board-free.html 관련 스타일 */
 
-.cover-slides-free-board{
+.cover-slides-board-free{ /*Modified by Thomas lee on Dec 1st at 20:28pm due to duplicated class name. the same name of class was found both bootstrap.min.css and style-gyul.css file. The previous class name was "cover-slides" but it was replaced as "cover-slides-free-board". Since gogyul use this "cover-slides" class for boarder radius on only his page, this newly replaced class name would be applied on board-free.html only*/
     border-radius: 25px;
     border: 1px solid rgba(204, 156, 22, 0.8);
 }
@@ -62,7 +62,7 @@ box-sizing: border-box;
 #slides-shop{
     height: 200px;
 }
-p.text-center{
+p.text-center{ /*Modified by Thomas lee on Dec 1st at 20:24pm due to duplicated class name. the same name of class was found both bootstrap.min.css and style-gyul.css file. The previous class name was "text-center" but it was replaced as "p.text-center". Since gogyul use this "text-center" class on <p>tag only, this newly replaced class name would be applied on hospital-join-form and user-join-form.*/
     width: 100px;
 }
 .btn-next, .btn-prev{
