@@ -42,7 +42,8 @@ public class Criteria {
 
 	@Override
 	public String toString() {
-		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + "]";
+		return "Criteria [pageNum=" + pageNum + ", amount=" + amount + ", startNum=" + startNum + "]";
 	}
-	
+
+
 }

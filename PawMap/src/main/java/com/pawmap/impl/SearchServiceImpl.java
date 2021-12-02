@@ -1,6 +1,8 @@
 package com.pawmap.impl;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,16 +10,16 @@ import org.springframework.stereotype.Service;
 import com.pawmap.VO.Criteria;
 import com.pawmap.VO.HospitalVO;
 import com.pawmap.mapper.SearchMapper;
+import com.pawmap.service.SearchService;
 
 @Service
-public class SearchServiceImpl implements SearchMapper {
+public class SearchServiceImpl implements SearchService {
 
 	@Autowired
 	private SearchMapper searchMapper;
 	
 	@Override
 	public HospitalVO findHospitalData(String vo) {
-
 		return searchMapper.findHospitalData(vo);
 		
 	}
@@ -31,27 +33,39 @@ public class SearchServiceImpl implements SearchMapper {
 	
 	@Override
 	public List<HospitalVO> getHospitalList() {
-
 		return searchMapper.getHospitalList();
 	}
 	@Override
 	public List<HospitalVO> getHospitalList(Criteria cri) {
-		
 		return searchMapper.getHospitalList(cri);
 	}
 	
 	@Override
-	public List<HospitalVO> searchHospitalList(String value) {
-		return searchMapper.searchHospitalList(value);
+	public List<HospitalVO> searchHospitalList(String value, Criteria cri) {
+		
+		return searchMapper.searchHospitalList(value, cri);
 	}
 	
 	@Override
 	public HospitalVO getHospital(HospitalVO vo) {
+
 		return searchMapper.getHospital(vo);
 	}
+	
+	@Override
+	public int getHospitalCount() {
+
+		return searchMapper.getHospitalCount();
+	}
+	
 	@Override
 	public List<HospitalVO> getListWithPaging(Criteria cri) {
-	// TODO Auto-generated method stub
-	return null;
-}
+
+		return searchMapper.getListWithPaging(cri);
+	}
+
+	@Override
+	public int getSearchHospitalCount(String value) {
+		return searchMapper.getSearchHospitalCount(value);
+	}
 }

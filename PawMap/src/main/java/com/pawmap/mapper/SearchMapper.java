@@ -1,9 +1,10 @@
 package com.pawmap.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.apache.ibatis.annotations.Param;
 
 import com.pawmap.VO.Criteria;
 import com.pawmap.VO.HospitalVO;
@@ -19,9 +20,13 @@ public interface SearchMapper {
 	
 	public List<HospitalVO> getHospitalList(Criteria cri);
 	
-	List<HospitalVO> searchHospitalList(@RequestParam String value);
+	public List<HospitalVO> searchHospitalList(@Param("value") String value, @Param("criteria") Criteria cri);
 	
-	HospitalVO getHospital(HospitalVO vo);
+	public HospitalVO getHospital(HospitalVO vo);
 
-	List<HospitalVO> getListWithPaging(Criteria cri);
+	public List<HospitalVO> getListWithPaging(Criteria cri);
+	
+	public int getSearchHospitalCount(String value);
+	
+	public int getHospitalCount();
 }
