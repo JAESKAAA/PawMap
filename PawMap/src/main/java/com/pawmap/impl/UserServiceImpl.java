@@ -78,6 +78,12 @@ public class UserServiceImpl implements UserService{
 	public int nickCheck(String nickname) throws Exception {
 		return userMapper.nickCheck(nickname);
 	}
+	
+	 // 이메일 중복 체크
+	@Override
+	public int emailCheck(String email) throws Exception {
+		return userMapper.emailCheck(email);
+	}
 
 	@Override
 	public Map<String, Object> login(Map<String, Object> args) {

@@ -28,6 +28,9 @@ public interface UserMapper {
 	
 	// 닉네임 중복 검사
 	public int nickCheck(String nickname);
+	
+	// 이메일 중복 검사
+	public int emailCheck(String email);
 
 
 	//아이디 찾기 
