@@ -104,7 +104,6 @@ pageEncoding="UTF-8"%>
             <c:choose>
                 <c:when test="${empty fileList}">
                     <form action="updateFreeBoardFormInsertFiles" method="POST" enctype="multipart/form-data">
-                        <h5>파일이 없을떄 ${fileList}</h5>
                         <div class="r form-group ml-5">
                             <div class="col-sm-10 col-sm-offset-2">
                                 <div class="row form-group">  
@@ -114,12 +113,10 @@ pageEncoding="UTF-8"%>
                                                 <div class="entry input-group upload-input-group">  
                                                     <input class="form-control btn-file-upload" name="uploadFiles" multiple="multiple" type="file">  
                                                     <input type="hidden" name="userId"  value="${getBoard.userId}">
-                                                    <input type="hidden" name="boardSeq"  value="${getBoard.boardSeq}">
-                                                    <h1>${getBoard.userId}</h1>
-                                                    <h1>${getBoard.boardSeq}</h1>
+                                                    <input type="hidden" name="boardSeq"  value="${getBoard.boardSeq}">   
                                                 </div>  
                                                 <div class="entry input-group upload-input-group">  
-                                                    <button type="submit" class="btn btn-outline-danger">파일 등록</button>
+                                                    <button type="submit" class="btn btn-outline-danger mt-2">파일 등록</button>
                                                 </div>  
                                             </div>  
                                         </div>  
