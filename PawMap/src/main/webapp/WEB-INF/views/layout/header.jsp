@@ -104,7 +104,7 @@ pageEncoding="UTF-8"%>
               data-in="fadeInDown"
               data-out="fadeOutUp"
             >
-              <li class="nav-item active">
+              <li class="nav-item">
                 <a class="nav-link" href="/pawmap">Home</a>
               </li>
               <li class="nav-item">
