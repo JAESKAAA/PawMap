@@ -33,13 +33,12 @@
   	</select> -->
   	
   	<insert id="insertFreeAndNanumBoard">
-  		INSERT INTO board(board_seq, board_type, user_id, title, content,hospital_seq, regDate) VALUES(
+  		INSERT INTO board(board_seq, board_type, user_id, title, content, regDate) VALUES(
   				(SELECT IFNULL(MAX(BOARD_SEQ), 0) + 1 FROM BOARD A WHERE BOARD_TYPE = #{boardType}),
   				#{boardType},
   				#{userId},
   				#{title},
   				#{content},
-  				#{hospitalSeq},
   				NOW()
   		)
   	</insert>
@@ -64,7 +63,7 @@
   	</select> -->
   	
   	<select id="getFreeBoardList" parameterType="HashMap" resultMap="boardResult">
-  		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname
+  		SELECT b.board_seq, b.board_type, b.user_id, b.title, b.content, b.regDate, u.user_nickname
   		FROM board AS b
   		INNER JOIN user AS u
   		ON b.user_id = u.user_id
@@ -102,7 +101,7 @@
   	</select> -->
   	
   	<select id="getFreeBoard" resultType="com.pawmap.VO.BoardVO" resultMap="boardResult">
-  		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname 
+  		SELECT b.board_seq, b.board_type, b.user_id, b.title, b.content, b.regDate, u.user_nickname 
   		FROM board AS b
   		INNER JOIN user AS u
   		ON b.user_id = u.user_id

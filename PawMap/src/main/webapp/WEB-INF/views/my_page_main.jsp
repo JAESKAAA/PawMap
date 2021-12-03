@@ -64,7 +64,7 @@ pageEncoding="UTF-8"%>
                         <div class="account-box">
                             <div class="service-box">
                                 <div class="service-icon">
-                                    <a href="#"><i class="fas fa-newspaper"></i></a>
+                                    <a href="/pawmap/mypage/reservationList?userId=${principal.user.userId}"><i class="fas fa-newspaper"></i></a>
                                 </div>
                                 <div class="service-desc">
                                     <h4>예약정보</h4>
