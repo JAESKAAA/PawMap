@@ -36,7 +36,7 @@ pageEncoding="UTF-8"%>
                           <div class="user-column-div">
                             <div>
                               <label class="form-label mt-2" for="user_id"
-                                >회원 아이디</label
+                                >아이디</label
                               >
                             </div>
                           </div>
@@ -76,9 +76,8 @@ pageEncoding="UTF-8"%>
                         <div class="form-outline flex-fill mb-0">
                           <div class="user-column-div">
                             <div>
-                              <label class="user-form-label mt-2" for="user_name"
-                                >이름</label
-                              >
+                              <label class="form-label mt-2" for="user_name"
+                                >병원 상호명</label>
                             </div>
                           </div>
                           <input

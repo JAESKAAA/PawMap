@@ -234,6 +234,8 @@ public class UserController {
 		vo.setUserPassword(encPassword);
 		userService.insertHospitalUser(vo);
 		
+		userService.insertHospitalData(vo);
+		
 		return "redirect:/loginForm";
 	}
 

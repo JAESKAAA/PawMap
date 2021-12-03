@@ -22,16 +22,32 @@
   				ORDER BY hospital_seq
   	</select>
   	
-  	<select id="searchHospitalList" resultMap="hospitalList" parameterType="String">
-  		SELECT hospital_seq, hospital_id, hospital_name, hospital_address, hospital_tel_num FROM hospital_data 
-  				WHERE hospital_status_code = '01'
-  				AND hospital_address LIKE CONCAT('%',#{value},'%')
-  				ORDER BY hospital_seq
+  	<select id="searchHospitalList" resultMap="hospitalList">
+		SELECT * FROM hospital_data 
+  				WHERE (hospital_address LIKE CONCAT('%',#{value},'%') OR hospital_name LIKE CONCAT('%',#{value},'%')) 
+  				AND hospital_status_code = "01"
+  				ORDER BY hospital_type
+  				LIMIT #{criteria.startNum}, #{criteria.amount}
   	</select>
 	
+	<select id="getSearchHospitalCount" resultType="int" parameterType="String">
+		SELECT COUNT(*) FROM hospital_data 
+  				WHERE (hospital_address LIKE CONCAT('%',#{value},'%') OR hospital_name LIKE CONCAT('%',#{value},'%')) 
+  				AND hospital_status_code = "01"
+  				ORDER BY hospital_type
+	</select>
+	
+	<select id="getHospitalCount" resultType="int">
+		SELECT COUNT(*) FROM hospital_data WHERE hospital_status_code = '01'
+	</select>
+	
 	<select id="getHospital" resultMap="hospitalList">
-  		SELECT hospital_seq, hospital_id, hospital_name, hospital_address, hospital_tel_num FROM hospital_data 
+  		SELECT hospital_seq, hospital_id, hospital_name, hospital_address, hospital_tel_num, hospital_com_num, hospital_type FROM hospital_data 
   				WHERE hospital_status_code = '01' AND hospital_seq = #{hospitalSeq}
+  	</select>
+  	
+  	<select id="getListWithPaging" parameterType="com.pawmap.VO.Criteria" resultMap="hospitalList">
+  		SELECT * FROM hospital_data where hospital_status_code ='01' ORDER BY hospital_type LIMIT #{startNum}, #{amount};
   	</select>
   	
 	<insert id="insertHospitalData" parameterType="com.pawmap.VO.HospitalVO">
