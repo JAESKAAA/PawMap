@@ -161,26 +161,13 @@
 
     <!-- 커스텀 JS 파일 - 재석-->
     <script src="${pageContext.request.contextPath}/js/custom-jaeseok.js"></script>
-<<<<<<< HEAD
-<<<<<<< HEAD
-   
-    <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
 
-<<<<<<< HEAD
-=======
     <!-- 커스텀 JS 파일 - 고결-->
     <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
->>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
-=======
-   
-    <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
 
->>>>>>> 4fa110d214c0d1d15a62db3292c72a9eccb2dc3f
-=======
     <!--주소검색-->
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
->>>>>>> 84db7241fc2be545b7231d970cc89c96ea3b8575
       <!-- 아이디 비밀번호 공백확인 alert창 -->
     <script>
       function makeTestData() {
