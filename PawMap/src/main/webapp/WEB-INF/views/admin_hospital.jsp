@@ -50,19 +50,19 @@ pageEncoding="UTF-8"%>
                 </thead>
                 <tbody>
                  <c:forEach var="user" items="${userList }">
-		            <tr>
-		                <td class="admin-userseq">${user.userSeq }</td>
-		                <td class="admin-userid">${user.userId }</td>
-		                <td class="admin-useremail">${user.userEmail }</td>
-		                <td class="admin-username">${user.userName }</td>
-		                <td class="admin-usertelnum">${user.userTelNum }</td>
-                    <td class="admin-address">${user.address }</td>
-                    <td class="admin-comnum">${user.comNum }</td>
-                    <td class="admin-role">${user.role }</td>
-                    <td class="admin-userregdate">${user.userRegDate }</td>
-		                <td class="admin-useractionbutton"><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
-		            </tr>
-       			</c:forEach>
+                  <tr>
+                      <td class="admin-userseq">${user.userSeq }</td>
+                      <td class="admin-userid">${user.userId }</td>
+                      <td class="admin-useremail">${user.userEmail }</td>
+                      <td class="admin-username">${user.userName }</td>
+                      <td class="admin-usertelnum">${user.userTelNum }</td>
+                      <td class="admin-address">${user.address }</td>
+                      <td class="admin-comnum">${user.comNum }</td>
+                      <td class="admin-role">${user.role }</td>
+                      <td class="admin-userregdate">${user.userRegDate }</td>
+                      <td class="admin-useractionbutton"><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage5usermodify-tom.html'">관리하기</button></td>
+                  </tr>
+                </c:forEach>
                 </tbody>
               </table>
           </div>
@@ -84,5 +84,5 @@ pageEncoding="UTF-8"%>
       </div>
     </div>
     <!--페이지 네비게이션 종료-->
-
     <%@ include file="layout/admin_footer.jsp" %>
+

@@ -52,4 +52,4 @@ pageEncoding="UTF-8"%>
     	</form>
     
 
-      <%@ include file="layout/admin_footer.jsp" %>
+<%@ include file="layout/admin_footer.jsp" %>

@@ -82,14 +82,14 @@
   	</insert>
   	<!-- (관리자페이지)일반 유저 리스트 -->
   	<select id="getUserList" resultMap="userList">
-  		SELECT user_seq, user_type, user_id, user_email, user_name, user_nickname, user_tel_num, address, com_num FROM user 
+  		SELECT * FROM user  <!-- user_seq, user_type, user_id, user_email, user_name, user_nickname, user_tel_num, address, com_num  -->
   				WHERE user_type = 'N'
   				ORDER BY user_seq
   	</select>
   	
   	<!-- (관리자페이지)병원 유저 리스트 -->
   	<select id="getHospitalUserList" resultMap="userList">
-  		SELECT user_seq, user_type, user_id, user_email, user_name, user_nickname, user_tel_num, address, com_num FROM user 
+  		SELECT * FROM user <!-- user_seq, user_type, user_id, user_email, user_name, user_nickname, user_tel_num, address, com_num -->
   				WHERE user_type = 'H'
   				ORDER BY user_seq
   	</select>

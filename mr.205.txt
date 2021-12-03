@@ -4,3 +4,25 @@ from thomas the great
 
 index2.jsp에 발생한 cover-slide의 border radius 이슈, 그리고 h3 태그에 있는 text-ceneter에 강제로 width 100px 잡혀 있던 이슈 해결.
 Dec 1st at 8:37pm, jaeskaaa requested to identify and modify any duplicated css class name. this is the revised version of jsp and css file."
+
+
+
+2. Dec 2nd 11:04 am
+
+custom-teampawmap.css에 모든 팀원의 css 파일 병합함.
+해당 파일은 현재 시간 기준으로 이슈 사항 없음.
+참고 사항으로는 custom-teampawmap.css 파일내에 고결이가 작성한 css 파일을 수정하였음.
+참고 안내는 custom-teampawmap.css 파일 내에서 crt+f 로 고결 이름을 기입해 확인 할 것.
+
+현 프로젝트 버젼은 아직 git에 업로드 되어있는 develop branch (84db724)다운 받기 전임
+
+
+3. Dec 3rd. at 1:23pm
+
+error....
+
+Loading class `com.mysql.jdbc.Driver'. This is deprecated. The new driver class is `com.mysql.cj.jdbc.Driver'. The driver is automatically registered via the SPI and manual loading of the driver class is generally unnecessary.
+
+mysql error after touching admin page jsps....
+
+10:42am 버젼때는 상기 com.mysql.jdbc.Driver 오류가 없었음...

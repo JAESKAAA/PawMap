@@ -3,15 +3,15 @@ pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="layout/admin_header.jsp" %>
 <!--관리자의 회원정보 관리 페이지 시작...-->
-    <div> 
-        <h1 style="text-align: center; font-size:30px; margin-top:5%;">회원정보 관리</h1>
+    <div class="tbl-header"> 
+        <h1 class="adminpagetoph1">회원정보 관리</h1>
     </div>
         <!-- search 버튼 시작 -->
-        <div class="row">
+        <div class="row tbl-header">
           <div class="main-search-input-wrap" >
-              <div class="main-search-input fl-wrap" style="margin-top: 30px;">
+              <div class="main-search-input fl-wrap">
                   <div class="main-search-input-item"> 
-                      <input type="text" value="" placeholder="Search Products..."> 
+                      <input type="text" value="" placeholder="검색창입니다."> 
                   </div> 
                 <button class="main-search-button">Search</button>
               </div>
@@ -19,26 +19,50 @@ pageEncoding="UTF-8"%>
         </div>
         <!--search button finished...-->
         <!--회원정보 관리 리스트 시작-->
-    <div style="margin-top: 40px; border-style: 3px solid orange ">
-        <table style="margin-left: auto; margin-right: auto; text-align: center;">
+    <div id="adminusermanage" class="adminpagetablediv">
+        <table class="table-striped table-hover adminpagetable">
+          <colgroup>
+            <col>
+            <col>
+            <col>
+            <col>
+            <col>
+            <col>
+            <col>
+            <col>
+            <col>
+            <col >
+          </colgroup>
+          <thead class="admintablehead"> 
             <tr>
-                <th>번째</th>
-                <th>이름</th>
-                <th>닉네임</th>
-                <th>이메일</th>
-                <th>연락처</th>
-                <th>관리</th>
+                <th class="admin-userseq">#</th>
+                <th class="admin-userid">아이디</th>
+                <th class="admin-useremail">이메일</th>
+                <th class="admin-username">이름/상호명</th>
+                <th class="admin-usertelnum">연락처</th>
+                <th class="admin-address">주소</th>
+                <th class="admin-usernickname">닉네임</th>
+                <th class="admin-role">회원타입</th>
+                <th class="admin-userregdate">등록일</th>
+                <th class="admin-useractionbutton"></th>
             </tr>
-           <c:forEach var="user" items="${userList }">
-            <tr>
-                <td>${user.userSeq }</td>
-                <td>${user.userName }</td>
-                <td>${user.userNickname }</td>
-                <td>${user.userEmail }</td>
-                <td>${user.userTelNum }</td>
-                <td><button style="margin-left: 30px;" type="button" onclick="location.href='/pawmap/getUser?userId=${user.userId}'">관리하기</button></td>
-            </tr>
-           </c:forEach>
+          </thead>
+          <tbody>
+            <c:forEach var="user" items="${userList }">
+              <tr>
+                <td class="admin-userseq">${user.userSeq }</td>
+                <td class="admin-userid">${user.userId }</td>
+                <td class="admin-useremail">${user.userEmail }</td>
+                <td class="admin-username">${user.userName }</td>
+                <td class="admin-usertelnum">${user.userTelNum }</td>
+                <td class="admin-address">${user.address }</td>
+                <td class="admin-usernickname">${user.userNickname }</td>
+                <td class="admin-role">${user.role }</td>
+                <td class="admin-userregdate">${user.userRegDate }</td>
+                <td class="admin-useractionbutton"><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage5usermodify-tom.html'">수정</button></td>
+              </tr>
+            </c:forEach>
+          </tbody>            
         </table>
     </div>
     <!--page navigation-->
