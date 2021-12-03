@@ -21,7 +21,8 @@
 
 .search .search_input {
   padding: 0 10px;
-  width: 550px;
+  width: 500px;
+  min-width: 100px;
   caret-color: red;
   transition: width 0.4s linear;
   border-bottom: 1px solid black;

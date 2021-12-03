@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
+import com.pawmap.VO.ShelterVO;
 import com.pawmap.VO.UserVO;
 
 @Component
@@ -62,5 +63,12 @@ public interface UserService {
 	//관리자 페이지 수정 메서드
 	public void updateUserAdmin(UserVO vo);
 
+	
+	/// Below classes methods were created by thomas lee on Dec 3rd 20:51pm
+	/// he created methods the methods "shelter information" for admin management. 
+	
+	//보호소 센터 리스트 가져오는 메서드
+	public List<ShelterVO> getShelterList(ShelterVO vo);
+	
 
 }

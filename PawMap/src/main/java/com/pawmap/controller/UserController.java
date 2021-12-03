@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.pawmap.VO.ShelterVO;
 import com.pawmap.VO.UserVO;
 import com.pawmap.configuration.auth.PrincipalDetails;
 import com.pawmap.configuration.auth.PrincipalDetailsService;
@@ -462,5 +463,77 @@ public class UserController {
 				return "ok";
 			}
 		}
-
+		/// Below controllers' methods were created by thomas lee on Dec 3rd 20:31pm
+		/// he created methods the methods "shelter information" for admin management. 
+		
+		@Autowired
+		private UserService shelterService; // the UserService interface was declared as shelterService for admin management...
+		
+		
+		//관리자페이지 -> 보호소정보 관리로 이동
+		@GetMapping("/admin/shelterInfo")
+		public String shelterInfoForm() {
+			return "admin_shelter"; // this leads user to go onadmin_shetler.jsp.....
+		}
+		
+		// 보호소 정보 출력 (관리자 페이지 -> 보호소정보 관리 )
+		@RequestMapping("/admin/getShelterList")
+		@ResponseBody
+		public String getShelterList(ShelterVO vo, Model model) {
+			System.out.println("getShelterList 메소드가 호출 되었습니다==========."+vo);
+			System.out.println("getShelterList 메소드가 호출 되었습니다.");
+			
+			//리스트에 담긴 값 확인용 코드.
+			List<ShelterVO> list = shelterService.getShelterList(vo);
+			System.out.println("ShelterList 표출 ==" + list);
+			
+			model.addAttribute("ShelterList", shelterService.getShelterList(vo));
+		
+			return "admin_shelter";
+		}
+		
+		
+//		
+//		//일반 유저 목록 표출
+//		@GetMapping("/getUserList")
+//		public String getUserList(UserVO vo, Model model) {
+//			System.out.println("getUserList 호출 !!");
+//			
+//			//리스트에 담긴 값 확인용 코드
+//			List<UserVO> list = userService.getUserList(vo);
+//			System.out.println("UserList 표출=="+list);
+//			
+//			model.addAttribute("userList", userService.getUserList(vo));
+//			
+//			return "admin_user";
+//		}
+//		
+//		//특정 유저 정보 출력
+//		@GetMapping("/getUser")
+//		public String getUser(UserVO vo, Model model) {
+//			System.out.println("getUser 호출 !!");
+//			System.out.println("vo.getSeq() ==== "+ vo.getUserSeq());
+//			
+//			UserVO user = userService.getUser(vo);
+//			System.out.println("user 정보 출력== " + user);
+//			
+//			 model.addAttribute("user", userService.getUser(vo));
+//			
+//			return "admin_user_detail";
+//		}
+//		
+//		//병원 유저 목록 표출
+//		@GetMapping("/getHospitalList")
+//		public String getHospitalList(UserVO vo, Model model) {
+//			System.out.println("getHospitalList 호출 !!");
+//			
+//			//리스트에 담긴 값 확인용 코드
+//			List<UserVO> list = userService.getHospitalUserList(vo);
+//			System.out.println("UserList 표출=="+list);
+//			
+//			model.addAttribute("userList", userService.getHospitalUserList(vo));
+//			
+//			return "admin_user";
+//			
+//		}
 }

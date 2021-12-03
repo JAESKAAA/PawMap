@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.pawmap.VO.ShelterVO;
 import com.pawmap.VO.UserVO;
 import com.pawmap.mapper.UserMapper;
 import com.pawmap.service.MailService;
@@ -237,6 +238,17 @@ public class UserServiceImpl implements UserService{
 		return result;
 	}
 
+	/// Below classes methods were created by thomas lee on Dec 3rd 21:07pm
+	/// he created methods the methods "shelter information" for admin management. 
+	
+	@Autowired 
+	private UserMapper shelterMapper;
+	
+	//보호소 센터 리스트 가져오는 메서드
+	@Override
+	public List<ShelterVO> getShelterList(ShelterVO vo) {
+		return shelterMapper.getShelterList(vo);
+	}
 
 }
 

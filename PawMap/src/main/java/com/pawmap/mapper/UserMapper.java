@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.pawmap.VO.ShelterVO;
 import com.pawmap.VO.UserVO;
 
 
@@ -70,6 +71,11 @@ public interface UserMapper {
 	public void updateUserAdmin(UserVO vo);
 	public UserVO searchPwd(@Param("userId")String userId, @Param("userName")String userName);
 
-
+	/// Below classes methods were created by thomas lee on Dec 3rd 21:10pm
+	/// he created methods the methods "shelter information" for admin management. 
+	
+	//보호소 센터 리스트 가져오는 메서드
+	public List<ShelterVO> getShelterList(ShelterVO vo);
+	
 
 }

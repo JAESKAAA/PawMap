@@ -390,3 +390,9 @@
 * adminpage2vetmanage-tom 끝.
 */
 
+/*
+* Dec 3rd, adminindex page에 있는 row class modifier..  기존 div class="row"에다가 justify-content을 center로 처리함.
+*/
+.row-adminindex {
+    justify-content: center
+}

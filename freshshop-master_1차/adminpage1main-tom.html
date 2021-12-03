@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="css/custom.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom-tom.css">
-
+    <link rel="stylesheet" href="css/custom-jaeseok.css" /> <!--Nov30th, jaeskaa's css was added at 11:04am-->    
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -63,26 +63,28 @@
   <header class="main-header">
     <!-- Start Navigation --> <!--하기 navbar navbar-expand-lg를 md로 교체-->
     <nav class="navbar navbar-expand-md navbar-light bg-light navbar-default bootsnav">
-        <div class="container">
-            <!-- Start Header Navigation -->
-            <div class="navbar-header">
+      <div class="container">
+          <!-- Start Header Navigation -->
+          <div class="navbar-header">
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
               <i class="fa fa-bars"></i>
-            </button>
-                <a class="navbar-brand" href="index.html"><div class="main_logo_box"></div></a>
-            </div>
-            <!-- End Header Navigation -->
+          </button>
+              <a class="navbar-brand" href="index.html"><div class="main_logo_box"></div></a>
+          </div>
+          <!-- End Header Navigation -->
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
-                <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                    <li class="nav-item active"><a class="nav-link" href="adminpage2vetmange-tom.html"> 제휴병원 관리</a></li>
-                    <li class="nav-item"><a class="nav-link" href="adminpage4usermanage-tom.html"> 회원정보 관리</a></li>
-                    <li class="nav-item"><a class="nav-link" href="adminpage6sheltermanage-tom.html"> 보호소정보 관리</a></li>
-                    <li class="nav-item"><a class="nav-link" href="adminpage9communitymanage-tom.html"> 커뮤니티 게시판 관리</a></li>
-                    <li class="nav-item"><a class="nav-link" href="adminpage11counseloneonone-tom.html"> 1:1 상담 관리</a></li>
-                    <li class="nav-item"><a class="nav-link" href="adminpage13donationmanage-tom.html"> 후원금 관리</a></li>
-                </ul>
+                <div class="container">
+                    <div class="row row-adminindex">
+                        <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                            <li class="nav-item active"><a class="nav-link" href="adminpage2vetmange-tom.html"> 제휴병원 관리</a></li>
+                            <li class="nav-item"><a class="nav-link" href="adminpage4usermanage-tom.html"> 회원정보 관리</a></li>
+                            <li class="nav-item"><a class="nav-link" href="adminpage6sheltermanage-tom.html"> 보호소정보 관리</a></li>
+                            <li class="nav-item"><a class="nav-link" href="adminpage9communitymanage-tom.html"> 커뮤니티 게시판 관리</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -92,7 +94,7 @@
   <!--adminmainpage-->
   <div class="my-account-box-main">
     <div class="container">
-      <div class="row">
+      <div class="row row-adminindex">
         <div class="col-lg-4 col-md-12">
             <div class="account-box">
                 <div class="service-box">
@@ -119,6 +121,8 @@
                 </div>
             </div>
         </div>
+        </div>
+        <div class="row row-adminindex">
         <div class="col-lg-4 col-md-12">
             <div class="account-box">
                 <div class="service-box">
@@ -145,6 +149,7 @@
                 </div>
             </div>
         </div>
+        <!--
         <div class="col-lg-4 col-md-12">
             <div class="account-box">
                 <div class="service-box">
@@ -171,6 +176,7 @@
                 </div>
             </div>
         </div>
+      -->
       </div>
     </div>
   </div>
