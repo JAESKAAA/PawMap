@@ -16,6 +16,9 @@ public interface UserMapper {
 	//병원 회원 가입
 	void insertHospitalUser(UserVO vo);
 	
+	//제휴 병원 hospital_data 테이블에 삽입
+	void insertHospitalData(UserVO vo);
+	
 	 UserVO findByUsername(String username);
 	 
 	void socialJoin(UserVO vo);
@@ -25,6 +28,9 @@ public interface UserMapper {
 	
 	// 닉네임 중복 검사
 	public int nickCheck(String nickname);
+	
+	// 이메일 중복 검사
+	public int emailCheck(String email);
 
 
 	//아이디 찾기 

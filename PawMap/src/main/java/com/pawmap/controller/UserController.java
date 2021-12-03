@@ -234,6 +234,8 @@ public class UserController {
 		vo.setUserPassword(encPassword);
 		userService.insertHospitalUser(vo);
 		
+		userService.insertHospitalData(vo);
+		
 		return "redirect:/loginForm";
 	}
 
@@ -413,6 +415,45 @@ public class UserController {
 		@RequestMapping("nickCheck")
 		@ResponseBody
 		public String nickCheck(@RequestParam("nickname") String nickname) throws Exception {
+			int result = userService.nickCheck(nickname);
+			
+			if(result > 0) {
+				return "fail";
+			} else {
+				return "ok";
+			}
+		}
+		
+		// 회원가입 닉네임중복
+		@RequestMapping("/mypage/mnickCheck")
+		@ResponseBody
+		public String mnickCheck(@RequestParam("nickname") String nickname) throws Exception {
+			int result = userService.nickCheck(nickname);
+			
+			if(result > 0) {
+				return "fail";
+			} else {
+				return "ok";
+			}
+		}
+		
+		// 이메일 중복 체크
+		@RequestMapping("/mypage/emailCheck")
+		@ResponseBody
+		public String emailCheck(@RequestParam("email") String email) throws Exception {
+			int result = userService.emailCheck(email);
+			
+			if(result > 0) {
+				return "fail";
+			} else {
+				return "ok";
+			}
+		}
+		
+		// 관리자 닉네임 중복 체크
+		@RequestMapping("/admin/anickCheck")
+		@ResponseBody
+		public String anickCheck(@RequestParam("nickname") String nickname) throws Exception {
 			int result = userService.nickCheck(nickname);
 			
 			if(result > 0) {

@@ -15,6 +15,9 @@ public interface UserService {
 	//병원 회원 가입
 	void insertHospitalUser(UserVO vo);
 	
+	//제휴 병원 hospital_data 테이블에 삽입
+	void insertHospitalData(UserVO vo);
+	
 	UserVO findByUsername(String username);
 
 	void socialJoin(UserVO vo);
@@ -24,6 +27,9 @@ public interface UserService {
 	
 	// 닉네임 중복 검사
 	public int nickCheck(String nickname) throws Exception;
+	
+	// 이메일 중복 검사
+	public int emailCheck(String email) throws Exception;
 
 	public UserVO checkDuplicateId(@Param("userId") int userId);
 	

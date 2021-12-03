@@ -17,6 +17,7 @@ public class BoardVO {
 	private String boardType;
 	private String userId;
 	private int hospitalSeq;
+	private String comNum;
 	private String title;
 	private String content;
 	private Date regDate;

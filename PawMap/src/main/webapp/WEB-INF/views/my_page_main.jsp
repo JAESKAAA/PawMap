@@ -4,7 +4,7 @@ pageEncoding="UTF-8"%>
 <%@ include file="layout/header.jsp" %>
 
     <!-- Start 마이페이지 타이틀 영역 -->
-    <div class="all-title-box">
+    <div class="pet-all-title-box">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -61,10 +61,11 @@ pageEncoding="UTF-8"%>
                     </div>
                     <!--예약정보카드-->
                     <div class="col-lg-3 col-md-6">
-                        <div class="pet-account-box">
-                            <div class="pet-service-box">
-                                <div class="pet-service-icon">
-                                    <a href="#"><i class="fas fa-newspaper"></i></a>
+
+                        <div class="account-box">
+                            <div class="service-box">
+                                <div class="service-icon">
+                                    <a href="/pawmap/mypage/reservationList?userId=${principal.user.userId}"><i class="fas fa-newspaper"></i></a>
                                 </div>
                                 <div class="pet-service-desc">
                                     <h4>예약정보</h4>

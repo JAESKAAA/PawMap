@@ -161,8 +161,18 @@
 
     <!-- 커스텀 JS 파일 - 재석-->
     <script src="${pageContext.request.contextPath}/js/custom-jaeseok.js"></script>
+<<<<<<< HEAD
    
     <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
+
+    <!--주소검색-->
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+=======
+
+   
+    <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
+
+>>>>>>> gogo
 
       <!-- 아이디 비밀번호 공백확인 alert창 -->
     <script>

@@ -25,9 +25,8 @@ pageEncoding="UTF-8"%>
     <meta name="author" content="" />
 
 
-<%-- <%=request.getContextPath() %> --%>
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/로고최종_수정.png" type="image/x-icon" />
     <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/apple-touch-icon.png" />
     <!-- Fontawesome CSS-->
     <link
@@ -35,7 +34,6 @@ pageEncoding="UTF-8"%>
       rel="stylesheet"
     />
     
-    <%-- ${pageContext.request.contextPath} --%>
     <!--  ${request.getContextPath } -->
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
@@ -48,7 +46,8 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-jaeseok.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-gyul.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-silbia.css">
-
+        <!-- 테이블 부분 css -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footable.bootstrap.css" />
     <!-- 결 커스텀 css -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -106,7 +105,7 @@ pageEncoding="UTF-8"%>
               data-out="fadeOutUp"
             >
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="/pawmap">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="about.html">회사소개</a>
@@ -175,42 +174,6 @@ pageEncoding="UTF-8"%>
           </div>
           <!-- End Atribute Navigation -->
         </div>
-        <!-- Start Side Menu -->
-        <div class="side">
-          <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-          <li class="cart-box">
-            <ul class="cart-list">
-              <li>
-                <a href="#" class="photo"
-                  ><img src="images/img-pro-01.jpg" class="cart-thumb" alt=""
-                /></a>
-                <h6><a href="#">Delica omtantur </a></h6>
-                <p>1x - <span class="price">$80.00</span></p>
-              </li>
-              <li>
-                <a href="#" class="photo"
-                  ><img src="images/img-pro-02.jpg" class="cart-thumb" alt=""
-                /></a>
-                <h6><a href="#">Omnes ocurreret</a></h6>
-                <p>1x - <span class="price">$60.00</span></p>
-              </li>
-              <li>
-                <a href="#" class="photo"
-                  ><img src="images/img-pro-03.jpg" class="cart-thumb" alt=""
-                /></a>
-                <h6><a href="#">Agam facilisis</a></h6>
-                <p>1x - <span class="price">$40.00</span></p>
-              </li>
-              <li class="total">
-                <a href="#" class="btn btn-default hvr-hover btn-cart"
-                  >VIEW CART</a
-                >
-                <span class="float-right"><strong>Total</strong>: $180.00</span>
-              </li>
-            </ul>
-          </li>
-        </div>
-        <!-- End Side Menu -->
       </nav>
       <!-- End Navigation -->
     </header>

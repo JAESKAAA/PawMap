@@ -60,7 +60,26 @@
   				#{comNum}
   		)
   	</insert>
-  	
+  	<insert id="insertHospitalData">
+  		INSERT INTO hospital_data(
+	  			hospital_seq,
+				hospital_id,
+				hospital_name,
+				hospital_address,
+				hospital_tel_num,
+				hospital_com_num,
+				hospital_type
+  				)
+  				 VALUES(
+  				(SELECT IFNULL(MAX(hospital_seq), 0) + 1 FROM hospital_data A),
+  				#{userId},
+  				#{userName},
+				#{address},
+				#{userTelNum},
+  				#{comNum},
+  				"H"
+  		)
+  	</insert>
   	<!-- (관리자페이지)일반 유저 리스트 -->
   	<select id="getUserList" resultMap="userList">
   		SELECT user_seq, user_type, user_id, user_email, user_name, user_nickname, user_tel_num, address, com_num FROM user 
@@ -90,6 +109,16 @@
   	<!-- 닉네임 중복검사 -->
   	<select id="nickCheck" parameterType="String" resultType="int">
   		SELECT count(*) FROM user WHERE user_nickname = #{nickname}
+  	</select>
+  	
+   	<!-- 회원정보 닉네임 중복검사 -->
+  	<select id="mnickCheck" parameterType="String" resultType="int">
+  		SELECT count(*) FROM user WHERE user_nickname = #{nickname}
+  	</select> 
+  	
+  	<!-- 회원정보 이메일 중복검사 -->
+  	<select id="emailCheck" parameterType="String" resultType="int">
+  		SELECT count(*) FROM user WHERE user_email = #{email}
   	</select>
   
   	<insert id="socialJoin">

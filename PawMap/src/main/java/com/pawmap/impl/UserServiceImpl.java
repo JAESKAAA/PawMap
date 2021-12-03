@@ -52,6 +52,11 @@ public class UserServiceImpl implements UserService{
 	userMapper.insertHospitalUser(vo);
 	}
 	
+	@Override
+	public void insertHospitalData(UserVO vo) {
+		userMapper.insertHospitalData(vo);
+	}
+	
 	 @Override
 	public UserVO findByUsername(String username) {
 		return userMapper.findByUsername(username);
@@ -72,6 +77,12 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public int nickCheck(String nickname) throws Exception {
 		return userMapper.nickCheck(nickname);
+	}
+	
+	 // 이메일 중복 체크
+	@Override
+	public int emailCheck(String email) throws Exception {
+		return userMapper.emailCheck(email);
 	}
 
 	@Override
