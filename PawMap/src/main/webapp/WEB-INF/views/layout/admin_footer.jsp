@@ -150,6 +150,8 @@
     <script src="${pageContext.request.contextPath}/js/contact-form-script.js"></script>
     <script src="${pageContext.request.contextPath}/js/custom.js"></script>
     <script src="${pageContext.request.contextPath}/js/custom-silbia.js"></script>
+    <!-- admin페이지내 유저/제휴병원 리스트 검색기능 관련 js -->
+ 	<script src="${pageContext.request.contextPath}/js/admin.js"></script>
 
     <!--주소검색-->
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -159,8 +161,6 @@
       src="https://kit.fontawesome.com/f0999a1ca0.js"
       crossorigin="anonymous"
     ></script>
-
-    <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
 
     <!-- 커스텀 JS 파일 - 고결-->
     <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>

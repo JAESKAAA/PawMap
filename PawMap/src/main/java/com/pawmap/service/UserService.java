@@ -19,6 +19,7 @@ public interface UserService {
 	void insertHospitalData(UserVO vo);
 	
 	UserVO findByUsername(String username);
+	
 
 	void socialJoin(UserVO vo);
 
@@ -42,7 +43,6 @@ public interface UserService {
 
 
 	public Map<String, Object> findLoginPasswd(Map<String, Object> param);
-
 
 
 	//회원정보 수정 메서드

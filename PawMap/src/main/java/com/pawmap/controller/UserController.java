@@ -1,12 +1,16 @@
 package com.pawmap.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.server.PathParam;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,6 +23,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -463,4 +468,30 @@ public class UserController {
 			}
 		}
 
+		@GetMapping("/getUserByJson")
+		@ResponseBody
+		public Map<String,Object> getUserByJson(@PathParam("search_value")String value, Model model) {
+			
+			System.out.println("받은 데이터 == "+ value);
+			
+			List<UserVO> userList= userService.getUserList(null);
+			Map<String, Object> userMap = new HashMap<>();
+					
+			userMap.put("userList", userList);	
+			
+			return userMap;
+		}
+		@GetMapping("/getHospitalByJson")
+		@ResponseBody
+		public Map<String,Object> getHospitalByJson(@PathParam("search_value")String value, Model model) {
+			
+			System.out.println("받은 데이터 == "+ value);
+			
+			List<UserVO> userList= userService.getHospitalUserList(null);
+			Map<String, Object> userMap = new HashMap<>();
+			
+			userMap.put("userList", userList);	
+			
+			return userMap;
+		}
 }
