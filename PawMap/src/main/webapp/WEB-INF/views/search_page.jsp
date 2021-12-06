@@ -552,7 +552,7 @@ pageEncoding="UTF-8"%>
 	                fontWeight: 'bold',
 	                lineHeight: '71px',
 	                opacity :'0.9'
-	            }
+	            }	      
 	        ]
 	    
 	    });

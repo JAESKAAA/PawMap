@@ -1,11 +1,13 @@
 package com.pawmap.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -25,6 +27,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.pawmap.VO.Criteria;
+import com.pawmap.VO.PageVO;
 import com.pawmap.VO.UserVO;
 import com.pawmap.configuration.auth.PrincipalDetails;
 import com.pawmap.configuration.auth.PrincipalDetailsService;
@@ -255,14 +259,25 @@ public class UserController {
 	
 	//일반 유저 목록 표출
 	@GetMapping("/getUserList")
-	public String getUserList(UserVO vo, Model model) {
+	public String getUserList(UserVO vo, Model model, Criteria cri) {
 		System.out.println("getUserList 호출 !!");
 		
+		cri.setStartNum((cri.getPageNum()-1) *cri.getAmount());
 		//리스트에 담긴 값 확인용 코드
-		List<UserVO> list = userService.getUserList(vo);
+		List<UserVO> list = userMapper.getUserListWithPaging(cri);
 		System.out.println("UserList 표출=="+list);
 		
-		model.addAttribute("userList", userService.getUserList(vo));
+		int total = userMapper.getUserCount();
+		
+		if(list.size()!=0) {
+			System.out.println("userList 담긴거 = " +list.get(0));
+			System.out.println("userList 총 갯수 = " +list.size());
+		}
+		
+		
+		
+		model.addAttribute("userList", list);
+		model.addAttribute("pageMaker", new PageVO(cri,total));
 		
 		return "admin_user";
 	}
@@ -283,14 +298,21 @@ public class UserController {
 	
 	//병원 유저 목록 표출
 	@GetMapping("/getHospitalList")
-	public String getHospitalList(UserVO vo, Model model) {
+	public String getHospitalList(UserVO vo, Model model, Criteria cri) {
 		System.out.println("getHospitalList 호출 !!");
+		cri.setStartNum((cri.getPageNum()-1)*cri.getAmount());
 		
 		//리스트에 담긴 값 확인용 코드
-		List<UserVO> list = userService.getHospitalUserList(vo);
-		System.out.println("UserList 표출=="+list);
+		List<UserVO> list = userMapper.getHospitalUserListWithPaging(cri);
 		
-		model.addAttribute("userList", userService.getHospitalUserList(vo));
+		if(list.size()!=0) {
+			System.out.println("userList 담긴거 = " +list.get(0));
+			System.out.println("userList 총 갯수 = " +list.size());
+		}
+		int total = userMapper.getHospitalUserCount();
+		
+		model.addAttribute("userList",list);
+		model.addAttribute("pageMaker", new PageVO(cri,total));
 		
 		return "admin_user";
 		
@@ -460,4 +482,30 @@ public class UserController {
 			}
 		}
 
+		@GetMapping("/getUserByJson")
+		@ResponseBody
+		public Map<String,Object> getUserByJson(@PathParam("search_value")String value, Model model) {
+			
+			System.out.println("받은 데이터 == "+ value);
+			
+			List<UserVO> userList= userService.getUserList(null);
+			Map<String, Object> userMap = new HashMap<>();
+					
+			userMap.put("userList", userList);	
+			
+			return userMap;
+		}
+		@GetMapping("/getHospitalByJson")
+		@ResponseBody
+		public Map<String,Object> getHospitalByJson(@PathParam("search_value")String value, Model model) {
+			
+			System.out.println("받은 데이터 == "+ value);
+			
+			List<UserVO> userList= userService.getHospitalUserList(null);
+			Map<String, Object> userMap = new HashMap<>();
+			
+			userMap.put("userList", userList);	
+			
+			return userMap;
+		}
 }

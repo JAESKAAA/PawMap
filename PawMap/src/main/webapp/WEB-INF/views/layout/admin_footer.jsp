@@ -150,6 +150,8 @@
     <script src="${pageContext.request.contextPath}/js/contact-form-script.js"></script>
     <script src="${pageContext.request.contextPath}/js/custom.js"></script>
     <script src="${pageContext.request.contextPath}/js/custom-silbia.js"></script>
+    <!-- admin페이지내 유저/제휴병원 리스트 검색기능 관련 js -->
+ 	<script src="${pageContext.request.contextPath}/js/admin.js"></script>
 
     <!--주소검색-->
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -160,8 +162,23 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
-
+<!-- 페이지 처리 스크립트 시작 -->
+	<script>
+			$(document).ready(function(){
+			
+			var actionForm = $("#admin_user_paging_form");
+			
+			 $(".page-link").on("click", function(e) {
+	             e.preventDefault();
+				
+				var targetPage = $(this).attr("href");
+				
+				actionForm.find("input[name='pageNum']").val(targetPage);
+				actionForm.submit();
+			});
+		});
+		</script>
+	<!-- 페이지 처리 스크립트 끝 -->
     <!-- 커스텀 JS 파일 - 고결-->
     <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
       <!-- 아이디 비밀번호 공백확인 alert창 -->
