@@ -46,6 +46,7 @@ public class SearchController {
 	@GetMapping("/searchDetail")
 	public String showSearchDetail(@RequestParam String value, Model model, Criteria cri) {
 	
+		
 		System.out.println("벨류값 표출 "+value);
 		//요청받은 pageNum 기준으로 offset값을 amout단위로 늘려줌
 		cri.setStartNum((cri.getPageNum()-1)*cri.getAmount());
