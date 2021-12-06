@@ -17,6 +17,13 @@ public interface FileMapper {
 	void deleteFileByBoardSeq(@Param("boardSeq") int boardSeq);
 
 	void deleteOneFile(@Param("fileSeq")int fileSeq,@Param("boardSeq") int boardSeq);
+	
+	void insertPetFileList(FileVO vo);
+	
+	List<FileVO> getFileListByUserId(@Param("userId") String userId);
 
+	void deletePetFile(@Param("petSeq") int petSeq);
+
+	void updatePetFileList(FileVO fileList);
 
 }
