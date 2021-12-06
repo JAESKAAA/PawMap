@@ -1,9 +1,7 @@
 package com.pawmap.service;
 
 import java.util.List;
-
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
+import java.util.Map;
 
 import com.pawmap.VO.Criteria;
 import com.pawmap.VO.HospitalVO;
@@ -11,13 +9,19 @@ import com.pawmap.VO.HospitalVO;
 public interface SearchService {
 
 	
-	List<HospitalVO> getFreeBoardList(HospitalVO vo, Criteria cri);
-
-	List<HospitalVO> searchHospitalList(@RequestParam String value);
-
-	HospitalVO getHospital(HospitalVO vo);
+	public HospitalVO findHospitalData(String vo);
 	
+	public void insertHospitalData(HospitalVO vo);
+	
+	public List<HospitalVO> getHospitalList();
+	
+	public List<HospitalVO> getHospitalList(Criteria cri);
+	
+	public List<HospitalVO> searchHospitalList(String value, Criteria cri);
 
+	public HospitalVO getHospital(HospitalVO vo);
 	
-	
+	public int getHospitalCount();
+	public int getSearchHospitalCount(String value);
+	public List<HospitalVO> getListWithPaging(Criteria cri);
 }

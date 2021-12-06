@@ -61,12 +61,13 @@ pageEncoding="UTF-8"%>
                     </div>
                     <!--예약정보카드-->
                     <div class="col-lg-3 col-md-6">
+
                         <div class="pet-account-box">
-                            <div class="pet-service-box">
+                            <div class="service-box">
                                 <div class="pet-service-icon">
-                                    <a href="#"><i class="fas fa-newspaper"></i></a>
+                                    <a href="/pawmap/mypage/reservationList?userId=${principal.user.userId}"><i class="fas fa-newspaper"></i></a>
                                 </div>
-                                <div class="pet-service-desc">
+                                <div class="pet-pet-service-desc">
                                     <h4>예약정보</h4>
                                 </div>
                             </div>

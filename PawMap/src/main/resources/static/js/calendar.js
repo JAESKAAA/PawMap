@@ -110,6 +110,10 @@ function buildCalendar() {
                 else if(date.getDate() < day && lastDate.getDate() >= day) {
                     column.style.backgroundColor = "#FFFFFF";
                     column.style.cursor = "pointer";
+                    var dayday = fillzero(day+'');
+                    var year = today.getFullYear();
+	                var month = fillzero((today.getMonth() + 1)+'');
+	                column.id = year + month + dayday;
                     column.onclick = function(){ calendarChoiceDay(this); }
                 }
 
@@ -117,6 +121,10 @@ function buildCalendar() {
                 else if(date.getDate() == day) {
                     column.style.backgroundColor = "#FFFFE6";
                     column.style.cursor = "pointer";
+                    var dayday = fillzero(day+'');
+                    var year = today.getFullYear();
+	                var month = fillzero((today.getMonth() + 1)+'');
+	                column.id = year + month + dayday;
                     column.onclick = function(){ calendarChoiceDay(this); }
                 }
 
@@ -132,6 +140,10 @@ function buildCalendar() {
                 if(Math.sign(day) == 1 && day <= lastDate.getDate()) {
                     column.style.backgroundColor = "#FFFFFF";
                     column.style.cursor = "pointer";
+                    var dayday = fillzero(day+'');
+                    var year = today.getFullYear();
+	                var month = fillzero((today.getMonth() + 1)+'');
+	                column.id = year + month + dayday;
                     column.onclick = function(){ calendarChoiceDay(this); }
                 }
             }
@@ -149,6 +161,10 @@ function buildCalendar() {
             if(Math.sign(day) == 1 && day <= lastDate.getDate()) {
                 column.style.backgroundColor = "#FFFFFF";
                 column.style.cursor = "pointer";
+                var dayday = fillzero(day+'');
+                var year = today.getFullYear();
+                var month = fillzero((today.getMonth() + 1)+'');
+                column.id = year + month + dayday;
                 column.onclick = function(){ calendarChoiceDay(this); }
             }
         }
@@ -160,30 +176,7 @@ function buildCalendar() {
     }
 }
 
-/**
- * @brief   날짜 선택
- * @details 사용자가 선택한 날짜에 체크표시를 남긴다.
- */
-function calendarChoiceDay(column) {
 
-    // @param 기존 선택일이 존재하는 경우 기존 선택일의 표시형식을 초기화 한다.
-    if(document.getElementsByClassName("choiceDay")[0]) {
-        document.getElementsByClassName("choiceDay")[0].style.backgroundColor = "#FFFFFF";
-   
-        document.getElementsByClassName("choiceDay")[0].classList.remove("choiceDay");
-
-    }
-
-    // @param 선택일 체크 표시
-    column.style.backgroundColor = "#FF9999";
-    
-    // alert(11111);
-
-
-    // @param 선택일 클래스명 변경
-
-    column.classList.add("choiceDay");
-}
 
 /**
  * @brief   숫자 두자릿수( 00 ) 변경
@@ -201,3 +194,4 @@ function autoLeftPad(num, digit) {
 
 // 선택 날짜 확인
 console.log("choiceDay")
+

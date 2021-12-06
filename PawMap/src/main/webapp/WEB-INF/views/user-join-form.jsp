@@ -25,6 +25,7 @@ pageEncoding="UTF-8"%>
                       action="/pawmap/join"
                       method="post"
                       name="joinForm"
+                      id="joinForm"
                       onsubmit="submitJoinForm(this); return false;">
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
@@ -43,8 +44,8 @@ pageEncoding="UTF-8"%>
                             placeholder="아이디"
                             required
                           />(4자~12자)
-                          <button type="button" onclick="fn_idcheck()">중복체크</button>
                         </div>
+                        <button type="button" onclick="fn_idcheck()">중복체크</button>
                       </div>
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
@@ -122,14 +123,13 @@ pageEncoding="UTF-8"%>
                           />
                         </div>
                       </div>
-                      <!------회원가입시 입력칸이 다 채워지고 주소 검색하면 회원가입으로 넘어가는 오류 있음------------------------------------->
                       <div class="address_wrap">
                         <div class="address_name">주소</div>
                         <div class="address_input_1_wrap">
                           <div class="address_input_1_box">
                             <input class="address_input_1" name="postNum" readonly="readonly">
                           </div>
-                            <button class="address_button" onclick="execution_daum_address()">주소찾기</button>
+                            <button type="button" class="address_button" onclick="execution_daum_address()">주소찾기</button>
                           <div class="clearfix"></div>
                         </div>
                         <div class ="address_input_2_wrap">
@@ -153,7 +153,7 @@ pageEncoding="UTF-8"%>
                             </div>
                           </div>
                           <input
-                            type="tel"
+                            type="text"
                             name="userNickname"
                             id="user_nickname"
                             class="form-control"
@@ -167,8 +167,10 @@ pageEncoding="UTF-8"%>
                         class="d-flex justify-content-center mx-4 mb-3 mb-lg-4"
                       >
                         <button
-                          type="submit"
+                          type="button"
                           class="btn btn-primary btn-lg user-join-btn"
+                          id="btnJoin"
+                          onclick="join();"
                         >
                           회원가입
                         </button>

@@ -44,8 +44,8 @@ public class OpenApiHandler {
 		 */		
 		
 		//데이터는 한번에 1000개까지만 OpenAPI에서 조회 가능함
-		String startPage = "1";
-		String endPage = "1000";
+		String startPage = "2001";
+		String endPage = "2013";
 		
 		List<String> params = Arrays.asList(URL,app_key,TYPE,METHOD_NAME,startPage,endPage);
 		

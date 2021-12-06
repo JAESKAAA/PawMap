@@ -29,6 +29,7 @@ pageEncoding="UTF-8"%>
                       action="/pawmap/hospitalJoin"
                       method="post"
                       name="joinForm"
+                      id="joinForm"
                       onsubmit="submitJoinForm(this); return false;"
                     >
                       <div class="d-flex flex-row align-items-center mb-4">
@@ -36,7 +37,7 @@ pageEncoding="UTF-8"%>
                           <div class="user-column-div">
                             <div>
                               <label class="form-label mt-2" for="user_id"
-                                >회원 아이디</label
+                                >아이디</label
                               >
                             </div>
                           </div>
@@ -47,7 +48,7 @@ pageEncoding="UTF-8"%>
                             class="form-control"
                             placeholder="아이디"
                             required
-                          />
+                          />(4자~12자)
                         </div>
                         <button type="button" onclick="fn_idcheck()">중복체크</button>
                       </div>
@@ -76,9 +77,8 @@ pageEncoding="UTF-8"%>
                         <div class="form-outline flex-fill mb-0">
                           <div class="user-column-div">
                             <div>
-                              <label class="user-form-label mt-2" for="user_name"
-                                >이름</label
-                              >
+                              <label class="form-label mt-2" for="user_name"
+                                >병원 상호명</label>
                             </div>
                           </div>
                           <input
@@ -137,7 +137,7 @@ pageEncoding="UTF-8"%>
                           <div class="address_input_1_box">
                             <input class="address_input_1" name="postNum" readonly="readonly">
                           </div>
-                            <button class="address_button" onclick="execution_daum_address()">주소찾기</button>
+                            <button type="button" class="address_button" onclick="execution_daum_address()">주소찾기</button>
                           <div class="clearfix"></div>
                         </div>
                         <div class ="address_input_2_wrap">
@@ -161,7 +161,7 @@ pageEncoding="UTF-8"%>
                             </div>
                           </div>
                           <input
-                          type="tel"
+                          type="text"
                           name="userNickname"
                           id="user_nickname"
                           class="form-control"
@@ -195,8 +195,10 @@ pageEncoding="UTF-8"%>
                         class="d-flex justify-content-center mx-4 mb-3 mb-lg-4"
                       >
                         <button
-                          type="submit"
+                          type="button"
                           class="btn btn-primary btn-lg user-join-btn"
+                          id="btnJoin"
+                          onclick="join();"
                         >
                           회원가입
                         </button>

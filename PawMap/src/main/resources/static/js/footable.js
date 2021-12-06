@@ -3596,7 +3596,7 @@
 	 * @type {string}
 	 * @default "No results"
 	 */
-	F.Defaults.prototype.empty = 'No results';
+	F.Defaults.prototype.empty = '검색 결과가 없습니다.';
 
 	/**
 	 * Whether or not the toggle is appended to each row.
