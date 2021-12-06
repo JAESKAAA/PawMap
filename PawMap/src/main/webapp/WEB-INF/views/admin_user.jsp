@@ -56,22 +56,45 @@ pageEncoding="UTF-8"%>
            </c:forEach>
         </table>
     </div>
-    <!--page navigation-->
-    <div class="row mt-2">
-      <div class="col-12" style="margin-top: 40px;">
-        <nav aria-label="Page navigation example">
-          <ul class="pagination justify-content-center">
-              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item"><a class="page-link" href="#">5</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
+    
+     <!-- 페이지네이션 부분 시작-->
+	    <div class="page-div hospital_pagination_custom">
+		    <ul class="pagination justify-content-center">
+		        <c:if test="${pageMaker.prev }">
+		            <li class="page-item pagination_button">
+		                <a class="page-link" href="${pageMaker.startPage - 1 }" >Prev</a>
+		            </li>
+		        </c:if>
+		        <c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage}">
+              <li class="page-item pagination_button ${num == pageMaker.cri.pageNum ? "active" : "" }""> 
+                  <a id="nowPage" class="page-link" href="${num }">${num }</a>
+              </li>
+		        </c:forEach>
+		        <c:if test="${pageMaker.next }">
+              <li class="page-item pagination_button">
+                  <a class="page-link" href="${pageMaker.endPage+1}">Next</a>
+              </li>
+		        </c:if>
+		    </ul>
+		  </div>
+		<!--  페이지네이션 끝 -->
+		<!--  페이지 처리 폼 -->
+		<c:choose>
+            <c:when test="${userList[0].userType eq 'N' }">
+				<form id="admin_user_paging_form" action="/pawmap/getUserList" method="get">
+					<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+					<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+				</form>
+			</c:when>
+			<c:otherwise>
+				<form id="admin_user_paging_form" action="/pawmap/getHospitalList" method="get">
+					<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum}">
+					<input type="hidden" name="amount" value="${pageMaker.cri.amount}">
+					<input type="hidden" name="value" value="${value }">
+				</form>
+			</c:otherwise>
+		</c:choose>
+		<!--  페이지 처리 폼 끝-->
   
 <%@ include file="layout/admin_footer.jsp" %>
 

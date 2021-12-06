@@ -48,8 +48,8 @@ public class SearchController {
 	
 		System.out.println("벨류값 표출 "+value);
 		//요청받은 pageNum 기준으로 offset값을 amout단위로 늘려줌
-				cri.setStartNum((cri.getPageNum()-1)*cri.getAmount());
-				System.out.println("수정 후 cri 값 : "+cri);
+		cri.setStartNum((cri.getPageNum()-1)*cri.getAmount());
+		System.out.println("수정 후 cri 값 : "+cri);
 		List<HospitalVO> hospitalList = searchSearvice.searchHospitalList(value, cri);
 		
 		int total = searchSearvice.getSearchHospitalCount(value);
@@ -75,6 +75,10 @@ public class SearchController {
 		return "hospital-detail";
 	}
 	
+	/**
+	 * @author 재석
+	 * @apiNote 공공 API 호출하는 메소드입니다. DB에 많은양의 데이터가 쌓이니 사용하실때 주의 !!
+	 */
 	//DB에 데이터 넣어주는 메소드로 DB조작 하는 건 아니면 사용 금지 !!
 	@GetMapping("/getGangnamList")
 	public String getGangnamList( ) throws IOException, Exception {

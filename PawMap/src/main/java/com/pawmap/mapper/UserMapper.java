@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.pawmap.VO.Criteria;
 import com.pawmap.VO.UserVO;
 
 
@@ -70,6 +71,16 @@ public interface UserMapper {
 	public void updateUserAdmin(UserVO vo);
 	public UserVO searchPwd(@Param("userId")String userId, @Param("userName")String userName);
 
-
+	//페이징 처리 메서드 (일반유저)
+	public List<UserVO> getUserListWithPaging(Criteria cri);
+	
+	//페이징 처리 메서드 (병원유저)
+	public List<UserVO> getHospitalUserListWithPaging(Criteria cri);
+	
+	//유저 카운트
+	public int getUserCount();
+	
+	//병원 유저 카운트
+	public int getHospitalUserCount();
 
 }
