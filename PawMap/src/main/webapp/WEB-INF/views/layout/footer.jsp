@@ -150,6 +150,7 @@
     <script src="${pageContext.request.contextPath}/js/contact-form-script.js"></script>
     <script src="${pageContext.request.contextPath}/js/custom.js"></script>
     <script src="${pageContext.request.contextPath}/js/custom-silbia.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
     <!-- FontAwesome 용 JS 파일-->
     <script
       src="https://kit.fontawesome.com/f0999a1ca0.js"
@@ -157,14 +158,10 @@
     ></script>
     <!-- 커스텀 JS 파일 - 재석-->
     <script src="${pageContext.request.contextPath}/js/custom-jaeseok.js"></script>
-<<<<<<< HEAD
    
     <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
 
-=======
-    <!-- 커스텀 JS 파일 - 고결-->
-    <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
->>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
+
       <!-- 아이디 비밀번호 공백확인 alert창 -->
     <script>
       function makeTestData() {

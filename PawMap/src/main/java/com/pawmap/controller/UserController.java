@@ -66,6 +66,7 @@ public class UserController {
 	//공백 및 / 요청시 메인페이지로 이동
 	@GetMapping({"","/"})
 	public String index() {
+	System.out.println("나는메인페이지");
 		return "index2";
 	}
 
@@ -91,6 +92,7 @@ public class UserController {
 		
 		return "my_account_update";
 	}
+	
 
 	//스프링 시큐리티가 해당 주소를 낚아채감 추후 설정 필요
 	//SecurityConfig파일 생성 후 활성화안됨 (스프링 필터가 가로채기때문)
@@ -114,12 +116,7 @@ public class UserController {
 	public String hospitalJoinForm() {
 		return "hospital-join-form";
 	}
-	
-	// 아이디 찾기 화면으로 보내주기 
-	@RequestMapping("findLoginId")
-	public String showFindLoginId() {
-		return "findLoginId";
-	}
+
 				
 	// 비밀번호를 잊어버렸습니까? 클릭시 forgotPW 
 		@GetMapping("/searchIdPw")

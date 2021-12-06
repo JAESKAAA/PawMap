@@ -64,7 +64,7 @@ public class BoardController {
 		System.out.println("userId=========="+userId);
 
 		
-		FileUtils fileUtils = new FileUtils();
+		FileUtils fileUtils = new FileUtils("");
 		List<FileVO> fileList = fileUtils.parseFileInfo(boardSeq, request, mhsr,userId);
 		
 		if(CollectionUtils.isEmpty(fileList) == false) {
@@ -229,7 +229,7 @@ public class BoardController {
 		
 		System.out.println("들어옴");
 		
-		FileUtils fileUtils = new FileUtils();
+		FileUtils fileUtils = new FileUtils("");
 		List<FileVO> fileList = fileUtils.parseFileInfo(boardSeq, request, mhsr,userId);
 		
 		if(CollectionUtils.isEmpty(fileList) == false) {

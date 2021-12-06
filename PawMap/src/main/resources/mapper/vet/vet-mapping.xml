@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.pawmap.mapper.VetMapper">
+
+  
+  	
+  	<resultMap type="com.pawmap.VO.VetVO" id="vetList">
+  		<id property="vetSeq" column="vet_seq"/>
+  		<result property="hospitalSeq" column="hospital_seq"/>
+  		<result property="vetName" column="vet_name"/>
+  		<result property="vetMajor" column="vet_major"/>
+  		<result property="vetIntro" column="vet_intro"/>
+  	</resultMap>
+  	
+
+
+	<sql id="vetColumns">
+		 VET_SEQ
+		,HOSPITAL_SEQ
+		,VET_NAME
+		,VET_MAJOR
+		,VET_INTRO
+		
+	</sql>
+
+	<insert id="insertVetInfo" parameterType="com.pawmap.VO.VetVO">
+		INSERT INTO VET (
+			<include refid="vetColumns" />
+		) VALUES (
+			 (SELECT IFNULL(MAX(VET_SEQ), 0) + 1 FROM VET A )
+			,#{hospitalSeq}
+			,#{vetName}
+			,#{vetMajor}
+			,#{vetIntro}
+
+		)
+	</insert>
+
+	<select id="selectVetInfo" parameterType="int" resultType="com.pawmap.VO.VetVO">
+		SELECT
+			<include refid="vetColumns" />
+		FROM
+			VET
+		WHERE
+			HOSPITAL_SEQ = #{hospitalSeq}
+			<!-- userSeq겹칠 수 있음 -->
+		ORDER BY VET_SEQ DESC
+	</select>
+
+	<update id="updateVetInfo" parameterType="com.pawmap.VO.VetVO">
+		UPDATE VET
+		SET
+			 
+			 VET_NAME = #{vetName}
+			, VET_MAJOR = #{vetMajor}
+			, VET_INTRO = #{vetIntro}
+			
+		WHERE
+			VET_SEQ = #{vetSeq}
+			
+			
+	</update>
+
+	<delete id="deleteVetInfo" parameterType="int">
+  		DELETE FROM VET
+  		WHERE
+			VET_SEQ = #{vetSeq}
+  	</delete>
+
+	<select id="getVetList" parameterType="com.pawmap.VO.VetVO" resultType="com.pawmap.VO.VetVO">
+		SELECT
+			<include refid="vetColumns" />
+		FROM
+			VET
+		WHERE
+			HOSPITAL_SEQ = #{hospitalSeq}
+		ORDER BY
+			VET_SEQ DESC
+	</select>
+	
+	<select id="getVetSeq" resultType="int">
+		SELECT IFNULL(MAX(vet_seq) ,0) + 1
+			FROM VET
+		WHERE HOSPITAL_SEQ = #{hospitalSeq}
+	</select>
+
+
+</mapper>

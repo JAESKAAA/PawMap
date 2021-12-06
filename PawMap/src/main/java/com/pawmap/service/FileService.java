@@ -14,5 +14,12 @@ public interface FileService {
 
 	void deleteOneFile(int fileSeq, int boardSeq);
 
+	void insertPetFileList(List<FileVO> fileList);
+
+	List<FileVO> getFileListByUserId(String userId);
+
+	void deletePetFile(int parseInt);
+
+	void updatePetFileList(List<FileVO> fileList);
 
 }

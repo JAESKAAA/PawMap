@@ -39,7 +39,7 @@ pageEncoding="UTF-8"%>
                         <div class="pet-account-box">
                             <div class="pet-service-box">
                                 <div class="pet-service-icon">
-                                    <a href="#"><i class="fas fa-paw"></i></a>
+                                    <a href="petInfo"><i class="fas fa-paw"></i></a>
                                 </div>
                                 <div class="pet-service-desc">
                                     <h4>반려동물정보</h4>
