@@ -177,7 +177,7 @@ pageEncoding="UTF-8"%>
                       </div>
                     </form>
                   </div>
-                  <!-- <div
+                  <div
                     class="
                       col-md-10 col-lg-6 col-xl-7
                       d-flex
@@ -190,7 +190,7 @@ pageEncoding="UTF-8"%>
                       class="img-fluid"
                       alt="Sample image"
                     />
-                  </div> -->
+                  </div>
                 </div>
               </div>
             </div>
