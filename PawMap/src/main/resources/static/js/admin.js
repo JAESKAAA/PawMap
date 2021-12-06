@@ -11,7 +11,7 @@
 		
 		let urlParams = new URLSearchParams(window.location.search);
 		let myParam = urlParams.get('pageNum');
-		
+		console.log(myParam);
 
 
    		let searchValue = $("#searchInput").val();
@@ -59,7 +59,10 @@
            <th>연락처</th>
            <th>관리</th>
        </tr>`;
-	   		let pageNum = (parseInt(myParam)-1)*11;
+	   		let pageNum =0;
+	   		 if(myParam!=null){
+	   		pageNum = (parseInt(myParam)-1)*11;
+			}	   		 	
 	   if(searchValue==""){
 		let pagingList= userList.slice(pageNum,pageNum+11);
 		console.log(pagingList);
@@ -139,7 +142,10 @@
            <th>연락처</th>
            <th>관리</th>
        </tr>`;
-	   let pageNum = (parseInt(myParam)-1)*11;
+		let pageNum =0;
+	   		 if(myParam!=null){
+	   		pageNum = (parseInt(myParam)-1)*11;
+			}	 
 	   if(searchValue==""){
 		let pagingList= hospitalList.slice(pageNum,pageNum+11);
 		   console.log(pagingList);
