@@ -16,7 +16,7 @@ import com.pawmap.VO.FileVO;
 
 
 
-public class FileUtils {
+public class PetFileUtils {
 	 String boardType = "p";
 
 
@@ -81,7 +81,7 @@ public class FileUtils {
 	
 
 	
-	public FileUtils(String boardType) {
+	public PetFileUtils(String boardType) {
 		this.boardType=boardType;
 	}
 }
