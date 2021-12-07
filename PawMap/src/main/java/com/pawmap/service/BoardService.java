@@ -1,28 +1,23 @@
 package com.pawmap.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.pawmap.VO.BoardVO;
 import com.pawmap.VO.CommentVO;
 import com.pawmap.VO.Criteria;
-<<<<<<< HEAD
-=======
-import com.pawmap.VO.FileVO;
-import com.pawmap.VO.UserVO;
->>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
 
 public interface BoardService {
+
+	
 	
 	void insertFreeAndNanumBoard(BoardVO vo);
 
 	List<BoardVO> getFreeBoardList(BoardVO vo, Criteria cri);
 
-//	나눔게시판 리스트 - 은혜 추가
-	List<BoardVO> getNanumBoardList(BoardVO vo, Criteria cri);
-	
-	BoardVO getFreeBoard(int boardSeq, String boardType);
+	BoardVO getFreeBoard(int boardSeq);
 
-	void deleteFreeBoardBySeq(int boardSeq, String boardType);
+	void deleteFreeBoardBySeq(int boardSeq);
 
 	void updateFreeBoardForm(BoardVO vo);
 
@@ -30,16 +25,24 @@ public interface BoardService {
 
 	void insertReplyForFreeBoard(CommentVO commentVO);
 
-<<<<<<< HEAD
-
-
-
-
-=======
 	int getFreeBoardSeq();
+	
+	List<HashMap<String, Object>> getLatelyBoardListForBoardMain();
+
+//	나눔게시판 리스트
+	List<BoardVO> getNanumBoardList();
+	
+	// 나눔게시판 상세
+	BoardVO getNanumBoard(int boardSeq);
+
+//	글 상세조회
+	BoardVO getBoardDetail(int boardSeq, String boardType);
+
+	void updateNanumBoardForm(BoardVO vo);
+
+
 
 	
->>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
 
 	
 	

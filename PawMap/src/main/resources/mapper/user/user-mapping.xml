@@ -14,6 +14,14 @@
   		<result property="comNum" column="com_num"/>
   	</resultMap> 
   	
+  	<resultMap type="com.pawmap.VO.ShelterVO" id="shelterResult">
+  		<result property="shelterSeq" column="shelter_seq"/>
+  		<result property="comNum" column="com_num"/>
+  		<result property="shelterName" column="shelter_name"/>
+  		<result property="shelterAddress" column="shelter_address"/>
+  		<result property="shelterTel" column="shelter_tel"/>
+  	</resultMap>
+  	
 <!--   	<select id="selectTest" resultType="com.cos.blog.vo.BoardVO">
   		SELECT * FROM BOARD WHERE id=#{id}
   	</select> -->
@@ -23,20 +31,7 @@
   	</select>
   	
 
-<<<<<<< HEAD
-        INSERT INTO user(user_seq, user_type, user_id, user_password, user_name, user_email, user_tel_num, address, user_nickname, role) VALUES(
-              (SELECT IFNULL(MAX(user_seq), 0) + 1 FROM user A WHERE user_type = #{userType}),
-              #{userType},
-              #{userId},
-              #{userPassword},
-              #{userName},
-            #{userEmail},
-            #{userTelNum},
-            #{address},
-            #{userNickname},
-              #{role}
-        )
-=======
+
 	<insert id="insertUser">
 
   		INSERT INTO user(user_seq, user_type, user_id, user_password, user_name, user_email, user_tel_num, post_num, address, address_detail, user_nickname, role) VALUES(
@@ -53,7 +48,6 @@
 				#{userNickname},
   				#{role}
   		)
->>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
   	</insert>
   	
 	<insert id="insertHospitalUser">
@@ -114,6 +108,13 @@
   				#{role}
   		)
   	</insert>
+  	
+  	
+  	
+  	
+
+  	
+  
 
   	 <!-- 쿼리통합,,추가  -->
 	<!-- 로그 -->
@@ -227,9 +228,6 @@
 				USER_ID = #{userId}
 	</update> 
 	
-	<delete id="deleteUser" parameterType="com.pawmap.VO.UserVO">
-		DELETE FROM user where user_id = #{userId}
-	</delete>
 	
   	
   </mapper>	

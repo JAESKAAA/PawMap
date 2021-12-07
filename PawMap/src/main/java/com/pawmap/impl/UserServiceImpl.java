@@ -2,23 +2,21 @@ package com.pawmap.impl;
 
 
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 
 import java.security.SecureRandom;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.groovy.util.Maps;
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.mybatis.spring.SqlSessionTemplate;
 
 import com.pawmap.VO.UserVO;
-import com.pawmap.configuration.auth.PrincipalDetails;
 import com.pawmap.mapper.UserMapper;
-import com.pawmap.service.BoardService;
 import com.pawmap.service.MailService;
 import com.pawmap.service.UserService;
 
@@ -187,6 +185,7 @@ public class UserServiceImpl implements UserService{
 		return userMapper.checkDuplicateId(userId);
 	}
 
+
 	
 	@Override
 	public void updateUser(UserVO vo) {
@@ -231,9 +230,11 @@ public class UserServiceImpl implements UserService{
 
 		return result;
 	}
+	
 
 
 }
+
 
 
 

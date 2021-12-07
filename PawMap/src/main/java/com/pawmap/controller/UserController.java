@@ -1,14 +1,11 @@
 package com.pawmap.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
-
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,19 +20,27 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.pawmap.VO.FileVO;
+import com.pawmap.VO.ShelterVO;
 import com.pawmap.VO.UserVO;
 import com.pawmap.configuration.auth.PrincipalDetails;
 import com.pawmap.configuration.auth.PrincipalDetailsService;
-import com.pawmap.service.UserService;
 import com.pawmap.mapper.UserMapper;
+import com.pawmap.service.FileService;
+import com.pawmap.service.UserService;
 import com.pawmap.util.CookieUtil;
+import com.pawmap.util.FileUtils;
 
 
 
@@ -57,8 +62,12 @@ public class UserController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	
-	 @Autowired 
-	 private UserMapper userMapper;
+	@Autowired 
+	private UserMapper userMapper;
+	
+	
+	@Autowired
+	private FileService fileService;
 	 
 	/*
 	 * 페이지 이동 관련 메소드
@@ -133,6 +142,13 @@ public class UserController {
 	public String userInfoForm() {
 		return "admin_user";
 	}
+	
+	
+
+	
+	
+	
+	
 	
 	
 	/*
@@ -225,7 +241,6 @@ public class UserController {
 		vo.setUserType("N");
 		String rawPassword = vo.getUserPassword();
 		String encPassword = bCryptPasswordEncoder.encode(rawPassword);
-		vo.setUserType("N");
 		vo.setUserPassword(encPassword);
 		
 		System.out.println("vo출력 : "+vo);
@@ -260,6 +275,9 @@ public class UserController {
 		
 	} // memberIdChkPOST() 종료	
 	
+		
+	
+
 	@PreAuthorize("hasRole('ROLE_ADMIN')") //하기 메서드가 실행하기 직전에 실행됨
 	@GetMapping("/data")
 	public @ResponseBody String data() {
@@ -322,6 +340,10 @@ public class UserController {
 		return "admin_user";
 		
 	}
+	
+	
+	
+	
 	//관리자 페이지 -> 유저 정보 업데이트
 	@PostMapping("/admin/updateUser")
 	public String adminUpdateUser(UserVO vo) {
@@ -340,6 +362,7 @@ public class UserController {
 			 
 			 return "redirect:/admin";
 		}
+
 
 		
 	//시큐리티 세션 참고용 메서드
@@ -420,6 +443,8 @@ public class UserController {
 			return "loginForm";
 			
 		}
+		
+
 
 
 }

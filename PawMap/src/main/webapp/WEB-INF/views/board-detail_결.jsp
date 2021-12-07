@@ -1,17 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="layout/header.jsp" %>
 
     <div class="board-type mt-5">
-      <c:if test="${getFreeBoard.boardType eq 'f'}">
+        <c:if test="${getFreeBoard.boardType eq 'f'}"> <h1>자유게시판</h1> </c:if>
+        <c:if test="${getNanumBoard.boardType eq 's'}"> <h1>나눔게시판</h1> </c:if>
+      </div>
+<!-- 
+      <c:if test="${getFreeBoard.boardType eq 'f'} ">
         <h1>자유게시판</h1>
       </c:if>
-      <c:if test="${getFreeBoard.boardType eq 's'}">
+      <c:if test="${getFreeBoard.boardType eq 's'} ">
         <h1>나눔게시판</h1>
       </c:if>
-    </div>
+    </div> -->
     
     <hr class="line-paint">
 
@@ -21,37 +24,65 @@ pageEncoding="UTF-8"%>
         <div class="container">
             <div class="row board-info">
                 <div class="col-lg-6">
-                    <h2 class="noo-sh-title-top mb-5 board_title">제목 : ${getFreeBoard.title}</h2>
-                    <input type="hidden" id="getFreeBoard" value="${getFreeBoard.boardType }"/>
+                    <h2 class="noo-sh-title-top mb-5 board_title">제목 : ${getFreeBoard.title} ${getNanumBoard.title}</h2>
                 </div>
                 <div class="col-lg-6" style="overflow:hidden;">
 
-                    <h5 class="noo-sh-title-top mb-5 board_writer" id="freeBoardWriter" value="${getFreeBoard.userVO.userNickname }">작성자 : ${getFreeBoard.userVO.userNickname }</h5>
-
+                    <h5 class="noo-sh-title-top mb-5 board_writer" id="freeBoardWriter" value="${getFreeBoard.userVO.userNickname } ${getNanumBoard.userVO.userNickname }">작성자 : ${getFreeBoard.userVO.userNickname } ${getNanumBoard.userVO.userNickname } </h5>
                 </div>
                 <div class="col-lg-6">
-                    <h5 class=" mb-5 board_regDate">작성일 : <fmt:formatDate value="${getFreeBoard.regDate }" pattern="yyyy-MM-dd"/></h5>
+                    <h5 class=" mb-5 board_regDate">작성일 : <fmt:formatDate value="${getFreeBoard.regDate }" pattern="yyyy-MM-dd"/>
+                      <fmt:formatDate value="${getNanumBoard.regDate }" pattern="yyyy-MM-dd"/></h5>
                 </div>
                 <div class="col-lg-6">
-                    <h5 class=" mb-5 board_seq" id="freeBoardSeq">게시글 번호 : ${getFreeBoard.boardSeq}</h5>
+                    <h5 class=" mb-5 board_seq" id="freeBoardSeq">게시글 번호 : ${getFreeBoard.boardSeq} ${getNanumBoard.boardSeq}</h5>
                 </div>
             </div>
-            <img class="img-fluid" src="" alt="" />
+
+            
+            <!-- 현재 파일 이름이 한글이면 출력이 안되는 오류 있음 -->
+            <c:choose>
+              <c:when test="${empty freeBoardFileList}">
+                <h1>테스트용 :: 파일이 없음</h1>
+              </c:when>
+              <c:otherwise>
+                <c:forEach items="${freeBoardFileList}" var="fileList" varStatus="i">
+                  <img class="img-fluid" src="${pageContext.request.contextPath}/upload/${fileList.originalFileName}" alt="" />
+                </c:forEach>
+              </c:otherwise>
+            </c:choose>
+
+
             <div class="col-lg-6">
                 <p class="mt-5">
                   ${getFreeBoard.content}
+                  ${getNanumBoard.content}
+
+                  ${getNanumBoard.userId}
+                  ${principal.user.userId}
                 </p>
               </div>
-              <h1>${getFreeBoard.userId}</h1>
-              <h1>${principal.user.userId}</h1>
+              <!-- 자유게시판일경우 -->
+              <c:if test="${getFreeBoard.boardType eq 'f' }">
               <div class="col-lg-6 mt-5">
                 <button onclick="location.href='/pawmap/board/getFreeBoardList'" type="button" class="btn btn-secondary">목록으로</button>
               <c:if test="${getFreeBoard.userId == principal.user.userId}">
                 <button onclick="location.href='/pawmap/board/updateFreeAndNanumBoardForm?boardSeq=${getFreeBoard.boardSeq}&boardType=${getFreeBoard.boardType}'" type="button" class="btn btn-primary">수정</button>
                 <button id="delete-free-board" type="button" class="btn btn-secondary">삭제</button>
-              </c:if>  
-
               </div>
+              </c:if> 
+            </c:if> 
+
+              <!-- 나눔게시판일경우 -->
+              <c:if test="${getNanumBoard.boardType eq 's'}">
+              <div class="col-lg-6 mt-5">
+                <button onclick="location.href='/pawmap/board/getNanumBoardList'" type="button" class="btn btn-secondary">목록으로</button>
+              <c:if test="${getNanumBoard.userId == principal.user.userId}">
+                <button onclick="location.href='/pawmap/board/updateFreeAndNanumBoardForm?boardSeq=${getNanumBoard.boardSeq}&boardType=${getNanumBoard.boardType}'" type="button" class="btn btn-primary">수정</button>
+                <button id="delete-nanum-board" type="button" class="btn btn-secondary">삭제</button>
+              </div>
+            </c:if>  
+          </c:if>
         </div>
     </div>
 
@@ -167,7 +198,8 @@ pageEncoding="UTF-8"%>
                                   <input type="hidden" class="hiddenCommentSeq" name="commentSeq" value="${reply.comment_seq}"/>
                                   <input type="hidden" name="boardSeq" value="${getFreeBoard.boardSeq}">
                                   <button type="button" class="link-grey ml-2 btn-update btn-comment-update" data-toggle='modal' data-target='.modifyModal${i.index}'>수정하기</button> 
-                                  <button type="submit" class="link-grey ml-2 btn-delete">삭제하기</button> 
+                                  <button onclick="if(!confirm('삭제 하시겠습니까?')){return false}" class="link-grey ml-2 btn-delete">삭제하기</button> 
+
                                 </form>
                                 
                               <!--=============== 댓글 수정 모달창 시작============== -->
@@ -212,11 +244,18 @@ pageEncoding="UTF-8"%>
                   </div>
                 </div>
               </c:forEach>
+
+
               <!-- ===============댓글 리스트 출력 종료================== -->
+
+
             </div>
           </div>
         </div>
     </section> 
 
+      
+    
    <%@ include file="layout/footer.jsp" %>
-  
+   
+

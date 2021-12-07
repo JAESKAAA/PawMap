@@ -1,5 +1,6 @@
 package com.pawmap.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -7,19 +8,18 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.pawmap.VO.BoardVO;
+
 import com.pawmap.VO.CommentVO;
 
-<<<<<<< HEAD
-=======
 import com.pawmap.VO.FileVO;
 
 import com.pawmap.VO.UserVO;
 
->>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
 
 @Mapper
 public interface BoardMapper {
 
+	
 
 	int insertTest(UserVO vo);
 
@@ -28,9 +28,9 @@ public interface BoardMapper {
 
 	List<BoardVO> getFreeBoardList(Map<String,Object> map);
 
-	BoardVO getFreeBoard(@Param("boardSeq") int boardSeq, @Param("boardType") String boardType);
+	BoardVO getFreeBoard(@Param("boardSeq") int boardSeq);
 
-	void deleteFreeBoardBySeq(@Param("boardSeq") int boardSeq, @Param("boardType") String boardType);
+	void deleteFreeBoardBySeq(@Param("boardSeq") int boardSeq);
 
 	void updateFreeBoardForm(BoardVO vo);
 
@@ -38,14 +38,26 @@ public interface BoardMapper {
 
 	void insertReplyForFreeBoard(CommentVO commentVO);
 
-<<<<<<< HEAD
-//	나눔게시판 - 은혜 추가
-	List<BoardVO> getNanumBoardList(Map<String,Object> map);
-
-=======
 
 	int getFreeBoardSeq();
->>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
+
+	List<HashMap<String, Object>> getLatelyBoardListForBoardMain();
+
+//	나눔게시판
+	List<BoardVO> getNanumBoardList();
+
+//	글 상세조회
+	BoardVO getBoardDetail(@Param ("boardSeq") int boardSeq, @Param ("boardType") String boardType);
+
+
+	BoardVO getNanumBoard(@Param("boardSeq") int boardSeq);
+
+
+	void updateNanumBoardForm(BoardVO vo);
+	
+
+	
+
 
 }
 

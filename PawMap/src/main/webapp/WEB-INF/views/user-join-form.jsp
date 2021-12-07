@@ -570,7 +570,6 @@ pageEncoding="UTF-8"%>
     <!-- Start Categories  -->
     <!-- <div class="categories-shop">
         <div class="container">
-
             <div class="row">
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                     <div class="shop-cat-box">
@@ -617,7 +616,6 @@ pageEncoding="UTF-8"%>
                     </div>
                 </div>
             </div>
-
             <div class="row special-list">
                 <div class="col-lg-3 col-md-6 special-grid best-seller">
                     <div class="products-single fix">
@@ -641,7 +639,6 @@ pageEncoding="UTF-8"%>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-lg-3 col-md-6 special-grid top-featured">
                     <div class="products-single fix">
                         <div class="box-img-hover">
@@ -664,7 +661,6 @@ pageEncoding="UTF-8"%>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-lg-3 col-md-6 special-grid top-featured">
                     <div class="products-single fix">
                         <div class="box-img-hover">
@@ -687,7 +683,6 @@ pageEncoding="UTF-8"%>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-lg-3 col-md-6 special-grid best-seller">
                     <div class="products-single fix">
                         <div class="box-img-hover">
@@ -874,5 +869,5 @@ pageEncoding="UTF-8"%>
     <!-- End Instagram Feed  -->
 
    <%@ include file="layout/footer.jsp" %>
-   
+
 

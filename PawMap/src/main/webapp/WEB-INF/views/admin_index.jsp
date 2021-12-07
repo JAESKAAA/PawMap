@@ -125,7 +125,7 @@ pageEncoding="UTF-8"%>
             <div class="account-box">
                 <div class="service-box">
                     <div class="service-icon">
-                        <a href="adminpage6sheltermanage-tom.html"> <i class="fas fa-building"></i> </a>
+                        <a href="admin/shelterList"> <i class="fas fa-building"></i> </a>
                     </div>
                     <div class="service-desc">
                         <h4>보호소정보 관리</h4>

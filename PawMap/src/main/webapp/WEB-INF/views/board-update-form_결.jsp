@@ -61,9 +61,9 @@ pageEncoding="UTF-8"%>
 
   
     <!-- 게시판 폼 시작 -->
-    <form class="form-horizontal board-form" method="POST" action="insertFreeAndNanumBoard" >
-        <div class="container">
-            <div class="card row">
+    <div class="container">
+        <div class="card row">
+            <form class="form-horizontal board-form"  >
                 <div class="option-select ml-5">
                     <select class="form-control" name="boardType">
                 <c:choose>
@@ -79,9 +79,7 @@ pageEncoding="UTF-8"%>
                 <div class="form-group ml-5 ">
                     <label for="name" class="col-sm-2 control-label">닉네임</label>
                     <div class="col-sm-10">
-                        <!-- 이거 무조건 불러와야함 hidden으로 숨겨서라도 -->
                         <input type="hidden" id="boardSeq" value="${getBoard.boardSeq }"/>
-                        <input type="hidden" id="boardType" value="${getBoard.boardType }"/>
                         <input type="text" class="form-control input-nickname" id="user_id" name="userId"  placeholder="${getBoard.userId}" value="${getBoard.userId}" readonly>
                     </div>
                 </div>
@@ -99,32 +97,88 @@ pageEncoding="UTF-8"%>
                 </div>
                 <div class="r form-group ml-5">
                     <div class="col-sm-10 col-sm-offset-2">
-                        <div class="row form-group">  
-                            <div class="col-10 col-md-6">  
-                                <div class="control-group" id="fields">  
-                                    <div class="controls">  
-                                        <div class="entry input-group upload-input-group">  
-                                            <input class="form-control btn-file-upload" name="fields[]" type="file">  
+            <!-- 자유게시판일경우 -->
+              <c:if test="${getFreeBoard.boardType eq 'f' }">
+                        <input id="update-free-board" type="button" name="btn-submit" value="수정완료" class="btn btn-complete">
+                        </c:if>
+            <!-- 나눔게시판일경우 -->
+              <c:if test="${getNanumBoard.boardType eq 's'}">
+                <input id="update-nanum-board" type="button" name="btn-submit" value="수정완료" class="btn btn-complete">
+                          </c:if>
+                    </div>
+                </div>
+            </form>
+            <c:choose>
+                <c:when test="${empty fileList}">
+                    <form action="updateFreeBoardFormInsertFiles" method="POST" enctype="multipart/form-data">
+                        <h5>파일이 없을떄 ${fileList}</h5>
+                        <div class="r form-group ml-5">
+                            <div class="col-sm-10 col-sm-offset-2">
+                                <div class="row form-group">  
+                                    <div class="col-10 col-md-6">  
+                                        <div class="control-group" id="fields">  
+                                            <div class="controls">  
+                                                <div class="entry input-group upload-input-group">  
+                                                    <input class="form-control btn-file-upload" name="uploadFiles" multiple="multiple" type="file">  
+                                                    <input type="hidden" name="userId"  value="${getBoard.userId}">
+                                                    <input type="hidden" name="boardSeq"  value="${getBoard.boardSeq}">
+                                                    <h1>${getBoard.userId}</h1>
+                                                    <h1>${getBoard.boardSeq}</h1>
+                                                </div>  
+                                                <div class="entry input-group upload-input-group">  
+                                                    <button type="submit" class="btn btn-outline-danger">파일 등록</button>
+                                                </div>  
+                                            </div>  
                                         </div>  
                                     </div>  
                                 </div>  
-                            </div>  
-                        </div>  
-                    </div>
-                </div>
-                <div class="r form-group ml-5">
-                    <div class="col-sm-10 col-sm-offset-2">
-                        <input id="update-free-board" type="button" name="btn-submit" value="수정완료" class="btn btn-complete">
-                    </div>
-                </div>
-            </div>    
+                            </div>
+                        </div>
+                    </form> 
+                </c:when>
+            </c:choose>
+
+            <!-- 파일 삭제만 가능.... -->
+            <c:choose>
+                <c:when test="${!empty fileList}">
+                    <c:forEach var="fileList" items="${fileList}" varStatus="i">
+                        <form action="saperateDeleteFileOnFreeBoard" method="POST">
+                            <div class="r form-group ml-5">
+                                <div class="col-sm-10 col-sm-offset-2">
+                                    <div class="row form-group">  
+                                        <div class="col-10 col-md-6">  
+                                            <div class="control-group" id="fields">  
+                                                <div class="controls">  
+                                                    <div class="entry input-group upload-input-group">  
+                                                        <h5>${fileList.originalFileName}</h5> 
+                                                        <input type="hidden" name="fileSeq" class="hiddenFileSeq" value="${fileList.fileSeq}">
+                                                        <input type="hidden" name="boardSeq" class="hiddenBoardSeq" value="${fileList.boardSeq}">
+                                                    </div>  
+                                                    <div class="entry input-group upload-input-group">  
+                                                        <button type="submit" class="btn btn-outline-danger">파일삭제</button>
+                                                    </div>  
+                                                </div>  
+                                            </div>  
+                                        </div>  
+                                    </div>  
+                                </div>
+                            </div>
+                        </form>
+                    </c:forEach>
+                </c:when>
+            </c:choose>
+
         </div>    
-    </form>
+    </div>    
     <!-- 게시판 폼 종료 -->
 
     <!-- End copyright  -->
 
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
+
+    <script>
+        
+    </script>
 
     <script src="../js/jquery-3.2.1.min.js"></script>
     <script src="../js/popper.min.js"></script>

@@ -90,33 +90,16 @@
   		board_type = 'f';
   	</select> -->
   	
-  	
-  	
-  	
-  	<!-- 나눔게시판 리스트 - 은혜 추가-->
-	  	<select id="getNanumBoardList" parameterType="HashMap" resultMap="boardResult">
-  		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname
+  	<!-- <select id="getFreeBoard" resultType="HashMap">
+  		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname 
   		FROM board AS b
   		INNER JOIN user AS u
   		ON b.user_id = u.user_id
-  		WHERE board_type = 's'
-  		<if test="board.keywordType == 'title'">
-			AND title LIKE CONCAT('%', #{board.keyword}, '%')
-		</if>
-		<if test="board.keywordType == 'content'">
-			AND `content` LIKE CONCAT('%', #{board.keyword}, '%')
-		</if>
-		<if test="board.keywordType == 'titleAndBody'">
-			AND (title LIKE CONCAT('%', #{board.keyword}, '%') OR `content` LIKE CONCAT('%', #{board.keyword}, '%'))
-		</if>
-  		ORDER BY board_seq DESC
-  		<!-- 최신글이 위로 오게 하는 쿼리 -->
-  		LIMIT #{criteria.amount} OFFSET #{criteria.startNum}
-		
-	</select>
-	
-	
-	
+  		WHERE b.board_seq = #{boardSeq}
+  		AND
+  		b.board_type = 'f';
+
+  	</select> -->
   	
   	<select id="getFreeBoard" resultType="com.pawmap.VO.BoardVO" resultMap="boardResult">
   		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname 
@@ -125,30 +108,22 @@
   		ON b.user_id = u.user_id
   		WHERE b.board_seq = #{boardSeq}
   		AND
-  		b.board_type = #{boardType}
+  		b.board_type = 'f';
 
   	</select>
   	
-<<<<<<< HEAD
-  	
-  	
-  	
-=======
   	<select id="getFreeBoardSeq" resultType="int">
 		SELECT IFNULL(MAX(board_seq) ,0) + 1
 			FROM BOARD
 			WHERE board_type = 'f'
 	</select>
->>>>>>> 875d0942867d0b227aa30f8a55159abf263e7c76
   	
   	<delete id="deleteFreeBoardBySeq">
   		DELETE FROM board
   		WHERE board_seq = #{boardSeq}
   		AND
-  		board_type = #{boardType}	
+  		board_type = 'f';
   	</delete>
-  	
-  	
   	
   	<update id="updateFreeBoardForm">
   		UPDATE board
@@ -161,8 +136,6 @@
   		AND
   		board_type = 'f'
   	</update>
-  	
-  	
   	
   	<select id="selectBoardCount" resultType="int">
 		SELECT COUNT(*) FROM BOARD
@@ -178,4 +151,72 @@
 		</if>
 	</select>
 
+	
+	<select id="getLatelyBoardListForBoardMain" resultType="HashMap">
+		select b.*, f.originalFilename
+		from board AS b
+		inner join 
+		(
+		select f1.file_seq as fSeq, f1.originalFilename as originalFilename, f1.board_seq AS bSeq
+		from file as f1 
+			left join file as f2 on f1.board_seq = f2.board_seq and f1.file_seq > f2.file_seq
+		    where f2.file_seq is null
+		) as f
+		on b.board_seq = f.bSeq
+		where b.board_type = 'f'
+		order by b.board_seq DESC
+		limit 3;
+	</select>
+	
+	<!-- <select id="getLatelyBoardListForBoardMain" resultType="HashMap">
+		SELECT b.*, f.originalFilename
+		FROM board AS b
+		INNER JOIN file AS f
+		ON b.board_seq = f.board_seq
+		WHERE b.board_type = 'f'
+		AND f.file_seq = 1
+		ORDER BY b.board_seq DESC
+		LIMIT 3
+	</select> -->
+
+
+
+  		<!-- 나눔게시판 리스트 -->
+	  	<select id="getNanumBoardList" resultType="com.pawmap.VO.BoardVO">
+		SELECT * FROM BOARD
+		WHERE board_type = "s"
+		<!-- 최신글이 위로 오게 하는 쿼리 -->
+		order by board_seq DESC
+		
+	</select>
+	
+	
+	<!-- 나눔게시판 디테일 -->
+	  	<select id="getNanumBoard" resultType="com.pawmap.VO.BoardVO" resultMap="boardResult">
+  		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname 
+  		FROM board AS b
+  		INNER JOIN user AS u
+  		ON b.user_id = u.user_id
+  		WHERE b.board_seq = #{boardSeq}
+  		AND
+  		b.board_type = 's';
+
+  	</select>
+  	
+  	  	<update id="updateNanumBoardForm">
+  		UPDATE board
+  		SET
+  			title = #{title},
+  			content = #{content}
+  		WHERE board_seq = #{boardSeq}
+  		AND
+  		user_id = #{userId}
+  		AND
+  		board_type = 's'
+  	</update>
+	
+	
   </mapper>	
+  
+
+

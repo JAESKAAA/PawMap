@@ -4,18 +4,35 @@ let index = {
 		$("#delete-free-board").on("click",()=>{
 			this.deleteFreeBoardBySeq();
 		});
+
+		$("#delete-nanum-board").on("click",()=>{
+			this.deleteNanumBoardBySeq();
+		});
+
 		//$("#searchBtn").on("click",()=>{
 		//	this.getSearchFreeBoardList();	
 		//});
+
+	// // ■ shelter form 수정 추가
+	// 	$("#update-shelter-form").on("click",()=>{
+	// 		this.updateShelterForm();
+	// 	});
+
 		$("#update-free-board").on("click",()=>{
 			this.updateFreeBoard();
 		});
+
+		$("#update-nanum-board").on("click",()=>{
+			this.updateNanumBoard();
+		});
+
 		$("#btn-reply-save").on("click",()=>{
 			this.replySaveFreeBoard();
 		});
 		//$("#updateCommentOnFreeBoard").on("click",()=>{
 		//	this.updateCommentOnFreeBoard();
 		//});
+
 		
 	},
 	
@@ -41,6 +58,30 @@ let index = {
 			
 		}
 	},
+
+	// 나눔게시판 글 삭제 메소드
+		deleteNanumBoardBySeq:function(){
+		
+			let nanumBoardSeq = $("#nanumBoardSeq").text().substring(9);
+			console.log(nanumBoardSeq);
+			
+			if(confirm("정말 삭제하시겠습니까?")){
+				$.ajax({
+					type : "POST",
+					url: "deleteNanumBoard/api/"+nanumBoardSeq,
+					contentType : "application/json; charset=utf-8",
+				}).done(function(resp){
+					alert("삭제 성공");
+					location.href = "getNanumBoardList"
+				}).fail(function(error){
+					alert(error);
+					console.log(error);
+				});
+				
+			}else{
+				
+			}
+	},
 	
 	getSearchFreeBoardList:function(){
 		console.log("탐");
@@ -63,27 +104,51 @@ let index = {
 	
 	updateFreeBoard:function(){
 		let freeBoardSeq = $("#boardSeq").val();
-		let freeBoardType = $("#boardType").val();
 		
 		let data = {
 			title: $("#title").val(),
 			content: $("#content").val(),
 			boardSeq : freeBoardSeq,
 			userId : $("#user_id").val(),
-			boardType : freeBoardType
+			boardType : $("#boardType").val() 
 		};
-		alert("글 수정하기11111111");
-		console.log("updateFreeBoard:function 탐, freeBoardSeq ==="+freeBoardSeq
-												+ "freeBoardType ==="+freeBoardType 
-												+ "data ======= : "+ data);
+		alert("글 수정하기");
+		console.log("updateFreeBoard:function 탐, freeBoardSeq ==="+freeBoardSeq+"data =======: "+ data);
 		$.ajax({
 			type: 'POST',
-			url: "updateFreeAndNanumBoardForm/api/"+freeBoardSeq&freeBoardType,
+			url: "updateFreeAndNanumBoardForm/api/"+freeBoardSeq,
 			data : JSON.stringify(data),
 			contentType : 'application/json; charset=utf-8',
 			success : function() {
-				alert("글 수정 완료했을때 뜨는 창");
-				location.href ="getFreeBoard?boardSeq="+freeBoardSeq+"&"+"boardType"+"="+freeBoardType
+				alert("1111");
+				location.href ="getFreeBoard?boardSeq="+freeBoardSeq
+			},
+			error : function(e) {
+				console.log(e);
+			}
+		});
+	},
+
+	updateNanumBoard:function(){
+		let nanumBoardSeq = $("#boardSeq").val();
+		
+		let data = {
+			title: $("#title").val(),
+			content: $("#content").val(),
+			boardSeq : nanumBoardSeq,
+			userId : $("#user_id").val(),
+			boardType : $("#boardType").val() 
+		};
+		alert("글 수정하기");
+		console.log("updateNanumBoard:function 탐, nanumBoardSeq ==="+nanumBoardSeq+"data =======: "+ data);
+		$.ajax({
+			type: 'POST',
+			url: "updateFreeAndNanumBoardForm/api/"+nanumBoardSeq,
+			data : JSON.stringify(data),
+			contentType : 'application/json; charset=utf-8',
+			success : function() {
+				alert("1111");
+				location.href ="getNanumBoard?boardSeq="+nanumBoardSeq
 			},
 			error : function(e) {
 				console.log(e);
@@ -127,6 +192,38 @@ let index = {
 			});
 		}
 	},
+
+
+	
+		//   // ■ shelter form 의 function
+		// updateShelterForm:function(){
+		// 	let shelterSeq = $("#shelterSeq").val();
+			
+		// 	let data = {
+		// 		comNum: $("#comNum").val(),
+		//   shelterName: $("#shelterName").val(),
+		//   shelterAddress: $("#shelterAddress").val(),
+		//   shelterTel: $("#shelterTel").val(),
+		// 		content: $("#content").val(),
+		// 		shelterSeq : shelterSeq,
+		// 		boardType : $("#boardType").val() 
+		// 	};
+		// 	alert("글 수정하기");
+		// 	console.log("updateShelterForm:function 탐, shelterSeq ==="+shelterSeq+"data =======: "+ data);
+		// 	$.ajax({
+		// 		type: 'POST',
+		// 		url: "updateShelterForm/api/"+freeBoardSeq, // 안될시 api 지워보기
+		// 		data : JSON.stringify(data),
+		// 		contentType : 'application/json; charset=utf-8',
+		// 		success : function() {
+		// 			alert("1111");
+		// 			location.href ="updateShelterForm?shelterSeq="+shelterSeq
+		// 		},
+		// 		error : function(e) {
+		// 			console.log(e);
+		// 		}
+		// 	});
+		// }
 	
 	/*
 		updateCommentOnFreeBoard:function(){
@@ -138,7 +235,7 @@ let index = {
 				
 			};
 			console.log(data);
-			alert("탐");
+			alert("�깘");
 			
 			$.ajax({
 				type : "POST",
@@ -147,12 +244,13 @@ let index = {
 				contentType : 'application/json; charset=utf-8',
 				dataType : "text"
 			}).done(function(result){
-				alert("수정성공");
+				alert("�닔�젙�꽦怨�");
 			}).fail(function(){
-				alert("실패");
+				alert("�떎�뙣");
 			});
 		},
 	 */
+
 		
 }
 

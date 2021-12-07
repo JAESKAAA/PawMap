@@ -10,6 +10,12 @@
 		AND board_type = 'f';
 	</select>
 	
+	<select id="getFileListBySeqType"  resultType="com.pawmap.VO.FileVO">
+		SELECT * FROM file
+		WHERE board_seq = #{boardSeq}
+		AND board_type = IFNULL(#{boardType},'f');
+	</select>
+	
 	<insert id="insertBoardFileList" parameterType="com.pawmap.VO.FileVO">
 		INSERT INTO file (
 			board_seq,
@@ -28,14 +34,49 @@
 					FROM file f
 				WHERE board_seq = #{boardSeq}
 			),
-			'f',
+			IFNULL(#{boardType},'f'),
 			#{userId},
 			#{originalFileName},
 			#{filePath},
 			#{fileSize}
+			
 		)
 	</insert>
-	
 
-  	
+	<delete id="deleteFileByBoardSeq">
+		DELETE FROM file
+		WHERE board_seq = #{boardSeq}
+		AND board_type = 'f'
+	</delete>
+	
+		<delete id="deleteFileByBoardSeqOnShelterSeq">
+		DELETE FROM file
+		WHERE board_seq = #{boardSeq}
+		AND board_type = 'v'
+	</delete>
+	
+	<delete id="deleteOneFile" >
+		DELETE FROM file
+		WHERE file_seq      = #{fileSeq}
+		     AND board_seq = #{boardSeq}
+	</delete>
+
+	<delete id="deleteTargetFile" parameterType="com.pawmap.VO.FileVO">
+		DELETE FROM file
+		WHERE file_seq       = #{fileSeq}
+		     AND board_seq   = #{boardSeq}
+		     AND board_type = #{boardType}
+		     AND user_id        = #{userId}
+	</delete>
+
+	<insert id="insertUpdateOneFile"  parameterType="com.pawmap.VO.FileVO">
+	INSERT INTO file
+			(file_seq, board_seq, board_type, user_id)
+		 VALUES (#{fileSeq}, #{boardSeq}, #{boardType}, #{userId})
+	ON DUPLICATE KEY 
+	UPDATE originalFilename = #{originalFileName},
+	              filepath = #{filePath},
+	              filesize = #{fileSize}
+	</insert>
+
 </mapper>	

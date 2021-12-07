@@ -13,11 +13,17 @@ public interface CommentService {
 
 	void insertReplyForFreeBoard(CommentVO commentVO);
 
+	void insertReplyForNanumBoard(CommentVO commentVO);
+	
 	List<HashMap<String, Object>> getReplyListByBoardSeq(int boardSeq);
 
 	void deleteCommentOnFreeBoard(int commentSeq, int boardSeq);
 	
 	void updateCommentOnFreeBoard(CommentVO commentVO);
+
+	void deleteCommentsBySeq(int boardSeq);
+
+
 
 	
 }
