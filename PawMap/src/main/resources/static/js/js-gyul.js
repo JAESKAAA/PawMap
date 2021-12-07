@@ -47,7 +47,7 @@ let index = {
 				url: "deleteFreeBoard/api/"+freeBoardSeq,
 				contentType : "application/json; charset=utf-8",
 			}).done(function(resp){
-				alert("삭제 성공");
+				alert("자유게시판 게시글 삭제 성공");
 				location.href = "getFreeBoardList"
 			}).fail(function(error){
 				alert(error);
@@ -62,7 +62,7 @@ let index = {
 	// 나눔게시판 글 삭제 메소드
 		deleteNanumBoardBySeq:function(){
 		
-			let nanumBoardSeq = $("#nanumBoardSeq").text().substring(9);
+			let nanumBoardSeq = $("#nanumBoardSeq").val();
 			console.log(nanumBoardSeq);
 			
 			if(confirm("정말 삭제하시겠습니까?")){
@@ -71,7 +71,7 @@ let index = {
 					url: "deleteNanumBoard/api/"+nanumBoardSeq,
 					contentType : "application/json; charset=utf-8",
 				}).done(function(resp){
-					alert("삭제 성공");
+					alert("나눔게시판 게시글 삭제 성공");
 					location.href = "getNanumBoardList"
 				}).fail(function(error){
 					alert(error);
@@ -120,7 +120,7 @@ let index = {
 			data : JSON.stringify(data),
 			contentType : 'application/json; charset=utf-8',
 			success : function() {
-				alert("1111");
+				alert("자유게시판 글수정 성공");
 				location.href ="getFreeBoard?boardSeq="+freeBoardSeq
 			},
 			error : function(e) {
@@ -143,11 +143,11 @@ let index = {
 		console.log("updateNanumBoard:function 탐, nanumBoardSeq ==="+nanumBoardSeq+"data =======: "+ data);
 		$.ajax({
 			type: 'POST',
-			url: "updateFreeAndNanumBoardForm/api/"+nanumBoardSeq,
+			url: "updateNanumBoardForm/api/"+nanumBoardSeq,
 			data : JSON.stringify(data),
 			contentType : 'application/json; charset=utf-8',
 			success : function() {
-				alert("1111");
+				alert("나눔게시판 글수정 성공");
 				location.href ="getNanumBoard?boardSeq="+nanumBoardSeq
 			},
 			error : function(e) {

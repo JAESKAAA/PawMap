@@ -40,6 +40,10 @@ public interface BoardService {
 
 	void updateNanumBoardForm(BoardVO vo);
 
+	int getNanumBoardSeq();
+
+	// 나눔게시판 글 삭제
+	void deleteNanumBoardBySeq(int boardSeq);
 
 
 	

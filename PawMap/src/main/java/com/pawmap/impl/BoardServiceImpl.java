@@ -109,6 +109,17 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.updateNanumBoardForm(vo);
 		
 	}
+@Override
+public int getNanumBoardSeq() {
+	return boardMapper.getNanumBoardSeq();
+}
 
+@Override
+public void deleteNanumBoardBySeq(int boardSeq) {
+	boardMapper.deleteNanumBoardBySeq(boardSeq);
+	
+	
+}
+	
 }
 

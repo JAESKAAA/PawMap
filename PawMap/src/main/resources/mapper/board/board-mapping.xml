@@ -112,10 +112,17 @@
 
   	</select>
   	
+  	
   	<select id="getFreeBoardSeq" resultType="int">
 		SELECT IFNULL(MAX(board_seq) ,0) + 1
 			FROM BOARD
 			WHERE board_type = 'f'
+	</select>
+	
+		<select id="getNanumBoardSeq" resultType="int">
+		SELECT IFNULL(MAX(board_seq) ,0) + 1
+			FROM BOARD
+			WHERE board_type = 's'
 	</select>
   	
   	<delete id="deleteFreeBoardBySeq">
@@ -123,6 +130,13 @@
   		WHERE board_seq = #{boardSeq}
   		AND
   		board_type = 'f';
+  	</delete>
+  	
+  	  	<delete id="deleteNanumBoardBySeq">
+  		DELETE FROM board
+  		WHERE board_seq = #{boardSeq}
+  		AND
+  		board_type = 's';
   	</delete>
   	
   	<update id="updateFreeBoardForm">

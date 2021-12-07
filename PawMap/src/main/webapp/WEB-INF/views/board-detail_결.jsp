@@ -36,11 +36,13 @@ pageEncoding="UTF-8"%>
                 </div>
                 <div class="col-lg-6">
                     <h5 class=" mb-5 board_seq" id="freeBoardSeq">게시글 번호 : ${getFreeBoard.boardSeq} ${getNanumBoard.boardSeq}</h5>
+                    <input type="hidden" value="${getNanumBoard.boardSeq}" id="nanumBoardSeq" />
                 </div>
             </div>
 
             
             <!-- 현재 파일 이름이 한글이면 출력이 안되는 오류 있음 -->
+            <c:if test="${getFreeBoard.boardType eq 'f' }">
             <c:choose>
               <c:when test="${empty freeBoardFileList}">
                 <h1>테스트용 :: 파일이 없음</h1>
@@ -50,16 +52,43 @@ pageEncoding="UTF-8"%>
                   <img class="img-fluid" src="${pageContext.request.contextPath}/upload/${fileList.originalFileName}" alt="" />
                 </c:forEach>
               </c:otherwise>
-            </c:choose>
+              </c:choose>
+              </c:if>
+
+
+              <c:if test="${getNanumBoard.boardType eq 's' }">
+                <c:choose>
+                  <c:when test="${empty nanumBoardFileList}">
+                    <h1>테스트용 :: 파일이 없음</h1>
+                  </c:when>
+                  <c:otherwise>
+                    <c:forEach items="${nanumBoardFileList}" var="fileList" varStatus="i">
+                      <img class="img-fluid" src="${pageContext.request.contextPath}/upload/${fileList.originalFileName}" alt="" />
+                    </c:forEach>
+                  </c:otherwise>
+                  </c:choose>
+                  </c:if>
+
 
 
             <div class="col-lg-6">
                 <p class="mt-5">
                   ${getFreeBoard.content}
                   ${getNanumBoard.content}
+                  <br><br>
+                  getNanumBoard.userId : ${getNanumBoard.userId}
+                  <br>
+                  principal.user.userId : ${principal.user.userId}
+                  <br><br>
+                  fileList.fileSeq : ${fileList.fileSeq}
+                  <br>
+                  fileList.originalFileName : ${fileList.originalFileName}
+                  <br>
+                  getFreeBoard.boardType : ${getFreeBoard.boardType}
+                  <br>
+                  getNanumBoard.boardType : ${getNanumBoard.boardType}
 
-                  ${getNanumBoard.userId}
-                  ${principal.user.userId}
+                  <h1>${fileList.originalFileName}</h1>
                 </p>
               </div>
               <!-- 자유게시판일경우 -->
@@ -78,7 +107,7 @@ pageEncoding="UTF-8"%>
               <div class="col-lg-6 mt-5">
                 <button onclick="location.href='/pawmap/board/getNanumBoardList'" type="button" class="btn btn-secondary">목록으로</button>
               <c:if test="${getNanumBoard.userId == principal.user.userId}">
-                <button onclick="location.href='/pawmap/board/updateFreeAndNanumBoardForm?boardSeq=${getNanumBoard.boardSeq}&boardType=${getNanumBoard.boardType}'" type="button" class="btn btn-primary">수정</button>
+                <button onclick="location.href='/pawmap/board/updateNanumBoardForm?boardSeq=${getNanumBoard.boardSeq}&boardType=${getNanumBoard.boardType}'" type="button" class="btn btn-primary">수정</button>
                 <button id="delete-nanum-board" type="button" class="btn btn-secondary">삭제</button>
               </div>
             </c:if>  

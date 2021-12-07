@@ -54,19 +54,31 @@ public class BoardController {
 	public String insertFreeAndNanumBoard(BoardVO vo, HttpServletRequest request,
 			MultipartHttpServletRequest mhsr) throws IOException  {
 
-		
-		int boardSeq = boardService.getFreeBoardSeq();
+		int boardSeq=0;
+		if(vo.getBoardType().equals("f")) {
+			boardSeq = boardService.getFreeBoardSeq();
+		}else {
+			 boardSeq = boardService.getNanumBoardSeq();
+		}
 		String userId = vo.getUserId();
  		
 		System.out.println("boardSeq=========="+boardSeq);
 		System.out.println("userId=========="+userId);
 
 		
-		FileUtils fileUtils = new FileUtils();
+			FileUtils fileUtils = new FileUtils();
+	
 		List<FileVO> fileList = fileUtils.parseFileInfo(boardSeq, request, mhsr,userId);
 		
 		if(CollectionUtils.isEmpty(fileList) == false) {
-			fileService.insertBoardFileList(fileList);
+			
+			if(vo.getBoardType().equals("f")) {
+				System.out.println("프리보드파일인서트 탔음");
+				fileService.insertBoardFileList(fileList);
+			}else {
+				fileService.insertNanumBoardFileList(fileList.get(0));
+				System.out.println("나눔파일인서트 탔음");
+			}
 		}
 
 
@@ -75,7 +87,12 @@ public class BoardController {
 		
 		boardService.insertFreeAndNanumBoard(vo);
 		
-		return "redirect:getFreeBoardList";
+		if(vo.getBoardType().equals("f")) {
+			return "redirect:getFreeBoardList";
+			
+		} else {
+			return "redirect:getNanumBoardList";
+		}
 	}
 	
 	@RequestMapping("/board/getFreeBoardList")
@@ -137,7 +154,7 @@ public class BoardController {
 	
 	@PostMapping("/board/deleteFreeBoard/api/{boardSeq}")
 	@ResponseBody
-	public  void deleteFreeBoardBySeq(@PathVariable int boardSeq ) {
+	public void deleteFreeBoardBySeq(@PathVariable int boardSeq ) {
 		
 		System.out.println("deleteFreeBoard 들어옴");
 		System.out.println("deleteFreeBoard 들어옴 boardSeq : "+boardSeq);
@@ -146,6 +163,20 @@ public class BoardController {
 		fileService.deleteFileByBoardSeq(boardSeq);
 		
 	}
+	
+	// 나눔게시판 글삭제 관련 메소드
+	@PostMapping("/board/deleteNanumBoard/api/{boardSeq}")
+	@ResponseBody
+	public void deleteNanumBoardBySeq(@PathVariable int boardSeq ) {
+		
+		System.out.println("deleteFreeBoard 들어옴");
+		System.out.println("deleteFreeBoard 들어옴 boardSeq : "+boardSeq);
+		boardService.deleteNanumBoardBySeq(boardSeq);
+		commentService.deleteCommentsBySeq(boardSeq);
+		fileService.deleteFileByBoardSeqOnNanumSeq(boardSeq);
+		
+	}
+	
 	
 	@GetMapping("/board/updateFreeAndNanumBoardForm")
 	public String updateFreeBoard(@RequestParam int boardSeq, Model model) {
@@ -160,6 +191,39 @@ public class BoardController {
 		System.out.println(model);
 		
 		return "board-update-form_결";
+	}
+	
+	//나눔게시판 게시글 업데이트 관련 메서드
+	@GetMapping("/board/updateNanumBoardForm")
+	public String updateNanumBoard(@RequestParam int boardSeq, Model model, String boardType) {
+		System.out.println("updateFreeBoard   들어옴");
+		System.out.println(boardSeq);
+		
+		System.out.println("보드타입== "+boardType);
+		
+		List<FileVO> fileList = fileService.getFileListByNanumBoardSeq(boardSeq, boardType);
+		
+		System.out.println(fileList);
+		
+		model.addAttribute("fileList",fileList);
+		model.addAttribute("getBoard",boardService.getNanumBoard(boardSeq));
+		
+		System.out.println(model);
+		
+		return "board-update-form_결";
+	}
+	
+	@PostMapping("/board/updateNanumBoardForm/api/{boardSeq}")
+	@ResponseBody
+	public void updateNanumBoardForm(@PathVariable int boardSeq, 
+									@RequestBody BoardVO vo) {
+		System.out.println("updateNanumBoardForm  : " + "들어옴====");
+		System.out.println("vo ======== "+ vo);
+		
+		if(vo.getBoardSeq() == boardService.getNanumBoard(boardSeq).getBoardSeq()) {
+			System.out.println("같습니다.");
+			boardService.updateNanumBoardForm(vo);
+		}
 	}
 	
 	
@@ -233,6 +297,8 @@ public class BoardController {
 		
 	}
 	
+	// 자유게시판 파일 인서트======================================================
+	
 	@RequestMapping("/board/updateFreeBoardFormInsertFiles")
 	public String updateFreeBoardFormInsertFiles(String userId,HttpServletRequest request,
 			MultipartHttpServletRequest mhsr, int boardSeq) throws IOException {
@@ -261,7 +327,7 @@ public class BoardController {
 		
 	}
 	
-	
+	// 나눔게시판 리스트 가져오기
 	@GetMapping("/board/getNanumBoard")
 	public String getNanumBoard(@RequestParam int boardSeq, Model model) {
 		System.out.println("getNanumBoard============ 탐");
@@ -271,19 +337,54 @@ public class BoardController {
 		List<HashMap<String,Object>> replyList = commentService.getReplyListByBoardSeq(boardSeq);
 
 		// 파일리스트 가져오기
-		List<FileVO> fileList = fileService.getFileListByFreeBoardSeq(boardSeq);
+		List<FileVO> fileList = fileService.getFileListByNanumBoardSeq(boardSeq,"s");
 		
 		System.out.println("fileList ============== "+ fileList);
-		
+		System.out.println("나눔보드 테스터 ===== "+boardService.getNanumBoard(boardSeq));
 
-		model.addAttribute("freeBoardFileList",fileList);
+		model.addAttribute("nanumBoardFileList",fileList);
 		model.addAttribute("commentSize",replyList.size());
-		model.addAttribute("freeBoardReplyList",replyList);
+		model.addAttribute("nanumBoardReplyList",replyList);
 		model.addAttribute("getNanumBoard",boardService.getNanumBoard(boardSeq));
 		
 		return "board-detail_결";
 
 	}
+	
+	// 나눔게시판 파일 삭제
+	@RequestMapping("/board/saperateDeleteFileOnNanumBoard")
+	public String saperateDeleteFileOnNanum(int fileSeq, int boardSeq) {
+		System.out.println(fileSeq);
+		System.out.println(boardSeq);
+		System.out.println("saperateDeleteFileOnNanum 진입======");
+		
+		fileService.deleteOneFile(fileSeq,boardSeq);
+		
+		return "redirect:updateNanumBoardForm?boardSeq="+boardSeq;
+		
+	}
+	
+	// 나눔게시판 파일 업데이트
+	@RequestMapping("/board/updateNanumBoardFormInsertFiles")
+	public String updateNanumBoardFormInsertFiles(String userId,HttpServletRequest request,
+			MultipartHttpServletRequest mhsr, int boardSeq) throws IOException {
+		
+		System.out.println("updateNanumBoardFormInsertFiles 진입=====");
+		
+		FileUtils fileUtils = new FileUtils();
+		List<FileVO> fileList = fileUtils.parseFileInfo(boardSeq, request, mhsr, userId);
+		
+		FileVO fileVO = fileList.get(0);
+		
+		System.out.println("파일리스트 출력 == "+ fileVO);
+		if(CollectionUtils.isEmpty(fileList) == false) {
+			fileService.insertNanumBoardFileList(fileVO);
+		}
+		
+		return "redirect:updateNanumBoardForm?boardSeq="+boardSeq;
+		
+	}
+	
 ////	**** 게시판 디테일
 //	@RequestMapping("/board/getBoardDetail")
 ////	리퀘스트파람으로 boardType을 자유게시판인지 나눔게시판인지 받아서 필터링해준다

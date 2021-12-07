@@ -246,9 +246,12 @@ pageEncoding="UTF-8"%>
             </c:forEach>
 
             
-            </div>
+        </div>
+        <div style="display:inline-block;">
+            <a  class="nav-link" href="/pawmap/board/form">글쓰러가기</a>
         </div>
     </div>
+</div>
 <!-- 나눔 게시판 종료 -->    
 
 <!-- 페이지 네이션 시작 -->

@@ -55,8 +55,10 @@ public interface BoardMapper {
 
 	void updateNanumBoardForm(BoardVO vo);
 	
+ 	int getNanumBoardSeq();
 
-	
+	void deleteNanumBoardBySeq(@Param("boardSeq") int boardSeq);
+
 
 
 }

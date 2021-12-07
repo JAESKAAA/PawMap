@@ -61,9 +61,34 @@ public class FileServiceImpl implements FileService {
 	}
 
 	@Override
-	public List<FileVO> getFileListByNanumBoardSeq(int boardSeq) {
-		return fileMapper.getFileListByNanumBoardSeq(boardSeq);
+	public List<FileVO> getFileListByNanumBoardSeq(int boardSeq, String boardType) {
+		return fileMapper.getFileListByNanumBoardSeq(boardSeq, boardType);
 	}
+
+	@Override
+	public void insertNanumBoardFileList(FileVO fileVO) {
+		fileMapper.insertNanumBoardFileList(fileVO);
+		
+	}
+
+	@Override
+	public void deleteFileByBoardSeqOnNanumSeq(int boardSeq) {
+		fileMapper.deleteFileByBoardSeqOnNanumSeq(boardSeq);
+	}
+	
+	@Override
+	public List<FileVO> getFileListByShelterSeq(int boardSeq, String boardType) {
+		return fileMapper.getFileListByShelterSeq(boardSeq, boardType);
+	}
+
+	@Override
+	public void insertShelterFileList(List<FileVO> fileList) {
+		for(FileVO vo : fileList) {
+			fileMapper.insertShelterFileList(vo);
+			System.out.println(vo.getBoardSeq());
+		}
+	}
+	
 
 	
 }

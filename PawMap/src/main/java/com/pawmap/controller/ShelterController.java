@@ -54,10 +54,10 @@ public class ShelterController {
 		System.out.println("update Shelter Form 통과");
 		System.out.println("sheqlterSeq===================" + shelterSeq);
 		
-		List<FileVO> fileList = fileService.getFileListBySeqType(shelterSeq, "v");
-		
+		List<FileVO> fileList = fileService.getFileListByShelterSeq(shelterSeq, "v");
+		System.out.println("파일리스트담긴거==== "+fileList);
 		// 이 생성자를 탈때 boardType을 v로 선언하게함
-		FileUtils fileUtils = new FileUtils("v");
+		FileUtils fileUtils = new FileUtils();
 		
 		model.addAttribute("fileList",fileList);
 		model.addAttribute("getShelter",shelterMapper.getShelter(shelterSeq));
@@ -100,27 +100,22 @@ public class ShelterController {
 		shelterService.insertShelterForm(vo);
 		int shelterSeq = shelterService.getShelterSeq();
 		
-		String shelterName = vo.getShelterName();
 
 		System.out.println("getShelterSeq 구간 통과");
 		System.out.println("ShelterSeq ======" + shelterSeq);
-		System.out.println("ShelterName =======" + shelterName);
 		
-		// 이 생성자를 탈떄 boardType을 v로 선언하게함
-		FileUtils fileUtils = new FileUtils("v");
+		FileUtils fileUtils = new FileUtils();
 		
-		List<FileVO> fileList = fileUtils.parseFileInfo(shelterSeq, request, mhsr, shelterName);
+		List<FileVO> fileList = fileUtils.parseFileInfo(shelterSeq, request, mhsr, "admin");
 		System.out.println("file타는감 ============" + fileList);
 		
-		if(CollectionUtils.isEmpty(fileList) == false) {
-			fileService.insertBoardFileList(fileList);
-		}
+			fileService.insertShelterFileList(fileList);
+
 	
 
 		System.out.println("insertShelterForm을 탔다!!!!!");
 		System.out.println("그렇다면 BoardVO는? ============== "+vo);
 		
-		vo.setShelterSeq(shelterSeq);
 		
 		return "redirect:shelterList";
 		
@@ -176,11 +171,14 @@ public class ShelterController {
 		
 		System.out.println("updateShelterFormInsertFiles 통과=============");
 		
-		FileUtils fileUtils = new FileUtils("v");
-		List<FileVO> fileList = fileUtils.parseFileInfo(boardSeq, request, mhsr, shelterName);
+		System.out.println("boardSeq == "+boardSeq);
 		
+		FileUtils fileUtils = new FileUtils();
+		List<FileVO> fileList = fileUtils.parseFileInfo(boardSeq, request, mhsr, "admin");
+		
+		System.out.println("쉘터 파일리스트 === " +fileList);
 		if(CollectionUtils.isEmpty(fileList) == false) {
-			fileService.insertBoardFileList(fileList);
+			fileService.insertShelterFileList(fileList);
 		}
 		
 		return "redirect:updateShelterForm?shelterSeq="+boardSeq;

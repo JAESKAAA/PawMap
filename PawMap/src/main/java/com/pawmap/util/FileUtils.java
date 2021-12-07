@@ -18,7 +18,7 @@ import com.pawmap.VO.FileVO;
 
 public class FileUtils {
 	// 기본 생성자 f 선언
-	String boardType = "f";
+//	String boardType = "f";
 	
 	public List<FileVO> parseFileInfo(int boardSeq, HttpServletRequest request, 
 			MultipartHttpServletRequest mhsr,String userId) throws IOException {
@@ -57,7 +57,7 @@ public class FileUtils {
 				if(mf.getSize() > 0) {
 					FileVO boardFile = new FileVO();
 					boardFile.setBoardSeq(boardSeq);
-					boardFile.setBoardType(boardType);
+//					boardFile.setBoardType(boardType);
 					boardFile.setUserId(userId);
 					boardFile.setFileSize(mf.getSize());
 					boardFile.setOriginalFileName(mf.getOriginalFilename());
@@ -73,11 +73,11 @@ public class FileUtils {
 		}
 		return fileList;
 	}
-	public FileUtils() { /* default Constructor */ }
+//	public FileUtils() { /* default Constructor */ }
 	
-	// boardType이 f가 아닌 경우 생성자 호출시 boardType 명시후 사용하기
-	public FileUtils(String boardType) {
-		this.boardType = boardType;
-	}
+//	// boardType이 f가 아닌 경우 생성자 호출시 boardType 명시후 사용하기
+//	public FileUtils(String boardType) {
+//		this.boardType = boardType;
+//	}
 	
 }

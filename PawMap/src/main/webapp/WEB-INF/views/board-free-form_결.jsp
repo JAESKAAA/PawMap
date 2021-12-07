@@ -4,8 +4,6 @@ pageEncoding="UTF-8"%>
 <%@ include file="layout/header.jsp" %>
 
   
-    <!-- 게시판 폼 시작 -->
-
     <form class="form-horizontal board-form" method="POST" action="insertFreeAndNanumBoard" enctype="multipart/form-data">
         <div class="container">
             <div class="card row">
@@ -59,6 +57,12 @@ pageEncoding="UTF-8"%>
             </div>    
         </div>    
     </form>
+
+
+
+
+
+
 
     <!-- <form action="FileUploadServlet" method="post" enctype="multipart/form-data">
         Select File to Upload:<input type="file"  name="fileName" multiple/>

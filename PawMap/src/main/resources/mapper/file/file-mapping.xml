@@ -10,6 +10,18 @@
 		AND board_type = 'f';
 	</select>
 	
+		<select id="getFileListByNanumBoardSeq" resultType="com.pawmap.VO.FileVO">
+		SELECT * FROM file
+		WHERE board_seq = #{boardSeq}
+		AND board_type = 's';
+	</select>
+	
+		<select id="getFileListByShelterSeq" resultType="com.pawmap.VO.FileVO">
+		SELECT * FROM file
+		WHERE board_seq = #{boardSeq}
+		AND board_type = 'v';
+	</select>
+	
 	<select id="getFileListBySeqType"  resultType="com.pawmap.VO.FileVO">
 		SELECT * FROM file
 		WHERE board_seq = #{boardSeq}
@@ -42,6 +54,36 @@
 			
 		)
 	</insert>
+	
+		<insert id="insertShelterFileList" parameterType="com.pawmap.VO.FileVO">
+		INSERT INTO file (
+			board_seq,
+			file_seq,
+			board_type,
+			user_id,
+			originalFilename,
+			filepath,
+			filesize				
+		)
+		VALUES
+		(
+			#{boardSeq},
+			(
+				SELECT IFNULL(MAX(file_seq),0) +1
+					FROM file v
+				WHERE board_seq = #{boardSeq}
+			),
+			IFNULL(#{boardType},'v'),
+			#{userId},
+			#{originalFileName},
+			#{filePath},
+			#{fileSize}
+			
+		)
+	</insert>
+	
+	
+	
 
 	<delete id="deleteFileByBoardSeq">
 		DELETE FROM file
@@ -55,6 +97,44 @@
 		AND board_type = 'v'
 	</delete>
 	
+			<delete id="deleteFileByBoardSeqOnNanumSeq">
+		DELETE FROM file
+		WHERE board_seq = #{boardSeq}
+		AND board_type = 's'
+	</delete>
+	
+		<insert id="insertNanumBoardFileList" parameterType="com.pawmap.VO.FileVO">
+		INSERT INTO file (
+			board_seq,
+			file_seq,
+			board_type,
+			user_id,
+			originalFilename,
+			filepath,
+			filesize				
+		)
+		VALUES
+		(
+			#{boardSeq},
+			(
+				SELECT IFNULL(MAX(file_seq),0) +1
+					FROM file s
+				WHERE board_seq = #{boardSeq}
+			),
+			IFNULL(#{boardType},'s'),
+			#{userId},
+			#{originalFileName},
+			#{filePath},
+			#{fileSize}
+			
+		)
+	</insert>
+	
+	
+	
+	
+	
+	<!-- 파일 통합하려다 만 메소드 (구현 실패로 쓰지않음, 보류) 문의는 은혜한테 -->
 	<delete id="deleteOneFile" >
 		DELETE FROM file
 		WHERE file_seq      = #{fileSeq}
@@ -78,5 +158,7 @@
 	              filepath = #{filePath},
 	              filesize = #{fileSize}
 	</insert>
+	
+	<!-- 파일 통합하려다 만 메소드 (구현 실패로 쓰지않음, 보류) 문의는 은혜한테 /끝/ -->
 
 </mapper>	
