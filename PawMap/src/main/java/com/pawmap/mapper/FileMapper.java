@@ -18,5 +18,19 @@ public interface FileMapper {
 
 	void deleteOneFile(@Param("fileSeq")int fileSeq,@Param("boardSeq") int boardSeq);
 
+	void insertMedicalFileList(FileVO vo);
+
+	List<FileVO> getFileListByMedicalBoardSeq(int boardSeq);
+
+	void deleteOneFileOnMedicalRecord(@Param("fileSeq")int fileSeq, @Param("boardSeq") int boardSeq);
+
+	void insertUserProfile(FileVO vo);
+
+	void deleteProfile(@Param("userSeq") int userSeq,@Param("boardType") String userType,@Param("userId") String userId);
+
+	
+
+	
+
 
 }

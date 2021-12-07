@@ -39,5 +39,42 @@ public class FileServiceImpl implements FileService {
 	public void deleteOneFile(int fileSeq, int boardSeq) {
 		fileMapper.deleteOneFile(fileSeq,boardSeq);
 	}
+
+	@Override
+	public void insertMedicalFileList(List<FileVO> fileList) {
+		for(FileVO vo : fileList) {
+			fileMapper.insertMedicalFileList(vo);
+			System.out.println(vo.getBoardSeq());
+
+		}
+		
+	}
+
+	@Override
+	public List<FileVO> getFileListByMedicalBoardSeq(int boardSeq) {
+		
+		return fileMapper.getFileListByMedicalBoardSeq(boardSeq);
+	}
+
+	@Override
+	public void deleteOneFileOnMedicalRecord(int fileSeq, int boardSeq) {
+		fileMapper.deleteOneFileOnMedicalRecord(fileSeq,boardSeq);
+	}
+
+	@Override
+	public void insertUserProfile(List<FileVO> fileList) {
+		for(FileVO vo : fileList) {
+			fileMapper.insertUserProfile(vo);
+			System.out.println(vo.getBoardSeq());
+
+		}
+	}
+
+	@Override
+	public void deleteProfile(int userSeq, String userType, String userId) {
+		fileMapper.deleteProfile(userSeq, userType, userId);
+	}
+
+	
 	
 }

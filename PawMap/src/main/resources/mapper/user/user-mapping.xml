@@ -96,7 +96,7 @@
   	
   	<!-- (관리자페이지) 유저 정보 수정 -->
   	<select id="getUser" resultMap="userList">
-  		SELECT user_seq, user_type, user_id, user_email, user_name, user_nickname, user_tel_num, address, com_num FROM user 
+  		SELECT user_seq, user_type, user_id, user_email, user_name, user_nickname, user_tel_num, address, com_num, user_profile FROM user 
   				WHERE user_id = #{userId}
   	</select>
   
@@ -238,6 +238,9 @@
 				<if test ="userPassword != null">
 					 user_password = #{userPassword},
 				</if> 
+				<if test ="userProfile != null">
+					 user_profile = #{userProfile},
+				</if>
 			</set>
 			WHERE 
 				USER_ID = #{userId}
@@ -255,6 +258,16 @@
 	<delete id="deleteUser" parameterType="com.pawmap.VO.UserVO">
 		DELETE FROM user where user_id = #{userId}
 	</delete>
+	
+	<update id="updateUserProfileNull">
+		UPDATE user
+		SET user_profile = NULL
+		WHERE user_seq = #{userSeq}
+		AND
+		user_type = #{userType}
+		AND 
+		user_id = #{userId}
+	</update>
 
   	
   </mapper>	

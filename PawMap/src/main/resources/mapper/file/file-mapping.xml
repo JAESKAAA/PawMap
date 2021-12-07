@@ -10,6 +10,12 @@
 		AND board_type = 'f';
 	</select>
 	
+	<select id="getFileListByMedicalBoardSeq" resultType="com.pawmap.VO.FileVO">
+		SELECT * FROM file
+		WHERE board_seq = #{boardSeq}
+		AND board_type = 'm';
+	</select>
+	
 	<insert id="insertBoardFileList" parameterType="com.pawmap.VO.FileVO">
 		INSERT INTO file (
 			board_seq,
@@ -27,8 +33,66 @@
 				SELECT IFNULL(MAX(file_seq),0) +1
 					FROM file f
 				WHERE board_seq = #{boardSeq}
+				AND 
+				board_type = 'f'
 			),
 			'f',
+			#{userId},
+			#{originalFileName},
+			#{filePath},
+			#{fileSize}
+		)
+	</insert>
+	
+	<insert id="insertMedicalFileList" parameterType="com.pawmap.VO.FileVO">
+		INSERT INTO file (
+			board_seq,
+			file_seq,
+			board_type,
+			user_id,
+			originalFilename,
+			filepath,
+			filesize				
+		)
+		VALUES
+		(
+			#{boardSeq},
+			(
+				SELECT IFNULL(MAX(file_seq),0) +1
+					FROM file f
+				WHERE board_seq = #{boardSeq}
+				AND
+				board_type = 'm'
+			),
+			'm',
+			#{userId},
+			#{originalFileName},
+			#{filePath},
+			#{fileSize}
+		)
+	</insert>
+	
+	<insert id="insertUserProfile" parameterType="com.pawmap.VO.FileVO">
+		INSERT INTO file (
+			board_seq,
+			file_seq,
+			board_type,
+			user_id,
+			originalFilename,
+			filepath,
+			filesize				
+		)
+		VALUES
+		(
+			#{boardSeq},
+			(
+				SELECT IFNULL(MAX(file_seq),0) +1
+					FROM file f
+				WHERE board_seq = #{boardSeq}
+				AND
+				board_type = #{boardType}
+			),
+			#{boardType},
 			#{userId},
 			#{originalFileName},
 			#{filePath},
@@ -48,6 +112,26 @@
 		WHERE file_seq = #{fileSeq}
 		AND 
 		board_seq = #{boardSeq}
+		AND
+		board_type = 'f'
+	</delete>
+	
+	<delete id="deleteOneFileOnMedicalRecord">
+		DELETE FROM file
+		WHERE file_seq = #{fileSeq}
+		AND 
+		board_seq = #{boardSeq}
+		AND
+		board_type = 'm'
+	</delete>
+	
+	<delete id="deleteProfile">
+		DELETE FROM file
+		WHERE user_id = #{userId}
+		AND
+		board_seq = #{userSeq}
+		AND
+		board_type = #{boardType}
 	</delete>
 	
 

@@ -70,6 +70,8 @@ public interface UserMapper {
 	public void updateUserAdmin(UserVO vo);
 	public UserVO searchPwd(@Param("userId")String userId, @Param("userName")String userName);
 
+	void updateUserProfileNull(@Param("userSeq") int userSeq,@Param("userType") String userType,@Param("userId") String userId);
+
 
 
 }

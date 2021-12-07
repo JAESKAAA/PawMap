@@ -22,6 +22,7 @@ pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
         method="post"
         action="/pawmap/mypage/updateUser"
         novalidate
+        enctype="multipart/form-data"
       >
         <div class="mb-3">
           <label for="name">이름</label>
@@ -120,6 +121,22 @@ pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
             required
           />
         </div>
+        <c:choose>
+          <c:when test="${empty user.userProfile}">
+            <div class="mb-3">
+              <label for="profile">프로필 사진 등록</label>
+              <div class="control-group">  
+                  <div class="controls">  
+                      <div class="entry input-group upload-input-group">  
+                          <input type="hidden" name="userSeq" value="${principal.user.userSeq}">
+                          <input type="hidden" name="userType" value="${principal.user.userType}">
+                          <input class="form-control btn-file-upload" name="uploadFiles" multiple="multiple" type="file">  
+                      </div>  
+                  </div>  
+              </div>  
+            </div>
+          </c:when>
+        </c:choose>
         <hr class="mb-4" />
         <div class="mb-4">
           <button class="btn btn-lg btn-success" type="submit">수정</button>
@@ -131,6 +148,26 @@ pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
           </button>
         </div>
       </form>
+      <c:choose>
+          <c:when test="${!empty user.userProfile}">
+            <form action="deleteProfile" method="POST">  
+                <label for="profile">프로필 사진 삭제</label>
+                <div class="control-group" id="fields">  
+                  <div class="controls">  
+                    <div class="entry input-group upload-input-group">  
+                      <h5>${principal.user.userProfile}</h5> 
+                      <input type="hidden" name="userSeq" value="${principal.user.userSeq}">
+                      <input type="hidden" name="userType" value="${principal.user.userType}">
+                      <input type="hidden" name="userId" value="${principal.user.userId}">
+                    </div>  
+                    <div class="entry input-group upload-input-group">  
+                      <button type="submit" class="btn btn-outline-danger">파일삭제</button>
+                    </div>  
+                  </div>  
+                </div>  
+          </form>
+          </c:when>
+        </c:choose>
       <button class="btn btn-lg btn-success mt-3" onclick="deleteUserCheck()" >
         회원탈퇴
       </button>

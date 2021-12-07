@@ -37,7 +37,7 @@ pageEncoding="UTF-8"%>
             <!-- 현재 파일 이름이 한글이면 출력이 안되는 오류 있음 -->
             <c:choose>
               <c:when test="${empty freeBoardFileList}">
-                <h1>테스트용 :: 파일이 없음</h1>
+                
               </c:when>
               <c:otherwise>
                 <c:forEach items="${freeBoardFileList}" var="fileList" varStatus="i">
@@ -96,13 +96,26 @@ pageEncoding="UTF-8"%>
 
                                 </div>
                                 <div class="d-flex flex-start w-100">
-                                    <img
-                                        class="rounded-circle shadow-1-strong  mr-5"
-                                        src="https://mdbootstrap.com/img/Photos/Avatars/img%20(21).jpg"
-                                        alt="avatar"
-                                        width="65"
-                                        height="65"
-                                    />
+                                  <c:choose>
+                                    <c:when test="${empty principal.user.userProfile || empty principal}">
+                                      <img
+                                        class="rounded-circle shadow-1-strong me-3"
+                                        src="${pageContext.request.contextPath}/upload/noprofileuser.jpg"
+                                        alt="img"
+                                        width="40"
+                                        height="40"
+                                      />   
+                                    </c:when>
+                                    <c:otherwise>
+                                      <img
+                                          class="rounded-circle shadow-1-strong  mr-5"
+                                          src="${pageContext.request.contextPath}/upload/${principal.user.userProfile}"
+                                          alt="avatar"
+                                          width="65"
+                                          height="65"
+                                      />
+                                    </c:otherwise>
+                                  </c:choose>
                                     <div class="w-100">
                                         <div class="form-outline">
 
@@ -135,15 +148,28 @@ pageEncoding="UTF-8"%>
 
               <c:forEach var="reply" items="${freeBoardReplyList}" varStatus="i" >
                 <div class="card mb-3">
-                  
                   <div class="card-body">
                     <div class="d-flex flex-start">
-                      <img
-                      class="rounded-circle shadow-1-strong me-3"
-                      alt="img"
-                      width="40"
-                      height="40"
-                      />
+                      <c:choose>
+                        <c:when  test="${empty reply.user_profile}">
+                          <img
+                          class="rounded-circle shadow-1-strong me-3"
+                          src="${pageContext.request.contextPath}/upload/noprofileuser.jpg"
+                          alt="img"
+                          width="40"
+                          height="40"
+                          />
+                        </c:when>
+                        <c:otherwise>
+                          <img
+                          class="rounded-circle shadow-1-strong me-3"
+                          src="${pageContext.request.contextPath}/upload/${reply.user_profile}"
+                          alt="img"
+                          width="40"
+                          height="40"
+                          />
+                        </c:otherwise>
+                      </c:choose>
                       <div class="w-100">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                           <h6 class="text-secondary fw-bold mb-0 ml-2 writer">

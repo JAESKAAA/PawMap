@@ -73,7 +73,7 @@ pageEncoding="UTF-8"%>
         <c:set var="now" value="<%=new java.util.Date()%>" />
         <c:set var="sysYear"><fmt:formatDate value="${now}" pattern="yyyyMMdd" /></c:set> 
         <c:out value="${sysYear}" />
-        <c:forEach var="myResList" items="${myResList}">
+        <c:forEach var="myResList" items="${myResList}" varStatus="status">
         <form action="cancelReservation" method="POST">
         <tr>
             <input type="hidden" name="userId" value="${principal.user.userId}">
@@ -82,10 +82,17 @@ pageEncoding="UTF-8"%>
             <input type="hidden" name="reservationDate" value="${myResList.reservation_date}">
             <td>${myResList.reservation_seq}</td>
             <td>${principal.user.userNickname}</td>
-            <td>${myResList.user_nickname}</td>
+            <td>${myResList.user_name}</td>
             <td>${myResList.reservation_date}</td>
             <td>${myResList.schedule_time}</td>
-            <td style="color: gray;">진단서 미등록</td>
+            <c:choose>
+                <c:when test="${empty myResList.reservation_status }">
+                    <td style="color: gray;"><button type="button" onclick='location.href="/pawmap/showMyMedicalRecord?comNum=${myResList.com_num}&reservationDate=${myResList.reservation_date}&scheduleTime=${myResList.schedule_time}&userId=${principal.user.userId}"' disabled>진단서 보기</button></td>
+                </c:when>
+                <c:otherwise>
+                    <td style="color: gray;"><button type="button" onclick='location.href="/pawmap/showMyMedicalRecord?comNum=${myResList.com_num}&reservationDate=${myResList.reservation_date}&scheduleTime=${myResList.schedule_time}&userId=${principal.user.userId}"'>진단서 보기</button></td>
+                </c:otherwise>
+            </c:choose>
             <c:choose>
                 <c:when test="${myResList.reservation_date <= sysYear}">
                     <td><button disabled>예약취소</button></td>
