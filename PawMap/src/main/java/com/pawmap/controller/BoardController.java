@@ -240,6 +240,7 @@ public class BoardController {
 			boardService.updateFreeBoardForm(vo);
 		}
 	}
+	// 코멘트 관련 메소드 시작===============================================
 	
 
 	@PostMapping("board/insertReplyFreeBoard/api/{boardSeq}")
@@ -252,6 +253,7 @@ public class BoardController {
 		
 	}
 	
+	// 나눔게시판 덧글 등록
 	@PostMapping("board/insertReplyNanumBoard/api/{boardSeq}")
 	@ResponseBody
 	public void insertReplyNanumBoard(@PathVariable int boardSeq,
@@ -262,6 +264,8 @@ public class BoardController {
 		
 	}
 	
+	
+	
 	@PostMapping("/board/deleteCommentOnFreeBoard")
 	public String deleteCommentOnFreeBoard(int commentSeq, int boardSeq) {
 		System.out.println("adadasdsadsadada");
@@ -271,6 +275,20 @@ public class BoardController {
 		commentService.deleteCommentOnFreeBoard(commentSeq,boardSeq);
 		
 		return "redirect:getFreeBoard?boardSeq="+boardSeq;
+		
+	}
+	
+	
+	// 나눔게시판 코멘트 삭제
+	@PostMapping("/board/deleteCommentOnNanumBoard")
+	public String deleteCommentOnNanumBoard(int commentSeq, int boardSeq) {
+		System.out.println("deleteCommentOnNanumBoard 진입===========");
+		System.out.println(commentSeq);
+		System.out.println(boardSeq);
+		
+		commentService.deleteCommentOnNanumBoard(commentSeq,boardSeq);
+		
+		return "redirect:getNanumBoard?boardSeq="+boardSeq;
 		
 	}
 	
@@ -285,6 +303,22 @@ public class BoardController {
 		
 	}
 	
+	
+	// 나눔게시판 코멘트 업데이트
+	@RequestMapping("/board/updateCommentOnNanumBoard")
+	public String updateCommentOnNanumBoard(CommentVO commentVO) {
+		System.out.println("updateCommentOnNanumBoard 진입==============");
+		System.out.println("commentSeq========"+commentVO);
+		int boardSeq = commentVO.getBoardSeq();
+		commentService.updateCommentOnNanumBoard(commentVO);
+		
+		return "redirect:getNanumBoard?boardSeq="+boardSeq;
+		
+	}
+	
+	
+	
+	
 	@RequestMapping("/board/saperateDeleteFileOnFreeBoard")
 	public String saperateDeleteFile(int fileSeq, int boardSeq) {
 		System.out.println(fileSeq);
@@ -296,6 +330,9 @@ public class BoardController {
 		return "redirect:updateFreeAndNanumBoardForm?boardSeq="+boardSeq;
 		
 	}
+	
+	
+	
 	
 	// 자유게시판 파일 인서트======================================================
 	
@@ -334,7 +371,7 @@ public class BoardController {
 		System.out.println("getNanumBoard boardSeq ========== "+boardSeq);
 		
 		// 댓글 리스트로 가져오기
-		List<HashMap<String,Object>> replyList = commentService.getReplyListByBoardSeq(boardSeq);
+		List<HashMap<String,Object>> replyList = commentService.getReplyListByNanumBoardSeq(boardSeq);
 
 		// 파일리스트 가져오기
 		List<FileVO> fileList = fileService.getFileListByNanumBoardSeq(boardSeq,"s");

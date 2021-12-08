@@ -23,6 +23,12 @@ public interface CommentService {
 
 	void deleteCommentsBySeq(int boardSeq);
 
+	void deleteCommentOnNanumBoard(int commentSeq, int boardSeq);
+
+	void updateCommentOnNanumBoard(CommentVO commentVO);
+
+	List<HashMap<String, Object>> getReplyListByNanumBoardSeq(int boardSeq);
+
 
 
 	

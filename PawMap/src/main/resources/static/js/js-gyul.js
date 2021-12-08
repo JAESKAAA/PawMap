@@ -29,6 +29,12 @@ let index = {
 		$("#btn-reply-save").on("click",()=>{
 			this.replySaveFreeBoard();
 		});
+		
+		$("#btn-reply-save-nanum").on("click",()=>{
+			this.replySaveNanumBoard();
+		});
+		
+		
 		//$("#updateCommentOnFreeBoard").on("click",()=>{
 		//	this.updateCommentOnFreeBoard();
 		//});
@@ -184,6 +190,44 @@ let index = {
 				dataType : "text",
 				success : function(e){
 					location.href ="getFreeBoard?boardSeq="+seq
+				},
+				error : function(e){
+					alert("에러");
+					console.log(e);
+				}
+			});
+		}
+	},
+	
+	// 나눔게시판 
+		replySaveNanumBoard:function(){
+		
+		let seq = $("#nanumBoardSeqHidden").val();
+		
+		let data={
+			boardSeq: $("#nanumBoardSeqHidden").val(),	
+			boardType: $("#boardTypeForReply").val(),
+			userId: $("#userId").val(),
+			commentContent: $("#reply-content").val(),
+			hospitalSeq : $("#hospitalSeqForReply").val()
+		};
+		
+		console.log(data);
+		
+
+		if(data.commentContent == ""){
+			alert("내용을 입력해주세요");
+			
+		}else{
+			$.ajax({
+				type : "POST",
+				url: `insertReplyNanumBoard/api/${data.boardSeq}`,
+				data: JSON.stringify(data),
+				contentType : 'application/json; charset=utf-8',
+
+				dataType : "text",
+				success : function(e){
+					location.href ="getNanumBoard?boardSeq="+seq
 				},
 				error : function(e){
 					alert("에러");
