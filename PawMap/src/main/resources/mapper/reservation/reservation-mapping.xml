@@ -104,6 +104,42 @@
 		</foreach>
 	</update>
 	
+	<update id="resetDateScheduleSun">
+		UPDATE schedule
+		SET sun = NULL
+		WHERE com_num = #{comNum}
+	</update>
+	<update id="resetDateScheduleMon">
+		UPDATE schedule
+		SET mon = NULL
+		WHERE com_num = #{comNum}
+	</update>
+	<update id="resetDateScheduleTue">
+		UPDATE schedule
+		SET tue = NULL
+		WHERE com_num = #{comNum}
+	</update>
+	<update id="resetDateScheduleWed">
+		UPDATE schedule
+		SET wed = NULL
+		WHERE com_num = #{comNum}
+	</update>
+	<update id="resetDateScheduleThu">
+		UPDATE schedule
+		SET thu = NULL
+		WHERE com_num = #{comNum}
+	</update>
+	<update id="resetDateScheduleFri">
+		UPDATE schedule
+		SET fri = NULL
+		WHERE com_num = #{comNum}
+	</update>
+	<update id="resetDateScheduleSat">
+		UPDATE schedule
+		SET sat = NULL
+		WHERE com_num = #{comNum}
+	</update>
+	
 	<select id="getScheduleListByComNum" resultType="com.pawmap.VO.ScheduleVO">
 		SELECT * FROM schedule
 		WHERE com_num = #{comNum}
@@ -148,7 +184,7 @@
 	</select>
 	
 	<select id="findMyReservationListByUserId" resultType="HashMap">
-		SELECT r.* ,u.user_nickname
+		SELECT r.* ,u.user_nickname, u.user_name
 		FROM reservation AS r
 		INNER JOIN user AS u
 		ON r.com_num = u.com_num
@@ -171,7 +207,7 @@
 	</select>
 
 	<select id="getHospitalNicknameByComNum" resultType="HashMap">
-		SELECT s.user_id ,u.user_nickname
+		SELECT s.user_id ,u.user_name
 		from schedule AS s
 		INNER JOIN user AS u
 		ON s.user_id = u.user_id
@@ -188,5 +224,22 @@
 		AND r.reservation_date = #{date}
 		order by r.reservation_date, schedule_time
 	</select>
+	
+	<select id="getReservationInfo" resultType="HashMap">
+		SELECT s.*, u.user_nickname FROM
+		reservation AS s
+		INNER JOIN user AS u
+		ON s.user_id = u.user_id
+		where s.com_num = #{comNum}
+		AND s.reservation_seq = #{reservationSeq}
+	</select>
+	
+	<update id="changeReservationStatus" parameterType="com.pawmap.VO.ReservationVO">
+		UPDATE reservation 
+		SET reservation_status = #{reservationStatus}
+		WHERE com_num = #{comNum}
+		AND reservation_date = #{reservationDate}
+		AND schedule_time = #{scheduleTime}
+	</update>
   	
 </mapper>	

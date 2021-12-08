@@ -210,7 +210,20 @@ pageEncoding="UTF-8"%>
                 <h2></h2>
                 <h2 class="noo-sh-title-top">${hospital.hospitalName }</h2>
                 <c:if test="${hospital.hospitalType == 'H'}">  
-                  <a href="#"class="btn btn-warning"><i class="glyphicon glyphicon-bell"></i> 예약하기</a>
+                  <c:choose>
+                    <c:when test="${empty principal}">
+                      <div style="display:inline-block;">
+                        <!-- <a  class="nav-link" href='#' onclick="noLoginUserCantWrite(); return false">글쓰러가기</a> -->
+                        <a href="#"class="btn btn-warning" onclick="noLoginUserCantWrite(); return false"><i class="glyphicon glyphicon-bell"></i> 예약하기</a>
+                      </div>
+                    </c:when>
+                    <c:otherwise>
+                      <div style="display:inline-block;">
+                        <!-- <a  class="nav-link" href="/pawmap/board/form">글쓰러가기</a> -->
+                        <a href="/pawmap/reservation/choose?comNum=${hospital.hospitalComNum}&hospitalSeq=${hospital.hospitalSeq }"class="btn btn-warning"><i class="glyphicon glyphicon-bell"></i> 예약하기</a>
+                      </div>
+                    </c:otherwise>
+                  </c:choose>
                 </c:if>
               </div>
             </div>
@@ -540,6 +553,10 @@ pageEncoding="UTF-8"%>
          center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
          level: 6 // 지도의 확대 레벨
      };  
+
+    function noLoginUserCantWrite(){
+      alert("로그인이 필요합니다.");
+    } 
 
 	 // 지도를 생성합니다    
 	 var map = new kakao.maps.Map(mapContainer, mapOption); 

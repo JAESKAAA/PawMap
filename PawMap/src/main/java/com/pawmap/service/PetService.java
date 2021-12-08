@@ -1,6 +1,7 @@
 package com.pawmap.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.ui.Model;
 
@@ -13,13 +14,13 @@ public interface PetService {
 
 	PetVO selectPetInfo(PetVO petVO);
 		
-	public void deletePetInfo(int petSeq) throws Exception;
-
 	public void updatePetInfo(PetVO vo);
 
-	public List<PetVO>getPetList(PetVO vo);
+	public List<Map<String, Object>>getPetList(PetVO vo);
 	
-	int getPetSeq();
+	int getPetSeq(String userId);
+
+	void deletePetInfo(int petSeq, String userId);
 
 	
 }

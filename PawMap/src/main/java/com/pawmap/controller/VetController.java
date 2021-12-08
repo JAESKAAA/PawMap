@@ -23,6 +23,7 @@ import com.pawmap.service.FileService;
 import com.pawmap.service.UserService;
 import com.pawmap.service.VetService;
 import com.pawmap.util.FileUtils;
+import com.pawmap.util.PetFileUtils;
 
 @Controller
 public class VetController {
@@ -78,7 +79,7 @@ public class VetController {
 			int vetSeq = vetService.getVetSeq();
 			String vetName = vo.getVetName();
 			/*등록 폼의 보드 타입 지정*/
-			FileUtils fileUtils = new FileUtils("p");
+			PetFileUtils fileUtils = new PetFileUtils("p");
 			List<FileVO> fileList = fileUtils.parseFileInfo(vetSeq, request, mhsr, vetName);
 			
 			if(CollectionUtils.isEmpty(fileList) == false) {

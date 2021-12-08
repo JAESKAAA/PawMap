@@ -103,7 +103,13 @@ function buildCalendar() {
 
                 // @details 현재일보다 이전인 경우이면서 현재월에 포함되는 일인경우
                 if(date.getDate() > day && Math.sign(day) == 1) {
-                    column.style.backgroundColor = "#E5E5E5";
+                    column.style.backgroundColor = "#FFFFFF";
+                    column.style.cursor = "pointer";
+                    var dayday = fillzero(day+'');
+                    var year = today.getFullYear();
+	                var month = fillzero((today.getMonth() + 1)+'');
+	                column.id = year + month + dayday;
+                    column.onclick = function(){ calendarChoiceDay(this); }
                 }
 
                 // @details 현재일보다 이후이면서 현재월에 포함되는 일인경우
@@ -131,7 +137,13 @@ function buildCalendar() {
             // @details 현재월보다 이전인경우
             } else if(today.getMonth() < date.getMonth()) {
                 if(Math.sign(day) == 1 && day <= lastDate.getDate()) {
-                    column.style.backgroundColor = "#E5E5E5";
+                    column.style.backgroundColor = "#FFFFFF";
+                    column.style.cursor = "pointer";
+                    var dayday = fillzero(day+'');
+                    var year = today.getFullYear();
+	                var month = fillzero((today.getMonth() + 1)+'');
+	                column.id = year + month + dayday;
+                    column.onclick = function(){ calendarChoiceDay(this); }
                 }
             }
 

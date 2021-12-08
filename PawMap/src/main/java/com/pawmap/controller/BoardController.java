@@ -62,7 +62,7 @@ public class BoardController {
 		System.out.println("userId=========="+userId);
 
 		
-		FileUtils fileUtils = new FileUtils("");
+		FileUtils fileUtils = new FileUtils();
 		List<FileVO> fileList = fileUtils.parseFileInfo(boardSeq, request, mhsr,userId);
 		
 
@@ -128,10 +128,6 @@ public class BoardController {
 		// 파일리스트 가져오기
 		List<FileVO> fileList = fileService.getFileListByFreeBoardSeq(boardSeq);
 
-
-
-
-		
 		System.out.println("fileList ============== "+ fileList);
 		
 
@@ -239,7 +235,7 @@ public class BoardController {
 		
 		System.out.println("들어옴");
 		
-		FileUtils fileUtils = new FileUtils("");
+		FileUtils fileUtils = new FileUtils();
 		List<FileVO> fileList = fileUtils.parseFileInfo(boardSeq, request, mhsr,userId);
 		
 		if(CollectionUtils.isEmpty(fileList) == false) {

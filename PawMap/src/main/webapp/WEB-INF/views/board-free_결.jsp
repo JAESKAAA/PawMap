@@ -33,6 +33,7 @@ pageEncoding="UTF-8"%>
 <div class="board-type reservation-board ">
     <h1>자유게시판</h1>
 </div>
+
 <div class="container mt-5" style="width: 70%;">
     <div class="board-free" >
         <div id="slides-shop" class="cover-slides">
