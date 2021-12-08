@@ -78,6 +78,7 @@ public class UserController {
 	public  String mypageIndex() {
 		return "my_page_main";
 	}
+	
 	//마이페이지-> 회원정보 수정으로 이동하는 메소드
 	@GetMapping("/mypage/userInfo")
 	public  String userInfo(UserVO vo, Model model) {

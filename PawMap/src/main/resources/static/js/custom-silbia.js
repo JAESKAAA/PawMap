@@ -26,10 +26,14 @@ $(document).ready(function () {
         if(status == "fail") {
           alert("중복된 아이디입니다.");
           $("#btnJoin").attr("disabled", true);
+          $(".result .msg1").text("중복되었습니다.");
+          $(".result .msg1").attr("style", "color:#f00");
         } else {
 		  idChk = true;
           alert("사용 가능한 아이디입니다.");
           $("#btnJoin").attr("disabled", false);
+          $(".result .msg1").text("사용가능합니다.");
+          $(".result .msg1").attr("style", "color:#00f");
         }
       }
     });
@@ -55,10 +59,14 @@ $(document).ready(function () {
         if(status == "fail") {
           alert("중복된 닉네임입니다.");
           $("#btnJoin").attr("disabled", true);
+          $(".result .msg2").text("중복되었습니다.");
+          $(".result .msg2").attr("style", "color:#f00");
         } else {
 		  idChk = true;
           alert("사용 가능한 아이디입니다.");
           $("#btnJoin").attr("disabled", false);
+          $(".result .msg2").text("사용가능합니다.");
+          $(".result .msg2").attr("style", "color:#00f");
         }
       }
     });
@@ -74,8 +82,12 @@ $(document).ready(function () {
         var status = $.trim(data);
         if(status == "fail") {
           alert("중복된 닉네임입니다.");
+          $(".result .msg3").text("중복되었습니다.");
+          $(".result .msg3").attr("style", "color:#f00");
         } else {
           alert("사용 가능한 닉네임입니다.");
+          $(".result .msg3").text("사용가능합니다.");
+          $(".result .msg3").attr("style", "color:#00f");
         }
       },
         error:function(error) {
@@ -94,9 +106,13 @@ $(document).ready(function () {
       success:function(data) {
         var status = $.trim(data);
         if(status == "fail") {
-          alert("중복된 이메일입니다..");
+          alert("중복된 이메일입니다.");
+          $(".result .msg4").text("중복되었습니다.");
+          $(".result .msg4").attr("style", "color:#f00");
         } else {
           alert("사용 가능한 이메일입니다.");
+          $(".result .msg4").text("사용가능합니다.");
+          $(".result .msg4").attr("style", "color:#00f");
         } 
       },
         error:function(error) {
@@ -116,8 +132,12 @@ $(document).ready(function () {
         var status = $.trim(data);
         if(status == "fail") {
           alert("중복된 닉네임입니다.");
+          $(".result .msg5").text("중복되었습니다.");
+          $(".result .msg5").attr("style", "color:#f00");
         } else {
           alert("사용 가능한 닉네임입니다.");
+          $(".result .msg5").text("사용가능합니다.");
+          $(".result .msg5").attr("style", "color:#00f");
         }
       },
         error:function(error) {

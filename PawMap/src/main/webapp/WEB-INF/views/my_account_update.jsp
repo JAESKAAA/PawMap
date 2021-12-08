@@ -83,6 +83,7 @@ pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
             value="${user.userNickname }"
           />
           <button type="button" onclick="fn_mnickcheck()">중복체크</button>
+          <p class="result"><span class="msg3">닉네임을 확인해주세요.</span></p>
         </div>
         <div class="mb-3">
           <label for="phone">연락처</label>
@@ -108,6 +109,7 @@ pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
             required
           />
           <button type="button" onclick="fn_emailcheck()">중복체크</button>
+          <p class="result"><span class="msg4">이메일을 확인해주세요.</span></p>
         </div>
         <div class="mb-3">
           <label for="address">주소</label>

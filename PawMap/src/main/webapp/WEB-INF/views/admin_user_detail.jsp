@@ -28,7 +28,8 @@ pageEncoding="UTF-8"%>
 	          <tr>
 	              <td>닉네임:</td>
 	              <td><input id="user_nickname" type="text" name="userNickname" value="${user.userNickname }"></td>
-                <td><button type="button" onclick="fn_anickcheck();">중복체크</button></td>
+                <td><button type="button" onclick="fn_anickcheck();">중복체크</button>
+					<p class="result"><span class="msg5">닉네임을 확인해주세요.</span></p></td>
 	          </tr>
 	          <tr>
 	            <td>주소:</td>

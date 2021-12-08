@@ -168,6 +168,9 @@
     <!--주소검색-->
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
+    <!--12.07 중복체크 메세지-->
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+
       <!-- 아이디 비밀번호 공백확인 alert창 -->
     <script>
       function makeTestData() {
