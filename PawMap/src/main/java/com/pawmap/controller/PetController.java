@@ -45,9 +45,9 @@ public class PetController {
 		
 		
 		UserVO user = userService.getUser(userVo);
-		
-		System.out.println("반려동물 리스트로 넘어왔을 때 사용자 아이디=====" + userVo.getUserId());
-		System.out.println("반려동물 리스트로 넘어왔을 때 petService.getPetSeq()==" + petService.getPetSeq());
+//		
+//		System.out.println("반려동물 리스트로 넘어왔을 때 사용자 아이디=====" + userVo.getUserId());
+//		System.out.println("반려동물 리스트로 넘어왔을 때 petService.getPetSeq()==" + petService.getPetSeq());
 		
 		System.out.println("RequestParam으로 받은 userId====" + userId);
 		// 파일리스트 가져오기
