@@ -101,7 +101,7 @@ pageEncoding="UTF-8"%>
                     </tr>
                   </tbody>
               </table>
-              <div class="u_bottom-button"><a class="u_button u_button-grey"><span>취소</span></a>
+              <div class="u_bottom-button" onclick="location.href='/pawmap'"><a class="u_button u_button-grey"><span>취소</span></a>
                   <button id="btnJoin" type="submit" class="u_button u_button-point">
                       가입하기
                   </button>
