@@ -190,6 +190,7 @@ public class PetController {
 		List<FileVO> fileList = fileUtils.parseFileInfo(seq, request, mhsr,userId);
 		System.out.println("fileList ========= "+ fileList);
 		
+		
 		fileService.insertPetFileOnUpdateForm(fileList);
 
 		return "redirect:updatePetForm?petSeq="+fileSeq + "&userId=" + userId;

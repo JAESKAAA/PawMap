@@ -22,15 +22,15 @@ pageEncoding="UTF-8"%>
             <!-- 파일이 있는 상태에서는 update쿼리를 타도록  -->
                 <c:if test="${!empty fileVO}" >
                     <div class="col-sm-3">
-                        <form action="updatePetInfoFormInsertFiles"  method="POST" enctype="multipart/form-data">       
+                        <form id="upload_form" action="updatePetInfoFormInsertFiles"  method="POST" enctype="multipart/form-data">       
                             <img class="img-fluid avatar img-circle img-thumbnail" src="${pageContext.request.contextPath}/upload/${petInfoFileList.originalFileName}" alt="">      
                                 
-                            <input type="file" class="text-center center-block file-upload" name="uploadPetFiles" >   
-     
+                            <input id="uploader" type="file" class="text-center center-block file-upload" name="uploadPetFiles" >   
+                            
                             <input type="hidden" name="userId"  value="${principal.user.userId}">
                             <input type="hidden" name="fileSeq" class="hiddenFileSeq" value="${fileVO.fileSeq}">
                             <div class="entry input-group upload-input-group">  
-                                <button type="submit" class="btn btn-sm-danger">파일 수정 완료</button>
+                                <button id="uploader_btn" type="submit" class="btn btn-sm-danger">파일 수정 완료</button>
                             </div>   
                         </form>
                     </div>
@@ -489,6 +489,19 @@ pageEncoding="UTF-8"%>
 }
  }
  
+    </script>
+    <script>
+          let is_empty = document.querySelector("#uploader").value;
+        
+          $("#uploader_btn").on("click", function(e) {
+              e.preventDefault();
+              
+              if(document.querySelector("#uploader").value === ''){
+                  alert("파일 넣어주세요 !");
+              }else{
+                  $("#upload_form").submit();
+              }
+	});
     </script>
     </body>
     </html>
