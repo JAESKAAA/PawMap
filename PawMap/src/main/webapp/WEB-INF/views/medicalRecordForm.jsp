@@ -102,7 +102,7 @@ pageEncoding="UTF-8"%>
                         <div class="form-group ml-5 ">
                             <label for="title" class="col-sm-2 control-label">제목</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control input-title" id="title" name="title" placeholder="${medicalRecord[0].title}" required>
+                                <input type="text" class="form-control input-title" id="title" name="title" value="${medicalRecord[0].title}" required>
                             </div>
                         </div>
                         <div class="form-group ml-5">
@@ -120,9 +120,6 @@ pageEncoding="UTF-8"%>
                     </form>
                     <c:choose>
                         <c:when test="${empty fileList}">
-                            <h1>${reservationInfo}</h1>
-                            <h1>${reservationInfo[0].reservation_seq}</h1>
-                            <h1>${principal.user.comNum}</h1>
                             <form action="updateMedicalRecordFormInsertFiles" method="POST" enctype="multipart/form-data">
                                 <div class="r form-group ml-5">
                                     <div class="col-sm-10 col-sm-offset-2">
