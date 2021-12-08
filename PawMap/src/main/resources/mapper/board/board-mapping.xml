@@ -244,7 +244,6 @@
 			AND (title LIKE CONCAT('%', #{board.keyword}, '%') OR `content` LIKE CONCAT('%', #{board.keyword}, '%'))
 		</if>
   		ORDER BY board_seq DESC
-  		<!-- 이부분을 페이징처리해야함 페이지*1,9로 불러오게 -->
   		LIMIT #{criteria.amount} OFFSET #{criteria.startNum}
   	</select>
 	

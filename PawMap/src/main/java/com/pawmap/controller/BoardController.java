@@ -359,6 +359,11 @@ public class BoardController {
 		
 		System.out.println("getNanumBoardList 진입===============");
 		
+		
+//		cri.setPageNum(1);
+		cri.setAmount(9);
+		
+		
 		if(vo.getKeywordType() == null || vo.getKeywordType().isEmpty()) {
 			vo.setKeywordType("titleAndContent");
 		}
