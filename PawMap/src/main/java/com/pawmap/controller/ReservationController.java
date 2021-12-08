@@ -298,7 +298,7 @@ public class ReservationController {
 	public String showReservationList(@RequestParam String userId, Model model) {
 		
 		List<HashMap<String,Object>> myResList = reservationService.findMyReservationListByUserId(userId);
-//		System.out.println("myResList ====== "+ myResList);
+		System.out.println("myResList ====== "+ myResList);
 		
 		List<BoardVO> medicalRecordList = boardService.getMyMedicalRecordListById(userId);
 		System.out.println("medicalRecordList =========" + medicalRecordList);
