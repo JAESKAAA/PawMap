@@ -79,5 +79,38 @@ public class BoardServiceImpl implements BoardService {
 
 	}
 
+	@Override
+	public void insertMedicalRecord(BoardVO vo) {
+		boardMapper.insertMedicalRecord(vo);
+	}
+
+	@Override
+	public List<BoardVO> getMyMedicalRecordListById(String userId) {
+		return boardMapper.getMyMedicalRecordListById(userId);
+	}
+
+	@Override
+	public List<BoardVO> getHospitalMedicalRecordList(String date, String comNum) {
+		return boardMapper.getHospitalMedicalRecordList(date,comNum);
+	}
+
+	@Override
+	public List<HashMap<String, Object>> getSeparateMedicalRecordForClient(String comNum, String reservationDate, String scheduleTime) {
+		return boardMapper.getSeparateMedicalRecordForClient(comNum, reservationDate, scheduleTime);
+	}
+
+	@Override
+	public int getMedicalBoardSeq() {
+		return boardMapper.getMedicalBoardSeq();
+		
+	}
+
+	@Override
+	public void updateMedicalRecord(BoardVO vo) {
+		boardMapper.updateMedicalRecord(vo);
+	}
+
+	
+
 }
 

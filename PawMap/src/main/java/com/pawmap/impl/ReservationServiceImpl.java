@@ -116,6 +116,53 @@ public class ReservationServiceImpl implements ReservationService {
 		return reservationMapper.getReservationListOfHospital(date, comNum);
 	}
 
+	@Override
+	public List<HashMap<String, Object>> getReservationInfo(String comNum, int reservationSeq) {
+		return reservationMapper.getReservationInfo(comNum,reservationSeq);
+	}
+
+	@Override
+	public void changeReservationStatus(ReservationVO reservationVO) {
+		reservationMapper.changeReservationStatus(reservationVO);
+	}
+
+	@Override
+	public void resetDateScheduleSun(String comNum) {
+		reservationMapper.resetDateScheduleSun(comNum);
+	}
+
+	@Override
+	public void resetDateScheduleMon(String comNum) {
+		reservationMapper.resetDateScheduleMon(comNum);
+	}
+
+	@Override
+	public void resetDateScheduleTue(String comNum) {
+		reservationMapper.resetDateScheduleTue(comNum);
+	}
+
+	@Override
+	public void resetDateScheduleWed(String comNum) {
+		reservationMapper.resetDateScheduleWed(comNum);
+	}
+
+	@Override
+	public void resetDateScheduleThu(String comNum) {
+		reservationMapper.resetDateScheduleThu(comNum);
+	}
+
+	@Override
+	public void resetDateScheduleFri(String comNum) {
+		reservationMapper.resetDateScheduleFri(comNum);
+	}
+
+	@Override
+	public void resetDateScheduleSat(String comNum) {
+		reservationMapper.resetDateScheduleSat(comNum);
+	}
+
+	
+
 	
 
 	

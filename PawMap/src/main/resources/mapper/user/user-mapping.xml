@@ -223,19 +223,6 @@
 			USER_PASSWORD = #{userPassword}
 		WHERE USER_ID = #{userId}
 	</update> 
-	
-	
-<!-- 	<insert id="add" 
-		useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO `user`
-		SET regDate = #{regDate},
-		USER_ID = #{userId},
-		USER_PASSWORD  = #{userPassword},
-		`USER_NAME` = #{userName},
-		`USER_EMAIL` = #{userEmail},
-		outStatus = #{outStatus}
-	</insert> -->
-
   	
  	<update id="updateUser" parameterType="com.pawmap.VO.UserVO" >
 		UPDATE user
@@ -255,6 +242,9 @@
 				<if test ="userPassword != null">
 					 user_password = #{userPassword},
 				</if> 
+				<if test ="userProfile != null">
+					 user_profile = #{userProfile},
+				</if>
 			</set>
 			WHERE 
 				USER_ID = #{userId}
@@ -272,6 +262,16 @@
 	<delete id="deleteUser" parameterType="com.pawmap.VO.UserVO">
 		DELETE FROM user where user_id = #{userId}
 	</delete>
+	
+	<update id="updateUserProfileNull">
+		UPDATE user
+		SET user_profile = NULL
+		WHERE user_seq = #{userSeq}
+		AND
+		user_type = #{userType}
+		AND 
+		user_id = #{userId}
+	</update>
 
   	
   </mapper>	

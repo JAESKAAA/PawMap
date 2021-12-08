@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.websocket.server.PathParam;
@@ -20,21 +21,27 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 
 import com.pawmap.VO.Criteria;
 import com.pawmap.VO.PageVO;
+import com.pawmap.VO.FileVO;
 import com.pawmap.VO.UserVO;
 import com.pawmap.configuration.auth.PrincipalDetails;
 import com.pawmap.configuration.auth.PrincipalDetailsService;
 import com.pawmap.mapper.UserMapper;
+import com.pawmap.service.FileService;
 import com.pawmap.service.UserService;
 import com.pawmap.util.CookieUtil;
+import com.pawmap.util.FileUtils;
 
 
 
@@ -54,6 +61,9 @@ public class UserController {
 	
 	 @Autowired 
 	 private UserMapper userMapper;
+	 
+	 @Autowired
+	 private FileService fileService;
 	 
 	/*
 	 * 페이지 이동 관련 메소드
@@ -134,7 +144,8 @@ public class UserController {
 	 * */
 	//마이페이지 -> 유저 정보 업데이트
 	@PostMapping("/mypage/updateUser")
-	public String updateUser(UserVO vo, @AuthenticationPrincipal PrincipalDetails principal, HttpSession session) {
+	public String updateUser(UserVO vo, @AuthenticationPrincipal PrincipalDetails principal, HttpSession session
+							,HttpServletRequest request, MultipartHttpServletRequest mhsr) throws IOException {
 		System.out.println("updateUser 호출 !! ");
 		System.out.println("UserVO getNickname ====="+ vo.getUserNickname());
 		System.out.println("UserVO getUserId====="+ vo.getUserId());
@@ -148,6 +159,26 @@ public class UserController {
 		} else {
 			vo.setUserPassword(null);
 		}
+		
+		//  유저 프로필 업데이트를 위한 로직
+		String userId = vo.getUserId();
+		String userType = vo.getUserType();
+		int userSeq = vo.getUserSeq();
+		
+		FileUtils fileUtils = new FileUtils();
+		List<FileVO> fileList = fileUtils.parseFileInfo(userSeq, request, mhsr,userId);
+
+		if(CollectionUtils.isEmpty(fileList) == false) {
+
+			fileList.get(0).setBoardType(userType);
+			System.out.println("유저타입은  N 입니다.");
+			System.out.println("fileList ======" + fileList);
+			fileService.insertUserProfile(fileList);	
+			vo.setUserProfile(fileList.get(0).getOriginalFileName());
+
+		}
+		
+		
 		
 		userService.updateUser(vo);
 		
@@ -481,6 +512,18 @@ public class UserController {
 			} else {
 				return "ok";
 			}
+		}
+		
+		//	프로필 삭제 메서드
+		@RequestMapping("/mypage/deleteProfile")
+		public String deleteProfile(int userSeq, String userType, String userId) {
+			
+			System.out.println("userSeq === "+userSeq);
+			System.out.println("userType === "+userType);
+			System.out.println("userId === "+userId);
+			fileService.deleteProfile(userSeq,userType,userId);
+			userService.updateUserProfileNull(userSeq,userType,userId);
+			return "redirect:/mypage/userInfo?userId="+userId;
 		}
 
 		@GetMapping("/getUserByJson")

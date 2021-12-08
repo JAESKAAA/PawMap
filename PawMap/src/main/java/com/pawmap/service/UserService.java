@@ -61,6 +61,9 @@ public interface UserService {
 	
 	//관리자 페이지 수정 메서드
 	public void updateUserAdmin(UserVO vo);
+	
+	//프로필 사진 삭제시 user필드의 user_profile 컬럼을 null로 세팅
+	void updateUserProfileNull(int userSeq, String userType, String userId);
 
 
 }

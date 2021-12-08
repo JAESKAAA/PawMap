@@ -17,38 +17,27 @@ import com.pawmap.VO.FileVO;
 
 
 public class FileUtils {
-	 String boardType = "p";
-
-
 	public List<FileVO> parseFileInfo(int boardSeq, HttpServletRequest request, 
 			MultipartHttpServletRequest mhsr,String userId) throws IOException {
-		System.out.println("FileUtils들어옴");
+		
 		System.out.println(mhsr.toString());
-		
-		
 		if(ObjectUtils.isEmpty(mhsr)) {
-			System.out.println("파일없음=====" +mhsr.toString());
 			return null;
 		}
 		
 		List<FileVO> fileList = new ArrayList<FileVO>();
-		System.out.println("33줄"+fileList);
 		
 		String root_path = request.getSession().getServletContext().getRealPath("/");
-		System.out.println("34줄"+root_path);
 
 		String attach_path = "upload/";
-		System.out.println("37줄"+attach_path);
+
 		
 		File file = new File(root_path + attach_path);
-		System.out.println(file.exists());
 		if(file.exists() == false) {
 			file.mkdirs();
 		}
 		
 		Iterator<String> iterator = mhsr.getFileNames();
-		
-		System.out.println("47줄 fileName" + mhsr.getFileNames());
 		while(iterator.hasNext()) {
 			
 			List<MultipartFile> list = mhsr.getFiles(iterator.next());
@@ -59,29 +48,19 @@ public class FileUtils {
 				if(mf.getSize() > 0) {
 					FileVO boardFile = new FileVO();
 					boardFile.setBoardSeq(boardSeq);
-					boardFile.setBoardType(boardType);
 					boardFile.setUserId(userId);
 					boardFile.setFileSize(mf.getSize());
 					boardFile.setOriginalFileName(mf.getOriginalFilename());
 					boardFile.setFilePath(root_path + attach_path);
 					fileList.add(boardFile);
 					
-					
-					
 					file = new File(root_path + attach_path + mf.getOriginalFilename());
 					mf.transferTo(file);
-					System.out.println("file Transfer 완!==================");
 				} else {
 					fileList = null;
 				}
 			}
 		}
 		return fileList;
-	}
-	
-
-	
-	public FileUtils(String boardType) {
-		this.boardType=boardType;
 	}
 }

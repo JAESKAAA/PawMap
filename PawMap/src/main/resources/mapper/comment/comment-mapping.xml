@@ -18,13 +18,13 @@
 	</insert>
 	
 	<select id="getReplyListByBoardSeq"  resultType="HashMap">
-		SELECT c.*, u.user_nickname
+		SELECT c.*, u.user_nickname,u.user_profile
 		FROM comment AS c
 		INNER JOIN user AS u
 		ON c.user_id = u.user_id
 		WHERE c.board_type = 'f'
 		AND c.board_seq = #{boardSeq}
-		ORDER BY COMMENT_SEQ DESC
+		ORDER BY COMMENT_SEQ 
 	</select>
 	
 	<delete id="deleteCommentOnFreeBoard">
