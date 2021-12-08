@@ -3,6 +3,13 @@ pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+
+<!-- jstl 함수사용을 위한 설정 -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal"/>
+</sec:authorize>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -156,51 +163,14 @@ pageEncoding="UTF-8"%>
 
 <body>
     <!-- Start Main Top -->
- 
     <!-- End Main Top -->
-
+    
     <!-- Start Main Top -->
-    <header class="main-header">
-        <!-- Start Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
-            <div class="container">
-                <!-- Start Header Navigation -->
-                <div class="navbar-header">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
-                    <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="logo" alt=""></a>
-                </div>
-                <!-- End Header Navigation -->
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="navbar-menu">
-                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="nav-item active"><a class="nav-link" href="#">홈</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">어바웃어스</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">병원찾기</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">커뮤니티</a>
-                            <ul class="dropdown-menu">
-								<li><a href="shop.html">자유게시판</a></li>
-								<li><a href="shop-detail.html">공지사항</a></li>
-                                <li><a href="cart.html">이벤트게시판</a></li>
-                                <li><a href="checkout.html">나눔게시판</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="#">보호소</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">마이페이지</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">로그인</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">회원가입</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <!-- end Main Top -->
-
+    
+    
     <div class="board-type mt-5">
         <h1>나눔게시판</h1>
+        <h6>${latelyNanumBoardListForMain}</h6>
     </div>
 
     <hr class="line-paint">
@@ -208,16 +178,29 @@ pageEncoding="UTF-8"%>
     <!-- 나눔 게시판 시작 -->
 
     
-    
-    <div class="latest-blog">
-        <div class="main-search-input-wrap mb-5" >
-            <div class="main-search-input fl-wrap">
+        <!-- search 버튼 시작 -->
+        <form id="listForm" action="getNanumBoardList" name="POST">
+            <!-- <input type="hidden" id="hKeywordType" name="hKeywordType" value="${keywordType}">
+            <input type="hidden" id="hKeyword" name="hKeyword" value="${keyword}"> -->
+            <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
+            <input type="hidden" name="amount" value="${pageMaker.cri.amount }">
+            <div class="main-search-input-wrap" >
+                <div class="option-select" style="width: 300px;">
+                    <select class="form-control" name="keywordType" id="keywordType">
+                        <option class="optionKeywordTypeTitle"  value="title"  >제목</option>
+                        <option class="optionKeywordTypeContent" value="content" >내용</option>
+                    </select>
+                </div>
+              <div class="main-search-input fl-wrap" style="margin-top: 30px;">
                 <div class="main-search-input-item"> 
-                    <input type="text" value="" placeholder="Search Products..."> 
-                </div> 
-                <button class="main-search-button">Search</button>
+                  <input id="input-keyword" name="keyword" type="text" value="" placeholder="검색어를 입력하세요"> 
+                </div>
+                <input type="submit" class="main-search-button" id="searchBtn" value="검색"/>
+              </div>
             </div>
-        </div>
+        </form>
+
+            <!-- search 버튼 종료 -->  
         
 
         
@@ -245,10 +228,21 @@ pageEncoding="UTF-8"%>
                 </div>
             </c:forEach>
 
-            
-        </div>
-        <div style="display:inline-block;">
-            <a  class="nav-link" href="/pawmap/board/form">글쓰러가기</a>
+            </div>
+
+        <c:choose>
+            <c:when test="${empty principal}">
+                <div style="display:inline-block;">
+                    <a  class="nav-link" href='#' onclick="noLoginUserCantWrite(); return false">글쓰러가기</a>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <div style="display:inline-block;">
+                    <a  class="nav-link" href="/pawmap/board/form">글쓰러가기</a>
+                </div>
+            </c:otherwise>
+        </c:choose>
+
         </div>
     </div>
 </div>
@@ -258,15 +252,21 @@ pageEncoding="UTF-8"%>
 
 <div class="page-div">
     <ul class="pagination justify-content-center">
-        <li class="page-item">
-            <a class="page-link" href="#" >Prev</a>
+        <c:if test="${pageMaker.prev }">
+            <li class="page-item pagination_button">
+                <a class="page-link" href="${pageMaker.startPage - 1 }" >Prev</a>
+            </li>
+        </c:if>
+        <c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage +1}">
+        <li class="page-item pagination_button ${num == pageMaker.cri.pageNum? "active" : "" }" > 
+            <a id="nowPage" class="page-link" href="${num }">${num }</a>
         </li>
-        <li class="page-item"> 
-            <a class="page-link" href="#">1</a>
+        </c:forEach>
+        <c:if test="${pageMaker.next }">
+        <li class="page-item pagination_button">
+            <a class="page-link" href="${pageMaker.endPage + 1 }">Next</a>
         </li>
-        <li class="page-item">
-            <a class="page-link" href="#">Next</a>
-        </li>
+        </c:if>
     </ul>
 </div>
 
@@ -385,6 +385,65 @@ pageEncoding="UTF-8"%>
     <script src="../js/form-validator.min.js"></script>
     <script src="../js/contact-form-script.js"></script>
     <script src="../js/custom.js"></script>
-</body>
-
+    
+    
+    <script>
+        
+        function noLoginUserCantWrite(){
+        alert("로그인이 필요합니다.");
+        
+    }
+    
+    $(document).ready(function() {
+        
+        
+        //console.log($("#hKeywordType").val());
+        //console.log($("#hKeyword").val());
+        var listForm = $("#listForm");
+        
+        var link = document.location.href;
+        
+        var keyword = getParameterByName('keyword');
+        
+        var keywordType = getParameterByName('keywordType');
+        
+        var optionKeywordTypeTitle = $(".optionKeywordTypeTitle");
+        var optionKeywordTypeContent = $(".optionKeywordTypeContent");
+        
+        function getParameterByName(name) { name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]"); 
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"), 
+            results = regex.exec(location.search); 
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " ")); 
+        }
+        
+        function holdKeywordType(keywordType){
+            if(keywordType == "title"){
+                console.log("holdKeywordType ======= title");
+                optionKeywordTypeTitle.prop("selected",true);
+            }
+            if(keywordType == "content"){
+                console.log("holdKeywordType ======= content");  
+                optionKeywordTypeContent.prop("selected",true);      
+            }
+        }
+        
+        
+        $(".page-link").on("click", function(e) {
+            e.preventDefault();
+            
+            listForm.find("input[name='pageNum']").val($(this).attr("href"));
+            listForm.submit();
+        });
+        
+        document.getElementById("input-keyword").value=keyword;
+        
+        //console.log(link);
+        //console.log(keyword);
+        //console.log(optionKeywordTypeTitle);
+        //console.log(optionKeywordTypeContent);
+        holdKeywordType(keywordType);
+        
+    });
+    </script>
+    </body>
 </html>

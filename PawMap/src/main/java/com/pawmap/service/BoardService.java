@@ -30,7 +30,7 @@ public interface BoardService {
 	List<HashMap<String, Object>> getLatelyBoardListForBoardMain();
 
 //	나눔게시판 리스트
-	List<BoardVO> getNanumBoardList();
+	List<BoardVO> getNanumBoardList(BoardVO vo, Criteria cri);
 	
 	// 나눔게시판 상세
 	BoardVO getNanumBoard(int boardSeq);
@@ -44,6 +44,10 @@ public interface BoardService {
 
 	// 나눔게시판 글 삭제
 	void deleteNanumBoardBySeq(int boardSeq);
+
+	List<HashMap<String, Object>> getLatelyBoardListForNanumBoardMain();
+
+	int selectNanumBoardCount(BoardVO vo);
 
 
 	

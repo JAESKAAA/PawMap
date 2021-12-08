@@ -189,7 +189,7 @@ pageEncoding="UTF-8"%>
               </table>
             </div>
 
-            <!-- <h1>${principal.user.userId}</h1> -->
+            <!-- <h1>principal.user.userId : ${principal.user.userId}</h1> -->
             <c:choose>
                 <c:when test="${empty principal}">
                     <div style="display:inline-block;">

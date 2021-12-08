@@ -8,11 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.pawmap.VO.BoardVO;
-
 import com.pawmap.VO.CommentVO;
-
-import com.pawmap.VO.FileVO;
-
 import com.pawmap.VO.UserVO;
 
 
@@ -44,7 +40,7 @@ public interface BoardMapper {
 	List<HashMap<String, Object>> getLatelyBoardListForBoardMain();
 
 //	나눔게시판
-	List<BoardVO> getNanumBoardList();
+	List<BoardVO> getNanumBoardList(Map<String, Object> map);
 
 //	글 상세조회
 	BoardVO getBoardDetail(@Param ("boardSeq") int boardSeq, @Param ("boardType") String boardType);
@@ -58,6 +54,12 @@ public interface BoardMapper {
  	int getNanumBoardSeq();
 
 	void deleteNanumBoardBySeq(@Param("boardSeq") int boardSeq);
+
+
+	List<HashMap<String, Object>> getLatelyBoardListForNanumBoardMain();
+
+
+	int selectNanumBoardCount(BoardVO vo);
 
 
 

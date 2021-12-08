@@ -85,9 +85,13 @@ public class BoardServiceImpl implements BoardService {
 
 //	나눔게시판 리스트
 	@Override
-	public List<BoardVO> getNanumBoardList() {
-		System.out.println("================나눔게시판 리스트 impl 탔음");
-		return boardMapper.getNanumBoardList();
+	public List<BoardVO> getNanumBoardList(BoardVO vo, Criteria cri) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("board", vo);
+		cri.setStartNum((cri.getPageNum() -1 ) * cri.getAmount());
+		paramMap.put("criteria", cri);
+		
+		return boardMapper.getNanumBoardList(paramMap);
 	}
 
 //	게시판 상세조회
@@ -119,6 +123,16 @@ public void deleteNanumBoardBySeq(int boardSeq) {
 	boardMapper.deleteNanumBoardBySeq(boardSeq);
 	
 	
+}
+
+@Override
+public List<HashMap<String, Object>> getLatelyBoardListForNanumBoardMain() {
+	return boardMapper.getLatelyBoardListForNanumBoardMain();
+}
+
+@Override
+public int selectNanumBoardCount(BoardVO vo) {
+	return boardMapper.selectNanumBoardCount(vo);
 }
 	
 }

@@ -353,10 +353,39 @@ public class BoardController {
 		
 	}
 
-	// 나눔게시판 컨트롤러
+	// 나눔게시판 컨트롤러 (페이징처리만 하면됨 페이지당 1번부터 9번까지 불러오게)
 	@RequestMapping("/board/getNanumBoardList")
-	public String getNanumBoardList(Model model) {
-		model.addAttribute("NanumBoardList", boardService.getNanumBoardList());
+	public String getNanumBoardList(BoardVO vo, Model model, Criteria cri) {
+		
+		System.out.println("getNanumBoardList 진입===============");
+		
+		if(vo.getKeywordType() == null || vo.getKeywordType().isEmpty()) {
+			vo.setKeywordType("titleAndContent");
+		}
+		if(vo.getKeyword() == null) {
+			vo.setKeyword("");
+		}
+		
+		if(!keyword.equals(vo.getKeyword())) {
+			System.out.println("다릅니다.");
+			cri.setPageNum(1);
+		}
+
+		keyword = vo.getKeyword();
+		
+		int total = boardService.selectNanumBoardCount(vo);
+		
+		List<HashMap<String,Object>> latelyNanumBoardListForMain = boardService.getLatelyBoardListForNanumBoardMain();
+		
+		System.out.println("getNanumBoardList 의 latelyNanumBoardListForMain ============"+ latelyNanumBoardListForMain);
+		
+		
+		model.addAttribute("NanumBoardList", boardService.getNanumBoardList(vo,cri));
+		model.addAttribute("latelyNanumBoardListForMain", latelyNanumBoardListForMain);
+		model.addAttribute("pageMaker", new PageVO(cri, total));
+		model.addAttribute("keyword", vo.getKeyword());
+		model.addAttribute("keywordType", vo.getKeywordType());
+		
 		System.out.println("================== 나눔게시판 컨트롤러 탔음");
 		System.out.println("model에 최종적으로 담긴값 : " + model);
 		
