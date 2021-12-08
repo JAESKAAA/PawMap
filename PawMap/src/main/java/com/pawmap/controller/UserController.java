@@ -490,7 +490,25 @@ public class UserController {
 			model.addAttribute("ShelterList", shelterService.getShelterList(vo));
 		
 			return "admin_shelter";
+		}// Dec 3rd 현재 query가 작동안함.. vo를 따로 만들어 줄필요 없으며. query를 이용하여 list를 부르면 됨...
+		
+		
+		/// Below controllers' methods were created by thomas lee on Dec 6th 11:07am
+		/// he created methods the methods "community information" for admin management. 
+		
+		
+		//@Autowired
+		//private UserService communityService; // the UserService interface was declared as communityService for admin management...
+		
+		
+		//관리자페이지 -> 커뮤니티 게시판 관리로 이동
+		@GetMapping("/admin/communityManage")
+		public String communityManageList() {
+			return "admin_community"; // this leads user to go onadmin_shetler.jsp.....
 		}
+		
+		
+		
 		
 		
 //		

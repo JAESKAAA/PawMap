@@ -3,9 +3,13 @@ pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="layout/admin_header.jsp" %>
 <!--관리자의 회원정보 관리 페이지 시작...-->
-    <div class="tbl-header"> 
-        <h1 class="adminpagetoph1">회원정보 관리</h1>
-    </div>
+        <div class="tbl-header"> 
+          <div class="row row-adminindex">
+            <div>
+              <h1 class="adminpagetoph1" style=" margin-top: 0px;">보호소정보 관리</h1>
+            </div>
+          </div>
+        </div>
         <!-- search 버튼 시작 -->
         <div class="row tbl-header">
           <div class="main-search-input-wrap" >

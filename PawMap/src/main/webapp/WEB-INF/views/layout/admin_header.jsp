@@ -62,7 +62,7 @@ pageEncoding="UTF-8"%>
             <div class="our-link" style="float:right">
               <ul class="offer-box">
                 <!--thomas's comment: 상기 offer-box 태그로 인해 하기 li 태그들은 Border-right에 하얀 선이 나왔고 해당 사유로 하기 태그들은 스타일을 없앴음.-->
-                <li style="border-right:none; font-size:14px;">관리자페이지 입니다.</li>
+                <li style="border-right:none; font-size:14px;"><a href="/pawmap/admin">관리자페이지 입니다.</a></li>
                 <li style="border-right:none; font-size:14px;">Admin Page</li>
               </ul>
             </div>
@@ -91,8 +91,8 @@ pageEncoding="UTF-8"%>
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                             <li class="nav-item"><a class="nav-link" href="/pawmap/getHospitalList"> 제휴병원 관리</a></li>
                             <li class="nav-item"><a class="nav-link" href="/pawmap/getUserList"> 회원정보 관리</a></li>
-                            <li class="nav-item"><a class="nav-link" href="adminpage6sheltermanage-tom.html"> 보호소정보 관리</a></li>
-                            <li class="nav-item"><a class="nav-link" href="adminpage9communitymanage-tom.html"> 커뮤니티 게시판 관리</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/pawmap/admin/getShelterList"> 보호소정보 관리</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/pawmap/admin/communityManage"> 커뮤니티 게시판 관리</a></li>
                         </ul>
                     </div>
                 </div>
