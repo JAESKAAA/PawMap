@@ -34,10 +34,12 @@ pageEncoding="UTF-8"%>
     <script src="${pageContext.request.contextPath}/js/calendar.js"></script>
 
     <!-- 캘린더   -->
+<div class="board-type  mt-5">
+    <h1> ${hosNickname[0].user_nickname} 스케쥴러 작성하기  </h1>
+</div>
+<hr class="line-paint">    
 <form action="insertSchedule" method="post">
-    <h1>사업자 번호 ${principal.user.comNum}</h1>
-    <h1>동물병원 닉네임 ${principal.user.userNickname}</h1>
-    <h1>유저 아이디 ${principal.user.userId}</h1>
+    
     <input type="hidden" name="userId" value="${principal.user.userId}">
     <input type="hidden" name="comNum" value="${principal.user.comNum}">
     <div class="container">
@@ -48,7 +50,7 @@ pageEncoding="UTF-8"%>
                         <thead>
                             <tr>
                                 <td><input type="radio" name="date" value="sun"/><p>일</p></td>
-                                <td><input type="radio" name="date" value="mon"/><p>월</p></td>
+                                <td><input type="radio" name="date" value="mon" checked/><p>월</p></td>
                                 <td><input type="radio" name="date" value="tue"/><p>화</p></td>
                                 <td><input type="radio" name="date" value="wed"/><p>수</p></td>
                                 <td><input type="radio" name="date" value="thu"/><p>목</p></td>
@@ -111,6 +113,10 @@ pageEncoding="UTF-8"%>
         </div>
     </div>    
 </form>    
+<div class="board-type  mt-5">
+    <h1> ${hosNickname[0].user_nickname} 예약 스케쥴  </h1>
+</div>
+<hr class="line-paint">
 <div class="container" style="text-align: center; margin-top: 5%;" >
     
     <table style="display:inline-block; width: auto; height: auto;">
@@ -283,12 +289,18 @@ function calendarChoiceDay(column) {
             var htmlString = "";
             let overlapTime = [];
                 
+            
+
             for(var i = 0; i<data.length; i++){
                 
                 htmlString += "<h3> 시간 : "+data[i].schedule_time+" , 닉네임 : "+ data[i].user_nickname+",  ";
-                htmlString += "<button onclick='location.href='/pawmap/reservation/writeMedicalRecord?comNum='>";
+                htmlString += "<button onclick='location.href=\"/pawmap/reservation/writeMedicalRecordForm?comNum=" + data[i].com_num +  "&reservationSeq="+ data[i].reservation_seq + " \"'>";
+                    //location.href='/pawmap/reservation/writeMedicalRecord?comNum=
                 htmlString += "진단서 작성";
                 htmlString += "</button>";    
+                if(data[i].reservation_status == "done"){
+                htmlString += "<em>(완료)<em/>"    
+                }    
                 htmlString += "</h3>"; 
                  
             }

@@ -83,4 +83,8 @@ public interface UserMapper {
 	//병원 유저 카운트
 	public int getHospitalUserCount();
 
+	void updateUserProfileNull(@Param("userSeq") int userSeq,@Param("userType") String userType,@Param("userId") String userId);
+
+
+
 }

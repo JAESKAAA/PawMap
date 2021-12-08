@@ -236,6 +236,10 @@ public class UserServiceImpl implements UserService{
 
 		return result;
 	}
+	@Override
+	public void updateUserProfileNull(int userSeq, String userType, String userId) {
+		userMapper.updateUserProfileNull(userSeq,userType,userId);
+	}
 
 
 }

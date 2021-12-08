@@ -48,6 +48,26 @@ public interface ReservationMapper {
 
 	List<HashMap<String, Object>> getReservationListOfHospital(@Param("date")String date,@Param("comNum") String comNum);
 
+	List<HashMap<String, Object>> getReservationInfo(@Param("comNum")String comNum,@Param("reservationSeq") int reservationSeq);
+
+	void changeReservationStatus(ReservationVO reservationVO);
+
+	void resetDateScheduleSun(String comNum);
+
+	void resetDateScheduleMon(String comNum);
+
+	void resetDateScheduleTue(String comNum);
+
+	void resetDateScheduleWed(String comNum);
+
+	void resetDateScheduleThu(String comNum);
+
+	void resetDateScheduleFri(String comNum);
+
+	void resetDateScheduleSat(String comNum);
+
+	
+
 	
 
 }

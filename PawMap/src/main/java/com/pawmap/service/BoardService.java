@@ -29,5 +29,17 @@ public interface BoardService {
 	
 	List<HashMap<String, Object>> getLatelyBoardListForBoardMain();
 
+	void insertMedicalRecord(BoardVO vo);
+
+	List<BoardVO> getMyMedicalRecordListById(String userId);
+
+	List<BoardVO> getHospitalMedicalRecordList(String date, String comNum);
+
+	List<HashMap<String, Object>> getSeparateMedicalRecordForClient(String comNum, String reservationDate, String scheduleTime);
+
+	int getMedicalBoardSeq();
+
+	void updateMedicalRecord(BoardVO vo);
+
 	
 }

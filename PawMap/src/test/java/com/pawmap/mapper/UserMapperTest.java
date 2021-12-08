@@ -27,20 +27,20 @@ class UserMapperTest {
 	
 		UserVO vo = new UserVO();
 		int count=0;
-		for(int i=0; i<100; i++) {
-			vo.setUserId("병원테스트계정_"+i);
-			vo.setUserEmail("test_"+i+"@test.com");
-			vo.setUserName("병원테스터_"+i);
-			vo.setUserNickname("병원테스터닉네임_"+i);
-			vo.setRole("ROLE_USER");
-			vo.setUserType("H");
-			vo.setUserPassword("1234");
+		
+			vo.setUserId("admin");
+			vo.setUserEmail("admin@admin.com");
+			vo.setUserName("관리자");
+			vo.setUserNickname("관리자테스터");
+			vo.setRole("ROLE_ADMIN");
+			vo.setUserType("A");
+			vo.setUserPassword("admin");
 			String rawPassword = vo.getUserPassword();
 			String encPassword = bCryptPasswordEncoder.encode(rawPassword);
 			vo.setUserPassword(encPassword);
 			userService.insertUser(vo);
 			count++;
-		}
+		
 		log.info("완료된 숫자 = "+count);
 	}
 

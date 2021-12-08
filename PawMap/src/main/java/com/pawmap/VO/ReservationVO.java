@@ -13,6 +13,6 @@ public class ReservationVO {
 	private String userId;
 	private String scheduleTime;
 	private String reservationDate;
-	private String reservationTime;
+	private String reservationStatus;
 	
 }

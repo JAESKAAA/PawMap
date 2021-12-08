@@ -19,24 +19,40 @@ pageEncoding="UTF-8"%>
 
     <div class="container bootstrap snippet" style="padding: 50px;">
         <div class="row">
-                <div class="col-sm-3">
-                    <!-- 파일이 있는 상태에서는 update쿼리를 타도록  -->
-                    <c:if test="${!empty fileList}" >
-                            <form action="updatePetInfoFormInsertFiles"  method="POST" enctype="multipart/form-data">       
-                                <img class="img-fluid avatar img-circle img-thumbnail" src="${pageContext.request.contextPath}/upload/${petInfoFileList.originalFileName}" alt="">      
+            <!-- 파일이 있는 상태에서는 update쿼리를 타도록  -->
+                <c:if test="${!empty fileVO}" >
+                    <div class="col-sm-3">
+                        <form action="updatePetInfoFormInsertFiles"  method="POST" enctype="multipart/form-data">       
+                            <img class="img-fluid avatar img-circle img-thumbnail" src="${pageContext.request.contextPath}/upload/${petInfoFileList.originalFileName}" alt="">      
                                 
-                                <input type="file" class="text-center center-block file-upload" name="uploadPetFiles" >   
-                                
-                                <input type="hidden" name="userId"  value="${principal.user.userId}">
-                                <input type="hidden" name="fileSeq" class="hiddenFileSeq" value="${petInfoFileList.fileSeq}">
-                                <input type="hidden" name="boardSeq" class="hiddenBoardSeq" value="${pet.petSeq}"> 
-                                <input type="hidden" name="boardType" class="hiddenBoardType" value="${petInfoFileList.boardType}"> 
-                                <div class="entry input-group upload-input-group">  
-                                    <button type="submit" class="btn btn-sm-danger">파일 수정 완료</button>
-                                </div>   
-                            </form>
-                        </c:if>
+                            <input type="file" class="text-center center-block file-upload" name="uploadPetFiles" >   
+     
+                            <input type="hidden" name="userId"  value="${principal.user.userId}">
+                            <input type="hidden" name="fileSeq" class="hiddenFileSeq" value="${fileVO.fileSeq}">
+                            <div class="entry input-group upload-input-group">  
+                                <button type="submit" class="btn btn-sm-danger">파일 수정 완료</button>
+                            </div>   
+                        </form>
                     </div>
+                </c:if>
+                <c:if test="${empty fileVO}">
+                    <div class="col-m-12">
+                        <form action="insertPetFileOnUpdateForm" method="POST" enctype="multipart/form-data">
+                            <div class="text-center">
+                                    
+                                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
+                                        alt="avatar">      
+                                <input type="file" class="text-center center-block file-upload" name="uploadPetFiles" >   
+                                <input type="hidden" name="userId"  value="${principal.user.userId}">
+                                <input type="hidden" name="fileSeq" class="hiddenFileSeq" value="${pet.petSeq}">     
+                                <div class="entry input-group upload-input-group">  
+                                    <button type="submit" class="btn btn-sm-danger">파일등록 완료</button>
+                                </div>              
+                            </div>
+                            </hr><br>
+                        </form>
+                    </div>
+                </c:if>
                     
                     <!-- <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
                         alt="avatar">
@@ -53,36 +69,14 @@ pageEncoding="UTF-8"%>
                         method="post" 
                         id="updateForm"
                         >
-
-
-
-
-
-                        <div class="col-m-12">
-                            <div class="text-center">
-                                 <!-- 파일이 없는 상태에서는 insert쿼리를 타도록  -->
-                                <c:if test="${empty fileList}">
-                                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
-                                    alt="avatar">      
-                                    <input type="file" class="text-center center-block file-upload" name="uploadPetFiles" >   
-                                    <input type="hidden" name="userId"  value="${principal.user.userId}">
-                                    <input type="hidden" name="petSeq"  value="${pet.petSeq}">                  
-                                    </c:if>
-                            </div>
-                            </hr><br>
-                        </div>
-
                         <div class="col-m-12">
                             <div class="tab-content">
                                 <div class="tab-pane active">
-                                         <div>
-                                             <input type="hidden" name="userId" value="${user.userId}">
-                                         </div>
                             <div class="form-group">
                                 <div class="col-lg-12">
                                     <label for="name">이름</label>
+                                    <input type="hidden" name="userId"  value="${principal.user.userId}">
                                     <input type="text" class="form-control" name="name" id="name" value="${pet.name}">
-                                    <input type="hidden" class="form-control" id="user_id" name="userId" value="${userId}" >
                                     <input type="hidden" class="form-control" id="user_id" name="petSeq" value="${pet.petSeq}" >
                                 </div>
                             </div>

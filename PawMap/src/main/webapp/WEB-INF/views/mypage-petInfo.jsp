@@ -10,7 +10,7 @@ pageEncoding="UTF-8"%>
 
     <!-- Start 반려동물 관리 타이틀 영역 -->
     <div class="pet-all-title-box">
-        <div class="container">
+        <div class="petInfoContainer">
             <div class="row">
                 <div class="col-lg-12">
                     <h2>반려동물 관리</h2>
@@ -20,7 +20,7 @@ pageEncoding="UTF-8"%>
     </div>
     <!-- End 반려동물 관리 타이틀 영역 -->
     
-    <div class="container">
+    <div class="petInfoContainer">
         <div class="row">
             <div style="margin-top: 40px; border-style: 3px solid orange ">
                 <input type="hidden" class="form-control" id="user_id" name="userId" value=${principal.user.userId} >
@@ -28,7 +28,7 @@ pageEncoding="UTF-8"%>
                 <input type="hidden" name="boardSeq" id="board_seq" value="getPetSeq">
 
                  <!-- 반려동물 프로필 -->
-                <div class="container" style="margin-top: -5%; margin-bottom: -3%;">
+                <div class="petInfoContainer" style="margin-top: -5%; margin-bottom: -3%;">
                   
                     <!-- <div class="profile-sidebar"> -->
                         <!-- SIDEBAR USERPIC -->
@@ -42,24 +42,22 @@ pageEncoding="UTF-8"%>
                                 <div class="petInfoList col-md-12 ">
                                     <div class=" petProfile col-md-4">
                                         <div class="petProfileText">
-                                            <div>${pet.petSeq}</div>
-                                            <div>${pet.name}</div>
-                                            <div>${pet.gender}</div>
-                                            <div>${pet.age}</div>
-                                            <div>${pet.petType}</div>
-                                            <div>${pet.petTypeDetail}</div>
-                                            <div>${pet.symptom}</div>
+                                            <div>번호 : ${pet.petSeq}</div>
+                                            <div>펫 이름 : ${pet.name}</div>
+                                            <div>펫 성별 : ${pet.gender}</div>
+                                            <div>펫 나이 : ${pet.age}</div>
+                                            <div>나는 누구? : ${pet.petType}</div>
+                                            <div>더 자세하게? :${pet.petTypeDetail}</div>
+                                            <div>증상 : ${pet.symptom}</div>
                                         </div>
                                     </div>
                                    <div class=" petProfile petProfileimg col-md-4" >
                                         <c:choose>
-                                            <c:when test="${empty petInfoFileList}">
+                                            <c:when test="${empty pet.originalFileName}">
                                                 <img class="petimage" src="https://www.treehugger.com/thmb/3ueL3X7pxChDc5bA3_C02y3NV6I=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1286194137-90a64ebdc61c4078903bdd03621f7529.jpg"  alt="" >
                                             </c:when>
                                             <c:otherwise>
-                                            <c:forEach items="${petInfoFileList}" var="fileList" varStatus="i">
-                                                <img class="img-fluid petimage" src="${pageContext.request.contextPath}/upload/${fileList.originalFileName}" alt="" />
-                                            </c:forEach>
+                                                <img class="img-fluid petimage" src="${pageContext.request.contextPath}/upload/${pet.originalFileName}" alt="" />
                                         </c:otherwise>
                                     </c:choose>
                                     </div>
