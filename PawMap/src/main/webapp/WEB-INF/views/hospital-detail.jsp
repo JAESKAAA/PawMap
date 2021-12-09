@@ -4,6 +4,7 @@ pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
 <spring:eval expression="@environment.getProperty('kakao.app.key')" var="kakaoAppKey"/>
 <!DOCTYPE html>
@@ -306,44 +307,47 @@ pageEncoding="UTF-8"%>
                 <div class="row my-5">
                   <div class="col-sm-6 col-lg-4">
                       <div class="service-block-inner">
-                          <h3>수의사(3)</h3>
+                          <h3>수의사(${fn:length(vetList) })</h3>
                       </div>
                   </div>
                   <!-- 수의사 프로필 부분 -->
-                  <div class="container_hospital_detail" style="margin-top: -5%; margin-bottom: -3%;">
-                    <div class="row profile" >
-                      <div class="col-md-4" >
-                        <div class="profile-sidebar">
-                          <!-- SIDEBAR USERPIC -->
-                          <div class="profile-userpic">
-                            <img src="images/01.jpg" class="img-responsive" alt="">
-                          </div>
-                          <!-- END SIDEBAR USERPIC -->
-                          <!-- SIDEBAR USER TITLE -->
-                          <div class="profile-usertitle">
-                            <div class="profile-usertitle-name">
-                              최재석
-                            </div>
-                            <div class="profile-usertitle-job">
-                              관절전문
-                            </div>
-                          </div>
-                          <!-- END SIDEBAR USER TITLE -->
-                          <!-- SIDEBAR BUTTONS -->
-                          <div class="profile-userbuttons">
-                            <button type="button" class="btn btn-primary btn-rounded btn-sm" data-mdb-ripple-color="#ffffff" style="background-color: #e4b407">
-                              약력보기
-                            </button>
-                            <button type="button" class="btn btn-primary btn-rounded btn-sm" data-mdb-ripple-color="#ffffff" style="background-color: #e4b407">
-                            이 의사 리뷰보기
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </div> 
-                  </div>
+                    <div class="container_hospital_detail" style="margin-top: -5%; margin-bottom: -3%;">
+                      <div class="row profile" >
+						<c:forEach items="${vetList }" var="vet">
+	                        <div class="col-md-4" >
+	                          <div class="profile-sidebar">
+	                            <!-- SIDEBAR USERPIC -->
+	                            <div class="profile-userpic">
+	                            	<c:choose>
+	                            		<c:when test="${empty vet.originalFileName}">
+	                           		   		<img src="images/dogDoctor.jpg" class="img-responsive" style="width: 70%" alt="">
+	                           			</c:when>
+	                           			<c:otherwise>
+	                           			    <img src="${pageContext.request.contextPath}/upload/${vet.originalFileName}" class="img-responsive" style="width: 70%" alt="">
+	                           			</c:otherwise>
+	                            	</c:choose>
+	                            </div>
+	                            <!-- END SIDEBAR USERPIC -->
+	                            <!-- SIDEBAR USER TITLE -->
+	                            <div class="profile-usertitle">
+	                              <div class="profile-usertitle-name">
+	                                ${vet.vetName }
+	                              </div>
+	                              <div class="profile-usertitle-job">
+	                                ${vet.vetMajor }
+	                              </div>
+	                              <div class="profile-usertitle-info">
+	                                "${vet.vetIntro }"
+	                              </div>
+	                            </div>
+	                          </div>
+	                        </div>
+                        </c:forEach>
+                      </div> 
+                    </div>
                 </div>
               </div>
+              
               <!--리뷰 시작-->
               <div class="container_hospital_detail" style="margin-top: 10rem;" id="menu3">
                 <div class="row my-5">

@@ -60,7 +60,7 @@ pageEncoding="UTF-8"%>
                                         
                                     <!--반려동물정보카드-->
                                         <div class="service-icon">
-                                            <a href="/pawmap/mypage/vetInfo?hospitalSeq=${principal.user.userSeq}"><i class="fas fa-paw"></i></a>
+                                            <a href="/pawmap/mypage/vetInfo?userId=${principal.user.userId}"><i class="fas fa-paw"></i></a>
                                          
                                         </div>
                                         <div class="service-desc">

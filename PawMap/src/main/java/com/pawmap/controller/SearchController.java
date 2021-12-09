@@ -12,15 +12,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.pawmap.VO.Criteria;
 import com.pawmap.VO.HospitalVO;
 import com.pawmap.VO.PageVO;
+import com.pawmap.VO.VetVO;
 import com.pawmap.handler.OpenApiHandler;
-import com.pawmap.mapper.SearchMapper;
 import com.pawmap.service.SearchService;
+import com.pawmap.service.VetService;
 
 @Controller
 public class SearchController {
 
 	@Autowired
 	private OpenApiHandler apiHandler;
+	
+	@Autowired
+	private VetService vetService;
 	
 	@Autowired
 	private SearchService searchSearvice;
@@ -70,9 +74,16 @@ public class SearchController {
 	public String showDetailHospital(HospitalVO vo, Model model ) {
 		HospitalVO hospital = searchSearvice.getHospital(vo);
 		
-		System.out.println("특정 hospital 정보 출력 : " +hospital);
-		model.addAttribute("hospital", hospital);
+		VetVO vet = new VetVO();
+		vet.setHospitalSeq(vo.getHospitalSeq());
+		vet.setUserId(hospital.getHospitalId());
 		
+		
+		List<VetVO> vetList = vetService.getVetListWithFiles(vet);
+		System.out.println("특정 hospital 정보 출력 : " +hospital);
+		System.out.println("vetList --> "+vetList);
+		model.addAttribute("hospital", hospital);
+		model.addAttribute("vetList", vetList);
 		return "hospital-detail";
 	}
 	
