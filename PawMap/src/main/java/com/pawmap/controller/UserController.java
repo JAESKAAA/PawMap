@@ -1,6 +1,7 @@
 package com.pawmap.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,11 +26,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.pawmap.VO.BoardVO;
+import com.pawmap.VO.Criteria;
+import com.pawmap.VO.PageVO;
 import com.pawmap.VO.ShelterVO;
 import com.pawmap.VO.UserVO;
 import com.pawmap.configuration.auth.PrincipalDetails;
 import com.pawmap.configuration.auth.PrincipalDetailsService;
 import com.pawmap.mapper.UserMapper;
+import com.pawmap.service.BoardService;
 import com.pawmap.service.UserService;
 import com.pawmap.util.CookieUtil;
 
@@ -471,13 +476,13 @@ public class UserController {
 		
 		
 		//관리자페이지 -> 보호소정보 관리로 이동
-		@GetMapping("/admin/shelterInfo")
+		@GetMapping("/admin/getShelterList")
 		public String shelterInfoForm() {
 			return "admin_shelter"; // this leads user to go onadmin_shetler.jsp.....
 		}
 		
 		// 보호소 정보 출력 (관리자 페이지 -> 보호소정보 관리 )
-		@RequestMapping("/admin/getShelterList")
+/*		@RequestMapping("/admin/getShelterList")
 		@ResponseBody
 		public String getShelterList(ShelterVO vo, Model model) {
 			System.out.println("getShelterList 메소드가 호출 되었습니다==========."+vo);
@@ -489,9 +494,9 @@ public class UserController {
 			
 			model.addAttribute("ShelterList", shelterService.getShelterList(vo));
 		
-			return "admin_shelter";
+			return "admin_shelter"; 
 		}// Dec 3rd 현재 query가 작동안함.. vo를 따로 만들어 줄필요 없으며. query를 이용하여 list를 부르면 됨...
-		
+*/		
 		
 		/// Below controllers' methods were created by thomas lee on Dec 6th 11:07am
 		/// he created methods the methods "community information" for admin management. 
@@ -501,14 +506,56 @@ public class UserController {
 		//private UserService communityService; // the UserService interface was declared as communityService for admin management...
 		
 		
+		//
+		// 관리자 페이지 (커뮤니티 부분....)
+/*		static String keyword = "";
+		
+		@Autowired
+		private BoardService boardService;
+*/		
+		
+/*		
 		//관리자페이지 -> 커뮤니티 게시판 관리로 이동
 		@GetMapping("/admin/communityManage")
 		public String communityManageList() {
 			return "admin_community"; // this leads user to go onadmin_shetler.jsp.....
 		}
-		
-		
-		
+*/
+		/*
+		@GetMapping("/getCommunityBoardList")
+		public String getCommunityBoardList(BoardVO vo, Model model, Criteria cri) {
+			System.out.println("getCommunityBoardList 호출 !!");
+			
+			if(vo.getKeywordType() == null || vo.getKeywordType().isEmpty()) {
+				vo.setKeywordType("titleAndContent");
+			}
+			if(vo.getKeyword() == null) {
+				vo.setKeyword("");
+			}
+			
+			if(!keyword.equals(vo.getKeyword())) {
+				System.out.println("다릅니다.");
+				cri.setPageNum(1);
+			}
+
+			keyword = vo.getKeyword();
+			
+			int total = boardService.selectBoardCount(vo);
+			
+
+			List<HashMap<String,Object>> latelyCommunityBoardListForMain = boardService.getLatelyBoardListForBoardMain();
+			
+			System.out.println("getCommunityBoardList 의 latelyBoardListForMain ============"+ latelyCommunityBoardListForMain);
+			
+			model.addAttribute("freeBoardList", boardService.getFreeBoardList(vo,cri));
+			model.addAttribute("latelyCommunityBoardListForMain", latelyCommunityBoardListForMain);
+			model.addAttribute("pageMaker", new PageVO(cri, total));
+			model.addAttribute("keyword", vo.getKeyword());
+			model.addAttribute("keywordType", vo.getKeywordType());
+			
+			return "admin_community";
+		}
+*/		
 		
 		
 //		

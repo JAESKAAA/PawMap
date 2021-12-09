@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@ include file="layout/admin_header.jsp" %>
 <!--관리자의 회원정보 관리 페이지 시작...-->
         <div class="tbl-header"> 
@@ -62,7 +67,7 @@ pageEncoding="UTF-8"%>
                 <td class="admin-address">${user.address }</td>
                 <td class="admin-usernickname">${user.userNickname }</td>
                 <td class="admin-role">${user.role }</td>
-                <td class="admin-userregdate">${user.userRegDate }</td>
+                <td class="admin-userregdate"><fmt:formatDate value="${user.userRegDate }" pattern="yyyy-MM-dd KK:mm:ss"/></td>
                 <td class="admin-useractionbutton"><button class="adminpagebuttonformanage" type="button" onclick="location.href='adminpage5usermodify-tom.html'">수정</button></td>
               </tr>
             </c:forEach>

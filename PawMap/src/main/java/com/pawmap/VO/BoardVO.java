@@ -1,6 +1,6 @@
 package com.pawmap.VO;
 
-import java.sql.Date;
+import java.sql.Timestamp;//Date에서 Time으로 변경.
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,7 +20,7 @@ public class BoardVO {
 	private String comNum;
 	private String title;
 	private String content;
-	private Date regDate;
+	private Timestamp regDate; // Date에서 Time으로 변경
 	private String keywordType;
 	private String keyword;
 	private UserVO userVO;

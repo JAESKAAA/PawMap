@@ -409,3 +409,29 @@
     box-shadow: 0px 0px 0px 6px rgba(255, 255, 255, 0.3)
 }
 
+/*
+* Dec 9th 게시판 관리 페이지.
+*/
+
+tr .admin-boardseq {
+    width: 3%;
+    min-height: 2%;
+    max-height: 4%;
+}
+tr .admin-boardid {
+    width:10%;
+    height:2%;
+}
+tr .admin-title {
+    width:12%;
+    height:2%;
+}
+tr .admin-regdate {
+    width: 12%;
+    height: 2%;
+}
+tr .admin-useractionbutton {
+    width: 7%;
+    height: 2%;
+
+}

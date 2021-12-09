@@ -92,7 +92,7 @@ pageEncoding="UTF-8"%>
                             <li class="nav-item"><a class="nav-link" href="/pawmap/getHospitalList"> 제휴병원 관리</a></li>
                             <li class="nav-item"><a class="nav-link" href="/pawmap/getUserList"> 회원정보 관리</a></li>
                             <li class="nav-item"><a class="nav-link" href="/pawmap/admin/getShelterList"> 보호소정보 관리</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/pawmap/admin/communityManage"> 커뮤니티 게시판 관리</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/pawmap/getCommunityBoardList"> 커뮤니티 게시판 관리</a></li>
                         </ul>
                     </div>
                 </div>

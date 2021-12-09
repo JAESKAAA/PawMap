@@ -1,6 +1,6 @@
 package com.pawmap.VO;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import lombok.Builder;
 import lombok.Data;
@@ -21,7 +21,7 @@ public class UserVO {
 	private String addressDetail;
 	private String userNickname;
 	private String role;
-	private Date userRegDate;
+	private Timestamp userRegDate;
 	private String userProfile;
 	private int userProfileSize;
 	private String userStatus;
@@ -32,7 +32,7 @@ public class UserVO {
 	@Builder
 	public UserVO(int userSeq, String userType, String userId, String userPassword, String userEmail, String userName,
 			String userTelNum, String postNum, String address, String addressDetail, String userNickname, String role,
-			Date userRegDate, String userProfile, int userProfileSize, String userStatus, String provider,
+			Timestamp userRegDate, String userProfile, int userProfileSize, String userStatus, String provider,
 			String providerId, String comNum) {
 		super();
 		this.userSeq = userSeq;

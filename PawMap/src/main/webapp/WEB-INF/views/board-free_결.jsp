@@ -140,7 +140,7 @@ pageEncoding="UTF-8"%>
 
                             <td>${freeBoard.userVO.userNickname }</td>
 
-					        <td><fmt:formatDate value="${freeBoard.regDate }" pattern="yyyy-MM-dd"/></td>
+					        <td><fmt:formatDate value="${freeBoard.regDate }" pattern="yyyy-MM-dd KK:mm:ss"/></td>
 			          	</tr>
 		          </c:forEach>
                 </tbody>

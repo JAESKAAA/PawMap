@@ -143,28 +143,25 @@
                     <col>
                     <col>
                     <col>
-                    <col>
                   </colgroup>
                   <thead class="admintablehead"> 
                     <tr>
                         <th class="admin-userseq">#</th> <!--admin-userseq는 shelter_Seq동일-->
-                        <th class="admin-username">보호소 이름</th> <!--admin-username은 shelter_name과 동일-->
-                        <th class="admin-address">보호소 주소</th> <!--admin-address은 shelter_address와 동일-->
-                        <th class="admin-usertelnum">연락처</th> <!--admin-usertelnum은 shelter_tel과 동일-->
-                        <th class="admin-comnum">사업자등록번호</th>
+                        <th class="admin-username">이름</th> <!--admin-username은 shelter_name과 동일-->
+                        <th class="admin-address">타이틀</th> <!--admin-address은 shelter_address와 동일-->
+                        <th class="admin-usertelnum">등록 시간</th> <!--admin-usertelnum은 shelter_tel과 동일-->
                         <th class="admin-useractionbutton"></th>
                     </tr>
                   </thead>
                   <tbody>
                     <c:forEach var="user" items="${shelterList }"> <!--items needs to be replace...-->
                       <tr>
-                        <td class="admin-userseq">${user.shelterSeq }</td>
-                        <td class="admin-username">${user.shelterName }</td>
-                        <td class="admin-address">${user.address }</td>
-                        <td class="admin-usertelnum">${user.shelterTel }</td>
-                        <td class="admin-comnum">${user.comNum }</td>
-                        <td class="admin-useractionbutton"><button class="adminpagebuttonformanage adminbuttonmargin-right" type="button" onclick="location.href='#'">수정</button>
-                                                          <button class="adminpagebuttonformanage adminbuttonmargin-left" type="button" onclick="location.href='#'">삭제</button></td>
+                        <td class="admin-boardseq">${board.boardSeq }</td>
+                        <td class="admin-boardid">${board.userId }</td>
+                        <td class="admin-title"><a href="#" class="oneononecounsel">${board.title }</a></td>
+                        <td class="admin-regdate"><fmt:formatDate value="${board.regDate }" pattern="yyyy-MM-dd KK:mm:ss"/></td>
+                        <td class="admin-useractionbutton"><button class="adminpagebuttonformanage" type="button" onclick="location.href='#'">삭제</button></td>
+                      </tr>
                       </tr>
                     </c:forEach>
                   </tbody>            

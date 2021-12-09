@@ -28,6 +28,11 @@ public interface BoardService {
 
 	
 	List<HashMap<String, Object>> getLatelyBoardListForBoardMain();
-
+	
+	// 관리자 페이지에서 커뮤니티 게시판 부를때 사용하는 메소드
+	
+	List<BoardVO> getCommunityBoardList(BoardVO vo, Criteria cri);
+	
+	List<HashMap<String, Object>> getLatelyCommunityBoardListForBoardMain();
 	
 }
