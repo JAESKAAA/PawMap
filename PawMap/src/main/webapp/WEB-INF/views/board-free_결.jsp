@@ -126,6 +126,7 @@ pageEncoding="UTF-8"%>
                     <th class="title">제목</th>
                     <th>작성자</th>
                     <th>등록일</th>
+                    <th>조회수</th>
                   </tr>
                 </thead>
               </table>
@@ -142,6 +143,7 @@ pageEncoding="UTF-8"%>
                             <td>${freeBoard.userVO.userNickname }</td>
 
 					        <td><fmt:formatDate value="${freeBoard.regDate }" pattern="yyyy-MM-dd"/></td>
+                            <td>${freeBoard.cnt }</td>
 			          	</tr>
 		          </c:forEach>
                 </tbody>

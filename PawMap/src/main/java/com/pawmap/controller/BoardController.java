@@ -104,13 +104,13 @@ public class BoardController {
 		
 		List<HashMap<String,Object>> latelyBoardListForMain = boardService.getLatelyBoardListForBoardMain();
 		
-		System.out.println("getFreeBoardList 의 latelyBoardListForMain ============"+ latelyBoardListForMain);
-		
 		model.addAttribute("freeBoardList", boardService.getFreeBoardList(vo,cri));
 		model.addAttribute("latelyBoardListForMain", latelyBoardListForMain);
 		model.addAttribute("pageMaker", new PageVO(cri, total));
 		model.addAttribute("keyword", vo.getKeyword());
 		model.addAttribute("keywordType", vo.getKeywordType());
+		
+		System.out.println(boardService.getFreeBoardList(vo,cri));
 		
 		return "board-free_결";
 				
@@ -119,8 +119,6 @@ public class BoardController {
 	@GetMapping("/board/getFreeBoard")
 	public String getFreeBoard(@RequestParam int boardSeq, Model model) {
 		System.out.println("getFreeBoard============ 탐");
-		System.out.println("getFreeBoard boardSeq ========== "+boardSeq);
-		
 
 		// 댓글 리스트로 가져오기
 		List<HashMap<String,Object>> replyList = commentService.getReplyListByBoardSeq(boardSeq);
@@ -128,13 +126,15 @@ public class BoardController {
 		// 파일리스트 가져오기
 		List<FileVO> fileList = fileService.getFileListByFreeBoardSeq(boardSeq);
 
-		System.out.println("fileList ============== "+ fileList);
+		// 조회수 늘리기
+		boardService.updateFreeBoardCnt(boardSeq);
 		
-
 		model.addAttribute("freeBoardFileList",fileList);
 		model.addAttribute("commentSize",replyList.size());
 		model.addAttribute("freeBoardReplyList",replyList);
 		model.addAttribute("getFreeBoard",boardService.getFreeBoard(boardSeq));
+		
+		System.out.println(boardService.getFreeBoard(boardSeq));
 		
 		return "board-detail_결";
 	}

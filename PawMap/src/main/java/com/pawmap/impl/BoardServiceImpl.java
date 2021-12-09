@@ -24,7 +24,6 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public void insertFreeAndNanumBoard(BoardVO vo) {
 		boardMapper.insertFreeAndNanumBoard(vo);
-		System.out.println("BoardServiceImpl :insertFreeAndNanumBoard()");
 	}
 
 	@Override
@@ -39,7 +38,6 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public BoardVO getFreeBoard(int boardSeq) {
-		System.out.println("BoardServiceImpl 의 boardSeq ======"+boardSeq);
 		return boardMapper.getFreeBoard(boardSeq);
 	}
 
@@ -113,6 +111,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVO> getMyMedicalRecordForAllowReview(String userId, String hospitalComNum) {
 		return boardMapper.getMyMedicalRecordForAllowReview(userId,hospitalComNum);
+	}
+
+	@Override
+	public void updateFreeBoardCnt(int boardSeq) {
+		boardMapper.updateFreeBoardCnt(boardSeq);
 	}
 
 	

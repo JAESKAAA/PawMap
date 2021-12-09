@@ -31,6 +31,9 @@ pageEncoding="UTF-8"%>
                 <div class="col-lg-6">
                     <h5 class=" mb-5 board_seq" id="freeBoardSeq">게시글 번호 : ${getFreeBoard.boardSeq}</h5>
                 </div>
+                <div class="col-lg-6">
+                  <h5 class=" mb-5 board_seq" id="freeBoardSeq">조회수 : ${getFreeBoard.cnt}</h5>
+              </div>
             </div>
 
             
