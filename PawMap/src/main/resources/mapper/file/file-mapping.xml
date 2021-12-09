@@ -71,7 +71,12 @@
 						FROM file p
 					WHERE board_seq = #{boardSeq}
 				),
-				#{boardSeq}+1,
+				(
+					SELECT IFNULL(MAX(board_seq),0) +1
+						FROM file p
+					WHERE board_type = 'p'
+					AND user_id = #{userId}
+				),
 				'p',
 				#{userId},
 				#{originalFileName},

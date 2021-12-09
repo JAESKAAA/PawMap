@@ -40,30 +40,11 @@ public class PetController {
 	/*반려동물 정보리스트 조회*/
 	@GetMapping(value = "/mypage/petInfo")
 	public String getPetList(@RequestParam String userId, PetVO vo, Model model, UserVO userVo, HttpServletRequest request) {
-//		@RequestParam String userId
-//		String userId = params.get(userId);
 		
-		
-		UserVO user = userService.getUser(userVo);
-		
-		System.out.println("반려동물 리스트로 넘어왔을 때 사용자 아이디=====" + userVo.getUserId());
-		System.out.println("반려동물 리스트로 넘어왔을 때 petService.getPetSeq()==" + petService.getPetSeq());
-		
-		System.out.println("RequestParam으로 받은 userId====" + userId);
-		// 파일리스트 가져오기
-		List<FileVO> fileList = fileService.getFileListByUserId(userId);
-		
-//		FileVO file = fileList.get(0);
-		
-//		System.out.println(file.getBoardSeq());
-		
-		System.out.println("model에 담기는 유저 아이디====" +userVo.getUserId());
-		System.out.println("petSeq=====" + petService.getPetSeq());
-		
-		model.addAttribute("pet",petService.getPetList(vo));
-		model.addAttribute("petSeq", petService.getPetSeq());
-		model.addAttribute("petInfoFileList",fileList);
-//		model.addAttribute("boardSeq",file.getBoardSeq());
+		System.out.println("vo========="+vo);
+		System.out.println("petService.getPetInfoList(vo.getUserId())"+petService.getPetInfoList(vo.getUserId()));
+		model.addAttribute("petInfo",petService.getPetInfoList(vo.getUserId()));
+		model.addAttribute("petFile",petService.getPetList(vo));
 		model.addAttribute("user", userVo);		
 		
 		return "mypage-petInfo";
@@ -153,7 +134,7 @@ public class PetController {
 			vo.setStatus("N");
 			
 			/* 파일 등록을 위한 코드*/
-			int boardSeq = petService.getPetSeq();
+			int boardSeq = petService.getPetSeq(user.getUserId());
 			String userId = vo.getUserId();
 			System.out.println("fileUtils 가기전 petSeq =========== "+ boardSeq);
 

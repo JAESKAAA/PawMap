@@ -1,11 +1,13 @@
 package com.pawmap.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pawmap.VO.PetVO;
+import com.pawmap.VO.UserVO;
 import com.pawmap.mapper.PetMapper;
 import com.pawmap.service.PetService;
 
@@ -45,15 +47,22 @@ public class PetServiceImpl implements PetService {
 
 
 	@Override
-	public List<PetVO> getPetList(PetVO vo) {
+	public List<Map<String, Object>> getPetList(PetVO vo) {
 		return petMapper.getPetList(vo);
 	}
 
 
 	@Override
-	public int getPetSeq() {
+	public int getPetSeq(String userId) {
 		
-		return petMapper.getPetSeq();
+		return petMapper.getPetSeq(userId);
+	}
+
+
+	@Override
+	public List<PetVO> getPetInfoList(String userId) {
+		// TODO Auto-generated method stub
+		return petMapper.getPetInfoList(userId);
 	}
 
 

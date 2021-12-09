@@ -1,18 +1,20 @@
 package com.pawmap.mapper;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.pawmap.VO.PetVO;
+import com.pawmap.VO.UserVO;
 
 
 
 @Mapper
 public interface PetMapper {
 
-	int getPetSeq();
+	int getPetSeq(String userId);
 
 	/*펫 정보 글 생성 */
 	void insertPetInfo(PetVO vo);
@@ -26,9 +28,11 @@ public interface PetMapper {
 	/*펫 상태정보 변경,,*/
 	public void deletePetInfo(int petSeq) throws Exception;
 	
-	public List<PetVO>getPetList(PetVO vo);
-	
+	public List<Map<String, Object>>getPetList(PetVO vo);
 
+	List<PetVO> getPetInfoList(String userId);
+	
+	
 
 
 
