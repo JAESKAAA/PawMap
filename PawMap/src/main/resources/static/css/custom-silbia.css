@@ -115,11 +115,6 @@
     color: #fff;
 }
 
-/* 상위로 가는 화살표 버튼 */
-:focus {
-    outline: 0;
-}
-
 /* 버튼 색상 */
 .my-btn-other {
     font-weight: bold;
@@ -147,6 +142,8 @@
 }
 
 
+
+/* ======================== 12.08 수정된 폼 확정시 삭제될 style====================== */
 /* 회원가입 form style */
   .user-form-label {
     color: #e1a963;
@@ -165,9 +162,174 @@
     align-items: center;
     width: 80px;
     height: 50px;
-    background-color: antiquewhite;
-    border-radius: 100px;
     margin: auto;
   }
+.join-form {
+	border-top: 1px solid #EFC778;
+}
 
 
+
+/*  =============== 12.08 회원가입폼 수정 확정시 상위 style은 삭제 =============== */
+/* 회원가입 전체 틀 */
+.u_container {
+    border: 6px solid rgb(216, 216, 216);
+    border-radius: 25px;
+    position: relative;
+    padding: 0;
+    width: 100%;
+    max-width: 840px;
+    margin: auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.u_container:hover {
+    border: 6px solid #EFC778;
+    background-color: #efc7781c;
+}
+
+/* 타이틀 */
+.u_top-title {
+    padding: 80px 0 0;
+    text-align: center;
+    line-height: 1;
+    font-size: 40px;
+    color: #555;
+    font-weight: 700;
+}
+
+/* 회원가입 폼 및 테이블 및 입력란 */
+.u_join-box {
+    margin-top: 30px;
+}
+.u_join-table {
+    width: 100%;
+    border-top: 1px solid #f7ba61;
+    border-bottom: 1px solid #f7ba61;
+}
+.u_join-table tr {
+    border-bottom: 1px solid #e1e1e1;
+}
+.u_join-table tr th {
+    padding: 20px 15px 20px 30px;
+    width: 240px;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 700;
+}
+.u_join-table tr td {
+    padding: 20px 15px;
+    height: 85px;
+    font-size: 16px;
+    color: #777;
+    font-weight: 300;
+}
+.u_join-box input:not([type=checkbox]):not([type=radio]), .u_join-box select {
+    max-width: 400px;
+    width: 100%;
+}
+
+/* 주소 */
+.u_input-box-address {
+    max-width: 520px;
+}
+.u_input-box-address input:first-child {
+    margin-top: 0;
+    width: calc(100% - 270px)!important;
+}
+.u_input-box-address .button {
+    vertical-align: top;
+    margin-left: 10px;
+    width: 120px;
+}
+.u_input-box-address input {
+    margin-top: 10px;
+    max-width: none;
+}
+
+/* 버튼 전체 스타일 */
+.u_join-box .button {
+    line-height: 45px;
+    font-size: 18px;
+}
+.u_join-box .button, .u_join-box input:not([type=checkbox]):not([type=radio]), .u_join-box select {
+    vertical-align: top;
+    padding: 0 20px;
+    height: 45px;
+}
+.u_button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.5;
+    padding: 0 10px;
+    text-align: center;
+    transition: all .15s ease;
+    cursor: pointer;
+}
+
+.u_join-box .u_bottom-button .u_button {
+    margin: 0 5px;
+    width: 240px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+    border-style: none;
+
+}
+.u_join-box .u_bottom-button {
+    margin-top: 55px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 0;
+
+}
+
+/* 가입하기 버튼 */
+.u_button-point {
+    color: #fff;
+    background-color: #f1a50d;
+    border-radius: 25px;
+}
+
+/* 중복체크, 검색, 취소 버튼 */
+.u_button-grey {
+    color: #fff;
+    background-color: #f7ba61;
+    border-radius: 25px;
+    border-style: none;
+}
+.u_button-grey:hover {
+    background-color: #e0a226;
+}
+
+/* 회원가입메인(병원,일반) */
+.u_card:hover{
+    border: 6px solid #EFC778 ;
+	background-color: #efc7781c;
+}
+.u_card{
+	border: 6px solid rgb(216, 216, 216);
+	border-radius: 25px;
+}
+.u_card .ptitle {
+	line-height: 1.4;
+	text-align: center;
+	font-size: 32px;
+	color: #EFC778;
+	font-weight: 700;
+	margin-bottom: 15px;
+}
+.u_card .pr {
+	line-height: 1.4;
+	color: #777;
+	font-weight: 400;
+	font-size: 18px;
+    text-align: center;
+    padding-bottom: 10px;
+}
+.u_card .pc {
+	display: none;
+}

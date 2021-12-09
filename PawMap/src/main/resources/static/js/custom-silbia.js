@@ -1,4 +1,4 @@
-
+var idChk = false;
 /* 프로필 사진 파일 업로드 */
 $(document).ready(function () {
 	var readURL = function (input) {
@@ -25,12 +25,28 @@ $(document).ready(function () {
         var status = $.trim(data);
         if(status == "fail") {
           alert("중복된 아이디입니다.");
+          $("#btnJoin").attr("disabled", true);
+          $(".result .msg1").text("중복되었습니다.");
+          $(".result .msg1").attr("style", "color:#f00");
         } else {
+		  idChk = true;
           alert("사용 가능한 아이디입니다.");
+          $("#btnJoin").attr("disabled", false);
+          $(".result .msg1").text("사용가능합니다.");
+          $(".result .msg1").attr("style", "color:#00f");
         }
       }
     });
-  }
+  } 
+  
+  	/* 회원가입시 중복체크 후 회원가입 */
+	function join() {
+		if(idChk == true) {
+			$("#joinForm").submit();
+		} else {
+			alert("중복체크 해주세요.");
+		}
+	}
   
   /* 회원가입 닉네임 중복 체크 */
   function fn_nickcheck() {
@@ -42,8 +58,15 @@ $(document).ready(function () {
         var status = $.trim(data);
         if(status == "fail") {
           alert("중복된 닉네임입니다.");
+          $("#btnJoin").attr("disabled", true);
+          $(".result .msg2").text("중복되었습니다.");
+          $(".result .msg2").attr("style", "color:#f00");
         } else {
-          alert("사용 가능한 닉네임입니다.");
+		  idChk = true;
+          alert("사용 가능한 아이디입니다.");
+          $("#btnJoin").attr("disabled", false);
+          $(".result .msg2").text("사용가능합니다.");
+          $(".result .msg2").attr("style", "color:#00f");
         }
       }
     });
@@ -59,8 +82,12 @@ $(document).ready(function () {
         var status = $.trim(data);
         if(status == "fail") {
           alert("중복된 닉네임입니다.");
+          $(".result .msg3").text("중복되었습니다.");
+          $(".result .msg3").attr("style", "color:#f00");
         } else {
           alert("사용 가능한 닉네임입니다.");
+          $(".result .msg3").text("사용가능합니다.");
+          $(".result .msg3").attr("style", "color:#00f");
         }
       },
         error:function(error) {
@@ -79,9 +106,13 @@ $(document).ready(function () {
       success:function(data) {
         var status = $.trim(data);
         if(status == "fail") {
-          alert("중복된 이메일입니다..");
+          alert("중복된 이메일입니다.");
+          $(".result .msg4").text("중복되었습니다.");
+          $(".result .msg4").attr("style", "color:#f00");
         } else {
           alert("사용 가능한 이메일입니다.");
+          $(".result .msg4").text("사용가능합니다.");
+          $(".result .msg4").attr("style", "color:#00f");
         } 
       },
         error:function(error) {
@@ -101,8 +132,12 @@ $(document).ready(function () {
         var status = $.trim(data);
         if(status == "fail") {
           alert("중복된 닉네임입니다.");
+          $(".result .msg5").text("중복되었습니다.");
+          $(".result .msg5").attr("style", "color:#f00");
         } else {
           alert("사용 가능한 닉네임입니다.");
+          $(".result .msg5").text("사용가능합니다.");
+          $(".result .msg5").attr("style", "color:#00f");
         }
       },
         error:function(error) {
@@ -136,7 +171,19 @@ if (form.userName.value.length == 0) {
 form.userEmail.value = form.userEmail.value.trim();
 if (form.userEmail.value.length == 0) {
   alert('이메일을 입력해주세요.');
-  form.email.focus();
+  form.userEmail.focus();
+  return false;
+}
+form.userTelNum.value = form.userTelNum.value.trim();
+if (form.userTelNum.value.length == 0) {
+  alert('전화번호를 입력해주세요.');
+  form.userTelNum.focus();
+  return false;
+}
+form.userNickname.value = form.userNickname.value.trim();
+if (form.userNickname.value.length == 0) {
+  alert('닉네임 입력해주세요.');
+  form.userNickname.focus();
   return false;
 }
 form.submit();
