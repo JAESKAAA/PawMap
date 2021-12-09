@@ -61,6 +61,9 @@ public interface BoardMapper {
 	List<BoardVO> getMyMedicalRecordForAllowReview(@Param("userId")String userId,@Param("hospitalComNum") String hospitalComNum);
 
 
+	void updateFreeBoardCnt(@Param("boardSeq")int boardSeq);
+
+
 	
 
 	
