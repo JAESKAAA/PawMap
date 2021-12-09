@@ -6,9 +6,13 @@ pageEncoding="UTF-8"%>
 
 
   <!--관리자의 회원정보 관리 페이지 시작...-->
-    <div> 
-        <h1 style="text-align: center; font-size:30px; margin-top:5%;">회원정보 관리</h1>
-    </div>
+        <div class="tbl-header"> 
+            <div class="row row-adminindex">
+            <div>
+                <h1 class="adminpagetoph1" style=" margin-top: 0px;">회원정보 관리</h1>
+            </div>
+            </div>
+        </div>
         <!-- search 버튼 시작 -->
         <div class="row">
           <div class="main-search-input-wrap" >
