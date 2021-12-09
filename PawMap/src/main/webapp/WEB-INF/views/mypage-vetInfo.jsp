@@ -23,7 +23,6 @@ pageEncoding="UTF-8"%>
     <div class="container">
         <div class="row">
             <div style="margin-top: 40px; border-style: 3px solid orange ">
-                <input type="hidden" class="form-control" id="hospital_seq" name="hospitalSeq" value="{principal.user.userSeq}" >
                  <!-- 반려동물 프로필 -->
                 <div class="container" style="margin-top: -5%; margin-bottom: -3%;">
                   
@@ -35,7 +34,7 @@ pageEncoding="UTF-8"%>
                             <!-- <c:forEach var="vet" items="${vetInfoFileList}"> -->
                 
                             <!-- </c:forEach> -->
-                            <c:forEach var="vet" items="${vet}">
+                            <c:forEach var="vet" items="${vet}" varStatus="status">
                                 <div class="vetInfoList col-md-12 ">
                                     <div class=" vetProfile col-md-4">
                                         <div class="vetProfileText">
@@ -47,25 +46,20 @@ pageEncoding="UTF-8"%>
                                     </div>
                                    <div class=" vetProfile vetProfileimg col-md-4">
                                         <c:choose>
-                                            <c:when test="${empty vetInfoFileList}">
+                                            <c:when test="${empty vet.originalFileName}">
                                                 <img class="vetimage" src="https://w.namu.la/s/af5c00561066a74035b862599500576f820565395078c098f7100850b07bc3875558b35bcb9013bb62f3a0fcfc0af2a95a4da1dfb4aacffb97ef28d0d1d9f70f1de0bb4a8c23381c4c8b91e2dbf207fff13a9eb93d29949c05de2b5a590a0fe3"  alt="" >
                                             </c:when>
                                             <c:otherwise>
-                                            <c:forEach items="${vetInfoFileList}" varStatus="i">
-                                                <img class="vetImg" src="${pageContext.request.contextPath}/upload/${fileList.originalFileName}" alt="" />
-                                            </c:forEach>
+                                                <img class="vetImg" src="${pageContext.request.contextPath}/upload/${vet.originalFileName}" alt="" />
                                         </c:otherwise>
                                     </c:choose>
-
-
-
-
                                     </div>
                                     <div class=" vetProfile col-md-4">
 
-                                    <div class="vetProfileBtn"><button onclick="location.href='/pawmap/mypage/updateVetForm?vetSeq=${vet.vetSeq}'+ '&hospitalSeq=' + '${principal.user.userSeq}'" type="button" class="">수정</button>
+                                    <div class="vetProfileBtn"><button onclick="location.href='/pawmap/mypage/updateVetForm?vetSeq=${vet.vetSeq}'+ '&hospitalSeq=' + '${hospital.hospitalSeq}'+'&userId='+'${principal.user.userId}'" type="button" class="">수정</button>
                                         <!-- <button id="delete-vetInfo" type="button" class="">삭제</button> -->
                                         <button id="${vet.vetSeq}" type="button" onclick="fnDeleteVetInfo(this);">삭제</button>
+                                        <input type="hidden" value="${vet.vetSeq }" id="vetSeqValue${status.index }" />
                                     </div>
                                     </div>
                                     
@@ -88,7 +82,7 @@ pageEncoding="UTF-8"%>
                                     <div class="vet-account-box">
                                         <div class="vet-service-box">
                                             <div class="vet-service-icon">
-                                                <a href="/pawmap/mypage/newVetInfo?hospitalSeq=${principal.user.userSeq}"><i class="fas fa-paw"></i></a>
+                                                <a href="/pawmap/mypage/newVetInfo?userId=${principal.user.userId}"><i class="fas fa-paw"></i></a>
                                             </div>
                                             <div class="vet-service-desc">
                                                 <h4>수의사추가</h4>
@@ -111,8 +105,13 @@ pageEncoding="UTF-8"%>
     </div>
     <script>
         function fnDeleteVetInfo(obj) {
+        	let value = obj.id;
+        console.log(value);
+        	let vetSeq = $("#vetSeqValue").val();
+            	
             if(confirm("삭제하시겠습니까?")) {
-                location.href='/pawmap/mypage/deleteVetInfo?vetSeq=' + obj.id+ '&hospitalSeq=' + '${principal.user.userSeq}';
+            	location.href='/pawmap/mypage/deleteVetInfo?vetSeq='+value+'&hospitalSeq=' + '${hospital.hospitalSeq}'+'&userId='+'${principal.user.userId}';
+                
             } else {
                 return false;
             }

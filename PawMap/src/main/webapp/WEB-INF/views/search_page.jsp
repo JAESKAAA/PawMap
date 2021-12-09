@@ -231,6 +231,7 @@ pageEncoding="UTF-8"%>
           <th data-breakpoints="xs">위치</th>
           <th data-breakpoints="xs">진료 시간</th>
           <th data-breakpoints="xs">자세히</th>
+          <th data-breakpoints="xs">예약 가능 여부</th>
         </tr>
       </thead>
       <tbody>
@@ -250,6 +251,18 @@ pageEncoding="UTF-8"%>
               자세히
             </a>
           </td>
+          <c:if test="${hospital.hospitalType == 'H'}">
+          <td>
+            <a
+            	href="/pawmap/detailHospital?hospitalSeq=${hospital.hospitalSeq }"
+              class="btn btn-primary btn-rounded btn-sm"
+              data-mdb-ripple-color="#ffffff"
+              style="background-color: #e4b407"
+            >
+              예약가능
+            </a>
+          </td>
+          </c:if>
         </tr>
       </c:forEach>
       </tbody>

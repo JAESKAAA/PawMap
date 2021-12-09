@@ -40,11 +40,15 @@ public interface FileMapper {
 
 	void insertPetFileOnUpdateForm(FileVO vo);
 
-	
+	public void insertVetFileList(FileVO vo);
 
-	
+	void updateVetFileList(FileVO vo);
 
-	
+	//기존 파일정보 가져오기위한 메서드
+		public FileVO vetInfoFile(FileVO vo);
+
+		public void deleteVetFile(@Param("vetSeq")int vetSeq, @Param("boardType")String boardType, @Param("userId")String userId);
+
 
 
 
