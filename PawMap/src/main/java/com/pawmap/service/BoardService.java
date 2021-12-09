@@ -49,6 +49,8 @@ public interface BoardService {
 
 	int selectNanumBoardCount(BoardVO vo);
 
+	List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain();
+
 
 	
 

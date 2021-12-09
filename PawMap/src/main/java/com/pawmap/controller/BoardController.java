@@ -353,7 +353,7 @@ public class BoardController {
 		
 	}
 
-	// 나눔게시판 컨트롤러 (페이징처리만 하면됨 페이지당 1번부터 9번까지 불러오게)
+	// 나눔게시판 컨트롤러
 	@RequestMapping("/board/getNanumBoardList")
 	public String getNanumBoardList(BoardVO vo, Model model, Criteria cri) {
 		

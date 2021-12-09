@@ -1,7 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@ include file="layout/header.jsp" %>
+
+<style>
+.hov-in {
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.5);
+  bottom: -50%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 0.3s ease-out 0.5s;
+  -moz-transition: all 0.3s ease-out 0.5s;
+  -o-transition: all 0.3s ease-out 0.5s;
+  -ms-transition: all 0.3s ease-out 0.5s;
+  transition: all 0.3s ease-out 0.5s;
+  text-align: center;
+  display: table;
+}
+.hov-in a {
+  display: table-cell;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.ins-inner-box:hover .hov-in {
+  bottom: 0;
+  opacity: 1;
+}
+</style>
+
+
 
     <!-- Start Top Search -->
     <div class="top-search">
@@ -160,59 +191,55 @@ pageEncoding="UTF-8"%>
 
     <hr class="custom_hr" />
 
+
+    
     <!-- Start Instagram Feed  -->
+    <!-- 보호소 정보 페이지 표출부분 -->
     <div class="instagram-box">
       <div class="main-instagram owl-carousel owl-theme">
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/abandoned2.jpg" alt="" />
+          <c:forEach items="${shelterPic}" var="shelterPic" varStatus="i">
+          <div class="item">
+            <div class="ins-inner-box" 
+            style="    
+            width:375px;
+            height:375px;
+            overflow:hidden;
+            margin:0 auto;">
+              <!-- <img src="images/abandoned2.jpg" alt="" /> -->
+              <img class="img-fluid" src="${pageContext.request.contextPath}/upload/${shelterPic.originalFileName}" alt="" /
+              style="    
+              width:100%;
+              height:100%;
+              object-fit:cover">
             <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a>
+                <h1 style="color: #ffffff"><strong>
+                  ${shelterPic.shelterName }
+                </h1></strong>
+                <h4 style="color: #ffffff">
+                  ${shelterPic.shelterAddress }
+                  <br>
+                  ${shelterPic.shelterTel } 
+                </h4>
+
+              </a>
             </div>
           </div>
         </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/abandoned3.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/abandoned.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/abandoned2.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/abandoned7.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/abandoned3.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
+      </c:forEach>
+
       </div>
     </div>
+
+        <!-- <div class="item">
+          <div class="ins-inner-box">
+            <img src="images/abandoned3.jpg" alt="" />
+            <div class="hov-in">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div> -->
+
 
     <!-- 후원자 표기 부분-->
     <!-- <div class="container charity_box">

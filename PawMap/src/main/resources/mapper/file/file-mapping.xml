@@ -19,7 +19,7 @@
 		<select id="getFileListByShelterSeq" resultType="com.pawmap.VO.FileVO">
 		SELECT * FROM file
 		WHERE board_seq = #{boardSeq}
-		AND board_type = 'v';
+		AND board_type = 't';
 	</select>
 	
 	<select id="getFileListBySeqType"  resultType="com.pawmap.VO.FileVO">
@@ -73,7 +73,7 @@
 					FROM file v
 				WHERE board_seq = #{boardSeq}
 			),
-			IFNULL(#{boardType},'v'),
+			IFNULL(#{boardType},'t'),
 			#{userId},
 			#{originalFileName},
 			#{filePath},
@@ -94,7 +94,7 @@
 		<delete id="deleteFileByBoardSeqOnShelterSeq">
 		DELETE FROM file
 		WHERE board_seq = #{boardSeq}
-		AND board_type = 'v'
+		AND board_type = 't'
 	</delete>
 	
 			<delete id="deleteFileByBoardSeqOnNanumSeq">

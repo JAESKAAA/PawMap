@@ -134,6 +134,11 @@ public List<HashMap<String, Object>> getLatelyBoardListForNanumBoardMain() {
 public int selectNanumBoardCount(BoardVO vo) {
 	return boardMapper.selectNanumBoardCount(vo);
 }
+
+@Override
+public List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain() {
+	return boardMapper.getLatelyBoardListForShelterBoardMain();
+}
 	
 }
 

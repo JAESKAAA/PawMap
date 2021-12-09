@@ -70,7 +70,7 @@
 	<delete id="deleteFileByBoardSeqOnShelter">
 		DELETE FROM file
 		WHERE board_seq = #{boardSeq}
-		AND board_type = 'v''
+		AND board_type = 't''
 	</delete>
 	
 	
@@ -92,11 +92,14 @@
 			FROM pawmap.pet_shelter A
 				LEFT OUTER JOIN pawmap.file B
 		        ON A.SHELTER_SEQ = B.BOARD_SEQ
-		        AND B.BOARD_TYPE = 'v'
+		        AND B.BOARD_TYPE = 't'
 		        AND B.FILE_SEQ = 1
 		WHERE shelter_seq = #{shelterSeq}
 			
 	</select>
+	
+	
+
 	
   	
   </mapper>	
