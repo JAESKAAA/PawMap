@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%>
 
     <!-- Start 반려동물 추가 타이틀 영역 -->
     <div class="all-title-box">
-        <div class="container">
+        <div class="petInfoContainer">
             <div class="row">
                 <div class="col-lg-12">
                     <h2>수의사 추가</h2>

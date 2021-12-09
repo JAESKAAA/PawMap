@@ -10,7 +10,7 @@ pageEncoding="UTF-8"%>
 
     <!-- Start 반려동물 관리 타이틀 영역 -->
     <div class="vet-all-title-box">
-        <div class="container">
+        <div class="petInfoContainer">
             <div class="row">
                 <div class="col-lg-12">
                     <h2>수의사 관리</h2>
@@ -20,11 +20,11 @@ pageEncoding="UTF-8"%>
     </div>
     <!-- End 반려동물 관리 타이틀 영역 -->
     
-    <div class="container">
+    <div class="petInfoContainer">
         <div class="row">
             <div style="margin-top: 40px; border-style: 3px solid orange ">
                  <!-- 반려동물 프로필 -->
-                <div class="container" style="margin-top: -5%; margin-bottom: -3%;">
+                <div class="petInfoContainer" style="margin-top: -5%; margin-bottom: -3%;">
                   
                     <!-- <div class="profile-sidebar"> -->
                         <!-- SIDEBAR USERPIC -->

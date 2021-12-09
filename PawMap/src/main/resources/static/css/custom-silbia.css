@@ -1,16 +1,16 @@
-
 /* 타이틀 박스 글자 */
 .pet-all-title-box h2 {
     font-size: 28px;
     font-weight: 700;
-    color: #ffffff;
+    color: #e1a963;
     float: left;
-    padding: 10px 0px;
+    padding: 2%;
+   
 }
 
 /* 마이페이지 배경 수정 */
 .pet-all-title-box {
-    background-color: #e1a963;
+    background-color: none;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -ms-background-size: cover;
@@ -20,15 +20,20 @@
     background-attachment: fixed;
     padding: 30px 0px;
     position: relative;
+    padding-top: 100px !important;
 }
 
 
 /* 마이페이지 카드 영역 */
 .pet-account-box {
     text-align: center;
-    background: rgba(225, 169, 99, 0.34);
+    background: rgb(253 231 189 / 0%);
     padding: 30px;
     border-radius: 40px;
+}
+.pet-account-box:hover{
+    background: rgb(253 231 189 / 34%);
+
 }
 .pet-bottom-box {
     border-top: 1px solid #eee;
@@ -55,7 +60,7 @@
 .pet-service-desc h4 {
     font-size: 18px;
     font-weight: 700;
-    color: #e9870f;
+    color: #f7ba61;
 }
 
 /* 마이페이지 카드 아이콘 호버 크기 및 색상 */
@@ -71,7 +76,7 @@
     text-align: center;
     position: relative;
     z-index: 1;
-    color: #e9870f;
+    color: #f7ba61;
 }
 
   /* 마이페이지 카드 아이콘 호버 테두리 효과 */
@@ -107,7 +112,8 @@
 
 /* 마이페이지 카드 아이콘 호버 색상 */
 .pet-service-icon a:hover {
-    background: rgb(235, 115, 17);
+    background: #f7ba61;
+  
     -webkit-transform: scale(0.93);
     -moz-transform: scale(0.93);
     -ms-transform: scale(0.93);
@@ -118,7 +124,7 @@
 /* 버튼 색상 */
 .my-btn-other {
     font-weight: bold;
-    color: #e0726c;
+    color: #f7ba61;
     font-size: 12px
 }
 
@@ -185,7 +191,7 @@
 }
 .u_container:hover {
     border: 6px solid #EFC778;
-    background-color: #efc7781c;
+    background-color: #f5e5a01c;
 }
 
 /* 타이틀 */
@@ -224,9 +230,22 @@
     color: #777;
     font-weight: 300;
 }
-.u_join-box input:not([type=checkbox]):not([type=radio]), .u_join-box select {
+.u_join-box input:not([type=checkbox]):not([type=radio]):not([type=hidden]), .u_join-box select {
     max-width: 400px;
     width: 100%;
+    
+  border: none;
+  height: 35px;
+  color: #555 !important;
+  border: 1px solid transparent;
+  background: rgba#ffffffb2;
+  border-radius: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s; 
+  margin: 3px;
 }
 
 /* 주소 */
@@ -241,6 +260,8 @@
     vertical-align: top;
     margin-left: 10px;
     width: 120px;
+    background-color: rgb(239, 199, 120) !important;
+    border-style:  solid rgb(239, 199, 120) !important;
 }
 .u_input-box-address input {
     margin-top: 10px;
@@ -251,11 +272,15 @@
 .u_join-box .button {
     line-height: 45px;
     font-size: 18px;
+    background-color: rgb(239, 199, 120) !important;
+    border-style:  solid rgb(239, 199, 120) !important;
 }
-.u_join-box .button, .u_join-box input:not([type=checkbox]):not([type=radio]), .u_join-box select {
+.u_join-box .button, .u_join-box input:not([type=checkbox]):not([type=radio]):not([type=hidden]), .u_join-box select {
     vertical-align: top;
     padding: 0 20px;
     height: 45px;
+    background-color: rgb(239, 199, 120) !important;
+    border-style:  solid rgb(239, 199, 120) !important;
 }
 .u_button {
     display: inline-flex;
@@ -266,6 +291,8 @@
     text-align: center;
     transition: all .15s ease;
     cursor: pointer;
+    background: rgb(239, 199, 120) !important;
+    border:  solid rgb(239, 199, 120) !important;
 }
 
 .u_join-box .u_bottom-button .u_button {
@@ -277,6 +304,8 @@
     color: #fff;
     font-weight: 700;
     border-style: none;
+    background: rgb(239, 199, 120) !important;
+    border:  solid rgb(239, 199, 120) !important;
 
 }
 .u_join-box .u_bottom-button {
@@ -284,25 +313,29 @@
     margin-bottom: 30px;
     text-align: center;
     font-size: 0;
-
+    background: rgb(239, 199, 120) !important;
+    border:  solid rgb(239, 199, 120) !important;
+    
 }
 
 /* 가입하기 버튼 */
 .u_button-point {
     color: #fff;
-    background-color: #f1a50d;
+    background: #f1a50d;
     border-radius: 25px;
 }
 
 /* 중복체크, 검색, 취소 버튼 */
 .u_button-grey {
     color: #fff;
-    background-color: #f7ba61;
+    background: #f7ba61;
     border-radius: 25px;
     border-style: none;
 }
 .u_button-grey:hover {
-    background-color: #e0a226;
+    background-color: rgba(228, 188, 96, 0.363);
+    color: #fff !important;
+    border-style: solid #f7ba61;
 }
 
 /* 회원가입메인(병원,일반) */
@@ -311,11 +344,11 @@
 	background-color: #efc7781c;
 }
 .u_card{
-	border: 6px solid rgb(216, 216, 216);
+    border: 6px solid rgb(216, 216, 216);
 	border-radius: 25px;
 }
 .u_card .ptitle {
-	line-height: 1.4;
+    line-height: 1.4;
 	text-align: center;
 	font-size: 32px;
 	color: #EFC778;
@@ -323,7 +356,7 @@
 	margin-bottom: 15px;
 }
 .u_card .pr {
-	line-height: 1.4;
+    line-height: 1.4;
 	color: #777;
 	font-weight: 400;
 	font-size: 18px;
@@ -331,5 +364,40 @@
     padding-bottom: 10px;
 }
 .u_card .pc {
-	display: none;
+    display: none;
 }
+#btnJoin:hover{
+    background-color: rgba(228, 188, 96, 0.363);
+    color: #fff;
+    border-style: solid #f7ba61;
+}
+/* 회원정보 수정 */
+#upbtn{
+    margin: 0 5px;
+    width: 240px;
+    height: 50px;
+    line-height: 60px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+    border-style: none;
+
+    border-radius: 40px;
+  }
+  btn:hover{
+      background-color: rgba(239, 199, 120, 0.26) !important;
+      border-style:  solid rgb(239, 199, 120) !important;
+      /* background: rgb(255, 255, 255,0)  !important;
+      border:  solid rgb(239, 199, 120)  !important;
+      color: #e4bc6086  !important; */
+  }
+
+  .uptxtbox{
+      background-color: #ffffffe3;
+      
+  }
+  .uptxtbox:hover{
+    background: #e4bc6086 !important;
+    border-style:  solid rgb(239, 199, 120,1)  !important;
+    color: #ffffffe3;
+  }
