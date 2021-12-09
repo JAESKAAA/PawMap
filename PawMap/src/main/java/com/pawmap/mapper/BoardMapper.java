@@ -58,6 +58,9 @@ public interface BoardMapper {
 	void updateMedicalRecord(BoardVO vo);
 
 
+	List<BoardVO> getMyMedicalRecordForAllowReview(@Param("userId")String userId,@Param("hospitalComNum") String hospitalComNum);
+
+
 	
 
 	

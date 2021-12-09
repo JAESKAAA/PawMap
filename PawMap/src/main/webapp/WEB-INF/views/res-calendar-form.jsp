@@ -36,6 +36,19 @@ pageEncoding="UTF-8"%>
     <!-- 캘린더   -->
 <div class="board-type  mt-5">
     <h1> ${hosNickname[0].user_nickname} 스케쥴러 작성하기  </h1>
+    <p>
+       <br>
+       1. 먼저 스케쥴러를 작성해주셔야 합니다.
+       <br>
+       2. 원하는 요일을 선택하신뒤 예약 가능한 시간을 선택한 후 작성 완료 버튼을 눌러주세요 
+       <br>
+       3. 작성한 예약 스케쥴표는 하단의 예약 스케쥴 표에서 확인하실수 있습니다.
+       <br>
+       4. 해당 요일의 예약을 원치 않으실 경우 요일만 선택하고 시간대는 선택하지 않은뒤 작성완료 버튼을 눌러주세요
+       <br>
+       5. 해당 요일의 예약 가능한 시간대를 바꾸고 싶다면 , 요일선택 -> 원하는 시간대를 선택한뒤 작성완료 버튼을 누르시면 갱신됩니다.
+
+    </p>
 </div>
 <hr class="line-paint">    
 <form action="insertSchedule" method="post">
@@ -115,6 +128,10 @@ pageEncoding="UTF-8"%>
 </form>    
 <div class="board-type  mt-5">
     <h1> ${hosNickname[0].user_nickname} 예약 스케쥴  </h1>
+    <p>
+        <br>
+        회원님의 현재 예약 가능한 시간에 대한 스케쥴 표입니다.
+    </p>
 </div>
 <hr class="line-paint">
 <div class="container" style="text-align: center; margin-top: 5%;" >
@@ -196,6 +213,16 @@ pageEncoding="UTF-8"%>
 
 <div class="board-type  mt-5">
     <h1> ${hosNickname[0].user_nickname} 예약회원보기  </h1>
+    <p>
+        <br>
+        1. 캘린더의 날짜를 눌러 예약한 회원을 확인하실수 있습니다.
+        <br>
+        2. 진료가 완료된 경우, 진단서 작성 버튼을 눌러 해당 진료에 대한 진단서를 작성해 주세요
+        <br>
+        3. 진단서가 작성된 진료의 경우 , 완료 메세지가 생성됩니다.
+        <br>
+        4. 진단서의 수정을 원하시는 경우 진단서 작성 버튼을 누르시면 수정페이지로 이동하실수 있습니다.
+    </p>
 </div>
 <hr class="line-paint">
 <input id="hospitalComNum" type="hidden" value="${principal.user.comNum}"> 

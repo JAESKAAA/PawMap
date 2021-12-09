@@ -56,6 +56,17 @@ pageEncoding="UTF-8"%>
             </div>
         </div>
     </div>
+    <div class="board-type  mt-5">
+        <p>
+            <br>
+            1. 예약한 병원과 날짜, 시간을 확인하실수 있습니다.
+            <br>
+            2. 당일 예약은 취소가 불가능 합니다.
+            <br>
+            3. 진단서가 등록될 경우 '진단서 보기' 버튼이 활성화 되어 확인하실수 있습니다.
+        </p>
+        <input id="hosNickname" type="hidden" value="${hosNickname[0].user_name}">
+    </div>
     <!-- End 예약조회 타이틀 영역 -->
 
     <!-- End 예약조회 영역 -->
@@ -63,7 +74,7 @@ pageEncoding="UTF-8"%>
     <table style="display:inline-block; width: auto; height: auto;">
         <tr>
             <th><span style="width: 100px;">번호</span></th>
-            <th><span>이름</span></th>
+            <th><span>닉네임</span></th>
             <th id="test-span"><span>병원</span></th>
             <th><span>날짜</span></th>
             <th><span>시간</span></th>

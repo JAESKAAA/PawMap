@@ -38,6 +38,16 @@ pageEncoding="UTF-8"%>
     <h1>병원사업자번호 ${scheduleList[0].comNum}</h1> -->
     <div class="board-type  mt-5">
         <h1> ${hosNickname[0].user_name} 예약 하기  </h1>
+        <p>
+            <br>
+            1. 달력의 날짜를 눌러 예약 가능한 시간을 확인해 주세요. (예약 가능한 시간은 버튼이 활성화 되어있습니다.)
+            <br>
+            2. 원하는 시간에 해당하는 버튼을 클릭하시면 예약 문구가 나옵니다. 한번 더 확인해 주세요
+            <br>
+            3. 당일 예약은 취소가 불가능 하오니 유의해 주시기 바랍니다.
+            <br>
+            4. 예약한 정보와 진단서 확인은 마이페이지의 예약확인란에서 확인 가능합니다.
+        </p>
         <input id="hosNickname" type="hidden" value="${hosNickname[0].user_name}">
     </div>
     <hr class="line-paint">

@@ -41,5 +41,7 @@ public interface BoardService {
 
 	void updateMedicalRecord(BoardVO vo);
 
+	List<BoardVO> getMyMedicalRecordForAllowReview(String userId, String hospitalComNum);
+
 	
 }

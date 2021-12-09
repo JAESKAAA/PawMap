@@ -110,6 +110,11 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.updateMedicalRecord(vo);
 	}
 
+	@Override
+	public List<BoardVO> getMyMedicalRecordForAllowReview(String userId, String hospitalComNum) {
+		return boardMapper.getMyMedicalRecordForAllowReview(userId,hospitalComNum);
+	}
+
 	
 
 }
