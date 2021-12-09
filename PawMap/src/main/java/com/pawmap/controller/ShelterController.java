@@ -47,6 +47,8 @@ public class ShelterController {
 		return "admin_shelter";
 	}
 	
+
+	
 	
 	// 관리자페이지 -> 보호소 관리 페이지 -> 글 수정 화면으로 이동 (update)
 	@GetMapping("/admin/updateShelterForm")
@@ -54,7 +56,7 @@ public class ShelterController {
 		System.out.println("update Shelter Form 통과");
 		System.out.println("sheqlterSeq===================" + shelterSeq);
 		
-		List<FileVO> fileList = fileService.getFileListByShelterSeq(shelterSeq, "v");
+		List<FileVO> fileList = fileService.getFileListByShelterSeq(shelterSeq, "t");
 		System.out.println("파일리스트담긴거==== "+fileList);
 		// 이 생성자를 탈때 boardType을 v로 선언하게함
 		FileUtils fileUtils = new FileUtils();

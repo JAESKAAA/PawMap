@@ -211,8 +211,26 @@
 		on b.board_seq = f.bSeq
 		where b.board_type = 's'
 		order by b.board_seq DESC
-		limit 9;
+		limit 3;
 	</select>
+	
+	
+		<select id="getLatelyBoardListForShelterBoardMain" resultType="HashMap">
+SELECT   
+            A.shelter_seq AS shelterSeq,
+              A.shelter_name AS shelterName,
+              A.shelter_address AS shelterAddress,
+              A.shelter_tel AS shelterTel,
+              A.content AS content,
+                A.com_num AS comNum,
+              B.ORIGINALFILENAME AS originalFileName
+         FROM pawmap.pet_shelter A
+             LEFT OUTER JOIN (SELECT * FROM FILE  WHERE board_type='t') AS B
+            ON A.shelter_seq = B.BOARD_SEQ
+            ORDER BY
+            A.shelter_seq ;
+	</select>
+	
 	
 	<!-- <select id="getLatelyBoardListForBoardMain" resultType="HashMap">
 		SELECT b.*, f.originalFilename

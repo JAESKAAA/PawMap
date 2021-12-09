@@ -1,10 +1,10 @@
 package com.pawmap.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -20,27 +20,23 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.pawmap.VO.FileVO;
 import com.pawmap.VO.ShelterVO;
 import com.pawmap.VO.UserVO;
 import com.pawmap.configuration.auth.PrincipalDetails;
 import com.pawmap.configuration.auth.PrincipalDetailsService;
+import com.pawmap.mapper.ShelterMapper;
 import com.pawmap.mapper.UserMapper;
+import com.pawmap.service.BoardService;
 import com.pawmap.service.FileService;
 import com.pawmap.service.UserService;
 import com.pawmap.util.CookieUtil;
-import com.pawmap.util.FileUtils;
 
 
 
@@ -68,17 +64,50 @@ public class UserController {
 	
 	@Autowired
 	private FileService fileService;
+	
+	
+	@Autowired
+	private ShelterMapper shelterMapper;
+	
+	@Autowired
+	private BoardService boardService;
+	
 	 
 	/*
 	 * 페이지 이동 관련 메소드
 	 * 
 	 * */
 	//공백 및 / 요청시 메인페이지로 이동
-	@GetMapping({"","/"})
-	public String index() {
+//	@GetMapping({"","/"})
+//	public String index() {
+//		return "index2";
+//	}
+	
+	//공백 및 / 요청시 메인페이지로 이동, 하단부 shelter정보와 매핑되는 file(이미지)정보 갖고옴
+	@RequestMapping({"","/"})
+	public String index(ShelterVO vo, Model model) {
+		
+		System.out.println("index 통과===================");
+		
+		
+		List<ShelterVO> shelter = shelterMapper.getShelterList(vo);
+		System.out.println("index - shelter에 담긴값 출력===========" + shelter);
+		
+		List<HashMap<String,Object>> latelyShelterBoardListForMain = boardService.getLatelyBoardListForShelterBoardMain();
+		
+		System.out.println("index의 getShelterSeq값 =============" + vo.getShelterSeq());
+		
+		 model.addAttribute("shelter", shelterMapper.getShelterList(vo));
+		 model.addAttribute("shelterPic", latelyShelterBoardListForMain);
+		 
+		 System.out.println("shelterPic==========" + latelyShelterBoardListForMain);
+		 
+		
 		return "index2";
 	}
+	
 
+	
 	
 	//관리자 페이지 이동하는 메소드
 	@GetMapping("/admin")
@@ -102,6 +131,7 @@ public class UserController {
 		return "my_account_update";
 	}
 
+	
 	//스프링 시큐리티가 해당 주소를 낚아채감 추후 설정 필요
 	//SecurityConfig파일 생성 후 활성화안됨 (스프링 필터가 가로채기때문)
 	@GetMapping("/loginForm")
