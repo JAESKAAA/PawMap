@@ -24,6 +24,12 @@ public class BoardVO {
 	private String keywordType;
 	private String keyword;
 	private UserVO userVO;
+<<<<<<< HEAD:.metadata/.plugins/org.eclipse.core.resources/.history/d9/a08c22bdac58001c151fd3b17ac931c5
+=======
+	private String reservationDate;
+	private String scheduleTime;
+	private int cnt;
+>>>>>>> 697d41a33ee68bac595b0577b600f47356783480:PawMap/src/main/java/com/pawmap/VO/BoardVO.java
 
 	
 	private MultipartFile uploadFiles;

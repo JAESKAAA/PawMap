@@ -60,6 +60,13 @@ public interface BoardMapper {
 
 	List<BoardVO> getMyMedicalRecordForAllowReview(@Param("userId")String userId,@Param("hospitalComNum") String hospitalComNum);
 
+<<<<<<< HEAD:.metadata/.plugins/org.eclipse.core.resources/.history/39/00722c08b858001c151fd3b17ac931c5
+=======
+
+	void updateFreeBoardCnt(@Param("boardSeq")int boardSeq);
+
+
+>>>>>>> 697d41a33ee68bac595b0577b600f47356783480:PawMap/src/main/java/com/pawmap/mapper/BoardMapper.java
 	
 	List<BoardVO> getCommunityBoardList(Map<String,Object> map);
 	

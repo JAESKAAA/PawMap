@@ -51,6 +51,11 @@ public interface BoardService {
 
 	List<BoardVO> getMyMedicalRecordForAllowReview(String userId, String hospitalComNum);
 
+<<<<<<< HEAD:.metadata/.plugins/org.eclipse.core.resources/.history/7b/b060e929b858001c151fd3b17ac931c5
 >>>>>>> 1e3b7fbb47101558bb8a796c9d181dcca6b9ccbb
+=======
+	void updateFreeBoardCnt(int boardSeq);
+
+>>>>>>> 697d41a33ee68bac595b0577b600f47356783480:PawMap/src/main/java/com/pawmap/service/BoardService.java
 	
 }

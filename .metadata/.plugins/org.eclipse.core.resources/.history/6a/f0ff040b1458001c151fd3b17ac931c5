@@ -24,6 +24,7 @@
   		<result property="title" column="title"/>
   		<result property="content" column="content"/>
   		<result property="regDate" column="regDate"/>
+  		<result property="cnt" column="cnt"/>
   		<collection property="userVO" resultMap="userResult"/>
   	</resultMap>
   	
@@ -43,16 +44,18 @@
   	</select> -->
   	
   	<insert id="insertFreeAndNanumBoard">
-  		INSERT INTO board(board_seq, board_type, user_id, title, content, regDate) VALUES(
+  		INSERT INTO board(board_seq, board_type, user_id, title, content, regDate,cnt) VALUES(
   				(SELECT IFNULL(MAX(BOARD_SEQ), 0) + 1 FROM BOARD A WHERE BOARD_TYPE = #{boardType}),
   				#{boardType},
   				#{userId},
   				#{title},
   				#{content},
-  				NOW()
+  				NOW(),
+  				0
   		)
   	</insert>
   	
+<<<<<<< HEAD:.metadata/.plugins/org.eclipse.core.resources/.history/6a/f0ff040b1458001c151fd3b17ac931c5
 
 <!--   	 <select id="getFreeBoardList" parameterType="HashMap" resultType="com.pawmap.VO.BoardVO">
 
@@ -71,9 +74,24 @@
   		LIMIT #{criteria.amount} OFFSET #{criteria.startNum}
 
   	</select> -->
+=======
+  	<insert id="insertMedicalRecord">
+  		INSERT INTO board(board_seq, board_type, user_id, com_num , title, content, regDate,reservation_date,schedule_time) VALUES(
+  				(SELECT IFNULL(MAX(BOARD_SEQ), 0) + 1 FROM BOARD A WHERE BOARD_TYPE = #{boardType}),
+  				#{boardType},
+  				#{userId},
+  				#{comNum},
+  				#{title},
+  				#{content},
+  				NOW(),
+  				#{reservationDate},
+  				#{scheduleTime}
+  		)
+  	</insert>
+>>>>>>> 697d41a33ee68bac595b0577b600f47356783480:PawMap/src/main/resources/mapper/board/board-mapping.xml
   	
   	<select id="getFreeBoardList" parameterType="HashMap" resultMap="boardResult">
-  		SELECT b.board_seq, b.board_type, b.user_id, b.title, b.content, b.regDate, u.user_nickname
+  		SELECT b.board_seq, b.board_type, b.user_id, b.title, b.content, b.regDate, b.cnt ,u.user_nickname
   		FROM board AS b
   		INNER JOIN user AS u
   		ON b.user_id = u.user_id
@@ -91,27 +109,8 @@
   		LIMIT #{criteria.amount} OFFSET #{criteria.startNum}
   	</select>
   	
-<!--   	<select id="getFreeBoard" resultType="com.pawmap.VO.BoardVO" >
-
-  		SELECT * FROM board
-  		WHERE board_seq = #{boardSeq}
-  		AND
-  		board_type = 'f';
-  	</select> -->
-  	
-  	<!-- <select id="getFreeBoard" resultType="HashMap">
-  		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname 
-  		FROM board AS b
-  		INNER JOIN user AS u
-  		ON b.user_id = u.user_id
-  		WHERE b.board_seq = #{boardSeq}
-  		AND
-  		b.board_type = 'f';
-
-  	</select> -->
-  	
   	<select id="getFreeBoard" resultType="com.pawmap.VO.BoardVO" resultMap="boardResult">
-  		SELECT b.board_seq, b.board_type, b.user_id, b.title, b.content, b.regDate, u.user_nickname 
+  		SELECT b.board_seq, b.board_type, b.user_id, b.title, b.content, b.regDate, b.cnt ,u.user_nickname 
   		FROM board AS b
   		INNER JOIN user AS u
   		ON b.user_id = u.user_id
@@ -120,6 +119,15 @@
   		b.board_type = 'f';
 
   	</select>
+  	
+  	<update id="updateFreeBoardCnt">
+  		UPDATE board
+  		SET 	
+  		cnt = cnt+1
+  		WHERE board_seq = #{boardSeq}
+  		AND
+  		board_type = 'f'
+  	</update>
   	
   	<select id="getFreeBoardSeq" resultType="int">
 		SELECT IFNULL(MAX(board_seq) ,0) + 1
@@ -178,6 +186,7 @@
 		limit 3;
 	</select>
 	
+<<<<<<< HEAD:.metadata/.plugins/org.eclipse.core.resources/.history/6a/f0ff040b1458001c151fd3b17ac931c5
 	<!-- <select id="getLatelyBoardListForBoardMain" resultType="HashMap">
 		SELECT b.*, f.originalFilename
 		FROM board AS b
@@ -188,6 +197,56 @@
 		ORDER BY b.board_seq DESC
 		LIMIT 3
 	</select> -->
+=======
+	<select id="getMyMedicalRecordListById" resultType="com.pawmap.VO.BoardVO">
+		SELECT * FROM board
+		WHERE user_id = #{userId}
+		AND board_type = 'm'
+		order by schedule_time
+	</select>
+	
+	<select id="getMyMedicalRecordForAllowReview" resultType="com.pawmap.VO.BoardVO">
+		SELECT * FROM board
+		WHERE board_type = 'm'
+		AND user_id = #{userId}
+		AND com_num = #{hospitalComNum}
+	</select>
+	
+	<select id="getHospitalMedicalRecordList" resultType="com.pawmap.VO.BoardVO">
+		SELECT * FROM board
+		WHERE com_num = #{comNum}
+		AND reservation_date = #{date}
+	</select>
+	
+	<select id="getSeparateMedicalRecordForClient" resultType="HashMap">
+		
+		SELECT b.*,u.user_name
+		FROM board AS b
+		INNER JOIN user AS u
+		ON b.com_num = u.com_num
+		WHERE b.com_num = #{comNum}
+		and b.reservation_date = #{reservationDate}
+		and b.schedule_time = #{scheduleTime}
+		and b.board_type= 'm'
+		
+	</select>
+	
+	<update id="updateMedicalRecord" >
+		UPDATE board
+  		SET
+  			title = #{title},
+  			content = #{content}
+  		WHERE com_num = #{comNum}
+  		AND
+  		reservation_date = #{reservationDate}
+  		AND
+  		schedule_time = #{scheduleTime}
+  		AND
+  		board_type = 'm'
+	</update>
+	
+	
+>>>>>>> 697d41a33ee68bac595b0577b600f47356783480:PawMap/src/main/resources/mapper/board/board-mapping.xml
 
 	<!-- Community 게시판 부르는 mapping query... Dec 8th by thomas -->
   	<select id="getCommunityBoardList" parameterType="HashMap" resultMap="communityBoardList">
