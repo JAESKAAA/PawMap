@@ -4,7 +4,7 @@ pageEncoding="UTF-8"%>
 <%@ include file="layout/header.jsp" %>
 
     <!-- Start 반려동물 추가 타이틀 영역 -->
-    <div class="all-title-box">
+    <div class="pet-all-title-box">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
