@@ -210,7 +210,20 @@ pageEncoding="UTF-8"%>
                 <h2></h2>
                 <h2 class="noo-sh-title-top">${hospital.hospitalName }</h2>
                 <c:if test="${hospital.hospitalType == 'H'}">  
-                  <a href="#"class="btn btn-warning"><i class="glyphicon glyphicon-bell"></i> 예약하기</a>
+                  <c:choose>
+                    <c:when test="${empty principal}">
+                      <div style="display:inline-block;">
+                        <!-- <a  class="nav-link" href='#' onclick="noLoginUserCantWrite(); return false">글쓰러가기</a> -->
+                        <a href="#"class="btn btn-warning" onclick="noLoginUserCantWrite(); return false"><i class="glyphicon glyphicon-bell"></i> 예약하기</a>
+                      </div>
+                    </c:when>
+                    <c:otherwise>
+                      <div style="display:inline-block;">
+                        <!-- <a  class="nav-link" href="/pawmap/board/form">글쓰러가기</a> -->
+                        <a href="/pawmap/reservation/choose?comNum=${hospital.hospitalComNum}&hospitalSeq=${hospital.hospitalSeq }"class="btn btn-warning"><i class="glyphicon glyphicon-bell"></i> 예약하기</a>
+                      </div>
+                    </c:otherwise>
+                  </c:choose>
                 </c:if>
               </div>
             </div>
@@ -257,7 +270,7 @@ pageEncoding="UTF-8"%>
                   <div class="service-block-inner-b"></div>
               </div>
               <div class="col-4">
-                <a href="#menu3" style="color: black;"><h3 class="h3">리뷰(5)</h3></a>
+                <a href="#review-start" style="color: black;"><h3 class="h3">리뷰(${reviewSize})</h3></a>
                   <div class="service-block-inner-b"></div>
               </div>
             </div>
@@ -331,48 +344,187 @@ pageEncoding="UTF-8"%>
                   </div>
                 </div>
               </div>
+
               <!--리뷰 시작-->
-              <div class="container_hospital_detail" style="margin-top: 10rem;" id="menu3">
-                <div class="row my-5">
-                  <div class="col-sm-6 col-lg-4" style="margin-bottom: -5%; margin-top: -5%;" >
-                    <div class="service-block-inner">
-                      <h3>리뷰(5)</h3>
+              <section style="background-color: #f7f6f6;">
+                <div class="container py-5 text-dark">
+                  <div class="row d-flex justify-content-center">
+                    <div class="col-md-12 col-lg-10 col-xl-8">
+                      <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 class="text-dark mb-0" id="review-start">리뷰 수 ( ${reviewSize} )</h4>
+                      </div>
+              
+                      <!-- 댓글 다는곳 시작 -->
+                      <c:choose>
+                        <c:when test="${empty principal}">
+                          
+                        </c:when>
+                        <c:otherwise>
+                          <div class="card mb-3">
+                            <div class="card-body" style="padding: 1px;">
+                                <div class="d-flex flex-start">
+                                    <form action="insertHospitalReview" method="post" style="width: 750px;">
+                                      <input type="hidden" name="hospitalSeq"  value="${hospital.hospitalSeq}">
+                                      <input type="hidden" name="comNum"  value="${hospital.hospitalComNum}">
+                                      <input type="hidden" name="userId"  value="${principal.user.userId}">
+                                      <input type="hidden" name="userNickname"  value="${principal.user.userNickname}">
+                                        <div class="card-body p-4">
+                                            <div class="mb-2">
+                                                <h5>닉네임</h5>
+                                                <input style="color:rgba(204, 156, 22, 0.8) ;"  value="${principal.user.userNickname}" placeholder="${principal.user.userNickname}"  readonly> 
+                                            </div>
+                                            <div class="d-flex flex-start w-100">
+                                              <c:choose>
+                                                <c:when test="${empty principal.user.userProfile || empty principal}">
+                                                  <img
+                                                    class="rounded-circle shadow-1-strong me-3"
+                                                    src="${pageContext.request.contextPath}/upload/noprofileuser.jpg"
+                                                    alt="img"
+                                                    width="40"
+                                                    height="40"
+                                                  />   
+                                                </c:when>
+                                                <c:otherwise>
+                                                  <img
+                                                      class="rounded-circle shadow-1-strong  mr-5"
+                                                      src="${pageContext.request.contextPath}/upload/${principal.user.userProfile}"
+                                                      alt="avatar"
+                                                      width="65"
+                                                      height="65"
+                                                  />
+                                                </c:otherwise>
+                                              </c:choose>
+                                                <div class="w-100">
+                                                    <c:choose>
+                                                      <c:when test="${empty myResList}">
+                                                        <div class="form-outline">
+            
+                                                          <textarea name="content" class="form-control" id="review-content" rows="4" cols="10" readonly>병원을 이용한 고객만 등록 가능합니다.</textarea>
+              
+                                                      </div>
+                                                      </c:when>
+                                                      <c:otherwise>
+                                                        <div class="form-outline">
+            
+                                                          <textarea name="content" class="form-control" id="review-content" rows="4" cols="10"></textarea>
+              
+                                                      </div>
+                                                        <div class="d-flex justify-content-between mt-3">
+                                                            <button id="btn-review-save" type="submit" class="btn btn-success">등록하기</button>
+                                                        </div>
+                                                      </c:otherwise>
+                                                    </c:choose>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                          </div>
+                        </c:otherwise>
+                      </c:choose>
+                      
+        
+                    <!-- 댓글 다는곳 종료 -->
+        
+                    <!-- ===============댓글 리스트 출력 시작================== -->
+                      <c:forEach var="review" items="${hospitalReviewList}" varStatus="i" >
+                        <div class="card mb-3">
+                          <div class="card-body">
+                            <div class="d-flex flex-start">
+                              <c:choose>
+                                <c:when  test="${empty review.user_profile}">
+                                  <img
+                                  class="rounded-circle shadow-1-strong me-3"
+                                  src="${pageContext.request.contextPath}/upload/noprofileuser.jpg"
+                                  alt="img"
+                                  width="40"
+                                  height="40"
+                                  />
+                                </c:when>
+                                <c:otherwise>
+                                  <img
+                                  class="rounded-circle shadow-1-strong me-3"
+                                  src="${pageContext.request.contextPath}/upload/${review.user_profile}"
+                                  alt="img"
+                                  width="40"
+                                  height="40"
+                                  />
+                                </c:otherwise>
+                              </c:choose>
+                              <div class="w-100">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                  <h6 class="text-secondary fw-bold mb-0 ml-2 writer">
+                                    ${review.user_nickname}
+                                    <div class="mt-3">
+                                      <span class="text-dark ms-2 ml-2">${review.content}</span>
+                                    </div>
+                                  </h6>
+                                  <p class="mb-5"><fmt:formatDate value="${review.regDate }" pattern="yyyy-MM-dd"/></p>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center">
+                                  <p class="small mb-0" style="color: #aaa;">
+                                    
+                                    <c:if test="${review.user_id == principal.user.userId}">
+                                        <form action="deleteHospitalReview" method="POST">
+                                          <input type="hidden"  name="reviewSeq" value="${review.review_seq}"/>
+                                          <input type="hidden"  name="comNum" value="${review.com_num}"/>
+                                          <input type="hidden"  name="userId" value="${principal.user.userId}"/>
+                                          <input type="hidden"  name="hospitalSeq" value="${hospital.hospitalSeq}"/>
+                                          <button type="button" class="link-grey ml-2 btn-update btn-comment-update" data-toggle='modal' data-target='.modifyModal${i.index}'>수정하기</button> 
+                                          <button onclick="if(!confirm('삭제 하시겠습니까?')){return false}" class="link-grey ml-2 btn-delete">삭제하기</button> 
+                                        </form>
+                                        
+                                      <form action="updateHospitalReview" method="POST" >
+                                        <div class="modal fade modifyModal${i.index}"  role="dialog">
+                                          <div class="modal-dialog">
+                                            <div class="modal-content">
+                                              <div class="modal-header">
+                                                <button type="button"  data-dismiss="modal">&times;</button>
+                                                <h4 class="modal-title">댓글 수정</h4>
+                                              </div>
+                                              <div class="modal-body">
+                                                <div class="">
+                                                  <label for="reviewText">댓글 내용</label>
+                                                  <input type="text" class="form-control"  name="content" value="${review.content}">
+                                                </div>
+                                                <div class="">
+                                                  <label for="reviewWriter">댓글 작성자</label>
+                                                  <input class="form-control" id="reviewWriter" placeholder="${principal.user.userNickname}" readonly>
+                                                  <input type="hidden" name="userId" value="${principal.user.userId}">
+                                                  <input type="hidden" name="reviewSeq" value="${review.review_seq}">
+                                                  <input type="hidden"  name="comNum" value="${review.com_num}"/>
+                                                  <input type="hidden"  name="hospitalSeq" value="${hospital.hospitalSeq}"/>
+                                                </div>
+                                              </div>
+                                              <div class="modal-footer">
+                                                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">닫기</button>
+                                                <button type="submit" class="btn btn-success modalModBtn">수정</button>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </form>
+        
+                                      
+                                              
+                                    </c:if>
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </c:forEach>
+        
+        
+                      <!-- ===============댓글 리스트 출력 종료================== -->
+        
+        
                     </div>
                   </div>
                 </div>
-                      <!-- 리뷰 표출부분 -->
-                <div class="card-body" style="width: 50%; margin: 0 auto;">
-                  <div class="media mb-3">
-                    <div class="mr-2"> 
-                      <img class="rounded-circle border p-1" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
-                    </div>
-                    <div class="media-body">
-                      <p>코딩이 맛있고 강사님이 친절해요</p>
-                      <small class="text-muted">받은 치료 : 코딩</small>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="media mb-3">
-                    <div class="mr-2"> 
-                      <img class="rounded-circle border p-1" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
-                    </div>
-                    <div class="media-body">
-                      <p>코딩이 맛있고 강사님이 친절해요</p>
-                      <small class="text-muted">받은 치료 : 코딩</small>
-                    </div>
-                  </div>
-                    <hr>
-                    <div class="media mb-3">
-                      <div class="mr-2"> 
-                        <img class="rounded-circle border p-1" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
-                      </div>
-                      <div class="media-body">
-                        <p>코딩이 맛있고 강사님이 친절해요</p>
-                        <small class="text-muted">받은 치료 : 코딩</small>
-                      </div>
-                    </div>
-                </div>
-              </div>
+            </section> 
               <!-- 리뷰 끝 -->
             </c:if>
         </div>
@@ -540,6 +692,10 @@ pageEncoding="UTF-8"%>
          center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
          level: 6 // 지도의 확대 레벨
      };  
+
+    function noLoginUserCantWrite(){
+      alert("로그인이 필요합니다.");
+    } 
 
 	 // 지도를 생성합니다    
 	 var map = new kakao.maps.Map(mapContainer, mapOption); 

@@ -5,8 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -19,26 +21,36 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.pawmap.VO.BoardVO;
+
+
 import com.pawmap.VO.Criteria;
 import com.pawmap.VO.PageVO;
-import com.pawmap.VO.ShelterVO;
+import com.pawmap.VO.FileVO;
 import com.pawmap.VO.UserVO;
 import com.pawmap.configuration.auth.PrincipalDetails;
 import com.pawmap.configuration.auth.PrincipalDetailsService;
 import com.pawmap.mapper.UserMapper;
-import com.pawmap.service.BoardService;
+import com.pawmap.service.FileService;
 import com.pawmap.service.UserService;
 import com.pawmap.util.CookieUtil;
+import com.pawmap.util.FileUtils;
 
 
+
+
+import com.pawmap.VO.BoardVO;
+
+import com.pawmap.VO.ShelterVO;
+import com.pawmap.service.BoardService;
 
 
 
@@ -57,6 +69,9 @@ public class UserController {
 	 @Autowired 
 	 private UserMapper userMapper;
 	 
+	 @Autowired
+	 private FileService fileService;
+	 
 	/*
 	 * 페이지 이동 관련 메소드
 	 * 
@@ -64,6 +79,7 @@ public class UserController {
 	//공백 및 / 요청시 메인페이지로 이동
 	@GetMapping({"","/"})
 	public String index() {
+	System.out.println("나는메인페이지");
 		return "index2";
 	}
 
@@ -79,6 +95,7 @@ public class UserController {
 	public  String mypageIndex() {
 		return "my_page_main";
 	}
+	
 	//마이페이지-> 회원정보 수정으로 이동하는 메소드
 	@GetMapping("/mypage/userInfo")
 	public  String userInfo(UserVO vo, Model model) {
@@ -89,6 +106,7 @@ public class UserController {
 		
 		return "my_account_update";
 	}
+	
 
 	//스프링 시큐리티가 해당 주소를 낚아채감 추후 설정 필요
 	//SecurityConfig파일 생성 후 활성화안됨 (스프링 필터가 가로채기때문)
@@ -112,12 +130,7 @@ public class UserController {
 	public String hospitalJoinForm() {
 		return "hospital-join-form";
 	}
-	
-	// 아이디 찾기 화면으로 보내주기 
-	@RequestMapping("findLoginId")
-	public String showFindLoginId() {
-		return "findLoginId";
-	}
+
 				
 	// 비밀번호를 잊어버렸습니까? 클릭시 forgotPW 
 		@GetMapping("/searchIdPw")
@@ -138,7 +151,8 @@ public class UserController {
 	 * */
 	//마이페이지 -> 유저 정보 업데이트
 	@PostMapping("/mypage/updateUser")
-	public String updateUser(UserVO vo, @AuthenticationPrincipal PrincipalDetails principal, HttpSession session) {
+	public String updateUser(UserVO vo, @AuthenticationPrincipal PrincipalDetails principal, HttpSession session
+							,HttpServletRequest request, MultipartHttpServletRequest mhsr) throws IOException {
 		System.out.println("updateUser 호출 !! ");
 		System.out.println("UserVO getNickname ====="+ vo.getUserNickname());
 		System.out.println("UserVO getUserId====="+ vo.getUserId());
@@ -152,6 +166,26 @@ public class UserController {
 		} else {
 			vo.setUserPassword(null);
 		}
+		
+		//  유저 프로필 업데이트를 위한 로직
+		String userId = vo.getUserId();
+		String userType = vo.getUserType();
+		int userSeq = vo.getUserSeq();
+		
+		FileUtils fileUtils = new FileUtils();
+		List<FileVO> fileList = fileUtils.parseFileInfo(userSeq, request, mhsr,userId);
+
+		if(CollectionUtils.isEmpty(fileList) == false) {
+
+			fileList.get(0).setBoardType(userType);
+			System.out.println("유저타입은  N 입니다.");
+			System.out.println("fileList ======" + fileList);
+			fileService.insertUserProfile(fileList);	
+			vo.setUserProfile(fileList.get(0).getOriginalFileName());
+
+		}
+		
+		
 		
 		userService.updateUser(vo);
 		
@@ -264,14 +298,25 @@ public class UserController {
 	
 	//일반 유저 목록 표출
 	@GetMapping("/getUserList")
-	public String getUserList(UserVO vo, Model model) {
+	public String getUserList(UserVO vo, Model model, Criteria cri) {
 		System.out.println("getUserList 호출 !!");
 		
+		cri.setStartNum((cri.getPageNum()-1) *cri.getAmount());
 		//리스트에 담긴 값 확인용 코드
-		List<UserVO> list = userService.getUserList(vo);
+		List<UserVO> list = userMapper.getUserListWithPaging(cri);
 		System.out.println("UserList 표출=="+list);
 		
-		model.addAttribute("userList", userService.getUserList(vo));
+		int total = userMapper.getUserCount();
+		
+		if(list.size()!=0) {
+			System.out.println("userList 담긴거 = " +list.get(0));
+			System.out.println("userList 총 갯수 = " +list.size());
+		}
+		
+		
+		
+		model.addAttribute("userList", list);
+		model.addAttribute("pageMaker", new PageVO(cri,total));
 		
 		return "admin_user";
 	}
@@ -292,14 +337,21 @@ public class UserController {
 	
 	//병원 유저 목록 표출
 	@GetMapping("/getHospitalList")
-	public String getHospitalList(UserVO vo, Model model) {
+	public String getHospitalList(UserVO vo, Model model, Criteria cri) {
 		System.out.println("getHospitalList 호출 !!");
+		cri.setStartNum((cri.getPageNum()-1)*cri.getAmount());
 		
 		//리스트에 담긴 값 확인용 코드
-		List<UserVO> list = userService.getHospitalUserList(vo);
-		System.out.println("UserList 표출=="+list);
+		List<UserVO> list = userMapper.getHospitalUserListWithPaging(cri);
 		
-		model.addAttribute("userList", userService.getHospitalUserList(vo));
+		if(list.size()!=0) {
+			System.out.println("userList 담긴거 = " +list.get(0));
+			System.out.println("userList 총 갯수 = " +list.size());
+		}
+		int total = userMapper.getHospitalUserCount();
+		
+		model.addAttribute("userList",list);
+		model.addAttribute("pageMaker", new PageVO(cri,total));
 		
 		return "admin_user";
 		
@@ -468,6 +520,49 @@ public class UserController {
 				return "ok";
 			}
 		}
+
+		
+		//	프로필 삭제 메서드
+		@RequestMapping("/mypage/deleteProfile")
+		public String deleteProfile(int userSeq, String userType, String userId) {
+			
+			System.out.println("userSeq === "+userSeq);
+			System.out.println("userType === "+userType);
+			System.out.println("userId === "+userId);
+			fileService.deleteProfile(userSeq,userType,userId);
+			userService.updateUserProfileNull(userSeq,userType,userId);
+			return "redirect:/mypage/userInfo?userId="+userId;
+		}
+
+		@GetMapping("/getUserByJson")
+		@ResponseBody
+		public Map<String,Object> getUserByJson(@PathParam("search_value")String value, Model model) {
+			
+			System.out.println("받은 데이터 == "+ value);
+			
+			List<UserVO> userList= userService.getUserList(null);
+			Map<String, Object> userMap = new HashMap<>();
+					
+			userMap.put("userList", userList);	
+			
+			return userMap;
+		}
+		@GetMapping("/getHospitalByJson")
+		@ResponseBody
+		public Map<String,Object> getHospitalByJson(@PathParam("search_value")String value, Model model) {
+			
+			System.out.println("받은 데이터 == "+ value);
+			
+			List<UserVO> userList= userService.getHospitalUserList(null);
+			Map<String, Object> userMap = new HashMap<>();
+			
+			userMap.put("userList", userList);	
+			
+			return userMap;
+		}
+
+		
+
 		/// Below controllers' methods were created by thomas lee on Dec 3rd 20:31pm
 		/// he created methods the methods "shelter information" for admin management. 
 		
@@ -601,4 +696,5 @@ public class UserController {
 //			return "admin_user";
 //			
 //		}
+
 }

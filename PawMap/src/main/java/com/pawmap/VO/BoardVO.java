@@ -24,6 +24,8 @@ public class BoardVO {
 	private String keywordType;
 	private String keyword;
 	private UserVO userVO;
+	private String reservationDate;
+	private String scheduleTime;
 
 	
 	private MultipartFile uploadFiles;

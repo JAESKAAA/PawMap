@@ -33,7 +33,7 @@ pageEncoding="UTF-8"%>
       href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
       rel="stylesheet"
     />
-    
+
     <!--  ${request.getContextPath } -->
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
@@ -48,7 +48,9 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-silbia.css">
         <!-- 테이블 부분 css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footable.bootstrap.css" />
-    <!-- 결 커스텀 css -->
+    <!-- 몌 커스텀 css -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-mye.css">
+        <!-- 결 커스텀 css -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -104,7 +106,7 @@ pageEncoding="UTF-8"%>
               data-in="fadeInDown"
               data-out="fadeOutUp"
             >
-              <li class="nav-item">
+              <li class="nav-item active">
                 <a class="nav-link" href="/pawmap">Home</a>
               </li>
               <li class="nav-item">
@@ -124,7 +126,6 @@ pageEncoding="UTF-8"%>
                   >커뮤니티</a
                 >
                 <ul class="dropdown-menu">
-                  <li><a href="shop.html">공지사항</a></li>
                   <li><a href="/pawmap/board/getFreeBoardList">자유게시판</a></li>
                   <li><a href="cart.html">나눔게시판</a></li>
                 </ul>
@@ -178,3 +179,6 @@ pageEncoding="UTF-8"%>
       <!-- End Navigation -->
     </header>
     <!-- Header 끝 부분 -->
+
+
+    

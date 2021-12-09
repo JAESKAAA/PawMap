@@ -128,10 +128,6 @@ public class BoardController {
 		// 파일리스트 가져오기
 		List<FileVO> fileList = fileService.getFileListByFreeBoardSeq(boardSeq);
 
-
-
-
-		
 		System.out.println("fileList ============== "+ fileList);
 		
 

@@ -56,6 +56,17 @@ pageEncoding="UTF-8"%>
             </div>
         </div>
     </div>
+    <div class="board-type  mt-5">
+        <p>
+            <br>
+            1. 예약한 병원과 날짜, 시간을 확인하실수 있습니다.
+            <br>
+            2. 당일 예약은 취소가 불가능 합니다.
+            <br>
+            3. 진단서가 등록될 경우 '진단서 보기' 버튼이 활성화 되어 확인하실수 있습니다.
+        </p>
+        <input id="hosNickname" type="hidden" value="${hosNickname[0].user_name}">
+    </div>
     <!-- End 예약조회 타이틀 영역 -->
 
     <!-- End 예약조회 영역 -->
@@ -63,7 +74,7 @@ pageEncoding="UTF-8"%>
     <table style="display:inline-block; width: auto; height: auto;">
         <tr>
             <th><span style="width: 100px;">번호</span></th>
-            <th><span>이름</span></th>
+            <th><span>닉네임</span></th>
             <th id="test-span"><span>병원</span></th>
             <th><span>날짜</span></th>
             <th><span>시간</span></th>
@@ -73,7 +84,7 @@ pageEncoding="UTF-8"%>
         <c:set var="now" value="<%=new java.util.Date()%>" />
         <c:set var="sysYear"><fmt:formatDate value="${now}" pattern="yyyyMMdd" /></c:set> 
         <c:out value="${sysYear}" />
-        <c:forEach var="myResList" items="${myResList}">
+        <c:forEach var="myResList" items="${myResList}" varStatus="status">
         <form action="cancelReservation" method="POST">
         <tr>
             <input type="hidden" name="userId" value="${principal.user.userId}">
@@ -82,12 +93,19 @@ pageEncoding="UTF-8"%>
             <input type="hidden" name="reservationDate" value="${myResList.reservation_date}">
             <td>${myResList.reservation_seq}</td>
             <td>${principal.user.userNickname}</td>
-            <td>${myResList.user_nickname}</td>
+            <td>${myResList.user_name}</td>
             <td>${myResList.reservation_date}</td>
             <td>${myResList.schedule_time}</td>
-            <td style="color: gray;">진단서 미등록</td>
             <c:choose>
-                <c:when test="${myResList.reservation_date <= sysYear}">
+                <c:when test="${empty myResList.reservation_status }">
+                    <td style="color: gray;"><button type="button" onclick='location.href="/pawmap/showMyMedicalRecord?comNum=${myResList.com_num}&reservationDate=${myResList.reservation_date}&scheduleTime=${myResList.schedule_time}&userId=${principal.user.userId}"' disabled>진단서 보기</button></td>
+                </c:when>
+                <c:otherwise>
+                    <td style="color: gray;"><button type="button" onclick='location.href="/pawmap/showMyMedicalRecord?comNum=${myResList.com_num}&reservationDate=${myResList.reservation_date}&scheduleTime=${myResList.schedule_time}&userId=${principal.user.userId}"'>진단서 보기</button></td>
+                </c:otherwise>
+            </c:choose>
+            <c:choose>
+                <c:when test="${myResList.reservation_date <= sysYear || !empty myResList.reservation_status}">
                     <td><button disabled>예약취소</button></td>
                 </c:when>
                 <c:otherwise>

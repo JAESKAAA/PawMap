@@ -79,6 +79,45 @@ public class BoardServiceImpl implements BoardService {
 
 	}
 
+
+	@Override
+	public void insertMedicalRecord(BoardVO vo) {
+		boardMapper.insertMedicalRecord(vo);
+	}
+
+	@Override
+	public List<BoardVO> getMyMedicalRecordListById(String userId) {
+		return boardMapper.getMyMedicalRecordListById(userId);
+	}
+
+	@Override
+	public List<BoardVO> getHospitalMedicalRecordList(String date, String comNum) {
+		return boardMapper.getHospitalMedicalRecordList(date,comNum);
+	}
+
+	@Override
+	public List<HashMap<String, Object>> getSeparateMedicalRecordForClient(String comNum, String reservationDate, String scheduleTime) {
+		return boardMapper.getSeparateMedicalRecordForClient(comNum, reservationDate, scheduleTime);
+	}
+
+	@Override
+	public int getMedicalBoardSeq() {
+		return boardMapper.getMedicalBoardSeq();
+		
+	}
+
+	@Override
+	public void updateMedicalRecord(BoardVO vo) {
+		boardMapper.updateMedicalRecord(vo);
+	}
+
+	@Override
+	public List<BoardVO> getMyMedicalRecordForAllowReview(String userId, String hospitalComNum) {
+		return boardMapper.getMyMedicalRecordForAllowReview(userId,hospitalComNum);
+	}
+
+	
+	
 	// 관리자 페이지에서 커뮤니티 게시판 부를때 사용하는 메소드
 	// getCommunityBoardList, getLatelyCommunityBoardList 메소드는 관리자 페이지에서 보일 메소드...
 	
@@ -97,5 +136,6 @@ public class BoardServiceImpl implements BoardService {
 		
 		return boardMapper.getLatelyCommunityBoardListForBoardMain();
 	}
+
 }
 

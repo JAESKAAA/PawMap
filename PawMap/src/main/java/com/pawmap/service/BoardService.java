@@ -28,11 +28,26 @@ public interface BoardService {
 
 	
 	List<HashMap<String, Object>> getLatelyBoardListForBoardMain();
-	
-	// 관리자 페이지에서 커뮤니티 게시판 부를때 사용하는 메소드
-	
+
+
+	void insertMedicalRecord(BoardVO vo);
+
+	List<BoardVO> getMyMedicalRecordListById(String userId);
+
+	List<BoardVO> getHospitalMedicalRecordList(String date, String comNum);
+
+	List<HashMap<String, Object>> getSeparateMedicalRecordForClient(String comNum, String reservationDate, String scheduleTime);
+
+	int getMedicalBoardSeq();
+
+	void updateMedicalRecord(BoardVO vo);
+
+	List<BoardVO> getMyMedicalRecordForAllowReview(String userId, String hospitalComNum);
+
+
+	//관리자 페이지에서 커뮤니티 게시판 부를때 사용하는 메소드
+
 	List<BoardVO> getCommunityBoardList(BoardVO vo, Criteria cri);
 	
 	List<HashMap<String, Object>> getLatelyCommunityBoardListForBoardMain();
-	
 }

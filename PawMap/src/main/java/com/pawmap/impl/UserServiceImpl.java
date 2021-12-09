@@ -237,6 +237,10 @@ public class UserServiceImpl implements UserService{
 
 		return result;
 	}
+	@Override
+	public void updateUserProfileNull(int userSeq, String userType, String userId) {
+		userMapper.updateUserProfileNull(userSeq,userType,userId);
+	}
 
 	/// Below classes methods were created by thomas lee on Dec 3rd 21:07pm
 	/// he created methods the methods "shelter information" for admin management. 

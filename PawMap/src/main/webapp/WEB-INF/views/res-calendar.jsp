@@ -37,7 +37,18 @@ pageEncoding="UTF-8"%>
     <h1>병원아이디 ${scheduleList[0].userId}</h1>
     <h1>병원사업자번호 ${scheduleList[0].comNum}</h1> -->
     <div class="board-type  mt-5">
-        <h1> ${hosNickname[0].user_nickname} 예약 하기  </h1>
+        <h1> ${hosNickname[0].user_name} 예약 하기  </h1>
+        <p>
+            <br>
+            1. 달력의 날짜를 눌러 예약 가능한 시간을 확인해 주세요. (예약 가능한 시간은 버튼이 활성화 되어있습니다.)
+            <br>
+            2. 원하는 시간에 해당하는 버튼을 클릭하시면 예약 문구가 나옵니다. 한번 더 확인해 주세요
+            <br>
+            3. 당일 예약은 취소가 불가능 하오니 유의해 주시기 바랍니다.
+            <br>
+            4. 예약한 정보와 진단서 확인은 마이페이지의 예약확인란에서 확인 가능합니다.
+        </p>
+        <input id="hosNickname" type="hidden" value="${hosNickname[0].user_name}">
     </div>
     <hr class="line-paint">
     <input id="hospitalComNum" type="hidden" value="${scheduleList[0].comNum}"> 
@@ -127,8 +138,24 @@ pageEncoding="UTF-8"%>
             success: function(obj) {
                 var data = JSON.parse(obj);
                 console.log(data);
+
+                // ajax로 만들 스트링 변수 , 
+                // 스케쥴 리스트의 시간과 클라이언트가 예약한 시간이 동일한 녀석들을 배열에 담아 
+                // 그 시간대는 disables 시켜서 클릭 못하게 막을거임
                 var htmlString = "";
                 let overlapTime = [];
+                var hosNickname = $("#hosNickname").val();
+
+                //현재 날짜를 구한뒤 캘린더에서 클릭한 날짜가 현재날짜보다 작다면 예약 막음
+                var today = new Date();
+                var year = today.getFullYear();
+                var month = ('0' + (today.getMonth() + 1)).slice(-2);
+                var day = ('0' + today.getDate()).slice(-2);
+                var dateString = year + '' + month  + '' + day;
+                console.log("dateString ====== "+ dateString);
+                console.log("hosNickname ====== "+ hosNickname);
+
+                //  해쉬맵으로 두개의 리스트를 받고 리스트들 비교 포문 돌리면서 예약된 시간이 있으면 그 시간을 배열에 담음
                 for(var i = 0; i < data.detailScheduleList.length; i++){
                     for(var k = 0; k<data.getReservationList.length; k++){
                         if(data.detailScheduleList[i].scheduleTime == data.getReservationList[k].scheduleTime 
@@ -138,21 +165,19 @@ pageEncoding="UTF-8"%>
                         }
                     }
                 }
-   
-                    for(var i = 0; i < data.detailScheduleList.length; i++){
-                    
-                    htmlString += "<form class=\'res-form\' name=\'do_res\' action=\'doReservation\'' method=\'POST\'>";
+                // 병원이 만든 해당 날짜의 예약 가능한 시간의 사이즈 만큼 포문 돌아감
+                for(var i = 0; i < data.detailScheduleList.length; i++){
+                    htmlString += "<form class=\'res-form\' name=\'do_res\' action=\'doReservation?hospitalSeq=${hospitalSeq}\'' method=\'POST\'>";
                     htmlString +=       "<input type=\'hidden\' name=\'userId\' value=\'${principal.user.userId}\'>";
                     htmlString +=       "<input type=\'hidden\' name=\'hosUserId\' value=\'${scheduleList[0].userId}\'>";
                     htmlString +=       "<input type=\'hidden\' name=\'comNum\' value=\'${scheduleList[0].comNum}\'>";
                     htmlString +=       "<input class=\'hiddesResDate\' type=\'hidden\' name=\'reservationDate\' value='"+resDate+"'>";
-                    //htmlString +=       "<h1>" + data.detailScheduleList[i].scheduleTime + "<h1>";
                     htmlString +=       "<input type=\'hidden\' name=\'scheduleTime\' value=\'" + data.detailScheduleList[i].scheduleTime + "\' />";
-                    
-                    if(overlapTime.indexOf(data.detailScheduleList[i].scheduleTime) != -1){
+                    //  예약된 시간이 있을경우, 캘린더 선택날짜가 현재 날짜보다 이전일 경우, 현재 날짜로 부터 2주이후의 요일일 경우는 버튼 블록걸어둠
+                    if(overlapTime.indexOf(data.detailScheduleList[i].scheduleTime) != -1 || dateString>resDate || dateString < resDate-14){
                         console.log("있습니다.");
                         htmlString +=       "<li>";
-                        htmlString +=           "<button type=\"submit\" class='calendar-time[i]' onclick=\"confirm('예약하시겠습니까?')\" disabled>" 
+                        htmlString +=           "<button type=\"submit\" class='calendar-time[i]' onclick=\"confirm(msg)\" disabled>" 
                                                 + data.detailScheduleList[i].scheduleTime + 
                                                 "</button>";
                         htmlString +=       "</li>";
@@ -161,7 +186,7 @@ pageEncoding="UTF-8"%>
                     }else{
                         console.log("없습니다.");
                         htmlString +=       "<li>";
-                            htmlString +=           "<button type=\"submit\" class='calendar-time[i]' onclick=\"confirm('예약하시겠습니까?')\">" 
+                            htmlString +=           "<button type=\"submit\" class='calendar-time[i]' onclick=\"if(!confirm('예약 하시겠습니까?  ("+hosNickname+", 날짜 : "+ resDate +", 시간 : "+ data.detailScheduleList[i].scheduleTime +")')){return false}\">" 
                                                     + data.detailScheduleList[i].scheduleTime + 
                                                     "</button>";
                         htmlString +=       "</li>";

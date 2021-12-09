@@ -117,6 +117,7 @@ pageEncoding="UTF-8"%>
                                                 </div>  
                                                 <div class="entry input-group upload-input-group">  
                                                     <button type="submit" class="btn btn-outline-danger mt-2">파일 등록</button>
+                                                    <p>파일 등록버튼을 눌러야 파일이 등록됩니다.</p>
                                                 </div>  
                                             </div>  
                                         </div>  

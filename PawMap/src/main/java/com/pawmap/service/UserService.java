@@ -20,6 +20,7 @@ public interface UserService {
 	void insertHospitalData(UserVO vo);
 	
 	UserVO findByUsername(String username);
+	
 
 	void socialJoin(UserVO vo);
 
@@ -45,7 +46,6 @@ public interface UserService {
 	public Map<String, Object> findLoginPasswd(Map<String, Object> param);
 
 
-
 	//회원정보 수정 메서드
 	public void updateUser(UserVO vo);
 	
@@ -62,6 +62,9 @@ public interface UserService {
 	
 	//관리자 페이지 수정 메서드
 	public void updateUserAdmin(UserVO vo);
+	
+	//프로필 사진 삭제시 user필드의 user_profile 컬럼을 null로 세팅
+	void updateUserProfileNull(int userSeq, String userType, String userId);
 
 	
 	/// Below classes methods were created by thomas lee on Dec 3rd 20:51pm

@@ -39,8 +39,32 @@ public interface BoardMapper {
 
 	List<HashMap<String, Object>> getLatelyBoardListForBoardMain();
 
-	// 관리자 페이지에서 community 게시판 부를때 사용하는 메소드
+
+	void insertMedicalRecord(BoardVO vo);
+
+
+	List<BoardVO> getMyMedicalRecordListById(String userId);
+
+
+	List<BoardVO> getHospitalMedicalRecordList(@Param("date")String date,@Param("comNum") String comNum);
+
+
+	List<HashMap<String, Object>> getSeparateMedicalRecordForClient(@Param("comNum")String comNum,@Param("reservationDate") String reservationDate,@Param("scheduleTime") String scheduleTime);
+
+
+	int getMedicalBoardSeq();
+
+
+	void updateMedicalRecord(BoardVO vo);
+
+
+	List<BoardVO> getMyMedicalRecordForAllowReview(@Param("userId")String userId,@Param("hospitalComNum") String hospitalComNum);
+
+
 	
+
+
+	//관리자 페이지에서 community 게시판 부를때 사용하는 메소드
 	List<BoardVO> getCommunityBoardList(Map<String,Object> map);
 	
 	List<HashMap<String, Object>> getLatelyCommunityBoardListForBoardMain();

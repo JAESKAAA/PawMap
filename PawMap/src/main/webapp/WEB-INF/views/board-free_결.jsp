@@ -33,6 +33,7 @@ pageEncoding="UTF-8"%>
 <div class="board-type reservation-board ">
     <h1>자유게시판</h1>
 </div>
+
 <div class="container mt-5" style="width: 70%;">
     <div class="board-free" >
         <div id="slides-shop" class="cover-slides cover-slides-board-free"> <!--modified by thomas lee on dec 1st at 20:33pm. it was class="cover-slides" and it replaced to class="cover-slides cover-slides-board-free". if anything please refer to Style-gyul.css file at line 55, 65 -->

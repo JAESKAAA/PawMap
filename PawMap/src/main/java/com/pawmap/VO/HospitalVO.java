@@ -14,12 +14,13 @@ public class HospitalVO {
 	private String hospitalAddress; 
 	private String hospitalStatusCode;
 	private String hospitalTelNum;
+	private String hospitalRegDate;
 	private String hospitalComNum;
 	private String hospitalType;
 	
 	@Builder
 	public HospitalVO(int hospitalSeq, String hospitalId, String hospitalName, String hospitalAddress,
-			String hospitalStatusCode, String hospitalTelNum, String hospitalComNum, String hospitalType) {
+			String hospitalStatusCode, String hospitalTelNum, String hospitalRegDate, String hospitalComNum, String hospitalType) {
 		super();
 		this.hospitalSeq = hospitalSeq;
 		this.hospitalId = hospitalId;
@@ -27,6 +28,7 @@ public class HospitalVO {
 		this.hospitalAddress = hospitalAddress;
 		this.hospitalStatusCode = hospitalStatusCode;
 		this.hospitalTelNum = hospitalTelNum;
+		this.hospitalRegDate = hospitalRegDate;
 		this.hospitalComNum = hospitalComNum;
 		this.hospitalType = hospitalType;
 	}

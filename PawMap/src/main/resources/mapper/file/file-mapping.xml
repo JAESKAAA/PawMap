@@ -10,6 +10,12 @@
 		AND board_type = 'f';
 	</select>
 	
+	<select id="getFileListByMedicalBoardSeq" resultType="com.pawmap.VO.FileVO">
+		SELECT * FROM file
+		WHERE board_seq = #{boardSeq}
+		AND board_type = 'm';
+	</select>
+	
 	<insert id="insertBoardFileList" parameterType="com.pawmap.VO.FileVO">
 		INSERT INTO file (
 			board_seq,
@@ -27,6 +33,8 @@
 				SELECT IFNULL(MAX(file_seq),0) +1
 					FROM file f
 				WHERE board_seq = #{boardSeq}
+				AND 
+				board_type = 'f'
 			),
 			'f',
 			#{userId},
@@ -35,6 +43,64 @@
 			#{fileSize}
 		)
 	</insert>
+	
+
+	<insert id="insertMedicalFileList" parameterType="com.pawmap.VO.FileVO">
+		INSERT INTO file (
+			board_seq,
+			file_seq,
+			board_type,
+			user_id,
+			originalFilename,
+			filepath,
+			filesize				
+		)
+		VALUES
+		(
+			#{boardSeq},
+			(
+				SELECT IFNULL(MAX(file_seq),0) +1
+					FROM file f
+				WHERE board_seq = #{boardSeq}
+				AND
+				board_type = 'm'
+			),
+			'm',
+			#{userId},
+			#{originalFileName},
+			#{filePath},
+			#{fileSize}
+		)
+	</insert>
+	
+	<insert id="insertUserProfile" parameterType="com.pawmap.VO.FileVO">
+		INSERT INTO file (
+			board_seq,
+			file_seq,
+			board_type,
+			user_id,
+			originalFilename,
+			filepath,
+			filesize				
+		)
+		VALUES
+		(
+			#{boardSeq},
+			(
+				SELECT IFNULL(MAX(file_seq),0) +1
+					FROM file f
+				WHERE board_seq = #{boardSeq}
+				AND
+				board_type = #{boardType}
+			),
+			#{boardType},
+			#{userId},
+			#{originalFileName},
+			#{filePath},
+			#{fileSize}
+		)
+	</insert>
+
 	
 
 	<delete id="deleteFileByBoardSeq">
@@ -48,9 +114,117 @@
 		WHERE file_seq = #{fileSeq}
 		AND 
 		board_seq = #{boardSeq}
+		AND
+		board_type = 'f'
 	</delete>
 	
+	<delete id="deleteOneFileOnMedicalRecord">
+		DELETE FROM file
+		WHERE file_seq = #{fileSeq}
+		AND 
+		board_seq = #{boardSeq}
+		AND
+		board_type = 'm'
+	</delete>
+	
+	<delete id="deleteProfile">
+		DELETE FROM file
+		WHERE user_id = #{userId}
+		AND
+		board_seq = #{userSeq}
+		AND
+		board_type = #{boardType}
+	</delete>
+	
+	
+	<!-- PetFile관련 -->
 
+	<insert id="insertPetFileList" parameterType="com.pawmap.VO.FileVO">
+			INSERT INTO file (
+				file_seq,
+				board_seq,
+				board_type,
+				user_id,
+				originalFilename,
+				filepath,
+				filesize				
+			)
+			VALUES
+			(
+				#{boardSeq}-1,
+				1,
+				'p',
+				#{userId},
+				#{originalFileName},
+				#{filePath},
+				#{fileSize}
+			)
+		</insert>
+
+	<select id="getFileListByUserId" resultType="com.pawmap.VO.FileVO">
+		SELECT * FROM pawmap.FILE
+		WHERE 
+        board_type = 'p'
+        AND
+        USER_ID = #{userId};
+	</select>
+	
+	<delete id="deletePetFile">
+		DELETE FROM file
+		WHERE
+			FILE_SEQ = #{petSeq}
+		AND
+			user_id =#{userId}	
+	</delete>
+	
+	<update id="updatePetFileList" parameterType="com.pawmap.VO.FileVO">
+		UPDATE FILE
+		SET
+			originalFilename = #{originalFileName},
+			filepath = #{filePath},
+			filesize = #{fileSize}
+		WHERE
+			file_seq = #{boardSeq}
+		AND 
+			user_id = #{userId}
+		AND
+			board_type = 'p'	
+			
+	</update>
+	
+	<select id="getPetFile" resultType="com.pawmap.VO.FileVO">
+		SELECT * FROM pawmap.file
+		WHERE 
+		file_seq = #{petSeq}
+		AND
+		user_id = #{userId}
+		AND
+		board_type = 'p'
+	</select>
+	
+	<insert id="insertPetFileOnUpdateForm" parameterType="com.pawmap.VO.FileVO">
+		INSERT INTO file
+			(
+				file_seq,
+				board_seq,
+				board_type,
+				user_id,
+				originalFilename,
+				filepath,
+				filesize				
+			)
+			VALUES
+			(
+				#{boardSeq},
+				1,
+				'p',
+				#{userId},
+				#{originalFileName},
+				#{filePath},
+				#{fileSize}
+			)
+			
+	</insert>
 
   	
 </mapper>	

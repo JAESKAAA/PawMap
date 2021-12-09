@@ -44,10 +44,23 @@ public interface ReservationService {
 
 	List<HashMap<String, Object>> getReservationListOfHospital(String date, String comNum);
 
-	
+	List<HashMap<String, Object>> getReservationInfo(String comNum, int reservationSeq);
+
+	void changeReservationStatus(ReservationVO reservationVO);
+
+	void resetDateScheduleSun(String comNum);
+
+	void resetDateScheduleMon(String comNum);
+
+	void resetDateScheduleTue(String comNum);
+
+	void resetDateScheduleWed(String comNum);
+
+	void resetDateScheduleThu(String comNum);
+
+	void resetDateScheduleFri(String comNum);
+
+	void resetDateScheduleSat(String comNum);
 
 	
-
-	
-
 }

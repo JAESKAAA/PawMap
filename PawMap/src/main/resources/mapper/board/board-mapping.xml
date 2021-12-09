@@ -20,7 +20,6 @@
   		<result property="boardSeq" column="board_seq"/>
   		<result property="boardType" column="board_type"/>
   		<result property="userId" column="user_id"/>
-  		<result property="hospitalSeq" column="hospital_seq"/>
   		<result property="title" column="title"/>
   		<result property="content" column="content"/>
   		<result property="regDate" column="regDate"/>
@@ -49,6 +48,20 @@
   				#{title},
   				#{content},
   				NOW()
+  		)
+  	</insert>
+  	
+  	<insert id="insertMedicalRecord">
+  		INSERT INTO board(board_seq, board_type, user_id, com_num , title, content, regDate,reservation_date,schedule_time) VALUES(
+  				(SELECT IFNULL(MAX(BOARD_SEQ), 0) + 1 FROM BOARD A WHERE BOARD_TYPE = #{boardType}),
+  				#{boardType},
+  				#{userId},
+  				#{comNum},
+  				#{title},
+  				#{content},
+  				NOW(),
+  				#{reservationDate},
+  				#{scheduleTime}
   		)
   	</insert>
   	
@@ -125,6 +138,12 @@
 			FROM BOARD
 			WHERE board_type = 'f'
 	</select>
+	
+	<select id="getMedicalBoardSeq" resultType="int">
+		SELECT IFNULL(MAX(board_seq) ,0) + 1
+			FROM BOARD
+			WHERE board_type = 'm'
+	</select>
   	
   	<delete id="deleteFreeBoardBySeq">
   		DELETE FROM board
@@ -170,12 +189,60 @@
 		from file as f1 
 			left join file as f2 on f1.board_seq = f2.board_seq and f1.file_seq > f2.file_seq
 		    where f2.file_seq is null
+		    AND f1.board_type = 'f'
 		) as f
 		on b.board_seq = f.bSeq
 		where b.board_type = 'f'
 		order by b.board_seq DESC
 		limit 3;
 	</select>
+	
+	<select id="getMyMedicalRecordListById" resultType="com.pawmap.VO.BoardVO">
+		SELECT * FROM board
+		WHERE user_id = #{userId}
+		AND board_type = 'm'
+		order by schedule_time
+	</select>
+	
+	<select id="getMyMedicalRecordForAllowReview" resultType="com.pawmap.VO.BoardVO">
+		SELECT * FROM board
+		WHERE board_type = 'm'
+		AND user_id = #{userId}
+		AND com_num = #{hospitalComNum}
+	</select>
+	
+	<select id="getHospitalMedicalRecordList" resultType="com.pawmap.VO.BoardVO">
+		SELECT * FROM board
+		WHERE com_num = #{comNum}
+		AND reservation_date = #{date}
+	</select>
+	
+	<select id="getSeparateMedicalRecordForClient" resultType="HashMap">
+		
+		SELECT b.*,u.user_name
+		FROM board AS b
+		INNER JOIN user AS u
+		ON b.com_num = u.com_num
+		WHERE b.com_num = #{comNum}
+		and b.reservation_date = #{reservationDate}
+		and b.schedule_time = #{scheduleTime}
+		and b.board_type= 'm'
+		
+	</select>
+	
+	<update id="updateMedicalRecord" >
+		UPDATE board
+  		SET
+  			title = #{title},
+  			content = #{content}
+  		WHERE com_num = #{comNum}
+  		AND
+  		reservation_date = #{reservationDate}
+  		AND
+  		schedule_time = #{scheduleTime}
+  		AND
+  		board_type = 'm'
+	</update>
 	
 	<!-- <select id="getLatelyBoardListForBoardMain" resultType="HashMap">
 		SELECT b.*, f.originalFilename
