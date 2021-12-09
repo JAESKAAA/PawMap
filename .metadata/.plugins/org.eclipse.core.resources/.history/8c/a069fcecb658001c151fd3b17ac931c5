@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.pawmap.mapper.UserMapper">
+  	<resultMap type="com.pawmap.VO.UserVO" id="userList">
+  		<id property="userSeq" column="user_seq"/>
+  		<result property="userType" column="user_type"/>
+  		<result property="userId" column="user_id"/>
+  		<result property="userEmail" column="user_email"/>
+  		<result property="userName" column="user_name"/>
+  		<result property="userNickname" column="user_nickname"/>
+  		<result property="userTelNum" column="user_tel_num"/>
+  		<result property="address" column="address"/>
+  		<result property="comNum" column="com_num"/>
+  	</resultMap> 
+  	
+<!--   	<select id="selectTest" resultType="com.cos.blog.vo.BoardVO">
+  		SELECT * FROM BOARD WHERE id=#{id}
+  	</select> -->
+  	
+  	<select id="findByUsername" parameterType="String" resultType="com.pawmap.VO.UserVO">
+  		SELECT * FROM user WHERE user_id = #{username}
+  	</select>
+  	
+
+
+	<insert id="insertUser">
+
+  		INSERT INTO user(user_seq, user_type, user_id, user_password, user_name, user_email, user_tel_num, post_num, address, address_detail, user_nickname, role) VALUES(
+  				(SELECT IFNULL(MAX(user_seq), 0) + 1 FROM user A WHERE user_type = #{userType}),
+  				#{userType},
+  				#{userId},
+  				#{userPassword},
+  				#{userName},
+				#{userEmail},
+				#{userTelNum},
+				#{postNum},
+				#{address},
+				#{addressDetail},
+				#{userNickname},
+  				#{role}
+  		)
+  	</insert>
+  	
+	<insert id="insertHospitalUser">
+
+  		INSERT INTO user(user_seq, user_type, user_id, user_password, user_name, user_email, user_tel_num, post_num, address, address_detail, user_nickname, role, com_num) VALUES(
+  				(SELECT IFNULL(MAX(user_seq), 0) + 1 FROM user A WHERE user_type = #{userType}),
+  				#{userType},
+  				#{userId},
+  				#{userPassword},
+  				#{userName},
+				#{userEmail},
+				#{userTelNum},
+				#{postNum},
+				#{address},
+				#{addressDetail},
+				#{userNickname},
+  				#{role},
+  				#{comNum}
+  		)
+  	</insert>
+  	<insert id="insertHospitalData">
+  		INSERT INTO hospital_data(
+	  			hospital_seq,
+				hospital_id,
+				hospital_name,
+				hospital_address,
+				hospital_tel_num,
+				hospital_com_num,
+				hospital_type
+  				)
+  				 VALUES(
+  				(SELECT IFNULL(MAX(hospital_seq), 0) + 1 FROM hospital_data A),
+  				#{userId},
+  				#{userName},
+				#{address},
+				#{userTelNum},
+  				#{comNum},
+  				"H"
+  		)
+  	</insert>
+  	<!-- (관리자페이지)일반 유저 리스트 -->
+  	<select id="getUserList" resultMap="userList">
+<<<<<<< HEAD
+  		SELECT * FROM user  <!-- user_seq, user_type, user_id, user_email, user_name, user_nickname, user_tel_num, address, com_num  -->
+=======
+  		SELECT * FROM user 
+>>>>>>> 1e3b7fbb47101558bb8a796c9d181dcca6b9ccbb
+  				WHERE user_type = 'N'
+  				ORDER BY user_seq
+  	</select>
+  	
+  	<!-- (관리자페이지)병원 유저 리스트 -->
+  	<select id="getHospitalUserList" resultMap="userList">
+<<<<<<< HEAD
+  		SELECT * FROM user <!-- user_seq, user_type, user_id, user_email, user_name, user_nickname, user_tel_num, address, com_num -->
+=======
+  		SELECT * FROM user 
+>>>>>>> 1e3b7fbb47101558bb8a796c9d181dcca6b9ccbb
+  				WHERE user_type = 'H'
+  				ORDER BY user_seq
+  	</select>
+  	
+  	<!-- (관리자페이지) 유저 정보 수정 -->
+  	<select id="getUser" resultMap="userList">
+  		SELECT *  FROM user 
+  				WHERE user_id = #{userId}
+  	</select>
+  
+  	<!-- (관리자페이지) 페이징 처리위한 일반 유저리스트-->
+ 	 <select id="getUserListWithPaging" parameterType="com.pawmap.VO.Criteria" resultMap="userList">
+  		SELECT * FROM user where user_type ='N' ORDER BY user_seq LIMIT #{startNum}, #{amount};
+  	</select>
+  	
+  	<!-- (관리자페이지) 페이징 처리위한 병원 유저리스트-->
+ 	 <select id="getHospitalUserListWithPaging" parameterType="com.pawmap.VO.Criteria" resultMap="userList">
+  		SELECT * FROM user where user_type ='H' ORDER BY user_seq LIMIT #{startNum}, #{amount};
+  	</select>
+  	
+  	<select id="getUserCount" resultType="int">
+		SELECT COUNT(*) FROM user WHERE user_type = 'N'
+	</select>
+	
+  	<select id="getHospitalUserCount" resultType="int">
+		SELECT COUNT(*) FROM user WHERE user_type = 'H'
+	</select>
+
+  	<!-- 아이디 중복검사 -->
+  	<select id="idCheck" parameterType="String" resultType="int">
+  		SELECT count(*) FROM user WHERE user_id = #{id}
+  	</select>
+  	
+  	<!-- 닉네임 중복검사 -->
+  	<select id="nickCheck" parameterType="String" resultType="int">
+  		SELECT count(*) FROM user WHERE user_nickname = #{nickname}
+  	</select>
+  	
+   	<!-- 회원정보 닉네임 중복검사 -->
+  	<select id="mnickCheck" parameterType="String" resultType="int">
+  		SELECT count(*) FROM user WHERE user_nickname = #{nickname}
+  	</select> 
+  	
+  	<!-- 회원정보 이메일 중복검사 -->
+  	<select id="emailCheck" parameterType="String" resultType="int">
+  		SELECT count(*) FROM user WHERE user_email = #{email}
+  	</select>
+  
+  	<insert id="socialJoin">
+  		INSERT INTO user(user_seq, user_type, user_id, user_password, user_name, user_nickname, user_email, provider, providerId, role) VALUES(
+ 				(SELECT IFNULL(MAX(user_seq), 0) + 1 FROM user A WHERE user_type = #{userType}),
+  				#{userType},
+  				#{userId},
+  				#{userPassword},
+  				#{userName},
+  				(SELECT CONCAT(#{provider}, (SELECT IFNULL(MAX(user_seq), 0) + 1 FROM user B))),
+  				#{userEmail},
+  				#{provider},
+  				#{providerId},
+  				#{role}
+  		)
+  	</insert>
+
+
+  	 <!-- 쿼리통합,,추가  -->
+	<!-- 로그 -->
+	<select id="findByLoginId"
+		resultType="com.pawmap.VO.UserVO">
+		SELECT *
+		FROM USER
+		WHERE USER_ID = #{userId}
+	</select>
+	
+	<!-- findById 아이디 일치 조회  -->
+	<select id="checkDuplicateId"
+		resultType="com.pawmap.VO.UserVO">
+		SELECT COUNT(*)
+		FROM USER
+		WHERE USER_ID = #{userId}
+		<!-- where 컬럼명 = {파라미터이름} -->
+		
+	</select>
+	<!--findByLoginIdAndLoginPasswd: 일치하는 회원정보 조회 -->
+	<select id="checkIdPwd"
+		resultType="com.pawmap.VO.UserVO">
+		SELECT *
+		FROM USER
+		WHERE USER_ID = #{userId}
+		AND
+		USER_PASSWORD = #{userPassword}
+	</select>
+	
+	<!-- findByNameAndEmail 이름과 이메일로 조회 
+		아이디 찾기 -->
+
+	<select id="searchId" 
+		resultType="String">
+		SELECT IFNULL(user_id, 0) 
+		FROM USER 
+        WHERE 
+        USER_NAME = #{userName} 
+        AND 
+        USER_TEL_NUM = #{userTelNum} 
+        
+
+	</select>
+	<!-- findByLoginIdAndNameAndEmail 아이디, 이름, 이메일로 조회 
+		비밀번호 찾기-->
+	<select id="searchPwd"
+		resultType="com.pawmap.VO.UserVO">
+		SELECT *
+		FROM USER
+		WHERE 
+		USER_ID = #{userId}
+		AND
+		USER_NAME = #{userName}
+
+	</select>
+
+	<!--로그인 비밀번호 변경  -->
+	<update id="changePwd">
+		UPDATE 'user'
+		SET USER_PASSWORD = #{userPassword}
+		WHERE USER_ID  = #{userId}
+	</update>
+	
+	<!--로그인 비밀번호 변경 - db 업데이트  -->
+	 <update id="update" parameterType="com.pawmap.VO.UserVO">
+		UPDATE USER
+		SET
+			USER_PASSWORD = #{userPassword}
+		WHERE USER_ID = #{userId}
+	</update> 
+  	
+ 	<update id="updateUser" parameterType="com.pawmap.VO.UserVO" >
+		UPDATE user
+			<set>
+				<if test ="userNickname != null">
+					user_nickname = #{userNickname},
+				</if> 
+				<if test ="userTelNum != null">
+					user_tel_num = #{userTelNum},
+				</if> 
+				<if test ="userEmail != null">
+					user_email = #{userEmail},
+				</if> 
+				<if test ="address != null">
+					 address = #{address},
+				</if> 
+				<if test ="userPassword != null">
+					 user_password = #{userPassword},
+				</if> 
+				<if test ="userProfile != null">
+					 user_profile = #{userProfile},
+				</if>
+			</set>
+			WHERE 
+				USER_ID = #{userId}
+	</update> 
+	
+ 	<update id="updateUserAdmin" parameterType="com.pawmap.VO.UserVO" >
+		UPDATE user
+			SET
+				user_name = #{userName}, user_id = #{userId}, user_tel_num = #{userTelNum},
+				user_email = #{userEmail}, user_nickname = #{userNickname}, address = #{address}, com_num = #{comNum}
+			WHERE 
+				USER_ID = #{userId}
+	</update> 
+	
+	<delete id="deleteUser" parameterType="com.pawmap.VO.UserVO">
+		DELETE FROM user where user_id = #{userId}
+	</delete>
+	
+	<update id="updateUserProfileNull">
+		UPDATE user
+		SET user_profile = NULL
+		WHERE user_seq = #{userSeq}
+		AND
+		user_type = #{userType}
+		AND 
+		user_id = #{userId}
+	</update>
+
+  	
+  </mapper>	
