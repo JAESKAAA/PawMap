@@ -195,6 +195,13 @@
 		order by schedule_time
 	</select>
 	
+	<select id="getMyMedicalRecordForAllowReview" resultType="com.pawmap.VO.BoardVO">
+		SELECT * FROM board
+		WHERE board_type = 'm'
+		AND user_id = #{userId}
+		AND com_num = #{hospitalComNum}
+	</select>
+	
 	<select id="getHospitalMedicalRecordList" resultType="com.pawmap.VO.BoardVO">
 		SELECT * FROM board
 		WHERE com_num = #{comNum}
