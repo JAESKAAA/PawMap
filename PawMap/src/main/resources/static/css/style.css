@@ -2793,6 +2793,12 @@ ul.cart-list > li.total > .btn:hover {
   font-weight: 600;
   margin-bottom: 15px;
 }
+.profile-usertitle-info {
+  color: #400080;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
 
 .profile-userbuttons {
   text-align: center;

@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pawmap.VO.FileVO;
+import com.pawmap.VO.HospitalVO;
+import com.pawmap.VO.UserVO;
 import com.pawmap.VO.VetVO;
 import com.pawmap.mapper.VetMapper;
 import com.pawmap.service.VetService;
@@ -26,8 +29,8 @@ public class VetServiceImpl implements VetService {
 
 
 	@Override
-	public void deleteVetInfo(int vetSeq) throws Exception  {
-		vetMapper.deleteVetInfo(vetSeq);
+	public void deleteVetInfo(int vetSeq, int hospitalSeq)  {
+		vetMapper.deleteVetInfo(vetSeq, hospitalSeq);
 		
 		
 	}
@@ -58,6 +61,20 @@ public class VetServiceImpl implements VetService {
 		return vetMapper.getVetSeq();
 	}
 
-
-
+	@Override
+	public HospitalVO getHospitalInfo(UserVO vo) {
+		return vetMapper.getHospitalInfo(vo);
+	}
+	
+	@Override
+	public int getMaxVetSeq(int seq) {
+		return vetMapper.getMaxVetSeq(seq);
+	}
+	
+	@Override
+	public List<VetVO> getVetListWithFiles(VetVO vo) {
+		return vetMapper.getVetListWithFiles(vo);
+	}
+	
+	
 }

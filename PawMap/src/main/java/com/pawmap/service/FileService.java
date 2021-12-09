@@ -36,7 +36,13 @@ public interface FileService {
 
 	void insertPetFileOnUpdateForm(List<FileVO> fileList);
 
+	public void insertVetFileList(List<FileVO> fileList);
 
+	void updateVetFileList(List<FileVO> fileList);
 
+	//기존 파일정보 가져오기위한 메서드
+	public FileVO vetInfoFile(FileVO vo);
 
+	public void deleteVetFile(int vetSeq, String boardType, String userId);
+	
 }

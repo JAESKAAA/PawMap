@@ -23,13 +23,18 @@ import com.pawmap.handler.OpenApiHandler;
 import com.pawmap.mapper.SearchMapper;
 import com.pawmap.service.BoardService;
 import com.pawmap.service.HospitalReviewService;
+import com.pawmap.VO.VetVO;
 import com.pawmap.service.SearchService;
+import com.pawmap.service.VetService;
 
 @Controller
 public class SearchController {
 
 	@Autowired
 	private OpenApiHandler apiHandler;
+	
+	@Autowired
+	private VetService vetService;
 	
 	@Autowired
 	private SearchService searchSearvice;
@@ -85,6 +90,7 @@ public class SearchController {
 	public String showDetailHospital(HospitalVO vo, Authentication authentication, Model model ) {
 		HospitalVO hospital = searchSearvice.getHospital(vo);
 		
+
 		//	병원 리뷰 리스트
 		List<HashMap<String,Object>> hospitalReviewList = hospitalReviewService.getHospitalReviewList(hospital.getHospitalComNum());
 		
@@ -106,8 +112,18 @@ public class SearchController {
 		
 		model.addAttribute("hospitalReviewList",hospitalReviewList);
 		model.addAttribute("reviewSize",hospitalReviewList.size());
-		model.addAttribute("hospital", hospital);
+
+		VetVO vet = new VetVO();
+		vet.setHospitalSeq(vo.getHospitalSeq());
+		vet.setUserId(hospital.getHospitalId());
 		
+		
+		List<VetVO> vetList = vetService.getVetListWithFiles(vet);
+		System.out.println("특정 hospital 정보 출력 : " +hospital);
+		System.out.println("vetList --> "+vetList);
+
+		model.addAttribute("hospital", hospital);
+		model.addAttribute("vetList", vetList);
 		return "hospital-detail";
 	}
 	

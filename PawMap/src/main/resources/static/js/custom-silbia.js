@@ -63,7 +63,7 @@ $(document).ready(function () {
           $(".result .msg2").attr("style", "color:#f00");
         } else {
 		  idChk = true;
-          alert("사용 가능한 아이디입니다.");
+          alert("사용 가능한 닉네임입니다.");
           $("#btnJoin").attr("disabled", false);
           $(".result .msg2").text("사용가능합니다.");
           $(".result .msg2").attr("style", "color:#00f");
