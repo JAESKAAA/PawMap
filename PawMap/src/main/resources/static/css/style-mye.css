@@ -9,10 +9,15 @@
 
       padding-right: 15px;
       padding-left: 15px;
-      margin-right: auto;
-      margin-left: auto;
+      margin-right: 10%;
+      margin-left: 5%;
       margin-bottom: auto;
+
+	  
     }
+	.petboard{
+		margin-top:150px;
+	}
     
 
     .h3 {
@@ -30,7 +35,7 @@
 	}
 	.petProfile {
 		width:100%;
-		height:230px;
+		height:250px;
 		display:inline;
 		position : relative;
 		float : left;
@@ -41,26 +46,51 @@
 		border-color: white;
 		border-style: solid;
 		border-width: 1px;
-		background-color: rgb(231, 230, 232);
 		text-align: center;
-		
-		
+		line-height: 1.5;
 	}
 	
 .petProfileimg {
-	width:max-content;
+    border-radius: 0%;
+    width: 20vw;
+    /* height: 20vw; */
+    overflow: hidden;
+    size: cover;
 }
-	.petimage {
-		height:200px;
+	.petimagebox {
+		overflow: hidden;
+   	 	border-radius: 70%;
+    	width: 250px;
+		height: 250px;
+		
+		
 	}
+	.petimage{
+		width:100%;
+   	 	height:100%;
+    	object-fit:cover;
+	}
+	
 	.petProfileText {
 		margin:4%;
+
 	}
-	.petProfileBtn{
+	.petProfileText >div {
+		margin :3px;
+	}
+	.petProfileBtn > button{
 		margin:auto;
 		text-align: center;
 		vertical-align:middle;
-		
+			color: #fff;
+			background: #f7ba61;
+			border-radius: 25px;
+			border-style: none;
+	}
+	.petProfileBtn > button:hover {
+			background-color: rgba(228, 188, 96, 0.363);
+			color: #fff !important;
+			border-style: solid #f7ba61;
 	}
 	.petInfoList{
 		width:100%;
@@ -119,6 +149,11 @@
 		border-style: solid;
 		border-width: 1px;
 		text-align: center;
+	}
+	.btn_box:hover{
+		background-color: #eecd90;
+		color: white;
+		
 	}
 
 
@@ -303,11 +338,16 @@ nav.navbar.navbar-inverse {
 	color: #f9f3e3;
 
   }
-
+  #attr-nav-i {
+	  font-size: 0.8em;
+  }
   #attr-nav-p:hover {
 	color: #EFC778;
-
   }
+	#attr-nav-i:hover {
+		color: #EFC778;
+}
+
 /* nav container*/
 #container-nav{
 	width: 50%;
@@ -403,30 +443,36 @@ nav.navbar.navbar-inverse {
 	sc {
 		align-content: center;
 	}
+	.scriptCalendarBox{
+		margin-left:4%;
+		width: 80%;
+	}
     .scriptCalendar{
-        position: relative;
-        float: left;
-        margin:auto;
-		padding: 2%;
-		margin-left: 5%;
-		padding-bottom:20px;
+		position: relative;
+		float: left;
+		margin: 3%;
+		padding: 5%;
+		padding-bottom: 20px;
+		width: 60%;
+		margin-top: 0%;
     }
 	.jscal {
 		max-width: 100%;
 		max-height: 100%;
 	}
     .calendar-left{
-		margin: 7%;
+		margin: 3%;
 		margin-top: 20px !important;
 		text-align: center;
 		align-items: center;
 		background-color: #eecd90;
 		border-radius: 50px;
-		width: 70% !important;
+		width: 50% !important;
 		height: 40vh;
 		font-size: medium;
 		margin-bottom: 3%;
 		max-width: 100% !important;
+		padding: 15px;
     }
 	.calendartime > li {
 		list-style: none;
@@ -468,7 +514,7 @@ nav.navbar.navbar-inverse {
     }
 
 	.btn-calendar {
-	    margin-left: 0;
+	    margin-left: 20%;
     	height: 40px;
     	border-radius: 40px !important;
     	background: rgb(239, 199, 120) !important;
@@ -487,4 +533,109 @@ nav.navbar.navbar-inverse {
 		border:  solid rgb(253, 231, 189, 0.34) !important;
 		color: rgb(255, 255, 255) !important;
 	}
-/** ADD YOUR AWESOME CODES HERE **/
+
+  /*
+*
+* ==========================================
+* FOR mypage-반려동물 추가폼
+* ==========================================
+*
+*/
+/* ================보드 타이틀, 밑줄================== */
+
+/* 폼 박스  */
+.petAddBox{
+	text-align: center;
+	border-radius: 40px;
+	border: 4px solid rgb(216, 216, 216);
+	margin: 15%;
+	padding-top:30px
+}
+.petAddBox:hover{
+	border-style: 4px solid #f0cb94;
+	background-color: #f7bb611f;
+}
+/* 반려동물 등록 타이틀 */
+.boardtitle>h2{
+	line-height: 1.4;
+	text-align: center;
+	font-size: 32px;
+	color: #f1c264;
+	font-weight: 700;
+	margin-bottom: 15px;
+}
+
+/* input박스 설정  uptxtbox참고*/
+.petaddinput{
+	background-color: #ffffffe3;
+	vertical-align: top;
+	height: 45px;
+	color:#555;
+	transition: 0.3s;
+	margin: 3px;
+	border:transparent;
+	border-radius: 40px;
+	max-width: 400px;
+	width: 100%;
+	padding:2px;
+	padding-left: 10px;
+}
+.petaddinput:hover{
+	background: #e4bc6086 !important;
+    border-style:  solid rgb(239, 199, 120,1)  !important;
+    color: #ffffffe3;
+}
+
+.petsymptominput:hover{
+	background: #e4bc6086 !important;
+    border-style:  solid rgb(239, 199, 120,1)  !important;
+    color: #ffffffe3;
+}
+/* select option에 hover색 지정 */
+.optioncolor > section > option:hover {
+	background-color: #eecd90;
+}
+
+/* 저장버튼 */
+.btnsave {
+	all:unset;
+		line-height: 1.5;
+		color: #fff;
+		font-size: 18px;
+		width: 240px;
+		height: 50px;
+		font-weight: 700;
+		background: rgb(239, 199, 120);
+		cursor: pointer;
+		border-radius: 40px;
+
+	}
+/* 다시 작성버튼 */
+.btnrewrite {
+	all:unset;
+		line-height: 1.5;
+		color: #fff;
+		font-size: 18px;
+		width: 240px;
+		height: 50px;
+		font-weight: 700;
+		background-color: rgb(235, 168, 130);
+		cursor: pointer;
+		border-radius: 40px;
+
+}
+
+textarea {
+    width: 100%;
+    height: 6.25em;
+    border: none;
+    resize: none;
+	background-color: #ffffffe3;
+	vertical-align: top;
+	color:#555;
+	transition: 0.3s;
+	margin: 3px;
+	border:transparent;
+	border-radius: 40px;
+	padding:14px;
+  }

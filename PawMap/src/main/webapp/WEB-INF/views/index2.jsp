@@ -124,7 +124,7 @@ pageEncoding="UTF-8"%>
                       <!-- a태그 스타일이 안먹어 -->
                       <a href="/pawmap" id="nav-a" class="nav-link text-uppercase font-weight-bold" >Home </a></li>
                     <li class="nav-item">
-                      <a href="about.html" id="nav-a" class="nav-link text-uppercase font-weight-bold">회사소개</a></li>
+                      <a href="/pawmap/about" id="nav-a" class="nav-link text-uppercase font-weight-bold">회사소개</a></li>
                     <li class="nav-item">
                       <a href="/pawmap/search" id="nav-a" class="nav-link text-uppercase font-weight-bold">병원찾기</a></li>
                     <li class="nav-item">
@@ -169,12 +169,12 @@ pageEncoding="UTF-8"%>
             <sec:authorize access="isAuthenticated()">
               <li class="side-menu">
                 <a href="/pawmap/mypage">
-                  <p id="attr-nav-p">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
+                  <p id="attr-nav-i">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
                 </a>
               </li>
               <li class="side-menu">
                 <a href="/pawmap/logout">
-                  <p id="attr-nav-p">로그아웃</p>
+                  <p id="attr-nav-i">로그아웃</p>
                 </a>
               </li>
             </sec:authorize>
