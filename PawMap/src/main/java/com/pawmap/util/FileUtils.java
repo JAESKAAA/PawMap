@@ -47,7 +47,7 @@ public class FileUtils {
 		Iterator<String> iterator = mhsr.getFileNames();
 //		System.out.println("fileutils의 getFileNames=============" + mhsr.getFileNames());
 		while(iterator.hasNext()) {
-			
+			System.out.println("업로드 탔음!!");
 			List<MultipartFile> list = mhsr.getFiles(iterator.next());
 			System.out.println("list.size()======================" + list.size());
 			System.out.println("seq==============================" + boardSeq);

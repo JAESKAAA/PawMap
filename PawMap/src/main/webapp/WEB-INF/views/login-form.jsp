@@ -1,129 +1,219 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Basic -->
 
-<%@ include file="layout/header.jsp" %>
 
- 
-    <!---------------------------------- 로그인 폼 시작 -------------------------->
+	<sec:authorize access="isAuthenticated()">
+		<sec:authentication property="principal" var="principal"/>
+	</sec:authorize>
 
-    <div class="container-fluid">
-      <div class="row justify-content-center">
-        <div class="col-12 col-sm-10 col-md-12 col-lg-11 col-xl-10">
-          <div class="card-loginForm d-flex mx-auto my-5">
-            <div class="row">
-              <div class="col-md-5 col-sm-12 col-xs-12 c1-loginForm p-5">
-                <div class="row mb-5 m-3">
-                  <img src="" width="70vw" height="55vh" alt="" />
-                </div>
-                <img
-                  src="images/gyul_animals_img-001.jpg"
-                  width="250vw"
-                  height="120vh"
-                  class="mx-auto d-flex"
-                  style="border-radius: 30px"
-                />
-                <div class="row justify-content-center">
-                  <div
-                    class="
-                      w-75
-                      mx-md-5 mx-1 mx-sm-2
-                      mb-5
-                      mt-4
-                      px-sm-5 px-md-2 px-xl-1 px-2
-                    "
-                  >
-                    <h1 class="wlcm">Welcome PawMap</h1>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-7 col-sm-12 col-xs-12 c2 px-5 pt-5">
 
-                
-                  <!-- submitLoginForm : 아이디 공백 확인을 위한 메소드   -->
+  <head>
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-                <form
-                  action="/pawmap/login"
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Site Metas -->
+    <title>PawMap - 우리집 주변 동물병원 찾기</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-login.css">
+	    <!-- 몌 커스텀 css -->
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-mye.css">
+		<!-- Bootstrap CSS -->
+		<!-- <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" /> -->
+		<!-- Site CSS -->
+		<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+
+	<style>
+		body { padding: 0px; margin: 0px; }
+    /* 배경영상 설정 */
+		.jb-box { width: auto; height: 100%; z-index:0; overflow: hidden;margin: 0px auto; position: relative; }
+		video { width: 100%; }
+		.jb-text { position: absolute; top: 1%; width: 100%; z-index: 1; background-color: rgba(58, 58, 58, 0.26); background-size: 130%;}
+	  
+	 /* 헤더 스타일 */
+	 header,
+      nav {
+        background: rgba(0, 0, 0, 0);
+        height: fit-content;
+		font-size: large;
+
+      }
+      #slides-shop {
+        height: 100vh;
+      }
+	 .fixed-top {
+     height: 100px;
+	 }
+	 .attr-nav > .liAlign >li {
+		 position: relative;
+		 
+	 }
+	 .attr-nav {
+		text-align: right;
+		
+	 }
+   
+	 
+	 </style>
+
+	</head>
+	<!-- Header 시작 -->
+	<header id="header" class="main-header header"  style="z-index: 100; max-height: 80%;">
+		<nav class="
+			navbar navbar-expand-lg 
+			fixed-top py-3">
+			<div class="container col-lg-9">
+			  <div class="navbar-header">
+				<a href="/pawmap" class="navbar-brand text-uppercase font-weight-bold">PAWMAP</a>
+				  <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
+				</div>
+				
+		   
+		  </div>
+			
+		  
+			 <div class="attr-nav col-lg-3">
+			  <ul class="liAlign">
+				<li class="search" style="display: none">
+				  <a href="#"><i class="fa fa-search"></i></a>
+				</li>
+				<sec:authorize access="isAnonymous()">
+				  <li class="side-menu">
+					
+					</a>
+				  </li>
+				  <li class="side-menu">
+					<a href="/pawmap/joinForm">
+					  <p id="attr-nav-p">회원가입</p>
+					</a>
+				  </li>
+				</sec:authorize>
+				<sec:authorize access="isAuthenticated()">
+				  <li class="side-menu">
+					<a href="/pawmap/mypage">
+					  <p id="attr-nav-p">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
+					</a>
+				  </li>
+				  <li class="side-menu">
+					<a href="/pawmap/logout">
+					  <p id="attr-nav-p">로그아웃</p>
+					</a>
+				  </li>
+				</sec:authorize>
+				<sec:authorize access="hasRole('ROLE_ADMIN')">
+				  <li class="side-menu">
+					<a href="/pawmap/admin">
+					  <p id="attr-nav-p">관리자 페이지</p>
+					</a>
+				  </li>
+				</sec:authorize>
+			  </ul>
+			</div>
+		   
+		  </div>
+		 
+		</nav>
+	  </header>
+	  <!-- Header 끝 부분 -->
+
+	<body class="img js-fullheight" >
+		<!-- style="background-image: url(../../../resources/static/images/bg.jpg);" -->
+		<div class="jb-box">
+			<video muted autoplay loop>
+			  <source src="${pageContext.request.contextPath}/videos/Children - 77640.mp4" type="video/mp4">
+			  <strong>Your browser does not support the video tag.</strong>
+			</video>
+		<section class="jb-text ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section"></h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+		      	<h3 class="mb-4 text-center"> <strong>Welcome PawMap</strong></h3>
+		      	<form
+				  action="/pawmap/login"
                   method="post"
-                  class="px-5 pb-5 login-form"
+                  class="px-5 pb-5 login-form signin-form"
 
                   onsubmit="submitLoginForm(this);return false;"
+				  >
+		      		<div class="form-group login-input" >
+		      			<input type="text" class="form-control" name="userId" placeholder="userId" required>
+		      		</div>
+	            <div class="form-group login-input" ">
+	              <input  id="password-field" type="password" class="form-control"  name="userPassword" placeholder="Password" required>
+	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+	            </div>
+	            <div class="form-group">
+	            	<button type="submit" class="form-control btn btn-primary submit px-3">로그인</button>
+	            </div>
+	            <div class="form-group d-md-flex">
+	            	<div class="w-50">
+		            	<label class="checkbox-wrap checkbox-primary">암호기억하기
+									  <input type="checkbox" checked>
+									  <span class="checkmark"></span>
+									</label>
+								</div>
+								<div class="w-50 text-md-right">
+									<a href="/pawmap/searchIdPw" style="color: #fff">비밀번호찾기</a>
+								</div>
+	            </div>
+	          </form>
+	          <p class="w-100 text-center" style="padding-bottom: 15px; padding-top: 15px;">&mdash; 소셜 계정으로 이용하기  &mdash;</p>
+	         
+			  <div class="social d-flex text-center" style="padding-left: 70px;">
+				<a href="/pawmap/oauth2/authorization/kakao" class=" circle ion-logo-kakaotalk"></a>
+				<a href="/pawmap/oauth2/authorization/naver" class="circle ion-logo-naver"></a>
+	          	<a href="/pawmap/oauth2/authorization/google" class=" circle ion-logo-google"></a>
+	          	<a href="/pawmap/oauth2/authorization/facebook" class="circle ion-logo-facebook"></a>
+	          </div>
+		      </div>
+				</div>
+				
+			</div>
+		</div>
+	</section>
+</div>
 
-
-                >
-                  <div class="d-flex">
-                    <img
-                      src="images/gyul_cat_img_001.jpg"
-                      height="22px"
-                      width="22px"
-                      alt=""
-                      class="mr-3 mt-2"
-                      style="border-radius: 25px"
-                    />
-                    <h3 class="font-weight-bold">Log in</h3>
-                  </div>
-                  <input
-                    class="login-input"
-                    type="text"
-                    name="userId"
-                    placeholder="User"
-                  />
-                  <input
-                    class="login-input"
-                    name="userPassword"
-                    placeholder="Password"
-                  />
-                  <button
-                    type="submit"
-                    class="login-btn text-white text-weight-bold"
-                  >
-                    로그인
-                  </button>
-                  <a
-                    href="/pawmap/oauth2/authorization/google"
-                    class="login-btn text-white text-weight-bold"
-                  >
-                    <i class="fab fa-google"></i> 구글 로그인
-                  </a>
-                  <a
-                    href="/pawmap/oauth2/authorization/facebook"
-                    class="login-btn text-white text-weight-bold"
-                  >
-                    <i class="fab fa-facebook"></i> 페이스북 로그인</a
-                  >
-                  <a
-                    href="/pawmap/oauth2/authorization/naver"
-                    class="login-btn text-white text-weight-bold"
-                  >
-                    네이버 로그인
-                  </a>
-                  <a
-                    href="/pawmap/oauth2/authorization/kakao"
-                    class="login-btn text-white text-weight-bold"
-                  >
-                    카카오 로그인
-                  </a>
-                  <div>
-
-
-                    <a href="/pawmap/searchIdPw" class="btn-other" id="forgot">
-
-                      비밀번호를 잊어버렸습니까?</a
-                    >
-                  </div>
-                  <div>
-                    <a href="/pawmap/joinForm" class="btn-other" id="register"
-                      >회원가입</a
-                    >
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!---------------------------------- 로그인 폼 종료 -------------------------->
+	<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+  <script src="${pageContext.request.contextPath}/js/popper.js"></script>
+  <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+  <script src="${pageContext.request.contextPath}/js/main.js"></script>
+	  <!-- 페이지 스크롤 스크립트 -->
+	  <script>
+		$(function () {
+	  $(window).on('scroll', function () {
+		  if ( $(window).scrollTop() > 10 ) {
+			  $('#header').addClass('active');
+		  } else if( $(window).s){
+  
+		  } else {
+			  $('#navbar').removeClass('active');
+		  }
+	  });
+  });
+   </script>
+	</body>
+</html>
 
    <%@ include file="layout/footer.jsp" %>
-

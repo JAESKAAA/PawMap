@@ -19,7 +19,6 @@ pageEncoding="UTF-8"%>
     <hr class="line-paint">
 
     <!-- 게시판 상세 폼 시작 -->
-
     <div class="about-box-main">
         <div class="container">
             <div class="row board-info">
@@ -38,20 +37,26 @@ pageEncoding="UTF-8"%>
                     <h5 class=" mb-5 board_seq" id="freeBoardSeq">게시글 번호 : ${getFreeBoard.boardSeq} ${getNanumBoard.boardSeq}</h5>
                     <input type="hidden" value="${getNanumBoard.boardSeq}" id="nanumBoardSeq" />
                 </div>
+                <div class="col-lg-6">
+                  <h5 class=" mb-5 board_seq" id="freeBoardSeq">조회수 : ${getFreeBoard.cnt}</h5>
+              </div>
             </div>
 
             
             <!-- 현재 파일 이름이 한글이면 출력이 안되는 오류 있음 -->
+
             <c:if test="${getFreeBoard.boardType eq 'f' }">
             <c:choose>
               <c:when test="${empty freeBoardFileList}">
                 <h1>테스트용 :: 파일이 없음</h1>
+
               </c:when>
               <c:otherwise>
                 <c:forEach items="${freeBoardFileList}" var="fileList" varStatus="i">
                   <img class="img-fluid" src="${pageContext.request.contextPath}/upload/${fileList.originalFileName}" alt="" />
                 </c:forEach>
               </c:otherwise>
+
               </c:choose>
               </c:if>
 
@@ -68,6 +73,7 @@ pageEncoding="UTF-8"%>
                   </c:otherwise>
                   </c:choose>
                   </c:if>
+
 
 
 
@@ -93,6 +99,7 @@ pageEncoding="UTF-8"%>
               </div>
               <!-- 자유게시판일경우 -->
               <c:if test="${getFreeBoard.boardType eq 'f' }">
+
               <div class="col-lg-6 mt-5">
                 <button onclick="location.href='/pawmap/board/getFreeBoardList'" type="button" class="btn btn-secondary">목록으로</button>
               <c:if test="${getFreeBoard.userId == principal.user.userId}">
@@ -133,7 +140,6 @@ pageEncoding="UTF-8"%>
                 <div class="card-body" style="padding: 1px;">
                     <div class="d-flex flex-start">
                         <form action="" style="width: 750px;">
-
                           <input type="hidden" name="userId" id="userId" value="${principal.user.userId}">
                           <input type="hidden" name="boardSeq" id="freeBoardSeqHidden" value="${getFreeBoard.boardSeq}">
                           <input type="hidden" name="boardType" id="boardTypeForReply" value="${getFreeBoard.boardType}">
@@ -153,13 +159,26 @@ pageEncoding="UTF-8"%>
 
                                 </div>
                                 <div class="d-flex flex-start w-100">
-                                    <img
-                                        class="rounded-circle shadow-1-strong  mr-5"
-                                        src="https://mdbootstrap.com/img/Photos/Avatars/img%20(21).jpg"
-                                        alt="avatar"
-                                        width="65"
-                                        height="65"
-                                    />
+                                  <c:choose>
+                                    <c:when test="${empty principal.user.userProfile || empty principal}">
+                                      <img
+                                        class="rounded-circle shadow-1-strong me-3"
+                                        src="${pageContext.request.contextPath}/upload/noprofileuser.jpg"
+                                        alt="img"
+                                        width="40"
+                                        height="40"
+                                      />   
+                                    </c:when>
+                                    <c:otherwise>
+                                      <img
+                                          class="rounded-circle shadow-1-strong  mr-5"
+                                          src="${pageContext.request.contextPath}/upload/${principal.user.userProfile}"
+                                          alt="avatar"
+                                          width="65"
+                                          height="65"
+                                      />
+                                    </c:otherwise>
+                                  </c:choose>
                                     <div class="w-100">
                                         <div class="form-outline">
 
@@ -192,15 +211,28 @@ pageEncoding="UTF-8"%>
 
               <c:forEach var="reply" items="${freeBoardReplyList}" varStatus="i" >
                 <div class="card mb-3">
-                  
                   <div class="card-body">
                     <div class="d-flex flex-start">
-                      <img
-                      class="rounded-circle shadow-1-strong me-3"
-                      alt="img"
-                      width="40"
-                      height="40"
-                      />
+                      <c:choose>
+                        <c:when  test="${empty reply.user_profile}">
+                          <img
+                          class="rounded-circle shadow-1-strong me-3"
+                          src="${pageContext.request.contextPath}/upload/noprofileuser.jpg"
+                          alt="img"
+                          width="40"
+                          height="40"
+                          />
+                        </c:when>
+                        <c:otherwise>
+                          <img
+                          class="rounded-circle shadow-1-strong me-3"
+                          src="${pageContext.request.contextPath}/upload/${reply.user_profile}"
+                          alt="img"
+                          width="40"
+                          height="40"
+                          />
+                        </c:otherwise>
+                      </c:choose>
                       <div class="w-100">
                         <div class="d-flex justify-content-between align-items-center mb-3">
                           <h6 class="text-secondary fw-bold mb-0 ml-2 writer">
@@ -281,9 +313,11 @@ pageEncoding="UTF-8"%>
 
 
 
+
               <!-- ===============댓글 리스트 출력 종료================== -->
 
 
+<<<<<<< HEAD
 
 
     <!-- 나눔게시판일경우 -->
@@ -438,8 +472,6 @@ pageEncoding="UTF-8"%>
             </div>
           </c:forEach>
           </c:if>
-
-
             </div>
           </div>
         </div>

@@ -8,12 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pawmap.VO.BoardVO;
-
 import com.pawmap.VO.CommentVO;
-
 import com.pawmap.VO.Criteria;
-import com.pawmap.VO.FileVO;
-import com.pawmap.VO.UserVO;
 import com.pawmap.mapper.BoardMapper;
 import com.pawmap.service.BoardService;
 
@@ -23,12 +19,10 @@ public class BoardServiceImpl implements BoardService {
 
 	@Autowired
 	BoardMapper boardMapper;
-	
 
 	@Override
 	public void insertFreeAndNanumBoard(BoardVO vo) {
 		boardMapper.insertFreeAndNanumBoard(vo);
-		System.out.println("BoardServiceImpl :insertFreeAndNanumBoard()");
 	}
 
 	@Override
@@ -43,7 +37,6 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public BoardVO getFreeBoard(int boardSeq) {
-		System.out.println("BoardServiceImpl 의 boardSeq ======"+boardSeq);
 		return boardMapper.getFreeBoard(boardSeq);
 	}
 
@@ -140,5 +133,48 @@ public List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain() {
 	return boardMapper.getLatelyBoardListForShelterBoardMain();
 }
 	
+
+	@Override
+	public void insertMedicalRecord(BoardVO vo) {
+		boardMapper.insertMedicalRecord(vo);
+	}
+
+	@Override
+	public List<BoardVO> getMyMedicalRecordListById(String userId) {
+		return boardMapper.getMyMedicalRecordListById(userId);
+	}
+
+	@Override
+	public List<BoardVO> getHospitalMedicalRecordList(String date, String comNum) {
+		return boardMapper.getHospitalMedicalRecordList(date,comNum);
+	}
+
+	@Override
+	public List<HashMap<String, Object>> getSeparateMedicalRecordForClient(String comNum, String reservationDate, String scheduleTime) {
+		return boardMapper.getSeparateMedicalRecordForClient(comNum, reservationDate, scheduleTime);
+	}
+
+	@Override
+	public int getMedicalBoardSeq() {
+		return boardMapper.getMedicalBoardSeq();
+		
+	}
+
+	@Override
+	public void updateMedicalRecord(BoardVO vo) {
+		boardMapper.updateMedicalRecord(vo);
+	}
+
+	@Override
+	public List<BoardVO> getMyMedicalRecordForAllowReview(String userId, String hospitalComNum) {
+		return boardMapper.getMyMedicalRecordForAllowReview(userId,hospitalComNum);
+	}
+
+	@Override
+	public void updateFreeBoardCnt(int boardSeq) {
+		boardMapper.updateFreeBoardCnt(boardSeq);
+	}
+
+
 }
 

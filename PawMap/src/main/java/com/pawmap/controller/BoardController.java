@@ -1,6 +1,7 @@
 package com.pawmap.controller;
 
 
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -54,12 +55,15 @@ public class BoardController {
 	public String insertFreeAndNanumBoard(BoardVO vo, HttpServletRequest request,
 			MultipartHttpServletRequest mhsr) throws IOException  {
 
+
 		int boardSeq=0;
 		if(vo.getBoardType().equals("f")) {
 			boardSeq = boardService.getFreeBoardSeq();
 		}else {
 			 boardSeq = boardService.getNanumBoardSeq();
 		}
+
+	
 		String userId = vo.getUserId();
  		
 		System.out.println("boardSeq=========="+boardSeq);
@@ -70,6 +74,9 @@ public class BoardController {
 	
 		List<FileVO> fileList = fileUtils.parseFileInfo(boardSeq, request, mhsr,userId);
 		
+
+		System.out.println("insertFreeAndNanumBoard()탐");
+
 		if(CollectionUtils.isEmpty(fileList) == false) {
 			
 			if(vo.getBoardType().equals("f")) {
@@ -119,12 +126,15 @@ public class BoardController {
 		List<HashMap<String,Object>> latelyBoardListForMain = boardService.getLatelyBoardListForBoardMain();
 		
 		System.out.println("getFreeBoardList 의 latelyBoardListForMain ============"+ latelyBoardListForMain);
+
 		
 		model.addAttribute("freeBoardList", boardService.getFreeBoardList(vo,cri));
 		model.addAttribute("latelyBoardListForMain", latelyBoardListForMain);
 		model.addAttribute("pageMaker", new PageVO(cri, total));
 		model.addAttribute("keyword", vo.getKeyword());
 		model.addAttribute("keywordType", vo.getKeywordType());
+		
+		System.out.println(boardService.getFreeBoardList(vo,cri));
 		
 		return "board-free_결";
 				
@@ -133,15 +143,15 @@ public class BoardController {
 	@GetMapping("/board/getFreeBoard")
 	public String getFreeBoard(@RequestParam int boardSeq, Model model) {
 		System.out.println("getFreeBoard============ 탐");
-		System.out.println("getFreeBoard boardSeq ========== "+boardSeq);
 		
 		// 댓글 리스트로 가져오기
 		List<HashMap<String,Object>> replyList = commentService.getReplyListByBoardSeq(boardSeq);
 
 		// 파일리스트 가져오기
 		List<FileVO> fileList = fileService.getFileListByFreeBoardSeq(boardSeq);
-		
-		System.out.println("fileList ============== "+ fileList);
+
+		// 조회수 늘리기
+		boardService.updateFreeBoardCnt(boardSeq);
 		
 
 		model.addAttribute("freeBoardFileList",fileList);
@@ -161,6 +171,7 @@ public class BoardController {
 		boardService.deleteFreeBoardBySeq(boardSeq);
 		commentService.deleteCommentsBySeq(boardSeq);
 		fileService.deleteFileByBoardSeq(boardSeq);
+
 		
 	}
 	
@@ -315,10 +326,7 @@ public class BoardController {
 		return "redirect:getNanumBoard?boardSeq="+boardSeq;
 		
 	}
-	
-	
-	
-	
+
 	@RequestMapping("/board/saperateDeleteFileOnFreeBoard")
 	public String saperateDeleteFile(int fileSeq, int boardSeq) {
 		System.out.println(fileSeq);
@@ -331,11 +339,9 @@ public class BoardController {
 		
 	}
 	
-	
-	
-	
+
 	// 자유게시판 파일 인서트======================================================
-	
+
 	@RequestMapping("/board/updateFreeBoardFormInsertFiles")
 	public String updateFreeBoardFormInsertFiles(String userId,HttpServletRequest request,
 			MultipartHttpServletRequest mhsr, int boardSeq) throws IOException {
@@ -352,6 +358,7 @@ public class BoardController {
 		return "redirect:updateFreeAndNanumBoardForm?boardSeq="+boardSeq;
 		
 	}
+
 
 	// 나눔게시판 컨트롤러
 	@RequestMapping("/board/getNanumBoardList")
@@ -375,6 +382,7 @@ public class BoardController {
 			System.out.println("다릅니다.");
 			cri.setPageNum(1);
 		}
+
 
 		keyword = vo.getKeyword();
 		
@@ -429,7 +437,8 @@ public class BoardController {
 		System.out.println(boardSeq);
 		System.out.println("saperateDeleteFileOnNanum 진입======");
 		
-		fileService.deleteOneFile(fileSeq,boardSeq);
+		fileService.deleteNanumFile(fileSeq,boardSeq);
+		
 		
 		return "redirect:updateNanumBoardForm?boardSeq="+boardSeq;
 		

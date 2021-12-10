@@ -10,7 +10,6 @@ import com.pawmap.VO.Criteria;
 public interface BoardService {
 
 	
-	
 	void insertFreeAndNanumBoard(BoardVO vo);
 
 	List<BoardVO> getFreeBoardList(BoardVO vo, Criteria cri);
@@ -52,8 +51,21 @@ public interface BoardService {
 	List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain();
 
 
-	
+	void insertMedicalRecord(BoardVO vo);
 
-	
+	List<BoardVO> getMyMedicalRecordListById(String userId);
+
+	List<BoardVO> getHospitalMedicalRecordList(String date, String comNum);
+
+	List<HashMap<String, Object>> getSeparateMedicalRecordForClient(String comNum, String reservationDate, String scheduleTime);
+
+	int getMedicalBoardSeq();
+
+	void updateMedicalRecord(BoardVO vo);
+
+	List<BoardVO> getMyMedicalRecordForAllowReview(String userId, String hospitalComNum);
+
+	void updateFreeBoardCnt(int boardSeq);
+
 	
 }

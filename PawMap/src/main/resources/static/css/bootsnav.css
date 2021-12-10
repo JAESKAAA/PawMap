@@ -218,7 +218,7 @@ li.close-full-menu{
 
 .attr-nav > ul > li > a{
     color: #010101;
-    display: block;
+    
     padding: 28px 15px;
     position: relative;
 }
@@ -1273,7 +1273,7 @@ nav.navbar.bootsnav ul.dropdown-menu.megamenu-content .content ul.menu-col li a:
     /* Tabs
     =================================*/ 
     nav.navbar.bootsnav .megamenu-content.tabbed{
-        padding-left: 0 !mportant;
+        padding-left: 0 !important;
     }
     
     nav.navbar.bootsnav .tabbed > li{

@@ -59,11 +59,6 @@ pageEncoding="UTF-8"%>
     </form>
 
 
-
-
-
-
-
     <!-- <form action="FileUploadServlet" method="post" enctype="multipart/form-data">
         Select File to Upload:<input type="file"  name="fileName" multiple/>
         <br>

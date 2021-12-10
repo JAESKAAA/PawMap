@@ -16,10 +16,6 @@ public interface FileService {
 
 	void deleteFileByBoardSeq(int boardSeq);
 
-	void deleteOneFile(int fileSeq, int boardSeq);
-
-	void deleteTargetFile(FileVO vo);
-
 	void insertUpdateOneFile(FileVO vo);
 
 	void deleteFileByBoardSeqOnShelterSeq(int boardSeq);
@@ -35,4 +31,41 @@ public interface FileService {
 
 	void insertShelterFileList(List<FileVO> fileList);
 
+	void insertPetFileList(List<FileVO> fileList);
+
+	List<FileVO> getFileListByUserId(String userId);
+
+	void deletePetFile(int petSeq, String userId);
+
+	void updatePetFileList(List<FileVO> fileList);
+
+	void insertMedicalFileList(List<FileVO> fileList);
+
+	List<FileVO> getFileListByMedicalBoardSeq(int boardSeq);
+
+	void deleteOneFileOnMedicalRecord(int fileSeq, int boardSeq);
+
+	void insertUserProfile(List<FileVO> fileList);
+
+	void deleteProfile(int userSeq, String userType, String userId);
+
+	FileVO getPetFile(int petSeq, String userId);
+
+	void insertPetFileOnUpdateForm(List<FileVO> fileList);
+
+	public void insertVetFileList(List<FileVO> fileList);
+
+	void updateVetFileList(List<FileVO> fileList);
+
+	//기존 파일정보 가져오기위한 메서드
+	public FileVO vetInfoFile(FileVO vo);
+
+	public void deleteVetFile(int vetSeq, String boardType, String userId);
+
+	void deleteOneFile(int fileSeq, int boardSeq);
+
+	void deleteNanumFile(int fileSeq, int boardSeq);
+
+	void deleteShelterFile(int fileSeq, int boardSeq);
+	
 }

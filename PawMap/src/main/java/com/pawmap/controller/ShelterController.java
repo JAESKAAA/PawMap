@@ -158,7 +158,7 @@ public class ShelterController {
 		System.out.println(boardSeq);
 		System.out.println("separateDeleteFileOnShelectForm 통과===================");
 		
-		fileService.deleteOneFile(fileSeq,boardSeq);
+		fileService.deleteShelterFile(fileSeq,boardSeq);
 		
 		System.out.println("separateDeleteFileOnShelectForm의 fileSeq,boardSeq=====>" + fileSeq + " / " +boardSeq);
 		

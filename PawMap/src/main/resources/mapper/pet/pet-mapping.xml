@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.pawmap.mapper.PetMapper">
+
+  
+  	
+  	<resultMap type="com.pawmap.VO.PetVO" id="petList">
+  		<id property="petSeq" column="pet_seq"/>
+  		<result property="userId" column="user_id"/>
+  		<result property="name" column="name"/>
+  		<result property="gender" column="gender"/>
+  		<result property="age" column="age"/>
+  		<result property="petType" column="pet_type"/>
+  		<result property="petTypeDetail" column="pet_type_detail"/>
+  		<result property="symptom" column="symptom"/>
+  	</resultMap>
+  	
+
+
+	<sql id="petColumns">
+		  PET_SEQ
+		,USER_ID
+		,NAME
+		,GENDER
+		,AGE
+		,PET_TYPE
+		,PET_TYPE_DETAIL
+		,SYMPTOM
+		,STATUS
+		
+	</sql>
+
+	<insert id="insertPetInfo" parameterType="com.pawmap.VO.PetVO">
+		INSERT INTO PET (
+			<include refid="petColumns" />
+		) VALUES (
+			 (SELECT IFNULL(MAX(PET_SEQ), 0) + 1 FROM PET A WHERE user_id=#{userId} )
+			,#{userId}
+			,#{name}
+			,#{gender}
+			,#{age}
+			,#{petType}
+			,#{petTypeDetail}
+			,#{symptom}
+			,#{status}
+
+		)
+	</insert>
+
+	<select id="selectPetInfo" parameterType="int" resultType="com.pawmap.VO.PetVO">
+		SELECT
+			<include refid="petColumns" />
+		FROM
+			PET
+		WHERE
+			status = 'N'
+		AND
+			PET_SEQ = #{petSeq}
+		ORDER BY PET_TYPE DESC LIMIT 1
+	</select>
+
+	<update id="updatePetInfo" parameterType="com.pawmap.VO.PetVO">
+		UPDATE PET
+		SET
+			 
+			 NAME = #{name}
+			, GENDER = #{gender}
+			, AGE = #{age}
+			, PET_TYPE = #{petType}
+			, PET_TYPE_DETAIL = #{petTypeDetail}
+			, SYMPTOM = #{symptom}
+			, STATUS = #{status}
+			
+		WHERE
+			PET_SEQ = #{petSeq}
+		AND 
+			user_id = #{userId}
+	</update>
+
+	<delete id="deletePetInfo">
+		DELETE FROM PET
+		WHERE
+			PET_SEQ = #{petSeq}
+		AND
+			user_id =#{userId}		
+	
+	</delete>
+
+	<select id="getPetList" parameterType="com.pawmap.VO.PetVO" resultType="HashMap">
+		SELECT	
+			A.PET_SEQ AS petSeq,
+			A.USER_ID AS userId,
+	        A.NAME AS name,
+	        A.GENDER AS gender,
+	        A.AGE AS age,
+	        A.PET_TYPE AS petType,
+	        A.PET_TYPE_DETAIL AS petTypeDetail,
+	        A.SYMPTOM AS symptom,
+	        A.STATUS AS status,
+	        B.ORIGINALFILENAME AS originalFileName
+		FROM pawmap.pet A
+			 LEFT OUTER JOIN (SELECT * FROM FILE  WHERE board_type='p' AND user_id = #{userId}) AS B
+	         ON A.PET_SEQ = B.file_seq
+		WHERE
+				A.STATUS = 'N'
+			AND
+				A.USER_ID = #{userId}	
+			ORDER BY
+				A.PET_SEQ 
+	</select>
+	
+	<select id="getPetSeq" resultType="int">
+		<!-- SELECT IFNULL(MAX(pet_seq) ,0) + 1
+			FROM PET
+		 	WHERE USER_ID = #{user_id} -->
+		 SELECT IFNULL(MAX(pet_seq) ,0) + 1
+			FROM pet
+            WHERE user_id = #{userId}
+	</select>
+
+
+</mapper>

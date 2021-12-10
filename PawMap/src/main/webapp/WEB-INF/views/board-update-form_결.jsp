@@ -146,7 +146,6 @@ pageEncoding="UTF-8"%>
                     </form> 
                 </c:when>
             </c:choose>
-            
 
             <!-- 파일 삭제만 가능.... -->
             <c:choose>
