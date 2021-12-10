@@ -157,6 +157,7 @@ pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
                 <div class="control-group" id="fields">  
                   <div class="controls">  
                     <div class="entry input-group upload-input-group">  
+                      <img class="img-fluid avatar img-circle img-thumbnail" src="${pageContext.request.contextPath}/upload/${user.userProfile}" alt="">
                       <h5>${principal.user.userProfile}</h5> 
                       <input type="hidden" name="userSeq" value="${principal.user.userSeq}">
                       <input type="hidden" name="userType" value="${principal.user.userType}">

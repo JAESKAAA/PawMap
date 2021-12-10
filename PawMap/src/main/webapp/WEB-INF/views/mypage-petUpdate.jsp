@@ -22,8 +22,8 @@ pageEncoding="UTF-8"%>
             <!-- 파일이 있는 상태에서는 update쿼리를 타도록  -->
                 <c:if test="${!empty fileVO}" >
                     <div class="col-sm-3">
-                        <form id="upload_form" action="updateVetInfoFormInsertFiles"  method="POST" enctype="multipart/form-data">       
-                            <img class="img-fluid avatar img-circle img-thumbnail" src="${pageContext.request.contextPath}/upload/${petInfoFileList.originalFileName}" alt="">      
+                        <form id="upload_form" action="updatePetInfoFormInsertFiles"  method="POST" enctype="multipart/form-data">       
+                            <img class="img-fluid avatar img-circle img-thumbnail" src="${pageContext.request.contextPath}/upload/${fileVO.originalFileName}" alt="">      
                                 
                             <input id="uploader" type="file" class="text-center center-block file-upload" name="uploadPetFiles" >   
                             
@@ -37,7 +37,7 @@ pageEncoding="UTF-8"%>
                 </c:if>
                 <c:if test="${empty fileVO}">
                     <div class="col-m-12">
-                        <form action="insertVetFileOnUpdateForm" method="POST" enctype="multipart/form-data">
+                        <form action="insertPetFileOnUpdateForm" method="POST" enctype="multipart/form-data">
                             <div class="text-center">
                                     
                                 <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
