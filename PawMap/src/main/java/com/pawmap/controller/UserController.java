@@ -1,6 +1,7 @@
 package com.pawmap.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,10 +31,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-
 import com.pawmap.VO.Criteria;
-import com.pawmap.VO.PageVO;
 import com.pawmap.VO.FileVO;
+import com.pawmap.VO.PageVO;
 import com.pawmap.VO.UserVO;
 import com.pawmap.configuration.auth.PrincipalDetails;
 import com.pawmap.configuration.auth.PrincipalDetailsService;
@@ -519,17 +519,19 @@ public class UserController {
 			}
 		}
 		
-		//	프로필 삭제 메서드
-		@RequestMapping("/mypage/deleteProfile")
-		public String deleteProfile(int userSeq, String userType, String userId) {
-			
-			System.out.println("userSeq === "+userSeq);
-			System.out.println("userType === "+userType);
-			System.out.println("userId === "+userId);
-			fileService.deleteProfile(userSeq,userType,userId);
-			userService.updateUserProfileNull(userSeq,userType,userId);
-			return "redirect:/mypage/userInfo?userId="+userId;
-		}
+		   //   프로필 삭제 메서드
+	      @RequestMapping("/mypage/deleteProfile")
+	      public String deleteProfile(int userSeq, String userType, String userId) throws IOException {
+	         
+	         System.out.println("userSeq === "+userSeq);
+	         System.out.println("userType === "+userType);
+	         System.out.println("userId === "+userId);
+	         fileService.deleteProfile(userSeq,userType,userId);
+	         userService.updateUserProfileNull(userSeq,userType,userId);
+	         String encodedParam = URLEncoder.encode(userId, "UTF-8");
+
+	         return "redirect:/mypage/userInfo?userId="+encodedParam;
+	      }
 
 		@GetMapping("/getUserByJson")
 		@ResponseBody

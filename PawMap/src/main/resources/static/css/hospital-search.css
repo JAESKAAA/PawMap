@@ -264,3 +264,6 @@ h2 {
   margin-top: -6rem;
   margin-bottom: 5rem;
 }
+.tablerow:hover {
+  background-color: #f7bb611f;
+}

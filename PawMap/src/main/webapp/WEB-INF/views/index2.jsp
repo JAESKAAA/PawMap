@@ -46,7 +46,6 @@ pageEncoding="UTF-8"%>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-jaeseok.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-gyul.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-silbia.css">
       <!-- 테이블 부분 css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footable.bootstrap.css" />
@@ -168,12 +167,12 @@ pageEncoding="UTF-8"%>
             <sec:authorize access="isAuthenticated()">
               <li class="side-menu">
                 <a href="/pawmap/mypage">
-                  <p id="attr-nav-p">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
+                  <p id="attr-nav-i">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
                 </a>
               </li>
               <li class="side-menu">
                 <a href="/pawmap/logout">
-                  <p id="attr-nav-p">로그아웃</p>
+                  <p id="attr-nav-i">로그아웃</p>
                 </a>
               </li>
             </sec:authorize>

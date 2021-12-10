@@ -340,7 +340,7 @@
 
 /* 회원가입메인(병원,일반) */
 .u_card:hover{
-    border: 6px solid #EFC778 ;
+    border: 6px solid #f7ba61;
 	background-color: #efc7781c;
 }
 .u_card{
