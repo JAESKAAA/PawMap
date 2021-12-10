@@ -17,7 +17,8 @@ public class PageVO {
 		this.endPage = (int)(Math.ceil(cri.getPageNum()/10.0)) *10;
 		this.startPage = this.endPage -9;
 		
-		int realEnd = (int) (Math.ceil(total *1.0 ) / cri.getAmount());
+		//12.02_페이지 로직 수정 (ceil부분에 괄호 누락되어 결과값에서 1페이지 누락되는 현상 보완함)
+		int realEnd = (int) (Math.ceil((total *1.0 ) / cri.getAmount()));
 		
 		
 		if(realEnd < this.endPage) {
@@ -54,7 +55,9 @@ public class PageVO {
 	@Override
 	public String toString() {
 		return "PageVO [startPage=" + startPage + ", endPage=" + endPage + ", prev=" + prev + ", next=" + next
-				+ ", total=" + total + "]";
+				+ ", total=" + total + ", cri=" + cri + "]";
 	}
+
+	
 	
 }

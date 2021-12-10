@@ -3,50 +3,13 @@ pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-<sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal" var="principal"/>
-</sec:authorize>
 
-
-<!DOCTYPE html>
-<html lang="en">
+<!-- jstl 함수사용을 위한 설정 -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
-<!-- Basic -->
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Site Metas -->
-    <title>Freshshop - Ecommerce Bootstrap 4 HTML Template</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Site Icons -->
-    <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <!-- Site CSS -->
-    <link rel="stylesheet" href="../css/style.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="../css/responsive.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/custom.css">
-
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- 결 커스텀 css -->
-    <link rel="stylesheet" href="../css/style-gyul.css">
+<%@ include file="layout/header.jsp" %>
     
+<link rel="stylesheet" href="../css/style-gyul.css">
 
 <style>
 
@@ -67,46 +30,55 @@ pageEncoding="UTF-8"%>
     <!-- Start Main Top -->
 
   
-<div class="board-type mt-5">
+<div class="board-type reservation-board " style="padding-top:150px">
     <h1>자유게시판</h1>
 </div>
+
 <div class="container mt-5" style="width: 70%;">
     <div class="board-free" >
         <div id="slides-shop" class="cover-slides">
             <ul class="slides-container">
+                
                 <li class="text-center">
-                    <img src="../images/gyul_dog_img_001.jpg" alt="">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <h2 class="m-b-20"><strong style="color: aliceblue;">글 제목</strong></h2>
-                                <p><a class="btn hvr-hover" href="#" style="background: none; font-size:15px;">글 보러가기</a></p>
+                                <c:set var="thumnails" value="${latelyBoardListForMain}" />
+                                    <img src="${pageContext.request.contextPath}/upload/${thumnails[0].originalFilename}" alt="">
+                                    <h2 class="m-b-20"><strong style="color: rgb(241, 238, 233);">${latelyBoardListForMain[0].title}</strong></h2>
+                                    <p><a class="btn hvr-hover" href="getFreeBoard?boardSeq=${latelyBoardListForMain[0].board_seq}" style="background: none; font-size:15px;">글 보러가기</a></p>
+                                    
                             </div>
                         </div>
                     </div>
                 </li>
+
                 <li class="text-center">
-                    <img src="../images/gyul_dog_img_002.jpg" alt="">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <h2 class="m-b-20"><strong style="color: aliceblue;">글 제목</strong></h2>
-                                <p><a class="btn hvr-hover" href="#" style="background: none; font-size:15px;">글 보러가기</a></p>
+                                    <img src="${pageContext.request.contextPath}/upload/${thumnails[1].originalFilename}" alt="">
+                                    <h2 class="m-b-20"><strong style="color: rgb(245, 242, 238);">${latelyBoardListForMain[1].title}</strong></h2>
+                                    <p><a class="btn hvr-hover" href="getFreeBoard?boardSeq=${latelyBoardListForMain[1].board_seq}" style="background: none; font-size:15px;">글 보러가기</a></p>
+                                  
                             </div>
                         </div>
                     </div>
                 </li>
+
                 <li class="text-center">
-                    <img src="../images/gyul_dog_img_003.jpg" alt="">
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12">
-                                <h2 class="m-b-20"><strong style="color: aliceblue;">글 제목</strong></h2>
-                                <p><a class="btn hvr-hover" href="#" style="background: none; font-size:15px;">글 보러가기</a></p>
+                                    <img src="${pageContext.request.contextPath}/upload/${thumnails[2].originalFilename}" alt="">
+                                    <h2 class="m-b-20"><strong style="color: rgb(238, 235, 229);">${latelyBoardListForMain[2].title}</strong></h2>
+                                    <p><a class="btn hvr-hover" href="getFreeBoard?boardSeq=${latelyBoardListForMain[2].board_seq}" style="background: none; font-size:15px;">글 보러가기</a></p>
+                                  
                             </div>
                         </div>
                     </div>
                 </li>
+                
             </ul>
         </div>  
     </div>
@@ -114,10 +86,9 @@ pageEncoding="UTF-8"%>
 <hr class="line-paint">
 
 
-
 <!-- board list form 시작 -->
 
-<div class="container">
+<div class="container" >
   <div>
 
     <section>
@@ -155,22 +126,24 @@ pageEncoding="UTF-8"%>
                     <th class="title">제목</th>
                     <th>작성자</th>
                     <th>등록일</th>
+                    <th>조회수</th>
                   </tr>
                 </thead>
               </table>
             </div>
-            <div class="tbl-content">
+            <div class="tbl-content" style="border: none;">
               <table class="board-table" cellpadding="0" cellspacing="0">
                 <tbody>
                   <c:forEach var="freeBoard" items="${freeBoardList }">
-			          	<tr>
+			          	<tr  class="tablerow">
 				        	<td>${freeBoard.boardSeq }</td>
-				        	<td class="title"><a href="getFreeBoard?boardSeq=${freeBoard.boardSeq}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}">${freeBoard.title }</a></td>
+				        	<td class="title"><a href="getFreeBoard?boardSeq=${freeBoard.boardSeq}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}">${freeBoard.title } &nbsp [${freeBoard.count }]</a></td>
                             <!-- <td class="title"><a href="getFreeBoard?boardSeq=${freeBoard.boardSeq}">${freeBoard.title }</a></td> -->
 
                             <td>${freeBoard.userVO.userNickname }</td>
 
 					        <td><fmt:formatDate value="${freeBoard.regDate }" pattern="yyyy-MM-dd"/></td>
+                            <td>${freeBoard.cnt }</td>
 			          	</tr>
 		          </c:forEach>
                 </tbody>
@@ -181,12 +154,12 @@ pageEncoding="UTF-8"%>
             <c:choose>
                 <c:when test="${empty principal}">
                     <div style="display:inline-block;">
-                        <a  class="nav-link" href='#' onclick="noLoginUserCantWrite(); return false">글쓰러가기</a>
+                        <a  class="nav-link btn-file-upload" href='#' onclick="noLoginUserCantWrite(); return false">글쓰러가기</a>
                     </div>
                 </c:when>
                 <c:otherwise>
                     <div style="display:inline-block;">
-                        <a  class="nav-link" href="/pawmap/board/form">글쓰러가기</a>
+                        <a  class="nav-link btn-file-upload" href="/pawmap/board/form">글쓰러가기</a>
                     </div>
                 </c:otherwise>
             </c:choose>
@@ -204,7 +177,7 @@ pageEncoding="UTF-8"%>
                 <a class="page-link" href="${pageMaker.startPage - 1 }" >Prev</a>
             </li>
         </c:if>
-        <c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage +1}">
+        <c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
         <li class="page-item pagination_button ${num == pageMaker.cri.pageNum? "active" : "" }" > 
             <a id="nowPage" class="page-link" href="${num }">${num }</a>
         </li>
@@ -227,25 +200,7 @@ pageEncoding="UTF-8"%>
     <!-- Start Footer  -->
 
 
-    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
-
-    <!-- ALL JS FILES -->
-    <script src="../js/jquery-3.2.1.min.js"></script>
-    <script src="../js/popper.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <!-- ALL PLUGINS -->
-    <script src="../js/jquery.superslides.min.js"></script>
-    <script src="../js/bootstrap-select.js"></script>
-    <script src="../js/inewsticker.js"></script>
-    <script src="../js/bootsnav.js."></script>
-    <script src="../js/images-loded.min.js"></script>
-    <script src="../js/isotope.min.js"></script>
-    <script src="../js/owl.carousel.min.js"></script>
-    <script src="../js/baguetteBox.min.js"></script>
-    <script src="../js/form-validator.min.js"></script>
-    <script src="../js/contact-form-script.js"></script>
-    <script src="../js/custom.js"></script>
-    <script src="../js/js-gyul.js"></script>
+    <%@ include file="layout/footer.jsp" %>
 
     <script>
 
@@ -306,7 +261,3 @@ pageEncoding="UTF-8"%>
         });
         
     </script>
-    
-</body>
-
-</html>

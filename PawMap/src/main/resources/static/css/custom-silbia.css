@@ -1,0 +1,403 @@
+/* 타이틀 박스 글자 */
+.pet-all-title-box h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #e1a963;
+    float: left;
+    padding: 2%;
+   
+}
+
+/* 마이페이지 배경 수정 */
+.pet-all-title-box {
+    background-color: none;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -ms-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    text-align: center;
+    background-attachment: fixed;
+    padding: 30px 0px;
+    position: relative;
+    padding-top: 100px !important;
+}
+
+
+/* 마이페이지 카드 영역 */
+.pet-account-box {
+    text-align: center;
+    background: rgb(253 231 189 / 0%);
+    padding: 30px;
+    border-radius: 40px;
+}
+.pet-account-box:hover{
+    background: rgb(253 231 189 / 34%);
+
+}
+.pet-bottom-box {
+    border-top: 1px solid #eee;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    padding-top: 15px;
+}
+.pet-bottom-box .account-box {
+    min-height: 205px;
+}
+
+.pet-account-box {
+    /* 마이페이지 카드 간격 */
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* 마이페이지 카드 아이콘 크기 */
+.pet-service-icon i {
+    font-size: 45px;
+}
+
+/* 마이페이지 카드 명칭*/
+.pet-service-desc h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #f7ba61;
+}
+
+/* 마이페이지 카드 아이콘 호버 크기 및 색상 */
+.pet-service-icon a {
+    display: inline-block;
+    font-size: 0px;
+    cursor: pointer;
+    margin: 20px 0px;
+    width: 80px;
+    height: 80px;
+    line-height: 110px;
+    border-radius: 50%;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    color: #f7ba61;
+}
+
+  /* 마이페이지 카드 아이콘 호버 테두리 효과 */
+.pet-service-icon a::after {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    content: "";
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    content: "";
+    top: 0;
+    left: 0;
+    padding: 0;
+    z-index: -1;
+    box-shadow: 0 0 0 2px rgba(226, 29, 29, 0.1);
+    opacity: 0;
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    transform: scale(0.9);
+}
+
+/* 마이페이지 카드 아이콘 호버 효과 */
+.pet-service-icon a:hover::after {
+    -webkit-animation: sonarEffect 1.3s ease-out 75ms;
+    -moz-animation: sonarEffect 1.3s ease-out 75ms;
+    animation: sonarEffect 1.3s ease-out 75ms;
+}
+
+/* 마이페이지 카드 아이콘 호버 색상 */
+.pet-service-icon a:hover {
+    background: #f7ba61;
+  
+    -webkit-transform: scale(0.93);
+    -moz-transform: scale(0.93);
+    -ms-transform: scale(0.93);
+    transform: scale(0.93);
+    color: #fff;
+}
+
+/* 버튼 색상 */
+.my-btn-other {
+    font-weight: bold;
+    color: #f7ba61;
+    font-size: 12px
+}
+
+.my-btn {
+    width: 96%;
+    background-color: #e7dfd6;
+    border-radius: 8px;
+    padding: 8px 17px;
+    font-size: 13px;
+    border: 1px solid #f5f0ef;
+    color: black
+}
+.my-btn {
+    background-color: #d38510;
+    border: 1px solid rgb(300, 200, 200)
+}
+.my-btn:hover{
+    cursor: pointer;
+    background-color: #5c3a08;
+    border: 1px solid #5c3a08;
+}
+
+
+
+/* ======================== 12.08 수정된 폼 확정시 삭제될 style====================== */
+/* 회원가입 form style */
+  .user-form-label {
+    color: #e1a963;
+  }
+  .user-join-btn {
+    background: gray;
+    border-color: antiquewhite;
+  }
+  .user-left-div {
+    background-color: #ffdab9;
+    border-radius: 50% 20% / 10% 40%;
+  }
+  .user-column-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 50px;
+    margin: auto;
+  }
+.join-form {
+	border-top: 1px solid #EFC778;
+}
+
+
+
+/*  =============== 12.08 회원가입폼 수정 확정시 상위 style은 삭제 =============== */
+/* 회원가입 전체 틀 */
+.u_container {
+    border: 6px solid rgb(216, 216, 216);
+    border-radius: 25px;
+    position: relative;
+    padding: 0;
+    width: 100%;
+    max-width: 840px;
+    margin: auto;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.u_container:hover {
+    border: 6px solid #EFC778;
+    background-color: #f5e5a01c;
+}
+
+/* 타이틀 */
+.u_top-title {
+    padding: 80px 0 0;
+    text-align: center;
+    line-height: 1;
+    font-size: 40px;
+    color: #555;
+    font-weight: 700;
+}
+
+/* 회원가입 폼 및 테이블 및 입력란 */
+.u_join-box {
+    margin-top: 30px;
+}
+.u_join-table {
+    width: 100%;
+    border-top: 1px solid #f7ba61;
+    border-bottom: 1px solid #f7ba61;
+}
+.u_join-table tr {
+    border-bottom: 1px solid #e1e1e1;
+}
+.u_join-table tr th {
+    padding: 20px 15px 20px 30px;
+    width: 240px;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 700;
+}
+.u_join-table tr td {
+    padding: 20px 15px;
+    height: 85px;
+    font-size: 16px;
+    color: #777;
+    font-weight: 300;
+}
+.u_join-box input:not([type=checkbox]):not([type=radio]):not([type=hidden]), .u_join-box select {
+    max-width: 400px;
+    width: 100%;
+    
+  border: none;
+  height: 35px;
+  color: #555 !important;
+  border: 1px solid transparent;
+  background: rgba#ffffffb2;
+  border-radius: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s; 
+  margin: 3px;
+}
+
+/* 주소 */
+.u_input-box-address {
+    max-width: 520px;
+}
+.u_input-box-address input:first-child {
+    margin-top: 0;
+    width: calc(100% - 270px)!important;
+}
+.u_input-box-address .button {
+    vertical-align: top;
+    margin-left: 10px;
+    width: 120px;
+    background-color: rgb(239, 199, 120) !important;
+    border-style:  solid rgb(239, 199, 120) !important;
+}
+.u_input-box-address input {
+    margin-top: 10px;
+    max-width: none;
+}
+
+/* 버튼 전체 스타일 */
+.u_join-box .button {
+    line-height: 45px;
+    font-size: 18px;
+    background-color: rgb(239, 199, 120) !important;
+    border-style:  solid rgb(239, 199, 120) !important;
+}
+.u_join-box .button, .u_join-box input:not([type=checkbox]):not([type=radio]):not([type=hidden]), .u_join-box select {
+    vertical-align: top;
+    padding: 0 20px;
+    height: 45px;
+    background-color: rgb(239, 199, 120) !important;
+    border-style:  solid rgb(239, 199, 120) !important;
+}
+.u_button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.5;
+    padding: 0 10px;
+    text-align: center;
+    transition: all .15s ease;
+    cursor: pointer;
+    background: rgb(239, 199, 120) !important;
+    border:  solid rgb(239, 199, 120) !important;
+}
+
+.u_join-box .u_bottom-button .u_button {
+    margin: 0 5px;
+    width: 240px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+    border-style: none;
+    background: rgb(239, 199, 120) !important;
+    border:  solid rgb(239, 199, 120) !important;
+
+}
+.u_join-box .u_bottom-button {
+    margin-top: 55px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 0;
+    background: rgb(239, 199, 120) !important;
+    border:  solid rgb(239, 199, 120) !important;
+    
+}
+
+/* 가입하기 버튼 */
+.u_button-point {
+    color: #fff;
+    background: #f1a50d;
+    border-radius: 25px;
+}
+
+/* 중복체크, 검색, 취소 버튼 */
+.u_button-grey {
+    color: #fff;
+    background: #f7ba61;
+    border-radius: 25px;
+    border-style: none;
+}
+.u_button-grey:hover {
+    background-color: rgba(228, 188, 96, 0.363);
+    color: #fff !important;
+    border-style: solid #f7ba61;
+}
+
+/* 회원가입메인(병원,일반) */
+.u_card:hover{
+    border: 6px solid #f7ba61;
+	background-color: #efc7781c;
+}
+.u_card{
+    border: 6px solid rgb(216, 216, 216);
+	border-radius: 25px;
+}
+.u_card .ptitle {
+    line-height: 1.4;
+	text-align: center;
+	font-size: 32px;
+	color: #EFC778;
+	font-weight: 700;
+	margin-bottom: 15px;
+}
+.u_card .pr {
+    line-height: 1.4;
+	color: #777;
+	font-weight: 400;
+	font-size: 18px;
+    text-align: center;
+    padding-bottom: 10px;
+}
+.u_card .pc {
+    display: none;
+}
+#btnJoin:hover{
+    background-color: rgba(228, 188, 96, 0.363);
+    color: #fff;
+    border-style: solid #f7ba61;
+}
+/* 회원정보 수정 */
+#upbtn{
+    margin: 0 5px;
+    width: 240px;
+    height: 50px;
+    line-height: 60px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+    border-style: none;
+
+    border-radius: 40px;
+  }
+  btn:hover{
+      background-color: rgba(239, 199, 120, 0.26) !important;
+      border-style:  solid rgb(239, 199, 120) !important;
+      /* background: rgb(255, 255, 255,0)  !important;
+      border:  solid rgb(239, 199, 120)  !important;
+      color: #e4bc6086  !important; */
+  }
+
+  .uptxtbox{
+      background-color: #ffffffe3;
+      
+  }
+  .uptxtbox:hover{
+    background: #e4bc6086 !important;
+    border-style:  solid rgb(239, 199, 120,1)  !important;
+    color: #ffffffe3;
+  }

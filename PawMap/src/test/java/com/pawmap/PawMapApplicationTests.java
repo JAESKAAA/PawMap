@@ -8,6 +8,8 @@ class PawMapApplicationTests {
 
 	@Test
 	void contextLoads() {
+		
+		System.out.println("log test!");
 	}
 
 }

@@ -44,8 +44,8 @@
               <div class="footer-link-contact">
                 <h4>Social Media</h4>
                 <div class="footer-top-box">
-                  <p style="margin-left: 20px">
-                    하기 링크를 통해 더 많은 소식을 받아 보세요 !
+                  <p style="margin-left: 20px ">
+                    아래 링크를 통해 더 많은 소식을 받아 보세요 !
                   </p>
                   <ul>
                     <li>
@@ -132,7 +132,8 @@
     <a href="#" id="back-to-top" title="Back to top" style="display: none"
       >&uarr;</a
     >
-
+    
+  
     <!-- ALL JS FILES -->
     <script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/popper.min.js"></script>
@@ -149,14 +150,46 @@
     <script src="${pageContext.request.contextPath}/js/form-validator.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/contact-form-script.js"></script>
     <script src="${pageContext.request.contextPath}/js/custom.js"></script>
+    <script src="${pageContext.request.contextPath}/js/custom-silbia.js"></script>
+ 
+    
     <!-- FontAwesome 용 JS 파일-->
     <script
       src="https://kit.fontawesome.com/f0999a1ca0.js"
       crossorigin="anonymous"
     ></script>
+    <!-- Vendor JS Files for ABOUT PAGE-->
+  <script src="${pageContext.request.contextPath}/js/purecounter.js"></script>
+  <script src="${pageContext.request.contextPath}/js/isotope.pkgd.min.js"></script>
+  <script src="${pageContext.request.contextPath}/js/noframework.waypoints.js"></script>
+  <script src="${pageContext.request.contextPath}/js/about.js"></script>
+
+
     <!-- 1:1 상담 관련 js 파일-->
     <script src="${pageContext.request.contextPath}/js/custom-jaeseok.js"></script>
-      <!-- 아이디 비밀번호 공백확인 alert창 -->
+
+    <!-- 커스텀 JS 파일 - 재석-->
+    <script src="${pageContext.request.contextPath}/js/custom-jaeseok.js"></script>
+
+    <!-- 커스텀 JS 파일 - 고결-->
+    <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
+
+    <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
+
+    <!--주소검색-->
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+    <!--12.07 중복체크 메세지-->
+    <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+
+    <!--about stack graph용 js-->
+    <script src="${pageContext.request.contextPath}/js/purecounter.js"></script>
+    <script src="${pageContext.request.contextPath}/js/isotope.pkgd.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/noframework.waypoints.js"></script>
+    <script src="${pageContext.request.contextPath}/js/about.js"></script>
+
+    <!-- 아이디 비밀번호 공백확인 alert창 -->
+    
     <script>
       function makeTestData() {
         var form = document.loginForm;
@@ -179,6 +212,32 @@
     
         form.submit();
       }
+
+      //회원탈퇴 체크용
+      function deleteUserCheck(){
+      var result = confirm("정말 탈퇴하시겠습니까...?")
+      
+      if(result){
+          location.replace("/pawmap/mypage/deleteUser?userId=${principal.user.userId}");
+      }else{
+
+      }
+  }
+
     </script>
+      <!-- 페이지 스크롤 스크립트 -->
+      <script>
+        $(function () {
+      $(window).on('scroll', function () {
+          if ( $(window).scrollTop() > 10 ) {
+              $('#header').addClass('active');
+          } else if( $(window).s){
+  
+          } else {
+              $('#navbar').removeClass('active');
+          }
+      });
+  });
+   </script>
   </body>
 </html>

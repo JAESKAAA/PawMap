@@ -3,12 +3,10 @@ pageEncoding="UTF-8"%>
 
 <%@ include file="layout/header.jsp" %>
 
+
+
   
-    <!-- 게시판 폼 시작 -->
-    <form class="form-horizontal board-form" method="POST" action="insertFreeAndNanumBoard" >
-
-        <h1>유저 아이디 == ${principal.user.userId}</h1>
-
+    <form class="form-horizontal board-form" method="POST" action="insertFreeAndNanumBoard" enctype="multipart/form-data" style="margin-top: 10rem;">
         <div class="container">
             <div class="card row">
                 <div class="option-select ml-5">
@@ -42,10 +40,10 @@ pageEncoding="UTF-8"%>
                     <div class="col-sm-10 col-sm-offset-2">
                         <div class="row form-group">  
                             <div class="col-10 col-md-6">  
-                                <div class="control-group" id="fields">  
+                                <div class="control-group">  
                                     <div class="controls">  
                                         <div class="entry input-group upload-input-group">  
-                                            <input class="form-control btn-file-upload" name="fields[]" type="file">  
+                                            <input class="form-control btn-file-upload" name="uploadFiles" multiple="multiple" type="file">  
                                         </div>  
                                     </div>  
                                 </div>  
@@ -61,7 +59,14 @@ pageEncoding="UTF-8"%>
             </div>    
         </div>    
     </form>
-    <!-- 게시판 폼 종료 -->
+
+
+    <!-- <form action="FileUploadServlet" method="post" enctype="multipart/form-data">
+        Select File to Upload:<input type="file"  name="fileName" multiple/>
+        <br>
+        <input type="submit" value="Upload"/> -->
+    
+        <!-- 게시판 폼 종료 -->
       
 <%@ include file="layout/footer.jsp" %>
       

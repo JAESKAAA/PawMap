@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.pawmap.mapper.ShelterMapper">
+  	
+  	<resultMap type="com.pawmap.VO.ShelterVO" id="shelterResult">
+  		<result property="shelterSeq" column="shelter_seq"/>
+  		<result property="comNum" column="com_num"/>
+  		<result property="shelterName" column="shelter_name"/>
+  		<result property="shelterAddress" column="shelter_address"/>
+  		<result property="shelterTel" column="shelter_tel"/>
+  	</resultMap>
+  	
+	
+	  	<!-- 관리자 페이지 / 보호소 페이지 리스트 출력 -->
+  	<select id="getShelterList" resultType="com.pawmap.VO.ShelterVO">
+  		SELECT shelter_seq, com_num, shelter_name, shelter_address, shelter_tel, content FROM pet_shelter
+  		ORDER BY shelter_seq DESC
+  	</select>
+  	
+  	
+  	<!-- 관리자 페이지 / 보호소 페이지 insert -->
+  	<insert id="insertShelterForm">
+  		INSERT INTO pet_shelter(shelter_seq, com_num, shelter_name, shelter_address, shelter_tel, content) VALUES(
+  		<!-- (SELECT IFNULL(MAX(shelter_seq), 0) + 1 FROM pet_shelter A WHERE shelter_seq = #{shelterSeq}), -->
+  		<!-- #(shelterSeq),-->
+  		  	(SELECT IFNULL(MAX(shelter_seq), 0) + 1 FROM pet_shelter A ),
+  		#{comNum},
+  		#{shelterName},
+  		#{shelterAddress},
+  		#{shelterTel},
+  		#{content}
+  		)
+  	</insert>
+  	
+  	
+  	<!-- 관리자 페이지 / 보호소 페이지 update -->
+  	<update id="updateShelterForm"  parameterType="com.pawmap.VO.ShelterVO" >
+  		UPDATE pet_shelter
+  		SET
+  			com_num = #{comNum},
+			shelter_name = #{shelterName},
+			shelter_address = #{shelterAddress},
+			shelter_tel = #{shelterTel},
+			content = #{content}
+		WHERE shelter_seq = #{shelterSeq}
+  	</update>
+  	
+  	
+  	<delete id="deleteShelterForm">
+  		DELETE FROM pet_shelter
+  		WHERE shelter_seq = #{shelterSeq}
+  	</delete>
+  	
+  	
+  	
+  	<!-- 관리자 페이지 / 보호소 페이지 seq delete <- 근데 이거 파일 연계로 seq 지워야 하는데 어떡하지 -->
+  	<delete id="deleteShelterFormBySeq">
+  		DELETE FROM pet_shelter
+  		WHERE shelter_seq = #{shelterSeq}
+  	</delete>
+  
+  	
+  	
+  		<select id="getFileSeq" resultType="int">
+		SELECT MAX(file_seq) file_seq FROM file
+	</select>
+	
+	
+	<delete id="deleteFileByBoardSeqOnShelter">
+		DELETE FROM file
+		WHERE board_seq = #{boardSeq}
+		AND board_type = 't''
+	</delete>
+	
+	
+	<select id="getShelterSeq" resultType="int">
+		SELECT MAX(shelter_seq) shelter_seq FROM pet_shelter
+	</select>
+	
+	
+	
+	<select id="getShelter" parameterType="int" resultType="HashMap">
+  		SELECT A.shelter_seq AS shelterSeq
+		     , A.com_num AS comNum
+		     , A.shelter_name AS shelterName
+		     , A.shelter_address AS shelterAddress
+		     , A.shelter_tel AS shelterTel
+		     , A.content AS content
+		     , B.originalFilename AS originalFileName
+		     , B.filepath AS filepath
+			FROM pawmap.pet_shelter A
+				LEFT OUTER JOIN pawmap.file B
+		        ON A.SHELTER_SEQ = B.BOARD_SEQ
+		        AND B.BOARD_TYPE = 't'
+		        AND B.FILE_SEQ = 1
+		WHERE shelter_seq = #{shelterSeq}
+			
+	</select>
+	
+	
+
+	
+  	
+  </mapper>	

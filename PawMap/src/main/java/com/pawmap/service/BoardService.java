@@ -1,15 +1,14 @@
 package com.pawmap.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.pawmap.VO.BoardVO;
-
 import com.pawmap.VO.CommentVO;
-
 import com.pawmap.VO.Criteria;
-import com.pawmap.VO.UserVO;
 
 public interface BoardService {
+
 	
 	void insertFreeAndNanumBoard(BoardVO vo);
 
@@ -23,9 +22,50 @@ public interface BoardService {
 
 	int selectBoardCount(BoardVO vo);
 
-
 	void insertReplyForFreeBoard(CommentVO commentVO);
 
+	int getFreeBoardSeq();
 	
+	List<HashMap<String, Object>> getLatelyBoardListForBoardMain();
+
+//	나눔게시판 리스트
+	List<BoardVO> getNanumBoardList(BoardVO vo, Criteria cri);
+	
+	// 나눔게시판 상세
+	BoardVO getNanumBoard(int boardSeq);
+
+//	글 상세조회
+	BoardVO getBoardDetail(int boardSeq, String boardType);
+
+	void updateNanumBoardForm(BoardVO vo);
+
+	int getNanumBoardSeq();
+
+	// 나눔게시판 글 삭제
+	void deleteNanumBoardBySeq(int boardSeq);
+
+	List<HashMap<String, Object>> getLatelyBoardListForNanumBoardMain();
+
+	int selectNanumBoardCount(BoardVO vo);
+
+	List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain();
+
+
+	void insertMedicalRecord(BoardVO vo);
+
+	List<BoardVO> getMyMedicalRecordListById(String userId);
+
+	List<BoardVO> getHospitalMedicalRecordList(String date, String comNum);
+
+	List<HashMap<String, Object>> getSeparateMedicalRecordForClient(String comNum, String reservationDate, String scheduleTime);
+
+	int getMedicalBoardSeq();
+
+	void updateMedicalRecord(BoardVO vo);
+
+	List<BoardVO> getMyMedicalRecordForAllowReview(String userId, String hospitalComNum);
+
+	void updateFreeBoardCnt(int boardSeq);
+
 	
 }

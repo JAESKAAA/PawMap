@@ -20,10 +20,11 @@
   		<result property="boardSeq" column="board_seq"/>
   		<result property="boardType" column="board_type"/>
   		<result property="userId" column="user_id"/>
-  		<result property="hospitalSeq" column="hospital_seq"/>
   		<result property="title" column="title"/>
   		<result property="content" column="content"/>
   		<result property="regDate" column="regDate"/>
+  		<result property="cnt" column="cnt"/>
+  		<result property="count" column="count"/>
   		<collection property="userVO" resultMap="userResult"/>
   	</resultMap>
   	
@@ -33,38 +34,34 @@
   	</select> -->
   	
   	<insert id="insertFreeAndNanumBoard">
-  		INSERT INTO board(board_seq, board_type, user_id, title, content,hospital_seq, regDate) VALUES(
+  		INSERT INTO board(board_seq, board_type, user_id, title, content, regDate,cnt) VALUES(
   				(SELECT IFNULL(MAX(BOARD_SEQ), 0) + 1 FROM BOARD A WHERE BOARD_TYPE = #{boardType}),
   				#{boardType},
   				#{userId},
   				#{title},
   				#{content},
-  				#{hospitalSeq},
-  				NOW()
+  				NOW(),
+  				0
   		)
   	</insert>
   	
-
-<!--   	 <select id="getFreeBoardList" parameterType="HashMap" resultType="com.pawmap.VO.BoardVO">
-
-  		SELECT * FROM board
-  		WHERE board_type = 'f'
-  		<if test="board.keywordType == 'title'">
-			AND title LIKE CONCAT('%', #{board.keyword}, '%')
-		</if>
-		<if test="board.keywordType == 'content'">
-			AND `content` LIKE CONCAT('%', #{board.keyword}, '%')
-		</if>
-		<if test="board.keywordType == 'titleAndBody'">
-			AND (title LIKE CONCAT('%', #{board.keyword}, '%') OR `content` LIKE CONCAT('%', #{board.keyword}, '%'))
-		</if>
-  		ORDER BY board_seq DESC
-  		LIMIT #{criteria.amount} OFFSET #{criteria.startNum}
-
-  	</select> -->
+  	<insert id="insertMedicalRecord">
+  		INSERT INTO board(board_seq, board_type, user_id, com_num , title, content, regDate,reservation_date,schedule_time) VALUES(
+  				(SELECT IFNULL(MAX(BOARD_SEQ), 0) + 1 FROM BOARD A WHERE BOARD_TYPE = #{boardType}),
+  				#{boardType},
+  				#{userId},
+  				#{comNum},
+  				#{title},
+  				#{content},
+  				NOW(),
+  				#{reservationDate},
+  				#{scheduleTime}
+  		)
+  	</insert>
   	
   	<select id="getFreeBoardList" parameterType="HashMap" resultMap="boardResult">
-  		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname
+  		SELECT b.board_seq, b.board_type, b.user_id, b.title, b.content, b.regDate, b.cnt ,u.user_nickname
+  		,(SELECT COUNT(*) FROM comment c WHERE c.board_seq = b.board_seq) AS count
   		FROM board AS b
   		INNER JOIN user AS u
   		ON b.user_id = u.user_id
@@ -81,17 +78,9 @@
   		ORDER BY board_seq DESC
   		LIMIT #{criteria.amount} OFFSET #{criteria.startNum}
   	</select>
-  	
-<!--   	<select id="getFreeBoard" resultType="com.pawmap.VO.BoardVO" >
 
-  		SELECT * FROM board
-  		WHERE board_seq = #{boardSeq}
-  		AND
-  		board_type = 'f';
-  	</select> -->
-  	
   	<select id="getFreeBoard" resultType="com.pawmap.VO.BoardVO" resultMap="boardResult">
-  		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname 
+  		SELECT b.board_seq, b.board_type, b.user_id, b.title, b.content, b.regDate, b.cnt, u.user_nickname 
   		FROM board AS b
   		INNER JOIN user AS u
   		ON b.user_id = u.user_id
@@ -101,11 +90,48 @@
 
   	</select>
   	
+
+  	<update id="updateFreeBoardCnt">
+  		UPDATE board
+  		SET 	
+  		cnt = cnt+1
+  		WHERE board_seq = #{boardSeq}
+  		AND
+  		board_type = 'f'
+  	</update>
+
+  	
+  	<select id="getFreeBoardSeq" resultType="int">
+		SELECT IFNULL(MAX(board_seq) ,0) + 1
+			FROM BOARD
+			WHERE board_type = 'f'
+	</select>
+	
+
+		<select id="getNanumBoardSeq" resultType="int">
+		SELECT IFNULL(MAX(board_seq) ,0) + 1
+			FROM BOARD
+			WHERE board_type = 's'
+			</select>
+
+	<select id="getMedicalBoardSeq" resultType="int">
+		SELECT IFNULL(MAX(board_seq) ,0) + 1
+			FROM BOARD
+			WHERE board_type = 'm'
+	</select>
+  	
   	<delete id="deleteFreeBoardBySeq">
   		DELETE FROM board
   		WHERE board_seq = #{boardSeq}
   		AND
   		board_type = 'f';
+  	</delete>
+  	
+  	  	<delete id="deleteNanumBoardBySeq">
+  		DELETE FROM board
+  		WHERE board_seq = #{boardSeq}
+  		AND
+  		board_type = 's';
   	</delete>
   	
   	<update id="updateFreeBoardForm">
@@ -116,6 +142,8 @@
   		WHERE board_seq = #{boardSeq}
   		AND
   		user_id = #{userId}
+  		AND
+  		board_type = 'f'
   	</update>
   	
   	<select id="selectBoardCount" resultType="int">
@@ -132,17 +160,187 @@
 		</if>
 	</select>
 	
-	<insert id="insertReplyForFreeBoard" >
-		INSERT INTO comment(comment_seq,board_type,board_seq, user_id, comment_content,hospital_seq, comment_regDate) VALUES(
-  				(SELECT IFNULL(MAX(comment_seq), 0) + 1 FROM comment A WHERE BOARD_TYPE = #{boardType}),
-  				#{boardType},
-  				#{boardSeq},
-  				#{userId},
-  				#{commentContent},
-  				#{hopitalSeq},
-  				NOW()
-  		)
-	</insert>
+	<!-- 나눔게시판 서치 관련-->
+	  	<select id="selectNanumBoardCount" resultType="int">
+		SELECT COUNT(*) FROM BOARD
+		WHERE board_type = 's'
+		<if test="keywordType == 'title'">
+			AND title LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="keywordType == 'content'">
+			AND `content` LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="keywordType == 'titleAndBody'">
+			AND (title LIKE CONCAT('%', #{keyword}, '%') OR `content` LIKE CONCAT('%', #{keyword}, '%'))
+		</if>
+	</select>
 
+
+
+	<select id="getLatelyBoardListForBoardMain" resultType="HashMap">
+		select b.*, f.originalFilename
+		from board AS b
+		inner join 
+		(
+		select f1.file_seq as fSeq, f1.originalFilename as originalFilename, f1.board_seq AS bSeq
+		from file as f1 
+			left join file as f2 on f1.board_seq = f2.board_seq and f1.file_seq > f2.file_seq
+		    where f2.file_seq is null
+		    AND f1.board_type = 'f'
+		) as f
+		on b.board_seq = f.bSeq
+		where b.board_type = 'f'
+		order by b.board_seq DESC
+		limit 3;
+	</select>
+	
+
+	
+		<select id="getLatelyBoardListForNanumBoardMain" resultType="HashMap">
+		select b.*, f.originalFilename
+		from board AS b
+		inner join 
+		(
+		select f1.file_seq as fSeq, f1.originalFilename as originalFilename, f1.board_seq AS bSeq
+		from file as f1 
+			left join file as f2 on f1.board_seq = f2.board_seq and f1.file_seq > f2.file_seq
+		    where f2.file_seq is null
+		) as f
+		on b.board_seq = f.bSeq
+		where b.board_type = 's'
+		order by b.board_seq DESC
+		limit 3;
+	</select>
+	
+	
+		<select id="getLatelyBoardListForShelterBoardMain" resultType="HashMap">
+	SELECT   
+            A.shelter_seq AS shelterSeq,
+              A.shelter_name AS shelterName,
+              A.shelter_address AS shelterAddress,
+              A.shelter_tel AS shelterTel,
+              A.content AS content,
+                A.com_num AS comNum,
+              B.ORIGINALFILENAME AS originalFileName
+         FROM pawmap.pet_shelter A
+             LEFT OUTER JOIN (SELECT * FROM FILE  WHERE board_type='t') AS B
+            ON A.shelter_seq = B.BOARD_SEQ
+            ORDER BY
+            A.shelter_seq ;
+	</select>
+	
+	
+	<!-- <select id="getLatelyBoardListForBoardMain" resultType="HashMap">
+		SELECT b.*, f.originalFilename
+		FROM board AS b
+		INNER JOIN file AS f
+		ON b.board_seq = f.board_seq
+		WHERE b.board_type = 'f'
+		AND f.file_seq = 1
+		ORDER BY b.board_seq DESC
+		LIMIT 3
+	</select> -->
+
+
+
+  		<!-- 나눔게시판 리스트 -->
+  	<select id="getNanumBoardList" parameterType="HashMap" resultMap="boardResult">
+  		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname
+  		FROM board AS b
+  		INNER JOIN user AS u
+  		ON b.user_id = u.user_id
+  		WHERE board_type = 's'
+  		<if test="board.keywordType == 'title'">
+			AND title LIKE CONCAT('%', #{board.keyword}, '%')
+		</if>
+		<if test="board.keywordType == 'content'">
+			AND `content` LIKE CONCAT('%', #{board.keyword}, '%')
+		</if>
+		<if test="board.keywordType == 'titleAndBody'">
+			AND (title LIKE CONCAT('%', #{board.keyword}, '%') OR `content` LIKE CONCAT('%', #{board.keyword}, '%'))
+		</if>
+  		ORDER BY board_seq DESC
+  		LIMIT #{criteria.amount} OFFSET #{criteria.startNum}
+  	</select>
+	
+	
+	<!-- 나눔게시판 디테일 -->
+	  	<select id="getNanumBoard" resultType="com.pawmap.VO.BoardVO" resultMap="boardResult">
+  		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname 
+  		FROM board AS b
+  		INNER JOIN user AS u
+  		ON b.user_id = u.user_id
+  		WHERE b.board_seq = #{boardSeq}
+  		AND
+  		b.board_type = 's';
+
+  	</select>
   	
+  	  	<update id="updateNanumBoardForm">
+  		UPDATE board
+  		SET
+  			title = #{title},
+  			content = #{content}
+  		WHERE board_seq = #{boardSeq}
+  		AND
+  		user_id = #{userId}
+  		AND
+  		board_type = 's'
+  	</update>
+	
+	
+
+  
+
+	<select id="getMyMedicalRecordListById" resultType="com.pawmap.VO.BoardVO">
+		SELECT * FROM board
+		WHERE user_id = #{userId}
+		AND board_type = 'm'
+		order by schedule_time
+	</select>
+	
+	<select id="getMyMedicalRecordForAllowReview" resultType="com.pawmap.VO.BoardVO">
+		SELECT * FROM board
+		WHERE board_type = 'm'
+		AND user_id = #{userId}
+		AND com_num = #{hospitalComNum}
+	</select>
+	
+	<select id="getHospitalMedicalRecordList" resultType="com.pawmap.VO.BoardVO">
+		SELECT * FROM board
+		WHERE com_num = #{comNum}
+		AND reservation_date = #{date}
+	</select>
+	
+	<select id="getSeparateMedicalRecordForClient" resultType="HashMap">
+		
+		SELECT b.*,u.user_name
+		FROM board AS b
+		INNER JOIN user AS u
+		ON b.com_num = u.com_num
+		WHERE b.com_num = #{comNum}
+		and b.reservation_date = #{reservationDate}
+		and b.schedule_time = #{scheduleTime}
+		and b.board_type= 'm'
+		
+	</select>
+	
+	<update id="updateMedicalRecord" >
+		UPDATE board
+  		SET
+  			title = #{title},
+  			content = #{content}
+  		WHERE com_num = #{comNum}
+  		AND
+  		reservation_date = #{reservationDate}
+  		AND
+  		schedule_time = #{scheduleTime}
+  		AND
+  		board_type = 'm'
+	</update>
+	
+	
+
   </mapper>	
+
+

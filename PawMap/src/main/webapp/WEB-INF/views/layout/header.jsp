@@ -11,6 +11,7 @@ pageEncoding="UTF-8"%>
 	<sec:authentication property="principal" var="principal"/>
 </sec:authorize>
 
+
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -25,18 +26,18 @@ pageEncoding="UTF-8"%>
     <meta name="author" content="" />
 
 
-<%-- <%=request.getContextPath() %> --%>
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/로고최종_수정.png" type="image/x-icon" />
     <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/apple-touch-icon.png" />
     <!-- Fontawesome CSS-->
     <link
       href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
       rel="stylesheet"
     />
-    
-    <%-- ${pageContext.request.contextPath} --%>
+
     <!--  ${request.getContextPath } -->
+    <!-- 몌 커스텀 css -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-mye.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
     <!-- Site CSS -->
@@ -47,170 +48,123 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-jaeseok.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-gyul.css">
-    
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-silbia.css">
+      <!-- 테이블 부분 css -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footable.bootstrap.css" />
         <!-- 결 커스텀 css -->
+        
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/hospital-search.css" />
+
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+
+    
     <style>
       header,
       nav {
-        background: rgba(0, 0, 0, 0.1);
+        background:rgb(239 198 120);
+        height: fit-content;
+        font-size:medium;
+        color: rgba(235, 180, 99, 0.842);
+        height: 12%;
       }
-      #slides-shop {
-        height: 100vh;
-      }
+     
+     
     </style>
+
   </head>
 
   <body>
-    <!-- Header 시작 -->
-    <header class="main-header">
-      <!-- Start Navigation -->
-      <nav
-        class="
-          navbar navbar-expand-lg navbar-light
-          bg-light
-          navbar-default
-          bootsnav
-        "
-      >
-        <div class="container">
-          <!-- Start Header Navigation -->
+
+    
+   <!-- Header 시작 -->
+   <header id="header" class="main-header header"  style="z-index: 100;">
+    <nav class="
+        navbar navbar-expand-lg 
+        fixed-top py-3">
+        <div class="container col-lg-9">
           <div class="navbar-header">
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbar-menu"
-              aria-controls="navbars-rs-food"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <i class="fa fa-bars"></i>
-            </button>
-            <!--사이트 로고 부분-->
-            <a class="navbar-brand" href="/pawmap">
-              <div class="main_logo_box"></div>
-            </a>
-          </div>
-          <!-- End Header Navigation -->
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="navbar-menu">
-            <ul
-              class="nav navbar-nav ml-auto"
-              data-in="fadeInDown"
-              data-out="fadeOutUp"
-            >
-              <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">회사소개</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="gallery.html">병원찾기</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact-us.html">보호소 정보</a>
-              </li>
-              <li class="dropdown">
-                <a
-                  href="#"
-                  class="nav-link dropdown-toggle arrow"
-                  data-toggle="dropdown"
-                  >커뮤니티</a
-                >
-                <ul class="dropdown-menu">
-                  <li><a href="shop.html">공지사항</a></li>
-                  <li><a href="shop-detail.html">자유게시판</a></li>
-                  <li><a href="cart.html">나눔게시판</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <!-- /.navbar-collapse -->
-
-          <!-- Start Atribute Navigation -->
-          <div class="attr-nav">
-            <ul>
-              <li class="search" style="display: none">
-                <a href="#"><i class="fa fa-search"></i></a>
-              </li>
-             <sec:authorize access="isAnonymous()">
+            <a href="/pawmap" class="navbar-brand text-uppercase font-weight-bold">PAWMAP</a>
+              <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
+            </div>
+            <div id="navbarSupportedContent" 
+                class="collapse navbar-collapse">
+                <ul class="nav navbar-nav ml-auto"
+                    data-in="fadeInDown"
+                    data-out="fadeOutUp">
+                    <li class="nav-item active">
+                      <!-- a태그 스타일이 안먹어 -->
+                      <a href="/pawmap" id="nav-a" class="nav-link text-uppercase font-weight-bold" >Home </a></li>
+                    <li class="nav-item">
+                      <a href="/pawmap/about" id="nav-a" class="nav-link text-uppercase font-weight-bold">회사소개</a></li>
+                    <li class="nav-item">
+                      <a href="/pawmap/search" id="nav-a" class="nav-link text-uppercase font-weight-bold">병원찾기</a></li>
+                    <li class="nav-item">
+                      <a href="/pawmap/shelter" id="nav-a" class="nav-link text-uppercase font-weight-bold">보호소 정보</a></li>
+                    <li class="dropdown"color: rgb(255, 255, 255);">
+                        <a
+                          href="#"
+                          class="nav-link dropdown-toggle arrow"
+                          data-toggle="dropdown"
+                          >커뮤니티</a
+                        >
+                        <!-- style inline으로 -->
+                        <ul class="dropdown-menu"  style="background-color:rgba(0, 0, 0, 0.089);     border-color: transparent;" >
+                          <li style="padding: 3%;"><a href="/pawmap/board/getFreeBoardList"  style="color: #fff; size: 0.8em; padding-left: 5px;">자유게시판</a></li>
+                          <li style="padding: 3%;"><a href="/pawmap/board/getNanumBoardList"  style="color: #fff; size: 0.8em; padding-left: 5px;">나눔게시판</a></li>
+                        </ul>
+                    </li>
+                  </ul>
+            </div>
+       
+      </div>
+        
+      
+         <div class="attr-nav col-lg-3">
+          <ul>
+            <li class="search" style="display: none">
+              <a href="#"><i class="fa fa-search"></i></a>
+            </li>
+            <sec:authorize access="isAnonymous()">
               <li class="side-menu">
                 <a href="/pawmap/loginForm">
-                  <p>로그인</p>
+                  <p id="attr-nav-p">로그인</p>
                 </a>
               </li>
               <li class="side-menu">
                 <a href="/pawmap/joinForm">
-                  <p>회원가입</p>
+                  <p id="attr-nav-p">회원가입</p>
                 </a>
               </li>
-			 </sec:authorize>
-			<sec:authorize access="isAuthenticated()">
-			 <li class="side-menu">
-                <a href="/pawmap/loginForm">
-                  <p>마이페이지 ${principal.user.userId} 님 환영합니다.</p>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+              <li class="side-menu">
+                <a href="/pawmap/mypage">
+                  <p id="attr-nav-i">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
                 </a>
               </li>
-			 <li class="side-menu">
+              
+              <li class="side-menu">
                 <a href="/pawmap/logout">
-                  <p>로그아웃</p>
+                  <p id="attr-nav-i">로그아웃</p>
                 </a>
               </li>
-			</sec:authorize>
-			<sec:authorize access="hasRole('ROLE_ADMIN')">
-				<li class="side-menu">
-	                <a href="/pawmap/admin">
-	                  <p>관리자 페이지</p>
-	                </a>
-	              </li>
-			</sec:authorize>
-            </ul>
-          </div>
-          <!-- End Atribute Navigation -->
+            </sec:authorize>
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+              <li class="side-menu">
+                <a href="/pawmap/admin">
+                  <p id="attr-nav-p">관리자 페이지</p>
+                </a>
+              </li>
+            </sec:authorize>
+          </ul>
         </div>
-        <!-- Start Side Menu -->
-        <div class="side">
-          <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-          <li class="cart-box">
-            <ul class="cart-list">
-              <li>
-                <a href="#" class="photo"
-                  ><img src="images/img-pro-01.jpg" class="cart-thumb" alt=""
-                /></a>
-                <h6><a href="#">Delica omtantur </a></h6>
-                <p>1x - <span class="price">$80.00</span></p>
-              </li>
-              <li>
-                <a href="#" class="photo"
-                  ><img src="images/img-pro-02.jpg" class="cart-thumb" alt=""
-                /></a>
-                <h6><a href="#">Omnes ocurreret</a></h6>
-                <p>1x - <span class="price">$60.00</span></p>
-              </li>
-              <li>
-                <a href="#" class="photo"
-                  ><img src="images/img-pro-03.jpg" class="cart-thumb" alt=""
-                /></a>
-                <h6><a href="#">Agam facilisis</a></h6>
-                <p>1x - <span class="price">$40.00</span></p>
-              </li>
-              <li class="total">
-                <a href="#" class="btn btn-default hvr-hover btn-cart"
-                  >VIEW CART</a
-                >
-                <span class="float-right"><strong>Total</strong>: $180.00</span>
-              </li>
-            </ul>
-          </li>
-        </div>
-        <!-- End Side Menu -->
-      </nav>
-      <!-- End Navigation -->
-    </header>
-    <!-- Header 끝 부분 -->
+       
+      </div>
+     
+    </nav>
+  </header>
+  <!-- Header 끝 부분 -->
