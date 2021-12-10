@@ -11,6 +11,7 @@ pageEncoding="UTF-8"%>
 	<sec:authentication property="principal" var="principal"/>
 </sec:authorize>
 
+
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -83,11 +84,11 @@ pageEncoding="UTF-8"%>
                       <!-- a태그 스타일이 안먹어 -->
                       <a href="/pawmap" id="nav-a" class="nav-link text-uppercase font-weight-bold" >Home </a></li>
                     <li class="nav-item">
-                      <a href="about.html" id="nav-a" class="nav-link text-uppercase font-weight-bold">회사소개</a></li>
+                      <a href="/pawmap/about" id="nav-a" class="nav-link text-uppercase font-weight-bold">회사소개</a></li>
                     <li class="nav-item">
                       <a href="/pawmap/search" id="nav-a" class="nav-link text-uppercase font-weight-bold">병원찾기</a></li>
                     <li class="nav-item">
-                      <a href="contact-us.html" id="nav-a" class="nav-link text-uppercase font-weight-bold">보호소 정보</a></li>
+                      <a href="/pawmap/shelter" id="nav-a" class="nav-link text-uppercase font-weight-bold">보호소 정보</a></li>
                     <li class="dropdown"color: rgb(255, 255, 255);">
                         <a
                           href="#"
@@ -96,9 +97,9 @@ pageEncoding="UTF-8"%>
                           >커뮤니티</a
                         >
                         <!-- style inline으로 -->
-                        <ul class="dropdown-menu"  style="background-color:rgba(0, 0, 0, 0.089);" >
-                          <li style="padding: 3%;"><a href="/pawmap/board/getFreeBoardList"  style="color: #fff; size: 0.8em;">자유게시판</a></li>
-                          <li style="padding: 3%;"><a href="cart.html"  style="color: #fff; size: 0.8em;">나눔게시판</a></li>
+                        <ul class="dropdown-menu"  style="background-color:rgba(0, 0, 0, 0.089);     border-color: transparent;" >
+                          <li style="padding: 3%;"><a href="/pawmap/board/getFreeBoardList"  style="color: #fff; size: 0.8em; padding-left: 5px;">자유게시판</a></li>
+                          <li style="padding: 3%;"><a href="/pawmap/board/getNanumBoardList"  style="color: #fff; size: 0.8em; padding-left: 5px;">나눔게시판</a></li>
                         </ul>
                     </li>
                   </ul>
@@ -112,6 +113,38 @@ pageEncoding="UTF-8"%>
             <li class="search" style="display: none">
               <a href="#"><i class="fa fa-search"></i></a>
             </li>
+            <sec:authorize access="isAnonymous()">
+              <li class="side-menu">
+                <a href="/pawmap/loginForm">
+                  <p id="attr-nav-p">로그인</p>
+                </a>
+              </li>
+              <li class="side-menu">
+                <a href="/pawmap/joinForm">
+                  <p id="attr-nav-p">회원가입</p>
+                </a>
+              </li>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+              <li class="side-menu">
+                <a href="/pawmap/mypage">
+                  <p id="attr-nav-i">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
+                </a>
+              </li>
+              
+              <li class="side-menu">
+                <a href="/pawmap/logout">
+                  <p id="attr-nav-i">로그아웃</p>
+                </a>
+              </li>
+            </sec:authorize>
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+              <li class="side-menu">
+                <a href="/pawmap/admin">
+                  <p id="attr-nav-p">관리자 페이지</p>
+                </a>
+              </li>
+            </sec:authorize>
           </ul>
         </div>
       </div>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <!DOCTYPE html>
@@ -10,6 +11,7 @@ pageEncoding="UTF-8"%>
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal"/>
 </sec:authorize>
+
 
   <head>
     <meta charset="utf-8" />
@@ -46,7 +48,6 @@ pageEncoding="UTF-8"%>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-jaeseok.css" />
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-gyul.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-silbia.css">
       <!-- 테이블 부분 css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footable.bootstrap.css" />
@@ -59,6 +60,33 @@ pageEncoding="UTF-8"%>
 
     
     <style>
+      .hov-in {
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.5);
+  bottom: -50%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 0.3s ease-out 0.5s;
+  -moz-transition: all 0.3s ease-out 0.5s;
+  -o-transition: all 0.3s ease-out 0.5s;
+  -ms-transition: all 0.3s ease-out 0.5s;
+  transition: all 0.3s ease-out 0.5s;
+  text-align: center;
+  display: table;
+}
+.hov-in a {
+  display: table-cell;
+  vertical-align: middle;
+  height: 100%;
+}
+
+.ins-inner-box:hover .hov-in {
+  bottom: 0;
+  opacity: 1;
+}
+
+
       header,
       nav {
         background: rgba(0, 0, 0, 0.041);
@@ -77,9 +105,7 @@ pageEncoding="UTF-8"%>
       .progress-bar {
           background-color: rgb(247, 203, 58);
       }
-    </style>
-    <!-- 영상 style -->
-    <style>
+    /* <!-- 영상 style --> */
 		
 		.jb-video { position: relative; top: 1%;}
         video {width:100%}
@@ -139,7 +165,7 @@ pageEncoding="UTF-8"%>
                         <!-- style inline으로 -->
                         <ul class="dropdown-menu"  style="background-color:rgba(0, 0, 0, 0.089);" >
                           <li style="padding: 3%;"><a href="/pawmap/board/getFreeBoardList"  style="color: #fff; size: 0.8em;">자유게시판</a></li>
-                          <li style="padding: 3%;"><a href="cart.html"  style="color: #fff; size: 0.8em;">나눔게시판</a></li>
+                          <li style="padding: 3%;"><a href="/pawmap/board/getNanumBoardList"  style="color: #fff; size: 0.8em;">나눔게시판</a></li>
                         </ul>
                     </li>
                   </ul>
@@ -168,12 +194,12 @@ pageEncoding="UTF-8"%>
             <sec:authorize access="isAuthenticated()">
               <li class="side-menu">
                 <a href="/pawmap/mypage">
-                  <p id="attr-nav-p">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
+                  <p id="attr-nav-i">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
                 </a>
               </li>
               <li class="side-menu">
                 <a href="/pawmap/logout">
-                  <p id="attr-nav-p">로그아웃</p>
+                  <p id="attr-nav-i">로그아웃</p>
                 </a>
               </li>
             </sec:authorize>
@@ -359,6 +385,7 @@ pageEncoding="UTF-8"%>
  
     <!--제휴 병원 소개 부분 끝-->
 
+
     <!--병원소개페이지 추가 -->
   <div class="about-box-main2">
     <div class="about-box-main">
@@ -542,6 +569,46 @@ pageEncoding="UTF-8"%>
         </div>
       </div>
  
+
+
+
+      <!-- 보호소 정보 표출부분 (css 맞는지 확인요) -->
+
+      <div class="instagram-box">
+        <div class="main-instagram owl-carousel owl-theme">
+            <c:forEach items="${shelterPic}" var="shelterPic" varStatus="i">
+            <div class="item">
+              <div class="ins-inner-box" 
+              style="    
+              width:375px;
+              height:375px;
+              overflow:hidden;
+              margin:0 auto;">
+                <!-- <img src="images/abandoned2.jpg" alt="" /> -->
+                <img class="img-fluid" src="${pageContext.request.contextPath}/upload/${shelterPic.originalFileName}" alt="" /
+                style="    
+                width:100%;
+                height:100%;
+                object-fit:cover">
+              <div class="hov-in">
+                <a>
+                  <h1 style="color: #ffffff"><strong>
+                    ${shelterPic.shelterName }
+                  </h1></strong>
+                  <h4 style="color: #ffffff">
+                    ${shelterPic.shelterAddress }
+                    <br>
+                    ${shelterPic.shelterTel } 
+                  </h4>
+  
+                </a>
+              </div>
+            </div>
+          </div>
+        </c:forEach>
+  
+        </div>
+      </div>
 
   </div>
 
