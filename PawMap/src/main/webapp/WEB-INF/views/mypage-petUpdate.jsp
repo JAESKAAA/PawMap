@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%>
 
     <!-- Start 반려동물 추가 타이틀 영역 -->
     <div class="all-title-box">
-        <div class="container">
+        <div class="petInfoContainer">
             <div class="row">
                 <div class="col-lg-12">
                     <h2>반려동물 수정</h2>
@@ -17,13 +17,13 @@ pageEncoding="UTF-8"%>
 
     <!-- Start 반려동물 추가 영역 -->
 
-    <div class="container bootstrap snippet" style="padding: 50px;">
+    <div class="petInfoContainer bootstrap snippet" style="padding: 50px;">
         <div class="row">
             <!-- 파일이 있는 상태에서는 update쿼리를 타도록  -->
                 <c:if test="${!empty fileVO}" >
                     <div class="col-sm-3">
                         <form id="upload_form" action="updatePetInfoFormInsertFiles"  method="POST" enctype="multipart/form-data">       
-                            <img class="img-fluid avatar img-circle img-thumbnail" src="${pageContext.request.contextPath}/upload/${petInfoFileList.originalFileName}" alt="">      
+                            <img class="img-fluid avatar img-circle img-thumbnail" src="${pageContext.request.contextPath}/upload/${fileVO.originalFileName}" alt="">      
                                 
                             <input id="uploader" type="file" class="text-center center-block file-upload" name="uploadPetFiles" >   
                             

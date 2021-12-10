@@ -1,76 +1,257 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Basic -->
 
-<%@ include file="layout/header.jsp" %>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal"/>
+</sec:authorize>
 
-    <!-- Start Top Search -->
-    <div class="top-search">
-      <div class="container">
-        <div class="input-group">
-          <span class="input-group-addon"><i class="fa fa-search"></i></span>
-          <input type="text" class="form-control" placeholder="Search" />
-          <span class="input-group-addon close-search"
-            ><i class="fa fa-times"></i
-          ></span>
-        </div>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Site Metas -->
+    <title>PawMap - 우리집 주변 동물병원 찾기</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/로고최종_수정.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/apple-touch-icon.png" />
+    <!-- Fontawesome CSS-->
+    <link
+      href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
+      rel="stylesheet"
+    />
+
+    <!--  ${request.getContextPath } -->
+    <!-- 몌 커스텀 css -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-mye.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/responsive.css" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-jaeseok.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-gyul.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-silbia.css">
+      <!-- 테이블 부분 css -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footable.bootstrap.css" />
+        <!-- 결 커스텀 css -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+
+    
+    <style>
+      header,
+      nav {
+        background: rgba(0, 0, 0, 0.041);
+        height: fit-content;
+        font-size: large;
+
+      }
+      #slides-shop {
+        height: 100vh;
+      }
+    </style>
+    <style>
+      section {
+          visibility: visible;
+      }
+      .progress-bar {
+          background-color: rgb(247, 203, 58);
+      }
+    </style>
+    <!-- 영상 style -->
+    <style>
+		
+		.jb-video { position: relative; top: 1%;}
+        video {width:100%}
+
+  
+       /* index컬러 블럭만들기 */
+       .about-box-main2 {
+        background-color: #fdd572;
+          padding: 0%;
+          margin-left: 0;
+          margin-right: 0;
+          width: 100%;
+          height: auto;
+       } 
+       .about-box-main {
+         margin: 10%;
+       }
+  
+     
+	  </style>
+  </head>
+
+  <body>
+
+    
+   <!-- Header 시작 -->
+   <header id="header" class="main-header header" style="z-index: 100;">
+    <nav class="
+        navbar navbar-expand-lg 
+        fixed-top py-3">
+        <div class="container col-lg-9">
+          <div class="navbar-header">
+            <a href="/pawmap" class="navbar-brand text-uppercase font-weight-bold">PAWMAP</a>
+              <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
+            </div>
+            <div id="navbarSupportedContent" 
+                class="collapse navbar-collapse">
+                <ul class="nav navbar-nav ml-auto"
+                    data-in="fadeInDown"
+                    data-out="fadeOutUp">
+                    <li class="nav-item active">
+                      <!-- a태그 스타일이 안먹어 -->
+                      <a href="/pawmap" id="nav-a" class="nav-link text-uppercase font-weight-bold" >Home </a></li>
+                    <li class="nav-item">
+                      <a href="/pawmap/about" id="nav-a" class="nav-link text-uppercase font-weight-bold">회사소개</a></li>
+                    <li class="nav-item">
+                      <a href="/pawmap/search" id="nav-a" class="nav-link text-uppercase font-weight-bold">병원찾기</a></li>
+                    <li class="nav-item">
+                      <a href="contact-us.html" id="nav-a" class="nav-link text-uppercase font-weight-bold">보호소 정보</a></li>
+                    <li class="dropdown"color: rgb(255, 255, 255);">
+                        <a
+                          href="#"
+                          class="nav-link dropdown-toggle arrow"
+                          data-toggle="dropdown"
+                          >커뮤니티</a
+                        >
+                        <!-- style inline으로 -->
+                        <ul class="dropdown-menu"  style="background-color:rgba(0, 0, 0, 0.089);" >
+                          <li style="padding: 3%;"><a href="/pawmap/board/getFreeBoardList"  style="color: #fff; size: 0.8em;">자유게시판</a></li>
+                          <li style="padding: 3%;"><a href="cart.html"  style="color: #fff; size: 0.8em;">나눔게시판</a></li>
+                        </ul>
+                    </li>
+                  </ul>
+            </div>
+       
       </div>
-    </div>
-    <!-- End Top Search -->
+        
+      
+         <div class="attr-nav col-lg-3">
+          <ul>
+            <li class="search" style="display: none">
+              <a href="#"><i class="fa fa-search"></i></a>
+            </li>
+            <sec:authorize access="isAnonymous()">
+              <li class="side-menu">
+                <a href="/pawmap/loginForm">
+                  <p id="attr-nav-p">로그인</p>
+                </a>
+              </li>
+              <li class="side-menu">
+                <a href="/pawmap/joinForm">
+                  <p id="attr-nav-p">회원가입</p>
+                </a>
+              </li>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+              <li class="side-menu">
+                <a href="/pawmap/mypage">
+                  <p id="attr-nav-p">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
+                </a>
+              </li>
+              <li class="side-menu">
+                <a href="/pawmap/logout">
+                  <p id="attr-nav-p">로그아웃</p>
+                </a>
+              </li>
+            </sec:authorize>
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+              <li class="side-menu">
+                <a href="/pawmap/admin">
+                  <p id="attr-nav-p">관리자 페이지</p>
+                </a>
+              </li>
+            </sec:authorize>
+          </ul>
+        </div>
+       
+      </div>
+     
+    </nav>
+  </header>
+  <!-- Header 끝 부분 -->
+
+
+
 
     <!-- Start Slider -->
     <div id="slides-shop" class="cover-slides">
       <ul class="slides-container">
         <li class="text-center">
-          <img src="images/Dog1.jpg" alt="" />
+          <img src="${pageContext.request.contextPath}/images/crousel-main2.jpeg">
+          
           <div class="container">
             <div class="row">
               <div class="col-md-12">
                 <h1 class="m-b-20">
                   <strong
-                    >Welcome To <br />
-                    PawMap</strong
+                    >반려동물을 위한 <br />동물 병원 
+                   </strong
                   >
                 </h1>
                 <p class="m-b-40">
-                  테스트 문구
+                 
                   <br />
-                  테스트 문구 테스트 테스트 테스트 테스트
+                  여러분의 근처에 착한 병원을 찾아보세요.
                 </p>
-                <p><a class="btn hvr-hover" href="#">자세히 보기</a></p>
+                <p><a class="btn custom_btn2" href="#">자세히 보기</a></p>
               </div>
             </div>
           </div>
         </li>
         <li class="text-center">
-          <img src="images/Dog2.jpg" alt="" />
-          <div class="container">
+          <img src="${pageContext.request.contextPath}/images/crousel-community3.jpeg">
+
+          <div class="in-text container">
             <div class="row">
               <div class="col-md-12">
                 <h1 class="m-b-20">
                   <strong
-                    >PawMap <br />
-                    병원 찾기 서비스</strong
+                    > 반려인들을 위한 <br />
+                    포맵의 커뮤니티</strong
                   >
                 </h1>
-                <p class="m-b-40">
-                  반려동물을 위한 병원 찾기 서비스
+                <!-- <p class="m-b-40">
+                  
                   <br />
-                  여러분의 근처에 착한 동물 병원을 찾아보세요.
-                </p>
-                <p><a class="btn hvr-hover" href="#">자세히 보기</a></p>
+                  
+                </p> -->
+                <p><a class="btn custom_btn2" href="#">자세히 보기</a></p>
               </div>
             </div>
           </div>
         </li>
         <li class="text-center">
-          <img src="images/ugi.jpg" alt="" />
-          <div class="container">
+          <img src="${pageContext.request.contextPath}/images/crousel-shelter.jpeg">
+
+          <div class=" container">
             <div class="row">
-              <div class="col-md-12">
+              <div class="in-text col-md-12">
                 <h1 class="m-b-20">
-                  <strong
-                    >PawMap <br />
-                    보호소 찾기 서비스</strong
+                  <strong><span>포맵이 소개하는</span> <br />
+                    동물보호소</strong
                   >
                 </h1>
                 <p class="m-b-40">
@@ -78,7 +259,7 @@ pageEncoding="UTF-8"%>
                   <br />
                   여러분의 작은 관심이 이들에게 큰 힘이 됩니다.
                 </p>
-                <p><a class="btn hvr-hover" href="#">자세히 보기</a></p>
+                <p><a class="btn custom_btn2" href="#">후원하기</a></p>
               </div>
             </div>
           </div>
@@ -96,61 +277,78 @@ pageEncoding="UTF-8"%>
     <!-- End Slider -->
 
     <!-- 검색 부분-->
-    <div class="container custom_margin">
+    <div class=" custom_margin">
       <form action="/pawmap/searchDetail" method="get">
-	      <div class="d-flex justify-content-center">
+	      <div id="search_bar" class="d-flex justify-content-center">
 	        <div class="search">
-	          <h3 class="text-center text-uppercase font-weight-bold">
-	            우리 동네 병원을 찾아보세요!
+	          <h3 id="search_hostpital" class=" text-uppercase font-weight-bold">
+	            우리 동네 동물병원을 찾아보세요!
 	          </h3>
-	          <input
-	            class="search_input"
-	            type="text"
-	            name="value"
-	            placeholder="search items !"
-	          />
-	          <button type="submit"  class="search_icon"><i class="fa fa-search"></i></button>
-	        </div>
+            
+            
+	          <div id="search_box">
+              <input
+              class="search_input"
+              type="text"
+              name="value"
+              placeholder="search items !"
+              />
+              <button type="submit"  class="search_icon"><i class="fa fa-search"></i></button>
+            </div>
+          </div>
 	      </div>
       </form>
     </div>
+    
     <!-- 검색 부분 끝-->
 
     <!--About Us 부분-->
+   
     <div class="container custom_aboutUsBox">
       <div class="custom_aboutUs_textBox">
         <div class="h6 aboutUs_title">For the Animal</div>
         <br />
-        <div class="custom_aboutUs_innerTextBox">
+        <div class="custom_aboutUs_innerTextBox long-text">
           동물을 위하는 마음으로 뭉쳤습니다.<br />
-          강아지 고양이 말 소 개구리 파충류 돼지 곤충 매미 귀뚜라미 딱정벌레
+          강아지 고양이 말 소 개구리 파충류 돼지 곤충 매미 귀뚜라미<br />
+          다양한 반려동물들을 위한 우리동네 동물병원을 찾아보세요
         </div>
         <br />
-        <button class="btn btn-primary btn-sm custom_btn" type="button">
+        <!-- <button class="btn btn-primary btn-sm custom_btn" type="button">
           더보기
-        </button>
+        </button> -->
       </div>
       <video
         class="index_video"
-        src="images/cat_video.mp4"
+        src="${pageContext.request.contextPath}/images/cat_video.mp4"
         muted
         autoplay
         loop
+        style="vertical-align: center;"
       ></video>
     </div>
     <!--About Us 부분 끝-->
-
     <!--제휴 병원 소개 부분-->
-    <div class="container custom_aboutUsBox">
-      <div class="custom_aboutUs_img"></div>
+    <div class="container custom_aboutUsBox2">
+      <div class="col-lg-6 custom_aboutUs_img">
+          <img
+          class="index_video"
+          src="${pageContext.request.contextPath}/images/yellowdog.jpg"
+          style="width: 100%;
+                height: auto;
+                vertical-align: center;
+                padding-left: 0;
+                ;"
+                
+        ></img>
+      </div>
 
-      <div class="custom_aboutUs_textBox">
+      <div class="col-lg-6 custom_aboutUs_textBox2">
         <div class="h6 aboutUs_title">제휴 병원 안내</div>
         <br />
-        <div class="custom_aboutUs_innerTextBox">
+        <div class="custom_aboutUs_innerTextBox long-text">
           잘하는 수의사들만 모아봤습니다.<br />
-          강릉 아산병원 신림 양지병원 신촌 연세세브란스병원 <br />
-          보라매공원 근처 보라매 병원 와플맛집 산책하고싶다
+          포맵의 제휴병원을 통해 예약관리를 시작하세요
         </div>
         <br />
         <button class="btn btn-primary btn-sm custom_btn" type="button">
@@ -158,12 +356,141 @@ pageEncoding="UTF-8"%>
         </button>
       </div>
     </div>
+ 
     <!--제휴 병원 소개 부분 끝-->
+
+    <!--병원소개페이지 추가 -->
+  <div class="about-box-main2">
+    <div class="about-box-main">
+      <div class="container">
+          <div class="row">
+      <div class="col-lg-6 jb-video">
+                  <video muted autoplay loop>
+                      <source src="${pageContext.request.contextPath}/videos/Cat - 85464.mp4" type="video/mp4">
+                      <strong>Your browser does not support the video tag.</strong>
+                    </video>
+              </div>
+              <div class="col-lg-6 long-text">
+                  <h2 class="noo-sh-title-top"><span>PAWMAP</span></h2>
+                  <p>포맵은 반려인들이 모여서 만든 동물병원 연결 서비스입니다. 이용하는 방법을 소개해드릴게요. 우선 회원가입 후 포맵의 전문 수의사에게 아이의 증상을 상담받을 수 있습니다. 
+                      그리고 우리동네 병원찾기를 통해 어디에 있든 주변 병원을 찾고 이용자들의 후기를 확인하세요. 
+                      병원을 찾았다면 동물병원의 수의사 정보와 함께 어떤 동물,치료를 전문으로 하는지 확인할 수 있습니다. 그리고 맘에 든다면 영화예약하듯 예약할 수 있습니다. 
+                      병원에 다녀오고 포맵에 들어오시면 병원에서 업로드한 진단서를 확인하실 수 있습니다.
+                      정기검진을 받으면 기록해야할 내용이 많은데 포맵에서 데이터를 관리해보세요.
+                      같이 산책할 동네 강아지를 찾거나, 작아진 옷을 팔 때는 포맵 커뮤니티를 이용해보세요.
+                      마지막으로 포맵에서 소개하는 유기동물 보호소 페이지에서는 후원을 할 수 있습니다.
+                       </p>
+                  <button class="btn btn-primary btn-sm custom_btn" type="button" onclick="location.href='/pawmap/about'">
+                        더보기
+                  </button>
+                  <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <a class="btn hvr-hover" href="#">Read More</a> -->
+              </div>
+          </div>
+          <div class="row my-5">
+              <div class="col-sm-6 col-lg-4">
+                  <div class="service-block-inner">
+                      <h3>우리동네 동물병원 찾기</h3>
+                      <p class="long-text">검색한 위치를 기반으로 주변 동물병원을 찾아드립니다. 병원에 대한 상세한 정보와 사람들의 후기를 확인해보세요!</p>
+                  </div>
+              </div>
+              <div class="col-sm-6 col-lg-4">
+                  <div class="service-block-inner">
+                      <h3>병원예약과 진료기록관리</h3>
+                      <p class="long-text">포맵의 제휴병원은 검색 후 바로 예약을 할 수 있습니다. 포맵에서 병원을 예약하고 병원 기록과 진단서관리를 시작하세요! </p>
+                  </div>
+              </div>
+              <div class="col-sm-6 col-lg-4">
+                  <div class="service-block-inner">
+                      <h3>반려인들을 위한 커뮤니티</h3>
+                      <p class="long-text">반려동물 키우는 이야기를 나눌 수 있는 자유게시판과 반려동물 관련 중고물건 나눔장터가 열려있습니다! </p>
+                  </div>
+              </div>
+          </div>
+
+          <!-- 그래프 & 통계자료 첨부  -->
+                      <!-- ======= Facts Section ======= -->
+              <section class="facts section-bg" data-aos="fade-up">
+                  <div class="container">
+          
+                  <div class="row counters">
+          
+                      <div class="col-lg-3 col-6 text-center">
+                      <span data-purecounter-start="0" data-purecounter-end="332" data-purecounter-duration="1" class="purecounter"></span>
+                      <p>회원</p>
+                      </div>
+          
+                      <div class="col-lg-3 col-6 text-center">
+                      <span data-purecounter-start="0" data-purecounter-end="1483" data-purecounter-duration="1" class="purecounter"></span>
+                      <p>제휴병원</p>
+                      </div>
+          
+                      <div class="col-lg-3 col-6 text-center">
+                      <span data-purecounter-start="0" data-purecounter-end="23" data-purecounter-duration="1" class="purecounter"></span>
+                      <p>오늘 예약</p>
+                      </div>
+          
+                      <div class="col-lg-3 col-6 text-center">
+                      <span data-purecounter-start="0" data-purecounter-end="77" data-purecounter-duration="1" class="purecounter"></span>
+                      <p>반려동물 프로필</p>
+                      </div>
+          
+                  </div>
+          
+                  </div>
+              </section><!-- End Facts Section -->
+          
+              <!-- ======= Our Skills Section ======= -->
+              <section class="skills" data-aos="fade-up">
+                  <div class="container">
+          
+                  <div class="section-title">
+                      <h2>stack on PAWMAP</h2>
+                      <p></p>
+                  </div>
+          
+                  <div class="skills-content">
+          
+                      <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                          <span class="skill">SpringBoot<i class="val">100%</i></span>
+                      </div>
+                      </div>
+                      <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                          <span class="skill">Java <i class="val">80%</i></span>
+                      </div>
+                      </div>
+                      <div class="progress">
+                      <div class="progress-bar" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100">
+                          <span class="skill"> JavaScript<i class="val">35%</i></span>
+                      </div>
+                      </div>
+          
+                      <div class="progress">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                          <span class="skill">Html <i class="val">20%</i></span>
+                      </div>
+                      </div>
+          
+                  </div>
+          
+                  </div>
+              </section>
+            </div>
+          </div>
+        </div>
+
+  <!--병원소개 페이지 끝 -->
+
 
     <hr class="custom_hr" />
 
     <!-- Start Instagram Feed  -->
     <div class="instagram-box">
+      
+      <h3>유기동물 보호소를 소개합니다</h3>
+      <br />
       <div class="main-instagram owl-carousel owl-theme">
         <div class="item">
           <div class="ins-inner-box">
@@ -214,445 +541,12 @@ pageEncoding="UTF-8"%>
           </div>
         </div>
       </div>
-    </div>
+ 
 
-    <!-- 후원자 표기 부분-->
-    <!-- <div class="container charity_box">
-      <div class="">후원자 닉네임 : 50,000원</div>
-      <div class="">후원자 닉네임 : 50,000원</div>
-      <div class="">후원자 닉네임 : 50,000원</div>
-      <div class="">후원자 닉네임 : 50,000원</div>
-    </div> -->
-    <!-- 후원자 표기 부분 끝-->
+  </div>
 
-    <!-- Start Products  -->
-    <!-- <div class="products-box">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="title-all text-center">
-              <h1>Fruits & Vegetables</h1>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit
-                amet lacus enim.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="special-menu text-center">
-              <div class="button-group filter-button-group">
-                <button class="active" data-filter="*">All</button>
-                <button data-filter=".top-featured">Top featured</button>
-                <button data-filter=".best-seller">Best seller</button>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="row special-list">
-          <div class="col-lg-3 col-md-6 special-grid best-seller">
-            <div class="products-single fix">
-              <div class="box-img-hover">
-                <div class="type-lb">
-                  <p class="sale">Sale</p>
-                </div>
-                <img
-                  src="images/img-pro-01.jpg"
-                  class="img-fluid"
-                  alt="Image"
-                />
-                <div class="mask-icon">
-                  <ul>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="View"
-                        ><i class="fas fa-eye"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="Compare"
-                        ><i class="fas fa-sync-alt"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="Add to Wishlist"
-                        ><i class="far fa-heart"></i
-                      ></a>
-                    </li>
-                  </ul>
-                  <a class="cart" href="#">Add to Cart</a>
-                </div>
-              </div>
-              <div class="why-text">
-                <h4>Lorem ipsum dolor sit amet</h4>
-                <h5>$7.79</h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 special-grid top-featured">
-            <div class="products-single fix">
-              <div class="box-img-hover">
-                <div class="type-lb">
-                  <p class="new">New</p>
-                </div>
-                <img
-                  src="images/img-pro-02.jpg"
-                  class="img-fluid"
-                  alt="Image"
-                />
-                <div class="mask-icon">
-                  <ul>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="View"
-                        ><i class="fas fa-eye"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="Compare"
-                        ><i class="fas fa-sync-alt"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="Add to Wishlist"
-                        ><i class="far fa-heart"></i
-                      ></a>
-                    </li>
-                  </ul>
-                  <a class="cart" href="#">Add to Cart</a>
-                </div>
-              </div>
-              <div class="why-text">
-                <h4>Lorem ipsum dolor sit amet</h4>
-                <h5>$9.79</h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 special-grid top-featured">
-            <div class="products-single fix">
-              <div class="box-img-hover">
-                <div class="type-lb">
-                  <p class="sale">Sale</p>
-                </div>
-                <img
-                  src="images/img-pro-03.jpg"
-                  class="img-fluid"
-                  alt="Image"
-                />
-                <div class="mask-icon">
-                  <ul>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="View"
-                        ><i class="fas fa-eye"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="Compare"
-                        ><i class="fas fa-sync-alt"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="Add to Wishlist"
-                        ><i class="far fa-heart"></i
-                      ></a>
-                    </li>
-                  </ul>
-                  <a class="cart" href="#">Add to Cart</a>
-                </div>
-              </div>
-              <div class="why-text">
-                <h4>Lorem ipsum dolor sit amet</h4>
-                <h5>$10.79</h5>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 special-grid best-seller">
-            <div class="products-single fix">
-              <div class="box-img-hover">
-                <div class="type-lb">
-                  <p class="sale">Sale</p>
-                </div>
-                <img
-                  src="images/img-pro-04.jpg"
-                  class="img-fluid"
-                  alt="Image"
-                />
-                <div class="mask-icon">
-                  <ul>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="View"
-                        ><i class="fas fa-eye"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="Compare"
-                        ><i class="fas fa-sync-alt"></i
-                      ></a>
-                    </li>
-                    <li>
-                      <a
-                        href="#"
-                        data-toggle="tooltip"
-                        data-placement="right"
-                        title="Add to Wishlist"
-                        ><i class="far fa-heart"></i
-                      ></a>
-                    </li>
-                  </ul>
-                  <a class="cart" href="#">Add to Cart</a>
-                </div>
-              </div>
-              <div class="why-text">
-                <h4>Lorem ipsum dolor sit amet</h4>
-                <h5>$15.79</h5>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- End Products  -->
-
-    <!-- Start Blog  -->
-    <!-- <div class="latest-blog">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="title-all text-center">
-              <h1>latest blog</h1>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit
-                amet lacus enim.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 col-lg-4 col-xl-4">
-            <div class="blog-box">
-              <div class="blog-img">
-                <img class="img-fluid" src="images/blog-img.jpg" alt="" />
-              </div>
-              <div class="blog-content">
-                <div class="title-blog">
-                  <h3>Fusce in augue non nisi fringilla</h3>
-                  <p>
-                    Nulla ut urna egestas, porta libero id, suscipit orci.
-                    Quisque in lectus sit amet urna dignissim feugiat. Mauris
-                    molestie egestas pharetra. Ut finibus cursus nunc sed
-                    mollis. Praesent laoreet lacinia elit id lobortis.
-                  </p>
-                </div>
-                <ul class="option-blog">
-                  <li>
-                    <a href="#"><i class="far fa-heart"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fas fa-eye"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="far fa-comments"></i></a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 col-xl-4">
-            <div class="blog-box">
-              <div class="blog-img">
-                <img class="img-fluid" src="images/blog-img-01.jpg" alt="" />
-              </div>
-              <div class="blog-content">
-                <div class="title-blog">
-                  <h3>Fusce in augue non nisi fringilla</h3>
-                  <p>
-                    Nulla ut urna egestas, porta libero id, suscipit orci.
-                    Quisque in lectus sit amet urna dignissim feugiat. Mauris
-                    molestie egestas pharetra. Ut finibus cursus nunc sed
-                    mollis. Praesent laoreet lacinia elit id lobortis.
-                  </p>
-                </div>
-                <ul class="option-blog">
-                  <li>
-                    <a href="#"><i class="far fa-heart"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fas fa-eye"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="far fa-comments"></i></a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 col-xl-4">
-            <div class="blog-box">
-              <div class="blog-img">
-                <img class="img-fluid" src="images/blog-img-02.jpg" alt="" />
-              </div>
-              <div class="blog-content">
-                <div class="title-blog">
-                  <h3>Fusce in augue non nisi fringilla</h3>
-                  <p>
-                    Nulla ut urna egestas, porta libero id, suscipit orci.
-                    Quisque in lectus sit amet urna dignissim feugiat. Mauris
-                    molestie egestas pharetra. Ut finibus cursus nunc sed
-                    mollis. Praesent laoreet lacinia elit id lobortis.
-                  </p>
-                </div>
-                <ul class="option-blog">
-                  <li>
-                    <a href="#"><i class="far fa-heart"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fas fa-eye"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="far fa-comments"></i></a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- End Blog  -->
-
-    <!-- Start Instagram Feed //이거 디자인 좋은데 활용 방안 없을지 확인해보기 -->
-    <!-- <div class="instagram-box">
-      <div class="main-instagram owl-carousel owl-theme">
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/instagram-img-01.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/instagram-img-02.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/instagram-img-03.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/instagram-img-04.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/instagram-img-05.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/instagram-img-06.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/instagram-img-07.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/instagram-img-08.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/instagram-img-09.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/instagram-img-05.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- End Instagram Feed  -->
+   
 
 <%@ include file="layout/footer.jsp" %>
  

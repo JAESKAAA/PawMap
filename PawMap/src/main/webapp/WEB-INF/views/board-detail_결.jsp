@@ -13,7 +13,6 @@ pageEncoding="UTF-8"%>
     <hr class="line-paint">
 
     <!-- 게시판 상세 폼 시작 -->
-
     <div class="about-box-main">
         <div class="container">
             <div class="row board-info">
