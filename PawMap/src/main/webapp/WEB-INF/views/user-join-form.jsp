@@ -4,7 +4,7 @@ pageEncoding="UTF-8"%>
 <%@ include file="layout/header.jsp" %>
 
     <!---------------------------------- 회원가입 폼 -------------------------->
-    <section class="vh-100" >
+    <section class="vh-100" style="padding-top: 200px;">
     <form class="mx-1 mx-md-4" action="/pawmap/join" method="post" name="joinForm" id="joinForm"
     onsubmit="submitJoinForm(this); return false;">
     <div class="u_container">
@@ -30,7 +30,7 @@ pageEncoding="UTF-8"%>
                       </tr>
                       <tr>
                           <th> 비밀번호 <span>*</span></th>
-                          <td><input required="required" type="password"
+                          <td><input required="required" type="text"
                             name="userPassword" id="userPassword" placeholder="8~20자리 영문,숫자,특수문자" 
                             class="input w130"></td>
                       </tr>
@@ -68,10 +68,10 @@ pageEncoding="UTF-8"%>
                               <div class="address_input_1_wrap">
                                 <div class="address_input_1_box">
                                   <input class="address_input_1 input w40" name="postNum" readonly="readonly" maxlength="5" placeholder="우편번호">
-                                </div>
-                                  <button type="button" class="address_button u_button-grey" onclick="execution_daum_address()">
+                                  <button type="button" class="address_button u_button-grey"
+                                  style="margin-left: 8px; white-space: nowrap;" onclick="execution_daum_address()">
                                     <span style="color: white;">검색</span></button>
-                                <div class="clearfix"></div>
+                                </div>
                               </div>
                               <div class ="address_input_2_wrap">
                                 <div class="address_input_2_box">
@@ -101,7 +101,7 @@ pageEncoding="UTF-8"%>
                     </tr>
                   </tbody>
               </table>
-              <div class="u_bottom-button" onclick="location.href='/pawmap'"><a class="u_button u_button-grey"><span>취소</span></a>
+              <div class="u_bottom-button"><a class="u_button u_button-grey" href="/pawmap"><span>취소</span></a>
                   <button id="btnJoin" type="submit" class="u_button u_button-point">
                       가입하기
                   </button>

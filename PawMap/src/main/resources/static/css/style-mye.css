@@ -123,18 +123,368 @@
 
 
 
+/* index page css */
+
+
+  /*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+.navbar {
+    transition: all 0.4s;
+}
+
+.navbar .nav-link {
+    color: #f9f3e3;
+}
+
+
+.navbar .nav-link:hover {
+    color:#fdd572;
+    text-decoration: none;
+}
+
+.navbar .navbar-brand {
+    color:  #555;
+}
+
+
+.navbar.active {
+    background: #fff;
+    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.041);
+}
+
+#navbarSupportedContent>ul>li>ul>li>a:hover{
+	padding : 3%;
+	color:#fdd572 !important;
+	size: 0.8em;
+}
+
+/* header>nav>div>ul>li>#nav-a:hover */
+/* .navbar.active #nav-a:hover {
+    color: #fff !important;
+}
+
+.navbar.active #nav-a:hover{
+	 color: #f0e1bc !important;
+	
+} */
+.navbar.active .nav-link:focus {
+    color: #555;
+    text-decoration: none;
+}
+
+.navbar.active .navbar-brand {
+    color: #555;
+}
+
+
+/* Change navbar styling on small viewports */
+@media (max-width: 991.98px) {
+    .navbar {
+        background: #fff;
+    }
+
+    .navbar .navbar-brand, .navbar .nav-link {
+        color: #555;
+    }
+}
+
+
+
+/*
+*
+* ==========================================
+* FOR ..
+* ==========================================
+*
+*/
+.text-small {
+    font-size: 0.9rem !important;
+}
+
+
+body {
+    min-height: 110vh;
+    background: linear-gradient(135deg, #fff 0%, #f0e1bcab 100%);
+}
+
+/* Navbar Inverse =================================*/
+nav.navbar.navbar-inverse {
+	background-color: #222;
+	border-bottom: solid 1px #303030;
+  }
+  nav.navbar.navbar-inverse ul.cart-list > li.total > .btn {
+	border-bottom: solid 1px #222 !important;
+  }
+  nav.navbar.navbar-inverse ul.cart-list > li.total .pull-right {
+	color: #fff;
+  }
+  nav.navbar.navbar-inverse.megamenu
+	ul.dropdown-menu.megamenu-content
+	.content
+	ul.menu-col
+	li
+	a,
+  nav.navbar.navbar-inverse ul.nav > li > a {
+	color: #eee;
+  }
+  nav.navbar.navbar-inverse ul.nav > li.dropdown > a {
+	background-color: #222;
+  }
+  nav.navbar.navbar-inverse li.dropdown ul.dropdown-menu > li > a {
+	color: #999;
+  }
+  nav.navbar.navbar-inverse ul.nav .dropdown-menu h1,
+  nav.navbar.navbar-inverse ul.nav .dropdown-menu h2,
+  nav.navbar.navbar-inverse ul.nav .dropdown-menu h3,
+  nav.navbar.navbar-inverse ul.nav .dropdown-menu h4,
+  nav.navbar.navbar-inverse ul.nav .dropdown-menu h5,
+  nav.navbar.navbar-inverse ul.nav .dropdown-menu h6 {
+	color: #fff;
+  }
+  nav.navbar.navbar-inverse .form-control {
+	background-color: #333;
+	border-color: #303030;
+	color: #fff;
+  }
+
+  nav.navbar-inverse.navbar-full ul.nav > li > a {
+	border: none;
+  }
+  nav.navbar-inverse.navbar-full .navbar-collapse .wrap-full-menu {
+	background-color: #222;
+  }
+  nav.navbar-inverse.navbar-full .navbar-toggle {
+	background-color: #222 !important;
+	color: #6f6f6f;
+  }
+  nav.navbar.bootsnav ul.nav > li > a {
+	position: relative;
+	font-weight: 700;
+	font-size: 16px;
+	color: #000000;
+	text-transform: uppercase;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 30px;
+  }
+  nav.navbar.bootsnav ul.nav li.active > a {
+	color: #EFC778;
+  }
+  nav.navbar.bootsnav ul.nav li.active > a:hover {
+	color: #EFC778;
+  }
+  nav.navbar.bootsnav ul.nav li > a:hover {
+	color: #EFC778;
+  }
+  nav.navbar.bootsnav ul.nav li.megamenu-fw > a:hover {
+	color: #EFC778;
+  }
+ */
+
+  nav.navbar.bootsnav ul.navbar-nav li.dropdown ul.dropdown-menu li a {
+	display: block;
+	padding: 6px 25px;
+  }
+  
+  nav.navbar.bootsnav ul.navbar-nav li.dropdown ul.dropdown-menu li a:hover {
+	color: #EFC778;
+  } */
+  nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
+	left: auto;
+  }
+  .side-menu p {
+	display: inline-block;
+	color: #f9f3e3;
+
+  }
+
+  #attr-nav-p:hover {
+	color: #EFC778;
+
+  }
+/* nav container*/
+#container-nav{
+	width: 50%;
+}
+/*
+*
+* ==========================================
+* FOR SEARCH ID, PW
+* ==========================================
+*
+*/
+/* 아이디비번찾기 인풋 */
+.searchBox {
+	height: 50px !important;
+	border-radius: 40px  !important;
+  }
+  /* 아이디비번찾기 버튼 */
+  .searchIPBtn{
+	background: rgb(239, 199, 120)  !important;
+	border:  solid rgb(239, 199, 120)  !important;
+	color: #000;
+	margin-top: 5%;
+  }
+  .searchIPBtn:hover{
+	background: rgb(255, 255, 255,0)  !important;
+	border:  solid rgb(239, 199, 120)  !important;
+	color: rgb(239, 199, 120);
+  }
+  .searchCcBtn{
+	background: #e4bc6086  !important;
+	border:  solid rgb(239, 199, 120)  !important;
+	color: #000  !important;
+	margin-top: 5%;
+  }
+  .searchCcBtn:hover{
+	background: rgb(255, 255, 255,0)  !important;
+	border:  solid rgb(239, 199, 120)  !important;
+	color: #e4bc6086  !important;
+  }
+	 
+
+	/* 왼쪽 사진 */
+	.searchImg{
+		border-radius: 70%; 
+		width: 20vw; 
+		height:20vw; 
+		overflow: hidden;
+		background-image: url(../images/searchIdPw.png);
+		background-size: cover;
+		
+	}
+	.wlcm {
+		color: #EFC778;
+		width: 15vw;
+		font-weight: bold;
+		text-align: center;
+	}
+  /*
+*
+* ==========================================
+* FOR 병원 예약관리 페이지 res-calendar-form.jsp
+* ==========================================
+*
+*/
+	.resHoForm{
+		padding-top:100px;
+	}
 
 
 
 
+	/* <!--캘린더 css--> */
 
 
+    a { color:#000000;text-decoration:none; }
+    .scriptCalendar { text-align:center;  }
+    .scriptCalendar > thead > tr > td { width:50px;height:50px; }
+    .scriptCalendar > thead > tr:first-child > td { font-weight:bold; }
+    .scriptCalendar > thead > tr:last-child > td { background-color:#eecd90; }
+  
 
+    /* button */
+    .calendar_box {
+        width:100%;
+        background-size: cover;
+        height: auto;
+        background-color: transparent;
+        /* margin-left: 5%;
+        margin-top: 5%;
+        position: relative; */
+        z-index: 1;
+    }
+	sc {
+		align-content: center;
+	}
+    .scriptCalendar{
+        position: relative;
+        float: left;
+        margin:auto;
+		padding: 2%;
+		margin-left: 5%;
+		padding-bottom:20px;
+    }
+	.jscal {
+		max-width: 100%;
+		max-height: 100%;
+	}
+    .calendar-left{
+		margin: 7%;
+		margin-top: 20px !important;
+		text-align: center;
+		align-items: center;
+		background-color: #eecd90;
+		border-radius: 50px;
+		width: 70% !important;
+		height: 40vh;
+		font-size: medium;
+		margin-bottom: 3%;
+		max-width: 100% !important;
+    }
+	.calendartime > li {
+		list-style: none;
+		margin: 0px;
+		padding: 5px;
+		position: relative;
+		float: left;
+	}
+	.events-times{
+		position: relative;
+		float: left;
+		padding-left: 2%;
+		padding-right: 2%;
+		line-height: 2;
+		padding-top: 2%;
+		vertical-align: top;
+		height: 40vh;
+		width: 30%;
+	}
+    .events-times .calendar-time {
+        list-style: none;
+        text-align: center;
+		font-size: 3rem;
+    }
+    .events-times .calendar-time li {
+        position: relative;
+        margin: 3px;
+        display: inline-block;
+    }
+    
+    .calendar-right {
+       background-color:rgb(253, 231, 189, 0.34);
+       position: relative; 
+       float: left;
+       color: whtie;
+       width: 30%;
+       
+       margin-top: 50px;
+    }
 
-
-
-
-
-
-
-
+	.btn-calendar {
+	    margin-left: 0;
+    	height: 40px;
+    	border-radius: 40px !important;
+    	background: rgb(239, 199, 120) !important;
+    	border:  solid rgb(239, 199, 120) !important;
+    	/* color: #000 !important; */
+    	width: 35% !important;
+    	background-color: #eecd90 !important;
+    	margin-left: 5%;
+    	padding-left: 20px !important;
+    	padding-right: 20px !important;
+    	color: #fff !important;	
+	}
+	.btn-calendar:hover {
+		
+		background: rgb(253, 231, 189, 0.34) !important;
+		border:  solid rgb(253, 231, 189, 0.34) !important;
+		color: rgb(255, 255, 255) !important;
+	}
+/** ADD YOUR AWESOME CODES HERE **/

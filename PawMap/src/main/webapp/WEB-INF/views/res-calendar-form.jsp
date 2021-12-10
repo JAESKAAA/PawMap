@@ -55,10 +55,16 @@ pageEncoding="UTF-8"%>
     
     <input type="hidden" name="userId" value="${principal.user.userId}">
     <input type="hidden" name="comNum" value="${principal.user.comNum}">
+    
+    <div class="board-type  mt-5">
+        <h1> 예약시간관리  </h1>
+    </div>
+    <hr class="line-paint">
+    
     <div class="container">
         <div class="row">
             <div class="calendar_box" >
-                <div class="sc col-lg-6 col-md-6 col-sm-12">
+                <div class="sc col-lg-12 col-md-12 col-sm-24 ">
                     <table class="scriptCalendar" style="position: relative; float: left;">
                         <thead>
                             <tr>
@@ -75,7 +81,7 @@ pageEncoding="UTF-8"%>
                 </div>
         
         <!--button-->
-                <div class="calendar-left col-lg-6 col-md-6 col-sm-12" style="position: relative; float: left;">
+                <div class="calendar-left col-lg-12 col-md-12 col-sm-24" style="position: relative; float: left;">
                     <div class="events-times"><strong style="color: white; size: 2em;">오전</strong>
                      <br/>
                         <ul class="calendartime">
@@ -121,7 +127,7 @@ pageEncoding="UTF-8"%>
         </div>
         <div class="r form-group ml-5">
             <div >
-                <input type="submit" value="작성완료" class="btn btn-complete">
+                <input type="submit" value="작성완료" class="btn btn-calendar form-control">
             </div>
         </div>
     </div>    
@@ -136,7 +142,7 @@ pageEncoding="UTF-8"%>
 <hr class="line-paint">
 <div class="container" style="text-align: center; margin-top: 5%;" >
     
-    <table style="display:inline-block; width: auto; height: auto;">
+    <table style="display:inline-block; width: auto; height: auto; margin-left: 10%; margin-right: 10%; min-height: 50px;">
         <tr>
             <th><span style="width: 100px;">시간표</span></th>
             <th><span style="width: 100px;">일</span></th>
@@ -211,6 +217,8 @@ pageEncoding="UTF-8"%>
     </table>    
 </div>
 
+<br />
+<br />
 <div class="board-type  mt-5">
     <h1> ${hosNickname[0].user_nickname} 예약회원보기  </h1>
     <p>
@@ -229,7 +237,7 @@ pageEncoding="UTF-8"%>
 <div class="container">
 <div class="row">
     <div class="calendar_box" >
-        <div class="sc col-lg-6 col-md-12 col-sm-12">
+        <div class="sc col-lg-6 col-md-12 col-sm-12 jscal">
             <table  class="scriptCalendar mb-3" style="position: relative; float: left; ">
                 <thead>
                     <tr>
@@ -257,7 +265,7 @@ pageEncoding="UTF-8"%>
     
     <!--button-->
         <div class="calendar-left col-lg-6 col-md-12 col-sm-12" style="position: relative; float: left; margin-top: 0px;">
-            <strong  style="color: white; size: 2em; ">예약한 회원</strong>
+            <strong  style="color: white; size: 2em; padding-top: 8px; ">예약한 회원</strong>
             <div class="events-time mt-5" >
                 <br/>
                 <ul class="calendartime">

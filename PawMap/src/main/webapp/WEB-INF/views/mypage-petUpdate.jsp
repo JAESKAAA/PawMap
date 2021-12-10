@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%>
 
     <!-- Start 반려동물 추가 타이틀 영역 -->
     <div class="all-title-box">
-        <div class="container">
+        <div class="petInfoContainer">
             <div class="row">
                 <div class="col-lg-12">
                     <h2>반려동물 수정</h2>
@@ -17,12 +17,12 @@ pageEncoding="UTF-8"%>
 
     <!-- Start 반려동물 추가 영역 -->
 
-    <div class="container bootstrap snippet" style="padding: 50px;">
+    <div class="petInfoContainer bootstrap snippet" style="padding: 50px;">
         <div class="row">
             <!-- 파일이 있는 상태에서는 update쿼리를 타도록  -->
                 <c:if test="${!empty fileVO}" >
                     <div class="col-sm-3">
-                        <form id="upload_form" action="updatePetInfoFormInsertFiles"  method="POST" enctype="multipart/form-data">       
+                        <form id="upload_form" action="updateVetInfoFormInsertFiles"  method="POST" enctype="multipart/form-data">       
                             <img class="img-fluid avatar img-circle img-thumbnail" src="${pageContext.request.contextPath}/upload/${petInfoFileList.originalFileName}" alt="">      
                                 
                             <input id="uploader" type="file" class="text-center center-block file-upload" name="uploadPetFiles" >   
@@ -37,7 +37,7 @@ pageEncoding="UTF-8"%>
                 </c:if>
                 <c:if test="${empty fileVO}">
                     <div class="col-m-12">
-                        <form action="insertPetFileOnUpdateForm" method="POST" enctype="multipart/form-data">
+                        <form action="insertVetFileOnUpdateForm" method="POST" enctype="multipart/form-data">
                             <div class="text-center">
                                     
                                 <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"

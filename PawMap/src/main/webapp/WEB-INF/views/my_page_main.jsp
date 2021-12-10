@@ -4,7 +4,7 @@ pageEncoding="UTF-8"%>
 <%@ include file="layout/header.jsp" %>
 
     <!-- Start 마이페이지 타이틀 영역 -->
-    <div class="pet-all-title-box">
+    <div class="pet-all-title-box" style="padding-top: 200px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">

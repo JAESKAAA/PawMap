@@ -120,8 +120,30 @@ public class FileServiceImpl implements FileService {
 		return fileMapper.getPetFile(petSeq,userId);
 	}
 
+	@Override
+	public void insertVetFileList(List<FileVO> fileList) {
+		for(FileVO vo : fileList) {
+			System.out.println("vo정보 출력 == "+vo);
+			fileMapper.insertVetFileList(vo);
+		}
+	}
 
-	
+	@Override
+	public void updateVetFileList(List<FileVO> fileList) {
+		for(FileVO vo : fileList) {
+			System.out.println("수의사 file업데이트  vo정보 === "+vo);
+			fileMapper.updateVetFileList(vo);
+		}
+		
+	}
 
+	@Override
+	public FileVO vetInfoFile(FileVO vo) {
+		return fileMapper.vetInfoFile(vo);
+	}
 	
+	@Override
+	public void deleteVetFile(int vetSeq, String boardType, String userId) {
+		fileMapper.deleteVetFile(vetSeq, boardType, userId);
+	}
 }

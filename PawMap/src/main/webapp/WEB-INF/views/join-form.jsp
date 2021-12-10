@@ -6,7 +6,7 @@ pageEncoding="UTF-8"%>
 
     <!---------------------------------- 회원가입 폼 -------------------------->
 
-  <section class="vh-100">
+  <section class="vh-100" style="padding-top:200px;">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-lg-6 col-xl-6" style="padding-bottom: 15px;">
