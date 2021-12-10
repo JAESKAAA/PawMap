@@ -31,5 +31,7 @@ public class BoardVO {
 
 	
 	private MultipartFile uploadFiles;
+	
+
 
 }

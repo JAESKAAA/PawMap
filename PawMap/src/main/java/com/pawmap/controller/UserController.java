@@ -1,7 +1,6 @@
 package com.pawmap.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
@@ -14,6 +13,7 @@ import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -32,14 +32,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-
 import com.pawmap.VO.Criteria;
-import com.pawmap.VO.PageVO;
 import com.pawmap.VO.FileVO;
+import com.pawmap.VO.PageVO;
+import com.pawmap.VO.ShelterVO;
 import com.pawmap.VO.UserVO;
 import com.pawmap.configuration.auth.PrincipalDetails;
 import com.pawmap.configuration.auth.PrincipalDetailsService;
+import com.pawmap.mapper.ShelterMapper;
 import com.pawmap.mapper.UserMapper;
+import com.pawmap.service.BoardService;
 import com.pawmap.service.FileService;
 import com.pawmap.service.UserService;
 import com.pawmap.util.CookieUtil;
@@ -61,28 +63,66 @@ public class UserController {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
-	 @Autowired 
-	 private UserMapper userMapper;
-	 
-	 @Autowired
-	 private FileService fileService;
+
+	@Autowired
+	private AuthenticationManager authenticationManager;
+	
+	@Autowired 
+	private UserMapper userMapper;
+	
+	
+	@Autowired
+	private FileService fileService;
+	
+	
+	@Autowired
+	private ShelterMapper shelterMapper;
+	
+	@Autowired
+	private BoardService boardService;
+	
 	 
 	/*
 	 * 페이지 이동 관련 메소드
 	 * 
 	 * */
 	//공백 및 / 요청시 메인페이지로 이동
-	@GetMapping({"","/"})
-	public String index() {
-	System.out.println("나는메인페이지");
+
+//	@GetMapping({"","/"})
+//	public String index() {
+//		return "index2";
+//	}
+	
+	//공백 및 / 요청시 메인페이지로 이동, 하단부 shelter정보와 매핑되는 file(이미지)정보 갖고옴
+	@RequestMapping({"","/"})
+	public String index(ShelterVO vo, Model model) {
+		
+		System.out.println("index 통과===================");
+		
+		
+		List<ShelterVO> shelter = shelterMapper.getShelterList(vo);
+		System.out.println("index - shelter에 담긴값 출력===========" + shelter);
+		
+		List<HashMap<String,Object>> latelyShelterBoardListForMain = boardService.getLatelyBoardListForShelterBoardMain();
+		
+		System.out.println("index의 getShelterSeq값 =============" + vo.getShelterSeq());
+		
+		 model.addAttribute("shelter", shelterMapper.getShelterList(vo));
+		 model.addAttribute("shelterPic", latelyShelterBoardListForMain);
+		 
+		 System.out.println("shelterPic==========" + latelyShelterBoardListForMain);
+		 
+		
 		return "index2";
 	}
+	
 
 	//회사 소개페이지로 이동
 	@GetMapping("/about")
 	public String about() {
 		return "about";
 	}
+	
 	
 	//관리자 페이지 이동하는 메소드
 	@GetMapping("/admin")
@@ -108,6 +148,7 @@ public class UserController {
 	}
 	
 
+	
 	//스프링 시큐리티가 해당 주소를 낚아채감 추후 설정 필요
 	//SecurityConfig파일 생성 후 활성화안됨 (스프링 필터가 가로채기때문)
 	@GetMapping("/loginForm")
@@ -143,6 +184,13 @@ public class UserController {
 	public String userInfoForm() {
 		return "admin_user";
 	}
+	
+	
+
+	
+	
+	
+	
 	
 	
 	/*
@@ -279,6 +327,22 @@ public class UserController {
 		return "redirect:/loginForm";
 	}
 
+	
+	// 아이디 중복 검사 => 회원 가입 페이지에서 아이디 중복 메세지 안뜸
+	@RequestMapping(value = "/userIdChk", method = RequestMethod.POST)
+	@ResponseBody
+	public String userIdChk(String userId) throws Exception{
+		int result = userService.idCheck(userId);
+		if(result != 0) {
+			return "fail";	// 중복 아이디가 존재
+		} else {
+			return "success";	// 중복 아이디 x
+		}	
+		
+	} // memberIdChkPOST() 종료	
+	
+		
+
 	@PreAuthorize("hasRole('ROLE_ADMIN')") //하기 메서드가 실행하기 직전에 실행됨
 	@GetMapping("/data")
 	public @ResponseBody String data() {
@@ -356,6 +420,10 @@ public class UserController {
 		return "admin_user";
 		
 	}
+	
+	
+	
+	
 	//관리자 페이지 -> 유저 정보 업데이트
 	@PostMapping("/admin/updateUser")
 	public String adminUpdateUser(UserVO vo) {
@@ -455,6 +523,9 @@ public class UserController {
 			return "loginForm";
 			
 		}
+		
+		
+
 
 		// 아이디 중복 체크
 		@RequestMapping("idCheck")
@@ -521,19 +592,20 @@ public class UserController {
 			}
 		}
 		
-		//	프로필 삭제 메서드
-		@RequestMapping("/mypage/deleteProfile")
-		public String deleteProfile(int userSeq, String userType, String userId) throws IOException {
-			
-			System.out.println("userSeq === "+userSeq);
-			System.out.println("userType === "+userType);
-			System.out.println("userId === "+userId);
-			fileService.deleteProfile(userSeq,userType,userId);
-			userService.updateUserProfileNull(userSeq,userType,userId);
-			String encodedParam = URLEncoder.encode(userId, "UTF-8");
 
-			return "redirect:/mypage/userInfo?userId="+encodedParam;
-		}
+		   //   프로필 삭제 메서드
+	      @RequestMapping("/mypage/deleteProfile")
+	      public String deleteProfile(int userSeq, String userType, String userId) throws IOException {
+	         
+	         System.out.println("userSeq === "+userSeq);
+	         System.out.println("userType === "+userType);
+	         System.out.println("userId === "+userId);
+	         fileService.deleteProfile(userSeq,userType,userId);
+	         userService.updateUserProfileNull(userSeq,userType,userId);
+	         String encodedParam = URLEncoder.encode(userId, "UTF-8");
+
+	         return "redirect:/mypage/userInfo?userId="+encodedParam;
+	      }
 
 		@GetMapping("/getUserByJson")
 		@ResponseBody

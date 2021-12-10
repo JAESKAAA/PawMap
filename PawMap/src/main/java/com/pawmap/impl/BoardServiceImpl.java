@@ -20,7 +20,6 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired
 	BoardMapper boardMapper;
 
-
 	@Override
 	public void insertFreeAndNanumBoard(BoardVO vo) {
 		boardMapper.insertFreeAndNanumBoard(vo);
@@ -77,6 +76,64 @@ public class BoardServiceImpl implements BoardService {
 
 	}
 
+//	나눔게시판 리스트
+	@Override
+	public List<BoardVO> getNanumBoardList(BoardVO vo, Criteria cri) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("board", vo);
+		cri.setStartNum((cri.getPageNum() -1 ) * cri.getAmount());
+		paramMap.put("criteria", cri);
+		
+		return boardMapper.getNanumBoardList(paramMap);
+	}
+
+//	게시판 상세조회
+	@Override
+	public BoardVO getBoardDetail(int boardSeq, String boardType) {
+		System.out.println("=============보드서비스찍히는지확인");
+		System.out.println("getBoardDetail - boardSeq = " + boardSeq + " boardType = " + boardType);
+		return boardMapper.getBoardDetail(boardSeq, boardType);
+	}
+
+	@Override
+	public BoardVO getNanumBoard(int boardSeq) {
+		System.out.println("(nanumboard) BoardServiceImpl 의 boardSeq ======"+boardSeq);
+		return boardMapper.getNanumBoard(boardSeq);
+	}
+
+	@Override
+	public void updateNanumBoardForm(BoardVO vo) {
+		boardMapper.updateNanumBoardForm(vo);
+		
+	}
+@Override
+public int getNanumBoardSeq() {
+	return boardMapper.getNanumBoardSeq();
+}
+
+@Override
+public void deleteNanumBoardBySeq(int boardSeq) {
+	boardMapper.deleteNanumBoardBySeq(boardSeq);
+	
+	
+}
+
+@Override
+public List<HashMap<String, Object>> getLatelyBoardListForNanumBoardMain() {
+	return boardMapper.getLatelyBoardListForNanumBoardMain();
+}
+
+@Override
+public int selectNanumBoardCount(BoardVO vo) {
+	return boardMapper.selectNanumBoardCount(vo);
+}
+
+@Override
+public List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain() {
+	return boardMapper.getLatelyBoardListForShelterBoardMain();
+}
+	
+
 	@Override
 	public void insertMedicalRecord(BoardVO vo) {
 		boardMapper.insertMedicalRecord(vo);
@@ -118,7 +175,6 @@ public class BoardServiceImpl implements BoardService {
 		boardMapper.updateFreeBoardCnt(boardSeq);
 	}
 
-	
 
 }
 

@@ -78,7 +78,7 @@
   		ORDER BY board_seq DESC
   		LIMIT #{criteria.amount} OFFSET #{criteria.startNum}
   	</select>
-  	
+
   	<select id="getFreeBoard" resultType="com.pawmap.VO.BoardVO" resultMap="boardResult">
   		SELECT b.board_seq, b.board_type, b.user_id, b.title, b.content, b.regDate, b.cnt, u.user_nickname 
   		FROM board AS b
@@ -90,6 +90,7 @@
 
   	</select>
   	
+
   	<update id="updateFreeBoardCnt">
   		UPDATE board
   		SET 	
@@ -98,6 +99,7 @@
   		AND
   		board_type = 'f'
   	</update>
+
   	
   	<select id="getFreeBoardSeq" resultType="int">
 		SELECT IFNULL(MAX(board_seq) ,0) + 1
@@ -105,6 +107,13 @@
 			WHERE board_type = 'f'
 	</select>
 	
+
+		<select id="getNanumBoardSeq" resultType="int">
+		SELECT IFNULL(MAX(board_seq) ,0) + 1
+			FROM BOARD
+			WHERE board_type = 's'
+			</select>
+
 	<select id="getMedicalBoardSeq" resultType="int">
 		SELECT IFNULL(MAX(board_seq) ,0) + 1
 			FROM BOARD
@@ -116,6 +125,13 @@
   		WHERE board_seq = #{boardSeq}
   		AND
   		board_type = 'f';
+  	</delete>
+  	
+  	  	<delete id="deleteNanumBoardBySeq">
+  		DELETE FROM board
+  		WHERE board_seq = #{boardSeq}
+  		AND
+  		board_type = 's';
   	</delete>
   	
   	<update id="updateFreeBoardForm">
@@ -143,9 +159,24 @@
 			AND (title LIKE CONCAT('%', #{keyword}, '%') OR `content` LIKE CONCAT('%', #{keyword}, '%'))
 		</if>
 	</select>
-
-
 	
+	<!-- 나눔게시판 서치 관련-->
+	  	<select id="selectNanumBoardCount" resultType="int">
+		SELECT COUNT(*) FROM BOARD
+		WHERE board_type = 's'
+		<if test="keywordType == 'title'">
+			AND title LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="keywordType == 'content'">
+			AND `content` LIKE CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="keywordType == 'titleAndBody'">
+			AND (title LIKE CONCAT('%', #{keyword}, '%') OR `content` LIKE CONCAT('%', #{keyword}, '%'))
+		</if>
+	</select>
+
+
+
 	<select id="getLatelyBoardListForBoardMain" resultType="HashMap">
 		select b.*, f.originalFilename
 		from board AS b
@@ -163,6 +194,104 @@
 		limit 3;
 	</select>
 	
+
+	
+		<select id="getLatelyBoardListForNanumBoardMain" resultType="HashMap">
+		select b.*, f.originalFilename
+		from board AS b
+		inner join 
+		(
+		select f1.file_seq as fSeq, f1.originalFilename as originalFilename, f1.board_seq AS bSeq
+		from file as f1 
+			left join file as f2 on f1.board_seq = f2.board_seq and f1.file_seq > f2.file_seq
+		    where f2.file_seq is null
+		) as f
+		on b.board_seq = f.bSeq
+		where b.board_type = 's'
+		order by b.board_seq DESC
+		limit 3;
+	</select>
+	
+	
+		<select id="getLatelyBoardListForShelterBoardMain" resultType="HashMap">
+	SELECT   
+            A.shelter_seq AS shelterSeq,
+              A.shelter_name AS shelterName,
+              A.shelter_address AS shelterAddress,
+              A.shelter_tel AS shelterTel,
+              A.content AS content,
+                A.com_num AS comNum,
+              B.ORIGINALFILENAME AS originalFileName
+         FROM pawmap.pet_shelter A
+             LEFT OUTER JOIN (SELECT * FROM FILE  WHERE board_type='t') AS B
+            ON A.shelter_seq = B.BOARD_SEQ
+            ORDER BY
+            A.shelter_seq ;
+	</select>
+	
+	
+	<!-- <select id="getLatelyBoardListForBoardMain" resultType="HashMap">
+		SELECT b.*, f.originalFilename
+		FROM board AS b
+		INNER JOIN file AS f
+		ON b.board_seq = f.board_seq
+		WHERE b.board_type = 'f'
+		AND f.file_seq = 1
+		ORDER BY b.board_seq DESC
+		LIMIT 3
+	</select> -->
+
+
+
+  		<!-- 나눔게시판 리스트 -->
+  	<select id="getNanumBoardList" parameterType="HashMap" resultMap="boardResult">
+  		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname
+  		FROM board AS b
+  		INNER JOIN user AS u
+  		ON b.user_id = u.user_id
+  		WHERE board_type = 's'
+  		<if test="board.keywordType == 'title'">
+			AND title LIKE CONCAT('%', #{board.keyword}, '%')
+		</if>
+		<if test="board.keywordType == 'content'">
+			AND `content` LIKE CONCAT('%', #{board.keyword}, '%')
+		</if>
+		<if test="board.keywordType == 'titleAndBody'">
+			AND (title LIKE CONCAT('%', #{board.keyword}, '%') OR `content` LIKE CONCAT('%', #{board.keyword}, '%'))
+		</if>
+  		ORDER BY board_seq DESC
+  		LIMIT #{criteria.amount} OFFSET #{criteria.startNum}
+  	</select>
+	
+	
+	<!-- 나눔게시판 디테일 -->
+	  	<select id="getNanumBoard" resultType="com.pawmap.VO.BoardVO" resultMap="boardResult">
+  		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname 
+  		FROM board AS b
+  		INNER JOIN user AS u
+  		ON b.user_id = u.user_id
+  		WHERE b.board_seq = #{boardSeq}
+  		AND
+  		b.board_type = 's';
+
+  	</select>
+  	
+  	  	<update id="updateNanumBoardForm">
+  		UPDATE board
+  		SET
+  			title = #{title},
+  			content = #{content}
+  		WHERE board_seq = #{boardSeq}
+  		AND
+  		user_id = #{userId}
+  		AND
+  		board_type = 's'
+  	</update>
+	
+	
+
+  
+
 	<select id="getMyMedicalRecordListById" resultType="com.pawmap.VO.BoardVO">
 		SELECT * FROM board
 		WHERE user_id = #{userId}
@@ -213,4 +342,5 @@
 	
 
   </mapper>	
+
 

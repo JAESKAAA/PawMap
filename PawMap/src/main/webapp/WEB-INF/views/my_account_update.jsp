@@ -157,7 +157,8 @@ pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
                 </button>
           </div>
         </form>
-       
+        <hr class="mb-4" />
+     
       <c:choose>
           <c:when test="${!empty user.userProfile}">
             <form action="deleteProfile" method="POST">  

@@ -7,54 +7,8 @@ pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
 <spring:eval expression="@environment.getProperty('kakao.app.key')" var="kakaoAppKey"/>
-<!DOCTYPE html>
-<html lang="ko">
-<!-- Basic -->
 
-<sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal" var="principal"/>
-</sec:authorize>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Site Metas -->
-    <title>PawMap - ${hospital.hospitalName }</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/로고최종_수정.png" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
- 	<!-- Fontawesome CSS-->
-    <link
-      href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
-      rel="stylesheet"
-    />
-    <!-- Bootstrap (부트스트랩) CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <!-- Site (사이트) CSS -->
-    <link rel="stylesheet" href="css/style.css" />
-    <!-- Responsive (반응형) CSS -->
-    <link rel="stylesheet" href="css/responsive.css" />
-    <!-- hospital-search CSS (검색페이지 1) -->
-    <link rel="stylesheet" href="css/hospital-search.css" />
-    <!-- 테이블 부분 css -->
-    <link rel="stylesheet" href="css/footable.bootstrap.css" />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css" />
-    <!-- 헤더 푸터 효과를위한 css -->
-	<link rel="stylesheet" href="css/custom-jaeseok.css" />
- 
-
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<%@ include file="layout/header.jsp" %>
 
   <style>
 
@@ -82,127 +36,16 @@ pageEncoding="UTF-8"%>
     .a {
       color: black;
     }
+    .main-header{
+    	position:relative;
+    }
   </style>
 
 </head>
 
-<body>
-<!-- Header 시작 -->
-    <header class="main-header">
-      <!-- Start Navigation -->
-      <nav
-        class="
-          navbar navbar-expand-lg navbar-light
-          bg-light
-          navbar-default
-          bootsnav
-        "
-      >
-        <div class="container">
-          <!-- Start Header Navigation -->
-          <div class="navbar-header">
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbar-menu"
-              aria-controls="navbars-rs-food"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <i class="fa fa-bars"></i>
-            </button>
-            <!--사이트 로고 부분-->
-            <a class="navbar-brand" href="/pawmap">
-              <div class="main_logo_box"></div>
-            </a>
-          </div>
-          <!-- End Header Navigation -->
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="navbar-menu">
-            <ul
-              class="nav navbar-nav ml-auto"
-              data-in="fadeInDown"
-              data-out="fadeOutUp"
-            >
-              <li class="nav-item active">
-                <a class="nav-link" href="/pawmap">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">회사소개</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link"  id="findHospital" href="/pawmap/search">병원찾기</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact-us.html">보호소 정보</a>
-              </li>
-              <li class="dropdown">
-                <a
-                  href="#"
-                  class="nav-link dropdown-toggle arrow"
-                  data-toggle="dropdown"
-                  >커뮤니티</a
-                >
-                <ul class="dropdown-menu">
-                  <li><a href="shop.html">공지사항</a></li>
-                  <li><a href="shop-detail.html">자유게시판</a></li>
-                  <li><a href="cart.html">나눔게시판</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <!-- /.navbar-collapse -->
-
-          <!-- Start Atribute Navigation -->
-          <div class="attr-nav">
-            <ul>
-              <li class="search" style="display: none">
-                <a href="#"><i class="fa fa-search"></i></a>
-              </li>
-              <sec:authorize access="isAnonymous()">
-                <li class="side-menu">
-                  <a href="/pawmap/loginForm">
-                    <p>로그인</p>
-                  </a>
-                </li>
-                <li class="side-menu">
-                  <a href="/pawmap/joinForm">
-                    <p>회원가입</p>
-                  </a>
-                </li>
-              </sec:authorize>
-              <sec:authorize access="isAuthenticated()">
-                <li class="side-menu">
-                  <a href="/pawmap/mypage">
-                    <p>마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
-                  </a>
-                </li>
-                <li class="side-menu">
-                  <a href="/pawmap/logout">
-                    <p>로그아웃</p>
-                  </a>
-                </li>
-              </sec:authorize>
-              <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <li class="side-menu">
-                  <a href="/pawmap/admin">
-                    <p>관리자 페이지</p>
-                  </a>
-                </li>
-              </sec:authorize>
-            </ul>
-          </div>
-          <!-- End Atribute Navigation -->
-        </div>
-      </nav>
-      <!-- End Navigation -->
-    </header>
-    <!-- Header 끝 부분 -->
   
       <!-- Start About Page  -->
-      <div class="about-box-main">
+      <div class="about-box-main" style="margin-top:3rem;">
         <div class="container_hospital_detail">
           <div class="row">
             <img class="swing-in-top-fwd" src="images/cat01.jpg" style="width: 1200px; height: auto; -webkit-box-align: center;">
