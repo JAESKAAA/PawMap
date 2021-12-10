@@ -42,7 +42,7 @@ pageEncoding="UTF-8"%>
     </header>
     <!-- End Main Top -->
 
-    <!-- Start 예약조회 타이틀 영역 -->
+
     <div>
         <div class="container">
             <div class="row">

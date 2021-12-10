@@ -11,6 +11,7 @@ public class Criteria {
 		this(1, 11);
 	}
 	
+	
 	public Criteria(int pageNum, int amount) {
 		this.pageNum = pageNum;
 		this.amount = amount;

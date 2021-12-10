@@ -23,5 +23,14 @@ public interface CommentMapper {
 
 	void deleteCommentsBySeq(@Param("boardSeq") int boardSeq);
 
+	void insertReplyForNanumBoard(CommentVO commentVO);
+
+	void deleteCommentOnNanumBoard(@Param("commentSeq")int commentSeq, 
+								  @Param("boardSeq")int boardSeq);
+
+	void updateCommentOnNanumBoard(CommentVO commentVO);
+
+	List<HashMap<String, Object>> getReplyListByNanumBoardSeq(@Param("boardSeq")int boardSeq);
+
 
 }

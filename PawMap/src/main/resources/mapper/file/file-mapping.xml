@@ -10,6 +10,25 @@
 		AND board_type = 'f';
 	</select>
 	
+
+		<select id="getFileListByNanumBoardSeq" resultType="com.pawmap.VO.FileVO">
+		SELECT * FROM file
+		WHERE board_seq = #{boardSeq}
+		AND board_type = 's';
+	</select>
+	
+		<select id="getFileListByShelterSeq" resultType="com.pawmap.VO.FileVO">
+		SELECT * FROM file
+		WHERE board_seq = #{boardSeq}
+		AND board_type = 't';
+	</select>
+	
+	<select id="getFileListBySeqType"  resultType="com.pawmap.VO.FileVO">
+		SELECT * FROM file
+		WHERE board_seq = #{boardSeq}
+		AND board_type = IFNULL(#{boardType},'f');
+		</select>
+		
 	<select id="getFileListByMedicalBoardSeq" resultType="com.pawmap.VO.FileVO">
 		SELECT * FROM file
 		WHERE board_seq = #{boardSeq}
@@ -36,14 +55,133 @@
 				AND 
 				board_type = 'f'
 			),
-			'f',
+			IFNULL(#{boardType},'f'),
 			#{userId},
 			#{originalFileName},
 			#{filePath},
 			#{fileSize}
+			
 		)
 	</insert>
 	
+		<insert id="insertShelterFileList" parameterType="com.pawmap.VO.FileVO">
+		INSERT INTO file (
+			board_seq,
+			file_seq,
+			board_type,
+			user_id,
+			originalFilename,
+			filepath,
+			filesize				
+		)
+		VALUES
+		(
+			#{boardSeq},
+			(
+				SELECT IFNULL(MAX(file_seq),0) +1
+					FROM file v
+				WHERE board_seq = #{boardSeq}
+			),
+			IFNULL(#{boardType},'t'),
+			#{userId},
+			#{originalFileName},
+			#{filePath},
+			#{fileSize}
+			
+		)
+	</insert>
+	
+	
+	
+
+	
+		<delete id="deleteFileByBoardSeqOnShelterSeq">
+		DELETE FROM file
+		WHERE board_seq = #{boardSeq}
+		AND board_type = 't'
+	</delete>
+	
+			<delete id="deleteFileByBoardSeqOnNanumSeq">
+		DELETE FROM file
+		WHERE board_seq = #{boardSeq}
+		AND board_type = 's'
+	</delete>
+	
+		<insert id="insertNanumBoardFileList" parameterType="com.pawmap.VO.FileVO">
+		INSERT INTO file (
+			board_seq,
+			file_seq,
+			board_type,
+			user_id,
+			originalFilename,
+			filepath,
+			filesize				
+		)
+		VALUES
+		(
+			#{boardSeq},
+			(
+				SELECT IFNULL(MAX(file_seq),0) +1
+					FROM file s
+				WHERE board_seq = #{boardSeq}
+			),
+			IFNULL(#{boardType},'s'),
+			#{userId},
+			#{originalFileName},
+			#{filePath},
+			#{fileSize}
+			
+		)
+	</insert>
+	
+	
+	
+	
+	
+	<!-- 파일 통합하려다 만 메소드 (구현 실패로 쓰지않음, 보류) 문의는 은혜한테 -->
+	<delete id="deleteOneFile" >
+		DELETE FROM file
+		WHERE file_seq      = #{fileSeq}
+		     AND board_seq = #{boardSeq}
+		     AND board_type = 'f'
+	</delete>
+	
+	
+		<delete id="deleteNanumFile" >
+		DELETE FROM file
+		WHERE file_seq      = #{fileSeq}
+		     AND board_seq = #{boardSeq}
+		     AND board_type = 's'
+	</delete>
+	
+		<delete id="deleteShelterFile" >
+		DELETE FROM file
+		WHERE file_seq      = #{fileSeq}
+		     AND board_seq = #{boardSeq}
+		     AND board_type = 't'
+	</delete>
+	
+
+	<delete id="deleteTargetFile" parameterType="com.pawmap.VO.FileVO">
+		DELETE FROM file
+		WHERE file_seq       = #{fileSeq}
+		     AND board_seq   = #{boardSeq}
+		     AND board_type = #{boardType}
+		     AND user_id        = #{userId}
+	</delete>
+
+	<insert id="insertUpdateOneFile"  parameterType="com.pawmap.VO.FileVO">
+	INSERT INTO file
+			(file_seq, board_seq, board_type, user_id)
+		 VALUES (#{fileSeq}, #{boardSeq}, #{boardType}, #{userId})
+	ON DUPLICATE KEY 
+	UPDATE originalFilename = #{originalFileName},
+	              filepath = #{filePath},
+	              filesize = #{fileSize}
+	</insert>
+	
+	<!-- 파일 통합하려다 만 메소드 (구현 실패로 쓰지않음, 보류) 문의는 은혜한테 /끝/ -->
+
 
 	<insert id="insertMedicalFileList" parameterType="com.pawmap.VO.FileVO">
 		INSERT INTO file (
@@ -109,14 +247,6 @@
 		AND board_type = 'f'
 	</delete>
 	
-	<delete id="deleteOneFile">
-		DELETE FROM file
-		WHERE file_seq = #{fileSeq}
-		AND 
-		board_seq = #{boardSeq}
-		AND
-		board_type = 'f'
-	</delete>
 	
 	<delete id="deleteOneFileOnMedicalRecord">
 		DELETE FROM file
@@ -316,5 +446,4 @@
 			
 	</insert>
 
-  	
 </mapper>	

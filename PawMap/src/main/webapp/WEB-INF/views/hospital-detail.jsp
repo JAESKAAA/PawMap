@@ -7,54 +7,8 @@ pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
 <spring:eval expression="@environment.getProperty('kakao.app.key')" var="kakaoAppKey"/>
-<!DOCTYPE html>
-<html lang="ko">
-<!-- Basic -->
 
-<sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal" var="principal"/>
-</sec:authorize>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Site Metas -->
-    <title>PawMap - ${hospital.hospitalName }</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/로고최종_수정.png" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
- 	<!-- Fontawesome CSS-->
-    <link
-      href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
-      rel="stylesheet"
-    />
-    <!-- Bootstrap (부트스트랩) CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <!-- Site (사이트) CSS -->
-    <link rel="stylesheet" href="css/style.css" />
-    <!-- Responsive (반응형) CSS -->
-    <link rel="stylesheet" href="css/responsive.css" />
-    <!-- hospital-search CSS (검색페이지 1) -->
-    <link rel="stylesheet" href="css/hospital-search.css" />
-    <!-- 테이블 부분 css -->
-    <link rel="stylesheet" href="css/footable.bootstrap.css" />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css" />
-    <!-- 헤더 푸터 효과를위한 css -->
-	<link rel="stylesheet" href="css/custom-jaeseok.css" />
- 
-
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<%@ include file="layout/header.jsp" %>
 
   <style>
 
@@ -82,9 +36,13 @@ pageEncoding="UTF-8"%>
     .a {
       color: black;
     }
+    .main-header{
+    	position:relative;
+    }
   </style>
 
 </head>
+
 
 <body>
 <!-- Header 시작 -->
@@ -199,9 +157,10 @@ pageEncoding="UTF-8"%>
       <!-- End Navigation -->
     </header>
     <!-- Header 끝 부분 -->
+
   
       <!-- Start About Page  -->
-      <div class="about-box-main">
+      <div class="about-box-main" style="margin-top:3rem;">
         <div class="container_hospital_detail">
           <div class="row">
             <img class="swing-in-top-fwd" src="images/cat01.jpg" style="width: 1200px; height: auto; -webkit-box-align: center;">

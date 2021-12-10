@@ -44,6 +44,29 @@ public class CommentServiceImpl implements CommentService {
 		commentMapper.deleteCommentsBySeq(boardSeq);
 	}
 
+	@Override
+	public void insertReplyForNanumBoard(CommentVO commentVO) {
+		commentMapper.insertReplyForNanumBoard(commentVO);
+	}
+
+	@Override
+	public void deleteCommentOnNanumBoard(int commentSeq, int boardSeq) {
+		commentMapper.deleteCommentOnNanumBoard(commentSeq,boardSeq);
+		
+	}
+
+	@Override
+	public void updateCommentOnNanumBoard(CommentVO commentVO) {
+		commentMapper.updateCommentOnNanumBoard(commentVO);
+		
+	}
+
+	@Override
+	public List<HashMap<String, Object>> getReplyListByNanumBoardSeq(int boardSeq) {
+		System.out.println("CommentServiceImpl의  getReplyListByNanumBoardSeq====="+boardSeq);
+		return commentMapper.getReplyListByNanumBoardSeq(boardSeq);
+	}
+
 	
 	
 	
