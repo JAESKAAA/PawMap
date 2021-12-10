@@ -124,7 +124,7 @@ pageEncoding="UTF-8"%>
                       <!-- a태그 스타일이 안먹어 -->
                       <a href="/pawmap" id="nav-a" class="nav-link text-uppercase font-weight-bold" >Home </a></li>
                     <li class="nav-item">
-                      <a href="about.html" id="nav-a" class="nav-link text-uppercase font-weight-bold">회사소개</a></li>
+                      <a href="/pawmap/about" id="nav-a" class="nav-link text-uppercase font-weight-bold">회사소개</a></li>
                     <li class="nav-item">
                       <a href="/pawmap/search" id="nav-a" class="nav-link text-uppercase font-weight-bold">병원찾기</a></li>
                     <li class="nav-item">
@@ -380,7 +380,7 @@ pageEncoding="UTF-8"%>
                       같이 산책할 동네 강아지를 찾거나, 작아진 옷을 팔 때는 포맵 커뮤니티를 이용해보세요.
                       마지막으로 포맵에서 소개하는 유기동물 보호소 페이지에서는 후원을 할 수 있습니다.
                        </p>
-                  <button class="btn btn-primary btn-sm custom_btn" type="button">
+                  <button class="btn btn-primary btn-sm custom_btn" type="button" onclick="location.href='/pawmap/about'">
                         더보기
                   </button>
                   <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>

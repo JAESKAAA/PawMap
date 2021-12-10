@@ -1,4 +1,7 @@
-</head>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <!-- Basic -->
@@ -22,8 +25,8 @@
 
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="../../../resources/static/images/로고최종_수정.png" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="../../../resources/static/images/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/로고최종_수정.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/apple-touch-icon.png" />
     <!-- Fontawesome CSS-->
     <link
       href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
@@ -32,20 +35,20 @@
 
     <!--  ${request.getContextPath } -->
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../../resources/static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" />
     <!-- Site CSS -->
-    <link rel="stylesheet" href="../../../resources/static/css/style.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" />
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="../../../resources/static/css/responsive.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/responsive.css" />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../../../resources/static/css/custom.css" />
-    <link rel="stylesheet" href="../../../resources/static/css/custom-jaeseok.css" />
-    <link rel="stylesheet" href="../../../resources/static/css/style-gyul.css">
-    <link rel="stylesheet" href="../../../resources/static/css/custom-silbia.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-jaeseok.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-gyul.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-silbia.css">
         <!-- 테이블 부분 css -->
-    <link rel="stylesheet" href="../../../resources/static/css/footable.bootstrap.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/footable.bootstrap.css" />
     <!-- 몌 커스텀 css -->
-    <link rel="stylesheet" href="../../../resources/static/css/style-mye.css" />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-mye.css" />
         <!-- 결 커스텀 css -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -73,15 +76,10 @@
       .progress-bar {
           background-color: rgb(247, 203, 58);
       }
-    </style>
-    <!-- 영상 style -->
-    <style>
-		
 		.jb-video { position: relative; top: 1%;}
-        video {width:100%}
+       video {width:100%}
 		/* .jb-text p { margin-top: -24px; text-align: center; font-size: 48px; color: #ffffff; } */
 	  </style>
-
   </head>
 
   <body>
@@ -128,7 +126,7 @@
                 <a class="nav-link" href="/pawmap">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html">회사소개</a>
+                <a class="nav-link" href="/pawmap/about">회사소개</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link"  id="findHospital" href="/pawmap/search">병원찾기</a>
@@ -144,8 +142,7 @@
                   >커뮤니티</a
                 >
                 <ul class="dropdown-menu">
-                  <li><a href="shop.html">공지사항</a></li>
-                  <li><a href="shop-detail.html">자유게시판</a></li>
+                  <li><a href="/pawmap/board/getFreeBoardList">자유게시판</a></li>
                   <li><a href="cart.html">나눔게시판</a></li>
                 </ul>
               </li>
@@ -213,7 +210,7 @@
     <!-- End Top Search -->
 
     <!-- Start All Title Box -->
-    <div class="all-title-box">
+     <div class="all-title-box">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -226,11 +223,11 @@
 
     <!-- Start About Page  -->
     <div class="about-box-main">
-        <div class="container">
+        <div class="container" style="margin-top: 5rem;">
             <div class="row">
 				<div class="col-lg-6 jb-video">
                     <video muted autoplay loop>
-                        <source src="../../../resources/static/videos/Cat - 85464.mp4" type="video/mp4">
+                        <source src="${pageContext.request.contextPath}/videos/Cat - 85464.mp4" type="video/mp4">
                         <strong>Your browser does not support the video tag.</strong>
                       </video>
                 </div>
@@ -345,7 +342,7 @@
                 </div>
                 <div class="col-sm-4 col-lg-2">
                     <div class="hover-team">
-                        <div class="our-team">  <div class="our-team-img"><img src="../../../resources/static/images/ourteam1.jpg" alt="" /></div>
+                        <div class="our-team">  <div class="our-team-img"><img src="${pageContext.request.contextPath}/images/ourteam1.jpg" alt="" /></div>
                             <div class="team-content">
                                 <h3 class="title">Jaeskaaa</h3> <span class="post">Developer</span> </div>
                             <ul class="social">
@@ -364,7 +361,7 @@
                 </div>
                 <div class="col-sm-4 col-lg-2">
                     <div class="hover-team">
-                        <div class="our-team"> <div class="our-team-img"><img src="../../../resources/static/images/ourteam2.jpg" alt="" /></div>
+                        <div class="our-team"> <div class="our-team-img"><img src="${pageContext.request.contextPath}/images/ourteam2.jpg" alt="" /></div>
                             <div class="team-content">
                                 <h3 class="title">Bibi</h3> <span class="post">Developer</span> </div>
                             <ul class="social">
@@ -383,7 +380,7 @@
                 </div>
                 <div class="col-sm-4 col-lg-2">
                     <div class="hover-team">
-                        <div class="our-team"><div class="our-team-img"><img src="../../../resources/static/images/ourteam3.jpg" alt="" /></div> 
+                        <div class="our-team"><div class="our-team-img"><img src="${pageContext.request.contextPath}/images/ourteam3.jpg" alt="" /></div> 
                             <div class="team-content">
                                 <h3 class="title">Thom</h3> <span class="post">Developer</span> </div>
                             <ul class="social">
@@ -403,7 +400,7 @@
                 
                 <div class="col-sm-4 col-lg-2">
                     <div class="hover-team">
-                        <div class="our-team"> <div class="our-team-img"><img src="../../../resources/static/images/our-team5.jpg" alt="" /></div>
+                        <div class="our-team"> <div class="our-team-img"><img src="${pageContext.request.contextPath}/images/our-team5.jpg" alt="" /></div>
                             <div class="team-content">
                                 <h3 class="title">Unene</h3> <span class="post">Developer</span> </div>
                             <ul class="social">
@@ -422,7 +419,7 @@
                 </div>
                 <div class="col-sm-4 col-lg-2">
                   <div class="hover-team">
-                      <div class="our-team"><div class="our-team-img"> <img src="../../../resources/static/images/ourteam4.jpg" alt="" /></div>
+                      <div class="our-team"><div class="our-team-img"> <img src="${pageContext.request.contextPath}/images/ourteam4.jpg" alt="" /></div>
                           <div class="team-content">
                               <h3 class="title">Gogo</h3> <span class="post">Developer</span> </div>
                           <ul class="social">
@@ -441,7 +438,7 @@
               </div>
                 <div class="col-sm-4 col-lg-2">
                     <div class="hover-team">
-                        <div class="our-team"> <div class="our-team-img"><img src="../../../resources/static/images/ourteam6.jpg" alt="" /></div>
+                        <div class="our-team"> <div class="our-team-img"><img src="${pageContext.request.contextPath}/images/ourteam6.jpg" alt="" /></div>
                             <div class="team-content">
                                 <h3 class="title">Myezi</h3> <span class="post">Developer</span> </div>
                             <ul class="social">
@@ -467,34 +464,39 @@
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
     <!-- ALL JS FILES -->
-    <script src="../../../resources/static/js/jquery-3.2.1.min.js"></script>
-    <script src="../../../resources/static/js/popper.min.js"></script>
-    <script src="../../../resources/static/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-3.2.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/popper.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <!-- ALL PLUGINS -->
-    <script src="../../../resources/static/js/jquery.superslides.min.js"></script>
-    <script src="../../../resources/static/js/bootstrap-select.js"></script>
-    <script src="../../../resources/static/js/inewsticker.js"></script>
-    <script src="../../../resources/static/js/bootsnav.js."></script>
-    <script src="../../../resources/static/js/images-loded.min.js"></script>
-    <script src="../../../resources/static/js/isotope.min.js"></script>
-    <script src="../../../resources/static/js/owl.carousel.min.js"></script>
-    <script src="../../../resources/static/js/baguetteBox.min.js"></script>
-    <script src="../../../resources/static/js/form-validator.min.js"></script>
-    <script src="../../../resources/static/js/contact-form-script.js"></script>
-    <script src="../../../resources/static/js/custom.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.superslides.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap-select.js"></script>
+    <script src="${pageContext.request.contextPath}/js/inewsticker.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootsnav.js."></script>
+    <script src="${pageContext.request.contextPath}/js/images-loded.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/isotope.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/baguetteBox.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/form-validator.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/contact-form-script.js"></script>
+    <script src="${pageContext.request.contextPath}/js/custom.js"></script>
 
+  <!-- FontAwesome 용 JS 파일-->
+    <script
+      src="https://kit.fontawesome.com/f0999a1ca0.js"
+      crossorigin="anonymous"
+    ></script>
     
   <!-- Vendor JS Files -->
-  <script src="../../../resources/static/js/purecounter.js"></script>
+  <script src="${pageContext.request.contextPath}/js/purecounter.js"></script>
   <!-- <script src="../../../resources/static/js/aos.js"></script>
   <script src="../../../resources/static/js/bootstrap.bundle.min.js"></script>
   <script src="../../../resources/static/js/glightbox.min.js"></script> -->
-  <script src="../../../resources/static/js/isotope.pkgd.min.js"></script>
+  <script src="${pageContext.request.contextPath}/js/isotope.pkgd.min.js"></script>
   <!-- <script src="../../../resources/static/js/swiper-bundle.min.js"></script> -->
-  <script src="../../../resources/static/js/noframework.waypoints.js"></script>
+  <script src="${pageContext.request.contextPath}/js/noframework.waypoints.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="../../../resources/static/js/about.js"></script>
+  <script src="${pageContext.request.contextPath}/js/about.js"></script>
 </body>
 
 </html>
