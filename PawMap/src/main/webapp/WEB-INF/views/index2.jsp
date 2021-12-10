@@ -138,8 +138,7 @@ pageEncoding="UTF-8"%>
                         >
                         <!-- style inline으로 -->
                         <ul class="dropdown-menu"  style="background-color:rgba(0, 0, 0, 0.089);" >
-                          <li style="padding: 3%;"><a href="shop.html" style="color: #fff; size: 0.8em;">공지사항</a></li>
-                          <li style="padding: 3%;"><a href="shop-detail.html"  style="color: #fff; size: 0.8em;">자유게시판</a></li>
+                          <li style="padding: 3%;"><a href="/pawmap/board/getFreeBoardList"  style="color: #fff; size: 0.8em;">자유게시판</a></li>
                           <li style="padding: 3%;"><a href="cart.html"  style="color: #fff; size: 0.8em;">나눔게시판</a></li>
                         </ul>
                     </li>
@@ -381,7 +380,7 @@ pageEncoding="UTF-8"%>
                       같이 산책할 동네 강아지를 찾거나, 작아진 옷을 팔 때는 포맵 커뮤니티를 이용해보세요.
                       마지막으로 포맵에서 소개하는 유기동물 보호소 페이지에서는 후원을 할 수 있습니다.
                        </p>
-                  <button class="btn btn-primary btn-sm custom_btn" type="button">
+                  <button class="btn btn-primary btn-sm custom_btn" type="button" onclick="location.href='/pawmap/about'">
                         더보기
                   </button>
                   <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>

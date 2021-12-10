@@ -109,8 +109,7 @@ pageEncoding="UTF-8"%>
                         >
                         <!-- style inline으로 -->
                         <ul class="dropdown-menu"  style="background-color:rgba(0, 0, 0, 0.089);" >
-                          <li style="padding: 3%;"><a href="shop.html" style="color: #fff; size: 0.8em;">공지사항</a></li>
-                          <li style="padding: 3%;"><a href="shop-detail.html"  style="color: #fff; size: 0.8em;">자유게시판</a></li>
+                          <li style="padding: 3%;"><a href="/pawmap/board/getFreeBoardList"  style="color: #fff; size: 0.8em;">자유게시판</a></li>
                           <li style="padding: 3%;"><a href="cart.html"  style="color: #fff; size: 0.8em;">나눔게시판</a></li>
                         </ul>
                     </li>

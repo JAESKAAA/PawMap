@@ -76,6 +76,11 @@ public class UserController {
 		return "index2";
 	}
 
+	//회사 소개페이지로 이동
+	@GetMapping("/about")
+	public String about() {
+		return "about";
+	}
 	
 	//관리자 페이지 이동하는 메소드
 	@GetMapping("/admin")

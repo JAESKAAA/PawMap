@@ -24,6 +24,7 @@
   		<result property="content" column="content"/>
   		<result property="regDate" column="regDate"/>
   		<result property="cnt" column="cnt"/>
+  		<result property="count" column="count"/>
   		<collection property="userVO" resultMap="userResult"/>
   	</resultMap>
   	
@@ -60,6 +61,7 @@
   	
   	<select id="getFreeBoardList" parameterType="HashMap" resultMap="boardResult">
   		SELECT b.board_seq, b.board_type, b.user_id, b.title, b.content, b.regDate, b.cnt ,u.user_nickname
+  		,(SELECT COUNT(*) FROM comment c WHERE c.board_seq = b.board_seq) AS count
   		FROM board AS b
   		INNER JOIN user AS u
   		ON b.user_id = u.user_id
@@ -78,7 +80,7 @@
   	</select>
   	
   	<select id="getFreeBoard" resultType="com.pawmap.VO.BoardVO" resultMap="boardResult">
-  		SELECT b.board_seq, b.board_type, b.user_id, b.title, b.content, b.regDate, b.cnt ,u.user_nickname 
+  		SELECT b.board_seq, b.board_type, b.user_id, b.title, b.content, b.regDate, b.cnt, u.user_nickname 
   		FROM board AS b
   		INNER JOIN user AS u
   		ON b.user_id = u.user_id

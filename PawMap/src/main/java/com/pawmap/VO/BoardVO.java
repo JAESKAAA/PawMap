@@ -27,6 +27,7 @@ public class BoardVO {
 	private String reservationDate;
 	private String scheduleTime;
 	private int cnt;
+	private int count;
 
 	
 	private MultipartFile uploadFiles;
