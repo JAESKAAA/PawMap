@@ -43,21 +43,25 @@ pageEncoding="UTF-8"%>
     <!-- End Main Top -->
 
     <!-- Start 예약조회 타이틀 영역 -->
-    <div class="all-title-box">
+    <div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 mt-5">
                     <h2>예약조회</h2>
-                    <!-- <hr>
-                    <h2>로그인 유저 아아디 ${principal.user.userId}</h2>
-                    <h2>로그인 유저 닉네임 ${principal.user.userNickname}</h2>
-                    <h3>조인으로 가져온 정보 ${myResList}</h3> -->
                 </div>
             </div>
         </div>
     </div>
+    
     <div class="board-type  mt-5">
         <p>
+            <div class="col-lg-12 mt-5">
+                <h2>예약조회</h2>
+                <!-- <hr>
+                <h2>로그인 유저 아아디 ${principal.user.userId}</h2>
+                <h2>로그인 유저 닉네임 ${principal.user.userNickname}</h2>
+                <h3>조인으로 가져온 정보 ${myResList}</h3> -->
+            </div>
             <br>
             1. 예약한 병원과 날짜, 시간을 확인하실수 있습니다.
             <br>

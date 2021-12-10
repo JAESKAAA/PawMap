@@ -35,7 +35,7 @@ pageEncoding="UTF-8"%>
 
     <!-- 캘린더   -->
 <div class="board-type  mt-5">
-    <h1> ${hosNickname[0].user_nickname} 스케쥴러 작성하기  </h1>
+    <h1 class="mt-5">스케쥴러 작성하기  </h1>
     <p>
        <br>
        1. 먼저 스케쥴러를 작성해주셔야 합니다.

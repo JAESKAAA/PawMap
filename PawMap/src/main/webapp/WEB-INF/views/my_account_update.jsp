@@ -203,6 +203,7 @@ pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
                     </div>  
                     <div class="entry input-group upload-input-group">  
                       <button type="submit" class="btn btn-outline-danger">파일삭제</button>
+
                     </div>  
                   </div>  
             </form>
