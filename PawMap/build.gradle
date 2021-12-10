@@ -6,6 +6,9 @@ plugins {
 
 group = 'com.pawmap'
 version = '0.0.1-SNAPSHOT'
+
+
+
 sourceCompatibility = '1.8'
 
 configurations {
@@ -47,7 +50,6 @@ dependencies {
 
 	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
-
 
 	
 }

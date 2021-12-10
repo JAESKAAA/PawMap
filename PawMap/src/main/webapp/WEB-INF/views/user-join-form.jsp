@@ -66,7 +66,7 @@ pageEncoding="UTF-8"%>
                     <div class="u_input-box-address">
                       <div class="address_input_1_wrap">
                         <div class="address_input_1_box">
-                          <input class="address_input_1 input w40" name="postNum" readonly="readonly" maxlength="5"
+                          <input class="address_input_1" name="postNum" maxlength="5" readonly="readonly" 
                             placeholder="우편번호">
                           <button type="button" class="button u_button-grey"
                             style="margin-left: 8px; white-space: nowrap;" onclick="execution_daum_address()">

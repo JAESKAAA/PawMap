@@ -92,7 +92,7 @@ pageEncoding="UTF-8"%>
           <!-- End Header Navigation -->
 
           <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="navbar-menu">
+          <div class="collapse navbar-coll	apse" id="navbar-menu">
             <ul
               class="nav navbar-nav ml-auto"
               data-in="fadeInDown"
@@ -102,7 +102,7 @@ pageEncoding="UTF-8"%>
                 <a class="nav-link" href="/pawmap">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html">회사소개</a>
+                <a class="nav-link" href="/pawmap/about">회사소개</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link"  id="findHospital" href="/pawmap/search">병원찾기</a>
@@ -118,8 +118,7 @@ pageEncoding="UTF-8"%>
                   >커뮤니티</a
                 >
                 <ul class="dropdown-menu">
-                  <li><a href="shop.html">공지사항</a></li>
-                  <li><a href="shop-detail.html">자유게시판</a></li>
+                  <li><a href="/pawmap/board/getFreeBoardList">자유게시판</a></li>
                   <li><a href="cart.html">나눔게시판</a></li>
                 </ul>
               </li>
@@ -174,7 +173,7 @@ pageEncoding="UTF-8"%>
     <!-- Header 끝 부분 -->
   
     <!-- 동물병원 search부분 시작 -->
-    <div class="search-container" style="margin-top: 10%">
+    <div class="search-container">
       <h1>동물병원 찾기</h1>
       <div class="search-box">
         <div class="search-icon"><i class="fa fa-search search-icon"></i></div>

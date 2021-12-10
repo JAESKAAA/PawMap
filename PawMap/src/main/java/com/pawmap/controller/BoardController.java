@@ -103,6 +103,7 @@ public class BoardController {
 		int total = boardService.selectBoardCount(vo);
 		
 		List<HashMap<String,Object>> latelyBoardListForMain = boardService.getLatelyBoardListForBoardMain();
+//		List<HashMap<String,Object>> listForCommentCount = boardService.getCommentListForCount();
 		
 		model.addAttribute("freeBoardList", boardService.getFreeBoardList(vo,cri));
 		model.addAttribute("latelyBoardListForMain", latelyBoardListForMain);
@@ -133,8 +134,6 @@ public class BoardController {
 		model.addAttribute("commentSize",replyList.size());
 		model.addAttribute("freeBoardReplyList",replyList);
 		model.addAttribute("getFreeBoard",boardService.getFreeBoard(boardSeq));
-		
-		System.out.println(boardService.getFreeBoard(boardSeq));
 		
 		return "board-detail_결";
 	}
