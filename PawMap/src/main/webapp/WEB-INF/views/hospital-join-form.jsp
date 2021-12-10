@@ -69,10 +69,10 @@ pageEncoding="UTF-8"%>
                                 <div class="address_input_1_wrap">
                                   <div class="address_input_1_box">
                                     <input class="address_input_1 input w40" name="postNum" readonly="readonly" maxlength="5" placeholder="우편번호">
-                                  </div>
-                                    <button type="button" class="address_button u_button-grey" onclick="execution_daum_address()">
+                                    <button type="button" class="button u_button-grey"
+                                    style="margin-left: 8px; white-space: nowrap;" onclick="execution_daum_address()">
                                       <span style="color: white;">검색</span></button>
-                                  <div class="clearfix"></div>
+                                  </div>
                                 </div>
                                 <div class ="address_input_2_wrap">
                                   <div class="address_input_2_box">

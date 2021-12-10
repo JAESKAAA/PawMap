@@ -455,35 +455,6 @@
 }
 
 
-
-/* ======================== 12.08 수정된 폼 확정시 삭제될 style====================== */
-/* 회원가입 form style */
-  .user-form-label {
-    color: #e1a963;
-  }
-  .user-join-btn {
-    background: gray;
-    border-color: antiquewhite;
-  }
-  .user-left-div {
-    background-color: #ffdab9;
-    border-radius: 50% 20% / 10% 40%;
-  }
-  .user-column-div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80px;
-    height: 50px;
-    margin: auto;
-  }
-.join-form {
-	border-top: 1px solid #EFC778;
-}
-
-
-
-/*  =============== 12.08 회원가입폼 수정 확정시 상위 style은 삭제 =============== */
 /* 회원가입 전체 틀 */
 .u_container {
     border: 6px solid rgb(216, 216, 216);
@@ -683,7 +654,7 @@
     margin: 0 5px;
     width: 240px;
     height: 50px;
-    line-height: 60px;
+/*  line-height: 60px; */
     font-size: 18px;
     color: #fff;
     font-weight: 700;
@@ -709,3 +680,7 @@
     color: #ffffffe3;
   }
 
+/* 회원정보수정 폼 이름, 아이디 비활성화 */
+input[type="text"]:disabled {
+  background: rgb(218, 218, 218);
+}
