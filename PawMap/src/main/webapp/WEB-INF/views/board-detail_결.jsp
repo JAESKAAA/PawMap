@@ -81,18 +81,6 @@ pageEncoding="UTF-8"%>
                 <p class="mt-5">
                   ${getFreeBoard.content}
                   ${getNanumBoard.content}
-                  <br><br>
-                  getNanumBoard.userId : ${getNanumBoard.userId}
-                  <br>
-                  principal.user.userId : ${principal.user.userId}
-                  <br><br>
-                  fileList.fileSeq : ${fileList.fileSeq}
-                  <br>
-                  fileList.originalFileName : ${fileList.originalFileName}
-                  <br>
-                  getFreeBoard.boardType : ${getFreeBoard.boardType}
-                  <br>
-                  getNanumBoard.boardType : ${getNanumBoard.boardType}
 
                   <h1>${fileList.originalFileName}</h1>
                 </p>

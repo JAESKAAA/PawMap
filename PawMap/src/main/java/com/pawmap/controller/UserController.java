@@ -605,9 +605,6 @@ public class UserController {
 
 	         return "redirect:/mypage/userInfo?userId="+encodedParam;
 	      }
-		
-		
-		
 
 		@GetMapping("/getUserByJson")
 		@ResponseBody

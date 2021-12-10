@@ -62,7 +62,6 @@
    	 	border-radius: 70%;
     	width: 250px;
 		height: 250px;
-		margin-left: 24%;
 		
 		
 	}
@@ -74,7 +73,6 @@
 	
 	.petProfileText {
 		margin:4%;
-		vertical-align: center;
 
 	}
 	.petProfileText >div {
@@ -341,7 +339,7 @@ nav.navbar.navbar-inverse {
 
   }
   #attr-nav-i {
-	  font-size: 0.9em;
+	  font-size: 0.8em;
   }
   #attr-nav-p:hover {
 	color: #EFC778;

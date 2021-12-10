@@ -3,8 +3,10 @@ pageEncoding="UTF-8"%>
 
 <%@ include file="layout/header.jsp" %>
 
+
+
   
-    <form class="form-horizontal board-form" method="POST" action="insertFreeAndNanumBoard" enctype="multipart/form-data">
+    <form class="form-horizontal board-form" method="POST" action="insertFreeAndNanumBoard" enctype="multipart/form-data" style="margin-top: 10rem;">
         <div class="container">
             <div class="card row">
                 <div class="option-select ml-5">

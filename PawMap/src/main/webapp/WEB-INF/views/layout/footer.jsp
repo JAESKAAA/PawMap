@@ -182,7 +182,13 @@
     <!--12.07 중복체크 메세지-->
     <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 
-      <!-- 아이디 비밀번호 공백확인 alert창 -->
+    <!--about stack graph용 js-->
+    <script src="${pageContext.request.contextPath}/js/purecounter.js"></script>
+    <script src="${pageContext.request.contextPath}/js/isotope.pkgd.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/noframework.waypoints.js"></script>
+    <script src="${pageContext.request.contextPath}/js/about.js"></script>
+
+    <!-- 아이디 비밀번호 공백확인 alert창 -->
     
     <script>
       function makeTestData() {

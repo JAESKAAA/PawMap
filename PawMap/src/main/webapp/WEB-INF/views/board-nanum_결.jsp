@@ -170,7 +170,6 @@ pageEncoding="UTF-8"%>
     
     <div class="board-type mt-5">
         <h1>나눔게시판</h1>
-        <h6>${latelyNanumBoardListForMain}</h6>
     </div>
 
     <hr class="line-paint">

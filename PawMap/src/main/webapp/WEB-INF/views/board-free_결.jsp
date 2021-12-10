@@ -6,10 +6,9 @@ pageEncoding="UTF-8"%>
 
 <!-- jstl 함수사용을 위한 설정 -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal" var="principal"/>
-</sec:authorize>
-
+    
+<%@ include file="layout/header.jsp" %>
+    
 <link rel="stylesheet" href="../css/style-gyul.css">
 
 <style>
@@ -31,10 +30,8 @@ pageEncoding="UTF-8"%>
     <!-- Start Main Top -->
 
   
-<div class="board-type reservation-board ">
+<div class="board-type reservation-board " style="padding-top:150px">
     <h1>자유게시판</h1>
-    <h1>${latelyBoardListForMain}</h1>
-   
 </div>
 
 <div class="container mt-5" style="width: 70%;">
@@ -91,7 +88,7 @@ pageEncoding="UTF-8"%>
 
 <!-- board list form 시작 -->
 
-<div class="container">
+<div class="container" >
   <div>
 
     <section>
@@ -134,11 +131,11 @@ pageEncoding="UTF-8"%>
                 </thead>
               </table>
             </div>
-            <div class="tbl-content">
+            <div class="tbl-content" style="border: none;">
               <table class="board-table" cellpadding="0" cellspacing="0">
                 <tbody>
                   <c:forEach var="freeBoard" items="${freeBoardList }">
-			          	<tr>
+			          	<tr  class="tablerow">
 				        	<td>${freeBoard.boardSeq }</td>
 				        	<td class="title"><a href="getFreeBoard?boardSeq=${freeBoard.boardSeq}&pageNum=${pageMaker.cri.pageNum}&amount=${pageMaker.cri.amount}">${freeBoard.title } &nbsp [${freeBoard.count }]</a></td>
                             <!-- <td class="title"><a href="getFreeBoard?boardSeq=${freeBoard.boardSeq}">${freeBoard.title }</a></td> -->
@@ -153,16 +150,16 @@ pageEncoding="UTF-8"%>
               </table>
             </div>
 
-            <!-- <h1>principal.user.userId : ${principal.user.userId}</h1> -->
+            <!-- <h1>${principal.user.userId}</h1> -->
             <c:choose>
                 <c:when test="${empty principal}">
                     <div style="display:inline-block;">
-                        <a  class="nav-link" href='#' onclick="noLoginUserCantWrite(); return false">글쓰러가기</a>
+                        <a  class="nav-link btn-file-upload" href='#' onclick="noLoginUserCantWrite(); return false">글쓰러가기</a>
                     </div>
                 </c:when>
                 <c:otherwise>
                     <div style="display:inline-block;">
-                        <a  class="nav-link" href="/pawmap/board/form">글쓰러가기</a>
+                        <a  class="nav-link btn-file-upload" href="/pawmap/board/form">글쓰러가기</a>
                     </div>
                 </c:otherwise>
             </c:choose>
@@ -264,4 +261,3 @@ pageEncoding="UTF-8"%>
         });
         
     </script>
-    
