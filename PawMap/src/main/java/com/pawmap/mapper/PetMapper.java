@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.pawmap.VO.PetVO;
+import com.pawmap.VO.UserVO;
 
 
 
@@ -29,6 +30,9 @@ public interface PetMapper {
 	void deletePetInfo(@Param("petSeq")int petSeq,@Param("userId") String userId);
 	
 
+	List<PetVO> getPetInfoList(String userId);
+	
+	
 
 
 

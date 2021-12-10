@@ -38,8 +38,9 @@ pageEncoding="UTF-8"%>
                             <!-- <c:forEach var="pet" items="${petInfoFileList}"> -->
                 
                             <!-- </c:forEach> -->
-                            <c:forEach var="pet" items="${pet}">
-                                <div class="petInfoList col-md-12 ">
+                            <c:forEach var="pet" items="${petFile}">
+                                <div class="petInfo col-md-12 ">
+                                    <!-- var="petFile" items="${petFile}" -->
                                     <div class=" petProfile col-md-4">
                                         <div class="petProfileText">
                                             <div>번호 : ${pet.petSeq}</div>
@@ -51,18 +52,18 @@ pageEncoding="UTF-8"%>
                                             <div>증상 : ${pet.symptom}</div>
                                         </div>
                                     </div>
-                                   <div class=" petProfile petProfileimg col-md-4" >
-                                        <c:choose>
-                                            <c:when test="${empty pet.originalFileName}">
-                                                <img class="petimage" src="https://www.treehugger.com/thmb/3ueL3X7pxChDc5bA3_C02y3NV6I=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1286194137-90a64ebdc61c4078903bdd03621f7529.jpg"  alt="" >
-                                            </c:when>
-                                            <c:otherwise>
-                                                <img class="img-fluid petimage" src="${pageContext.request.contextPath}/upload/${pet.originalFileName}" alt="" />
-                                        </c:otherwise>
-                                    </c:choose>
-                                    </div>
+                                    <div class=" petProfile petProfileimg col-md-4" >
+                                         <c:choose>
+                                             <c:when test="${empty pet.originalFileName}">
+                                                 <img class="petimage" src="https://www.treehugger.com/thmb/3ueL3X7pxChDc5bA3_C02y3NV6I=/768x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-1286194137-90a64ebdc61c4078903bdd03621f7529.jpg"  alt="" >
+                                             </c:when>
+                                             <c:otherwise>
+                                                 <img class="img-fluid petimage" src="${pageContext.request.contextPath}/upload/${pet.originalFileName}" alt="" />
+                                         </c:otherwise>
+                                     </c:choose>
+                                     </div>
                                     <div class=" petProfile col-md-4">
-
+                                        
                                         <div class="petProfileBtn"><button onclick="location.href='/pawmap/mypage/updatePetForm?petSeq=${pet.petSeq}'+ '&userId=' + '${principal.user.userId}'" type="button" class="">수정</button>
                                             <!-- <button id="delete-petInfo" type="button" class="">삭제</button> -->
                                        

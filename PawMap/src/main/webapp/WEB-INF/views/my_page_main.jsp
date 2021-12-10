@@ -4,7 +4,7 @@ pageEncoding="UTF-8"%>
 <%@ include file="layout/header.jsp" %>
 
     <!-- Start 마이페이지 타이틀 영역 -->
-    <div class="pet-all-title-box">
+    <div class="pet-all-title-box" style="padding-top: 200px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -59,8 +59,9 @@ pageEncoding="UTF-8"%>
                                     <div class="pet-service-box">
                                         
                                     <!--반려동물정보카드-->
-                                        <div class="service-icon">
-                                            <a href="/pawmap/mypage/vetInfo?userId=${principal.user.userId}"><i class="fas fa-paw"></i></a>                                         
+                                        <div class="pet-service-icon">
+                                            <a href="/pawmap/mypage/vetInfo?hospitalSeq=${principal.user.userSeq}"><i class="fas fa-paw"></i></a>
+                                         
                                         </div>
                                         <div class="pet-service-desc">
                                             <h4>수의사정보</h4>
@@ -69,22 +70,6 @@ pageEncoding="UTF-8"%>
                                 </div>
                             </div>
                             </c:if>
-                       
-               
-                                
-                            <!--진단서정보카드-->
-                    <div class="col-lg-3 col-md-6">
-                        <div class="pet-account-box">
-                            <div class="pet-service-box">
-                                <div class="pet-service-icon">
-                                    <a href="#"><i class="far fa-file-alt"></i></a>
-                                </div>
-                                <div class="pet-service-desc">
-                                    <h4>진료기록</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <!--예약정보카드-->
                     <c:choose>
                         <c:when test="${empty principal.user.comNum}">
