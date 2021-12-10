@@ -69,22 +69,20 @@ pageEncoding="UTF-8"%>
       #slides-shop {
         height: 100vh;
       }
-    </style>
-    <style>
       section {
           visibility: visible;
       }
       .progress-bar {
           background-color: rgb(247, 203, 58);
       }
-    </style>
-    <!-- 영상 style -->
-    <style>
 		
-		.jb-video { position: relative; top: 1%;}
-        video {width:100%}
+	 .jb-video { 
+	 	position: relative; top: 1%;
+	 	}
+      video {
+	      width:100%;
+	      }
 
-  
        /* index컬러 블럭만들기 */
        .about-box-main2 {
         background-color: #fdd572;
@@ -97,8 +95,10 @@ pageEncoding="UTF-8"%>
        .about-box-main {
          margin: 10%;
        }
-  
-     
+        .cover-slides{
+        border-radius: 0;
+        border: 1px solid rgba(204, 156, 22, 0.8);
+    }
 	  </style>
   </head>
 
@@ -168,12 +168,12 @@ pageEncoding="UTF-8"%>
             <sec:authorize access="isAuthenticated()">
               <li class="side-menu">
                 <a href="/pawmap/mypage">
-                  <p id="attr-nav-p">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
+                  <p id="attr-nav-i">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
                 </a>
               </li>
               <li class="side-menu">
                 <a href="/pawmap/logout">
-                  <p id="attr-nav-p">로그아웃</p>
+                  <p id="attr-nav-i">로그아웃</p>
                 </a>
               </li>
             </sec:authorize>
