@@ -17,7 +17,7 @@ pageEncoding="UTF-8"%>
                   <th> 아이디 <span>*</span></th>
                   <td>
                     <div class="u_input-box-tel3">
-                      <input name="userId" required="required" type="text" name="userId" id="user_id"
+                      <input name="userId" required="required" type="text" id="user_id"
                         placeholder="4~1자리 영문,숫자" class="input w220">
                       <button type="button" class="button u_button-grey" style="margin-left: 8px; white-space: nowrap;"
                         onclick="fn_idcheck()">
