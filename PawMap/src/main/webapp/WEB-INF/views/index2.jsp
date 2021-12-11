@@ -165,7 +165,7 @@ pageEncoding="UTF-8"%>
                           >커뮤니티</a
                         >
                         <!-- style inline으로 -->
-                        <ul class="dropdown-menu"  style="background-color:rgba(0, 0, 0, 0.089);" >
+                        <ul class="dropdown-menu"  style="background-color:rgba(0, 0, 0, 0.089);     border-color: transparent;" >
                           <li style="padding: 3%;"><a href="/pawmap/board/getFreeBoardList"  style="color: #fff; size: 0.8em;">자유게시판</a></li>
                           <li style="padding: 3%;"><a href="/pawmap/board/getNanumBoardList"  style="color: #fff; size: 0.8em;">나눔게시판</a></li>
                         </ul>
@@ -307,7 +307,7 @@ pageEncoding="UTF-8"%>
     <!-- 검색 부분-->
     <div class=" custom_margin">
       <form action="/pawmap/searchDetail" method="get">
-	      <div id="search_bar" class="d-flex justify-content-center">
+	      <div id="search_bar" class="d-flex justify-content-center" style="height: 100vh;">
 	        <div class="search">
 	          <h3 id="search_hostpital" class=" text-uppercase font-weight-bold">
 	            우리 동네 동물병원을 찾아보세요!

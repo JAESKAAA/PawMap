@@ -200,15 +200,7 @@
 	size: 0.8em;
 }
 
-/* header>nav>div>ul>li>#nav-a:hover */
-/* .navbar.active #nav-a:hover {
-    color: #fff !important;
-}
 
-.navbar.active #nav-a:hover{
-	 color: #f0e1bc !important;
-	
-} */
 .navbar.active .nav-link:focus {
     color: #555;
     text-decoration: none;

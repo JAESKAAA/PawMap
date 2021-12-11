@@ -46,7 +46,8 @@ pageEncoding="UTF-8"%>
                                 <c:set var="thumnails" value="${latelyBoardListForMain}" />
                                     <img src="${pageContext.request.contextPath}/upload/${thumnails[0].originalFilename}" alt="">
                                     <h2 class="m-b-20"><strong style="color: rgb(241, 238, 233);">${latelyBoardListForMain[0].title}</strong></h2>
-                                    <p><a class="btn hvr-hover" href="getFreeBoard?boardSeq=${latelyBoardListForMain[0].board_seq}" style="background: none; font-size:15px;">글 보러가기</a></p>
+                                    <p><a id="free_button" href="getFreeBoard?boardSeq=${latelyBoardListForMain[0].board_seq}" 
+                                        >글 보러가기</a></p>
                                     
                             </div>
                         </div>
@@ -59,7 +60,8 @@ pageEncoding="UTF-8"%>
                             <div class="col-md-12">
                                     <img src="${pageContext.request.contextPath}/upload/${thumnails[1].originalFilename}" alt="">
                                     <h2 class="m-b-20"><strong style="color: rgb(245, 242, 238);">${latelyBoardListForMain[1].title}</strong></h2>
-                                    <p><a class="btn hvr-hover" href="getFreeBoard?boardSeq=${latelyBoardListForMain[1].board_seq}" style="background: none; font-size:15px;">글 보러가기</a></p>
+                                    <p><a id="free_button" href="getFreeBoard?boardSeq=${latelyBoardListForMain[1].board_seq}" 
+                                        >글 보러가기</a></p>
                                   
                             </div>
                         </div>
@@ -72,7 +74,8 @@ pageEncoding="UTF-8"%>
                             <div class="col-md-12">
                                     <img src="${pageContext.request.contextPath}/upload/${thumnails[2].originalFilename}" alt="">
                                     <h2 class="m-b-20"><strong style="color: rgb(238, 235, 229);">${latelyBoardListForMain[2].title}</strong></h2>
-                                    <p><a class="btn hvr-hover" href="getFreeBoard?boardSeq=${latelyBoardListForMain[2].board_seq}" style="background: none; font-size:15px;">글 보러가기</a></p>
+                                    <p><a id="free_button" href="getFreeBoard?boardSeq=${latelyBoardListForMain[2].board_seq}" 
+                                       >글 보러가기</a></p>
                                   
                             </div>
                         </div>
