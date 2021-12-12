@@ -125,7 +125,11 @@ pageEncoding="UTF-8"%>
        }
         .cover-slides{
         border-radius: 0;
-        border: 1px solid rgba(204, 156, 22, 0.8);
+        border: 1px solid rgba(204, 156, 22, 0.8);4
+    }
+    
+    .fa-search {
+    	cursor:pointer;
     }
 	  </style>
   </head>

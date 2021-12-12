@@ -305,8 +305,6 @@ pageEncoding="UTF-8"%>
               <!-- ===============댓글 리스트 출력 종료================== -->
 
 
-<<<<<<< HEAD
-
 
     <!-- 나눔게시판일경우 -->
         <c:if test="${getNanumBoard.boardType eq 's' }">

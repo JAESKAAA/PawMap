@@ -475,7 +475,6 @@ public class UserController {
 	// 비밀번호 찾기 화면에서 데이터 받기 
 
 		@RequestMapping("/searchPw")
-
 		@ResponseBody
 		public String doFindLoginPasswd(@RequestParam Map<String, Object> param , HttpServletResponse response) throws IOException {
 //			String msg= (String) findLoginIdRs.get("msg");
@@ -492,28 +491,26 @@ public class UserController {
 			
 			// 입력한 아이디 정보는 회원과 일치하지만 이메일정보는 일치하지 않을 때
 				
-			if (!user.getUserEmail().equals(userEmail)){
-				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
-				
-				out.println("<script>alert('이메일 정보가 일치하지 않습니다'); location.href='loginForm';</script>");
-				
-				out.flush();
 			
-			} else if(user == null) {
+			PrintWriter out = response.getWriter();
+			 if(user == null) {
 				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
 				
 				// 입력한 정보가 일치하지 않을 때
-				out.println("<script>alert('일치하는 회원이 없습니다'); location.href='loginForm';</script>");
+				out.println("<script>alert('일치하는 회원이 없습니다'); location.href='searchIdPw';</script>");
 				
 				out.flush();
+			 }else if (!user.getUserEmail().equals(userEmail)){
+					response.setContentType("text/html; charset=UTF-8");
+					
+					out.println("<script>alert('이메일 정보가 일치하지 않습니다'); location.href='searchIdPw';</script>");
+					
+					out.flush();
 			} else {
 				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
 				
 				// 입력한 정보와 회원정보가 일치할 때 
-				out.println("<script>alert('입력하신 메일로 임시 패스워드가 발송되었습니다'); location.href='loginForm';</script>");
+				out.println("<script>alert('입력하신 메일로 임시 패스워드가 발송되었습니다'); location.href='searchIdPw';</script>");
 				
 				out.flush();
 				Map<String, Object> findLoginIdRs = userService.findLoginPasswd(param);

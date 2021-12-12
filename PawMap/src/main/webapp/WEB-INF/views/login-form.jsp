@@ -158,7 +158,7 @@ pageEncoding="UTF-8"%>
                   onsubmit="submitLoginForm(this);return false;"
 				  >
 		      		<div class="form-group login-input" >
-		      			<input type="text" class="form-control" name="userId" placeholder="userId" required>
+		      			<input type="text" class="form-control" name="userId" placeholder="Id" required>
 		      		</div>
 	            <div class="form-group login-input" ">
 	              <input  id="password-field" type="password" class="form-control"  name="userPassword" placeholder="Password" required>
