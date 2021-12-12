@@ -11,14 +11,6 @@ pageEncoding="UTF-8"%>
     
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-gyul.css">
 
-<style>
-
-.page-item.active .page-link{
-    background-color: rgb(207, 111, 21);
-    border-color: rgb(207, 111, 21);
-} 
-  
-</style>
 
 </head>
 

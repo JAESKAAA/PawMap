@@ -54,6 +54,22 @@ h2 {
   font-weight: 400;
   font-size: 1.25em;
   letter-spacing: -0.015em;
+  color: #555;
+  padding:10px;
+}
+.hosdeh3{
+  margin-bottom: 3%; 
+  color: #555;
+  padding:10px;
+}
+.hosdeh3 > p {
+  line-height: 1.5;
+}
+.hdicon{
+  color:#eec678;
+}
+.iconbox{
+  width: 30px;
 }
 .container-searchPage {
   position: relative;

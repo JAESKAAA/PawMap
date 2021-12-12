@@ -137,22 +137,19 @@ pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
           </c:choose>
           <hr class="mb-4" />
           <div class="mb-4">
-            <button class="btn" id="upbtn" type="submit" 
-                  style="width: 30%;  position:  relative; float: left; background: rgb(239, 199, 120,1) !important;
-                  border: solid rgb(239, 199, 120,1) !important;  margin: 5px;"
+            <button class="btn" id="upbtnN" type="submit" 
+                  style="width: 45%;"
                   >수정
                 </button>
             <button
-              class="btn" id="upbtn"
+              class="btn" id="upbtnN"
               onclick="history.go(-1);return false;"
-              style="width: 30%; position:  relative; float: left; background: rgb(239, 199, 120,1) !important;
-              border: solid rgb(239, 199, 120,1) !important;  margin: 5px;"
+              style="width: 45%;"
                 >취소
                 </button>
             </div>
             <div class="mb-4">
-              <button class="btn" id="upbtn" style="text-align: center; background: rgb(239, 199, 120,1) !important;
-              border: solid rgb(239, 199, 120,1) !important; margin: 5px;" onclick="deleteUserCheck()" 
+              <button class="btn" id="upbtnN" style="width: 90%;" onclick="deleteUserCheck()" 
                 >회원탈퇴
                 </button>
           </div>
@@ -173,7 +170,7 @@ pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
                       <input type="hidden" name="userId" value="${principal.user.userId}">
                     </div>  
                     <div class="entry input-group upload-input-group">  
-                      <button type="submit" class="btn btn-outline-danger">파일삭제</button>
+                      <button type="submit" id="upbtnW" class="btn btn-outline-danger">파일삭제</button>
                    	 </div>  
                   	</div>  
                   </div>

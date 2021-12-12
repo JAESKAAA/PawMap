@@ -44,7 +44,7 @@ pageEncoding="UTF-8"%>
     /* 배경영상 설정 */
 		.jb-box { width: auto; height: 100%; z-index:0; overflow: hidden;margin: 0px auto; position: relative; }
 		video { width: 100%; }
-		.jb-text { position: absolute; top: 1%; width: 100%; z-index: 1; background-color: rgba(58, 58, 58, 0.26); background-size: 130%;}
+		.jb-text { position: absolute; top: 1%; width: 100%; height: 100%; z-index: 1; background-color: rgba(58, 58, 58, 0.26); background-size: 130%;}
 	  
 	 /* 헤더 스타일 */
 	 header,
