@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
   <%@ include file="layout/header.jsp" %>
+  
     <style>
       .line-paint {
         border: thin solid rgb(209, 154, 34);
@@ -41,10 +42,6 @@
       }
 
       /* 페이지 관련 소스 끝 */
-
-
-
-
       .main-search-input-item input {
 
         width: 100%;
@@ -237,9 +234,121 @@
     <!-- 페이지 네이션 종료 -->
 
     <!-- board list form 종료 -->
-
-    <%@ include file="layout/footer.jsp" %>
-
+ <footer>
+      <div class="footer-main">
+        <div class="container">
+          <div class="row">
+            <!--Footer 1번 (회사정보 부분)-->
+            <div class="col-lg-4 col-md-12 col-sm-12">
+              <div class="footer-link-contact">
+                <h4 class="text_custom">PawMap</h4>
+                <ul>
+                  <li>
+                    <p>
+                      <i class="fas fa-map-marker-alt"></i>Address: 서울시
+                      강남구 강남대로 11길 13
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fas fa-phone-square"></i>Phone:
+                      <a href="tel:+1-888705770">+82-2-345-1234</a>
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fas fa-envelope"></i>Email:
+                      <a href="mailto:contactinfo@gmail.com"
+                        >contactpawmap@gmail.com</a
+                      >
+                    </p>
+                  </li>
+                  <li>
+                    <p>
+                      <i class="fas fa-user"></i>대표자:
+                      <a href="mailto:contactinfo@gmail.com">고결</a>
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <!--Footer 2번 (소셜미디어 부분)-->
+            <div class="col-lg-4 col-md-12 col-sm-12">
+              <div class="footer-link-contact">
+                <h4>Social Media</h4>
+                <div class="footer-top-box">
+                  <p style="margin-left: 20px ">
+                    아래 링크를 통해 더 많은 소식을 받아 보세요 !
+                  </p>
+                  <ul>
+                    <li>
+                      <p>
+                        <a href="#" class="inner-box"
+                          ><i
+                            class="fab fa-facebook inner-box-icon"
+                            aria-hidden="true"
+                          ></i
+                        ></a>
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <a href="#" class="inner-box"
+                          ><i
+                            class="fab fa-twitter inner-box-icon"
+                            aria-hidden="true"
+                          ></i
+                        ></a>
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <a href="#" class="inner-box"
+                          ><i
+                            class="fab fa-linkedin inner-box-icon"
+                            aria-hidden="true"
+                          ></i
+                        ></a>
+                      </p>
+                    </li>
+                    <li>
+                      <p>
+                        <a href="#" class="inner-box"
+                          ><i
+                            class="fab fa-google-plus inner-box-icon"
+                            aria-hidden="true"
+                          ></i
+                        ></a>
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!--Footer 3번 (Information 부분)-->
+            <div class="col-lg-4 col-md-12 col-sm-12">
+              <div class="footer-link-contact">
+                <h4>Information</h4>
+                <div class="footer-link">
+                  <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">개인정보 처리 방침</a></li>
+                    <li><a href="#">이용 약관</a></li>
+                    <li><a href="#">위치기반 서비스 이용 약관</a></li>
+                    <li><a href="#">제휴 문의</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <p class="footer-company">
+          All Rights Reserved. &copy; 2021 <a href="#">PawMap</a>
+        </p>
+      </div>
+    </footer>
 
 
       <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
@@ -260,6 +369,12 @@
       <script src="${pageContext.request.contextPath}/js/form-validator.min.js"></script>
       <script src="${pageContext.request.contextPath}/js/contact-form-script.js"></script>
       <script src="${pageContext.request.contextPath}/js/custom.js"></script>
+    <script
+      src="https://kit.fontawesome.com/f0999a1ca0.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- 1:1 상담 관련 js 파일-->
+    <script src="${pageContext.request.contextPath}/js/custom-jaeseok.js"></script>
       <script>
 
         function noLoginUserCantWrite() {

@@ -46,11 +46,20 @@ $(document).ready(function () {
   function inputIdCheck(){
   
   	$("#idDuplication").val("idUncheck");
+  	$(".result .msg1").text("아이디 중복확인을 해주세요.");
+  	$(".result .msg1").attr("style", "color:#777");
+
+
   }
+  
   /* nickname중복체크 후 nickname 변경시 다시 중복체크하도록 설정하는 function*/
   function inputNickCheck(){
   
   	$("#nickDuplication").val("nickUncheck");
+  	$(".result .msg2").text("닉네임 중복확인을 해주세요.");
+  	$(".result .msg2").attr("style", "color:#777");
+
+
   }
   
   	/* 회원가입시 중복체크 후 회원가입 */

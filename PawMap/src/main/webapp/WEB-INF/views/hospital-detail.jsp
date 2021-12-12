@@ -42,6 +42,17 @@ pageEncoding="UTF-8"%>
     .service-block-inner::before{
           background: rgb(239 199 120);
     }
+    .custom-vet-pic{
+        width: 20rem;
+        height: 20rem;
+  	 	margin: auto
+    }
+    
+    .custom-vet-pic-img{
+        width: 80% !important;
+    	height: 80% !important;
+    }
+    
   </style>
 
 </head>
@@ -161,15 +172,15 @@ pageEncoding="UTF-8"%>
                       <div class="row profile" >
 						<c:forEach items="${vetList }" var="vet">
 	                        <div class="col-md-4" >
-	                          <div class="profile-sidebar">
+	                          <div class="profile-sidebar" style="background-color: inherit;">
 	                            <!-- SIDEBAR USERPIC -->
-	                            <div class="profile-userpic">
+	                            <div class="profile-userpic custom-vet-pic">
 	                            	<c:choose>
 	                            		<c:when test="${empty vet.originalFileName}">
-	                           		   		<img src="images/dogDoctor.jpg" class="img-responsive" style="width: 70%" alt="">
+	                           		   		<img src="images/dogDoctor.jpg" class="img-responsive custom-vet-pic-img" alt="">
 	                           			</c:when>
 	                           			<c:otherwise>
-	                           			    <img src="${pageContext.request.contextPath}/upload/${vet.originalFileName}" class="img-responsive" style="width: 70%" alt="">
+	                           			    <img src="${pageContext.request.contextPath}/upload/${vet.originalFileName}" class="img-responsive custom-vet-pic-img" alt="">
 	                           			</c:otherwise>
 	                            	</c:choose>
 	                            </div>
