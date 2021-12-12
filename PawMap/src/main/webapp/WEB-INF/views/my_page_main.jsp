@@ -3,15 +3,15 @@ pageEncoding="UTF-8"%>
 
 <%@ include file="layout/header.jsp" %>
 
-    <!-- Start 마이페이지 타이틀 영역 -->
-    <div class="pet-all-title-box" style="padding-top: 200px;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>마이페이지</h2>
-                </div>
-            </div>
-        </div>
+ <!--============================
+       나눔게시판 시작
+   ============================-->
+   <div style="margin-top: 7rem;">
+    <div class="">
+      <div class="col-lg-12 boardtitle">
+        <h2>마이페이지</h2>
+        <hr class="titleline" style="background-color: #EFC778; height: 3px; width: 80%;">
+      </div>
     </div>
     <!-- End 마이페이지 타이틀 영역 -->
 

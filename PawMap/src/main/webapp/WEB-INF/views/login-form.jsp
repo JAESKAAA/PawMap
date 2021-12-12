@@ -44,7 +44,7 @@ pageEncoding="UTF-8"%>
     /* 배경영상 설정 */
 		.jb-box { width: auto; height: 100%; z-index:0; overflow: hidden;margin: 0px auto; position: relative; }
 		video { width: 100%; }
-		.jb-text { position: absolute; top: 1%; width: 100%; z-index: 1; background-color: rgba(58, 58, 58, 0.26); background-size: 130%;}
+		.jb-text { position: absolute; top: 1%; width: 100%; height: 100%; z-index: 1; background-color: rgba(58, 58, 58, 0.26); background-size: 130%;}
 	  
 	 /* 헤더 스타일 */
 	 header,
@@ -100,29 +100,11 @@ pageEncoding="UTF-8"%>
 				  </li>
 				  <li class="side-menu">
 					<a href="/pawmap/joinForm">
-					  <p id="attr-nav-p">회원가입</p>
+					  <p id="" class="nav-p-login" style="margin-right: 10px;">회원가입</p>
 					</a>
 				  </li>
 				</sec:authorize>
-				<sec:authorize access="isAuthenticated()">
-				  <li class="side-menu">
-					<a href="/pawmap/mypage">
-					  <p id="attr-nav-p">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
-					</a>
-				  </li>
-				  <li class="side-menu">
-					<a href="/pawmap/logout">
-					  <p id="attr-nav-p">로그아웃</p>
-					</a>
-				  </li>
-				</sec:authorize>
-				<sec:authorize access="hasRole('ROLE_ADMIN')">
-				  <li class="side-menu">
-					<a href="/pawmap/admin">
-					  <p id="attr-nav-p">관리자 페이지</p>
-					</a>
-				  </li>
-				</sec:authorize>
+			
 			  </ul>
 			</div>
 		   

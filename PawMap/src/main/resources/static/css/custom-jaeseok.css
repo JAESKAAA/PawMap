@@ -81,7 +81,7 @@ a:link {
 }
 .custom_margin {
   margin-top: 7rem !important;
-  margin-bottom: 25rem !important;
+  margin-bottom: 10rem !important;
   margin-right: 0;
   margin-left:0;
   text-align: center;
@@ -140,7 +140,7 @@ a:link {
 
 .custom_btn {
   width: 9rem;
-    height: 5rem;
+    height: 3rem;
     color: white;
     background-color: #EFC778;
     border-style: none;
@@ -172,6 +172,11 @@ a:link {
   padding-left: 10%;
   padding-bottom: 0;
 }
+@media (max-width: 991.98px ),( min-width: 614px){
+  .custom_aboutUs_innerTextBox  {
+    font-size: 0.8rem;
+  }
+  }
 .custom_hr {
   width: 20%;
 }
