@@ -307,7 +307,7 @@ pageEncoding="UTF-8"%>
     <!-- 검색 부분-->
     <div class=" custom_margin">
       <form action="/pawmap/searchDetail" method="get">
-	      <div id="search_bar" class="d-flex justify-content-center" style="height: 100vh;">
+	      <div id="search_bar" class="d-flex justify-content-center" style="height: 25vh;">
 	        <div class="search">
 	          <h3 id="search_hostpital" class=" text-uppercase font-weight-bold">
 	            우리 동네 동물병원을 찾아보세요!

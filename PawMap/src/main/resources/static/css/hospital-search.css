@@ -41,10 +41,11 @@
 h1 {
   display: block;
   margin: 0 auto 25px auto;
-  text-align: center;
+  text-align: left;
   font-size: 1.92em;
   font-weight: 600;
   letter-spacing: -0.055em;
+
 }
 h2 {
   display: block;
@@ -267,3 +268,35 @@ h2 {
 .tablerow:hover {
   background-color: #f7bb611f;
 }
+.btnHos {
+  border-radius: 40px;
+  border-style: solid;
+  border-color: #eec678;
+  background: #eec678;
+  height: 30px;
+  color: white;
+  }
+  .btnHos:hover {
+    border-radius: 40px;
+    border-style: solid;
+    border-color: #eec678;
+    background: transparent;
+    height: 30px;
+    color: #eec678;
+    } 
+.btncan{
+    border-radius: 40px;
+  border-style: solid;
+  border-color: #eeb178;
+  background: #eeb178;
+  height: 30px;
+  color: white;
+} 
+.btncan:hover{
+  border-radius: 40px;
+border-style: solid;
+border-color: #eeb178;
+background: transparent;
+height: 30px;
+color: #eeb178;
+} 

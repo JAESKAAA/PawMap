@@ -23,16 +23,17 @@ pageEncoding="UTF-8"%>
 </head>
 
 <body>
-    <!-- Start Main Top -->
- 
-    <!-- End Main Top -->
+  <!--============================
+       자유게시판 시작
+   ============================-->
+   <div style="margin-top: 7rem;">
+    <div class="">
+      <div class="col-lg-12 boardtitle">
+        <h2>자유게시판</h2>
+      </div>
+      <hr class="line-paint">
+    </div>
 
-    <!-- Start Main Top -->
-
-  
-<div class="board-type reservation-board " style="padding-top:150px">
-    <h1>자유게시판</h1>
-</div>
 
 <div class="container mt-5" style="width: 70%;">
     <div class="board-free" >

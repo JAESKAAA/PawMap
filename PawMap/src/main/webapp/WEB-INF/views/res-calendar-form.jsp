@@ -39,6 +39,12 @@
             .all-title-box {
                 background-image: none;
             }
+            .btn-calendar:hover {
+		
+		background: rgb(253, 231, 189, 0.34) !important;
+		border:  solid rgb(253, 231, 189, 0.34) !important;
+		color: rgb(255, 255, 255) !important;
+	}
         </style>
 
         <script src="${pageContext.request.contextPath}/js/calendar.js"></script>
@@ -46,7 +52,7 @@
         <!-- 캘린더   -->
         <div class="board-type  mt-5" style="padding-top: 150px;">
             <h1> ${hosNickname[0].user_nickname} 스케쥴러 작성하기 </h1>
-            <p>
+            <p style="line-height: 1.5;">
                 <br>
                 1. 먼저 스케쥴러를 작성해주셔야 합니다.
                 <br>
@@ -66,37 +72,32 @@
             <input type="hidden" name="userId" value="${principal.user.userId}">
             <input type="hidden" name="comNum" value="${principal.user.comNum}">
 
-            <div class="board-type  mt-5">
-                <h1> 예약시간관리 </h1>
-            </div>
-            <hr class="line-paint">
-
         <div class="container">
             <div class="row">
                 <div class="calendar_box">
                     <div class="sc col-lg-12 col-md-12 col-sm-24 scriptCalendarBox">
-                        <table class="scriptCalendar" >
+                        <table class="scriptCalendar" style="border:none; width:60%;" >
                             <thead>
                                 <tr>
-                                    <td><input type="radio" name="date" value="sun" />
+                                    <td class="dark"><input type="radio" name="date" value="sun" />
                                         <p>일</p>
                                     </td>
-                                    <td><input type="radio" name="date" value="mon" checked />
+                                    <td class="light"><input type="radio" name="date" value="mon" checked />
                                         <p>월</p>
                                     </td>
-                                    <td><input type="radio" name="date" value="tue" />
+                                    <td class="dark"><input type="radio" name="date" value="tue" />
                                         <p>화</p>
                                     </td>
-                                    <td><input type="radio" name="date" value="wed" />
+                                    <td class="light"> <input type="radio" name="date" value="wed" />
                                         <p>수</p>
                                     </td>
-                                    <td><input type="radio" name="date" value="thu" />
+                                    <td class="dark"><input type="radio" name="date" value="thu" />
                                         <p>목</p>
                                     </td>
-                                    <td><input type="radio" name="date" value="fri" />
+                                    <td class="light"><input type="radio" name="date" value="fri" />
                                         <p>금</p>
                                     </td>
-                                    <td><input type="radio" name="date" value="sat" />
+                                    <td class="dark"><input type="radio" name="date" value="sat" />
                                         <p>토</p>
                                     </td>
                                 </tr>
@@ -105,7 +106,7 @@
                     </div>
 
                     <!--time button-->
-                    <div class="calendar-left col-lg-12 col-md-12 col-sm-24" style="position: relative; float: left;">
+                    <div class="calendar-left col-lg-12 col-md-12 col-sm-24" style="float: left;">
                         <div class="events-times"><strong style="color: white; size: 2em;">오전</strong>
                             <br />
                             <ul class="calendartime">
@@ -129,9 +130,9 @@
                             </ul>
                         </div>
                         <br>
-                        <div class="events-times"><strong style="color: white; size: 2em;">오후</strong>
+                        <div class="events-times" style="margin-top:-22px;"><strong style="color: white; size: 2em;">오후</strong>
                             <br>
-                            <ul class="calendartime ">
+                            <ul class="calendartime " >
                                 <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="1400">14:00
                                 </li>
                                 <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="1430">14:30
@@ -151,7 +152,7 @@
                             </ul>
                         </div>
                         <br>
-                        <div class="events-times"><strong style="color: white; size: 2em;">야간</strong>
+                        <div class="events-times" style="margin-top:-35px;"><strong style="color: white; size: 2em; align-self: center;">야간</strong>
                             <br>
                             <ul class="calendartime">
                                 <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="1900">19:00
@@ -168,17 +169,18 @@
                         </div>
                         <br>
                     </div> <!--END time button-->
+                    <div class="r form-group col-lg-12">
+                        <div>
+                            <input type="submit" value="작성완료" class="btn btn-calendar ">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-            <div class="r form-group ml-5">
-                <div>
-                    <input type="submit" value="작성완료" class="btn btn-calendar ">
-                </div>
-            </div>
             </div>
         </form>
         <div class="board-type  mt-5">
+            <p style="line-height: 1.5; margin-top:5rem">
             <h1> ${hosNickname[0].user_nickname} 예약 스케쥴 </h1>
             <p>
                 <br>
@@ -186,11 +188,11 @@
             </p>
         </div>
         <hr class="line-paint">
-        <div class="container" style="text-align: center; margin-top: 5%;">
+        <div class="" style="text-align: center; margin-top: 5%; margin-left: 10%;  margin-right: 10%; ">
 
             <table
-                style="display:inline-block; width: auto; height: auto; margin-left: 10%; margin-right: 10%; min-height: 50px;">
-                <tr>
+                style="display:inline-block; width: auto; height:auto; min-height: 50px;">
+                <tr >
                     <th><span style="width: 100px;">시간표</span></th>
                     <th><span style="width: 100px;">일</span></th>
                     <th><span>월</span></th>
@@ -268,7 +270,7 @@
         <br />
         <div class="board-type  mt-5">
             <h1> ${hosNickname[0].user_nickname} 예약회원보기 </h1>
-            <p>
+            <p style="line-height:1.5;">
                 <br>
                 1. 캘린더의 날짜를 눌러 예약한 회원을 확인하실수 있습니다.
                 <br>
@@ -282,10 +284,10 @@
         <hr class="line-paint">
         <input id="hospitalComNum" type="hidden" value="${principal.user.comNum}">
         <div class="container">
-            <div class="row">
+            <div class="row" style="margin-bottom: 6%; ">
                 <div class="calendar_box">
                     <div class="sc col-lg-6 col-md-12 col-sm-12 jscal">
-                        <table class="scriptCalendar mb-3" style="position: relative; float: left; ">
+                        <table class="scriptCalendar mb-3" style="position: relative; float: left; height: 400px;">
                             <thead>
                                 <tr>
                                     <td onClick="prevCalendar();" style="cursor:pointer;">&#60;&#60;</td>
@@ -311,7 +313,7 @@
 
 
                     <!--button-->
-                    <div class="calendar-left col-lg-6 col-md-12 col-sm-12"
+                    <div class="calendar-member col-lg-6 col-md-12 col-sm-12"
                         style="position: relative; float: left; margin-top: 0px;">
                         <strong style="color: white; size: 2em; padding-top: 8px; ">예약한 회원</strong>
                         <div class="events-time mt-5">
