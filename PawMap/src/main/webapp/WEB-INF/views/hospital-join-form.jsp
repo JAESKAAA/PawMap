@@ -104,7 +104,13 @@ pageEncoding="UTF-8"%>
                         <th> 사업자등록번호 <span>*</span></th>
                         <td><input required="required" type="tel"
                           name="comNum" id="user_nickname" placeholder="사업자등록번호" 
-                          class="input w130"></td>
+                          class="input w130">
+                          <button type="button" class="button u_button-grey" onclick="fn_nickcheck()">
+                            <span style="color: white;" >중복확인</span>
+                        </button>
+                        <br>
+                        <p class="result"><span class="msg2">사업자등록번호 중복확인을 해주세요.</span></p>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
