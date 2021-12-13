@@ -72,7 +72,7 @@
 body {
   color: #666666;
   font-size: 15px;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "NEXON Lv1 Gothic OTF Light";
   line-height: 1.20857;
 }
 a {
@@ -697,7 +697,7 @@ ul.cart-list > li.total > .btn:hover {
   opacity: 0.5;
 }
 .cover-slides h1 {
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "NEXON Lv1 Gothic OTF";
   font-weight: 500;
   font-size: 64px;
   color: #fff;
@@ -872,7 +872,7 @@ ul.cart-list > li.total > .btn:hover {
 }
 .why-text h5 {
   font-size: 18px;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "NEXON Lv1 Gothic OTF Light";
   padding: 4px;
   display: inline-block;
   background: #EFC778;
@@ -1507,6 +1507,7 @@ f7ba61
 
 .about-box-main p {
   size: 0.7em;
+  line-height: 1.7;
 }
 .service-block-inner {
   padding: 15px 20px;
@@ -1812,7 +1813,7 @@ f7ba61
   transition: top 0.2s, -webkit-transform 0.2s;
   transition: transform 0.2s, top 0.2s;
   transition: transform 0.2s, top 0.2s, -webkit-transform 0.2s;
-  font-family: "Noto Sans KR", sans-serif;
+  font-family: "NEXON Lv1 Gothic OTF Light";
   content: "\f105";
 }
 .list-group-tree .list-group-collapse .list-group {
