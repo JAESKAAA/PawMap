@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%>
 
 
     <!---------------------------------- 회원가입 폼 -------------------------->
-    <section class="vh-100" >
+    <section class="vh-100" style="margin-top: 150px;">
       <form lass="mx-1 mx-md-4" action="/pawmap/hospitalJoin" method="post" name="joinForm"
       id="joinForm" onsubmit="submitJoinForm(this); return false;">
       <div class="u_container">
@@ -108,7 +108,7 @@ pageEncoding="UTF-8"%>
                     </tr>
                     </tbody>
                 </table>
-                <div class="u_bottom-button"><a class="u_button u_button-grey"><span>취소</span></a>
+                <div class="u_bottom-button"><a class="u_button u_button-grey" href="/pawmap"><span>취소</span></a>
                     <button id="btnJoin" type="submit" class="u_button u_button-point">
                         가입하기
                     </button>

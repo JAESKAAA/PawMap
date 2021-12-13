@@ -1,6 +1,6 @@
 package com.pawmap.VO;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,15 +20,18 @@ public class BoardVO {
 	private String comNum;
 	private String title;
 	private String content;
-	private Date regDate;
+	private Timestamp regDate;
 	private String keywordType;
 	private String keyword;
 	private UserVO userVO;
 	private String reservationDate;
 	private String scheduleTime;
 	private int cnt;
+	private int count;
 
 	
 	private MultipartFile uploadFiles;
+	
+
 
 }

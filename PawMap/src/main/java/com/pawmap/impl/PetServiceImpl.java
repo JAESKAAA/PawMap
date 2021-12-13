@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pawmap.VO.PetVO;
+import com.pawmap.VO.UserVO;
 import com.pawmap.mapper.PetMapper;
 import com.pawmap.service.PetService;
 

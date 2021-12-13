@@ -38,8 +38,13 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-tom.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-jaeseok.css" />
-    
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-jaeseok.css">
+    <!-- 몌 커스텀 css -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-mye.css">
+    <!-- 실비아 커스텀 css -->    
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-silbia.css">
+
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footable.bootstrap.css" />
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -70,7 +75,8 @@ pageEncoding="UTF-8"%>
         </div>
       </div>
     </div>
-  <!-- admin페이지의 header 시작...-->
+  <!-- admin페이지의 header 시작... style="justify-content: space-between; width: 1519px"-->
+  <div> 
   <header class="main-header">
     <!-- Start Navigation --> <!--하기 navbar navbar-expand-lg를 md로 교체-->
     <nav class="navbar navbar-expand-md navbar-light bg-light navbar-default bootsnav">
@@ -86,19 +92,20 @@ pageEncoding="UTF-8"%>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="navbar-menu">
-                <div class="container">
-                    <div class="row row-adminindex">
-                        <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li class="nav-item"><a class="nav-link" href="/pawmap/getHospitalList"> 제휴병원 관리</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/pawmap/getUserList"> 회원정보 관리</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/pawmap/admin/getShelterList"> 보호소정보 관리</a></li>
-                            <li class="nav-item"><a class="nav-link" href="/pawmap/getCommunityBoardList"> 커뮤니티 게시판 관리</a></li>
-                        </ul>
-                    </div>
-                </div>
+              <div class="container">
+                  <div class="row row-adminindex">
+                      <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                          <li class="nav-item"><a class="nav-link" href="/pawmap/getHospitalList"> 제휴병원 관리</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/pawmap/getUserList"> 회원정보 관리</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/pawmap/admin/shelterList"> 보호소정보 관리</a></li>
+                          <li class="nav-item"><a class="nav-link" href="/pawmap/getCommunityBoardList"> 커뮤니티 게시판 관리</a></li>
+                      </ul>
+                  </div>
+              </div>
             </div>
             <!-- /.navbar-collapse -->
         </div>
     </nav>
     <!-- End Navigation --> <!--관리자 페이지 공통 부분 완료...-->
   </header>
+</div>

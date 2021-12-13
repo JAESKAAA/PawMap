@@ -40,6 +40,33 @@ public interface BoardMapper {
 	List<HashMap<String, Object>> getLatelyBoardListForBoardMain();
 
 
+//	나눔게시판
+	List<BoardVO> getNanumBoardList(Map<String, Object> map);
+
+//	글 상세조회
+	BoardVO getBoardDetail(@Param ("boardSeq") int boardSeq, @Param ("boardType") String boardType);
+
+
+	BoardVO getNanumBoard(@Param("boardSeq") int boardSeq);
+
+
+	void updateNanumBoardForm(BoardVO vo);
+	
+ 	int getNanumBoardSeq();
+
+	void deleteNanumBoardBySeq(@Param("boardSeq") int boardSeq);
+
+
+	List<HashMap<String, Object>> getLatelyBoardListForNanumBoardMain();
+
+
+	int selectNanumBoardCount(BoardVO vo);
+
+
+	List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain();
+
+
+
 	void insertMedicalRecord(BoardVO vo);
 
 
@@ -64,10 +91,10 @@ public interface BoardMapper {
 	void updateFreeBoardCnt(@Param("boardSeq")int boardSeq);
 
 
+	//관리자 페이지에서 community 게시판 부를때 사용하는 메소드
+	List<BoardVO> getCommunityBoardList(Map<String,Object> map);
 	
-
+	List<HashMap<String, Object>> getLatelyCommunityBoardListForBoardMain();	
 	
-
-
 }
 

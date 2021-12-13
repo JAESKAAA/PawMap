@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+
 import com.pawmap.VO.Criteria;
 import com.pawmap.VO.UserVO;
 
@@ -25,6 +26,8 @@ public interface UserMapper {
 	void socialJoin(UserVO vo);
 	
 	// 아이디 중복 검사
+
+
 	public int idCheck(String id);
 	
 	// 닉네임 중복 검사
@@ -71,6 +74,7 @@ public interface UserMapper {
 	public void updateUserAdmin(UserVO vo);
 	public UserVO searchPwd(@Param("userId")String userId, @Param("userName")String userName);
 
+
 	//페이징 처리 메서드 (일반유저)
 	public List<UserVO> getUserListWithPaging(Criteria cri);
 	
@@ -84,7 +88,6 @@ public interface UserMapper {
 	public int getHospitalUserCount();
 
 	void updateUserProfileNull(@Param("userSeq") int userSeq,@Param("userType") String userType,@Param("userId") String userId);
-
 
 
 }

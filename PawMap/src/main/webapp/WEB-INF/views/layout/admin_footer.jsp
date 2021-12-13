@@ -152,7 +152,7 @@
     <script src="${pageContext.request.contextPath}/js/custom-silbia.js"></script>
     <!-- admin페이지내 유저/제휴병원 리스트 검색기능 관련 js -->
  	<script src="${pageContext.request.contextPath}/js/admin.js"></script>
-
+<!--  <script src="${pageContext.request.contextPath}/js/custom-tom.js"></script>--><!--유저와 제휴병원 더 상세하게 검색하는 기능 탑재 됨. 그리고 보호소 포함 dec13th..-->
     <!--주소검색-->
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 

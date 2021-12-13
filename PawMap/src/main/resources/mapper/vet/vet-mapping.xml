@@ -29,7 +29,7 @@
 		INSERT INTO VET (
 			<include refid="vetColumns" />
 		) VALUES (
-			 (SELECT IFNULL(MAX(VET_SEQ), 0) + 1 FROM VET A )
+			 (SELECT IFNULL(MAX(VET_SEQ), 0) + 1 FROM VET A where hospital_seq = ${hospitalSeq})
 			,#{hospitalSeq}
 			,#{vetName}
 			,#{vetMajor}
@@ -38,6 +38,10 @@
 		)
 	</insert>
 
+	<select id="getHospitalInfo" parameterType="com.pawmap.VO.UserVO" resultType="com.pawmap.VO.HospitalVO">
+		SELECT * FROM hospital_data where hospital_id = #{userId}
+	</select>
+
 	<select id="selectVetInfo" parameterType="int" resultType="com.pawmap.VO.VetVO">
 		SELECT
 			<include refid="vetColumns" />
@@ -45,6 +49,8 @@
 			VET
 		WHERE
 			HOSPITAL_SEQ = #{hospitalSeq}
+		AND
+			VET_SEQ = #{vetSeq}
 			<!-- userSeq겹칠 수 있음 -->
 		ORDER BY VET_SEQ DESC
 	</select>
@@ -67,11 +73,29 @@
   		DELETE FROM VET
   		WHERE
 			VET_SEQ = #{vetSeq}
+		AND 
+			HOSPITAL_SEQ = #{hospitalSeq}
   	</delete>
+
+	<select id="getVetListWithFiles" parameterType="com.pawmap.VO.VetVO" resultType="HashMap">
+			SELECT	
+				A.VET_SEQ AS vetSeq,
+		        A.VET_NAME AS vetName,
+		        A.VET_MAJOR AS vetMajor,
+		        A.VET_INTRO AS vetIntro,
+		        A.HOSPITAL_SEQ AS hospitalSeq,
+		        B.ORIGINALFILENAME AS originalFileName
+			FROM pawmap.vet A
+				 LEFT OUTER JOIN (SELECT * FROM FILE  WHERE board_type='v' AND user_id =#{userId}) AS B
+	         ON A.VET_SEQ = B.BOARD_SEQ
+	          WHERE HOSPITAL_SEQ = #{hospitalSeq}
+				ORDER BY
+				A.VET_SEQ ;
+		</select>
 
 	<select id="getVetList" parameterType="com.pawmap.VO.VetVO" resultType="com.pawmap.VO.VetVO">
 		SELECT
-			<include refid="vetColumns" />
+			*
 		FROM
 			VET
 		WHERE
@@ -86,5 +110,9 @@
 		WHERE HOSPITAL_SEQ = #{hospitalSeq}
 	</select>
 
+	<select id="getMaxVetSeq" resultType="int">
+		SELECT MAX(VET_SEQ) FROM vet
+		WHERE hospital_seq = #{hospitalSeq}
+	</select>
 
 </mapper>

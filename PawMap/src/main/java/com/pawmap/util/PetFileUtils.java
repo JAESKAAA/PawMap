@@ -17,8 +17,12 @@ import com.pawmap.VO.FileVO;
 
 
 public class PetFileUtils {
-	 String boardType = "p";
+	private String boardType;
 
+	
+	public PetFileUtils(String boardType) {
+		this.boardType=boardType;
+	}
 
 	public List<FileVO> parseFileInfo(int boardSeq, HttpServletRequest request, 
 			MultipartHttpServletRequest mhsr,String userId) throws IOException {
@@ -48,7 +52,9 @@ public class PetFileUtils {
 		
 		Iterator<String> iterator = mhsr.getFileNames();
 		
-		System.out.println("47줄 fileName" + mhsr.getFileNames());
+		System.out.println("뭐가들어있냐 = "+iterator.hasNext());
+		
+		System.out.println("47줄 fileName" + mhsr.getFileNames().toString());
 		while(iterator.hasNext()) {
 			
 			List<MultipartFile> list = mhsr.getFiles(iterator.next());
@@ -58,8 +64,10 @@ public class PetFileUtils {
 			for(MultipartFile mf : list) {
 				if(mf.getSize() > 0) {
 					FileVO boardFile = new FileVO();
+					//수의사의 경우 vetSeq가 여기에 들어감
 					boardFile.setBoardSeq(boardSeq);
 					boardFile.setBoardType(boardType);
+					//제휴병원 아이디가 들어가야함
 					boardFile.setUserId(userId);
 					boardFile.setFileSize(mf.getSize());
 					boardFile.setOriginalFileName(mf.getOriginalFilename());
@@ -80,8 +88,5 @@ public class PetFileUtils {
 	}
 	
 
-	
-	public PetFileUtils(String boardType) {
-		this.boardType=boardType;
-	}
+
 }

@@ -20,6 +20,8 @@ public class VetVO {
 	/** 수의사명 */
 	private String vetName;
 
+	//조인테이블을 위한 필드멤버
+	private String userId;
 	/** 전공 **/
 	private String vetMajor;
 	

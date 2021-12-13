@@ -47,19 +47,6 @@ pageEncoding="UTF-8"%>
                             </div>
                         </div>
                     </div>
-                    <!--진단서정보카드-->
-                    <div class="col-lg-3 col-md-6">
-                        <div class="pet-account-box">
-                            <div class="pet-service-box">
-                                <div class="pet-service-icon">
-                                    <a href="#"><i class="far fa-file-alt"></i></a>
-                                </div>
-                                <div class="pet-service-desc">
-                                    <h4>진료기록</h4>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <!--예약정보카드-->
                     <div class="col-lg-3 col-md-6">
                         <div class="pet-account-box">

@@ -5,6 +5,18 @@
   background-color: #fff;
   border-radius: 40px;
   padding: 10px;
+ 
+}
+
+
+#search_hostpital{
+  font-weight: bold;
+  font-size: 1.17em;
+  margin:auto;
+  padding: auto;
+  text-align: center;
+  padding-top: 0.4em;
+
 }
 
 .search_input {
@@ -22,15 +34,23 @@
 .search .search_input {
   padding: 0 10px;
   width: 550px;
-  caret-color: red;
+  caret-color: #e1a963;
   transition: width 0.4s linear;
   border-bottom: 1px solid black;
+  margin-top: 4%;
 }
 
-.search:hover > .search_icon {
-  background: red;
-  color: #fff;
+#search_box {
+  margin:auto;
+}
+
+.search:hover > .search_icon:hover {
+  background: #e1a86398 !important;
+  color: #fff !important;
   
+}
+#search_bar{
+  height: 35px;
 }
 
 .search_icon {
@@ -41,54 +61,116 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  color: #e1a963;
-  background-color: black;
+  color: #e1a963 !important;
+  background-color: rgba(255, 255, 255, 0.445) !important;
   border : none;
   transition : all 0.2s linear;
+  margin-top: 4%;
 }
-
-a:link {
-  text-decoration: none;
-}
-.custom_margin {
-  margin-top: 7rem;
-  margin-bottom: 7rem;
-}
-.custom_aboutUsBox {
-  width: 70vw;
-  height: 80vh;
-  display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 15rem;
-}
-
-.custom_aboutUs_textBox {
-  width: 40%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.aboutUs_title {
-  font-size: 4rem;
-}
-.index_video {
-  width: 38%;
-  height: 90vh;
-}
-.custom_aboutUs_img {
+/* .custom_aboutUs_img {
   width: 50%;
   height: 90vh;
   background: url(../images/yellowdog.jpg);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+} */
+
+a:link {
+  text-decoration: none;
 }
+.custom_margin {
+  margin-top: 7rem !important;
+  margin-bottom: 25rem !important;
+  margin-right: 0;
+  margin-left:0;
+  text-align: center;
+  padding-top: 6%;
+
+}
+.custom_aboutUsBox {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10%;
+  box-sizing: unset !important;
+}
+.custom_aboutUsBox2 {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  margin-top: 5%;
+  margin: 10%;
+  justify-content: space-evenly;
+  margin-bottom: 15rem;
+  box-sizing: unset !important;
+}
+
+.custom_aboutUs_textBox {
+  width: 40%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0%;
+  text-align: right;
+}
+
+.custom_aboutUs_textBox2 {
+  width: 40%;
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0%;
+  vertical-align: center;
+  margin: 0;
+  text-align: left;
+}
+.aboutUs_title {
+  font-size: 2rem;
+  padding-left:10%;
+  padding-top: 0;
+}
+.index_video {
+  width: 38%;
+  height: 90vh;
+}
+
 .custom_btn {
+  width: 9rem;
+    height: 5rem;
+    color: white;
+    background-color: #EFC778;
+    border-style: none;
+    margin: 10%;
+    /* text-align: center; */
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.custom_btn2 {
   width: 7rem;
+  height: 2rem;
+  color:white;
+  background-color: #EFC778;
+  border-style: none;
+  font-size: 18px;
+}
+.custom_btn:hover{
+  background-color: #e1a963;
+}
+.custom_btn2:hover{
+  background-color: #e1a963;
 }
 .custom_aboutUs_innerTextBox {
-  width: 80%;
+  width: 100%;
+  padding-top: 0;
+  padding-right: 10;
+  font-size: 1.1rem;
+  padding-left: 10%;
+  padding-bottom: 0;
 }
 .custom_hr {
   width: 20%;
@@ -230,4 +312,12 @@ a:link {
 .slides-navigation a:hover {
   background: none;
   color: #e1a963;
+}
+
+.vetImg{
+	width: 100%;
+	height: 100%
+}
+.long-text{
+  line-height: 2;
 }

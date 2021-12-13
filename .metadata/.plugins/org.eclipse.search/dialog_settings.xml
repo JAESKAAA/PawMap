@@ -38,7 +38,7 @@
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="hospitalTelNum"/>
+			<item key="textPattern" value="getShelter"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -53,7 +53,7 @@
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="java.util.Date"/>
+			<item key="textPattern" value="getFileListBySeqType"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -65,7 +65,7 @@
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="java.util.Calendar"/>
+			<item key="textPattern" value="shelterform"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -77,7 +77,7 @@
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="java.util"/>
+			<item key="textPattern" value="shelterList"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -89,7 +89,7 @@
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="getLatelyBoardListForBoardMain"/>
+			<item key="textPattern" value="extend"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -101,7 +101,7 @@
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="userResult"/>
+			<item key="textPattern" value="updateUserAdmin"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -113,7 +113,7 @@
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="freeboardlist"/>
+			<item key="textPattern" value="updteUserAdmin"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -125,7 +125,7 @@
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="userinfoform"/>
+			<item key="textPattern" value="/admin/updateUser"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -137,7 +137,7 @@
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="userList"/>
+			<item key="textPattern" value="card text-black"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -149,7 +149,7 @@
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="hospital"/>
+			<item key="textPattern" value="updateUseradmin"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -161,7 +161,7 @@
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="admin_hospital"/>
+			<item key="textPattern" value="hospitalTelNum"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -173,7 +173,7 @@
 			<item key="ignoreCase" value="true"/>
 			<item key="isRegExSearch" value="false"/>
 			<item key="isWholeWord" value="false"/>
-			<item key="textPattern" value="com.mysql.jdbc.Driver"/>
+			<item key="textPattern" value="java.util.Date"/>
 			<item key="scope" value="0"/>
 			<list key="fileNamePatterns">
 				<item value="*"/>
@@ -190,5 +190,11 @@
 	</section>
 	<section name="">
 		<item key="org.eclipse.search.resultpage.limit" value="1000"/>
+		<item key="org.eclipse.jdt.search.resultpage.limit" value="1000"/>
+		<item key="org.eclipse.jdt.search.resultpage.limit_enabled" value="TRUE"/>
+	</section>
+	<section name="org.eclipse.jdt.ui.JavaSearchResultPage">
+		<item key="org.eclipse.jdt.search.resultpage.limit" value="1000"/>
+		<item key="org.eclipse.jdt.search.resultpage.limit_enabled" value="TRUE"/>
 	</section>
 </section>

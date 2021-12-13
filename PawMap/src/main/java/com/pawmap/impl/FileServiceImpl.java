@@ -34,6 +34,52 @@ public class FileServiceImpl implements FileService {
 	public void deleteFileByBoardSeq(int boardSeq) {
 		fileMapper.deleteFileByBoardSeq(boardSeq);
 	}
+	
+	@Override
+	public void deleteFileByBoardSeqOnShelterSeq(int boardSeq) {
+		fileMapper.deleteFileByBoardSeqOnShelterSeq(boardSeq);
+	}
+
+
+	@Override
+	public void insertUpdateOneFile(FileVO vo) {
+		fileMapper.insertUpdateOneFile(vo);
+	}
+
+	@Override
+	public List<FileVO> getFileListBySeqType(int boardSeq, String boardType) {
+		return fileMapper.getFileListBySeqType(boardSeq, boardType);
+	}
+
+	@Override
+	public List<FileVO> getFileListByNanumBoardSeq(int boardSeq, String boardType) {
+		return fileMapper.getFileListByNanumBoardSeq(boardSeq, boardType);
+	}
+
+	@Override
+	public void insertNanumBoardFileList(FileVO fileVO) {
+		fileMapper.insertNanumBoardFileList(fileVO);
+		
+	}
+
+	@Override
+	public void deleteFileByBoardSeqOnNanumSeq(int boardSeq) {
+		fileMapper.deleteFileByBoardSeqOnNanumSeq(boardSeq);
+	}
+	
+	@Override
+	public List<FileVO> getFileListByShelterSeq(int boardSeq, String boardType) {
+		return fileMapper.getFileListByShelterSeq(boardSeq, boardType);
+	}
+
+	@Override
+	public void insertShelterFileList(List<FileVO> fileList) {
+		for(FileVO vo : fileList) {
+			fileMapper.insertShelterFileList(vo);
+			System.out.println(vo.getBoardSeq());
+		}
+	}
+	
 
 	@Override
 	public void deleteOneFile(int fileSeq, int boardSeq) {
@@ -120,8 +166,42 @@ public class FileServiceImpl implements FileService {
 		return fileMapper.getPetFile(petSeq,userId);
 	}
 
+	@Override
+	public void insertVetFileList(List<FileVO> fileList) {
+		for(FileVO vo : fileList) {
+			System.out.println("vo정보 출력 == "+vo);
+			fileMapper.insertVetFileList(vo);
+		}
+	}
 
-	
+	@Override
+	public void updateVetFileList(List<FileVO> fileList) {
+		for(FileVO vo : fileList) {
+			System.out.println("수의사 file업데이트  vo정보 === "+vo);
+			fileMapper.updateVetFileList(vo);
+		}
+		
+	}
 
+	@Override
+	public FileVO vetInfoFile(FileVO vo) {
+		return fileMapper.vetInfoFile(vo);
+	}
 	
+	@Override
+	public void deleteVetFile(int vetSeq, String boardType, String userId) {
+		fileMapper.deleteVetFile(vetSeq, boardType, userId);
+	}
+
+	@Override
+	public void deleteNanumFile(int fileSeq, int boardSeq) {
+		fileMapper.deleteNanumFile(fileSeq, boardSeq);
+		
+	}
+
+	@Override
+	public void deleteShelterFile(int fileSeq, int boardSeq) {
+		fileMapper.deleteShelterFile(fileSeq, boardSeq);
+		
+	}
 }

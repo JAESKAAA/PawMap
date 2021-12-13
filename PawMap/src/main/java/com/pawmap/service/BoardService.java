@@ -25,9 +25,31 @@ public interface BoardService {
 	void insertReplyForFreeBoard(CommentVO commentVO);
 
 	int getFreeBoardSeq();
-
 	
 	List<HashMap<String, Object>> getLatelyBoardListForBoardMain();
+
+//	나눔게시판 리스트
+	List<BoardVO> getNanumBoardList(BoardVO vo, Criteria cri);
+	
+	// 나눔게시판 상세
+	BoardVO getNanumBoard(int boardSeq);
+
+//	글 상세조회
+	BoardVO getBoardDetail(int boardSeq, String boardType);
+
+	void updateNanumBoardForm(BoardVO vo);
+
+	int getNanumBoardSeq();
+
+	// 나눔게시판 글 삭제
+	void deleteNanumBoardBySeq(int boardSeq);
+
+	List<HashMap<String, Object>> getLatelyBoardListForNanumBoardMain();
+
+	int selectNanumBoardCount(BoardVO vo);
+
+	List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain();
+
 
 	void insertMedicalRecord(BoardVO vo);
 
@@ -45,5 +67,9 @@ public interface BoardService {
 
 	void updateFreeBoardCnt(int boardSeq);
 
-	
+	//관리자 페이지에서 커뮤니티 게시판 부를때 사용하는 메소드
+
+	List<BoardVO> getCommunityBoardList(BoardVO vo, Criteria cri);
+		
+	List<HashMap<String, Object>> getLatelyCommunityBoardListForBoardMain();	
 }

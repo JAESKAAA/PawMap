@@ -5,28 +5,33 @@ pageEncoding="UTF-8"%>
 <%@ include file="layout/admin_header.jsp" %>
 
 
-  <!--관리자의 회원정보 관리 페이지 시작...-->
-        <div class="tbl-header"> 
+        <!--관리자의 회원정보 관리 페이지 시작...-->
+        <div class="tbl-header" style="margin-top:149px;"> 
             <div class="row row-adminindex">
             <div>
-                <h1 class="adminpagetoph1" style=" margin-top: 0px;">회원정보 관리</h1>
+                <c:if test="${userList[0].userType == 'N'}">
+                    <h1 class="adminpagetoph1" style=" margin-top: 0px;">회원정보 관리</h1>
+                </c:if>
+                <c:if test="${userList[0].userType == 'H'}">
+                    <h1 class="adminpagetoph1" style=" margin-top: 0px;">병원정보 관리</h1>
+                </c:if>
             </div>
             </div>
         </div>
         <!-- search 버튼 시작 -->
-        <div class="row">
+        <div class="row tbl-header">
           <div class="main-search-input-wrap" >
               <div class="main-search-input fl-wrap" style="margin-top: 30px;">
                   <c:choose >
                   	<c:when test="${userList[0].userType eq 'N' }">
 	                  <div class="main-search-input-item"> 
-	                      <input type="text" id="searchInput" onkeyup="admin_user_search();" name="search_value" placeholder="Search Products..."> 
+	                      <input type="text" id="searchInput" onkeyup="admin_user_search();" name="search_value" placeholder="일반 회원 ID를 검색하세요."> 
 	                  </div> 
 	                <button class="main-search-button" onclick="admin_user_search();">Search</button>
                   	</c:when>
                   	<c:otherwise>
 	                  <div class="main-search-input-item"> 
-	                      <input type="text" id="searchInput" onkeyup="admin_hospital_search();" name="search_value" placeholder="Search Products..."> 
+	                      <input type="text" id="searchInput" onkeyup="admin_hospital_search();" name="search_value" placeholder="병원 회원 ID를 검색하세요."> 
 	                  </div> 
 	                <button class="main-search-button" onclick="admin_hospital_search();">Search</button>
                   	</c:otherwise>
@@ -36,30 +41,52 @@ pageEncoding="UTF-8"%>
         </div>
         <!--search button finished...-->
         <!--회원정보 관리 리스트 시작-->
-    <div style="margin-top: 40px; border-style: 3px solid orange ">
-        <table id="table_user_admin" style="margin-left: auto; margin-right: auto; text-align: center;">
-            <tr>
-                <th>번째</th>
-                <th>아이디</th>
-                <th>이름</th>
-                <th>닉네임</th>
-                <th>이메일</th>
-                <th>연락처</th>
-                <th>관리</th>
-            </tr>
-           <c:forEach var="user" items="${userList }">
-            <tr>
-                <td>${user.userSeq }</td>
-                <td>${user.userId}</td>
-                <td>${user.userName }</td>
-                <td>${user.userNickname }</td>
-                <td>${user.userEmail }</td>
-                <td>${user.userTelNum }</td>
-                <td><button style="margin-left: 30px;" type="button" onclick="location.href='/pawmap/getUser?userId=${user.userId}'">관리하기</button></td>
-            </tr>
-           </c:forEach>
-        </table>
-    </div>
+        <div id="adminusermanage" class="adminpagetablediv">
+            <table id="table_user_admin" class="table-striped table-hover adminpagetable">
+              <colgroup>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col>
+                <col >
+              </colgroup>
+              <thead class="admintablehead"> 
+                <tr>
+                    <th class="admin-userseq">#</th>
+                    <th class="admin-userid">아이디</th>
+                    <th class="admin-useremail">이메일</th>
+                    <th class="admin-username">이름/상호명</th>
+                    <th class="admin-usertelnum">연락처</th>
+                    <th class="admin-address">주소</th>
+                    <th class="admin-usernickname">닉네임</th>
+                    <th class="admin-role">회원타입</th>
+                    <th class="admin-userregdate">등록일</th>
+                    <th class="admin-useractionbutton"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <c:forEach var="user" items="${userList }">
+                  <tr>
+                    <td class="admin-userseq">${user.userSeq }</td>
+                    <td class="admin-userid">${user.userId }</td>
+                    <td class="admin-useremail">${user.userEmail }</td>
+                    <td class="admin-username">${user.userName }</td>
+                    <td class="admin-usertelnum">${user.userTelNum }</td>
+                    <td class="admin-address">${user.address }</td>
+                    <td class="admin-usernickname">${user.userNickname }</td>
+                    <td class="admin-role">${user.role }</td>
+                    <td class="admin-userregdate"><fmt:formatDate value="${user.userRegDate }" pattern="yyyy-MM-dd KK:mm:ss"/></td>
+                    <td class="admin-useractionbutton"><button class="adminpagebuttonformanage" type="button" onclick="location.href='/pawmap/getUser?userId=${user.userId}'">수정</button></td>
+                  </tr>
+                </c:forEach>
+              </tbody>            
+            </table>
+        </div>
     
      <!-- 페이지네이션 부분 시작-->
 	    <div class="page-div hospital_pagination_custom">
