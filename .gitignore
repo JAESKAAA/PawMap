@@ -6,3 +6,4 @@ application.properties
 *.DS_Store
 
 workbench.xmi
+.vscode
