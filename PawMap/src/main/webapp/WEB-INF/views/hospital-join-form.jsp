@@ -7,7 +7,7 @@ pageEncoding="UTF-8"%>
     <!---------------------------------- 회원가입 폼 -------------------------->
     <section class="vh-100" style="margin-top: 150px;">
       <form lass="mx-1 mx-md-4" action="/pawmap/hospitalJoin" method="post" name="joinForm"
-      id="joinForm" onsubmit="submitJoinForm(this); return false;">
+      id="joinForm" onsubmit="submitHJoinForm(this); return false;">
       <div class="u_container">
         <div class="col-lg-12 col-xl-12">
         <h3 class="u_top-title">제휴병원 가입</h3>
@@ -104,16 +104,18 @@ pageEncoding="UTF-8"%>
                       </tr>
                       <tr>
                         <th> 사업자등록번호 <span>*</span></th>
-                        <td><input required="required" type="tel"
-                          name="comNum" id="user_nickname" placeholder="사업자등록번호" 
-                          class="input w130">
-                          <button type="button" class="button u_button-grey" onclick="fn_nickcheck()">
-                            <span style="color: white;" >중복확인</span>
-                        </button>
-                        <br>
-                        <p class="result"><span class="msg2">사업자등록번호 중복확인을 해주세요.</span></p>
+                        <td>
+                          <div class="u_input-button"><input name="comNum" id="com_num" placeholder="사업자등록번호"
+                            type="tel" class="input w220" onkeyup="inputComCheck();">
+                            <button type="button" class="button u_button-grey" onclick="fn_comcheck()">
+                              <span style="color: white;">중복확인</span>
+                            </button>
+                            <input id="comDuplication" type="hidden" name="comDuplication" value="comUncheck">
+                            <br>
+                            <p class="result"><span class="msg6">사업자등록번호 중복확인을 해주세요.</span></p>
+                          </div>
                         </td>
-                    </tr>
+                      </tr>
                     </tbody>
                 </table>
                 <div class="u_bottom-button"><a class="u_button u_button-grey" href="/pawmap"><span>취소</span></a>

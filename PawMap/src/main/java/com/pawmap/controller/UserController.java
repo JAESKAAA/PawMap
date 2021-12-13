@@ -595,6 +595,24 @@ public class UserController {
 			}
 		}
 		
+		// 사업자등록번호 중복 체크
+		@RequestMapping("comCheck")
+		@ResponseBody
+		public String comCheck(@RequestParam("comnum") String comnum) throws Exception {
+			System.out.print(comnum);
+			System.out.print("comcheck 들어옴!!");
+			
+			int result = userService.comCheck(comnum);
+
+			System.out.print(result);
+			
+			if(result > 0) {
+				return "fail";
+			} else {
+				return "ok";
+			}
+		}
+		
 
 
 		   //   프로필 삭제 메서드
