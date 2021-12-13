@@ -26,6 +26,7 @@ pageEncoding="UTF-8"%>
     .all-title-box{
         background-image: none;
     }
+
 </style>
 <!-- <script>
     var today = new Date();
@@ -41,7 +42,6 @@ pageEncoding="UTF-8"%>
 
     </header>
     <!-- End Main Top -->
-
 
     
     <div class="board-type  mt-5" style="padding-top: 150px;">
@@ -87,7 +87,7 @@ pageEncoding="UTF-8"%>
             <td>${myResList.schedule_time}</td>
             <c:choose>
                 <c:when test="${empty myResList.reservation_status }">
-                    <td style="color: gray;"><button class="btnHos2" type="button" onclick='location.href="/pawmap/showMyMedicalRecord?comNum=${myResList.com_num}&reservationDate=${myResList.reservation_date}&scheduleTime=${myResList.schedule_time}&userId=${principal.user.userId}"' disabled>진단서 보기</button></td>
+                    <td style="color: gray;"><button class="btnHosgr" type="button" onclick='location.href="/pawmap/showMyMedicalRecord?comNum=${myResList.com_num}&reservationDate=${myResList.reservation_date}&scheduleTime=${myResList.schedule_time}&userId=${principal.user.userId}"' disabled>진단서 보기</button></td>
                 </c:when>
                 <c:otherwise>
                     <td style="color: gray;"><button class="btnHos" type="button" onclick='location.href="/pawmap/showMyMedicalRecord?comNum=${myResList.com_num}&reservationDate=${myResList.reservation_date}&scheduleTime=${myResList.schedule_time}&userId=${principal.user.userId}"'>진단서 보기</button></td>
@@ -95,7 +95,7 @@ pageEncoding="UTF-8"%>
             </c:choose>
             <c:choose>
                 <c:when test="${myResList.reservation_date <= sysYear || !empty myResList.reservation_status}">
-                    <td><button class="btncan2 " disabled>예약취소</button></td>
+                    <td><button class="btncangr" disabled>예약취소</button></td>
                 </c:when>
                 <c:otherwise>
                     <td><button class="btncan" onclick="if(!confirm('정말 취소하겠씁니까?')){return false}" >예약취소</button></td>

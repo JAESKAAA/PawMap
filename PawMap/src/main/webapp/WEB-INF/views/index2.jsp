@@ -131,6 +131,28 @@ pageEncoding="UTF-8"%>
     .fa-search {
     	cursor:pointer;
     }
+    @font-face {
+      font-family: 'NEXON Lv1 Gothic OTF Light';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      } 
+      @font-face {
+    font-family: 'NEXON Lv1 Gothic OTF';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+      body{
+        font-family: 'NEXON Lv1 Gothic OTF Light';
+      }
+      
+      .navbar-brand{
+        font-family:'NEXON Lv1 Gothic OTF';
+        font-size: 1.6em;
+        font-weight: 700;
+      }
+     
 	  </style>
   </head>
 
@@ -143,7 +165,7 @@ pageEncoding="UTF-8"%>
         navbar navbar-expand-lg 
         fixed-top py-3">
         <div class="container col-lg-9">
-          <div class="navbar-header">
+          <div class="navbar-header" id="headerPawmap">
             <a href="/pawmap" class="navbar-brand text-uppercase font-weight-bold">PAWMAP</a>
               <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
             </div>
@@ -154,24 +176,24 @@ pageEncoding="UTF-8"%>
                     data-out="fadeOutUp">
                     <li class="nav-item active">
                       <!-- a태그 스타일이 안먹어 -->
-                      <a href="/pawmap" id="nav-a" class="nav-link text-uppercase font-weight-bold" >Home </a></li>
+                      <a href="/pawmap" id="nav-a" class="nav-link-main text-uppercase font-weight-bold" >Home </a></li>
                     <li class="nav-item">
-                      <a href="/pawmap/about" id="nav-a" class="nav-link text-uppercase font-weight-bold">회사소개</a></li>
+                      <a href="/pawmap/about" id="nav-a" class="nav-link-main text-uppercase font-weight-bold">회사소개</a></li>
                     <li class="nav-item">
-                      <a href="/pawmap/search" id="nav-a" class="nav-link text-uppercase font-weight-bold">병원찾기</a></li>
+                      <a href="/pawmap/search" id="nav-a" class="nav-link-main text-uppercase font-weight-bold">병원찾기</a></li>
                     <li class="nav-item">
-                      <a href="/pawmap/shelter" id="nav-a" class="nav-link text-uppercase font-weight-bold">보호소 정보</a></li>
+                      <a href="/pawmap/shelter" id="nav-a" class="nav-link-main text-uppercase font-weight-bold">보호소 정보</a></li>
                     <li class="dropdown"color: rgb(255, 255, 255);">
                         <a
                           href="#"
-                          class="nav-link dropdown-toggle arrow"
+                          class="nav-link-main dropdown-toggle arrow"
                           data-toggle="dropdown"
                           >커뮤니티</a
                         >
                         <!-- style inline으로 -->
                         <ul class="dropdown-menu"  style="background-color:rgba(0, 0, 0, 0.089);     border-color: transparent;" >
-                          <li style="padding: 3%;"><a href="/pawmap/board/getFreeBoardList"  style="color: #fff; size: 0.8em;">자유게시판</a></li>
-                          <li style="padding: 3%;"><a href="/pawmap/board/getNanumBoardList"  style="color: #fff; size: 0.8em;">나눔게시판</a></li>
+                          <li style="padding: 3%;"><a class="a-main" href="/pawmap/board/getFreeBoardList"  style="color: #fff; size: 0.8em;">자유게시판</a></li>
+                          <li style="padding: 3%;"><a class="a-main" href="/pawmap/board/getNanumBoardList"  style="color: #fff; size: 0.8em;">나눔게시판</a></li>
                         </ul>
                     </li>
                   </ul>
@@ -188,31 +210,31 @@ pageEncoding="UTF-8"%>
             <sec:authorize access="isAnonymous()">
               <li class="side-menu">
                 <a href="/pawmap/loginForm">
-                  <p id="attr-nav-p">로그인</p>
+                  <p id="attr-nav-p-main">로그인</p>
                 </a>
               </li>
               <li class="side-menu">
                 <a href="/pawmap/joinForm">
-                  <p id="attr-nav-p">회원가입</p>
+                  <p id="attr-nav-p-main">회원가입</p>
                 </a>
               </li>
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
               <li class="side-menu">
                 <a href="/pawmap/mypage">
-                  <p id="attr-nav-i">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
+                  <p id="attr-nav-i-main">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
                 </a>
               </li>
               <li class="side-menu">
                 <a href="/pawmap/logout">
-                  <p id="attr-nav-i">로그아웃</p>
+                  <p id="attr-nav-i-main">로그아웃</p>
                 </a>
               </li>
             </sec:authorize>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
               <li class="side-menu">
                 <a href="/pawmap/admin">
-                  <p id="attr-nav-p">관리자 페이지</p>
+                  <p id="attr-nav-p-main">관리자 페이지</p>
                 </a>
               </li>
             </sec:authorize>
@@ -512,6 +534,8 @@ pageEncoding="UTF-8"%>
               </section>
             </div>
           </div>
+  
+  
         </div>
 
   <!--병원소개 페이지 끝 -->
@@ -539,13 +563,33 @@ pageEncoding="UTF-8"%>
               overflow:hidden;
               margin:0 auto;">
                 <!-- <img src="images/abandoned2.jpg" alt="" /> -->
-                <img class="img-fluid" src="${pageContext.request.contextPath}/upload/${shelterPic.originalFileName}" 
-                alt=""
 
-                style="    
-                width:100%;
-                height:100%;
-                object-fit:cover" />
+
+                <c:choose>
+                  <c:when  test="${empty shelterPic.originalFileName}">
+                    <img
+                    class="img-fluid"
+                    src="${pageContext.request.contextPath}/upload/noimg_shelter.png"
+                    style="    
+                    width:100%;
+                    height:100%;
+                    object-fit:cover" 
+                    />
+                  </c:when>
+                  <c:otherwise>
+                    <img
+                    class="img-fluid"
+                    src="${pageContext.request.contextPath}/upload/${shelterPic.originalFileName}"
+                    style="    
+                    width:100%;
+                    height:100%;
+                    object-fit:cover" 
+                    />
+                  </c:otherwise>
+                </c:choose>
+
+
+
               <div class="hov-in">
                   <a href="/pawmap/shelter_detail?shelterSeq=${shelterPic.shelterSeq}">
                   <h1 style="color: #ffffff"><strong>

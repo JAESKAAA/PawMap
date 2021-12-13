@@ -25,6 +25,7 @@
   		<result property="regDate" column="regDate"/>
   		<result property="cnt" column="cnt"/>
   		<result property="count" column="count"/>
+  		<result property="originalFilename" column="originalFilename"/>
   		<collection property="userVO" resultMap="userResult"/>
   	</resultMap>
   	
@@ -61,7 +62,7 @@
   	
   	<select id="getFreeBoardList" parameterType="HashMap" resultMap="boardResult">
   		SELECT b.board_seq, b.board_type, b.user_id, b.title, b.content, b.regDate, b.cnt ,u.user_nickname
-  		,(SELECT COUNT(*) FROM comment c WHERE c.board_seq = b.board_seq) AS count
+  		,(SELECT COUNT(*) FROM comment c WHERE c.board_seq = b.board_seq AND c.board_type = 'f') AS count
   		FROM board AS b
   		INNER JOIN user AS u
   		ON b.user_id = u.user_id
@@ -98,6 +99,15 @@
   		WHERE board_seq = #{boardSeq}
   		AND
   		board_type = 'f'
+  	</update>
+  	
+  	  	<update id="updateNanumBoardCnt">
+  		UPDATE board
+  		SET 	
+  		cnt = cnt+1
+  		WHERE board_seq = #{boardSeq}
+  		AND
+  		board_type = 's'
   	</update>
 
   	
@@ -199,17 +209,18 @@
 		<select id="getLatelyBoardListForNanumBoardMain" resultType="HashMap">
 		select b.*, f.originalFilename
 		from board AS b
-		inner join 
+		left outer join 
 		(
 		select f1.file_seq as fSeq, f1.originalFilename as originalFilename, f1.board_seq AS bSeq
 		from file as f1 
 			left join file as f2 on f1.board_seq = f2.board_seq and f1.file_seq > f2.file_seq
 		    where f2.file_seq is null
+		    AND f1.board_type = 's'
 		) as f
 		on b.board_seq = f.bSeq
 		where b.board_type = 's'
 		order by b.board_seq DESC
-		limit 3;
+		limit 300;
 	</select>
 	
 	
@@ -245,11 +256,16 @@
 
   		<!-- 나눔게시판 리스트 -->
   	<select id="getNanumBoardList" parameterType="HashMap" resultMap="boardResult">
-  		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname
+  		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname, f.originalFilename
   		FROM board AS b
   		INNER JOIN user AS u
   		ON b.user_id = u.user_id
-  		WHERE board_type = 's'
+  		LEFT OUTER JOIN 
+  		(
+  		SELECT originalFilename, board_seq FROM file where board_type='s'
+  		) AS f
+        on f.board_seq = b.board_seq
+  		WHERE b.board_type = 's'
   		<if test="board.keywordType == 'title'">
 			AND title LIKE CONCAT('%', #{board.keyword}, '%')
 		</if>
@@ -266,7 +282,7 @@
 	
 	<!-- 나눔게시판 디테일 -->
 	  	<select id="getNanumBoard" resultType="com.pawmap.VO.BoardVO" resultMap="boardResult">
-  		SELECT b.board_seq, b.board_type, b.user_id, b.hospital_seq, b.title, b.content, b.regDate, u.user_nickname 
+  		SELECT b.board_seq, b.board_type, b.user_id, b.title, b.content, b.regDate, b.cnt, u.user_nickname 
   		FROM board AS b
   		INNER JOIN user AS u
   		ON b.user_id = u.user_id
@@ -339,8 +355,54 @@
   		board_type = 'm'
 	</update>
 	
-	
-
+	<!-- Thomas Lee added below section for 관리자의 커뮤니티 게시판 -->
+  	<resultMap type="com.pawmap.VO.BoardVO" id="communityBoardList">
+  		<result property="boardSeq" column="board_seq"/>
+  		<result property="boardType" column="board_type"/>
+  		<result property="userId" column="user_id"/>
+  		<result property="hospitalSeq" column="hospital_seq"/>
+  		<result property="title" column="title"/>
+  		<result property="content" column="content"/>
+  		<result property="regDate" column="regDate"/>
+  		<collection property="userVO" resultMap="userResult"/>
+  	</resultMap>
+  	
+  	<!-- thomas lee added -->
+	<!-- Community 게시판 부르는 mapping query... Dec 8th by thomas -->
+  	<select id="getCommunityBoardList" parameterType="HashMap" resultMap="communityBoardList">
+  		SELECT b.board_seq, b.board_type, b.user_id, b.title, b.content, b.regDate, u.user_nickname
+  		FROM board AS b
+  		INNER JOIN user AS u
+  		ON b.user_id = u.user_id
+  		WHERE board_type = 'f'
+  		<if test="board.keywordType == 'title'">
+			AND title LIKE CONCAT('%', #{board.keyword}, '%')
+		</if>
+		<if test="board.keywordType == 'content'">
+			AND `content` LIKE CONCAT('%', #{board.keyword}, '%')
+		</if>
+		<if test="board.keywordType == 'titleAndBody'">
+			AND (title LIKE CONCAT('%', #{board.keyword}, '%') OR `content` LIKE CONCAT('%', #{board.keyword}, '%'))
+		</if>
+  		ORDER BY board_seq DESC
+  		LIMIT #{criteria.amount} OFFSET #{criteria.startNum}
+  	</select>
+  	
+  	<select id="getLatelyCommunityBoardListForBoardMain" resultType="HashMap">
+		select b.*, f.originalFilename
+		from board AS b
+		inner join 
+		(
+		select f1.file_seq as fSeq, f1.originalFilename as originalFilename, f1.board_seq AS bSeq
+		from file as f1 
+			left join file as f2 on f1.board_seq = f2.board_seq and f1.file_seq > f2.file_seq
+		    where f2.file_seq is null
+		) as f
+		on b.board_seq = f.bSeq
+		where b.board_type = 'f'
+		order by b.board_seq DESC
+		limit 3;
+	</select>
   </mapper>	
 
 

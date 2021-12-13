@@ -29,7 +29,7 @@
                                 <form id="upload_form" action="updatePetInfoFormInsertFiles" method="POST"
                                     enctype="multipart/form-data">
                                     <img class="img-fluid avatar img-circle img-thumbnail"
-                                        src="${pageContext.request.contextPath}/upload/${petInfoFileList.originalFileName}"
+                                        src="${pageContext.request.contextPath}/upload/${fileVO.originalFileName}"
                                         alt="">
 
                                     <input id="uploader" type="file" class="text-center center-block file-upload"
@@ -541,7 +541,7 @@
                                                     <div class="col-xs-6">
                                                         <label for="kind">증상</label>
                                                         <textarea type="input" class="petsymptominput" name="symptom" id="kind"
-                                                            value="${pet.symptom}"></textarea>
+                                                            value="${pet.symptom}">${pet.symptom}</textarea>
                                                     </div>
                                                 </div>
                                                 <br>

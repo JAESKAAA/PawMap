@@ -60,7 +60,6 @@ pageEncoding="UTF-8"%>
     <![endif]-->
     
 
-    
     <style>
       header,
       nav {
@@ -70,17 +69,27 @@ pageEncoding="UTF-8"%>
         color: rgba(235, 180, 99, 0.842);
         height: 12%;
       }
-     
+      @font-face {
+      font-family: 'NEXON Lv1 Gothic OTF Light';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      } 
+      header{
+        font-family: 'NEXON Lv1 Gothic OTF Light';
+      }
+      .navbar-brand{
+        font-family:'NEXON Lv1 Gothic OTF';
+        font-size: 1.6em;
+        font-weight: 700;
+        }
      
     </style>
-
   </head>
 
   <body>
-
-    
-   <!-- Header 시작 -->
-   <header id="header" class="main-header header"  style="z-index: 100;">
+  <!-- Header 시작 -->
+  <header id="header" class="main-header header" style="z-index: 100;">
     <nav class="
         navbar navbar-expand-lg 
         fixed-top py-3">
@@ -161,9 +170,46 @@ pageEncoding="UTF-8"%>
             </sec:authorize>
           </ul>
         </div>
-       
       </div>
-     
+      <div class="attr-nav col-lg-3">
+        <ul>
+          <li class="search" style="display: none">
+            <a href="#"><i class="fa fa-search"></i></a>
+          </li>
+          <sec:authorize access="isAnonymous()">
+            <li class="side-menu">
+              <a href="/pawmap/loginForm">
+                <p id="attr-nav-p">로그인</p>
+              </a>
+            </li>
+            <li class="side-menu">
+              <a href="/pawmap/joinForm">
+                <p id="attr-nav-p">회원가입</p>
+              </a>
+            </li>
+          </sec:authorize>
+          <sec:authorize access="isAuthenticated()">
+            <li class="side-menu">
+              <a href="/pawmap/mypage">
+                <p id="attr-nav-p">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
+              </a>
+            </li>
+            <li class="side-menu">
+              <a href="/pawmap/logout">
+                <p id="attr-nav-p">로그아웃</p>
+              </a>
+            </li>
+          </sec:authorize>
+          <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <li class="side-menu">
+              <a href="/pawmap/admin">
+                <p id="attr-nav-p">관리자 페이지</p>
+              </a>
+            </li>
+          </sec:authorize>
+        </ul>
+      </div>
+      </div>
     </nav>
   </header>
   <!-- Header 끝 부분 -->

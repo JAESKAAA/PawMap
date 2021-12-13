@@ -80,7 +80,7 @@
                                         <div class="col-m-12">
                                             <label for="kind">종</label>
                                             <div>
-                                                <input type="radio" name="petType" id="r1" value="강아지"><label
+                                                <input type="radio" name="petType" id="r1" value="강아지" checked><label
                                                     for="r1">강아지</label>
                                                 <input type="radio" name="petType" id="r2" value="고양이"><label
                                                     for="r2">고양이</label>
@@ -94,8 +94,6 @@
                                                     for="r6">파충류</label>
                                                 <input type="radio" name="petType" id="r8" value="어류"><label
                                                     for="r7">어류</label>
-                                                <input type="radio" name="petType" id="r9" value="직접입력"><label
-                                                    for="r8">직접입력</label>
                                             </div>
                                         </div>
                                     </div>

@@ -2,7 +2,6 @@ package com.pawmap.mapper;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -31,6 +30,8 @@ public interface CommentMapper {
 	void updateCommentOnNanumBoard(CommentVO commentVO);
 
 	List<HashMap<String, Object>> getReplyListByNanumBoardSeq(@Param("boardSeq")int boardSeq);
+
+	void deleteCommentsByNanumSeq(@Param("boardSeq") int boardSeq);
 
 
 }

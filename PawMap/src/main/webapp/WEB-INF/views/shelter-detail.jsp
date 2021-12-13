@@ -188,8 +188,29 @@ pageEncoding="UTF-8"%>
       <div class="about-box-main">
         <div class="container_hospital_detail" style="margin-top: 5rem;">
           <div class="row">
-	          <div style="width: 1200px; height: 20rem; overflow: hidden; -webkit-box-align: center;">
-            	<img class="swing-in-top-fwd" src="${pageContext.request.contextPath}/upload/${shelter.originalFileName}">
+	          <div style="width: 1200px; height: 20rem; overflow: hidden; margin:0 auto; -webkit-box-align: center;">
+
+              <c:choose>
+                <c:when  test="${empty shelter.originalFileName}">
+                  <img
+                  class="swing-in-top-fwd"
+                  src="${pageContext.request.contextPath}/upload/noimg_shelter.png"
+                  style="    
+                  height:100%;
+                  object-fit:cover" 
+                  />
+                </c:when>
+                <c:otherwise>
+                  <img
+                  class="swing-in-top-fwd"
+                  src="${pageContext.request.contextPath}/upload/${shelter.originalFileName}"
+                  style="    
+                  height:100%;
+                  object-fit:cover" 
+                  />
+                </c:otherwise>
+              </c:choose>
+
     	      </div>
             <div class="col-lg-6">
               <div class="banner-frame">

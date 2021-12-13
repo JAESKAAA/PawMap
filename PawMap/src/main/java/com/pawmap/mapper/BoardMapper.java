@@ -91,10 +91,18 @@ public interface BoardMapper {
 	void updateFreeBoardCnt(@Param("boardSeq")int boardSeq);
 
 
+	//관리자 페이지에서 community 게시판 부를때 사용하는 메소드
+	List<BoardVO> getCommunityBoardList(Map<String,Object> map);
+	
+	List<HashMap<String, Object>> getLatelyCommunityBoardListForBoardMain();	
+	
 //	=====================================================================
 	
 	List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain
 	(@Param("boardSeq") int boardSeq);
+
+
+	void updateNanumBoardCnt(@Param("boardSeq")int boardSeq);
 
 }
 

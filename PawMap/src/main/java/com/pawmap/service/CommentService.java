@@ -29,5 +29,7 @@ public interface CommentService {
 
 	List<HashMap<String, Object>> getReplyListByNanumBoardSeq(int boardSeq);
 
+	void deleteCommentsByNanumSeq(int boardSeq);
+
 	
 }

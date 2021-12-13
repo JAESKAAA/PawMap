@@ -1,67 +1,68 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
-
-<spring:eval expression="@environment.getProperty('kakao.app.key')" var="kakaoAppKey"/>
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<!-- jstl 함수사용을 위한 설정 -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+    
+    <spring:eval expression="@environment.getProperty('kakao.app.key')" var="kakaoAppKey"/>
 <%@ include file="layout/header.jsp" %>
 
-  <style>
+<style>
 
-    .container_hospital_detail {
-      padding: 0;
-      width: 1200px;
-      max-width: 100%; 
-      height: auto;
-      object-fit: cover;
+  .container_hospital_detail {
+    padding: 0;
+    width: 1200px;
+    max-width: 100%; 
+    height: auto;
+    object-fit: cover;
 
-      padding-right: 15px;
-      padding-left: 15px;
-      margin-right: auto;
-      margin-left: auto;
-    }
-    img { 
-      max-width: 100%; 
-      height: auto; 
-    }
-    .h3 {
-      font-size: large;
-      text-align: center;
-    }
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  img { 
+    max-width: 100%; 
+    height: auto; 
+  }
+  .h3 {
+    font-size: large;
+    text-align: center;
+  }
 
-    .a {
-      color: black;
-    }
-    .main-header{
-    	position:relative;
-    }
-    .service-block-inner::before{
-          background: rgb(239 199 120);
-    }
-    .custom-vet-pic{
-        width: 20rem;
-        height: 20rem;
-  	 	margin: auto
-    }
-    
-    .custom-vet-pic-img{
-        width: 80% !important;
-    	height: 80% !important;
-    }
-    
-  </style>
-
-</head>
-
-
+  .a {
+    color: black;
+  }
+  .main-header{
+    position:relative;
+  }
+  .service-block-inner::before{
+        background: rgb(239 199 120);
+  }
+  .custom-vet-pic{
+      width: 20rem;
+      height: 20rem;
+     margin: auto
+  }
   
+  .custom-vet-pic-img{
+      width: 80% !important;
+    height: 80% !important;
+  }
+  .reviewimg{
+    margin-bottom: 50px;
+    margin-left: 20px;
+    margin-top: 10px;
+  }
+  
+</style>
 
+ 
       <!-- Start About Page  -->
-      <div class="about-box-main" style="margin-top:3rem;">
+      <div class="" style="margin-top:7rem;">
         <div class="container_hospital_detail">
           <div class="row">
             <img class="swing-in-top-fwd" src="images/cat01.jpg" style="width: 1200px; height: auto; -webkit-box-align: center;">
@@ -74,13 +75,13 @@ pageEncoding="UTF-8"%>
                     <c:when test="${empty principal}">
                       <div style="display:inline-block;">
                         <!-- <a  class="nav-link" href='#' onclick="noLoginUserCantWrite(); return false">글쓰러가기</a> -->
-                        <a href="#"class="btn btn-warning" onclick="noLoginUserCantWrite(); return false"><i class="glyphicon glyphicon-bell"></i> 예약하기</a>
+                        <a href="#"class="btnres" onclick="noLoginUserCantWrite(); return false" class="btnresa"><i class="glyphicon glyphicon-bell"></i> 예약하기</a>
                       </div>
                     </c:when>
                     <c:otherwise>
-                      <div style="display:inline-block;">
+                      <div style="display:inline-block;" class="btnres">
                         <!-- <a  class="nav-link" href="/pawmap/board/form">글쓰러가기</a> -->
-                        <a href="/pawmap/reservation/choose?comNum=${hospital.hospitalComNum}&hospitalSeq=${hospital.hospitalSeq }"class="btn btn-warning"><i class="glyphicon glyphicon-bell"></i> 예약하기</a>
+                        <a href="/pawmap/reservation/choose?comNum=${hospital.hospitalComNum}&hospitalSeq=${hospital.hospitalSeq }" class="btnresa"><i class="glyphicon glyphicon-bell"></i> 예약하기</a>
                       </div>
                     </c:otherwise>
                   </c:choose>
@@ -127,11 +128,11 @@ pageEncoding="UTF-8"%>
               </div>
               <div class="col-4">
                 <a href="#menu2" style="color: #555;"><h3 class="h3">수의사(${fn:length(vetList) })</h3></a>
-                  <div class="service-block-inner-b"></div>
+                  <div class="service-block-inner-a"></div>
               </div>
               <div class="col-4">
                 <a href="#review-start" style="color: #555;"><h3 class="h3">리뷰(${reviewSize})</h3></a>
-                  <div class="service-block-inner-b"></div>
+                  <div class="service-block-inner-a"></div>
               </div>
             </div>
 	     	  </c:if>
@@ -239,16 +240,17 @@ pageEncoding="UTF-8"%>
                                               <c:choose>
                                                 <c:when test="${empty principal.user.userProfile || empty principal}">
                                                   <img
-                                                    class="rounded-circle shadow-1-strong me-3"
+                                                    class="rounded-circle shadow-1-strong me-3 reviewimg"
                                                     src="${pageContext.request.contextPath}/upload/noprofileuser.jpg"
                                                     alt="img"
                                                     width="40"
                                                     height="40"
+                                                    
                                                   />   
                                                 </c:when>
                                                 <c:otherwise>
                                                   <img
-                                                      class="rounded-circle shadow-1-strong  mr-5"
+                                                      class="rounded-circle shadow-1-strong  mr-5 reviewimg"
                                                       src="${pageContext.request.contextPath}/upload/${principal.user.userProfile}"
                                                       alt="avatar"
                                                       width="65"
@@ -272,7 +274,7 @@ pageEncoding="UTF-8"%>
               
                                                       </div>
                                                         <div class="d-flex justify-content-between mt-3">
-                                                            <button id="btn-review-save" type="submit" class="btn btn-success">등록하기</button>
+                                                            <button type="submit" id="btnupdate">등록하기</button>
                                                         </div>
                                                       </c:otherwise>
                                                     </c:choose>
@@ -298,29 +300,35 @@ pageEncoding="UTF-8"%>
                               <c:choose>
                                 <c:when  test="${empty review.user_profile}">
                                   <img
-                                  class="rounded-circle shadow-1-strong me-3"
+                                  class="rounded-circle shadow-1-strong me-5"
                                   src="${pageContext.request.contextPath}/upload/noprofileuser.jpg"
                                   alt="img"
-                                  width="40"
+                                  width="60px"
                                   height="40"
+                                  style="
+                                  margin-bottom: 50px;
+                                  margin-top: 10px;"
                                   />
                                 </c:when>
                                 <c:otherwise>
                                   <img
-                                  class="rounded-circle shadow-1-strong me-3"
+                                  class="rounded-circle shadow-1-strong me-5"
                                   src="${pageContext.request.contextPath}/upload/${review.user_profile}"
                                   alt="img"
-                                  width="40"
+                                  width="60px"
                                   height="40"
+                                  style="
+                                  margin-bottom: 50px;
+                                  margin-top: 10px;"
                                   />
                                 </c:otherwise>
                               </c:choose>
                               <div class="w-100">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                                  <h6 class="text-secondary fw-bold mb-0 ml-2 writer">
+                                  <h6 class="text-secondary fw-bold mb-0 writer" style="margin-left: 20px;">
                                     ${review.user_nickname}
                                     <div class="mt-3">
-                                      <span class="text-dark ms-2 ml-2">${review.content}</span>
+                                      <span class="text-dark ms-2">${review.content}</span>
                                     </div>
                                   </h6>
                                   <p class="mb-5"><fmt:formatDate value="${review.regDate }" pattern="yyyy-MM-dd"/></p>
@@ -334,7 +342,7 @@ pageEncoding="UTF-8"%>
                                     <input type="hidden" class="hiddenComNum"  value="${review.com_num}"/>
                                       <img src="${pageContext.request.contextPath}/upload/like_btn_no.png" 
                                            id="btn_like" align="left" style="cursor:pointer; width: 20px;"
-                                           class="ml-3"
+                                           class="ml-5"
                                            onclick="doLike($('#hiddenReviewSeq${i.index}').val(),$('.hiddenComNum').val(),$('#hiddenPrincipalUserId').val())"
                                            >
                                     </form>
@@ -351,8 +359,8 @@ pageEncoding="UTF-8"%>
                                           <input type="hidden"  name="comNum" value="${review.com_num}"/>
                                           <input type="hidden"  name="userId" value="${principal.user.userId}"/>
                                           <input type="hidden"  name="hospitalSeq" value="${hospital.hospitalSeq}"/>
-                                          <button type="button" class="link-grey ml-2 btn-update btn-comment-update" data-toggle='modal' data-target='.modifyModal${i.index}'>수정하기</button> 
-                                          <button onclick="if(!confirm('삭제 하시겠습니까?')){return false}" class="link-grey ml-2 btn-delete">삭제하기</button> 
+                                          <button type="button" id="btnupdate" data-toggle='modal' data-target='.modifyModal${i.index}'>수정하기</button> 
+                                          <button onclick="if(!confirm('삭제 하시겠습니까?')){return false}" id="btndelete">삭제하기</button> 
                                         </form>
                                         
                                       <form action="updateHospitalReview" method="POST" >
@@ -610,57 +618,57 @@ pageEncoding="UTF-8"%>
 
 
    
-   // 좋아요 로직
-   function doLike(seq,comNum,userId){
-     console.log(seq,comNum,userId);
+    // 좋아요 로직
+    function doLike(seq,comNum,userId){
+      console.log(seq,comNum,userId);
 
-     // 로그인 안되어있을경우 좋아요 못하게 방지
-    if(typeof userId == "undefined" || userId == null || userId == ""){
-      alert("로그인후 이용해 주세요");
-    }else{
-      // json으로 뿌릴거임
-      data = {
-        "reviewSeq" : seq,
-        "comNum" : comNum,
-        "userId" : userId
-      }
-      console.log(data);
-      $.ajax({
-        type : "POST",
-        url : "/pawmap/clickLike",
-        contentType: 'application/json',
-        dataType : "json",
-        data : JSON.stringify(data),
-        success : function(data){
+      // 로그인 안되어있을경우 좋아요 못하게 방지
+     if(typeof userId == "undefined" || userId == null || userId == ""){
+       alert("로그인후 이용해 주세요");
+     }else{
+       // json으로 뿌릴거임
+       data = {
+         "reviewSeq" : seq,
+         "comNum" : comNum,
+         "userId" : userId
+       }
+       console.log(data);
+       $.ajax({
+         type : "POST",
+         url : "/pawmap/clickLike",
+         contentType: 'application/json',
+         dataType : "json",
+         data : JSON.stringify(data),
+         success : function(data){
           console.log(data);
 
-          // json 데이터가 1 오류임
-          if(data['1'] == 1 ){
-            alert("오류가 발생했습니다.");
-          } else{
+         // json 데이터가 1 오류임
+           if(data['1'] == 1 ){
+             alert("오류가 발생했습니다.");
+           } else{
 
-            // 리뷰 리스트 사이즈 얻어와서 포문돌림
-            var size = $("#hiddenHospitalReviewList").val();
-            console.log("size ====== "+size);
-            console.log(data);
+             // 리뷰 리스트 사이즈 얻어와서 포문돌림
+             var size = $("#hiddenHospitalReviewList").val();
+             console.log("size ====== "+size);
+             console.log(data);
   
-            for(var i = 0; i<size; i++){
+             for(var i = 0; i<size; i++){
               
-              // 데이터로 받아온 카운트를(좋아요갯수) 해당 태그에 문자로 새로넣어줌
-              var htmlString = data[i].count;
-              $("#likeCount"+i).html(htmlString);
-            }
-          }
+               // 데이터로 받아온 카운트를(좋아요갯수) 해당 태그에 문자로 새로넣어줌
+               var htmlString = data[i].count;
+               $("#likeCount"+i).html(htmlString);
+             }
+           }
 
-        },
-        error : function(error){
+         },
+         error : function(error){
   
-        }
-      });
+         }
+       });
+
+     }
 
     }
-
-   }
 
 	</script>
 </body>

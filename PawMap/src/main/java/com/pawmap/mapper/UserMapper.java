@@ -26,8 +26,6 @@ public interface UserMapper {
 	void socialJoin(UserVO vo);
 	
 	// 아이디 중복 검사
-
-
 	public int idCheck(String id);
 	
 	// 닉네임 중복 검사
@@ -35,7 +33,9 @@ public interface UserMapper {
 	
 	// 이메일 중복 검사
 	public int emailCheck(String email);
-
+	
+	// 사업자등록번호 중복 검사
+	public int comCheck(String comnum);
 
 	//아이디 찾기 
 	String searchId(@Param("userName")String userName, @Param("userTelNum")String userTelNum);
