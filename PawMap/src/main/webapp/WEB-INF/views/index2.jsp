@@ -125,7 +125,11 @@ pageEncoding="UTF-8"%>
        }
         .cover-slides{
         border-radius: 0;
-        border: 1px solid rgba(204, 156, 22, 0.8);
+        border: 1px solid rgba(204, 156, 22, 0.8);4
+    }
+    
+    .fa-search {
+    	cursor:pointer;
     }
 	  </style>
   </head>
@@ -165,7 +169,7 @@ pageEncoding="UTF-8"%>
                           >커뮤니티</a
                         >
                         <!-- style inline으로 -->
-                        <ul class="dropdown-menu"  style="background-color:rgba(0, 0, 0, 0.089);" >
+                        <ul class="dropdown-menu"  style="background-color:rgba(0, 0, 0, 0.089);     border-color: transparent;" >
                           <li style="padding: 3%;"><a href="/pawmap/board/getFreeBoardList"  style="color: #fff; size: 0.8em;">자유게시판</a></li>
                           <li style="padding: 3%;"><a href="/pawmap/board/getNanumBoardList"  style="color: #fff; size: 0.8em;">나눔게시판</a></li>
                         </ul>
@@ -244,7 +248,7 @@ pageEncoding="UTF-8"%>
                   <br />
                   여러분의 근처에 착한 병원을 찾아보세요.
                 </p>
-                <p><a class="btn custom_btn2" href="#">자세히 보기</a></p>
+                <p><a class="btn custom_btn2" href="/pawmap/search">자세히 보기</a></p>
               </div>
             </div>
           </div>
@@ -266,7 +270,7 @@ pageEncoding="UTF-8"%>
                   <br />
                   
                 </p> -->
-                <p><a class="btn custom_btn2" href="#">자세히 보기</a></p>
+                <p><a class="btn custom_btn2" href="/pawmap/board/getFreeBoardList">자세히 보기</a></p>
               </div>
             </div>
           </div>
@@ -307,7 +311,7 @@ pageEncoding="UTF-8"%>
     <!-- 검색 부분-->
     <div class=" custom_margin">
       <form action="/pawmap/searchDetail" method="get">
-	      <div id="search_bar" class="d-flex justify-content-center">
+	      <div id="search_bar" class="d-flex justify-content-center" style="height: 25vh;">
 	        <div class="search">
 	          <h3 id="search_hostpital" class=" text-uppercase font-weight-bold">
 	            우리 동네 동물병원을 찾아보세요!
@@ -577,7 +581,7 @@ pageEncoding="UTF-8"%>
       <!-- 보호소 정보 표출부분 (css 맞는지 확인요) -->
 
       <div class="instagram-box">
-        <div class="main-instagram owl-carousel owl-theme">
+        <div class="main-instagram owl-carousel owl-theme" style="width=100vw;">
             <c:forEach items="${shelterPic}" var="shelterPic" varStatus="i">
             <div class="item">
               <div class="ins-inner-box" 
@@ -587,16 +591,16 @@ pageEncoding="UTF-8"%>
               overflow:hidden;
               margin:0 auto;">
                 <!-- <img src="images/abandoned2.jpg" alt="" /> -->
-                <img class="img-fluid" src="${pageContext.request.contextPath}/upload/${shelterPic.originalFileName}" alt="" /
+                <img class="img-fluid" src="${pageContext.request.contextPath}/upload/${shelterPic.originalFileName}" alt="" 
                 style="    
                 width:100%;
                 height:100%;
-                object-fit:cover">
+                object-fit:cover" />
               <div class="hov-in">
                 <a>
                   <h1 style="color: #ffffff"><strong>
                     ${shelterPic.shelterName }
-                  </h1></strong>
+                  </strong></h1>
                   <h4 style="color: #ffffff">
                     ${shelterPic.shelterAddress }
                     <br>

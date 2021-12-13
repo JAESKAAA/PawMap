@@ -306,7 +306,6 @@ pageEncoding="UTF-8"%>
 
 
 
-
     <!-- 나눔게시판일경우 -->
         <c:if test="${getNanumBoard.boardType eq 's' }">
 

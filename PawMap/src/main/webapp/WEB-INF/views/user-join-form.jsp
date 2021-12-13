@@ -18,11 +18,12 @@ pageEncoding="UTF-8"%>
                           <td>
                               <div class="u_input-box-tel3">
                                   <input name="userId" required="required" type="text" name="userId"
-                                  id="user_id" placeholder="4~1자리 영문,숫자" class="input w130">
+                                  id="user_id" placeholder="4~1자리 영문,숫자" class="input w130" onkeyup="inputIdCheck();">
                                   <button type="button" class="button u_button-grey"
                                       style="margin-left: 8px; white-space: nowrap;" onclick="fn_idcheck()">
                                       <span style="color: white;">중복확인</span>
                                   </button>
+                                  <input id="idDuplication" type="hidden" name="idDuplication" value="idUncheck"> 
                                   <br>
                                   <p class="result"><span class="msg1">아이디 중복확인을 해주세요.</span></p>
                               </div>
@@ -68,10 +69,9 @@ pageEncoding="UTF-8"%>
                               <div class="address_input_1_wrap">
                                 <div class="address_input_1_box">
                                   <input class="address_input_1 input w40" name="postNum" readonly="readonly" maxlength="5" placeholder="우편번호">
-                                </div>
                                   <button type="button" class="address_button u_button-grey" onclick="execution_daum_address()">
                                     <span style="color: white;">검색</span></button>
-                                <div class="clearfix"></div>
+                                </div>
                               </div>
                               <div class ="address_input_2_wrap">
                                 <div class="address_input_2_box">
@@ -90,10 +90,11 @@ pageEncoding="UTF-8"%>
                         <th> 닉네임 <span>*</span></th>
                         <td>
                             <div class="u_input-button"><input name="userNickname" id="user_nickname" 
-                              placeholder="닉네임" type="text" class="input w220">
+                              placeholder="닉네임" type="text" class="input w220" onkeyup="inputNickCheck();">
                                 <button type="button" class="button u_button-grey" onclick="fn_nickcheck()">
                                     <span style="color: white;" >중복확인</span>
                                 </button>
+                                <input id="nickDuplication" type="hidden" name="nickDuplication" value="nickUncheck"> 
                                 <br>
                                 <p class="result"><span class="msg2">닉네임 중복확인을 해주세요.</span></p>
                             </div>

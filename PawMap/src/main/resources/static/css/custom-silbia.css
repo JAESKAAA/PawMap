@@ -372,18 +372,39 @@
     border-style: solid #f7ba61;
 }
 /* 회원정보 수정 */
-#upbtn{
+#upbtnN{
     margin: 0 5px;
     width: 240px;
     height: 50px;
-    line-height: 60px;
     font-size: 18px;
     color: #fff;
     font-weight: 700;
     border-style: none;
-
+    background: rgb(239, 199, 120,1) !important;
     border-radius: 40px;
   }
+  #upbtnN:hover{
+      border: solid rgb(239, 199, 120,1) !important;
+      background:transparent !important;
+      color: rgb(239, 199, 120,1) !important;
+  }
+  #upbtnW{
+    margin: 0 5px;
+    width: 240px;
+    height: 50px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    background:   rgb(239 154 120) !important;
+    border-radius: 40px;
+  }
+  #upbtnW:hover {
+    border: solid rgb(239 154 120) !important;
+    background:transparent !important;
+    color: rgb(239 154 120) !important;
+  }
+
   btn:hover{
       background-color: rgba(239, 199, 120, 0.26) !important;
       border-style:  solid rgb(239, 199, 120) !important;

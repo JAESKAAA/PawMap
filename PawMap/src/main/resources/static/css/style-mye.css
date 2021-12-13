@@ -1,5 +1,7 @@
 
-    .petInfoContainer {
+ /* petProfile @media */
+ @media (min-width:900px){  
+   .petInfoContainer {
       padding: 0;
       width: 1200px;
       max-width: 100%; 
@@ -10,11 +12,22 @@
       padding-right: 15px;
       padding-left: 15px;
       margin-right: 10%;
-      margin-left: 5%;
       margin-bottom: auto;
-
-	  
     }
+}
+
+@media (max-width: 899px )and (min-width:715px){
+	.petInfoContainer {
+		padding: 0;
+		width: 900px;
+		height: auto;
+		object-fit: cover;
+	  }
+	}
+	.petProfile:hover{
+		background-color:#eecd90;
+		color: white;
+	}
 	.petboard{
 		margin-top:150px;
 	}
@@ -35,7 +48,6 @@
 	}
 	.petProfile {
 		width:100%;
-		height:250px;
 		display:inline;
 		position : relative;
 		float : left;
@@ -146,21 +158,75 @@
 		display:inline;
 		position : relative;
 		float : left;
-		margin : 3%;
 		border-color: white;
 		border-style: solid;
 		border-width: 1px;
 		text-align: center;
 	}
 	.btn_box:hover{
-		background-color: #eecd90;
+		background-color: #eecd9048;
 		color: white;
+		border-color: #eecd90;
 		
 	}
 
 
-
-/* index page css */
+/* petProfile @media */
+@media (max-width: 614px ){
+	.petInfoContainer {
+		padding: 0;
+		width: 90%;
+		height: auto;
+		object-fit: cover;
+	  }
+  
+	  .petInfoList {
+		  width:100%;
+		  padding:0%;
+	  }
+	  .petProfile {
+		  width:100%;
+		  display:inline;
+		  position : relative;
+		  float : left;
+		  margin-top : 1%;
+		  margin-left: 0;
+		  margin-right: 0;
+		  padding:0%;
+		  border-color: white;
+		  border-style: solid;
+		  border-width: 1px;
+		  text-align: center;
+		  line-height: 1.5;
+	  }
+	  
+  .petProfileimg {
+	  border-radius: 0%;
+	  width: 20vw;
+	  overflow: hidden;
+	  size: cover;
+  }
+	  .petimagebox {
+		  overflow: hidden;
+			border-radius: 70%;
+		  width: 250px;
+		  height: 250px;
+		  margin-left: 24%;
+		  
+		  
+	  }
+	  .petimage{
+		  width:100%;
+			  height:100%;
+		  object-fit:cover;
+	  }
+	  
+	  .petProfileText {
+		  margin:4%;
+		  vertical-align: center;
+  
+	  }
+}
 
 
   /*
@@ -173,11 +239,6 @@
 .navbar {
     transition: all 0.4s;
 }
-
-.navbar .nav-link {
-    color: #f9f3e3;
-}
-
 
 .navbar .nav-link:hover {
     color:#fdd572;
@@ -200,36 +261,35 @@
 	size: 0.8em;
 }
 
-/* header>nav>div>ul>li>#nav-a:hover */
-/* .navbar.active #nav-a:hover {
-    color: #fff !important;
-}
 
-.navbar.active #nav-a:hover{
-	 color: #f0e1bc !important;
-	
-} */
 .navbar.active .nav-link:focus {
     color: #555;
     text-decoration: none;
 }
 
 .navbar.active .navbar-brand {
-    color: #555;
+    color: rgb(245, 245, 245);
 }
 
-
-/* Change navbar styling on small viewports */
-@media (max-width: 991.98px) {
-    .navbar {
-        background: #fff;
-    }
-
-    .navbar .navbar-brand, .navbar .nav-link {
-        color: #555;
-    }
+.attr-nav{
+	padding-left: 0;
 }
-
+.attrnine{
+	padding-right: 0;
+}
+@media (max-width: 991.98px ),( min-width: 614px){
+.attr-nav {
+    text-align:right;
+}
+.navbar .nav-link{
+	color: #555;
+}
+}
+@media (min-width:992px){
+	.navbar .nav-link {
+		color: #f9f3e3;
+	}
+}
 
 
 /*
@@ -340,9 +400,25 @@ nav.navbar.navbar-inverse {
 	color: #f9f3e3;
 
   }
+
+
+  .nav-p-login:hover{
+	  /* font-size: 110%; */
+	  color:white;
+	  font-weight: bold;
+}
   #attr-nav-i {
-	  font-size: 0.9em;
+	font-size: 0.9em;
   }
+
+  @media (max-width: 991.98px ),( min-width: 614px){
+	#attr-nav-i {
+		font-size: 1em;
+		margin-top:1em;
+
+	  }
+}
+
   #attr-nav-p:hover {
 	color: #EFC778;
   }
@@ -427,8 +503,10 @@ nav.navbar.navbar-inverse {
     a { color:#000000;text-decoration:none; }
     .scriptCalendar { text-align:center;  }
     .scriptCalendar > thead > tr > td { width:50px;height:50px; }
-    .scriptCalendar > thead > tr:first-child > td { font-weight:bold; }
-    .scriptCalendar > thead > tr:last-child > td { background-color:#eecd90; }
+    .scriptCalendar > thead > tr:first-child > td { font-weight:bold; border: none;}
+    .scriptCalendar > thead > tr:last-child > .dark { background-color:#eecd90; }
+	.scriptCalendar > thead > tr:last-child > .light { background-color:#eecd906e; }
+x
   
 
     /* button */
@@ -437,16 +515,13 @@ nav.navbar.navbar-inverse {
         background-size: cover;
         height: auto;
         background-color: transparent;
-        /* margin-left: 5%;
-        margin-top: 5%;
-        position: relative; */
-        z-index: 1;
+    	margin-top: 0;
     }
 	sc {
 		align-content: center;
 	}
 	.scriptCalendarBox{
-		margin-left:4%;
+		/* margin-left:4%; */
 		width: 80%;
 	}
     .scriptCalendar{
@@ -455,26 +530,33 @@ nav.navbar.navbar-inverse {
 		margin: 3%;
 		padding: 5%;
 		padding-bottom: 20px;
-		width: 60%;
+		width: 80%;
 		margin-top: 0%;
+		border:none;
     }
+
 	.jscal {
 		max-width: 100%;
 		max-height: 100%;
 	}
     .calendar-left{
-		margin: 3%;
+		margin-left: 3%;
+		margin-right: 10%;
 		margin-top: 20px !important;
 		text-align: center;
 		align-items: center;
 		background-color: #eecd90;
 		border-radius: 50px;
 		width: 50% !important;
-		height: 40vh;
+		min-height: 40vh;
+		max-height: 80vh;
 		font-size: medium;
 		margin-bottom: 3%;
 		max-width: 100% !important;
+		min-width: 50%;
 		padding: 15px;
+		width: 60% !important;
+		
     }
 	.calendartime > li {
 		list-style: none;
@@ -484,15 +566,16 @@ nav.navbar.navbar-inverse {
 		float: left;
 	}
 	.events-times{
-		position: relative;
-		float: left;
-		padding-left: 2%;
-		padding-right: 2%;
-		line-height: 2;
-		padding-top: 2%;
-		vertical-align: top;
-		height: 40vh;
-		width: 30%;
+		position: static;
+		padding-left: 8%;
+		padding-right: 4%;
+		line-height: 1.5;
+		margin-top: 3px;
+		padding-top: 15px;
+		float: inherit;
+		align-items: center;
+		width: 33.3%;
+		padding-bottom: 5%;
 	}
     .events-times .calendar-time {
         list-style: none;
@@ -522,9 +605,9 @@ nav.navbar.navbar-inverse {
     	background: rgb(239, 199, 120) !important;
     	border:  solid rgb(239, 199, 120) !important;
     	/* color: #000 !important; */
-    	width: 35% !important;
-    	background-color: #eecd90 !important;
-    	margin-left: 5%;
+        width: 60% !important;
+		background-color: #eecd90 !important;
+		margin-left: 2%;
     	padding-left: 20px !important;
     	padding-right: 20px !important;
     	color: #fff !important;	
@@ -535,7 +618,25 @@ nav.navbar.navbar-inverse {
 		border:  solid rgb(253, 231, 189, 0.34) !important;
 		color: rgb(255, 255, 255) !important;
 	}
-
+	.calendar-member{
+	margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 20px !important;
+    text-align: center;
+    align-items: center;
+    background-color: #eecd90;
+    border-radius: 50px;
+    width: 50% !important;
+    min-height: 40vh;
+    max-height: 80vh;
+    font-size: large;
+    margin-bottom: 3%;
+    max-width: 100% !important;
+    min-width: 50%;
+    padding: 15px;
+    width: 50% !important;
+    height: 100%;
+	}
   /*
 *
 * ==========================================
@@ -559,12 +660,13 @@ nav.navbar.navbar-inverse {
 }
 /* 반려동물 등록 타이틀 */
 .boardtitle>h2{
-	line-height: 1.4;
-	text-align: center;
-	font-size: 32px;
-	color: #f1c264;
-	font-weight: 700;
-	margin-bottom: 15px;
+    padding-left: 10rem;
+    line-height: 1.4;
+    text-align: left;
+    font-size: 32px;
+    color: #f1c264;
+    font-weight: 700;
+    margin-bottom: 15px;
 }
 
 /* input박스 설정  uptxtbox참고*/

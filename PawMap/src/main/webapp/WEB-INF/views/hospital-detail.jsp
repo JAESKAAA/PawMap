@@ -39,6 +39,20 @@ pageEncoding="UTF-8"%>
     .main-header{
     	position:relative;
     }
+    .service-block-inner::before{
+          background: rgb(239 199 120);
+    }
+    .custom-vet-pic{
+        width: 20rem;
+        height: 20rem;
+  	 	margin: auto
+    }
+    
+    .custom-vet-pic-img{
+        width: 80% !important;
+    	height: 80% !important;
+    }
+    
   </style>
 
 </head>
@@ -191,24 +205,24 @@ pageEncoding="UTF-8"%>
               <p class="noo-p">
               <div class="card-body">
                 <div class="media mb-3">
-                  <div class="mr-2">
-                    <i class="fas fa-map-marker-alt fa-2x"></i>
+                  <div class="mr-2 iconbox">
+                    <i class="hdicon fas fa-map-marker-alt fa-2x"></i>
                   </div>
                   <div class="media-body">
                     <p>${hospital.hospitalAddress }</p>
                   </div>
                 </div>
                 <div class="media mb-3">
-                  <div class="mr-2"> 
-                    <i class="fas fa-home fa-2x"></i>
+                  <div class="mr-2 iconbox"> 
+                    <i class="hdicon fas fa-home fa-2x"></i>
                   </div>
                   <div class="media-body">
                     <p>준비중입니다.</p>
                   </div>
                 </div>
                 <div class="media mb-3">
-                  <div class="mr-2"> 
-                    <i class="fas fa-phone-volume fa-2x"></i>
+                  <div class="mr-2 iconbox"> 
+                    <i class="hdicon fas fa-phone-volume fa-2x"></i>
                   </div>
                   <div class="media-body">
                     <p>${hospital.hospitalTelNum }</p>
@@ -222,15 +236,15 @@ pageEncoding="UTF-8"%>
           <c:if test="${hospital.hospitalType == 'H'}">
             <div class="row" style="margin-top: 5%; margin-bottom: 2%;">
               <div class="col-4" style="float: none; margin:0 auto;">
-                <a href="#menu1" style="color: black;"><h3 class="h3">병원 정보</h3></a>
+                <a href="#menu1" style="color: #555;"><h3 class="h3">병원 정보</h3></a>
                   <div class="service-block-inner-a"></div>
               </div>
               <div class="col-4">
-                <a href="#menu2" style="color: black;"><h3 class="h3">수의사(${fn:length(vetList) })</h3></a>
+                <a href="#menu2" style="color: #555;"><h3 class="h3">수의사(${fn:length(vetList) })</h3></a>
                   <div class="service-block-inner-b"></div>
               </div>
               <div class="col-4">
-                <a href="#review-start" style="color: black;"><h3 class="h3">리뷰(${reviewSize})</h3></a>
+                <a href="#review-start" style="color: #555;"><h3 class="h3">리뷰(${reviewSize})</h3></a>
                   <div class="service-block-inner-b"></div>
               </div>
             </div>
@@ -241,14 +255,14 @@ pageEncoding="UTF-8"%>
             <div class="row my-5">
                 <div class="col-sm-8 col-lg-6">
                   <div class="service-block-inner">
-                      <h3 style="margin-bottom: 3%;">위치</h3>
+                      <h3 class="hosdeh3" style="">위치</h3>
                       <div id="map" style="max-width: 100%; 
                       height: 500px; "></div>
                   </div>
                 </div>
                 <div class="col-sm-8 col-lg-6">
                   <div class="service-block-inner">
-                      <h3 style="margin-bottom: 3%;">진료시간</h3>
+                      <h3 class="hosdeh3" >진료시간</h3>
                       <p>월 : 09:00 ~ 17 : 00</p>
                       <p>화 : 09:00 ~ 17 : 00</p>
                       <p>수 : 09:00 ~ 17 : 00</p>
@@ -274,15 +288,15 @@ pageEncoding="UTF-8"%>
                       <div class="row profile" >
 						<c:forEach items="${vetList }" var="vet">
 	                        <div class="col-md-4" >
-	                          <div class="profile-sidebar">
+	                          <div class="profile-sidebar" style="background-color: inherit;">
 	                            <!-- SIDEBAR USERPIC -->
-	                            <div class="profile-userpic">
+	                            <div class="profile-userpic custom-vet-pic">
 	                            	<c:choose>
 	                            		<c:when test="${empty vet.originalFileName}">
-	                           		   		<img src="images/dogDoctor.jpg" class="img-responsive" style="width: 70%" alt="">
+	                           		   		<img src="images/dogDoctor.jpg" class="img-responsive custom-vet-pic-img" alt="">
 	                           			</c:when>
 	                           			<c:otherwise>
-	                           			    <img src="${pageContext.request.contextPath}/upload/${vet.originalFileName}" class="img-responsive" style="width: 70%" alt="">
+	                           			    <img src="${pageContext.request.contextPath}/upload/${vet.originalFileName}" class="img-responsive custom-vet-pic-img" alt="">
 	                           			</c:otherwise>
 	                            	</c:choose>
 	                            </div>
