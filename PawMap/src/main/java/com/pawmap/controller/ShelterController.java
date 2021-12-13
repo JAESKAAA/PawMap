@@ -1,7 +1,9 @@
 package com.pawmap.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,6 +20,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.pawmap.VO.FileVO;
 import com.pawmap.VO.ShelterVO;
 import com.pawmap.mapper.ShelterMapper;
+import com.pawmap.service.BoardService;
 import com.pawmap.service.FileService;
 import com.pawmap.service.ShelterService;
 import com.pawmap.util.FileUtils;
@@ -33,6 +36,9 @@ public class ShelterController {
 	
 	@Autowired
 	private FileService fileService;
+	
+	@Autowired
+	private BoardService boardService;
 	
 	
 	// 관리자페이지 -> 보호소 관리 페이지로 이동
@@ -111,7 +117,10 @@ public class ShelterController {
 		List<FileVO> fileList = fileUtils.parseFileInfo(shelterSeq, request, mhsr, "admin");
 		System.out.println("file타는감 ============" + fileList);
 		
+		//사진 없을때 안넣도록 추가
+		if(fileList!=null) {
 			fileService.insertShelterFileList(fileList);
+		}
 
 	
 
@@ -213,5 +222,83 @@ public class ShelterController {
 //		return retMsg;
 //		
 //	}
+	
+	
+//	// 쉘터 디테일 페이지로 이동
+//	@RequestMapping("/shelterDetail")
+//	public String shelterDetail(ShelterVO vo, Model model) {
+//		System.out.println("shelter Detail 진입=====================");
+//		
+//		// 쉘터 리스트 가져옴
+//		List<ShelterVO> shelter = shelterMapper.getShelterList(vo);
+//		System.out.println("index - shelter에 담긴값 출력===========" + shelter);
+//		
+//		// 파일리스트 가져옴
+////		List<HashMap<String,Object>> latelyShelterBoardListForMain 
+////			= boardService.getLatelyBoardListForShelterBoardMain(shelterService.getShelterSeq());
+//		List<HashMap<String,Object>> latelyShelterBoardListForMain 
+//		= boardService.getLatelyBoardListForShelterBoardMain();
+//		
+//		System.out.println("shelterDetail의 getShelterSeq값 =============" + vo.getShelterSeq());
+//		
+//		 model.addAttribute("shelter", shelterMapper.getShelterList(vo));
+//		 model.addAttribute("shelterPic", latelyShelterBoardListForMain);
+////		 model.addAttribute("shelterPic", latelyShelterBoardListForMain(shelterService.getShelterSeq()));
+//		 
+//		 System.out.println("shelterPic==========" + latelyShelterBoardListForMain);
+//		
+//		return "shelter_detail";
+//	}
+	
+	
+	// 쉘터 디테일 페이지로 이동
+	@RequestMapping("/shelter")
+	public String shelterDetail(ShelterVO vo, Model model) {
+		System.out.println("shelter Detail 진입=====================");
+		
+		// 쉘터 리스트 가져옴
+		List<ShelterVO> shelter = shelterMapper.getShelterList(vo);
+		System.out.println("index - shelter에 담긴값 출력===========" + shelter);
+		
+		// 파일리스트 가져옴
+//		List<HashMap<String,Object>> latelyShelterBoardListForMain 
+//			= boardService.getLatelyBoardListForShelterBoardMain(shelterService.getShelterSeq());
+		List<HashMap<String,Object>> latelyShelterBoardListForMain 
+		= boardService.getLatelyBoardListForShelterBoardMain();
+		
+		System.out.println("latelyShelterBoardListForMain ==> "+latelyShelterBoardListForMain);
+		System.out.println("shelterDetail의 getShelterSeq값 =============" + vo.getShelterSeq());
+//		System.out.println("shelterDetail의 테스트테스트테스트값 =============" + shelterService.getShelterSeq());
+		
+		 model.addAttribute("shelter", shelterMapper.getShelterList(vo));
+		 model.addAttribute("shelterPic", latelyShelterBoardListForMain);
+//		 model.addAttribute("shelterPic", latelyShelterBoardListForMain(shelterService.getShelterSeq()));
+		 
+		 System.out.println("shelterPic==========" + latelyShelterBoardListForMain);
+		
+		return "shelter_list";
+	}
+	
+	@GetMapping("/shelter_detail")
+	public String showShelterDetail(ShelterVO vo, Model model) {
+		
+		
+		Map<String, String> shelter = shelterService.getShelter(vo.getShelterSeq());
+		System.out.println("shelter정보 => "+shelter);
+		
+		model.addAttribute("shelter", shelter);
+		
+		return "shelter-detail";
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

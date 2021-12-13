@@ -48,7 +48,6 @@ pageEncoding="UTF-8"%>
             <c:if test="${getFreeBoard.boardType eq 'f' }">
             <c:choose>
               <c:when test="${empty freeBoardFileList}">
-                <h1>테스트용 :: 파일이 없음</h1>
 
               </c:when>
               <c:otherwise>
@@ -64,7 +63,7 @@ pageEncoding="UTF-8"%>
               <c:if test="${getNanumBoard.boardType eq 's' }">
                 <c:choose>
                   <c:when test="${empty nanumBoardFileList}">
-                    <h1>테스트용 :: 파일이 없음</h1>
+                    
                   </c:when>
                   <c:otherwise>
                     <c:forEach items="${nanumBoardFileList}" var="fileList" varStatus="i">
@@ -195,6 +194,12 @@ pageEncoding="UTF-8"%>
 
             <!-- 댓글 다는곳 종료 -->
 
+
+            
+
+
+    <!-- 자유게시판일경우 -->
+    <c:if test="${getFreeBoard.boardType eq 'f' }">
             <!-- ===============댓글 리스트 출력 시작================== -->
 
               <c:forEach var="reply" items="${freeBoardReplyList}" varStatus="i" >
@@ -269,6 +274,7 @@ pageEncoding="UTF-8"%>
                                         <div class="">
                                           <label for="replyText">댓글 내용</label>
                                           <input type="text" class="form-control" id="commentContent" name="commentContent" placeholder="${reply.comment_content}">
+                                          ${reply.comment_content}
                                         </div>
                                         <div class="">
                                           <label for="replyWriter">댓글 작성자</label>
@@ -300,12 +306,13 @@ pageEncoding="UTF-8"%>
               </c:if>
 
 
+            </c:if>
 
 
               <!-- ===============댓글 리스트 출력 종료================== -->
 
 
-<<<<<<< HEAD
+
 
 
     <!-- 나눔게시판일경우 -->
@@ -335,13 +342,26 @@ pageEncoding="UTF-8"%>
 
                             </div>
                             <div class="d-flex flex-start w-100">
-                                <img
-                                    class="rounded-circle shadow-1-strong  mr-5"
-                                    src="https://mdbootstrap.com/img/Photos/Avatars/img%20(21).jpg"
-                                    alt="avatar"
-                                    width="65"
-                                    height="65"
-                                />
+                              <c:choose>
+                                <c:when test="${empty principal.user.userProfile || empty principal}">
+                                  <img
+                                    class="rounded-circle shadow-1-strong me-3"
+                                    src="${pageContext.request.contextPath}/upload/noprofileuser.jpg"
+                                    alt="img"
+                                    width="40"
+                                    height="40"
+                                  />   
+                                </c:when>
+                                <c:otherwise>
+                                  <img
+                                      class="rounded-circle shadow-1-strong  mr-5"
+                                      src="${pageContext.request.contextPath}/upload/${principal.user.userProfile}"
+                                      alt="avatar"
+                                      width="65"
+                                      height="65"
+                                  />
+                                </c:otherwise>
+                              </c:choose>
                                 <div class="w-100">
                                     <div class="form-outline">
 
@@ -377,12 +397,26 @@ pageEncoding="UTF-8"%>
               
               <div class="card-body">
                 <div class="d-flex flex-start">
-                  <img
-                  class="rounded-circle shadow-1-strong me-3"
-                  alt="img"
-                  width="40"
-                  height="40"
-                  />
+                  <c:choose>
+                    <c:when  test="${empty reply.user_profile}">
+                      <img
+                      class="rounded-circle shadow-1-strong me-3"
+                      src="${pageContext.request.contextPath}/upload/noprofileuser.jpg"
+                      alt="img"
+                      width="40"
+                      height="40"
+                      />
+                    </c:when>
+                    <c:otherwise>
+                      <img
+                      class="rounded-circle shadow-1-strong me-3"
+                      src="${pageContext.request.contextPath}/upload/${reply.user_profile}"
+                      alt="img"
+                      width="40"
+                      height="40"
+                      />
+                    </c:otherwise>
+                  </c:choose>
                   <div class="w-100">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                       <h6 class="text-secondary fw-bold mb-0 ml-2 writer">
@@ -452,6 +486,7 @@ pageEncoding="UTF-8"%>
                           <!--=============== 댓글 수정 모달창 종료 ============== -->
                                   
                         </c:if>
+                        
                       </p>
                     </div>
                   </div>

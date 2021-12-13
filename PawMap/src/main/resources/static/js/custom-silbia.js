@@ -28,16 +28,39 @@ $(document).ready(function () {
           $("#btnJoin").attr("disabled", true);
           $(".result .msg1").text("중복되었습니다.");
           $(".result .msg1").attr("style", "color:#f00");
+          $("#idDuplication").val("idCheck");
+
         } else {
 		  idChk = true;
           alert("사용 가능한 아이디입니다.");
           $("#btnJoin").attr("disabled", false);
           $(".result .msg1").text("사용가능합니다.");
           $(".result .msg1").attr("style", "color:#00f");
+          $("#idDuplication").val("idCheck");
         }
       }
     });
   } 
+  
+  /* id중복체크 후 id 변경시 다시 중복체크하도록 설정하는 function*/
+  function inputIdCheck(){
+  
+  	$("#idDuplication").val("idUncheck");
+  	$(".result .msg1").text("아이디 중복확인을 해주세요.");
+  	$(".result .msg1").attr("style", "color:#777");
+
+
+  }
+  
+  /* nickname중복체크 후 nickname 변경시 다시 중복체크하도록 설정하는 function*/
+  function inputNickCheck(){
+  
+  	$("#nickDuplication").val("nickUncheck");
+  	$(".result .msg2").text("닉네임 중복확인을 해주세요.");
+  	$(".result .msg2").attr("style", "color:#777");
+
+
+  }
   
   	/* 회원가입시 중복체크 후 회원가입 */
 	function join() {
@@ -61,12 +84,16 @@ $(document).ready(function () {
           $("#btnJoin").attr("disabled", true);
           $(".result .msg2").text("중복되었습니다.");
           $(".result .msg2").attr("style", "color:#f00");
+		  $("#nickDuplication").val("nickCheck");
+
         } else {
 		  idChk = true;
           alert("사용 가능한 닉네임입니다.");
           $("#btnJoin").attr("disabled", false);
           $(".result .msg2").text("사용가능합니다.");
           $(".result .msg2").attr("style", "color:#00f");
+          $("#nickDuplication").val("nickCheck");
+
         }
       }
     });
@@ -155,6 +182,12 @@ if (form.userId.value.length == 0) {
   form.userId.focus();
   return false;
 }
+
+if($("#idDuplication").val()!= "idCheck"){
+	alert("아이디 중복체크를 해주세요.");
+	return false;
+}
+
 form.userPassword.value = form.userPassword.value.trim();
 if (form.userPassword.value.length == 0) {
   alert('로그인 비밀번호를 입력해주세요.');
@@ -186,6 +219,13 @@ if (form.userNickname.value.length == 0) {
   form.userNickname.focus();
   return false;
 }
+
+if($("#nickDuplication").val()!= "nickCheck"){
+	alert("닉네임 중복체크를 해주세요.");
+	return false;
+}
+
+
 form.submit();
 }
 

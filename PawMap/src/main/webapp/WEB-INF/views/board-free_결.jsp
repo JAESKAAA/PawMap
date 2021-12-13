@@ -9,30 +9,23 @@ pageEncoding="UTF-8"%>
     
 <%@ include file="layout/header.jsp" %>
     
-<link rel="stylesheet" href="../css/style-gyul.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style-gyul.css">
 
-<style>
-
-.page-item.active .page-link{
-    background-color: rgb(207, 111, 21);
-    border-color: rgb(207, 111, 21);
-} 
-  
-</style>
 
 </head>
 
 <body>
-    <!-- Start Main Top -->
- 
-    <!-- End Main Top -->
+  <!--============================
+       자유게시판 시작
+   ============================-->
+   <div style="margin-top: 7rem;">
+    <div class="">
+      <div class="col-lg-12 boardtitle">
+        <h2>자유게시판</h2>
+      </div>
+      <hr class="line-paint">
+    </div>
 
-    <!-- Start Main Top -->
-
-  
-<div class="board-type reservation-board " style="padding-top:150px">
-    <h1>자유게시판</h1>
-</div>
 
 <div class="container mt-5" style="width: 70%;">
     <div class="board-free" >
@@ -46,7 +39,8 @@ pageEncoding="UTF-8"%>
                                 <c:set var="thumnails" value="${latelyBoardListForMain}" />
                                     <img src="${pageContext.request.contextPath}/upload/${thumnails[0].originalFilename}" alt="">
                                     <h2 class="m-b-20"><strong style="color: rgb(241, 238, 233);">${latelyBoardListForMain[0].title}</strong></h2>
-                                    <p><a class="btn hvr-hover" href="getFreeBoard?boardSeq=${latelyBoardListForMain[0].board_seq}" style="background: none; font-size:15px;">글 보러가기</a></p>
+                                    <p><a id="free_button" href="getFreeBoard?boardSeq=${latelyBoardListForMain[0].board_seq}" 
+                                        >글 보러가기</a></p>
                                     
                             </div>
                         </div>
@@ -59,7 +53,8 @@ pageEncoding="UTF-8"%>
                             <div class="col-md-12">
                                     <img src="${pageContext.request.contextPath}/upload/${thumnails[1].originalFilename}" alt="">
                                     <h2 class="m-b-20"><strong style="color: rgb(245, 242, 238);">${latelyBoardListForMain[1].title}</strong></h2>
-                                    <p><a class="btn hvr-hover" href="getFreeBoard?boardSeq=${latelyBoardListForMain[1].board_seq}" style="background: none; font-size:15px;">글 보러가기</a></p>
+                                    <p><a id="free_button" href="getFreeBoard?boardSeq=${latelyBoardListForMain[1].board_seq}" 
+                                        >글 보러가기</a></p>
                                   
                             </div>
                         </div>
@@ -72,7 +67,8 @@ pageEncoding="UTF-8"%>
                             <div class="col-md-12">
                                     <img src="${pageContext.request.contextPath}/upload/${thumnails[2].originalFilename}" alt="">
                                     <h2 class="m-b-20"><strong style="color: rgb(238, 235, 229);">${latelyBoardListForMain[2].title}</strong></h2>
-                                    <p><a class="btn hvr-hover" href="getFreeBoard?boardSeq=${latelyBoardListForMain[2].board_seq}" style="background: none; font-size:15px;">글 보러가기</a></p>
+                                    <p><a id="free_button" href="getFreeBoard?boardSeq=${latelyBoardListForMain[2].board_seq}" 
+                                       >글 보러가기</a></p>
                                   
                             </div>
                         </div>

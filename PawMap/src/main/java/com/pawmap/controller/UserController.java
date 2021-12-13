@@ -99,15 +99,19 @@ public class UserController {
 		
 		System.out.println("index 통과===================");
 		
-		
+		//!참고 : list가져오는것은 조건이 따로 필요없어서 vo를 매개변수로 넣지않아도 해당 list를 DB에서 뽑아올 수 있습니다!
 		List<ShelterVO> shelter = shelterMapper.getShelterList(vo);
 		System.out.println("index - shelter에 담긴값 출력===========" + shelter);
 		
 		List<HashMap<String,Object>> latelyShelterBoardListForMain = boardService.getLatelyBoardListForShelterBoardMain();
 		
-		System.out.println("index의 getShelterSeq값 =============" + vo.getShelterSeq());
+		//** VO에 담긴 값이 없으므로 의미 없는 코드임
+//		System.out.println("index의 getShelterSeq값 =============" + vo.getShelterSeq());
 		
-		 model.addAttribute("shelter", shelterMapper.getShelterList(vo));
+		//103번라인에서 똑같은 코드를 shelter 변수에 저장했기때문에 shelter 변수를 사용하겠습니다.
+//		 model.addAttribute("shelter", shelterMapper.getShelterList(vo));
+		 model.addAttribute("shelter", shelter);
+		
 		 model.addAttribute("shelterPic", latelyShelterBoardListForMain);
 		 
 		 System.out.println("shelterPic==========" + latelyShelterBoardListForMain);
@@ -115,6 +119,8 @@ public class UserController {
 		
 		return "index2";
 	}
+	
+
 	
 
 	//회사 소개페이지로 이동
@@ -475,7 +481,6 @@ public class UserController {
 	// 비밀번호 찾기 화면에서 데이터 받기 
 
 		@RequestMapping("/searchPw")
-
 		@ResponseBody
 		public String doFindLoginPasswd(@RequestParam Map<String, Object> param , HttpServletResponse response) throws IOException {
 //			String msg= (String) findLoginIdRs.get("msg");
@@ -492,28 +497,26 @@ public class UserController {
 			
 			// 입력한 아이디 정보는 회원과 일치하지만 이메일정보는 일치하지 않을 때
 				
-			if (!user.getUserEmail().equals(userEmail)){
-				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
-				
-				out.println("<script>alert('이메일 정보가 일치하지 않습니다'); location.href='loginForm';</script>");
-				
-				out.flush();
 			
-			} else if(user == null) {
+			PrintWriter out = response.getWriter();
+			 if(user == null) {
 				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
 				
 				// 입력한 정보가 일치하지 않을 때
-				out.println("<script>alert('일치하는 회원이 없습니다'); location.href='loginForm';</script>");
+				out.println("<script>alert('일치하는 회원이 없습니다'); location.href='searchIdPw';</script>");
 				
 				out.flush();
+			 }else if (!user.getUserEmail().equals(userEmail)){
+					response.setContentType("text/html; charset=UTF-8");
+					
+					out.println("<script>alert('이메일 정보가 일치하지 않습니다'); location.href='searchIdPw';</script>");
+					
+					out.flush();
 			} else {
 				response.setContentType("text/html; charset=UTF-8");
-				PrintWriter out = response.getWriter();
 				
 				// 입력한 정보와 회원정보가 일치할 때 
-				out.println("<script>alert('입력하신 메일로 임시 패스워드가 발송되었습니다'); location.href='loginForm';</script>");
+				out.println("<script>alert('입력하신 메일로 임시 패스워드가 발송되었습니다'); location.href='searchIdPw';</script>");
 				
 				out.flush();
 				Map<String, Object> findLoginIdRs = userService.findLoginPasswd(param);
@@ -592,19 +595,21 @@ public class UserController {
 			}
 		}
 		
-	   //프로필 삭제 메서드
-      @RequestMapping("/mypage/deleteProfile")
-      public String deleteProfile(int userSeq, String userType, String userId) throws IOException {
-         
-         System.out.println("userSeq === "+userSeq);
-         System.out.println("userType === "+userType);
-         System.out.println("userId === "+userId);
-         fileService.deleteProfile(userSeq,userType,userId);
-         userService.updateUserProfileNull(userSeq,userType,userId);
-         String encodedParam = URLEncoder.encode(userId, "UTF-8");
 
-         return "redirect:/mypage/userInfo?userId="+encodedParam;
-      }
+
+		   //   프로필 삭제 메서드
+	      @RequestMapping("/mypage/deleteProfile")
+	      public String deleteProfile(int userSeq, String userType, String userId) throws IOException {
+	         
+	         System.out.println("userSeq === "+userSeq);
+	         System.out.println("userType === "+userType);
+	         System.out.println("userId === "+userId);
+	         fileService.deleteProfile(userSeq,userType,userId);
+	         userService.updateUserProfileNull(userSeq,userType,userId);
+	         String encodedParam = URLEncoder.encode(userId, "UTF-8");
+
+	         return "redirect:/mypage/userInfo?userId="+encodedParam;
+	      }
 
 		@GetMapping("/getUserByJson")
 		@ResponseBody

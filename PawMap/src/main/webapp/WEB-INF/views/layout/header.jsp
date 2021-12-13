@@ -51,6 +51,14 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-silbia.css">
       <!-- 테이블 부분 css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footable.bootstrap.css" />
+      <!-- 결 커스텀 css -->
+     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/hospital-search.css" />
+
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
 
     <style>
       header,
@@ -70,7 +78,7 @@ pageEncoding="UTF-8"%>
     <nav class="
         navbar navbar-expand-lg 
         fixed-top py-3">
-        <div class="container col-lg-9">
+        <div class="container attrnine col-lg-9">
           <div class="navbar-header">
             <a href="/pawmap" class="navbar-brand text-uppercase font-weight-bold">PAWMAP</a>
               <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>

@@ -68,4 +68,9 @@ public interface BoardService {
 	void updateFreeBoardCnt(int boardSeq);
 
 	
+//	=====================================================
+	
+	List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain(int shelterSeq);
+
+	
 }
