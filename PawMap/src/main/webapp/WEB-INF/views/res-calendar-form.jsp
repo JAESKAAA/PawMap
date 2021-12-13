@@ -39,12 +39,24 @@
             .all-title-box {
                 background-image: none;
             }
+
             .btn-calendar:hover {
-		
-		background: rgb(253, 231, 189, 0.34) !important;
-		border:  solid rgb(253, 231, 189, 0.34) !important;
-		color: rgb(255, 255, 255) !important;
-	}
+
+                background: rgb(253, 231, 189, 0.34) !important;
+                border: solid rgb(253, 231, 189, 0.34) !important;
+                color: rgb(255, 255, 255) !important;
+            }
+
+            /* 진단서작성 버튼 */
+            /* .calendar-member > button {
+                line-height: 1.5;
+                color: #555;
+                font-size: 14px;
+        
+                background: rgb(255 240 211);
+                border-radius: 40px;
+                border-color: white;
+            } */
         </style>
 
         <script src="${pageContext.request.contextPath}/js/calendar.js"></script>
@@ -72,111 +84,132 @@
             <input type="hidden" name="userId" value="${principal.user.userId}">
             <input type="hidden" name="comNum" value="${principal.user.comNum}">
 
-        <div class="container">
-            <div class="row">
-                <div class="calendar_box">
-                    <div class="sc col-lg-12 col-md-12 col-sm-24 scriptCalendarBox">
-                        <table class="scriptCalendar" style="border:none; width:60%;" >
-                            <thead>
-                                <tr>
-                                    <td class="dark"><input type="radio" name="date" value="sun" />
-                                        <p>일</p>
-                                    </td>
-                                    <td class="light"><input type="radio" name="date" value="mon" checked />
-                                        <p>월</p>
-                                    </td>
-                                    <td class="dark"><input type="radio" name="date" value="tue" />
-                                        <p>화</p>
-                                    </td>
-                                    <td class="light"> <input type="radio" name="date" value="wed" />
-                                        <p>수</p>
-                                    </td>
-                                    <td class="dark"><input type="radio" name="date" value="thu" />
-                                        <p>목</p>
-                                    </td>
-                                    <td class="light"><input type="radio" name="date" value="fri" />
-                                        <p>금</p>
-                                    </td>
-                                    <td class="dark"><input type="radio" name="date" value="sat" />
-                                        <p>토</p>
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
+            <div class="container">
+                <div class="row">
+                    <div class="calendar_box" style="width: 100%;">
+                        <div class="sc col-lg-12 col-md-12 col-sm-24 scriptCalendarBox">
+                            <table class="scriptCalendar" style="border:none; width:60%;">
+                                <thead>
+                                    <tr>
+                                        <td class="dark"><input type="radio" name="date" value="sun" />
+                                            <p>일</p>
+                                        </td>
+                                        <td class="light"><input type="radio" name="date" value="mon" checked />
+                                            <p>월</p>
+                                        </td>
+                                        <td class="dark"><input type="radio" name="date" value="tue" />
+                                            <p>화</p>
+                                        </td>
+                                        <td class="light"> <input type="radio" name="date" value="wed" />
+                                            <p>수</p>
+                                        </td>
+                                        <td class="dark"><input type="radio" name="date" value="thu" />
+                                            <p>목</p>
+                                        </td>
+                                        <td class="light"><input type="radio" name="date" value="fri" />
+                                            <p>금</p>
+                                        </td>
+                                        <td class="dark"><input type="radio" name="date" value="sat" />
+                                            <p>토</p>
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
 
-                    <!--time button-->
-                    <div class="calendar-left col-lg-12 col-md-12 col-sm-24" style="float: left;">
-                        <div class="events-times"><strong style="color: white; size: 2em;">오전</strong>
-                            <br />
-                            <ul class="calendartime">
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="0900">09:00
-                                </li>
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="0930">09:30
-                                </li>
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="1000">10:00
-                                </li>
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="1030">10:30
-                                </li>
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="1100">11:00
-                                </li>
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="1130">11:30
-                                </li>
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="1200">12:00
-                                </li>
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="1230">12:30
-                                </li>
+                        <!--time button-->
+                        <div class="calendar-left col-lg-12 col-md-12 col-sm-24" style="float: left;">
+                            <div class="events-times"><strong style="color: white; size: 2em;">오전</strong>
+                                <br />
+                                <ul class="calendartime">
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="0900">09:00
+                                    </li>
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="0930">09:30
+                                    </li>
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="1000">10:00
+                                    </li>
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="1030">10:30
+                                    </li>
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="1100">11:00
+                                    </li>
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="1130">11:30
+                                    </li>
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="1200">12:00
+                                    </li>
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="1230">12:30
+                                    </li>
 
-                            </ul>
-                        </div>
-                        <br>
-                        <div class="events-times" style="margin-top:-22px;"><strong style="color: white; size: 2em;">오후</strong>
+                                </ul>
+                            </div>
                             <br>
-                            <ul class="calendartime " >
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="1400">14:00
-                                </li>
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="1430">14:30
-                                </li>
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="1500">15:00
-                                </li>
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="1530">15:30
-                                </li>
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="1600">16:00
-                                </li>
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="1630">16:30
-                                </li>
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="1700">17:00
-                                </li>
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="1730">17:30
-                                </li>
-                            </ul>
-                        </div>
-                        <br>
-                        <div class="events-times" style="margin-top:-35px;"><strong style="color: white; size: 2em; align-self: center;">야간</strong>
+                            <div class="events-times" style="margin-top:-22px;"><strong
+                                    style="color: white; size: 2em;">오후</strong>
+                                <br>
+                                <ul class="calendartime ">
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="1400">14:00
+                                    </li>
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="1430">14:30
+                                    </li>
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="1500">15:00
+                                    </li>
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="1530">15:30
+                                    </li>
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="1600">16:00
+                                    </li>
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="1630">16:30
+                                    </li>
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="1700">17:00
+                                    </li>
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="1730">17:30
+                                    </li>
+                                </ul>
+                            </div>
                             <br>
-                            <ul class="calendartime">
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="1900">19:00
-                                </li>
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="1930">19:30
-                                </li>
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="2000">20:00
-                                </li>
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="2030">20:30
-                                </li>
-                                <li><input type="checkbox" class="calendar-time" name="scheduleTime" value="2100">21:00
-                                </li>
-                            </ul>
+                            <div class="events-times" style="margin-top:-35px;"><strong
+                                    style="color: white; size: 2em; align-self: center;">야간</strong>
+                                <br>
+                                <ul class="calendartime">
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="1900">19:00
+                                    </li>
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="1930">19:30
+                                    </li>
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="2000">20:00
+                                    </li>
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="2030">20:30
+                                    </li>
+                                    <li><input type="checkbox" class="calendar-time" name="scheduleTime"
+                                            value="2100">21:00
+                                    </li>
+                                </ul>
+                            </div>
+                            <br>
                         </div>
-                        <br>
-                    </div> <!--END time button-->
-                    <div class="r form-group col-lg-12">
-                        <div>
-                            <input type="submit" value="작성완료" class="btn btn-calendar ">
+                        <!--END time button-->
+                        <div class="form-group col-lg-12" style="display: inline-block;">
+                                <input type="submit" value="작성완료" class="btn btn-calendar ">
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
             </div>
         </form>
         <div class="board-type  mt-5">
@@ -190,9 +223,8 @@
         <hr class="line-paint">
         <div class="" style="text-align: center; margin-top: 5%; margin-left: 10%;  margin-right: 10%; ">
 
-            <table
-                style="display:inline-block; width: auto; height:auto; min-height: 50px;">
-                <tr >
+            <table style="display:inline-block; width: auto; height:auto; min-height: 50px;">
+                <tr>
                     <th><span style="width: 100px;">시간표</span></th>
                     <th><span style="width: 100px;">일</span></th>
                     <th><span>월</span></th>

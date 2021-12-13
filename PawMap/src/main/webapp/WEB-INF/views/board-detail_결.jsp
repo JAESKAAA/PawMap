@@ -3,6 +3,7 @@ pageEncoding="UTF-8"%>
 
 <%@ include file="layout/header.jsp" %>
 
+
     <div class="board-type mt-5">
         <c:if test="${getFreeBoard.boardType eq 'f'}"> <h1>자유게시판</h1> </c:if>
         <c:if test="${getNanumBoard.boardType eq 's'}"> <h1>나눔게시판</h1> </c:if>
@@ -38,7 +39,7 @@ pageEncoding="UTF-8"%>
                     <input type="hidden" value="${getNanumBoard.boardSeq}" id="nanumBoardSeq" />
                 </div>
                 <div class="col-lg-6">
-                  <h5 class=" mb-5 board_seq" id="freeBoardSeq">조회수 : ${getFreeBoard.cnt}</h5>
+                  <h5 class=" mb-5 board_seq" id="freeBoardSeq">조회수 : ${getFreeBoard.cnt} ${getNanumBoard.cnt}</h5>
               </div>
             </div>
 
@@ -90,8 +91,8 @@ pageEncoding="UTF-8"%>
               <div class="col-lg-6 mt-5">
                 <button onclick="location.href='/pawmap/board/getFreeBoardList'" type="button" class="btn btn-secondary">목록으로</button>
               <c:if test="${getFreeBoard.userId == principal.user.userId}">
-                <button onclick="location.href='/pawmap/board/updateFreeAndNanumBoardForm?boardSeq=${getFreeBoard.boardSeq}&boardType=${getFreeBoard.boardType}'" type="button" class="btn btn-primary">수정</button>
-                <button id="delete-free-board" type="button" class="btn btn-secondary">삭제</button>
+                <button onclick="location.href='/pawmap/board/updateFreeAndNanumBoardForm?boardSeq=${getFreeBoard.boardSeq}&boardType=${getFreeBoard.boardType}'" type="button" id="btnupdate">수정</button>
+                <button id="delete-free-board" type="button" id="btndelete">삭제</button>
               </div>
               </c:if> 
             </c:if> 
@@ -101,8 +102,8 @@ pageEncoding="UTF-8"%>
               <div class="col-lg-6 mt-5">
                 <button onclick="location.href='/pawmap/board/getNanumBoardList'" type="button" class="btn btn-secondary">목록으로</button>
               <c:if test="${getNanumBoard.userId == principal.user.userId}">
-                <button onclick="location.href='/pawmap/board/updateNanumBoardForm?boardSeq=${getNanumBoard.boardSeq}&boardType=${getNanumBoard.boardType}'" type="button" class="btn btn-primary">수정</button>
-                <button id="delete-nanum-board" type="button" class="btn btn-secondary">삭제</button>
+                <button onclick="location.href='/pawmap/board/updateNanumBoardForm?boardSeq=${getNanumBoard.boardSeq}&boardType=${getNanumBoard.boardType}'" type="button" id="btnupdate">수정</button>
+                <button id="delete-nanum-board" type="button" id="btndelete">삭제</button>
               </div>
             </c:if>  
           </c:if>
@@ -236,7 +237,7 @@ pageEncoding="UTF-8"%>
                           </h6>
                           <p class="mb-5"><fmt:formatDate value="${reply.comment_regDate }" pattern="yyyy-MM-dd"/></p>
                         </div>
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class=" justify-content-between align-items-center">
                           <p class="small mb-0" style="color: #aaa;">
 
 
@@ -255,8 +256,8 @@ pageEncoding="UTF-8"%>
                                 <form action="deleteCommentOnFreeBoard" method="POST">
                                   <input type="hidden" class="hiddenCommentSeq" name="commentSeq" value="${reply.comment_seq}"/>
                                   <input type="hidden" name="boardSeq" value="${getFreeBoard.boardSeq}">
-                                  <button type="button" class="link-grey ml-2 btn-update btn-comment-update" data-toggle='modal' data-target='.modifyModal${i.index}'>수정하기</button> 
-                                  <button onclick="if(!confirm('삭제 하시겠습니까?')){return false}" class="link-grey ml-2 btn-delete">삭제하기</button> 
+                                  <button type="button" id="btnupdate" data-toggle='modal' data-target='.modifyModal${i.index}'>수정하기</button> 
+                                  <button onclick="if(!confirm('삭제 하시겠습니까?')){return false}" id="btndelete">삭제하기</button> 
 
                                 </form>
                                 
@@ -274,7 +275,6 @@ pageEncoding="UTF-8"%>
                                         <div class="">
                                           <label for="replyText">댓글 내용</label>
                                           <input type="text" class="form-control" id="commentContent" name="commentContent" placeholder="${reply.comment_content}">
-                                          ${reply.comment_content}
                                         </div>
                                         <div class="">
                                           <label for="replyWriter">댓글 작성자</label>
@@ -285,8 +285,8 @@ pageEncoding="UTF-8"%>
                                         </div>
                                       </div>
                                       <div class="modal-footer">
-                                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">닫기</button>
-                                        <button type="submit" class="btn btn-success modalModBtn">수정</button>
+                                        <button type="button" class="pull-left" id="btndelete" data-dismiss="modal">닫기</button>
+                                        <button type="submit" class="pull-left" id="btnupdate">수정</button>
                                       </div>
                                     </div>
                                   </div>
@@ -395,12 +395,11 @@ pageEncoding="UTF-8"%>
 
           <c:forEach var="reply" items="${nanumBoardReplyList}" varStatus="i" >
             <div class="card mb-3">
-              
               <div class="card-body">
                 <div class="d-flex flex-start">
 
                   <c:choose>
-                    <c:when  test="${empty reply.user_profile}">
+                    <c:when test="${empty reply.user_profile}">
                       <img
                       class="rounded-circle shadow-1-strong me-3"
                       src="${pageContext.request.contextPath}/upload/noprofileuser.jpg"
@@ -449,8 +448,8 @@ pageEncoding="UTF-8"%>
                             <form action="deleteCommentOnNanumBoard" method="POST">
                               <input type="hidden" class="hiddenCommentSeq" name="commentSeq" value="${reply.comment_seq}"/>
                               <input type="hidden" name="boardSeq" value="${getNanumBoard.boardSeq}">
-                              <button type="button" class="link-grey ml-2 btn-update btn-comment-update" data-toggle='modal' data-target='.modifyModal${i.index}'>수정하기</button> 
-                              <button onclick="if(!confirm('삭제 하시겠습니까?')){return false}" class="link-grey ml-2 btn-delete">삭제하기</button> 
+                              <button type="button" id="btnupdate" data-toggle='modal' data-target='.modifyModal${i.index}'>수정하기</button> 
+                              <button onclick="if(!confirm('삭제 하시겠습니까?')){return false}" id="btndelete">삭제하기</button> 
 
                             </form>
                             
@@ -467,7 +466,7 @@ pageEncoding="UTF-8"%>
                                   <div class="modal-body">
                                     <div class="">
                                       <label for="replyText">댓글 내용</label>
-                                      <input type="text" class="form-control" id="commentContent" name="commentContent" placeholder="${reply.comment_content}">
+                                      <input type="text" class="form-control" id="commentContent" name="commentContent" placeholder="${reply.comment_content}" >
                                     </div>
                                     <div class="">
                                       <label for="replyWriter">댓글 작성자</label>

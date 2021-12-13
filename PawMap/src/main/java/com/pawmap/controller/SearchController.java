@@ -1,13 +1,11 @@
 package com.pawmap.controller;
 
 import java.io.IOException;
-import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,15 +13,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.pawmap.VO.BoardVO;
 import com.pawmap.VO.Criteria;
-import com.pawmap.VO.HospitalReviewVO;
 import com.pawmap.VO.HospitalVO;
 import com.pawmap.VO.PageVO;
+import com.pawmap.VO.VetVO;
 import com.pawmap.configuration.auth.PrincipalDetails;
 import com.pawmap.handler.OpenApiHandler;
-import com.pawmap.mapper.SearchMapper;
 import com.pawmap.service.BoardService;
 import com.pawmap.service.HospitalReviewService;
-import com.pawmap.VO.VetVO;
 import com.pawmap.service.SearchService;
 import com.pawmap.service.VetService;
 

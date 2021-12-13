@@ -1,6 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+  <%@ include file="layout/header.jsp" %>
 
+<style>
+  span{
+    padding: 20px;
+  }
+</style>
 <!-- Start 회원정보 타이틀 영역 -->
 <div class="u_container" style="margin-top: 150px;">
     <div class="col-lg-12">
@@ -80,7 +85,7 @@ pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
               value="${user.userNickname }"
             />
             <button type="button" class="btn-file-upload" onclick="fn_mnickcheck()">중복체크</button>
-            <p class="result"><span class="msg3">닉네임을 확인해주세요.</span></p>
+            <p class="result"><span class="msg3" >닉네임을 확인해주세요.</span></p>
           </div>
           <div class="mb-3">
             <label for="phone">연락처</label>
@@ -122,16 +127,9 @@ pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
           <c:choose>
             <c:when test="${empty user.userProfile}">
               <div class="mb-3">
-                <label for="profile">프로필 사진 등록</label>
-                <div class="control-group">  
-                    <div class="controls">  
-                        <div class="entry input-group upload-input-group">  
-                            <input type="hidden" name="userSeq" value="${principal.user.userSeq}">
-                            <input type="hidden" name="userType" value="${principal.user.userType}">
-                            <input class="uptxtbox btn-file-upload" name="uploadFiles" multiple="multiple" type="file">  
-                        </div>  
-                    </div>  
-                </div>  
+                <label for="name">이름</label>
+                <input type="text" class="uptxtbox" id="name" name="userName" value="${principal.user.userName }"
+                  disabled />
               </div>
             </c:when>
           </c:choose>
@@ -148,12 +146,12 @@ pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
                 >취소
                 </button>
             </div>
-            <div class="mb-4">
-              <button class="btn" id="upbtnN" style="width: 90%;" onclick="deleteUserCheck()" 
-                >회원탈퇴
-                </button>
-          </div>
-        </form>
+          </form>
+          <div class="mb-4">
+            <button class="btn" id="upbtnN" style="width: 90%;" onclick="deleteUserCheck()" 
+              >회원탈퇴
+              </button>
+        </div>
         <hr class="mb-4" />
      
       <c:choose>
@@ -182,7 +180,5 @@ pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
       </div>
     </div>
   </div>
-</div>
-</div>
 
-<%@ include file="layout/footer.jsp" %>
+    <%@ include file="layout/footer.jsp" %>

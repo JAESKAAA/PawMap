@@ -21,7 +21,6 @@ import com.pawmap.VO.UserVO;
 import com.pawmap.service.FileService;
 import com.pawmap.service.PetService;
 import com.pawmap.service.UserService;
-import com.pawmap.util.FileUtils;
 import com.pawmap.util.PetFileUtils;
 
 @Controller
@@ -66,6 +65,7 @@ public class PetController {
 		model.addAttribute("userId",pet.getUserId());
 		model.addAttribute("user",user);
 		System.out.println("반려동물 수정 폼으로 넘어갈 때사용자 아이디 " + vo.getUserId());
+		System.out.println("petVO ======= "+petService.selectPetInfo(vo));
 		
 			
 			return "mypage-petUpdate";

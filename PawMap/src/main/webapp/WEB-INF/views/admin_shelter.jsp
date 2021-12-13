@@ -93,7 +93,7 @@ pageEncoding="UTF-8"%>
     </div>
     
      <!-- 페이지네이션 부분 시작-->
-     <div class="page-div hospital_pagination_custom" style="margin-top:40px;">
+<!--     <div class="page-div hospital_pagination_custom" style="margin-top:40px;">
       <ul class="pagination justify-content-center">
           <c:if test="${pageMaker.prev }">
               <li class="page-item pagination_button">
@@ -111,7 +111,7 @@ pageEncoding="UTF-8"%>
             </li>
           </c:if>
       </ul>
-    </div>
+    </div> -->
   <!--  페이지네이션 끝 -->
   <!--  페이지 처리 폼 -->
   <c:choose>
@@ -161,7 +161,4 @@ pageEncoding="UTF-8"%>
 </script>
 
 
-    <%@ include file="layout/footer.jsp" %>
-</body>
-
-</html>
+    <%@ include file="layout/admin_footer.jsp" %>

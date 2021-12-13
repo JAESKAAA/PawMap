@@ -15,10 +15,11 @@ pageEncoding="UTF-8"%>
 </head>
 
 <body>
+
   <!--============================
        자유게시판 시작
    ============================-->
-   <div style="margin-top: 7rem;">
+   <div style="margin-top: 10rem;">
     <div class="">
       <div class="col-lg-12 boardtitle">
         <h2>자유게시판</h2>

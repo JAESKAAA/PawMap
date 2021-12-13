@@ -77,5 +77,7 @@ public interface BoardService {
 	
 	List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain(int shelterSeq);
 
+	void updateNanumBoardCnt(int boardSeq);
+
 	
 }

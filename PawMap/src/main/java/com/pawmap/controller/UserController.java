@@ -101,7 +101,7 @@ public class UserController {
 		
 
 		//!참고 : list가져오는것은 조건이 따로 필요없어서 vo를 매개변수로 넣지않아도 해당 list를 DB에서 뽑아올 수 있습니다!
-		List<ShelterVO> shelter = shelterMapper.getShelterList(vo);
+		List<ShelterVO> shelter = shelterMapper.getShelterList(null);
 		System.out.println("index - shelter에 담긴값 출력===========" + shelter);
 		
 		List<HashMap<String,Object>> latelyShelterBoardListForMain = boardService.getLatelyBoardListForShelterBoardMain();
@@ -263,6 +263,7 @@ public class UserController {
 	@GetMapping("/mypage/deleteUser")
 	public  String deleteUser(UserVO vo, HttpSession session) {
 		System.out.println("deleteUser 호출 !!!");
+		System.out.println("vo 출력 === " + vo);
 		session.invalidate();
 		userService.deleteUser(vo);
 		 
@@ -595,6 +596,28 @@ public class UserController {
 			}
 		}
 		
+
+		// 사업자등록번호 중복 체크
+		@RequestMapping("comCheck")
+		@ResponseBody
+		public String comCheck(@RequestParam("comnum") String comnum) throws Exception {
+			System.out.print(comnum);
+			System.out.print("comcheck 들어옴!!");
+			
+			int result = userService.comCheck(comnum);
+
+			System.out.print(result);
+			
+			if(result > 0) {
+				return "fail";
+			} else {
+				return "ok";
+			}
+		}
+		
+
+
+
 		   //   프로필 삭제 메서드
 	      @RequestMapping("/mypage/deleteProfile")
 	      public String deleteProfile(int userSeq, String userType, String userId) throws IOException {

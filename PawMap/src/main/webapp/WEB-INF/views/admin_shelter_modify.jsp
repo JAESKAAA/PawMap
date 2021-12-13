@@ -17,8 +17,8 @@ pageEncoding="UTF-8"%>
 	<!--회원 정보 수정 제목 끝-->
 	<!--회원 정보 수정 테이블 시작.-->
   <div id="adminusermanage" class="adminpagetablediv">
-    <form name="updateForm" action="/pawmap/admin/updateShelterForm/api" method="POST"></form>
-    <table class="u_join-table" style="margin-left: auto; margin-right: auto; text-align: center; border-top: none; border-bottom:none;">
+    <form name="updateForm" action="/pawmap/admin/updateShelterForm/api" method="POST">
+      <table class="u_join-table" style="margin-left: auto; margin-right: auto; text-align: center; border-top: none; border-bottom:none;">
           <input type="hidden" name="shelterSeq" value="${getShelter.shelterSeq}">
         <tr>
             <td>사업자등록번호 </td>
