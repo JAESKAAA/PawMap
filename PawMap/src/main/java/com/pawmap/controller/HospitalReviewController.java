@@ -6,19 +6,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.pawmap.VO.HospitalReviewVO;
 import com.pawmap.service.HospitalReviewService;
+import com.pawmap.service.LikeService;
 
 @Controller
 public class HospitalReviewController {
 	
 	@Autowired
 	private HospitalReviewService hospitalReviewService;
+	
+	@Autowired
+	private LikeService likeService;
 
 	@RequestMapping("insertHospitalReview")
 	public String insertHospitalReview(HospitalReviewVO hospitalReviewVO) {
 		System.out.println("HospitalReviewVO 들어옴");
 		System.out.println("hospitalReviewVO ===== "+ hospitalReviewVO);
 		
+		int reviewSeq = likeService.getLatelyReviewSeq(hospitalReviewVO.getComNum());
 		hospitalReviewService.insertHospitalReview(hospitalReviewVO);
+		likeService.makeLikeTable(reviewSeq,hospitalReviewVO.getComNum());
+		
+		System.out.println("reviewSeq ====== "+reviewSeq);
 		
 		return "redirect:/detailHospital?hospitalSeq="+hospitalReviewVO.getHospitalSeq()+"#review-start";
 	}
@@ -30,6 +38,7 @@ public class HospitalReviewController {
 		System.out.println("comNum == "+ comNum);
 		System.out.println("userId == "+ userId);
 		hospitalReviewService.deleteHospitalReview(reviewSeq,comNum,userId);
+		likeService.deleteLike(reviewSeq,comNum);
 		
 		return "redirect:/detailHospital?hospitalSeq="+hospitalSeq+"#review-start";
 	}

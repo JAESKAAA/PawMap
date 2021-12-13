@@ -19,7 +19,10 @@
 	</insert>
 	
 	<select id="getHospitalReviewList" resultType="HashMap">
-		SELECT h.* , u.user_profile
+		SELECT h.* , u.user_profile,
+			(SELECT sum(l.like_check) FROM like_table AS l WHERE
+			 l.review_seq = h.review_seq 
+			 AND com_num = #{comNum} ) AS likeCount
 		FROM 
 		hospital_review AS h
 		INNER JOIN user AS u

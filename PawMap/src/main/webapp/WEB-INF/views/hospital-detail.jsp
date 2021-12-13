@@ -159,6 +159,7 @@ pageEncoding="UTF-8"%>
     <!-- Header 끝 부분 -->
 
   
+
       <!-- Start About Page  -->
       <div class="about-box-main" style="margin-top:3rem;">
         <div class="container_hospital_detail">
@@ -315,7 +316,7 @@ pageEncoding="UTF-8"%>
                         <h4 class="text-dark mb-0" id="review-start">리뷰 수 ( ${reviewSize} )</h4>
                       </div>
               
-                      <!-- 댓글 다는곳 시작 -->
+                      <!-- 리뷰 다는곳 시작 -->
                       <c:choose>
                         <c:when test="${empty principal}">
                           
@@ -327,7 +328,7 @@ pageEncoding="UTF-8"%>
                                     <form action="insertHospitalReview" method="post" style="width: 750px;">
                                       <input type="hidden" name="hospitalSeq"  value="${hospital.hospitalSeq}">
                                       <input type="hidden" name="comNum"  value="${hospital.hospitalComNum}">
-                                      <input type="hidden" name="userId"  value="${principal.user.userId}">
+                                      <input type="hidden" id="hiddenPrincipalUserId" name="userId"  value="${principal.user.userId}">
                                       <input type="hidden" name="userNickname"  value="${principal.user.userNickname}">
                                         <div class="card-body p-4">
                                             <div class="mb-2">
@@ -386,9 +387,10 @@ pageEncoding="UTF-8"%>
                       </c:choose>
                       
         
-                    <!-- 댓글 다는곳 종료 -->
+                    <!-- 리뷰 다는곳 종료 -->
         
-                    <!-- ===============댓글 리스트 출력 시작================== -->
+                    <!-- ===============리뷰 리스트 출력 시작================== -->
+                    <input type="hidden" id="hiddenHospitalReviewList" value="${fn:length(hospitalReviewList)}">
                       <c:forEach var="review" items="${hospitalReviewList}" varStatus="i" >
                         <div class="card mb-3">
                           <div class="card-body">
@@ -423,9 +425,26 @@ pageEncoding="UTF-8"%>
                                   </h6>
                                   <p class="mb-5"><fmt:formatDate value="${review.regDate }" pattern="yyyy-MM-dd"/></p>
                                 </div>
+
+                                <!-- 좋아요 하는곳 -->
+                                
+                                <div class="d-flex align-items-left">
+                                  <form>
+                                    <input type="hidden" id="hiddenReviewSeq${i.index}" value="${review.review_seq}"/>
+                                    <input type="hidden" class="hiddenComNum"  value="${review.com_num}"/>
+                                      <img src="${pageContext.request.contextPath}/upload/like_btn_no.png" 
+                                           id="btn_like" align="left" style="cursor:pointer; width: 20px;"
+                                           class="ml-3"
+                                           onclick="doLike($('#hiddenReviewSeq${i.index}').val(),$('.hiddenComNum').val(),$('#hiddenPrincipalUserId').val())"
+                                           >
+                                    </form>
+                                    <p id="likeCount${i.index}" style="cursor:pointer; width: 20px;" >${review.likeCount}</p>  
+
+                                    <!-- <h1>${review}</h1>   -->
+
+                                </div>
                                 <div class="d-flex justify-content-between align-items-center">
                                   <p class="small mb-0" style="color: #aaa;">
-                                    
                                     <c:if test="${review.user_id == principal.user.userId}">
                                         <form action="deleteHospitalReview" method="POST">
                                           <input type="hidden"  name="reviewSeq" value="${review.review_seq}"/>
@@ -479,7 +498,7 @@ pageEncoding="UTF-8"%>
                       </c:forEach>
         
         
-                      <!-- ===============댓글 리스트 출력 종료================== -->
+                      <!-- ===============리뷰 리스트 출력 종료================== -->
         
         
                     </div>
@@ -688,6 +707,61 @@ pageEncoding="UTF-8"%>
 	         map.setCenter(coords);
 	     } 
 	 });    
+
+
+   
+   // 좋아요 로직
+   function doLike(seq,comNum,userId){
+     console.log(seq,comNum,userId);
+
+     // 로그인 안되어있을경우 좋아요 못하게 방지
+    if(typeof userId == "undefined" || userId == null || userId == ""){
+      alert("로그인후 이용해 주세요");
+    }else{
+      // json으로 뿌릴거임
+      data = {
+        "reviewSeq" : seq,
+        "comNum" : comNum,
+        "userId" : userId
+      }
+      console.log(data);
+      $.ajax({
+        type : "POST",
+        url : "/pawmap/clickLike",
+        contentType: 'application/json',
+        dataType : "json",
+        data : JSON.stringify(data),
+        success : function(data){
+          console.log(data);
+
+          // json 데이터가 1 오류임
+          if(data['1'] == 1 ){
+            alert("오류가 발생했습니다.");
+          } else{
+
+            // 리뷰 리스트 사이즈 얻어와서 포문돌림
+            var size = $("#hiddenHospitalReviewList").val();
+            console.log("size ====== "+size);
+            console.log(data);
+  
+            for(var i = 0; i<size; i++){
+              
+              // 데이터로 받아온 카운트를(좋아요갯수) 해당 태그에 문자로 새로넣어줌
+              var htmlString = data[i].count;
+              $("#likeCount"+i).html(htmlString);
+            }
+          }
+
+        },
+        error : function(error){
+  
+        }
+      });
+
+    }
+
+   }
+
 	</script>
 </body>
 </html>
