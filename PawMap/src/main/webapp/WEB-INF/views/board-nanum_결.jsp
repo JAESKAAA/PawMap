@@ -38,7 +38,7 @@ pageEncoding="UTF-8"%>
                     <li class="nav-item">
                       <a href="/pawmap/search" id="nav-a" class="nav-link text-uppercase font-weight-bold">병원찾기</a></li>
                     <li class="nav-item">
-                      <a href="contact-us.html" id="nav-a" class="nav-link text-uppercase font-weight-bold">보호소 정보</a></li>
+                      <a href="/pawmap/shelter" id="nav-a" class="nav-link text-uppercase font-weight-bold">보호소 정보</a></li>
                     <li class="dropdown"color: rgb(255, 255, 255);">
                         <a
                           href="#"

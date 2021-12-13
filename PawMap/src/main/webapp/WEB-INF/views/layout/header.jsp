@@ -129,32 +129,32 @@ pageEncoding="UTF-8"%>
             </li>
             <sec:authorize access="isAnonymous()">
               <li class="side-menu">
-                <a href="/pawmap/loginForm">
+                <a href="${pageContext.request.contextPath}/loginForm">
                   <p id="attr-nav-p">로그인</p>
                 </a>
               </li>
               <li class="side-menu">
-                <a href="/pawmap/joinForm">
+                <a href="${pageContext.request.contextPath}/joinForm">
                   <p id="attr-nav-p">회원가입</p>
                 </a>
               </li>
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
               <li class="side-menu">
-                <a href="/pawmap/mypage">
+                <a href="${pageContext.request.contextPath}/mypage">
                   <p id="attr-nav-i">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
                 </a>
               </li>
               
               <li class="side-menu">
-                <a href="/pawmap/logout">
+                <a href="${pageContext.request.contextPath}/logout">
                   <p id="attr-nav-i">로그아웃</p>
                 </a>
               </li>
             </sec:authorize>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
               <li class="side-menu">
-                <a href="/pawmap/admin">
+                <a href="${pageContext.request.contextPath}/admin">
                   <p id="attr-nav-p">관리자 페이지</p>
                 </a>
               </li>

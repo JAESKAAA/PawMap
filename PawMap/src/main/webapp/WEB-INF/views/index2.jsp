@@ -291,7 +291,7 @@ pageEncoding="UTF-8"%>
                   <br />
                   여러분의 작은 관심이 이들에게 큰 힘이 됩니다.
                 </p>
-                <p><a class="btn custom_btn2" href="#">후원하기</a></p>
+                <p><a class="btn custom_btn2" href="/pawmap/shelter">자세히보기</a></p>
               </div>
             </div>
           </div>

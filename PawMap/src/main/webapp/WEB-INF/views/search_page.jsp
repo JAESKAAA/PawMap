@@ -532,7 +532,6 @@
                   var markers = [];
                   // 주소로 좌표를 검색합니다
                   for (let i = 0; i < addressList.length; i++) {
-
                     geocoder.addressSearch(addressList[i], function (result, status) {
                       // 정상적으로 검색이 완료됐으면 
                       if (status === kakao.maps.services.Status.OK) {
