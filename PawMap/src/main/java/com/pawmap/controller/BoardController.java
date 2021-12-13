@@ -183,7 +183,7 @@ public class BoardController {
 		System.out.println("deleteFreeBoard 들어옴");
 		System.out.println("deleteFreeBoard 들어옴 boardSeq : "+boardSeq);
 		boardService.deleteNanumBoardBySeq(boardSeq);
-		commentService.deleteCommentsBySeq(boardSeq);
+		commentService.deleteCommentsByNanumSeq(boardSeq);
 		fileService.deleteFileByBoardSeqOnNanumSeq(boardSeq);
 		
 	}
@@ -365,11 +365,11 @@ public class BoardController {
 	public String getNanumBoardList(BoardVO vo, Model model, Criteria cri) {
 		
 		System.out.println("getNanumBoardList 진입===============");
+		System.out.println(" vo ==== "+ vo);
 		
 		
 //		cri.setPageNum(1);
 		cri.setAmount(9);
-		
 		
 		if(vo.getKeywordType() == null || vo.getKeywordType().isEmpty()) {
 			vo.setKeywordType("titleAndContent");
@@ -382,8 +382,7 @@ public class BoardController {
 			System.out.println("다릅니다.");
 			cri.setPageNum(1);
 		}
-
-
+		System.out.println(" vo ==== "+ vo);
 		keyword = vo.getKeyword();
 		
 		int total = boardService.selectNanumBoardCount(vo);
@@ -391,13 +390,16 @@ public class BoardController {
 		List<HashMap<String,Object>> latelyNanumBoardListForMain = boardService.getLatelyBoardListForNanumBoardMain();
 		
 		System.out.println("getNanumBoardList 의 latelyNanumBoardListForMain ============"+ latelyNanumBoardListForMain);
-		
+		System.out.println(" boardService.getNanumBoardList(vo,cri) "+ boardService.getNanumBoardList(vo,cri));
 		
 		model.addAttribute("NanumBoardList", boardService.getNanumBoardList(vo,cri));
-		model.addAttribute("latelyNanumBoardListForMain", latelyNanumBoardListForMain);
+//		model.addAttribute("latelyNanumBoardListForMain", latelyNanumBoardListForMain);
 		model.addAttribute("pageMaker", new PageVO(cri, total));
 		model.addAttribute("keyword", vo.getKeyword());
 		model.addAttribute("keywordType", vo.getKeywordType());
+		
+
+
 		
 		System.out.println("================== 나눔게시판 컨트롤러 탔음");
 		System.out.println("model에 최종적으로 담긴값 : " + model);
@@ -418,6 +420,9 @@ public class BoardController {
 		// 파일리스트 가져오기
 		List<FileVO> fileList = fileService.getFileListByNanumBoardSeq(boardSeq,"s");
 		
+		// 조회수 늘리기
+		boardService.updateNanumBoardCnt(boardSeq);
+		
 		System.out.println("fileList ============== "+ fileList);
 		System.out.println("나눔보드 테스터 ===== "+boardService.getNanumBoard(boardSeq));
 
@@ -425,6 +430,10 @@ public class BoardController {
 		model.addAttribute("commentSize",replyList.size());
 		model.addAttribute("nanumBoardReplyList",replyList);
 		model.addAttribute("getNanumBoard",boardService.getNanumBoard(boardSeq));
+		
+		System.out.println("나눔코멘트===========================" + replyList);
+		System.out.println("나눔 코멘트 fileList=============" + fileList);
+		
 		
 		return "board-detail_결";
 

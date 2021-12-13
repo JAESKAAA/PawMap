@@ -44,6 +44,11 @@
 
 	</delete>
 	
+
+	
+	
+	
+	
 	<update id="updateCommentOnFreeBoard">
 		update comment
 		set comment_content = #{commentContent}
@@ -52,19 +57,7 @@
 		and board_type = 'f';
 	</update>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 		<insert id="insertReplyForNanumBoard" >
 		INSERT INTO comment(comment_seq,board_type,board_seq, user_id, comment_content,hospital_seq, comment_regDate) VALUES(
@@ -79,7 +72,7 @@
 	</insert>
 	
 		<select id="getReplyListByNanumBoardSeq"  resultType="HashMap">
-		SELECT c.*, u.user_nickname
+		SELECT c.*, u.user_nickname, u.user_profile
 		FROM comment AS c
 		INNER JOIN user AS u
 		ON c.user_id = u.user_id

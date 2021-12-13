@@ -38,7 +38,7 @@ pageEncoding="UTF-8"%>
                     <input type="hidden" value="${getNanumBoard.boardSeq}" id="nanumBoardSeq" />
                 </div>
                 <div class="col-lg-6">
-                  <h5 class=" mb-5 board_seq" id="freeBoardSeq">조회수 : ${getFreeBoard.cnt}</h5>
+                  <h5 class=" mb-5 board_seq" id="freeBoardSeq">조회수 : ${getFreeBoard.cnt} ${getNanumBoard.cnt}</h5>
               </div>
             </div>
 
@@ -274,7 +274,6 @@ pageEncoding="UTF-8"%>
                                         <div class="">
                                           <label for="replyText">댓글 내용</label>
                                           <input type="text" class="form-control" id="commentContent" name="commentContent" placeholder="${reply.comment_content}">
-                                          ${reply.comment_content}
                                         </div>
                                         <div class="">
                                           <label for="replyWriter">댓글 작성자</label>
@@ -394,11 +393,10 @@ pageEncoding="UTF-8"%>
 
           <c:forEach var="reply" items="${nanumBoardReplyList}" varStatus="i" >
             <div class="card mb-3">
-              
               <div class="card-body">
                 <div class="d-flex flex-start">
                   <c:choose>
-                    <c:when  test="${empty reply.user_profile}">
+                    <c:when test="${empty reply.user_profile}">
                       <img
                       class="rounded-circle shadow-1-strong me-3"
                       src="${pageContext.request.contextPath}/upload/noprofileuser.jpg"
@@ -464,7 +462,7 @@ pageEncoding="UTF-8"%>
                                   <div class="modal-body">
                                     <div class="">
                                       <label for="replyText">댓글 내용</label>
-                                      <input type="text" class="form-control" id="commentContent" name="commentContent" placeholder="${reply.comment_content}">
+                                      <input type="text" class="form-control" id="commentContent" name="commentContent" placeholder="${reply.comment_content}" >
                                     </div>
                                     <div class="">
                                       <label for="replyWriter">댓글 작성자</label>

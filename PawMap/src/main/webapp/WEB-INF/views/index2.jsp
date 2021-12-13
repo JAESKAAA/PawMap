@@ -539,13 +539,33 @@ pageEncoding="UTF-8"%>
               overflow:hidden;
               margin:0 auto;">
                 <!-- <img src="images/abandoned2.jpg" alt="" /> -->
-                <img class="img-fluid" src="${pageContext.request.contextPath}/upload/${shelterPic.originalFileName}" 
-                alt=""
 
-                style="    
-                width:100%;
-                height:100%;
-                object-fit:cover" />
+
+                <c:choose>
+                  <c:when  test="${empty shelterPic.originalFileName}">
+                    <img
+                    class="img-fluid"
+                    src="${pageContext.request.contextPath}/upload/noimg_shelter.png"
+                    style="    
+                    width:100%;
+                    height:100%;
+                    object-fit:cover" 
+                    />
+                  </c:when>
+                  <c:otherwise>
+                    <img
+                    class="img-fluid"
+                    src="${pageContext.request.contextPath}/upload/${shelterPic.originalFileName}"
+                    style="    
+                    width:100%;
+                    height:100%;
+                    object-fit:cover" 
+                    />
+                  </c:otherwise>
+                </c:choose>
+
+
+
               <div class="hov-in">
                   <a href="/pawmap/shelter_detail?shelterSeq=${shelterPic.shelterSeq}">
                   <h1 style="color: #ffffff"><strong>
