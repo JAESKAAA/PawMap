@@ -7,7 +7,7 @@ pageEncoding="UTF-8"%>
     <!---------------------------------- 회원가입 폼 -------------------------->
     <section class="vh-100" style="margin-top: 150px;">
       <form lass="mx-1 mx-md-4" action="/pawmap/hospitalJoin" method="post" name="joinForm"
-      id="joinForm" onsubmit="submitJoinForm(this); return false;">
+      id="joinForm" onsubmit="submitHJoinForm(this); return false;">
       <div class="u_container">
         <div class="col-lg-12 col-xl-12">
         <h3 class="u_top-title">제휴병원 가입</h3>
@@ -70,10 +70,10 @@ pageEncoding="UTF-8"%>
                                 <div class="address_input_1_wrap">
                                   <div class="address_input_1_box">
                                     <input class="address_input_1 input w40" name="postNum" readonly="readonly" maxlength="5" placeholder="우편번호">
-                                  </div>
-                                    <button type="button" class="address_button u_button-grey" onclick="execution_daum_address()">
+                                    <button type="button" class="button u_button-grey"
+                                    style="margin-left: 8px; white-space: nowrap;" onclick="execution_daum_address()">
                                       <span style="color: white;">검색</span></button>
-                                  <div class="clearfix"></div>
+                                  </div>
                                 </div>
                                 <div class ="address_input_2_wrap">
                                   <div class="address_input_2_box">
@@ -104,10 +104,18 @@ pageEncoding="UTF-8"%>
                       </tr>
                       <tr>
                         <th> 사업자등록번호 <span>*</span></th>
-                        <td><input required="required" type="tel"
-                          name="comNum" id="user_nickname" placeholder="사업자등록번호" 
-                          class="input w130"></td>
-                    </tr>
+                        <td>
+                          <div class="u_input-button"><input name="comNum" id="com_num" placeholder="사업자등록번호"
+                            type="tel" class="input w220" onkeyup="inputComCheck();">
+                            <button type="button" class="button u_button-grey" onclick="fn_comcheck()">
+                              <span style="color: white;">중복확인</span>
+                            </button>
+                            <input id="comDuplication" type="hidden" name="comDuplication" value="comUncheck">
+                            <br>
+                            <p class="result"><span class="msg6">사업자등록번호 중복확인을 해주세요.</span></p>
+                          </div>
+                        </td>
+                      </tr>
                     </tbody>
                 </table>
                 <div class="u_bottom-button"><a class="u_button u_button-grey" href="/pawmap"><span>취소</span></a>

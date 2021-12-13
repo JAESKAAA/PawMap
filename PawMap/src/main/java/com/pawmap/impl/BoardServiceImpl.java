@@ -182,6 +182,12 @@ public List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain() {
 		return boardMapper.getLatelyBoardListForShelterBoardMain(shelterSeq);
 	}
 
+	@Override
+	public void updateNanumBoardCnt(int boardSeq) {
+		boardMapper.updateNanumBoardCnt(boardSeq);
+		
+	}
+
 
 }
 

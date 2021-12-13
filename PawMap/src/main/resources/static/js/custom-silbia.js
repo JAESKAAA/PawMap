@@ -172,9 +172,48 @@ $(document).ready(function () {
         }
     });
   }
+ 
+
+    /* 회원가입 사업자등록번호 중복 체크 */
+  function fn_comcheck() {
+	console.log
+	("들어옴!!!!")
+    $.ajax({
+      url:'comCheck',
+      data: {comnum:$("#com_num").val()},
+      type:"POST",
+      success:function(data) {
+        var status = $.trim(data);
+        if(status == "fail") {
+          alert("중복된 사업자등록번호입니다.");
+          $("#btnJoin").attr("disabled", true);
+          $(".result .msg6").text("중복되었습니다.");
+          $(".result .msg6").attr("style", "color:#f00");
+		  $("#comDuplication").val("comCheck");
+
+        } else {
+          alert("사용 가능한 사업자등록번호입니다.");
+          $("#btnJoin").attr("disabled", false);
+          $(".result .msg6").text("사용가능합니다.");
+          $(".result .msg6").attr("style", "color:#00f");
+          $("#comDuplication").val("comCheck");
+        }
+      }
+    });
+  }
+  
+  
+    /* comnum중복체크 후 comnum 변경시 다시 중복체크하도록 설정하는 function*/
+  function inputComCheck(){
+  
+  	$("#comDuplication").val("comUncheck");
+  	$(".result .msg6").text("사업자등록번호 중복확인을 해주세요.");
+  	$(".result .msg6").attr("style", "color:#777");
+
+  }
 
 
-// 회원가입 항목별 공백 확인 alert창 스크립트
+// 유저 회원가입 항목별 공백 확인 alert창 스크립트
 function submitJoinForm(form) {
 form.userId.value = form.userId.value.trim();
 if (form.userId.value.length == 0) {
@@ -228,6 +267,71 @@ if($("#nickDuplication").val()!= "nickCheck"){
 
 form.submit();
 }
+
+
+// 병원 회원가입 항목별 공백 확인 alert창 스크립트
+function submitHJoinForm(form) {
+form.userId.value = form.userId.value.trim();
+if (form.userId.value.length == 0) {
+  alert('로그인 아이디를 입력해주세요.');
+  form.userId.focus();
+  return false;
+}
+
+if($("#idDuplication").val()!= "idCheck"){
+	alert("아이디 중복체크를 해주세요.");
+	return false;
+}
+
+form.userPassword.value = form.userPassword.value.trim();
+if (form.userPassword.value.length == 0) {
+  alert('로그인 비밀번호를 입력해주세요.');
+  form.userPassword.focus();
+  return false;
+}
+
+form.userName.value = form.userName.value.trim();
+if (form.userName.value.length == 0) {
+  alert('이름을 입력해주세요.');
+  form.userName.focus();
+  return false;
+}
+form.userEmail.value = form.userEmail.value.trim();
+if (form.userEmail.value.length == 0) {
+  alert('이메일을 입력해주세요.');
+  form.userEmail.focus();
+  return false;
+}
+form.userTelNum.value = form.userTelNum.value.trim();
+if (form.userTelNum.value.length == 0) {
+  alert('전화번호를 입력해주세요.');
+  form.userTelNum.focus();
+  return false;
+}
+form.userNickname.value = form.userNickname.value.trim();
+if (form.userNickname.value.length == 0) {
+  alert('닉네임 입력해주세요.');
+  form.userNickname.focus();
+  return false;
+}
+
+if($("#nickDuplication").val()!= "nickCheck"){
+	alert("닉네임 중복체크를 해주세요.");
+	return false;
+}
+
+if($("#comDuplication").val()!= "comCheck"){
+	alert("사업자등록번호 중복체크를 해주세요.");
+	return false;
+}
+
+
+
+form.submit();
+}
+
+
+
 
 
 

@@ -6,10 +6,10 @@ pageEncoding="UTF-8"%>
     <!---------------------------------- 회원가입 폼 -------------------------->
     <section class="vh-100" style="padding-top: 200px;">
     <form class="mx-1 mx-md-4" action="/pawmap/join" method="post" name="joinForm" id="joinForm"
-    onsubmit="submitJoinForm(this); return false;">
-    <div class="u_container">
-      <div class="col-lg-12 col-xl-12">
-      <h3 class="u_top-title">일반회원 가입</h3>
+      onsubmit="submitJoinForm(this); return false;">
+      <div class="u_container">
+        <div class="col-lg-12 col-xl-12">
+          <h3 class="u_top-title">일반회원 가입</h3>
           <div class="u_join-box ">
               <table class="u_join-table">
                   <tbody>
@@ -63,13 +63,15 @@ pageEncoding="UTF-8"%>
                         </td>
                     </tr>
                       <tr>
+                        <tr>
                           <th>주소</th>
                           <td>
                             <div class="u_input-box-address">
                               <div class="address_input_1_wrap">
                                 <div class="address_input_1_box">
                                   <input class="address_input_1 input w40" name="postNum" readonly="readonly" maxlength="5" placeholder="우편번호">
-                                  <button type="button" class="address_button u_button-grey" onclick="execution_daum_address()">
+                                  <button type="button" class="button u_button-grey"
+                                  style="margin-left: 8px; white-space: nowrap;" onclick="execution_daum_address()">
                                     <span style="color: white;">검색</span></button>
                                 </div>
                               </div>
@@ -111,8 +113,8 @@ pageEncoding="UTF-8"%>
         </div>
       </div>
     </form>
-    </section>
-    <!-- End Main Top -->
+  </section>
+  <!-- End Main Top -->
 
 
   <%@ include file="layout/footer.jsp" %>

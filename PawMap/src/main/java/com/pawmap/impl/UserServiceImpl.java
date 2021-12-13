@@ -84,7 +84,14 @@ public class UserServiceImpl implements UserService{
 	public int emailCheck(String email) throws Exception {
 		return userMapper.emailCheck(email);
 	}
+	
+	// 사업자등록번호 중복 체크
+	@Override
+	public int comCheck(String comnum) throws Exception {
+		return userMapper.comCheck(comnum);
+	}	
 
+	
 	@Override
 	public Map<String, Object> login(Map<String, Object> args) {
 		Map<String, Object> rs = new HashMap<>();
