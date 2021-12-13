@@ -174,8 +174,6 @@
     <!-- 커스텀 JS 파일 - 고결-->
     <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
 
-    <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
-
     <!--주소검색-->
     <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 

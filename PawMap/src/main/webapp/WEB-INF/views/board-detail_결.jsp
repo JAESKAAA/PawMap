@@ -176,12 +176,12 @@ pageEncoding="UTF-8"%>
                                         <c:choose>
                                           <c:when test="${empty principal}">
                                             <div class="d-flex justify-content-between mt-3">
-                                              <button id="btnupdate" onclick="alert('로그인이 필요합니다.')" type="button" class="btn btn-success">등록하기</button>
+                                              <button id="" onclick="alert('로그인이 필요합니다.')" type="button" class="btn btn-success">등록하기</button>
                                             </div>
                                           </c:when>
                                           <c:otherwise>
                                             <div class="d-flex justify-content-between mt-3">
-                                                <button id="btnupdate" type="button" class="btn btn-success">등록하기</button>
+                                                <button id="btn-reply-save" type="button" class="btn btn-success">등록하기</button>
                                             </div>
                                           </c:otherwise>
                                         </c:choose>
