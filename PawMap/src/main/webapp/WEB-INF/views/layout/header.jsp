@@ -60,7 +60,6 @@ pageEncoding="UTF-8"%>
     <![endif]-->
     
 
-    
     <style>
       header,
       nav {
@@ -86,14 +85,11 @@ pageEncoding="UTF-8"%>
         }
      
     </style>
-
   </head>
 
   <body>
-
-    
-   <!-- Header 시작 -->
-   <header id="header" class="main-header header"  style="z-index: 100;">
+  <!-- Header 시작 -->
+  <header id="header" class="main-header header" style="z-index: 100;">
     <nav class="
         navbar navbar-expand-lg 
         fixed-top py-3">
@@ -174,9 +170,46 @@ pageEncoding="UTF-8"%>
             </sec:authorize>
           </ul>
         </div>
-       
       </div>
-     
+      <div class="attr-nav col-lg-3">
+        <ul>
+          <li class="search" style="display: none">
+            <a href="#"><i class="fa fa-search"></i></a>
+          </li>
+          <sec:authorize access="isAnonymous()">
+            <li class="side-menu">
+              <a href="/pawmap/loginForm">
+                <p id="attr-nav-p">로그인</p>
+              </a>
+            </li>
+            <li class="side-menu">
+              <a href="/pawmap/joinForm">
+                <p id="attr-nav-p">회원가입</p>
+              </a>
+            </li>
+          </sec:authorize>
+          <sec:authorize access="isAuthenticated()">
+            <li class="side-menu">
+              <a href="/pawmap/mypage">
+                <p id="attr-nav-p">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
+              </a>
+            </li>
+            <li class="side-menu">
+              <a href="/pawmap/logout">
+                <p id="attr-nav-p">로그아웃</p>
+              </a>
+            </li>
+          </sec:authorize>
+          <sec:authorize access="hasRole('ROLE_ADMIN')">
+            <li class="side-menu">
+              <a href="/pawmap/admin">
+                <p id="attr-nav-p">관리자 페이지</p>
+              </a>
+            </li>
+          </sec:authorize>
+        </ul>
+      </div>
+      </div>
     </nav>
   </header>
   <!-- Header 끝 부분 -->

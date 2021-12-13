@@ -21,7 +21,6 @@ import com.pawmap.VO.UserVO;
 import com.pawmap.service.FileService;
 import com.pawmap.service.PetService;
 import com.pawmap.service.UserService;
-import com.pawmap.util.FileUtils;
 import com.pawmap.util.PetFileUtils;
 
 @Controller

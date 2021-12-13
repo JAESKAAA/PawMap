@@ -32,6 +32,9 @@ public interface UserService {
 	// 이메일 중복 검사
 	public int emailCheck(String email) throws Exception;
 
+	// 사업자등록번호 중복 검사
+	public int comCheck(String comnum) throws Exception;	
+	
 	public UserVO checkDuplicateId(@Param("userId") int userId);
 	
 
