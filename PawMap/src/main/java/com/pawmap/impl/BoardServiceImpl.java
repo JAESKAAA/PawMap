@@ -175,6 +175,13 @@ public List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain() {
 		boardMapper.updateFreeBoardCnt(boardSeq);
 	}
 
+	
+//	=========================================================
+	@Override
+	public List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain(int shelterSeq) {
+		return boardMapper.getLatelyBoardListForShelterBoardMain(shelterSeq);
+	}
+
 
 }
 

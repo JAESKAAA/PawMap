@@ -14,6 +14,97 @@ pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
     
+   <!-- Header 시작 -->
+   <header id="header" class="main-header header" style="z-index: 100;">
+    <nav class="
+        navbar navbar-expand-lg 
+        fixed-top py-3">
+        <div class="container col-lg-9">
+          <div class="navbar-header">
+            <a href="/pawmap" class="navbar-brand text-uppercase font-weight-bold">PAWMAP</a>
+              <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
+            </div>
+            <div id="navbarSupportedContent" 
+                class="collapse navbar-collapse">
+                <ul class="nav navbar-nav ml-auto"
+                    data-in="fadeInDown"
+                    data-out="fadeOutUp">
+                    <li class="nav-item active">
+                      <!-- a태그 스타일이 안먹어 -->
+                      <a href="/pawmap" id="nav-a" class="nav-link text-uppercase font-weight-bold" >Home </a></li>
+                    <li class="nav-item">
+                      <a href="/pawmap/about" id="nav-a" class="nav-link text-uppercase font-weight-bold">회사소개</a></li>
+                    <li class="nav-item">
+                      <a href="/pawmap/search" id="nav-a" class="nav-link text-uppercase font-weight-bold">병원찾기</a></li>
+                    <li class="nav-item">
+                      <a href="contact-us.html" id="nav-a" class="nav-link text-uppercase font-weight-bold">보호소 정보</a></li>
+                    <li class="dropdown"color: rgb(255, 255, 255);">
+                        <a
+                          href="#"
+                          class="nav-link dropdown-toggle arrow"
+                          data-toggle="dropdown"
+                          >커뮤니티</a
+                        >
+                        <!-- style inline으로 -->
+                        <ul class="dropdown-menu"  style="background-color:rgba(0, 0, 0, 0.089);" >
+                          <li style="padding: 3%;"><a href="/pawmap/board/getFreeBoardList"  style="color: #fff; size: 0.8em;">자유게시판</a></li>
+                          <li style="padding: 3%;"><a href="/pawmap/board/getNanumBoardList"  style="color: #fff; size: 0.8em;">나눔게시판</a></li>
+                        </ul>
+                    </li>
+                  </ul>
+            </div>
+       
+      </div>
+        
+      
+         <div class="attr-nav col-lg-3">
+          <ul>
+            <li class="search" style="display: none">
+              <a href="#"><i class="fa fa-search"></i></a>
+            </li>
+            <sec:authorize access="isAnonymous()">
+              <li class="side-menu">
+                <a href="/pawmap/loginForm">
+                  <p id="attr-nav-p">로그인</p>
+                </a>
+              </li>
+              <li class="side-menu">
+                <a href="/pawmap/joinForm">
+                  <p id="attr-nav-p">회원가입</p>
+                </a>
+              </li>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+              <li class="side-menu">
+                <a href="/pawmap/mypage">
+                  <p id="attr-nav-i">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
+                </a>
+              </li>
+              <li class="side-menu">
+                <a href="/pawmap/logout">
+                  <p id="attr-nav-i">로그아웃</p>
+                </a>
+              </li>
+            </sec:authorize>
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+              <li class="side-menu">
+                <a href="/pawmap/admin">
+                  <p id="attr-nav-p">관리자 페이지</p>
+                </a>
+              </li>
+            </sec:authorize>
+          </ul>
+        </div>
+       
+      </div>
+     
+    </nav>
+  </header>
+  <!-- Header 끝 부분 -->
+
+
+
+
 <!-- Basic -->
 
 <head>
@@ -48,6 +139,16 @@ pageEncoding="UTF-8"%>
     <![endif]-->
 
 <style>
+
+header,
+      nav {
+        background:rgb(239 198 120);
+        height: fit-content;
+        font-size:medium;
+        color: rgba(235, 180, 99, 0.842);
+        height: 12%;
+      }
+
 
 
 .line-paint{
@@ -168,8 +269,8 @@ pageEncoding="UTF-8"%>
     <!-- Start Main Top -->
     
     
-    <div class="board-type mt-5">
-        <h1>나눔게시판</h1>
+    <div class="board-type mt-5" >
+        <h1 style="margin-top: 3em;">나눔게시판</h1>
     </div>
 
     <hr class="line-paint">
@@ -209,9 +310,9 @@ pageEncoding="UTF-8"%>
                 <c:forEach var="nanumBoardList" items="${NanumBoardList }">
                 <div class="col-md-6 col-lg-4 col-xl-4">
                     <div class="blog-box">
-                        <div class="blog-img">
-                            <img class="img-fluid" src="images/gyul_pet_toy_001.jpg" alt="" />
-                        </div>
+                        <!-- <div class="blog-img">
+                            <img class="img-fluid" src="${pageContext.request.contextPath}/upload/${nanumBoardFileList.originalFileName}" alt="" />
+                        </div> -->
                         <div class="blog-content">
                             <div class="title-blog">
                                 <h3><a href="getNanumBoard?boardSeq=${nanumBoardList.boardSeq }&boardType=${nanumBoardList.boardType }">제목 : ${nanumBoardList.title}</a></h3>

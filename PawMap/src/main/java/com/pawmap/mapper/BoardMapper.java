@@ -90,5 +90,11 @@ public interface BoardMapper {
 
 	void updateFreeBoardCnt(@Param("boardSeq")int boardSeq);
 
+
+//	=====================================================================
+	
+	List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain
+	(@Param("boardSeq") int boardSeq);
+
 }
 

@@ -99,15 +99,19 @@ public class UserController {
 		
 		System.out.println("index 통과===================");
 		
-		
+		//!참고 : list가져오는것은 조건이 따로 필요없어서 vo를 매개변수로 넣지않아도 해당 list를 DB에서 뽑아올 수 있습니다!
 		List<ShelterVO> shelter = shelterMapper.getShelterList(vo);
 		System.out.println("index - shelter에 담긴값 출력===========" + shelter);
 		
 		List<HashMap<String,Object>> latelyShelterBoardListForMain = boardService.getLatelyBoardListForShelterBoardMain();
 		
-		System.out.println("index의 getShelterSeq값 =============" + vo.getShelterSeq());
+		//** VO에 담긴 값이 없으므로 의미 없는 코드임
+//		System.out.println("index의 getShelterSeq값 =============" + vo.getShelterSeq());
 		
-		 model.addAttribute("shelter", shelterMapper.getShelterList(vo));
+		//103번라인에서 똑같은 코드를 shelter 변수에 저장했기때문에 shelter 변수를 사용하겠습니다.
+//		 model.addAttribute("shelter", shelterMapper.getShelterList(vo));
+		 model.addAttribute("shelter", shelter);
+		
 		 model.addAttribute("shelterPic", latelyShelterBoardListForMain);
 		 
 		 System.out.println("shelterPic==========" + latelyShelterBoardListForMain);
@@ -115,6 +119,8 @@ public class UserController {
 		
 		return "index2";
 	}
+	
+
 	
 
 	//회사 소개페이지로 이동
