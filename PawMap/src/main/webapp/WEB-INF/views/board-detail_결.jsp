@@ -48,7 +48,6 @@ pageEncoding="UTF-8"%>
             <c:if test="${getFreeBoard.boardType eq 'f' }">
             <c:choose>
               <c:when test="${empty freeBoardFileList}">
-                <h1>테스트용 :: 파일이 없음</h1>
 
               </c:when>
               <c:otherwise>
@@ -64,7 +63,7 @@ pageEncoding="UTF-8"%>
               <c:if test="${getNanumBoard.boardType eq 's' }">
                 <c:choose>
                   <c:when test="${empty nanumBoardFileList}">
-                    <h1>테스트용 :: 파일이 없음</h1>
+                    
                   </c:when>
                   <c:otherwise>
                     <c:forEach items="${nanumBoardFileList}" var="fileList" varStatus="i">

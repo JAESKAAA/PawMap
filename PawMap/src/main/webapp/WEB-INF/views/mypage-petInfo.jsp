@@ -22,9 +22,10 @@
         <div class="petInfoContainer">
             <div class="row">
                 <div style="margin-top: 70px; border-style: 3px solid orange ">
-                    <input type="hidden" class="form-control" id="user_id" name="userId" value=${principal.user.userId}>
-                    <input type="hidden" name="boardType" id="board_type" value="p">
-                    <input type="hidden" name="boardSeq" id="board_seq" value="getPetSeq">
+                    <input type="hidden" class="form-control" id="user_id" name="userId" value=${principal.user.userId} />
+                    <input type="hidden" name="boardType" id="board_type" value="p" />
+                    <input type="hidden" name="boardSeq" id="board_seq" value="getPetSeq" />
+
 
                     <!-- 반려동물 프로필 -->
                     <div class="petInfoContainer" style="margin-top: -5%; margin-bottom: -3%;">
@@ -69,7 +70,6 @@
                                     </div>
                                 </div>
                             </c:forEach>
-                            </div>
 
                             <div class="col-md-12 btn_box">
                                 <!-- <div class="pet-account-box"> -->
