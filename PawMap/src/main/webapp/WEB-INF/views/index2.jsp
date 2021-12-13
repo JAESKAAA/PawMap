@@ -97,20 +97,20 @@ pageEncoding="UTF-8"%>
       #slides-shop {
         height: 100vh;
       }
-    </style>
-    <style>
       section {
           visibility: visible;
       }
       .progress-bar {
           background-color: rgb(247, 203, 58);
       }
-    /* <!-- 영상 style --> */
 		
-		.jb-video { position: relative; top: 1%;}
-        video {width:100%}
+	 .jb-video { 
+	 	position: relative; top: 1%;
+	 	}
+      video {
+	      width:100%;
+	      }
 
-  
        /* index컬러 블럭만들기 */
        .about-box-main2 {
         background-color: #fdd572;
@@ -123,8 +123,14 @@ pageEncoding="UTF-8"%>
        .about-box-main {
          margin: 10%;
        }
-  
-     
+        .cover-slides{
+        border-radius: 0;
+        border: 1px solid rgba(204, 156, 22, 0.8);
+    }
+    
+    .fa-search {
+    	cursor:pointer;
+    }
 	  </style>
   </head>
 
@@ -154,7 +160,7 @@ pageEncoding="UTF-8"%>
                     <li class="nav-item">
                       <a href="/pawmap/search" id="nav-a" class="nav-link text-uppercase font-weight-bold">병원찾기</a></li>
                     <li class="nav-item">
-                      <a href="contact-us.html" id="nav-a" class="nav-link text-uppercase font-weight-bold">보호소 정보</a></li>
+                      <a href="/pawmap/shelter" id="nav-a" class="nav-link text-uppercase font-weight-bold">보호소 정보</a></li>
                     <li class="dropdown"color: rgb(255, 255, 255);">
                         <a
                           href="#"
@@ -163,7 +169,7 @@ pageEncoding="UTF-8"%>
                           >커뮤니티</a
                         >
                         <!-- style inline으로 -->
-                        <ul class="dropdown-menu"  style="background-color:rgba(0, 0, 0, 0.089);" >
+                        <ul class="dropdown-menu"  style="background-color:rgba(0, 0, 0, 0.089);     border-color: transparent;" >
                           <li style="padding: 3%;"><a href="/pawmap/board/getFreeBoardList"  style="color: #fff; size: 0.8em;">자유게시판</a></li>
                           <li style="padding: 3%;"><a href="/pawmap/board/getNanumBoardList"  style="color: #fff; size: 0.8em;">나눔게시판</a></li>
                         </ul>
@@ -242,7 +248,7 @@ pageEncoding="UTF-8"%>
                   <br />
                   여러분의 근처에 착한 병원을 찾아보세요.
                 </p>
-                <p><a class="btn custom_btn2" href="#">자세히 보기</a></p>
+                <p><a class="btn custom_btn2" href="/pawmap/search">자세히 보기</a></p>
               </div>
             </div>
           </div>
@@ -264,7 +270,7 @@ pageEncoding="UTF-8"%>
                   <br />
                   
                 </p> -->
-                <p><a class="btn custom_btn2" href="#">자세히 보기</a></p>
+                <p><a class="btn custom_btn2" href="/pawmap/board/getFreeBoardList">자세히 보기</a></p>
               </div>
             </div>
           </div>
@@ -305,7 +311,7 @@ pageEncoding="UTF-8"%>
     <!-- 검색 부분-->
     <div class=" custom_margin">
       <form action="/pawmap/searchDetail" method="get">
-	      <div id="search_bar" class="d-flex justify-content-center">
+	      <div id="search_bar" class="d-flex justify-content-center" style="height: 25vh;">
 	        <div class="search">
 	          <h3 id="search_hostpital" class=" text-uppercase font-weight-bold">
 	            우리 동네 동물병원을 찾아보세요!
@@ -506,6 +512,8 @@ pageEncoding="UTF-8"%>
               </section>
             </div>
           </div>
+  
+  
         </div>
 
   <!--병원소개 페이지 끝 -->
@@ -514,94 +522,44 @@ pageEncoding="UTF-8"%>
     <hr class="custom_hr" />
 
     <!-- Start Instagram Feed  -->
-    <div class="instagram-box">
-      
+
+    
+    
+    <!-- 보호소 정보 표출부분 (css 맞는지 확인요) -->
+    
+    <div class="instagram-box" style=" overflow:hidden;
+      margin:0 auto;">
       <h3>유기동물 보호소를 소개합니다</h3>
-      <br />
-      <div class="main-instagram owl-carousel owl-theme">
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/abandoned2.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/abandoned3.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/abandoned.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/abandoned2.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/abandoned7.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="ins-inner-box">
-            <img src="images/abandoned3.jpg" alt="" />
-            <div class="hov-in">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
- 
-
-
-
-      <!-- 보호소 정보 표출부분 (css 맞는지 확인요) -->
-
-      <div class="instagram-box">
+      <br /><br><br>
         <div class="main-instagram owl-carousel owl-theme">
             <c:forEach items="${shelterPic}" var="shelterPic" varStatus="i">
             <div class="item">
               <div class="ins-inner-box" 
               style="    
-              width:375px;
+              width:300px;
               height:375px;
               overflow:hidden;
               margin:0 auto;">
                 <!-- <img src="images/abandoned2.jpg" alt="" /> -->
-                <img class="img-fluid" src="${pageContext.request.contextPath}/upload/${shelterPic.originalFileName}" alt="" /
+                <img class="img-fluid" src="${pageContext.request.contextPath}/upload/${shelterPic.originalFileName}" 
+                alt=""
+
                 style="    
                 width:100%;
                 height:100%;
-                object-fit:cover">
+                object-fit:cover" />
               <div class="hov-in">
-                <a>
+                  <a href="/pawmap/shelter_detail?shelterSeq=${shelterPic.shelterSeq}">
                   <h1 style="color: #ffffff"><strong>
                     ${shelterPic.shelterName }
-                  </h1></strong>
+                  </strong></h1>
                   <h4 style="color: #ffffff">
                     ${shelterPic.shelterAddress }
                     <br>
                     ${shelterPic.shelterTel } 
                   </h4>
-  
                 </a>
+
               </div>
             </div>
           </div>

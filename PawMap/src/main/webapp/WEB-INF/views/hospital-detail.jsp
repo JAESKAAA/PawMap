@@ -7,54 +7,8 @@ pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
 <spring:eval expression="@environment.getProperty('kakao.app.key')" var="kakaoAppKey"/>
-<!DOCTYPE html>
-<html lang="ko">
-<!-- Basic -->
 
-<sec:authorize access="isAuthenticated()">
-	<sec:authentication property="principal" var="principal"/>
-</sec:authorize>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Site Metas -->
-    <title>PawMap - ${hospital.hospitalName }</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/로고최종_수정.png" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
- 	<!-- Fontawesome CSS-->
-    <link
-      href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
-      rel="stylesheet"
-    />
-    <!-- Bootstrap (부트스트랩) CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <!-- Site (사이트) CSS -->
-    <link rel="stylesheet" href="css/style.css" />
-    <!-- Responsive (반응형) CSS -->
-    <link rel="stylesheet" href="css/responsive.css" />
-    <!-- hospital-search CSS (검색페이지 1) -->
-    <link rel="stylesheet" href="css/hospital-search.css" />
-    <!-- 테이블 부분 css -->
-    <link rel="stylesheet" href="css/footable.bootstrap.css" />
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css" />
-    <!-- 헤더 푸터 효과를위한 css -->
-	<link rel="stylesheet" href="css/custom-jaeseok.css" />
- 
-
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<%@ include file="layout/header.jsp" %>
 
   <style>
 
@@ -82,9 +36,27 @@ pageEncoding="UTF-8"%>
     .a {
       color: black;
     }
+    .main-header{
+    	position:relative;
+    }
+    .service-block-inner::before{
+          background: rgb(239 199 120);
+    }
+    .custom-vet-pic{
+        width: 20rem;
+        height: 20rem;
+  	 	margin: auto
+    }
+    
+    .custom-vet-pic-img{
+        width: 80% !important;
+    	height: 80% !important;
+    }
+    
   </style>
 
 </head>
+
 
 <body>
 <!-- Header 시작 -->
@@ -146,8 +118,7 @@ pageEncoding="UTF-8"%>
                   >커뮤니티</a
                 >
                 <ul class="dropdown-menu">
-                  <li><a href="shop.html">공지사항</a></li>
-                  <li><a href="shop-detail.html">자유게시판</a></li>
+                  <li><a href="/pawmap/board/getFreeBoardList">자유게시판</a></li>
                   <li><a href="cart.html">나눔게시판</a></li>
                 </ul>
               </li>
@@ -200,9 +171,11 @@ pageEncoding="UTF-8"%>
       <!-- End Navigation -->
     </header>
     <!-- Header 끝 부분 -->
+
   
+
       <!-- Start About Page  -->
-      <div class="about-box-main">
+      <div class="about-box-main" style="margin-top:3rem;">
         <div class="container_hospital_detail">
           <div class="row">
             <img class="swing-in-top-fwd" src="images/cat01.jpg" style="width: 1200px; height: auto; -webkit-box-align: center;">
@@ -232,24 +205,24 @@ pageEncoding="UTF-8"%>
               <p class="noo-p">
               <div class="card-body">
                 <div class="media mb-3">
-                  <div class="mr-2">
-                    <i class="fas fa-map-marker-alt fa-2x"></i>
+                  <div class="mr-2 iconbox">
+                    <i class="hdicon fas fa-map-marker-alt fa-2x"></i>
                   </div>
                   <div class="media-body">
                     <p>${hospital.hospitalAddress }</p>
                   </div>
                 </div>
                 <div class="media mb-3">
-                  <div class="mr-2"> 
-                    <i class="fas fa-home fa-2x"></i>
+                  <div class="mr-2 iconbox"> 
+                    <i class="hdicon fas fa-home fa-2x"></i>
                   </div>
                   <div class="media-body">
                     <p>준비중입니다.</p>
                   </div>
                 </div>
                 <div class="media mb-3">
-                  <div class="mr-2"> 
-                    <i class="fas fa-phone-volume fa-2x"></i>
+                  <div class="mr-2 iconbox"> 
+                    <i class="hdicon fas fa-phone-volume fa-2x"></i>
                   </div>
                   <div class="media-body">
                     <p>${hospital.hospitalTelNum }</p>
@@ -263,15 +236,15 @@ pageEncoding="UTF-8"%>
           <c:if test="${hospital.hospitalType == 'H'}">
             <div class="row" style="margin-top: 5%; margin-bottom: 2%;">
               <div class="col-4" style="float: none; margin:0 auto;">
-                <a href="#menu1" style="color: black;"><h3 class="h3">병원 정보</h3></a>
+                <a href="#menu1" style="color: #555;"><h3 class="h3">병원 정보</h3></a>
                   <div class="service-block-inner-a"></div>
               </div>
               <div class="col-4">
-                <a href="#menu2" style="color: black;"><h3 class="h3">수의사(${fn:length(vetList) })</h3></a>
+                <a href="#menu2" style="color: #555;"><h3 class="h3">수의사(${fn:length(vetList) })</h3></a>
                   <div class="service-block-inner-b"></div>
               </div>
               <div class="col-4">
-                <a href="#review-start" style="color: black;"><h3 class="h3">리뷰(${reviewSize})</h3></a>
+                <a href="#review-start" style="color: #555;"><h3 class="h3">리뷰(${reviewSize})</h3></a>
                   <div class="service-block-inner-b"></div>
               </div>
             </div>
@@ -282,14 +255,14 @@ pageEncoding="UTF-8"%>
             <div class="row my-5">
                 <div class="col-sm-8 col-lg-6">
                   <div class="service-block-inner">
-                      <h3 style="margin-bottom: 3%;">위치</h3>
+                      <h3 class="hosdeh3" style="">위치</h3>
                       <div id="map" style="max-width: 100%; 
                       height: 500px; "></div>
                   </div>
                 </div>
                 <div class="col-sm-8 col-lg-6">
                   <div class="service-block-inner">
-                      <h3 style="margin-bottom: 3%;">진료시간</h3>
+                      <h3 class="hosdeh3" >진료시간</h3>
                       <p>월 : 09:00 ~ 17 : 00</p>
                       <p>화 : 09:00 ~ 17 : 00</p>
                       <p>수 : 09:00 ~ 17 : 00</p>
@@ -315,15 +288,15 @@ pageEncoding="UTF-8"%>
                       <div class="row profile" >
 						<c:forEach items="${vetList }" var="vet">
 	                        <div class="col-md-4" >
-	                          <div class="profile-sidebar">
+	                          <div class="profile-sidebar" style="background-color: inherit;">
 	                            <!-- SIDEBAR USERPIC -->
-	                            <div class="profile-userpic">
+	                            <div class="profile-userpic custom-vet-pic">
 	                            	<c:choose>
 	                            		<c:when test="${empty vet.originalFileName}">
-	                           		   		<img src="images/dogDoctor.jpg" class="img-responsive" style="width: 70%" alt="">
+	                           		   		<img src="images/dogDoctor.jpg" class="img-responsive custom-vet-pic-img" alt="">
 	                           			</c:when>
 	                           			<c:otherwise>
-	                           			    <img src="${pageContext.request.contextPath}/upload/${vet.originalFileName}" class="img-responsive" style="width: 70%" alt="">
+	                           			    <img src="${pageContext.request.contextPath}/upload/${vet.originalFileName}" class="img-responsive custom-vet-pic-img" alt="">
 	                           			</c:otherwise>
 	                            	</c:choose>
 	                            </div>
@@ -357,7 +330,7 @@ pageEncoding="UTF-8"%>
                         <h4 class="text-dark mb-0" id="review-start">리뷰 수 ( ${reviewSize} )</h4>
                       </div>
               
-                      <!-- 댓글 다는곳 시작 -->
+                      <!-- 리뷰 다는곳 시작 -->
                       <c:choose>
                         <c:when test="${empty principal}">
                           
@@ -369,7 +342,7 @@ pageEncoding="UTF-8"%>
                                     <form action="insertHospitalReview" method="post" style="width: 750px;">
                                       <input type="hidden" name="hospitalSeq"  value="${hospital.hospitalSeq}">
                                       <input type="hidden" name="comNum"  value="${hospital.hospitalComNum}">
-                                      <input type="hidden" name="userId"  value="${principal.user.userId}">
+                                      <input type="hidden" id="hiddenPrincipalUserId" name="userId"  value="${principal.user.userId}">
                                       <input type="hidden" name="userNickname"  value="${principal.user.userNickname}">
                                         <div class="card-body p-4">
                                             <div class="mb-2">
@@ -428,9 +401,10 @@ pageEncoding="UTF-8"%>
                       </c:choose>
                       
         
-                    <!-- 댓글 다는곳 종료 -->
+                    <!-- 리뷰 다는곳 종료 -->
         
-                    <!-- ===============댓글 리스트 출력 시작================== -->
+                    <!-- ===============리뷰 리스트 출력 시작================== -->
+                    <input type="hidden" id="hiddenHospitalReviewList" value="${fn:length(hospitalReviewList)}">
                       <c:forEach var="review" items="${hospitalReviewList}" varStatus="i" >
                         <div class="card mb-3">
                           <div class="card-body">
@@ -465,9 +439,26 @@ pageEncoding="UTF-8"%>
                                   </h6>
                                   <p class="mb-5"><fmt:formatDate value="${review.regDate }" pattern="yyyy-MM-dd"/></p>
                                 </div>
+
+                                <!-- 좋아요 하는곳 -->
+                                
+                                <div class="d-flex align-items-left">
+                                  <form>
+                                    <input type="hidden" id="hiddenReviewSeq${i.index}" value="${review.review_seq}"/>
+                                    <input type="hidden" class="hiddenComNum"  value="${review.com_num}"/>
+                                      <img src="${pageContext.request.contextPath}/upload/like_btn_no.png" 
+                                           id="btn_like" align="left" style="cursor:pointer; width: 20px;"
+                                           class="ml-3"
+                                           onclick="doLike($('#hiddenReviewSeq${i.index}').val(),$('.hiddenComNum').val(),$('#hiddenPrincipalUserId').val())"
+                                           >
+                                    </form>
+                                    <p id="likeCount${i.index}" style="cursor:pointer; width: 20px;" >${review.likeCount}</p>  
+
+                                    <!-- <h1>${review}</h1>   -->
+
+                                </div>
                                 <div class="d-flex justify-content-between align-items-center">
                                   <p class="small mb-0" style="color: #aaa;">
-                                    
                                     <c:if test="${review.user_id == principal.user.userId}">
                                         <form action="deleteHospitalReview" method="POST">
                                           <input type="hidden"  name="reviewSeq" value="${review.review_seq}"/>
@@ -521,7 +512,7 @@ pageEncoding="UTF-8"%>
                       </c:forEach>
         
         
-                      <!-- ===============댓글 리스트 출력 종료================== -->
+                      <!-- ===============리뷰 리스트 출력 종료================== -->
         
         
                     </div>
@@ -730,6 +721,61 @@ pageEncoding="UTF-8"%>
 	         map.setCenter(coords);
 	     } 
 	 });    
+
+
+   
+   // 좋아요 로직
+   function doLike(seq,comNum,userId){
+     console.log(seq,comNum,userId);
+
+     // 로그인 안되어있을경우 좋아요 못하게 방지
+    if(typeof userId == "undefined" || userId == null || userId == ""){
+      alert("로그인후 이용해 주세요");
+    }else{
+      // json으로 뿌릴거임
+      data = {
+        "reviewSeq" : seq,
+        "comNum" : comNum,
+        "userId" : userId
+      }
+      console.log(data);
+      $.ajax({
+        type : "POST",
+        url : "/pawmap/clickLike",
+        contentType: 'application/json',
+        dataType : "json",
+        data : JSON.stringify(data),
+        success : function(data){
+          console.log(data);
+
+          // json 데이터가 1 오류임
+          if(data['1'] == 1 ){
+            alert("오류가 발생했습니다.");
+          } else{
+
+            // 리뷰 리스트 사이즈 얻어와서 포문돌림
+            var size = $("#hiddenHospitalReviewList").val();
+            console.log("size ====== "+size);
+            console.log(data);
+  
+            for(var i = 0; i<size; i++){
+              
+              // 데이터로 받아온 카운트를(좋아요갯수) 해당 태그에 문자로 새로넣어줌
+              var htmlString = data[i].count;
+              $("#likeCount"+i).html(htmlString);
+            }
+          }
+
+        },
+        error : function(error){
+  
+        }
+      });
+
+    }
+
+   }
+
 	</script>
 </body>
 </html>

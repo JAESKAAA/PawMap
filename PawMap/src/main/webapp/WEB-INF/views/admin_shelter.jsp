@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%>
 <%@ include file="layout/admin_header.jsp" %>
 
   <!--보호소정보관리 페이지 시작-->
-  <div class="tbl-header" style="margin-top:149px;"> 
+  <div class="tbl-header"> 
       <div class="row row-adminindex">
         <div>
           <h1 class="adminpagetoph1" style=" margin-top: 0px;">보호소 정보 관리</h1>
@@ -93,7 +93,7 @@ pageEncoding="UTF-8"%>
     </div>
     
      <!-- 페이지네이션 부분 시작-->
-     <div class="page-div hospital_pagination_custom">
+     <div class="page-div hospital_pagination_custom" style="margin-top:40px;">
       <ul class="pagination justify-content-center">
           <c:if test="${pageMaker.prev }">
               <li class="page-item pagination_button">

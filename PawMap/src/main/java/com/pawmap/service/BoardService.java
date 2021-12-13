@@ -72,4 +72,10 @@ public interface BoardService {
 	List<BoardVO> getCommunityBoardList(BoardVO vo, Criteria cri);
 		
 	List<HashMap<String, Object>> getLatelyCommunityBoardListForBoardMain();	
+	
+//	=====================================================
+	
+	List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain(int shelterSeq);
+
+	
 }

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.pawmap.mapper.LikeMapper">
+
+	<select id="checkUserId" resultType="com.pawmap.VO.LikeVO">
+		SELECT * FROM LIKE_TABLE
+		WHERE review_seq = #{reviewSeq}
+		AND
+		com_num = #{comNum}
+		AND
+		user_id = #{userId}
+	</select>
+	
+	<insert id="insertLike">
+		INSERT INTO like_table(review_seq, user_id, com_num, like_check )
+		VALUES (
+			#{reviewSeq},
+			#{userId},
+			#{comNum},
+			1
+		)
+	</insert>
+	
+	<select id="getNewStatusLikeList" resultType="com.pawmap.VO.LikeVO">
+		SELECT review_seq,com_num, sum(like_check)AS count FROM pawmap.like_table
+		WHERE com_num = #{comNum}
+		group by review_seq
+		order by review_seq DESC
+	</select>
+	
+	<delete id="deleteLike">
+		DELETE FROM like_table
+		WHERE
+		review_seq = #{reviewSeq}
+		AND
+		com_num = #{comNum}
+	</delete>
+	
+	<select id="getLatelyReviewSeq" resultType="int">
+		SELECT IFNULL(MAX(review_seq) ,0) + 1
+			FROM hospital_review
+			WHERE com_num = #{comNum}
+	</select>
+	
+	<insert id="makeLikeTable">
+		INSERT INTO like_table(review_seq, user_id, com_num, like_check )
+		VALUES (
+			#{reviewSeq},
+			"default",
+			#{comNum},
+			0
+		)
+	</insert>
+	
+	<update id="disCountLike" parameterType="com.pawmap.VO.LikeVO">
+		UPDATE like_table
+		SET
+		like_check = 0
+		WHERE
+		com_num = #{comNum}
+		AND
+		user_id = #{userId}
+		AND
+		review_seq = #{reviewSeq}
+	</update>
+
+	<update id="updateIncreaseCountLike" parameterType="com.pawmap.VO.LikeVO">
+		UPDATE like_table
+		SET
+		like_check = 1
+		WHERE
+		com_num = #{comNum}
+		AND
+		user_id = #{userId}
+		AND
+		review_seq = #{reviewSeq}
+	</update>
+
+  </mapper>	
+

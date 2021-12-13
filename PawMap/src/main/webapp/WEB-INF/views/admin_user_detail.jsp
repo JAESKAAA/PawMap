@@ -4,7 +4,7 @@ pageEncoding="UTF-8"%>
 <%@ include file="layout/admin_header.jsp" %>
 <!--관리자가 회원정보 수정 페이지 시작...-->
 <!--회원 정보 수정 제목 시작-->
-<div class="u_container" style="border-radius:0px; margin-top:149px;">
+<div class="u_container" style="border-radius:0px;">
 	<div class="tbl-header" style="margin-left:0px; margin-right:0px;"> 
 		<div class="row row-adminindex">
 			<div>
@@ -32,7 +32,7 @@ pageEncoding="UTF-8"%>
 					<table class="u_join-table" style="margin-left: auto; margin-right: auto; text-align: center; border-top: none; border-bottom:none;">
 					<tr>
 						<td>ID:</td>
-						<td><input id="userID" type="text" name="userId" value="${user.userId }" read></td>
+						<td><input id="userID" type="text" name="userId" value="${user.userId }" readonly></td>
 					</tr>				
 					<tr>
 						<td>이름: </td>

@@ -77,7 +77,7 @@ pageEncoding="UTF-8"%>
     </div>
   <!-- admin페이지의 header 시작... style="justify-content: space-between; width: 1519px"-->
   <div> 
-  <header class="main-header">
+  <header> <!-- header class="main-header"  네브 바가 깨져서 이렇게 처리함.-->
     <!-- Start Navigation --> <!--하기 navbar navbar-expand-lg를 md로 교체-->
     <nav class="navbar navbar-expand-md navbar-light bg-light navbar-default bootsnav">
         <div class="container">

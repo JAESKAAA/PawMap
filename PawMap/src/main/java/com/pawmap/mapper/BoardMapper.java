@@ -96,5 +96,10 @@ public interface BoardMapper {
 	
 	List<HashMap<String, Object>> getLatelyCommunityBoardListForBoardMain();	
 	
+//	=====================================================================
+	
+	List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain
+	(@Param("boardSeq") int boardSeq);
+
 }
 

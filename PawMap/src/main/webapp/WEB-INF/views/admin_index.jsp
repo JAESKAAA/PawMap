@@ -4,7 +4,7 @@ pageEncoding="UTF-8"%>
 <%@ include file="layout/admin_header.jsp" %>
 
   <!--adminmainpage-->
-  <div class="my-account-box-main" style="margin-top:149px;">
+  <div class="my-account-box-main">
     <div class="container">
       <div class="row row-adminindex">
             <div class="col-lg-4 col-md-12">
@@ -65,7 +65,7 @@ pageEncoding="UTF-8"%>
       </div>
     </div>
   <!-- Start showing the summary of the each section(병원관리, 유저관리, 등등)-->
-  <div class="cart-box-main">
+<!--  <div class="cart-box-main">
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-lg-6 mb-3">
@@ -88,13 +88,13 @@ pageEncoding="UTF-8"%>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach var="user" items="${userList }"> <!--comment1. 시작. 이 tbody section에서 최근 가입한 3명의 유저정도가 보였으면 희망하며. 해당 유저 이름이나 아이디 누를 시 수정 가능하게 구현 하고 싶음.. -->
-                                        <tr>
+                                    <c:forEach var="user" items="${userList }">--> <!--comment1. 시작. 이 tbody section에서 최근 가입한 3명의 유저정도가 보였으면 희망하며. 해당 유저 이름이나 아이디 누를 시 수정 가능하게 구현 하고 싶음.. -->
+<!--                                        <tr>
                                             <td class="admin-userseq">${user.userSeq }</td>
                                             <td class="admin-username">${user.userName }</td>
                                             <td class="admin-userregdate">${user.userRegDate }</td>
-                                        </tr> <!--comment1. 끝.-->
-                                    </c:forEach>  
+                                        </tr> --> <!--comment1. 끝.-->
+<!--                                    </c:forEach>  
                                 </tbody>
                             </table>
                         </div>
@@ -175,5 +175,5 @@ pageEncoding="UTF-8"%>
         </div>
     </div>
   </div>
-
+-->
 <%@ include file="layout/admin_footer.jsp" %>

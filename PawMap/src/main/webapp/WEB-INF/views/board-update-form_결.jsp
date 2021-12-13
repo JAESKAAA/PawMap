@@ -107,8 +107,6 @@ pageEncoding="UTF-8"%>
             <c:if test="${getBoard.boardType == 's'}">
                 <input id="update-nanum-board" type="button" name="btn-submit" value="수정완료" class="btn btn-complete">
             </c:if>
-
-            ${getBoard.boardSeq}
                     </div>
                 </div>
             </form>
@@ -131,8 +129,6 @@ pageEncoding="UTF-8"%>
                                                     <input class="form-control btn-file-upload" name="uploadFiles" multiple="multiple" type="file">  
                                                     <input type="hidden" name="userId"  value="${getBoard.userId}"> 
                                                     <input type="hidden" name="boardSeq"  value="${getBoard.boardSeq}">
-                                                    <h1>${getBoard.userId}</h1>
-                                                    <h1>${getBoard.boardSeq}</h1>
                                                 </div>  
                                                 <div class="entry input-group upload-input-group">  
                                                     <button type="submit" class="btn btn-outline-danger">파일 등록</button>
@@ -184,7 +180,6 @@ pageEncoding="UTF-8"%>
             <c:choose>
                 <c:when test="${empty fileList}">
                     <form action="updateNanumBoardFormInsertFiles" method="POST" enctype="multipart/form-data">
-                        <h5>파일이 없을떄 ${fileList}</h5>
                         <div class="r form-group ml-5">
                             <div class="col-sm-10 col-sm-offset-2">
                                 <div class="row form-group">  
@@ -195,8 +190,6 @@ pageEncoding="UTF-8"%>
                                                     <input class="form-control btn-file-upload" name="uploadFiles" multiple="multiple" type="file">  
                                                     <input type="hidden" name="userId"  value="${getBoard.userId}"> 
                                                     <input type="hidden" name="boardSeq"  value="${getBoard.boardSeq}">
-                                                    <h1>${getBoard.userId}</h1>
-                                                    <h1>${getBoard.boardSeq}</h1>
                                                 </div>  
                                                 <div class="entry input-group upload-input-group">  
                                                     <button type="submit" class="btn btn-outline-danger">파일 등록</button>

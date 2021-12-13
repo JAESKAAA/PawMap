@@ -6,7 +6,7 @@ pageEncoding="UTF-8"%>
   <!--adminmainvetmanagement-->
 <!--관리자가 회원정보 수정 페이지 시작...-->
 <!--회원 정보 수정 제목 시작-->
-<div class="u_container" style="border-radius:0px; margin-top:149px;">
+<div class="u_container" style="border-radius:0px;">
 	<div class="tbl-header" style="margin-left:0px; margin-right:0px;"> 
 		<div class="row row-adminindex">
 			<div>

@@ -6,7 +6,7 @@ pageEncoding="UTF-8"%>
 
 
         <!--관리자의 회원정보 관리 페이지 시작...-->
-        <div class="tbl-header" style="margin-top:149px;"> 
+        <div class="tbl-header"> 
             <div class="row row-adminindex">
             <div>
                 <c:if test="${userList[0].userType == 'N'}">
@@ -89,7 +89,7 @@ pageEncoding="UTF-8"%>
         </div>
     
      <!-- 페이지네이션 부분 시작-->
-	    <div class="page-div hospital_pagination_custom">
+	    <div class="page-div hospital_pagination_custom" style="margin-top:40px;">
 		    <ul class="pagination justify-content-center">
 		        <c:if test="${pageMaker.prev }">
 		            <li class="page-item pagination_button">

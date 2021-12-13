@@ -36,8 +36,10 @@ pageEncoding="UTF-8"%>
     <h1>프린시펄 유저 닉 ${principal.user.userNickname}</h1>
     <h1>병원아이디 ${scheduleList[0].userId}</h1>
     <h1>병원사업자번호 ${scheduleList[0].comNum}</h1> -->
-    <div class="board-type  mt-5">
+
+    <div class="board-type  mt-5" style="padding-top: 150px;">
         <h1> ${hosNickname[0].user_name} 예약 하기  </h1>
+        <p style="line-height: 1.5;">
         <p>
             <br>
             1. 달력의 날짜를 눌러 예약 가능한 시간을 확인해 주세요. (예약 가능한 시간은 버튼이 활성화 되어있습니다.)

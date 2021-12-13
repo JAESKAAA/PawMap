@@ -81,6 +81,9 @@
 				SELECT IFNULL(MAX(file_seq),0) +1
 					FROM file v
 				WHERE board_seq = #{boardSeq}
+
+				AND
+				board_type = #{boardType}
 			),
 			IFNULL(#{boardType},'t'),
 			#{userId},

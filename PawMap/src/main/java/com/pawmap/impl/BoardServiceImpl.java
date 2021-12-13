@@ -193,6 +193,13 @@ public List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain() {
 			
 	return boardMapper.getLatelyCommunityBoardListForBoardMain();
 	}	
+	
+//	=========================================================
+	@Override
+	public List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain(int shelterSeq) {
+		return boardMapper.getLatelyBoardListForShelterBoardMain(shelterSeq);
+	}
+
 
 }
 

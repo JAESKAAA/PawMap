@@ -11,26 +11,27 @@ pageEncoding="UTF-8"%>
 
 <!--관리자의 커뮤니티 관리 페이지 시작...-->
             <form id="listForm" action="getCommunityBoardList" name="POST">
-              <div class="tbl-header" style="margin-top:149px;"> 
+              <div class="tbl-header"> 
                 <div class="row row-adminindex">
                   <div>
-                    <h1 class="adminpagetoph1" style=" margin-top: 0px;">커뮤니티 게시판 관리</h1>
+                    <h1 class="adminpagetoph1" style=" margin-top: 0px;">커뮤니티 게시판 관리 - 자유게시판</h1>
                   </div>
-                  <div>
+<!--                 <div>
                     <h1 class="adminpagetoph1" style="margin-left: 20px; margin-right: 20px; margin-top: 0px"> - </h1>
                   </div>
                   <div>  
-                    <h1 class="adminpagetoph1" style="margin-top: 0px;">자유게시판</h1><!--select tag에 있는 option들이 하기에 버튼을 누르면 자연스럽게 이 영역도 바뀌어야 함. dec 7th 19:38pm-->
-                  </div>
+                    <h1 class="adminpagetoph1" style="margin-top: 0px;">자유게시판</h1>   --><!--select tag에 있는 option들이 하기에 버튼을 누르면 자연스럽게 이 영역도 바뀌어야 함. dec 7th 19:38pm-->
+<!--                  </div> -->
                 </div>
               </div>
                 <!-- search 영역 시작-->
                 <div class="row tbl-header">
-                  <div class="main-search-input-wrap">
+                  <div class="main-search-input-wrap" style="margin-top: 30px;">
+
                     <table>
                       <tr>
                         <!--게시판 select 창 시작-->
-                        <td style="padding-right: 10px;"><!--
+                        <td style="padding-right: 0x;"><!-- padding-right과 left에 10px에서 0px 로 수정.... dec 13th...
                           <select class="main-search-input-select fl-wrap main-search-input-item" style="border-style:none;">
                             <option>-관리할 게시판을 선택하세요-</option>
                             <option>공지 게시판</option>
@@ -40,7 +41,7 @@ pageEncoding="UTF-8"%>
                         </td>
                         <!--select 창 끝-->
                         <!--search 타입 영역 시작-->
-                        <td style="padding-left: 10px;">
+                        <td style="padding-left: 0x;">
                           <div class="main-search-input fl-wrap">
                             <div class="main-search-input-item"> 
                                 <input type="text" value="" placeholder="검색창입니다."> 
@@ -53,6 +54,7 @@ pageEncoding="UTF-8"%>
                         </td>
                       </tr>
                     </table>
+
                   </div>
                 </div>
                 <!--search 영역 finished...-->
@@ -80,7 +82,7 @@ pageEncoding="UTF-8"%>
               <tr>
                 <td class="admin-boardseq">${board.boardSeq }</td>
                 <td class="admin-boardid">${board.userId }</td>
-                <td class="admin-title"><a href="#" class="oneononecounsel">${board.title }</a></td>
+                <td class="admin-title"><a href="#" class="oneononecounsel">${board.title }</a></td> <!--dec13 href에 값 넣었음. 참고는 admin_user.jsp 참고.. board/updateFreeAndNanumBoardForm   /board/getFreeBoard?  /pawmap/board/getFreeBoard?title=${board.title}-->
                 <td class="admin-regdate"><fmt:formatDate value="${board.regDate }" pattern="yyyy-MM-dd KK:mm:ss"/></td>
                 <td class="admin-useractionbutton"><button class="adminpagebuttonformanage" type="button" onclick="location.href='#'">삭제</button></td>
               </tr>
@@ -90,7 +92,7 @@ pageEncoding="UTF-8"%>
     </div>
   </form>
      <!-- 페이지네이션 부분 시작-->
-     <div class="page-div hospital_pagination_custom">
+     <div class="page-div hospital_pagination_custom" style="margin-top:40px;">
       <ul class="pagination justify-content-center">
           <c:if test="${pageMaker.prev }">
               <li class="page-item pagination_button">
