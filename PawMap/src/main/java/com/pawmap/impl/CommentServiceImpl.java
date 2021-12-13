@@ -67,6 +67,12 @@ public class CommentServiceImpl implements CommentService {
 		return commentMapper.getReplyListByNanumBoardSeq(boardSeq);
 	}
 
+	@Override
+	public void deleteCommentsByNanumSeq(int boardSeq) {
+		commentMapper.deleteCommentsByNanumSeq(boardSeq);
+		
+	}
+
 	
 	
 	

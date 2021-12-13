@@ -3,8 +3,8 @@ pageEncoding="UTF-8"%>
 
 <%@ include file="layout/header.jsp" %>
 
-  <!---------------------------------- 회원가입 폼 -------------------------->
-  <section class="vh-100" style="padding-top: 200px;">
+    <!---------------------------------- 회원가입 폼 -------------------------->
+    <section class="vh-100" style="padding-top: 200px;">
     <form class="mx-1 mx-md-4" action="/pawmap/join" method="post" name="joinForm" id="joinForm"
       onsubmit="submitJoinForm(this); return false;">
       <div class="u_container">

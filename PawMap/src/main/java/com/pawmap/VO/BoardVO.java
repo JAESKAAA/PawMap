@@ -28,6 +28,7 @@ public class BoardVO {
 	private String scheduleTime;
 	private int cnt;
 	private int count;
+	private String originalFilename;
 
 	
 	private MultipartFile uploadFiles;

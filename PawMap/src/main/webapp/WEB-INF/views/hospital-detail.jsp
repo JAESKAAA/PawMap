@@ -1,181 +1,68 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 
-<spring:eval expression="@environment.getProperty('kakao.app.key')" var="kakaoAppKey"/>
-
+<!-- jstl 함수사용을 위한 설정 -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+    
 <%@ include file="layout/header.jsp" %>
-
-  <style>
-
-    .container_hospital_detail {
-      padding: 0;
-      width: 1200px;
-      max-width: 100%; 
-      height: auto;
-      object-fit: cover;
-
-      padding-right: 15px;
-      padding-left: 15px;
-      margin-right: auto;
-      margin-left: auto;
-    }
-    img { 
-      max-width: 100%; 
-      height: auto; 
-    }
-    .h3 {
-      font-size: large;
-      text-align: center;
-    }
-
-    .a {
-      color: black;
-    }
-    .main-header{
-    	position:relative;
-    }
-    .service-block-inner::before{
-          background: rgb(239 199 120);
-    }
-    .custom-vet-pic{
-        width: 20rem;
-        height: 20rem;
-  	 	margin: auto
-    }
     
-    .custom-vet-pic-img{
-        width: 80% !important;
-    	height: 80% !important;
-    }
-    
-  </style>
+<style>
 
-</head>
+  .container_hospital_detail {
+    padding: 0;
+    width: 1200px;
+    max-width: 100%; 
+    height: auto;
+    object-fit: cover;
 
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  img { 
+    max-width: 100%; 
+    height: auto; 
+  }
+  .h3 {
+    font-size: large;
+    text-align: center;
+  }
 
-<body>
-<!-- Header 시작 -->
-    <header class="main-header">
-      <!-- Start Navigation -->
-      <nav
-        class="
-          navbar navbar-expand-lg navbar-light
-          bg-light
-          navbar-default
-          bootsnav
-        "
-      >
-        <div class="container">
-          <!-- Start Header Navigation -->
-          <div class="navbar-header">
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbar-menu"
-              aria-controls="navbars-rs-food"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <i class="fa fa-bars"></i>
-            </button>
-            <!--사이트 로고 부분-->
-            <a class="navbar-brand" href="/pawmap">
-              <div class="main_logo_box"></div>
-            </a>
-          </div>
-          <!-- End Header Navigation -->
-
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="navbar-menu">
-            <ul
-              class="nav navbar-nav ml-auto"
-              data-in="fadeInDown"
-              data-out="fadeOutUp"
-            >
-              <li class="nav-item active">
-                <a class="nav-link" href="/pawmap">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">회사소개</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link"  id="findHospital" href="/pawmap/search">병원찾기</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact-us.html">보호소 정보</a>
-              </li>
-              <li class="dropdown">
-                <a
-                  href="#"
-                  class="nav-link dropdown-toggle arrow"
-                  data-toggle="dropdown"
-                  >커뮤니티</a
-                >
-                <ul class="dropdown-menu">
-                  <li><a href="/pawmap/board/getFreeBoardList">자유게시판</a></li>
-                  <li><a href="cart.html">나눔게시판</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <!-- /.navbar-collapse -->
-
-          <!-- Start Atribute Navigation -->
-          <div class="attr-nav">
-            <ul>
-              <li class="search" style="display: none">
-                <a href="#"><i class="fa fa-search"></i></a>
-              </li>
-              <sec:authorize access="isAnonymous()">
-                <li class="side-menu">
-                  <a href="/pawmap/loginForm">
-                    <p>로그인</p>
-                  </a>
-                </li>
-                <li class="side-menu">
-                  <a href="/pawmap/joinForm">
-                    <p>회원가입</p>
-                  </a>
-                </li>
-              </sec:authorize>
-              <sec:authorize access="isAuthenticated()">
-                <li class="side-menu">
-                  <a href="/pawmap/mypage">
-                    <p>마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
-                  </a>
-                </li>
-                <li class="side-menu">
-                  <a href="/pawmap/logout">
-                    <p>로그아웃</p>
-                  </a>
-                </li>
-              </sec:authorize>
-              <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <li class="side-menu">
-                  <a href="/pawmap/admin">
-                    <p>관리자 페이지</p>
-                  </a>
-                </li>
-              </sec:authorize>
-            </ul>
-          </div>
-          <!-- End Atribute Navigation -->
-        </div>
-      </nav>
-      <!-- End Navigation -->
-    </header>
-    <!-- Header 끝 부분 -->
+  .a {
+    color: black;
+  }
+  .main-header{
+    position:relative;
+  }
+  .service-block-inner::before{
+        background: rgb(239 199 120);
+  }
+  .custom-vet-pic{
+      width: 20rem;
+      height: 20rem;
+     margin: auto
+  }
+  
+  .custom-vet-pic-img{
+      width: 80% !important;
+    height: 80% !important;
+  }
+  .reviewimg{
+    margin-bottom: 50px;
+    margin-left: 20px;
+    margin-top: 10px;
+  }
+  
+</style>
 
   
 
       <!-- Start About Page  -->
-      <div class="about-box-main" style="margin-top:3rem;">
+      <div class="" style="margin-top:7rem;">
         <div class="container_hospital_detail">
           <div class="row">
             <img class="swing-in-top-fwd" src="images/cat01.jpg" style="width: 1200px; height: auto; -webkit-box-align: center;">
@@ -188,13 +75,13 @@ pageEncoding="UTF-8"%>
                     <c:when test="${empty principal}">
                       <div style="display:inline-block;">
                         <!-- <a  class="nav-link" href='#' onclick="noLoginUserCantWrite(); return false">글쓰러가기</a> -->
-                        <a href="#"class="btn btn-warning" onclick="noLoginUserCantWrite(); return false"><i class="glyphicon glyphicon-bell"></i> 예약하기</a>
+                        <a href="#"class="btnres" onclick="noLoginUserCantWrite(); return false" class="btnresa"><i class="glyphicon glyphicon-bell"></i> 예약하기</a>
                       </div>
                     </c:when>
                     <c:otherwise>
-                      <div style="display:inline-block;">
+                      <div style="display:inline-block;" class="btnres">
                         <!-- <a  class="nav-link" href="/pawmap/board/form">글쓰러가기</a> -->
-                        <a href="/pawmap/reservation/choose?comNum=${hospital.hospitalComNum}&hospitalSeq=${hospital.hospitalSeq }"class="btn btn-warning"><i class="glyphicon glyphicon-bell"></i> 예약하기</a>
+                        <a href="/pawmap/reservation/choose?comNum=${hospital.hospitalComNum}&hospitalSeq=${hospital.hospitalSeq }" class="btnresa"><i class="glyphicon glyphicon-bell"></i> 예약하기</a>
                       </div>
                     </c:otherwise>
                   </c:choose>
@@ -241,11 +128,11 @@ pageEncoding="UTF-8"%>
               </div>
               <div class="col-4">
                 <a href="#menu2" style="color: #555;"><h3 class="h3">수의사(${fn:length(vetList) })</h3></a>
-                  <div class="service-block-inner-b"></div>
+                  <div class="service-block-inner-a"></div>
               </div>
               <div class="col-4">
                 <a href="#review-start" style="color: #555;"><h3 class="h3">리뷰(${reviewSize})</h3></a>
-                  <div class="service-block-inner-b"></div>
+                  <div class="service-block-inner-a"></div>
               </div>
             </div>
 	     	  </c:if>
@@ -353,16 +240,17 @@ pageEncoding="UTF-8"%>
                                               <c:choose>
                                                 <c:when test="${empty principal.user.userProfile || empty principal}">
                                                   <img
-                                                    class="rounded-circle shadow-1-strong me-3"
+                                                    class="rounded-circle shadow-1-strong me-3 reviewimg"
                                                     src="${pageContext.request.contextPath}/upload/noprofileuser.jpg"
                                                     alt="img"
                                                     width="40"
                                                     height="40"
+                                                    
                                                   />   
                                                 </c:when>
                                                 <c:otherwise>
                                                   <img
-                                                      class="rounded-circle shadow-1-strong  mr-5"
+                                                      class="rounded-circle shadow-1-strong  mr-5 reviewimg"
                                                       src="${pageContext.request.contextPath}/upload/${principal.user.userProfile}"
                                                       alt="avatar"
                                                       width="65"
@@ -386,7 +274,7 @@ pageEncoding="UTF-8"%>
               
                                                       </div>
                                                         <div class="d-flex justify-content-between mt-3">
-                                                            <button id="btn-review-save" type="submit" class="btn btn-success">등록하기</button>
+                                                            <button type="submit" id="btnupdate">등록하기</button>
                                                         </div>
                                                       </c:otherwise>
                                                     </c:choose>
@@ -412,29 +300,35 @@ pageEncoding="UTF-8"%>
                               <c:choose>
                                 <c:when  test="${empty review.user_profile}">
                                   <img
-                                  class="rounded-circle shadow-1-strong me-3"
+                                  class="rounded-circle shadow-1-strong me-5"
                                   src="${pageContext.request.contextPath}/upload/noprofileuser.jpg"
                                   alt="img"
-                                  width="40"
+                                  width="60px"
                                   height="40"
+                                  style="
+                                  margin-bottom: 50px;
+                                  margin-top: 10px;"
                                   />
                                 </c:when>
                                 <c:otherwise>
                                   <img
-                                  class="rounded-circle shadow-1-strong me-3"
+                                  class="rounded-circle shadow-1-strong me-5"
                                   src="${pageContext.request.contextPath}/upload/${review.user_profile}"
                                   alt="img"
-                                  width="40"
+                                  width="60px"
                                   height="40"
+                                  style="
+                                  margin-bottom: 50px;
+                                  margin-top: 10px;"
                                   />
                                 </c:otherwise>
                               </c:choose>
                               <div class="w-100">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                                  <h6 class="text-secondary fw-bold mb-0 ml-2 writer">
+                                  <h6 class="text-secondary fw-bold mb-0 writer" style="margin-left: 20px;">
                                     ${review.user_nickname}
                                     <div class="mt-3">
-                                      <span class="text-dark ms-2 ml-2">${review.content}</span>
+                                      <span class="text-dark ms-2">${review.content}</span>
                                     </div>
                                   </h6>
                                   <p class="mb-5"><fmt:formatDate value="${review.regDate }" pattern="yyyy-MM-dd"/></p>
@@ -448,7 +342,7 @@ pageEncoding="UTF-8"%>
                                     <input type="hidden" class="hiddenComNum"  value="${review.com_num}"/>
                                       <img src="${pageContext.request.contextPath}/upload/like_btn_no.png" 
                                            id="btn_like" align="left" style="cursor:pointer; width: 20px;"
-                                           class="ml-3"
+                                           class="ml-5"
                                            onclick="doLike($('#hiddenReviewSeq${i.index}').val(),$('.hiddenComNum').val(),$('#hiddenPrincipalUserId').val())"
                                            >
                                     </form>
@@ -465,8 +359,8 @@ pageEncoding="UTF-8"%>
                                           <input type="hidden"  name="comNum" value="${review.com_num}"/>
                                           <input type="hidden"  name="userId" value="${principal.user.userId}"/>
                                           <input type="hidden"  name="hospitalSeq" value="${hospital.hospitalSeq}"/>
-                                          <button type="button" class="link-grey ml-2 btn-update btn-comment-update" data-toggle='modal' data-target='.modifyModal${i.index}'>수정하기</button> 
-                                          <button onclick="if(!confirm('삭제 하시겠습니까?')){return false}" class="link-grey ml-2 btn-delete">삭제하기</button> 
+                                          <button type="button" id="btnupdate" data-toggle='modal' data-target='.modifyModal${i.index}'>수정하기</button> 
+                                          <button onclick="if(!confirm('삭제 하시겠습니까?')){return false}" id="btndelete">삭제하기</button> 
                                         </form>
                                         
                                       <form action="updateHospitalReview" method="POST" >

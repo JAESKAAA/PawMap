@@ -1,745 +1,868 @@
 
  /* petProfile @media */
  @media (min-width:900px){  
-   .petInfoContainer {
-      padding: 0;
-      width: 1200px;
-      max-width: 100%; 
-      height: auto;
-      object-fit: cover;
-      
-
-      padding-right: 15px;
-      padding-left: 15px;
-      margin-right: 10%;
-      margin-bottom: auto;
-    }
-}
-
-@media (max-width: 899px )and (min-width:715px){
 	.petInfoContainer {
-		padding: 0;
-		width: 900px;
-		height: auto;
-		object-fit: cover;
-	  }
-	}
-	.petProfile:hover{
-		background-color:#eecd90;
-		color: white;
-	}
-	.petboard{
-		margin-top:150px;
-	}
-    
-
-    .h3 {
-      font-size: large;
-      text-align: center;
-    }
-
-    .a {
-      color: black;
-    }
-	.petInfoList {
-		width:100%;
-		margin-top: 5%;
-		padding:0%;
-	}
-	.petProfile {
-		width:100%;
-		display:inline;
-		position : relative;
-		float : left;
-		margin-top : 1%;
-		margin-left: 0;
-		margin-right: 0;
-		padding:0%;
-		border-color: white;
-		border-style: solid;
-		border-width: 1px;
-		text-align: center;
-		line-height: 1.5;
-	}
-	
-.petProfileimg {
-    border-radius: 0%;
-    width: 20vw;
-    /* height: 20vw; */
-    overflow: hidden;
-    size: cover;
-}
-	.petimagebox {
-		overflow: hidden;
-   	 	border-radius: 70%;
-    	width: 250px;
-		height: 250px;
-		margin-left: 24%;
-		
-		
-	}
-	.petimage{
-		width:100%;
-   	 	height:100%;
-    	object-fit:cover;
-	}
-	
-	.petProfileText {
-		margin:4%;
-		vertical-align: center;
-
-	}
-	.petProfileText >div {
-		margin :3px;
-	}
-	.petProfileBtn > button{
-		margin:auto;
-		text-align: center;
-		vertical-align:middle;
-			color: #fff;
-			background: #f7ba61;
-			border-radius: 25px;
-			border-style: none;
-	}
-	.petProfileBtn > button:hover {
-			background-color: rgba(228, 188, 96, 0.363);
-			color: #fff !important;
-			border-style: solid #f7ba61;
-	}
-	.petInfoList{
-		width:100%;
-		margin-top: 5%;
-		padding:0%;
-	}
-	.vetProfile {
-		width:100%;
-		height:230px;
-		display:inline;
-		position : relative;
-		float : left;
-		margin-top : 1%;
-		margin-left: 0;
-		margin-right: 0;
-		padding:0%;
-		border-color: white;
-		border-style: solid;
-		border-width: 1px;
-		background-color: rgb(231, 230, 232);
-		text-align: center;
-		
-		
-	}
-	
-.vetProfileimg{
-	width:max-content;
-}
-	.vetimage{
-		height:200px;
-	}
-	.vetProfileText {
-		margin:4%;
-	}
-	.vetProfileBtn{
-		margin:auto;
-		text-align: center;
-		vertical-align:middle;
-		
-	}
-	.btn_image {
-		width:max-content;
-		height:100%;
-		
-		
-		
-	}
-	.btn_box{
-		width:100%;
-		height:150px;
-		display:inline;
-		position : relative;
-		float : left;
-		border-color: white;
-		border-style: solid;
-		border-width: 1px;
-		text-align: center;
-	}
-	.btn_box:hover{
-		background-color: #eecd9048;
-		color: white;
-		border-color: #eecd90;
-		
-	}
-
-
-/* petProfile @media */
-@media (max-width: 614px ){
-	.petInfoContainer {
-		padding: 0;
-		width: 90%;
-		height: auto;
-		object-fit: cover;
-	  }
-  
-	  .petInfoList {
-		  width:100%;
-		  padding:0%;
-	  }
-	  .petProfile {
-		  width:100%;
-		  display:inline;
-		  position : relative;
-		  float : left;
-		  margin-top : 1%;
-		  margin-left: 0;
-		  margin-right: 0;
-		  padding:0%;
-		  border-color: white;
-		  border-style: solid;
-		  border-width: 1px;
-		  text-align: center;
-		  line-height: 1.5;
-	  }
-	  
-  .petProfileimg {
-	  border-radius: 0%;
-	  width: 20vw;
-	  overflow: hidden;
-	  size: cover;
-  }
-	  .petimagebox {
-		  overflow: hidden;
-			border-radius: 70%;
-		  width: 250px;
-		  height: 250px;
-		  margin-left: 24%;
-		  
-		  
-	  }
-	  .petimage{
-		  width:100%;
-			  height:100%;
-		  object-fit:cover;
-	  }
-	  
-	  .petProfileText {
-		  margin:4%;
-		  vertical-align: center;
-  
-	  }
-}
-
-
-  /*
-*
-* ==========================================
-* CUSTOM UTIL CLASSES
-* ==========================================
-*
-*/
-.navbar {
-    transition: all 0.4s;
-}
-
-.navbar .nav-link:hover {
-    color:#fdd572;
-    text-decoration: none;
-}
-
-.navbar .navbar-brand {
-    color:  #555;
-}
-
-
-.navbar.active {
-    background: #fff;
-    box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.041);
-}
-
-#navbarSupportedContent>ul>li>ul>li>a:hover{
-	padding : 3%;
-	color:#fdd572 !important;
-	size: 0.8em;
-}
-
-
-.navbar.active .nav-link:focus {
-    color: #555;
-    text-decoration: none;
-}
-
-.navbar.active .navbar-brand {
-    color: rgb(245, 245, 245);
-}
-
-.attr-nav{
-	padding-left: 0;
-}
-.attrnine{
-	padding-right: 0;
-}
-@media (max-width: 991.98px ),( min-width: 614px){
-.attr-nav {
-    text-align:right;
-}
-.navbar .nav-link{
-	color: #555;
-}
-}
-@media (min-width:992px){
-	.navbar .nav-link {
-		color: #f9f3e3;
-	}
-}
-
-
-/*
-*
-* ==========================================
-* FOR ..
-* ==========================================
-*
-*/
-.text-small {
-    font-size: 0.9rem !important;
-}
-
-
-body {
-    min-height: 110vh;
-    background: linear-gradient(135deg, #fff 0%, #f0e1bcab 100%);
-}
-
-/* Navbar Inverse =================================*/
-nav.navbar.navbar-inverse {
-	background-color: #222;
-	border-bottom: solid 1px #303030;
-  }
-  nav.navbar.navbar-inverse ul.cart-list > li.total > .btn {
-	border-bottom: solid 1px #222 !important;
-  }
-  nav.navbar.navbar-inverse ul.cart-list > li.total .pull-right {
-	color: #fff;
-  }
-  nav.navbar.navbar-inverse.megamenu
-	ul.dropdown-menu.megamenu-content
-	.content
-	ul.menu-col
-	li
-	a,
-  nav.navbar.navbar-inverse ul.nav > li > a {
-	color: #eee;
-  }
-  nav.navbar.navbar-inverse ul.nav > li.dropdown > a {
-	background-color: #222;
-  }
-  nav.navbar.navbar-inverse li.dropdown ul.dropdown-menu > li > a {
-	color: #999;
-  }
-  nav.navbar.navbar-inverse ul.nav .dropdown-menu h1,
-  nav.navbar.navbar-inverse ul.nav .dropdown-menu h2,
-  nav.navbar.navbar-inverse ul.nav .dropdown-menu h3,
-  nav.navbar.navbar-inverse ul.nav .dropdown-menu h4,
-  nav.navbar.navbar-inverse ul.nav .dropdown-menu h5,
-  nav.navbar.navbar-inverse ul.nav .dropdown-menu h6 {
-	color: #fff;
-  }
-  nav.navbar.navbar-inverse .form-control {
-	background-color: #333;
-	border-color: #303030;
-	color: #fff;
-  }
-
-  nav.navbar-inverse.navbar-full ul.nav > li > a {
-	border: none;
-  }
-  nav.navbar-inverse.navbar-full .navbar-collapse .wrap-full-menu {
-	background-color: #222;
-  }
-  nav.navbar-inverse.navbar-full .navbar-toggle {
-	background-color: #222 !important;
-	color: #6f6f6f;
-  }
-  nav.navbar.bootsnav ul.nav > li > a {
-	position: relative;
-	font-weight: 700;
-	font-size: 16px;
-	color: #000000;
-	text-transform: uppercase;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-left: 10px;
-	padding-right: 30px;
-  }
-  nav.navbar.bootsnav ul.nav li.active > a {
-	color: #EFC778;
-  }
-  nav.navbar.bootsnav ul.nav li.active > a:hover {
-	color: #EFC778;
-  }
-  nav.navbar.bootsnav ul.nav li > a:hover {
-	color: #EFC778;
-  }
-  nav.navbar.bootsnav ul.nav li.megamenu-fw > a:hover {
-	color: #EFC778;
-  }
+	   padding: 0;
+	   width: 1200px;
+	   max-width: 100%; 
+	   height: auto;
+	   object-fit: cover;
+	   
+ 
+	   padding-right: 15px;
+	   padding-left: 15px;
+	   margin-right: 10%;
+	   margin-bottom: auto;
+	 }
+ }
+ 
+ /* @media (max-width: 899px )and (min-width:715px){
+	 .petInfoContainer {
+		 padding: 0;
+		 width: 900px;
+		 height: auto;
+		 object-fit: cover;
+	   }
+	 } */
+	 .petProfile:hover{
+		 background-color:#eecd90;
+		 color: white;
+	 }
+	 .petboard{
+		 margin-top:150px;
+	 }
+	 
+ 
+	 .h3 {
+	   font-size: large;
+	   text-align: center;
+	 }
+ 
+	 .a {
+	   color: black;
+	 }
+	 .petInfoList {
+		 width:100%;
+		 margin-top: 5%;
+		 padding:0%;
+	 }
+	 .petProfile {
+		 width:100%;
+		 display:inline;
+		 position : relative;
+		 float : left;
+		 margin-top : 1%;
+		 margin-left: 0;
+		 margin-right: 0;
+		 padding:0%;
+		 border-color: white;
+		 border-style: solid;
+		 border-width: 1px;
+		 text-align: center;
+		 line-height: 1.5;
+	 }
+	 
+ .petProfileimg {
+	 border-radius: 0%;
+	 width: 20vw;
+	 /* height: 20vw; */
+	 overflow: hidden;
+	 size: cover;
+ }
+	 .petimagebox {
+		 overflow: hidden;
+			 border-radius: 70%;
+		 width: 250px;
+		 height: 250px;
+		 margin-left: 20%;
+		 
+		 
+	 }
+	 .petimage{
+		 width:100%;
+			 height:100%;
+		 object-fit:cover;
+	 }
+	 
+	 .petProfileText {
+		 margin:4%;
+		 vertical-align: center;
+ 
+	 }
+	 .petProfileText >div {
+		 margin :3px;
+	 }
+	 .petProfileBtn > button{
+		 margin:auto;
+		 text-align: center;
+		 vertical-align:middle;
+			 color: #fff;
+			 background: #f7ba61;
+			 border-radius: 25px;
+			 border-style: none;
+	 }
+	 .petProfileBtn > button:hover {
+			 background-color: rgba(228, 188, 96, 0.363);
+			 color: #fff !important;
+			 border-style: solid #f7ba61;
+	 }
+	 .petInfoList{
+		 width:100%;
+		 margin-top: 0;
+		 padding:0%;
+	 }
+	 .vetProfile {
+		 width:100%;
+		 height:230px;
+		 display:inline;
+		 position : relative;
+		 float : left;
+		 margin-top : 1%;
+		 margin-left: 0;
+		 margin-right: 0;
+		 padding:0%;
+		 border-color: white;
+		 border-style: solid;
+		 border-width: 1px;
+		 background-color: rgb(231, 230, 232);
+		 text-align: center;
+		 
+		 
+	 }
+	 
+ .vetProfileimg{
+	 width:max-content;
+ }
+	 .vetimage{
+		 height:200px;
+	 }
+	 .vetProfileText {
+		 margin:4%;
+	 }
+	 .vetProfileBtn{
+		 margin:auto;
+		 text-align: center;
+		 vertical-align:middle;
+		 
+	 }
+	 .btn_image {
+		 width:max-content;
+		 height:100%;
+		 
+		 
+		 
+	 }
+	 .btn_box{
+		 width:100%;
+		 height:150px;
+		 display:inline;
+		 position : relative;
+		 float : left;
+		 border-color: white;
+		 border-style: solid;
+		 border-width: 1px;
+		 text-align: center;
+	 }
+	 .btn_box:hover{
+		 background-color: #eecd9048;
+		 color: white;
+		 border-color: #eecd90;
+		 
+	 }
+ 
+ 
+ /* petProfile @media */
+ @media (max-width: 614px ){
+	 .petInfoContainer {
+		 padding: 0;
+		 width: 90%;
+		 height: auto;
+		 object-fit: cover;
+	   }
+   
+	   .petInfoList {
+		   width:100%;
+		   padding:0%;
+	   }
+	   .petProfile {
+		   width:100%;
+		   display:inline;
+		   position : relative;
+		   float : left;
+		   margin-top : 1%;
+		   margin-left: 0;
+		   margin-right: 0;
+		   padding:0%;
+		   border-color: white;
+		   border-style: solid;
+		   border-width: 1px;
+		   text-align: center;
+		   line-height: 1.5;
+	   }
+	   
+   .petProfileimg {
+	   border-radius: 0%;
+	   width: 20vw;
+	   overflow: hidden;
+	   size: cover;
+   }
+	   .petimagebox {
+		   overflow: hidden;
+			 border-radius: 70%;
+		   width: 250px;
+		   height: 250px;
+		   margin-left: 24%;
+		   
+		   
+	   }
+	   .petimage{
+		   width:100%;
+			   height:100%;
+		   object-fit:cover;
+	   }
+	   
+	   .petProfileText {
+		   margin:4%;
+		   vertical-align: center;
+   
+	   }
+ }
+ 
+ 
+   /*
+ *
+ * ==========================================
+ * CUSTOM UTIL CLASSES
+ * ==========================================
+ *
  */
 
-  nav.navbar.bootsnav ul.navbar-nav li.dropdown ul.dropdown-menu li a {
-	display: block;
-	padding: 6px 25px;
-  }
-  
-  nav.navbar.bootsnav ul.navbar-nav li.dropdown ul.dropdown-menu li a:hover {
-	color: #EFC778;
-  } */
-  nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
-	left: auto;
-  }
-  .side-menu p {
-	display: inline-block;
-	color: #f9f3e3;
-
-  }
-
-
-  .nav-p-login:hover{
-	  /* font-size: 110%; */
-	  color:white;
-	  font-weight: bold;
+ 
+ .navbar {
+	 transition: all 0.4s;
+ }
+ 
+ .navbar .nav-link:hover {
+	 color:#555;
+	 text-decoration: none;
+ }
+ .navbar .nav-link-main:hover {
+	color:#eecd90;
+	text-decoration: none;
 }
-  #attr-nav-i {
-	font-size: 0.9em;
+ 
+ .navbar .navbar-brand {
+	 color:  #f8f1e3;
+ }
+ 
+ 
+ .navbar.active {
+	 background: #fff;
+	 box-shadow: 1px 2px 10px rgba(0, 0, 0, 0.041);
+ }
+ 
+ #navbarSupportedContent>ul>li>ul>li>a:hover{
+	 padding : 3%;
+	 color:#555 !important;
+	 size: 0.8em;
+ }
+ 
+ 
+ .navbar.active .nav-link:focus {
+	 color: #555;
+	 text-decoration: none;
+ }
+ 
+ .navbar.active .navbar-brand {
+	 color: rgb(245, 245, 245);
+ }
+ 
+ .attr-nav{
+	 padding-left: 0;
+ }
+ .attrnine{
+	 padding-right: 0;
+ }
+ @media (max-width: 991.98px )and( min-width: 614px){
+ .attr-nav {
+	 text-align:right;
+ }
+ .attr-nav-main {
+	text-align:right;
+}
+ .navbar .nav-link{
+	 color: #555;
+ }
+ .navbar .nav-link-main{
+	color: #555;
+}
+ 
+ #attr-nav-p{
+	 margin-top: 1.5em;
+	 }
+	 #attr-nav-p-main{
+		margin-top: 1.5em;
+		}
+ }
+ @media (min-width:992px){
+	 .navbar .nav-link {
+		 color: #f9f3e3;
+	 }
+	 .navbar .nav-link-main {
+		color: #f9f3e3;
+	}
+	 attr-nav-i {
+		 font-size:0.85em;
+	 }
+	 attr-nav-i-main {
+		font-size:0.85em;
+	}
+ }
+ 
+ /*
+ *
+ * ==========================================
+ * FOR ..
+ * ==========================================
+ *
+ */
+ .text-small {
+	 font-size: 0.9rem !important;
+ }
+ 
+ 
+ body {
+	 min-height: 110vh;
+	 background: linear-gradient(135deg, #fff 0%, #f0e1bcab 100%);
+ }
+ 
+ /* Navbar Inverse =================================*/
+ nav.navbar.navbar-inverse {
+	 background-color: #222;
+	 border-bottom: solid 1px #303030;
+   }
+   nav.navbar.navbar-inverse ul.cart-list > li.total > .btn {
+	 border-bottom: solid 1px #222 !important;
+   }
+   nav.navbar.navbar-inverse ul.cart-list > li.total .pull-right {
+	 color: #fff;
+   }
+   nav.navbar.navbar-inverse.megamenu
+	 ul.dropdown-menu.megamenu-content
+	 .content
+	 ul.menu-col
+	 li
+	 a,
+   nav.navbar.navbar-inverse ul.nav > li > a {
+	 color: #eee;
+   }
+   nav.navbar.navbar-inverse ul.nav > li.dropdown > a {
+	 background-color: #222;
+   }
+   nav.navbar.navbar-inverse li.dropdown ul.dropdown-menu > li > a {
+	 color: #999;
+   }
+   nav.navbar.navbar-inverse ul.nav .dropdown-menu h1,
+   nav.navbar.navbar-inverse ul.nav .dropdown-menu h2,
+   nav.navbar.navbar-inverse ul.nav .dropdown-menu h3,
+   nav.navbar.navbar-inverse ul.nav .dropdown-menu h4,
+   nav.navbar.navbar-inverse ul.nav .dropdown-menu h5,
+   nav.navbar.navbar-inverse ul.nav .dropdown-menu h6 {
+	 color: #fff;
+   }
+   nav.navbar.navbar-inverse .form-control {
+	 background-color: #333;
+	 border-color: #303030;
+	 color: #fff;
+   }
+ 
+   nav.navbar-inverse.navbar-full ul.nav > li > a {
+	 border: none;
+   }
+   nav.navbar-inverse.navbar-full .navbar-collapse .wrap-full-menu {
+	 background-color: #222;
+   }
+   nav.navbar-inverse.navbar-full .navbar-toggle {
+	 background-color: #222 !important;
+	 color: #6f6f6f;
+   }
+   nav.navbar.bootsnav ul.nav > li > a {
+	 position: relative;
+	 font-weight: 700;
+	 font-size: 16px;
+	 color: #000000;
+	 text-transform: uppercase;
+	 padding-top: 10px;
+	 padding-bottom: 10px;
+	 padding-left: 10px;
+	 padding-right: 30px;
+   }
+   nav.navbar.bootsnav ul.nav li.active > a {
+	 color: #EFC778;
+   }
+   nav.navbar.bootsnav ul.nav li.active > a:hover {
+	 color: #EFC778;
+   }
+   nav.navbar.bootsnav ul.nav li > a:hover {
+	 color: #EFC778;
+   }
+   nav.navbar.bootsnav ul.nav li.megamenu-fw > a:hover {
+	 color: #EFC778;
+   }
+  */
+ 
+   nav.navbar.bootsnav ul.navbar-nav li.dropdown ul.dropdown-menu li a {
+	 display: block;
+	 padding: 6px 25px;
+   }
+   
+   nav.navbar.bootsnav ul.navbar-nav li.dropdown ul.dropdown-menu li a:hover {
+	 color: #EFC778;
+   } */
+   nav.navbar.bootsnav li.dropdown ul.dropdown-menu {
+	 left: auto;
+   }
+   .side-menu p {
+	 display: inline-block;
+	 color: #f9f3e3;
+ 
+   }
+ 
+ 
+   .nav-p-login:hover{
+	   /* font-size: 110%; */
+	   color:white;
+	   font-weight: bold;
+ }
+   #attr-nav-i {
+	 font-size: 0.85em;
+   }
+   #attr-nav-i-main {
+	font-size: 0.85em;
   }
-
-  @media (max-width: 991.98px ),( min-width: 614px){
-	#attr-nav-i {
+ 
+   @media (max-width: 991.98px )and( min-width: 614px){
+	 #attr-nav-i {
+		 font-size: 1em;
+		 margin-top:1em;
+ 
+	   }
+	   #attr-nav-i-main {
 		font-size: 1em;
 		margin-top:1em;
 
 	  }
-}
-
-  #attr-nav-p:hover {
+ }
+ 
+   #attr-nav-p:hover {
+	 color: #555;
+   }
+	 #attr-nav-i:hover {
+		 color: #555;
+ }
+ #attr-nav-p-main:hover {
 	color: #EFC778;
   }
-	#attr-nav-i:hover {
+	#attr-nav-i-main:hover {
 		color: #EFC778;
 }
-
-/* nav container*/
-#container-nav{
-	width: 50%;
-}
-/*
-*
-* ==========================================
-* FOR SEARCH ID, PW
-* ==========================================
-*
-*/
-/* 아이디비번찾기 인풋 */
-.searchBox {
-	height: 50px !important;
-	border-radius: 40px  !important;
-  }
-  /* 아이디비번찾기 버튼 */
-  .searchIPBtn{
-	background: rgb(239, 199, 120)  !important;
-	border:  solid rgb(239, 199, 120)  !important;
-	color: #000;
-	margin-top: 5%;
-  }
-  .searchIPBtn:hover{
-	background: rgb(255, 255, 255,0)  !important;
-	border:  solid rgb(239, 199, 120)  !important;
-	color: rgb(239, 199, 120);
-  }
-  .searchCcBtn{
-	background: #e4bc6086  !important;
-	border:  solid rgb(239, 199, 120)  !important;
-	color: #000  !important;
-	margin-top: 5%;
-  }
-  .searchCcBtn:hover{
-	background: rgb(255, 255, 255,0)  !important;
-	border:  solid rgb(239, 199, 120)  !important;
-	color: #e4bc6086  !important;
-  }
+ .a-main:hover{
+	color: #EFC778;
+ }
+ 
+ /* nav container*/
+ #container-nav{
+	 width: 50%;
+ }
+ /*
+ *
+ * ==========================================
+ * FOR SEARCH ID, PW
+ * ==========================================
+ *
+ */
+ /* 아이디비번찾기 인풋 */
+ .searchBox {
+	 height: 50px !important;
+	 border-radius: 40px  !important;
+   }
+   /* 아이디비번찾기 버튼 */
+   .searchIPBtn{
+	 background: rgb(239, 199, 120)  !important;
+	 border:  solid rgb(239, 199, 120)  !important;
+	 color: #000;
+	 margin-top: 5%;
+   }
+   .searchIPBtn:hover{
+	 background: rgb(255, 255, 255,0)  !important;
+	 border:  solid rgb(239, 199, 120)  !important;
+	 color: rgb(239, 199, 120);
+   }
+   .searchCcBtn{
+	 background: #e4bc6086  !important;
+	 border:  solid rgb(239, 199, 120)  !important;
+	 color: #000  !important;
+	 margin-top: 5%;
+   }
+   .searchCcBtn:hover{
+	 background: rgb(255, 255, 255,0)  !important;
+	 border:  solid rgb(239, 199, 120)  !important;
+	 color: #e4bc6086  !important;
+   }
+	  
+ 
+	 /* 왼쪽 사진 */
+	 .searchImg{
+		 border-radius: 70%; 
+		 width: 20vw; 
+		 height:20vw; 
+		 overflow: hidden;
+		 background-image: url(../images/searchIdPw.png);
+		 background-size: cover;
+		 
+	 }
+	 .wlcm {
+		 color: #EFC778;
+		 width: 15vw;
+		 font-weight: bold;
+		 text-align: center;
+	 }
+   /*
+ *
+ * ==========================================
+ * FOR 병원 예약관리 페이지 res-calendar-form.jsp
+ * ==========================================
+ *
+ */
+	 .resHoForm{
+		 padding-top:100px;
+	 }
+ 
+ 
+ 
+ 
+	 /* <!--캘린더 css--> */
+ 
+ 
+	 a { color:#000000;text-decoration:none; }
+	 .scriptCalendar { text-align:center;  }
+	 .scriptCalendar > thead > tr > td { width:50px;height:50px; }
+	 .scriptCalendar > thead > tr:first-child > td { font-weight:bold; border: none;}
+	 .scriptCalendar > thead > tr:last-child > .dark { background-color:#eecd90; }
+	 .scriptCalendar > thead > tr:last-child > .light { background-color:#eecd906e; }
+ x
+   
+ 
+	 /* button */
+	 .calendar_box {
+		 width:100%;
+		 background-size: cover;
+		 height: auto;
+		 background-color: transparent;
+		 margin-top: 0;
+	 }
+	 sc {
+		 align-content: center;
+	 }
+	 .scriptCalendarBox{
+		 /* margin-left:4%; */
+		 width: 80%;
+	 }
+	 .scriptCalendar{
+		 position: relative;
+		 float: left;
+		 margin: 3%;
+		 padding: 5%;
+		 padding-bottom: 20px;
+		 width: 80%;
+		 margin-top: 0%;
+		 border:none;
+	 }
+ 
+	 .jscal {
+		 max-width: 100%;
+		 max-height: 100%;
+	 }
+	 .calendar-left{
+		 margin-left: 3%;
+		 margin-right: 10%;
+		 margin-top: 20px !important;
+		 text-align: center;
+		 align-items: center;
+		 background-color: #eecd90;
+		 border-radius: 50px;
+		 width: 50% !important;
+		 min-height: 40vh;
+		 max-height: 80vh;
+		 font-size: medium;
+		 margin-bottom: 3%;
+		 max-width: 100% !important;
+		 min-width: 50%;
+		 padding: 15px;
+		 width: 60% !important;
+		 
+	 }
+	 .calendartime > li {
+		 list-style: none;
+		 margin: 0px;
+		 padding: 5px;
+		 position: relative;
+		 float: left;
+	 }
+	 .events-times{
+		 position: static;
+		 padding-left: 8%;
+		 padding-right: 4%;
+		 line-height: 1.5;
+		 margin-top: 3px;
+		 padding-top: 15px;
+		 float: inherit;
+		 align-items: center;
+		 width: 33.3%;
+		 padding-bottom: 5%;
+	 }
+	 .events-times .calendar-time {
+		 list-style: none;
+		 text-align: center;
+		 font-size: 3rem;
+	 }
+	 .events-times .calendar-time li {
+		 position: relative;
+		 margin: 3px;
+		 display: inline-block;
+	 }
 	 
-
-	/* 왼쪽 사진 */
-	.searchImg{
-		border-radius: 70%; 
-		width: 20vw; 
-		height:20vw; 
-		overflow: hidden;
-		background-image: url(../images/searchIdPw.png);
-		background-size: cover;
-		
-	}
-	.wlcm {
-		color: #EFC778;
-		width: 15vw;
-		font-weight: bold;
-		text-align: center;
-	}
-  /*
-*
-* ==========================================
-* FOR 병원 예약관리 페이지 res-calendar-form.jsp
-* ==========================================
-*
-*/
-	.resHoForm{
-		padding-top:100px;
-	}
-
-
-
-
-	/* <!--캘린더 css--> */
-
-
-    a { color:#000000;text-decoration:none; }
-    .scriptCalendar { text-align:center;  }
-    .scriptCalendar > thead > tr > td { width:50px;height:50px; }
-    .scriptCalendar > thead > tr:first-child > td { font-weight:bold; border: none;}
-    .scriptCalendar > thead > tr:last-child > .dark { background-color:#eecd90; }
-	.scriptCalendar > thead > tr:last-child > .light { background-color:#eecd906e; }
-x
-  
-
-    /* button */
-    .calendar_box {
-        width:100%;
-        background-size: cover;
-        height: auto;
-        background-color: transparent;
-    	margin-top: 0;
-    }
-	sc {
-		align-content: center;
-	}
-	.scriptCalendarBox{
-		/* margin-left:4%; */
-		width: 80%;
-	}
-    .scriptCalendar{
-		position: relative;
+	 .calendar-right {
+		background-color:rgb(253, 231, 189, 0.34);
+		position: relative; 
 		float: left;
-		margin: 3%;
-		padding: 5%;
-		padding-bottom: 20px;
-		width: 80%;
-		margin-top: 0%;
-		border:none;
-    }
-
-	.jscal {
-		max-width: 100%;
-		max-height: 100%;
-	}
-    .calendar-left{
-		margin-left: 3%;
-		margin-right: 10%;
-		margin-top: 20px !important;
-		text-align: center;
-		align-items: center;
-		background-color: #eecd90;
-		border-radius: 50px;
-		width: 50% !important;
-		min-height: 40vh;
-		max-height: 80vh;
-		font-size: medium;
-		margin-bottom: 3%;
-		max-width: 100% !important;
-		min-width: 50%;
-		padding: 15px;
-		width: 60% !important;
+		color: whtie;
+		width: 30%;
 		
-    }
-	.calendartime > li {
-		list-style: none;
-		margin: 0px;
-		padding: 5px;
-		position: relative;
-		float: left;
-	}
-	.events-times{
-		position: static;
-		padding-left: 8%;
-		padding-right: 4%;
-		line-height: 1.5;
-		margin-top: 3px;
-		padding-top: 15px;
-		float: inherit;
-		align-items: center;
-		width: 33.3%;
-		padding-bottom: 5%;
-	}
-    .events-times .calendar-time {
-        list-style: none;
-        text-align: center;
-		font-size: 3rem;
-    }
-    .events-times .calendar-time li {
-        position: relative;
-        margin: 3px;
-        display: inline-block;
-    }
-    
-    .calendar-right {
-       background-color:rgb(253, 231, 189, 0.34);
-       position: relative; 
-       float: left;
-       color: whtie;
-       width: 30%;
-       
-       margin-top: 50px;
-    }
-
-	.btn-calendar {
-	    margin-left: 20%;
-    	height: 40px;
-    	border-radius: 40px !important;
-    	background: rgb(239, 199, 120) !important;
-    	border:  solid rgb(239, 199, 120) !important;
-    	/* color: #000 !important; */
-        width: 60% !important;
-		background-color: #eecd90 !important;
-		margin-left: 2%;
-    	padding-left: 20px !important;
-    	padding-right: 20px !important;
-    	color: #fff !important;	
-	}
-	.btn-calendar:hover {
-		
-		background: rgb(253, 231, 189, 0.34) !important;
-		border:  solid rgb(253, 231, 189, 0.34) !important;
-		color: rgb(255, 255, 255) !important;
-	}
-	.calendar-member{
-	margin-left: 3%;
-    margin-right: 3%;
-    margin-top: 20px !important;
-    text-align: center;
-    align-items: center;
-    background-color: #eecd90;
-    border-radius: 50px;
-    width: 50% !important;
-    min-height: 40vh;
-    max-height: 80vh;
-    font-size: large;
-    margin-bottom: 3%;
-    max-width: 100% !important;
-    min-width: 50%;
-    padding: 15px;
-    width: 50% !important;
-    height: 100%;
-	}
-  /*
-*
-* ==========================================
-* FOR mypage-반려동물 추가폼
-* ==========================================
-*
-*/
-/* ================보드 타이틀, 밑줄================== */
-
-/* 폼 박스  */
-.petAddBox{
-	text-align: center;
+		margin-top: 50px;
+	 }
+ 
+	 .btn-calendar {
+		 margin-left: 20%;
+		 height: 40px;
+		 border-radius: 40px !important;
+		 background: rgb(239, 199, 120) !important;
+		 border:  solid rgb(239, 199, 120) !important;
+		 /* color: #000 !important; */
+		 width: 60% !important;
+		 background-color: #eecd90 !important;
+		 margin-left: 2%;
+		 padding-left: 20px !important;
+		 padding-right: 20px !important;
+		 color: #fff !important;	
+	 }
+	 .btn-calendar:hover {
+		 
+		 background: rgb(253, 231, 189, 0.34) !important;
+		 border:  solid rgb(253, 231, 189, 0.34) !important;
+		 color: rgb(255, 255, 255) !important;
+	 }
+	 .calendar-member{
+	 margin-left: 3%;
+	 margin-right: 3%;
+	 margin-top: 20px !important;
+	 text-align: center;
+	 align-items: center;
+	 background-color: #eecd90;
+	 border-radius: 50px;
+	 width: 50% !important;
+	 min-height: 40vh;
+	 max-height: 80vh;
+	 font-size: large;
+	 margin-bottom: 3%;
+	 max-width: 100% !important;
+	 min-width: 50%;
+	 padding: 15px;
+	 width: 50% !important;
+	 height: 100%;
+	 }
+   /*
+ *
+ * ==========================================
+ * FOR mypage-반려동물 추가폼
+ * ==========================================
+ *
+ */
+ /* ================보드 타이틀, 밑줄================== */
+ 
+ /* 폼 박스  */
+ .petAddBox{
+	 text-align: center;
+	 border-radius: 40px;
+	 border: 4px solid rgb(216, 216, 216);
+	 margin: 15%;
+	 padding-top:30px
+ }
+ .petAddBox:hover{
+	 border-style: 4px solid #f0cb94;
+	 background-color: #f7bb611f;
+ }
+ /* 반려동물 등록 타이틀 */
+ .boardtitle>h2{
+	 padding-left: 10rem;
+	 line-height: 1.4;
+	 text-align: left;
+	 font-size: 32px;
+	 color: #f1c264;
+	 font-weight: 700;
+	 margin-bottom: 15px;
+ }
+ 
+ /* input박스 설정  uptxtbox참고*/
+ .petaddinput{
+	 background-color: #ffffffe3;
+	 vertical-align: top;
+	 height: 45px;
+	 color:#555;
+	 transition: 0.3s;
+	 margin: 3px;
+	 border:transparent;
+	 border-radius: 40px;
+	 max-width: 400px;
+	 width: 100%;
+	 padding:2px;
+	 padding-left: 10px;
+ }
+ .petaddinput:hover{
+	 background: #e4bc6086 !important;
+	 border-style:  solid rgb(239, 199, 120,1)  !important;
+	 color: #ffffffe3;
+ }
+ 
+ .petsymptominput:hover{
+	 background: #e4bc6086 !important;
+	 border-style:  solid rgb(239, 199, 120,1)  !important;
+	 color: #ffffffe3;
+ }
+ /* select option에 hover색 지정 */
+ .optioncolor > section > option:hover {
+	 background-color: #eecd90;
+ }
+ 
+ /* 저장버튼 */
+ .btnsave {
+	 all:unset;
+		 line-height: 1.5;
+		 color: #fff;
+		 font-size: 18px;
+		 width: 240px;
+		 height: 50px;
+		 font-weight: 700;
+		 background: rgb(239, 199, 120);
+		 cursor: pointer;
+		 border-radius: 40px;
+		 text-align: center;
+ 
+	 }
+ /* 다시 작성버튼 */
+ .btnrewrite {
+	 all:unset;
+		 line-height: 1.5;
+		 color: #fff;
+		 font-size: 18px;
+		 width: 240px;
+		 height: 50px;
+		 font-weight: 700;
+		 background-color: rgb(235, 168, 130);
+		 cursor: pointer;
+		 border-radius: 40px;
+ 
+ }
+ 
+ textarea {
+	 width: 100%;
+	 height: 6.25em;
+	 border: none;
+	 resize: none;
+	 background-color: #ffffffe3;
+	 vertical-align: top;
+	 color:#555;
+	 transition: 0.3s;
+	 margin: 3px;
+	 border:transparent;
+	 border-radius: 40px;
+	 padding:14px;
+   }
+ /* -===============
+   예약 확인 페이지 버튼
+ ================== */
+ .btnHosgr {
 	border-radius: 40px;
-	border: 4px solid rgb(216, 216, 216);
-	margin: 15%;
-	padding-top:30px
-}
-.petAddBox:hover{
-	border-style: 4px solid #f0cb94;
-	background-color: #f7bb611f;
-}
-/* 반려동물 등록 타이틀 */
-.boardtitle>h2{
-    padding-left: 10rem;
-    line-height: 1.4;
-    text-align: left;
-    font-size: 32px;
-    color: #f1c264;
-    font-weight: 700;
-    margin-bottom: 15px;
-}
+	border-style: solid;
+	background: #eec7784d;
+	height: 30px;
+	color: white;
+	}
 
-/* input박스 설정  uptxtbox참고*/
-.petaddinput{
-	background-color: #ffffffe3;
-	vertical-align: top;
-	height: 45px;
-	color:#555;
-	transition: 0.3s;
-	margin: 3px;
-	border:transparent;
-	border-radius: 40px;
-	max-width: 400px;
-	width: 100%;
-	padding:2px;
-	padding-left: 10px;
-}
-.petaddinput:hover{
-	background: #e4bc6086 !important;
-    border-style:  solid rgb(239, 199, 120,1)  !important;
-    color: #ffffffe3;
-}
-
-.petsymptominput:hover{
-	background: #e4bc6086 !important;
-    border-style:  solid rgb(239, 199, 120,1)  !important;
-    color: #ffffffe3;
-}
-/* select option에 hover색 지정 */
-.optioncolor > section > option:hover {
-	background-color: #eecd90;
-}
-
-/* 저장버튼 */
-.btnsave {
-	all:unset;
+  .btncangr{
+	  border-radius: 40px;
+	border-style: solid;
+	background: #eeb17865;
+	height: 30px;
+	color: white;
+  } 
+  /* 댓글&review 수정 삭제버튼 */
+/* 수정버튼 */
+#btnupdate {
+	all: unset;
 		line-height: 1.5;
 		color: #fff;
-		font-size: 18px;
-		width: 240px;
-		height: 50px;
-		font-weight: 700;
+		font-size: 15px;
+		width: 140px;
+		height: 35px;
+		font-weight: 400;
 		background: rgb(239, 199, 120);
 		cursor: pointer;
 		border-radius: 40px;
-
+		text-align: center;
 	}
-/* 다시 작성버튼 */
-.btnrewrite {
+/* 삭제버튼 */
+#btndelete {
 	all:unset;
 		line-height: 1.5;
 		color: #fff;
-		font-size: 18px;
-		width: 240px;
-		height: 50px;
-		font-weight: 700;
+		font-size: 15px;
+		width: 140px;
+		height: 35px;
+		font-weight: 400;
 		background-color: rgb(235, 168, 130);
 		cursor: pointer;
 		border-radius: 40px;
-
+		text-align: center;
 }
-
-textarea {
-    width: 100%;
-    height: 6.25em;
-    border: none;
-    resize: none;
-	background-color: #ffffffe3;
-	vertical-align: top;
-	color:#555;
-	transition: 0.3s;
-	margin: 3px;
-	border:transparent;
-	border-radius: 40px;
-	padding:14px;
+/* 병원세부 예약하기 버튼 */
+.btnres:hover{
+	background-color: rgba(239, 199, 120, 0.137);
+	border-style: rgb(239, 199, 120) !important;
+	
+}
+.btnres{
+	
+	font-size: 20px;
+    width: 110px;
+    height: 39px;
+    font-weight: 600;
+    background: rgb(239, 199, 120);
+    cursor: pointer;
+    border-radius: 40px;
+    text-align: center;
+    color: #fff;
+    padding: 8px;
+    margin: 8px;
+}
+.btnresa{
+	color: white;
+    font-size: 20px;
+}
+.btnresa:hover{
+	color:rgb(239, 199, 120) !important;
+    font-size: 20px;
+}
+.msg1, .msg2, msg3, msg4{
+    margin-left: 20px;
   }

@@ -69,6 +69,21 @@ pageEncoding="UTF-8"%>
         color: rgba(235, 180, 99, 0.842);
         height: 12%;
       }
+      @font-face {
+      font-family: 'NEXON Lv1 Gothic OTF Light';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF Light.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      } 
+      header{
+        font-family: 'NEXON Lv1 Gothic OTF Light';
+      }
+      .navbar-brand{
+        font-family:'NEXON Lv1 Gothic OTF';
+        font-size: 1.6em;
+        font-weight: 700;
+        }
+     
     </style>
   </head>
 

@@ -96,5 +96,8 @@ public interface BoardMapper {
 	List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain
 	(@Param("boardSeq") int boardSeq);
 
+
+	void updateNanumBoardCnt(@Param("boardSeq")int boardSeq);
+
 }
 
