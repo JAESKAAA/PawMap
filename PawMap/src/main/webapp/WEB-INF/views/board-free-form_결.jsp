@@ -53,7 +53,7 @@ pageEncoding="UTF-8"%>
                 </div>
                 <div class="r form-group ml-5">
                     <div class="col-sm-10 col-sm-offset-2">
-                        <input id="btn-submit" name="btn-submit" type="submit" value="작성완료" class="btn btn-complete">
+                        <input id="btn-submit" name="btn-submit" type="submit" value="작성완료" class="btnsave">
                     </div>
                 </div>
             </div>    

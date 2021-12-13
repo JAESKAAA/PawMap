@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
 
+<style>
+  span{
+    padding: 20px;
+  }
+</style>
 <!-- Start 회원정보 타이틀 영역 -->
 <div class="u_container" style="margin-top: 150px;">
     <div class="col-lg-12">
@@ -80,7 +85,7 @@ pageEncoding="UTF-8"%> <%@ include file="layout/header.jsp" %>
               value="${user.userNickname }"
             />
             <button type="button" class="btn-file-upload" onclick="fn_mnickcheck()">중복체크</button>
-            <p class="result"><span class="msg3">닉네임을 확인해주세요.</span></p>
+            <p class="result"><span class="msg3" >닉네임을 확인해주세요.</span></p>
           </div>
           <div class="mb-3">
             <label for="phone">연락처</label>
