@@ -5,3 +5,5 @@ application.properties
 *.metadata
 *.DS_Store
 
+workbench.xmi
+.vscode

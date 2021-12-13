@@ -4,6 +4,22 @@ pageEncoding="UTF-8"%>
 <%@ include file="layout/header.jsp" %>
 
 
+<style>
+	.custom-btn-delete{
+	    all: unset;
+    line-height: 1.5;
+    color: #fff;
+    font-size: 15px;
+    width: 140px;
+    height: 35px;
+    font-weight: 400;
+    background-color: rgb(235, 168, 130);
+    cursor: pointer;
+    border-radius: 40px;
+    text-align: center
+    }
+</style>
+
     <div class="board-type mt-5">
         <c:if test="${getFreeBoard.boardType eq 'f'}"> <h1>자유게시판</h1> </c:if>
         <c:if test="${getNanumBoard.boardType eq 's'}"> <h1>나눔게시판</h1> </c:if>
@@ -92,7 +108,7 @@ pageEncoding="UTF-8"%>
                 <button onclick="location.href='/pawmap/board/getFreeBoardList'" type="button" class="btn btn-secondary">목록으로</button>
               <c:if test="${getFreeBoard.userId == principal.user.userId}">
                 <button onclick="location.href='/pawmap/board/updateFreeAndNanumBoardForm?boardSeq=${getFreeBoard.boardSeq}&boardType=${getFreeBoard.boardType}'" type="button" id="btnupdate">수정</button>
-                <button id="delete-free-board" type="button" id="btndelete">삭제</button>
+                <button id="delete-free-board" type="button" class="custom-btn-delete" id="btndelete">삭제</button>
               </div>
               </c:if> 
             </c:if> 
@@ -103,7 +119,7 @@ pageEncoding="UTF-8"%>
                 <button onclick="location.href='/pawmap/board/getNanumBoardList'" type="button" class="btn btn-secondary">목록으로</button>
               <c:if test="${getNanumBoard.userId == principal.user.userId}">
                 <button onclick="location.href='/pawmap/board/updateNanumBoardForm?boardSeq=${getNanumBoard.boardSeq}&boardType=${getNanumBoard.boardType}'" type="button" id="btnupdate">수정</button>
-                <button id="delete-nanum-board" type="button" id="btndelete">삭제</button>
+                <button id="delete-nanum-board" type="button" class="custom-btn-delete" id="btndelete">삭제</button>
               </div>
             </c:if>  
           </c:if>
@@ -314,7 +330,6 @@ pageEncoding="UTF-8"%>
 
 
 
-
     <!-- 나눔게시판일경우 -->
         <c:if test="${getNanumBoard.boardType eq 's' }">
 
@@ -342,6 +357,7 @@ pageEncoding="UTF-8"%>
 
                             </div>
                             <div class="d-flex flex-start w-100">
+
                               <c:choose>
                                 <c:when test="${empty principal.user.userProfile || empty principal}">
                                   <img
@@ -362,6 +378,7 @@ pageEncoding="UTF-8"%>
                                   />
                                 </c:otherwise>
                               </c:choose>
+
                                 <div class="w-100">
                                     <div class="form-outline">
 
@@ -396,6 +413,7 @@ pageEncoding="UTF-8"%>
             <div class="card mb-3">
               <div class="card-body">
                 <div class="d-flex flex-start">
+
                   <c:choose>
                     <c:when test="${empty reply.user_profile}">
                       <img
@@ -416,6 +434,7 @@ pageEncoding="UTF-8"%>
                       />
                     </c:otherwise>
                   </c:choose>
+
                   <div class="w-100">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                       <h6 class="text-secondary fw-bold mb-0 ml-2 writer">
@@ -485,7 +504,7 @@ pageEncoding="UTF-8"%>
                           <!--=============== 댓글 수정 모달창 종료 ============== -->
                                   
                         </c:if>
-                        
+
                       </p>
                     </div>
                   </div>

@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,11 +16,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.pawmap.VO.FileVO;
 import com.pawmap.VO.ShelterVO;
 import com.pawmap.mapper.ShelterMapper;
+
 import com.pawmap.service.BoardService;
 import com.pawmap.service.FileService;
 import com.pawmap.service.ShelterService;
@@ -37,6 +41,7 @@ public class ShelterController {
 	@Autowired
 	private FileService fileService;
 	
+
 	@Autowired
 	private BoardService boardService;
 	
@@ -117,6 +122,7 @@ public class ShelterController {
 		List<FileVO> fileList = fileUtils.parseFileInfo(shelterSeq, request, mhsr, "admin");
 		System.out.println("file타는감 ============" + fileList);
 		
+
 		//사진 없을때 안넣도록 추가
 		if(fileList!=null) {
 			fileService.insertShelterFileList(fileList);
@@ -223,6 +229,19 @@ public class ShelterController {
 //		
 //	}
 	
+	@GetMapping("/getShelterByJson")
+	@ResponseBody
+	public Map<String,Object> getShelterByJson(@PathParam("search_value")String value, Model model) {
+		
+		System.out.println("받은 데이터 == "+ value);
+		
+		List<ShelterVO> shelterList= shelterService.getShelterList(null);
+		Map<String, Object> shelterMap = new HashMap<>();
+				
+		shelterMap.put("shelterList", shelterList);	
+		
+		return shelterMap;
+	}
 	
 //	// 쉘터 디테일 페이지로 이동
 //	@RequestMapping("/shelterDetail")

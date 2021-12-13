@@ -146,12 +146,12 @@
                 >취소
                 </button>
             </div>
-            <div class="mb-4">
-              <button class="btn" id="upbtnN" style="width: 90%;" onclick="deleteUserCheck()" 
-                >회원탈퇴
-                </button>
-          </div>
-        </form>
+          </form>
+          <div class="mb-4">
+            <button class="btn" id="upbtnN" style="width: 90%;" onclick="deleteUserCheck()" 
+              >회원탈퇴
+              </button>
+        </div>
         <hr class="mb-4" />
      
       <c:choose>

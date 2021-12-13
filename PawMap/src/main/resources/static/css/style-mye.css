@@ -1,6 +1,5 @@
-
- /* petProfile @media */
- @media (min-width:900px){  
+/* petProfile @media */
+@media (min-width:900px){  
 	.petInfoContainer {
 	   padding: 0;
 	   width: 1200px;
@@ -489,24 +488,24 @@
    /* 아이디비번찾기 버튼 */
    .searchIPBtn{
 	 background: rgb(239, 199, 120)  !important;
-	 border:  solid rgb(239, 199, 120)  !important;
+	 border:  solid rgb(239, 199, 120)  !important;
 	 color: #000;
 	 margin-top: 5%;
    }
    .searchIPBtn:hover{
 	 background: rgb(255, 255, 255,0)  !important;
-	 border:  solid rgb(239, 199, 120)  !important;
+	 border:  solid rgb(239, 199, 120)  !important;
 	 color: rgb(239, 199, 120);
    }
    .searchCcBtn{
 	 background: #e4bc6086  !important;
-	 border:  solid rgb(239, 199, 120)  !important;
+	 border:  solid rgb(239, 199, 120)  !important;
 	 color: #000  !important;
 	 margin-top: 5%;
    }
    .searchCcBtn:hover{
 	 background: rgb(255, 255, 255,0)  !important;
-	 border:  solid rgb(239, 199, 120)  !important;
+	 border:  solid rgb(239, 199, 120)  !important;
 	 color: #e4bc6086  !important;
    }
 	  
@@ -658,8 +657,8 @@
 	 }
 	 .btn-calendar:hover {
 		 
-		 background: rgb(253, 231, 189, 0.34) !important;
-		 border:  solid rgb(253, 231, 189, 0.34) !important;
+		 background: rgb(253, 231, 189, 0.34) !important;
+		 border:  solid rgb(253, 231, 189, 0.34) !important;
 		 color: rgb(255, 255, 255) !important;
 	 }
 	 .calendar-member{
@@ -730,13 +729,13 @@
  }
  .petaddinput:hover{
 	 background: #e4bc6086 !important;
-	 border-style:  solid rgb(239, 199, 120,1)  !important;
+	 border-style:  solid rgb(239, 199, 120,1)  !important;
 	 color: #ffffffe3;
  }
  
  .petsymptominput:hover{
 	 background: #e4bc6086 !important;
-	 border-style:  solid rgb(239, 199, 120,1)  !important;
+	 border-style:  solid rgb(239, 199, 120,1)  !important;
 	 color: #ffffffe3;
  }
  /* select option에 hover색 지정 */

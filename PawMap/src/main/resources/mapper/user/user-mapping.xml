@@ -165,10 +165,10 @@
   				#{role}
   		)
   	</insert>
-  	
-  	
-  	
-  	
+  		<!-- jaeskaa sent below query at 7:46pm dec 13th -->
+		<delete id="deleteUser" parameterType="com.pawmap.VO.UserVO">
+		 DELETE FROM user where user_id = #{userId} 
+		 </delete>    	
 
   	
   

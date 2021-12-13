@@ -175,6 +175,24 @@ public List<HashMap<String, Object>> getLatelyBoardListForShelterBoardMain() {
 		boardMapper.updateFreeBoardCnt(boardSeq);
 	}
 
+	// 관리자 페이지에서 커뮤니티 게시판 부를때 사용하는 메소드
+	// getCommunityBoardList, getLatelyCommunityBoardList 메소드는 관리자 페이지에서 보일 메소드...
+		
+	@Override
+	public List<BoardVO> getCommunityBoardList(BoardVO vo, Criteria cri) {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("board", vo);
+		cri.setStartNum((cri.getPageNum() -1 ) * cri.getAmount());
+		paramMap.put("criteria", cri);
+			
+		return boardMapper.getCommunityBoardList(paramMap);
+	}
+		
+	@Override
+	public List<HashMap<String, Object>> getLatelyCommunityBoardListForBoardMain() {
+			
+	return boardMapper.getLatelyCommunityBoardListForBoardMain();
+	}	
 	
 //	=========================================================
 	@Override

@@ -3,12 +3,13 @@ pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!-- jstl 함수사용을 위한 설정 -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
+    <spring:eval expression="@environment.getProperty('kakao.app.key')" var="kakaoAppKey"/>
 <%@ include file="layout/header.jsp" %>
-    
+
 <style>
 
   .container_hospital_detail {
@@ -59,8 +60,7 @@ pageEncoding="UTF-8"%>
   
 </style>
 
-  
-
+ 
       <!-- Start About Page  -->
       <div class="" style="margin-top:7rem;">
         <div class="container_hospital_detail">
@@ -618,57 +618,57 @@ pageEncoding="UTF-8"%>
 
 
    
-   // 좋아요 로직
-   function doLike(seq,comNum,userId){
-     console.log(seq,comNum,userId);
+    // 좋아요 로직
+    function doLike(seq,comNum,userId){
+      console.log(seq,comNum,userId);
 
-     // 로그인 안되어있을경우 좋아요 못하게 방지
-    if(typeof userId == "undefined" || userId == null || userId == ""){
-      alert("로그인후 이용해 주세요");
-    }else{
-      // json으로 뿌릴거임
-      data = {
-        "reviewSeq" : seq,
-        "comNum" : comNum,
-        "userId" : userId
-      }
-      console.log(data);
-      $.ajax({
-        type : "POST",
-        url : "/pawmap/clickLike",
-        contentType: 'application/json',
-        dataType : "json",
-        data : JSON.stringify(data),
-        success : function(data){
+      // 로그인 안되어있을경우 좋아요 못하게 방지
+     if(typeof userId == "undefined" || userId == null || userId == ""){
+       alert("로그인후 이용해 주세요");
+     }else{
+       // json으로 뿌릴거임
+       data = {
+         "reviewSeq" : seq,
+         "comNum" : comNum,
+         "userId" : userId
+       }
+       console.log(data);
+       $.ajax({
+         type : "POST",
+         url : "/pawmap/clickLike",
+         contentType: 'application/json',
+         dataType : "json",
+         data : JSON.stringify(data),
+         success : function(data){
           console.log(data);
 
-          // json 데이터가 1 오류임
-          if(data['1'] == 1 ){
-            alert("오류가 발생했습니다.");
-          } else{
+         // json 데이터가 1 오류임
+           if(data['1'] == 1 ){
+             alert("오류가 발생했습니다.");
+           } else{
 
-            // 리뷰 리스트 사이즈 얻어와서 포문돌림
-            var size = $("#hiddenHospitalReviewList").val();
-            console.log("size ====== "+size);
-            console.log(data);
+             // 리뷰 리스트 사이즈 얻어와서 포문돌림
+             var size = $("#hiddenHospitalReviewList").val();
+             console.log("size ====== "+size);
+             console.log(data);
   
-            for(var i = 0; i<size; i++){
+             for(var i = 0; i<size; i++){
               
-              // 데이터로 받아온 카운트를(좋아요갯수) 해당 태그에 문자로 새로넣어줌
-              var htmlString = data[i].count;
-              $("#likeCount"+i).html(htmlString);
-            }
-          }
+               // 데이터로 받아온 카운트를(좋아요갯수) 해당 태그에 문자로 새로넣어줌
+               var htmlString = data[i].count;
+               $("#likeCount"+i).html(htmlString);
+             }
+           }
 
-        },
-        error : function(error){
+         },
+         error : function(error){
   
-        }
-      });
+         }
+       });
+
+     }
 
     }
-
-   }
 
 	</script>
 </body>

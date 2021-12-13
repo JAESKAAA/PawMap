@@ -172,6 +172,7 @@ public class BoardController {
 		commentService.deleteCommentsBySeq(boardSeq);
 		fileService.deleteFileByBoardSeq(boardSeq);
 
+
 		
 	}
 	
@@ -407,6 +408,53 @@ public class BoardController {
 		return "board-nanum_결";
 		
 	}
+		
+		
+		
+		//관리자페이지 -> 커뮤니티 게시판 관리로 이동
+		@GetMapping("/admin/communityManage")
+		public String communityManageList() {
+			System.out.println("communityManageList 호출 !!");
+			return "admin_community"; // this leads user to go onadmin_shetler.jsp.....
+		}
+		
+		@RequestMapping("/getCommunityBoardList")
+		public String getCommunityBoardList(BoardVO vo, Model model, Criteria cri) {
+			System.out.println("getCommunityBoardList 호출 !!");
+			
+			if(vo.getKeywordType() == null || vo.getKeywordType().isEmpty()) {
+				vo.setKeywordType("titleAndContent");
+			}
+			if(vo.getKeyword() == null) {
+				vo.setKeyword("");
+			}
+			
+			if(!keyword.equals(vo.getKeyword())) {
+				System.out.println("다릅니다.");
+				cri.setPageNum(1);
+			}
+
+			keyword = vo.getKeyword();
+			
+			int total = boardService.selectBoardCount(vo);
+			
+
+			List<HashMap<String,Object>> latelyCommunityBoardListForMain = boardService.getLatelyCommunityBoardListForBoardMain();
+			
+			System.out.println("getCommunityBoardList 의 latelyCommunityBoardListForMain ============"+ latelyCommunityBoardListForMain);
+			
+			model.addAttribute("communityBoardList", boardService.getCommunityBoardList(vo,cri));
+			model.addAttribute("latelyCommunityBoardListForMain", latelyCommunityBoardListForMain);
+			model.addAttribute("pageMaker", new PageVO(cri, total));
+			model.addAttribute("keyword", vo.getKeyword());
+			model.addAttribute("keywordType", vo.getKeywordType());
+			
+			return "admin_community";
+		}
+	
+	
+	
+	
 	
 	// 나눔게시판 리스트 가져오기
 	@GetMapping("/board/getNanumBoard")

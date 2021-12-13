@@ -108,6 +108,7 @@ public class SearchController {
 		
 		model.addAttribute("hospitalReviewList",hospitalReviewList);
 		model.addAttribute("reviewSize",hospitalReviewList.size());
+
 		
 		System.out.println("hospitalReviewList :"+hospitalReviewList);
 

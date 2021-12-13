@@ -7,6 +7,9 @@ import org.springframework.stereotype.Component;
 
 import com.pawmap.VO.ShelterVO;
 
+
+
+
 @Component
 public interface ShelterService {
 

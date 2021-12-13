@@ -9,10 +9,7 @@ pageEncoding="UTF-8"%>
     
 <%@ include file="layout/header.jsp" %>
     
-
-
-    
-</head>
+   
     <!--============================
        나눔게시판 시작
    ============================-->
@@ -56,7 +53,7 @@ pageEncoding="UTF-8"%>
 
       <br />
 
-      <div class="container" style="margin-top: 50px; ">
+      <div class="container" style="margin-top: 85px; ">
 
         <div class="row">
           <c:forEach var="latelyNanumBoardListForMain" items="${NanumBoardList }">
@@ -69,7 +66,7 @@ pageEncoding="UTF-8"%>
                 margin:0 auto;">
                 <c:choose>
                   <c:when  test="${empty latelyNanumBoardListForMain.originalFilename}">
-                    <a href="getNanumBoard?boardSeq=${latelyNanumBoardListForMain.boardSeq }&boardType=${latelyNanumBoardListForMain.boardType }"></a>
+                    <a href="getNanumBoard?boardSeq=${latelyNanumBoardListForMain.boardSeq }&boardType=${latelyNanumBoardListForMain.boardType }">
                     <img
                     class="blog-img"
                     src="${pageContext.request.contextPath}/upload/noimg_shelter.png"
