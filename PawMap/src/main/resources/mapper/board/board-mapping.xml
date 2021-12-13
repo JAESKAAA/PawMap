@@ -62,7 +62,7 @@
   	
   	<select id="getFreeBoardList" parameterType="HashMap" resultMap="boardResult">
   		SELECT b.board_seq, b.board_type, b.user_id, b.title, b.content, b.regDate, b.cnt ,u.user_nickname
-  		,(SELECT COUNT(*) FROM comment c WHERE c.board_seq = b.board_seq) AS count
+  		,(SELECT COUNT(*) FROM comment c WHERE c.board_seq = b.board_seq AND c.board_type = 'f') AS count
   		FROM board AS b
   		INNER JOIN user AS u
   		ON b.user_id = u.user_id
