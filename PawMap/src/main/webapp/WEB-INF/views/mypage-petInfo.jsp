@@ -19,7 +19,7 @@
         </div>
         <!-- End 반려동물 관리 타이틀 영역 -->
 
-        <div class="petInfoContainer">
+        <div class="petInfoContainer" style="margin: auto; margin-top: 3rem;">
             <div class="row">
                 <div style="margin-top: 70px; border-style: 3px solid orange ">
                     <input type="hidden" class="form-control" id="user_id" name="userId" value=${principal.user.userId}>

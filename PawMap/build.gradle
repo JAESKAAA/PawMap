@@ -2,13 +2,19 @@ plugins {
 	id 'org.springframework.boot' version '2.6.0'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'war'
 
 }
 
 group = 'com.pawmap'
 version = '0.0.1-SNAPSHOT'
 
-
+bootWar {
+	archiveBaseName = 'web'
+	//war이름 설정되는 부분
+	archiveFileName = 'ROOT.war'
+	archiveVersion = "0.0.0"
+}
 
 sourceCompatibility = '1.8'
 
@@ -52,6 +58,7 @@ dependencies {
 
 	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 
 }
 

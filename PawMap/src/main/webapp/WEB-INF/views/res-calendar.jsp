@@ -37,7 +37,7 @@ pageEncoding="UTF-8"%>
     <h1>병원아이디 ${scheduleList[0].userId}</h1>
     <h1>병원사업자번호 ${scheduleList[0].comNum}</h1> -->
 
-    <div class="board-type  mt-5" style="padding-top: 150px;">
+  <div class="board-type  mt-5" style="padding-top: 150px;">
         <h1> ${hosNickname[0].user_name} 예약 하기  </h1>
         <p style="line-height: 1.5;">
         <p>
@@ -55,10 +55,9 @@ pageEncoding="UTF-8"%>
     <hr class="line-paint">
     <input id="hospitalComNum" type="hidden" value="${scheduleList[0].comNum}"> 
 <div class="container">
-    <div class="row">
         <div class="calendar_box" >
             <div class="sc col-lg-6 col-md-12 col-sm-12">
-                <table  class="scriptCalendar mb-3" style="position: relative; float: left; ">
+                <table  class="scriptCalendar mb-3" style="position: relative; float: left;  height: 400px;">
                     <thead>
                         <tr>
                             <td onClick="prevCalendar();" style="cursor:pointer;">&#60;&#60;</td>
@@ -84,7 +83,7 @@ pageEncoding="UTF-8"%>
                 
         
         <!--button-->
-            <div class="calendar-left col-lg-6 col-md-12 col-sm-12" style="position: relative; float: left; margin-top: 0px;">
+            <div class="calendar-member col-lg-6 col-md-12 col-sm-12" style="position: relative; float: left; margin-top: 0px !important; min-height: 400px; overflow:auto;">
                 <strong  style="color: white; size: 2em; ">예약 가능한 시간</strong>
                 <div class="events-time mt-5" >
                     <br/>
@@ -95,9 +94,9 @@ pageEncoding="UTF-8"%>
                 <br>
                 <br>
             </div>
-        </div>    
+            </div>
     </div>
-</div>        
+</div>
 <!-- </form>     -->
     <!-- End 캘린더  -->
 

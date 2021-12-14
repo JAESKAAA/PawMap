@@ -51,7 +51,7 @@ pageEncoding="UTF-8"%>
         </div>
 
     <div class="about-box-main">
-        <div class="container" style="margin-top: 5rem;">
+        <div class="container">
             <div class="row">
 				<div class="col-lg-6 jb-video">
                     <video muted autoplay loop>

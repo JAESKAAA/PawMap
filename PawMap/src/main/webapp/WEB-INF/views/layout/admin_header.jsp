@@ -19,13 +19,13 @@ pageEncoding="UTF-8"%>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title>PawMapAdminMainPage</title>
+    <title>PawMap - 관리자 페이지</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <!-- Site Icons -->
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/로고최종_수정.png" type="image/x-icon">
     <link rel="apple-touch-icon" href="${pageContext.request.contextPath}/images/apple-touch-icon.png">
 
     <!-- Bootstrap CSS -->
@@ -50,6 +50,24 @@ pageEncoding="UTF-8"%>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+<style>
+   .navbar-brand{
+        font-family:'NEXON Lv1 Gothic OTF';
+        font-size: 1.6em;
+        font-weight: 700;
+      }
+      
+         .logoimg{
+        width:7.1em;
+        overflow: hidden;
+        height: 1.6rem;
+        margin-left:5%;
+      }
+      .navbar-header{
+        padding:10px;
+      }
+</style>
 
 </head>
 
@@ -86,7 +104,7 @@ pageEncoding="UTF-8"%>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
               <i class="fa fa-bars"></i>
             </button>
-                <a class="navbar-brand" href="/pawmap/"><div class="main_logo_box"></div></a>
+                <a class="navbar-brand" href="/pawmap/"><img class="logoimg" src="${pageContext.request.contextPath}/images/logoyellow.png"></img></a>
             </div>
             <!-- End Header Navigation -->
 

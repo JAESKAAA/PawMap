@@ -18,9 +18,13 @@ pageEncoding="UTF-8"%>
     border-radius: 40px;
     text-align: center
     }
+    
+    .boardtitle {
+      margin-top:10rem !important;
+    }
 </style>
 
-    <div class="board-type mt-5">
+    <div class="board-type mt-5 .boardtitle">
         <c:if test="${getFreeBoard.boardType eq 'f'}"> <h1>자유게시판</h1> </c:if>
         <c:if test="${getNanumBoard.boardType eq 's'}"> <h1>나눔게시판</h1> </c:if>
       </div>

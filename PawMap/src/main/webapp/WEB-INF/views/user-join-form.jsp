@@ -31,7 +31,7 @@ pageEncoding="UTF-8"%>
                       </tr>
                       <tr>
                           <th> 비밀번호 <span>*</span></th>
-                          <td><input required="required" type="text"
+                          <td><input required="required" type="password"
                             name="userPassword" id="userPassword" placeholder="8~20자리 영문,숫자,특수문자" 
                             class="input w130"></td>
                       </tr>

@@ -131,7 +131,7 @@ pageEncoding="UTF-8"%>
                 </thead>
               </table>
             </div>
-            <div class="tbl-content" style="border: none;">
+            <div class="tbl-content" style="border: none; height: 46rem;">
               <table class="board-table" cellpadding="0" cellspacing="0">
                 <tbody>
                   <c:forEach var="freeBoard" items="${freeBoardList }">

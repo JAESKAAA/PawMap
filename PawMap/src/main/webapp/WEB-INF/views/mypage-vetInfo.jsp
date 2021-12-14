@@ -19,7 +19,7 @@
             </div>
         <!-- End 수의사 관리 타이틀 영역 -->
 
-        <div class="petInfoContainer" style="margin-top:50px">
+        <div class="petInfoContainer" style="margin: auto; margin-top: 3rem;">
             <div class="row">
                 <div style="margin-top: 40px; border-style: 3px solid orange ">
                     <!-- 수의사 프로필 -->

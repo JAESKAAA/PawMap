@@ -127,7 +127,7 @@ pageEncoding="UTF-8"%>
         border-radius: 0;
         border: 1px solid rgba(204, 156, 22, 0.8);
     }
-    
+     
     .fa-search {
     	cursor:pointer;
     }
