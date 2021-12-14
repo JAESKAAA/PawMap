@@ -152,6 +152,29 @@ pageEncoding="UTF-8"%>
         font-size: 1.6em;
         font-weight: 700;
       }
+      
+         .logoimg{
+        width:7.1em;
+        overflow: hidden;
+        height: 1.6rem;
+        margin-left:5%;
+      }
+      .navbar-header{
+        padding:10px;
+      }
+      .arrow::before{
+      
+      font-family: FontAwesome;
+    content: "\f0d7";
+    margin-left: 5px;
+    margin-top: 2px;
+    border: none;
+    display: inline-block;
+    vertical-align: inherit;
+    position: absolute;
+    right: -4px;
+    top: -1px;
+    }
      
 	  </style>
   </head>
@@ -166,7 +189,7 @@ pageEncoding="UTF-8"%>
         fixed-top py-3">
         <div class="container col-lg-9">
           <div class="navbar-header" id="headerPawmap">
-            <a href="/pawmap" class="navbar-brand text-uppercase font-weight-bold">PAWMAP</a>
+            <a href="/pawmap" class=""><img class="logoimg" src="${pageContext.request.contextPath}/images/logowhitemain.png"></img></a> 
               <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><i class="fa fa-bars"></i></button>
             </div>
             <div id="navbarSupportedContent" 
@@ -405,9 +428,9 @@ pageEncoding="UTF-8"%>
           포맵의 제휴병원을 통해 예약관리를 시작하세요
         </div>
         <br />
-        <button class="btn btn-primary btn-sm custom_btn" type="button">
-          더보기
-        </button>
+	        <button class="btn btn-primary btn-sm custom_btn" type="button" onclick="location.href='/pawmap/search'">
+	          더보기
+	        </button>
       </div>
     </div>
  

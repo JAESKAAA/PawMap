@@ -292,7 +292,7 @@ a:link {
 /* (전역 페이지에 들어가야함) 올라가는 아이콘 */
 #back-to-top {
   position: fixed;
-  padding-top: 12px;
+  padding-top: 15px;
   bottom: 150px;
   right: 36px;
   z-index: 9999;
