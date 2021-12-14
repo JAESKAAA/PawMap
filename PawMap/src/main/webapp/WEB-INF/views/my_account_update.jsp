@@ -127,9 +127,16 @@
           <c:choose>
             <c:when test="${empty user.userProfile}">
               <div class="mb-3">
-                <label for="name">이름</label>
-                <input type="text" class="uptxtbox" id="name" name="userName" value="${principal.user.userName }"
-                  disabled />
+                <label for="profile">프로필 사진 등록</label>
+                <div class="control-group">  
+                    <div class="controls">  
+                        <div class="entry input-group upload-input-group">  
+                            <input type="hidden" name="userSeq" value="${principal.user.userSeq}">
+                            <input type="hidden" name="userType" value="${principal.user.userType}">
+                            <input class="uptxtbox btn-file-upload" name="uploadFiles" multiple="multiple" type="file">  
+                        </div>  
+                    </div>  
+                </div>  
               </div>
             </c:when>
           </c:choose>

@@ -400,16 +400,14 @@ public class ReservationController {
 		System.out.println(scheduleTime);
 		
 		List<HashMap<String,Object>> medicalRecord = boardService.getSeparateMedicalRecordForClient(comNum, reservationDate, scheduleTime);
-		System.out.println("showMedicalRecord vo ========= "+medicalRecord);
+	
 		if(medicalRecord.size() == 0) {
 			return "redirect:/mypage/reservationList?userId="+userId;
 		}
 		
 		int boardSeq = Integer.parseInt(medicalRecord.get(0).get("board_seq").toString());
-		System.out.println("파일 가져오기를 위한 boardSeq ====== "+boardSeq);
 		
 		List<FileVO> fileList = fileService.getFileListByMedicalBoardSeq(boardSeq);
-		System.out.println("showMedicalRecord 의 fileList ========"+fileList);
 		
 		model.addAttribute("medicalFileList",fileList);
 		model.addAttribute("medicalRecord",medicalRecord);

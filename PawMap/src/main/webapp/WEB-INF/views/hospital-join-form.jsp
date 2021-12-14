@@ -106,7 +106,7 @@ pageEncoding="UTF-8"%>
                         <th> 사업자등록번호 <span>*</span></th>
                         <td>
                           <div class="u_input-button"><input name="comNum" id="com_num" placeholder="사업자등록번호"
-                            type="tel" class="input w220" onkeyup="inputComCheck();">
+                            type="tel" class="input w220" onkeyup="inputComCheck();" maxlength = "13" minlength = "13">
                             <button type="button" class="button u_button-grey" onclick="fn_comcheck()">
                               <span style="color: white;">중복확인</span>
                             </button>
