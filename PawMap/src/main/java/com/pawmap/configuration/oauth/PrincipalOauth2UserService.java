@@ -67,7 +67,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService{
 			userName = oAuth2UserInfo.getName();
 		
 		}else {
-			System.out.println("우리는 구글과 페이스북과 네이버만 지원합니다 !");
+			System.out.println("구글, 페이스북, 네이버, 카카오 외의 로그인 요청입니다!");
 		}
 		
 		String provider = oAuth2UserInfo.getProvider(); //google

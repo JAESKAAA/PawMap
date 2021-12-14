@@ -367,7 +367,7 @@ public class ReservationController {
 			MultipartHttpServletRequest mhsr) throws IOException {
 		System.out.println("insertMedicalRecord ===== 들어옴 ");
 		System.out.println("insertMedicalRecord ===== vo " + vo );
-		
+		vo.setBoardType("m");
 		boardService.insertMedicalRecord(vo);
 		
 		ReservationVO reservationVO = new ReservationVO();
