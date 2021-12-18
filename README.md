@@ -8,7 +8,7 @@ PawMap은 주변 동물병원 검색, 예약, 상담, 진단서 관리까지 통
 :dog:
 <a href="http://pawmap.shop"> PawMap </a>
 <br><br>
-  <img src="https://user-images.githubusercontent.com/78363202/146635664-1c8d9c33-86c6-4c96-b997-2428ee6f20aa.gif?raw=true" width=50% height = 50%/>
+  <img src="https://user-images.githubusercontent.com/78363202/146635664-1c8d9c33-86c6-4c96-b997-2428ee6f20aa.gif?raw=true" width=80% height =80%/>
 </p>
 
 ## ⏲️ 개발기간 (약 1개월)
