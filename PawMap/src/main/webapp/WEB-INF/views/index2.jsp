@@ -51,6 +51,8 @@ pageEncoding="UTF-8"%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/custom-silbia.css">
       <!-- 테이블 부분 css -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/footable.bootstrap.css" />
+
+    
         <!-- 결 커스텀 css -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -175,6 +177,10 @@ pageEncoding="UTF-8"%>
     right: -4px;
     top: -1px;
     }
+    
+    .header-nav-mypage{
+    	padding: 2px !important;
+    }
      
 	  </style>
   </head>
@@ -244,14 +250,15 @@ pageEncoding="UTF-8"%>
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
               <li class="side-menu">
-                <a href="/pawmap/mypage">
-                  <p id="attr-nav-i-main">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
-                </a>
-              </li>
-              <li class="side-menu">
-                <a href="/pawmap/logout">
-                  <p id="attr-nav-i-main">로그아웃</p>
-                </a>
+              	<p id="attr-nav-i-main"> ${principal.user.userNickname} 님 환영합니다.</p>
+              	</li>
+              	<li class="side-menu">
+	                <a href="/pawmap/mypage" class="header-nav-mypage">
+	                  <p id="attr-nav-i-main">마이페이지</p>
+	                </a>
+	                <a href="/pawmap/logout" class="header-nav-mypage">
+	                  <p id="attr-nav-i-main">로그아웃</p>
+	                </a>
               </li>
             </sec:authorize>
             <sec:authorize access="hasRole('ROLE_ADMIN')">

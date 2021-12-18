@@ -46,7 +46,7 @@ public class ReservationController {
 		List<ScheduleVO> hosScheduleTable = reservationService.getAllScheduleTableOfHospital(comNum);
 		
 		model.addAttribute("hosScheduleTable" , hosScheduleTable);
-		return "res-calendar-form";
+		return "reservation/res-calendar-form";
 	}
 	
 	@RequestMapping("/reservation/insertSchedule")
@@ -240,7 +240,7 @@ public class ReservationController {
 		model.addAttribute("scheduleList",scheduleList);
 		model.addAttribute("hosNickname", hosNickname);
 		
-		return "res-calendar";
+		return "reservation/res-calendar";
 	}
 	
 	@RequestMapping(value="/reservation/getScheduleList", produces = "application/text; charset=utf8")
@@ -302,7 +302,7 @@ public class ReservationController {
 		
 		model.addAttribute("myResList",myResList);
 		model.addAttribute("medicalRecordList",medicalRecordList);
-		return "my_account_reservation_list";
+		return "user/my_account_reservation_list";
 	}
 	
 	@RequestMapping("/mypage/cancelReservation")
@@ -359,7 +359,7 @@ public class ReservationController {
 		
 		model.addAttribute("reservationInfo",vo);
 		
-		return "medicalRecordForm";
+		return "medicalRecord/medicalRecordForm";
 	}
 	
 	@RequestMapping("/reservation/insertWriteRecord")
@@ -412,7 +412,7 @@ public class ReservationController {
 		model.addAttribute("medicalFileList",fileList);
 		model.addAttribute("medicalRecord",medicalRecord);
 		
-		return "medicalRecordShow";
+		return "medicalRecord/medicalRecordShow";
 	}
 	
 	@RequestMapping("/reservation/updateWriteRecord")

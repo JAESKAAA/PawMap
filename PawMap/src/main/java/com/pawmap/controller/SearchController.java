@@ -56,7 +56,7 @@ public class SearchController {
 		
 		model.addAttribute("hospitalList", hospitalList);
 		
-		return "search_page";
+		return "search/search_page";
 	}
 	
 	@GetMapping("/searchDetail")
@@ -79,7 +79,7 @@ public class SearchController {
 		model.addAttribute("hospitalList", hospitalList);
 		model.addAttribute("pageMaker", new PageVO(cri, total));
 		model.addAttribute("value",value);
-		return"search_page";
+		return"search/search_page";
 	}
 	
 	@GetMapping("/detailHospital")
@@ -122,7 +122,7 @@ public class SearchController {
 
 		model.addAttribute("hospital", hospital);
 		model.addAttribute("vetList", vetList);
-		return "hospital-detail";
+		return "search/hospital-detail";
 	}
 	
 	/**
@@ -135,12 +135,12 @@ public class SearchController {
 		
 		apiHandler.handleHospitalInfo();
 		
-		return "search_page";
+		return "search/search_page";
 		
 	}
 	
 	@GetMapping("/hospital")
 	public String showHospitalPage() {
-		return "hospital-detail";
+		return "search/hospital-detail";
 	}
 }

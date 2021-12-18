@@ -66,7 +66,7 @@ pageEncoding="UTF-8"%>
       nav {
         background:rgb(239 198 120);
         height: fit-content;
-        font-size:medium;
+        font-size:large;
         color: rgba(235, 180, 99, 0.842);
         height: 12%;
       }
@@ -79,6 +79,10 @@ pageEncoding="UTF-8"%>
       header{
         font-family: 'NEXON Lv1 Gothic OTF Light';
       }
+      
+       .header-nav-mypage{
+    	padding: 2px !important;
+    }
     </style>
 
   </head>
@@ -147,14 +151,14 @@ pageEncoding="UTF-8"%>
               </li>
             </sec:authorize>
             <sec:authorize access="isAuthenticated()">
+               <li class="side-menu">
+              		<p id="attr-nav-i-main"> ${principal.user.userNickname} 님 환영합니다.</p>
+              	</li>
               <li class="side-menu">
-                <a href="/pawmap/mypage">
-                  <p id="attr-nav-i">마이페이지 ${principal.user.userNickname} 님 환영합니다.</p>
+                <a href="/pawmap/mypage" class="header-nav-mypage">
+                  <p id="attr-nav-i">마이페이지 </p>
                 </a>
-              </li>
-              
-              <li class="side-menu">
-                <a href="/pawmap/logout">
+                <a href="/pawmap/logout" class="header-nav-mypage">
                   <p id="attr-nav-i">로그아웃</p>
                 </a>
               </li>

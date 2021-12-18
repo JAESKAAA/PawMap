@@ -55,7 +55,7 @@ public class ShelterController {
 		
 		 model.addAttribute("shelter", shelterMapper.getShelterList(vo));
 		
-		return "admin_shelter";
+		return "admin/admin_shelter";
 	}
 	
 
@@ -77,7 +77,7 @@ public class ShelterController {
 		
 		System.out.println("update Shelter Form의 model값 ===========" + model);
 		
-		return "admin_shelter_modify";
+		return "admin/admin_shelter_modify";
 	}
 	
 	
@@ -101,7 +101,7 @@ public class ShelterController {
 	// 관리자페이지 -> 보호소 관리 페이지 -> 글 등록 화면으로 이동
 	@GetMapping("/admin/shelterForm")
 	public String shelterForm() {
-		return "admin_shelter_form";
+		return "admin/admin_shelter_form";
 	}
 	
 	
@@ -295,7 +295,7 @@ public class ShelterController {
 		 
 		 System.out.println("shelterPic==========" + latelyShelterBoardListForMain);
 		
-		return "shelter_list";
+		return "board/shelter_list";
 	}
 	
 	@GetMapping("/shelter_detail")
@@ -307,7 +307,7 @@ public class ShelterController {
 		
 		model.addAttribute("shelter", shelter);
 		
-		return "shelter-detail";
+		return "board/shelter-detail";
 	}
 
 	

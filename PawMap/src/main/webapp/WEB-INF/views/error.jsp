@@ -384,8 +384,5 @@
     <script src="${pageContext.request.contextPath}/js/js-gyul.js"></script>
 
 
-    
-    </script>
-    
   </body>
 </html>

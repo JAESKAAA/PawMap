@@ -64,7 +64,7 @@ public class VetController {
 		model.addAttribute("user",user.getUserSeq());
 		
 
-		return "mypage-vetInfo";
+		return "user/mypage-vetInfo";
 	}
 	
 	/*수의사 등록 페이지로 이동*/
@@ -76,7 +76,7 @@ public class VetController {
 		model.addAttribute("vet", vet);
 		System.out.println("수의사 등록페이지로 넘어왔을 때  getHospitalSeq==="+ vet.getHospitalSeq());
 		
-		return "mypage-vetAdd";
+		return "user/mypage-vetAdd";
 	}
 	
 	/*수의사 정보 등록*/
@@ -141,7 +141,7 @@ public class VetController {
 		
 		System.out.println("수의사정보 수정폼으로 왔을 때 VetVO===="+vo);
 		
-			return "mypage-vetUpdate";
+			return "user/mypage-vetUpdate";
 		}
 	
 	/*수의사 정보 수정 폼에서 사진 수정 */

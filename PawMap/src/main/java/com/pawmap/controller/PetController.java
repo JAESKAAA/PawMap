@@ -46,7 +46,7 @@ public class PetController {
 //		model.addAttribute("petWith",petService.getPetListWithoutFile(vo));
 		model.addAttribute("user", userVo);		
 		
-		return "mypage-petInfo";
+		return "user/mypage-petInfo";
 	}
 	
 	/*반려동물 정보 수정*/
@@ -68,7 +68,7 @@ public class PetController {
 		System.out.println("petVO ======= "+petService.selectPetInfo(vo));
 		
 			
-			return "mypage-petUpdate";
+			return "user/mypage-petUpdate";
 		}
 	
 	/*반려동물 정보 수정폼에서 등록버튼*/
@@ -121,7 +121,7 @@ public class PetController {
 	public String newPetInfo(UserVO user, Model model) {
 		model.addAttribute("user",user);
 		System.out.println("반려동물 추가로 넘어왔을 때 사용자 아이디=====" + user.getUserId());
-		return "mypage-petAdd";
+		return "user/mypage-petAdd";
 	}
 	/*반려동물 정보 등록*/
 	@PostMapping("/mypage/insertPetInfo")

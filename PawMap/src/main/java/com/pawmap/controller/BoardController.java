@@ -48,7 +48,7 @@ public class BoardController {
 	
 	@GetMapping("/board/form")
 	public String getFreeAndNanumBoardForm() {
-		return "board-free-form_결";
+		return "board/board-free-form_결";
 	}
 	
 	@PostMapping("/board/insertFreeAndNanumBoard")
@@ -136,7 +136,7 @@ public class BoardController {
 		
 		System.out.println(boardService.getFreeBoardList(vo,cri));
 		
-		return "board-free_결";
+		return "board/board-free_결";
 				
 	}
 	
@@ -159,7 +159,7 @@ public class BoardController {
 		model.addAttribute("freeBoardReplyList",replyList);
 		model.addAttribute("getFreeBoard",boardService.getFreeBoard(boardSeq));
 		
-		return "board-detail_결";
+		return "board/board-detail_결";
 	}
 	
 	@PostMapping("/board/deleteFreeBoard/api/{boardSeq}")
@@ -202,7 +202,7 @@ public class BoardController {
 		
 		System.out.println(model);
 		
-		return "board-update-form_결";
+		return "board/board-update-form_결";
 	}
 	
 	//나눔게시판 게시글 업데이트 관련 메서드
@@ -222,7 +222,7 @@ public class BoardController {
 		
 		System.out.println(model);
 		
-		return "board-update-form_결";
+		return "board/board-update-form_결";
 	}
 	
 	@PostMapping("/board/updateNanumBoardForm/api/{boardSeq}")
@@ -405,7 +405,7 @@ public class BoardController {
 		System.out.println("================== 나눔게시판 컨트롤러 탔음");
 		System.out.println("model에 최종적으로 담긴값 : " + model);
 		
-		return "board-nanum_결";
+		return "board/board-nanum_결";
 		
 	}
 		
@@ -415,7 +415,7 @@ public class BoardController {
 		@GetMapping("/admin/communityManage")
 		public String communityManageList() {
 			System.out.println("communityManageList 호출 !!");
-			return "admin_community"; // this leads user to go onadmin_shetler.jsp.....
+			return "admin/admin_community"; // this leads user to go onadmin_shetler.jsp.....
 		}
 		
 		@RequestMapping("/getCommunityBoardList")
@@ -449,7 +449,7 @@ public class BoardController {
 			model.addAttribute("keyword", vo.getKeyword());
 			model.addAttribute("keywordType", vo.getKeywordType());
 			
-			return "admin_community";
+			return "admin/admin_community";
 		}
 	
 	
@@ -483,7 +483,7 @@ public class BoardController {
 		System.out.println("나눔 코멘트 fileList=============" + fileList);
 		
 		
-		return "board-detail_결";
+		return "board/board-detail_결";
 
 	}
 	

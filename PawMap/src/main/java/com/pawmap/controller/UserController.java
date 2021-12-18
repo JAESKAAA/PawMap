@@ -133,13 +133,13 @@ public class UserController {
 	//관리자 페이지 이동하는 메소드
 	@GetMapping("/admin")
 	public  String admin() {
-		return "admin_index";
+		return "admin/admin_index";
 	}
 	
 	//마이페이지 이동하는 메소드
 	@GetMapping("/mypage")
 	public  String mypageIndex() {
-		return "my_page_main";
+		return "user/my_page_main";
 	}
 	
 	//마이페이지-> 회원정보 수정으로 이동하는 메소드
@@ -150,7 +150,7 @@ public class UserController {
 		
 		 model.addAttribute("user", userService.getUser(vo));
 		
-		return "my_account_update";
+		return "user/my_account_update";
 	}
 	
 
@@ -159,36 +159,36 @@ public class UserController {
 	//SecurityConfig파일 생성 후 활성화안됨 (스프링 필터가 가로채기때문)
 	@GetMapping("/loginForm")
 	public String loginForm() {
-		return "login-form";
+		return "auth/login-form";
 	}
 
 	@GetMapping("/joinForm")
 	public String joinForm() {
-		return "join-form";
+		return "auth/join-form";
 	}
 	
 	//일반 유저 회원가입으로 이동
 	@GetMapping("/userJoinForm")
 	public String userJoinForm() {
-		return "user-join-form";
+		return "auth/user-join-form";
 	}
 	//병원 유저 회원가입으로 이동
 	@GetMapping("/hospitalJoinForm")
 	public String hospitalJoinForm() {
-		return "hospital-join-form";
+		return "auth/hospital-join-form";
 	}
 
 				
 	// 비밀번호를 잊어버렸습니까? 클릭시 forgotPW 
 		@GetMapping("/searchIdPw")
 		public String showFindLoginPasswd() {
-			return "searchIdPw";
+			return "auth/searchIdPw";
 		}
 	
 	//관리자페이지 -> 회원정보 관리로 이동
 	@GetMapping("/admin/userInfo")
 	public String userInfoForm() {
-		return "admin_user";
+		return "admin/admin_user";
 	}
 	
 	
@@ -389,7 +389,7 @@ public class UserController {
 		model.addAttribute("userList", list);
 		model.addAttribute("pageMaker", new PageVO(cri,total));
 		
-		return "admin_user";
+		return "admin/admin_user";
 	}
 	
 	//특정 유저 정보 출력
@@ -403,7 +403,7 @@ public class UserController {
 		
 		 model.addAttribute("user", userService.getUser(vo));
 		
-		return "admin_user_detail";
+		return "admin/admin_user_detail";
 	}
 	
 	//병원 유저 목록 표출
@@ -424,7 +424,7 @@ public class UserController {
 		model.addAttribute("userList",list);
 		model.addAttribute("pageMaker", new PageVO(cri,total));
 		
-		return "admin_user";
+		return "admin/admin_user";
 		
 	}
 	
@@ -524,7 +524,7 @@ public class UserController {
 			
 			}
 			 
-			return "loginForm";
+			return "auth/loginForm";
 			
 		}
 		
