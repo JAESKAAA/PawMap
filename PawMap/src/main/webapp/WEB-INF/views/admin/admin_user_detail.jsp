@@ -76,4 +76,16 @@ pageEncoding="UTF-8"%>
 
     
 <%@ include file="../layout/admin_footer.jsp" %>
-    
+
+<script>
+
+	function fnDeleteUser(obj) {
+	  if(confirm("정말 이 유저를 삭제하시겠습니까? Would really want to?") == true) { // 확인
+		  location.href='/pawmap/admin/deleteUser?userId=' + obj.id ;
+			  } else { //취소
+			  return;
+			  }
+	  };
+		  
+  
+  </script>
